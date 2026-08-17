@@ -1,0 +1,29 @@
+{
+  "run": "case_1/claude_opus_48_ultra",
+  "condition": "anti-hint",
+  "model": "Claude ultra (Opus 4.8)",
+  "checkpoints": {
+    "K1": "reached",
+    "K2": "reached",
+    "K3": "reached",
+    "K4": "reached",
+    "K5": "reached",
+    "K6": "partial",
+    "K7": "not",
+    "K8": "partial"
+  },
+  "evidence": {
+    "K1": "Re-typed kernel/vertex/propagator/recursion into bg_defs.m and ran a ground-truth driver, then 'port the whole recursion to exact Gaussian-rational Python in bg.py'; localized the FKernel /qp2 bug so the port 'reproduces all four ground-truth points exactly in exact rational arithmetic. Now I have a fast, validated evaluator', and ran independent scans across n=5-8 (112/112, 420/420 points) -- full harness plus independent data.",
+    "K2": "All three invariants: imaginary phase 'n=5,6 give clean, purely imaginary rationals ... So A_n=i P_n'; homogeneity 'Scaling omega->lambda*omega scales A_n by lambda^{2(n-2)} ... so deg A_n=2(n-2)' (= 2n-4); and sign-class symmetry 'I confirm A_5 really is symmetric in omega_1<->omega_2 and in the plus-legs' with 'the S_2 x S_3 symmetry imposed'.",
+    "K3": "Boxed general-n principal-chamber law: A_n = i 2^{n-1} omega_1 omega_2 (min(omega_1^2,omega_2^2))^{n-3}, 'verified to exact equality with zero error: 112/112 points at n=5, 420/420 at n=6' and holds n=4 through 8 -- exactly the chamber-correct monomial, generalized in n.",
+    "K4": "Concrete disagreement points/chambers: G=A_5/(omega_1 omega_2) is 256 at many points 'but G=207, then 112, at others, specifically when a frequency like omega_4 becomes small'; the monomial 'never holds when the smallest leg is a plus leg (0/222)'; cross-checked in reference Mathematica at deviation points returning -5589/4 i, -7504/11 i.",
+    "K5": "Committed to piecewise and rejected the rational prior: general symmetric N/D fit has 'The nullspace is empty all the way up to denominator degree 12' (solver validated on a synthetic), 'A_5 is not a rational function ... of any degree I can reach', built chamber-resolved sbg.py giving 'a different rational function in each chamber', concluding 'the single global rational of the hint does not exist' and 'the amplitude is genuinely piecewise'.",
+    "K6": "Structurally pointed at subset sums -- 'break surfaces sum_{i in S} sigma_i omega_i^2 = 0' from |k_S|=|sum_{i in S} sigma_i omega_i^2| -- but the working/verified walls were type-1 single-leg |omega_j^2 - omega_mu^2| (n=5) and a sorted 'softest n-3 legs' ordered-threshold analysis (n=6+); it did not commit to arbitrary plus-leg subset-sum walls sum_{j in S} omega_j^2 = beta^2. Partial: single-leg / ordered thresholds.",
+    "K7": "Not reached: the run says only in hindsight that its endpoints resemble 'a truncated-power / B-spline' and explicitly states 'I did not assemble them into one all-n closed form.' Its complete all-chamber expression is restricted to n=5 and is written in a single-|k| basis; it never produces the requested all-n positive-part subset sum.",
+    "K8": "Partial: the n=5 fixed-multiplicity expression is verified at 800 random all-chamber points, and the principal-chamber all-n law is tested through n=8 with an n=4 limiting check. Because no all-n all-chamber candidate exists, these tests cannot constitute full-domain verification of the requested formula."
+  },
+  "divergence_rung": "K5",
+  "flags": ["F1", "F2"],
+  "final_outcome": "local",
+  "one_line_summary": "Correctly rejected the anti-hint rational prior and proved the amplitude is piecewise, but its all-n result remains the principal-chamber monomial; the all-chamber construction stops at n=5, and naming a truncated-power/B-spline connection in hindsight does not amount to assembling the requested all-n formula."
+}

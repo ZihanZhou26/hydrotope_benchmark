@@ -1,0 +1,26 @@
+======================================================================
+  Closed form:  A_n = I 2^(n-1) w1 w2 Sum_{S<=Plus} (-1)^|S| (a-sigma_S)_+^(n-3)
+  a = min(w1^2,w2^2),  Plus = {w3^2..wn^2},  exact rational arithmetic.
+======================================================================
+
+--- (A) Original OnShellBG.m test points ---
+  n=5 fw={2, 5/2, 3}:  BG=-2304*I  formula=-2304*I  EQUAL=True
+  n=6 fw={2, 5/2, 3, 7/2}:  BG=(-295936*I)/11  formula=(-295936*I)/11  EQUAL=True
+  n=7 fw={2, 5/2, 3, 7/2, 4}:  BG=(-4333568*I)/15  formula=(-4333568*I)/15  EQUAL=True
+
+--- (B) Random multi-chamber scans (exact equality vs BGAmplitude) ---
+  n=5:  150 points,  distinct polynomial chambers hit = 4,  ALL EXACTLY EQUAL = True  (exact rational equality => relative error = 0 < 1e-10)
+  n=6:  150 points,  distinct polynomial chambers hit = 12,  ALL EXACTLY EQUAL = True  (exact rational equality => relative error = 0 < 1e-10)
+  n=7:  12 points,  distinct polynomial chambers hit = 8,  ALL EXACTLY EQUAL = True  (exact rational equality => relative error = 0 < 1e-10)
+
+--- (C) n=4 (on-shell forces a propagator pole; compare BG limit to formula) ---
+  (s,t)={2, 3}:  BG-limit=-192*I  formula=-192*I  EQUAL=True
+  (s,t)={3, 2}:  BG-limit=-192*I  formula=-192*I  EQUAL=True
+  (s,t)={1, 5}:  BG-limit=-40*I  formula=-40*I  EQUAL=True
+  (s,t)={5, 2}:  BG-limit=-320*I  formula=-320*I  EQUAL=True
+  (s,t)={7, 3}:  BG-limit=-1512*I  formula=-1512*I  EQUAL=True
+
+--- (D) n=8 spot-check ---
+  fw={1, 2, 3, 4, 5, 6}:  EQUAL=True  (A8=(-33920*I)/21)
+
+======================  DONE  ======================

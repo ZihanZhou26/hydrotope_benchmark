@@ -1,0 +1,9 @@
+symbolic ws = {-y, -x, y, x}
+symbolic A4 = Piecewise[{{(8*I)*x^3*y, x < y}, {(8*I)*x*y^3, x > y}}, (24*I)*y^4]
+difference between open-branch formulas = (8*I)*x*y*(x^2 - y^2)
+branch value from symbolic expression at x=1,y=2 = 16*I
+branch value from symbolic expression at x=2,y=1 = 16*I
+sample x=1,y=2 ws = {-2, -1, 2, 1}
+direct exact numeric BG at x=1,y=2 = Indeterminate
+sample x=2,y=1 ws = {-1, -2, 1, 2}
+direct exact numeric BG at x=2,y=1 = Indeterminate

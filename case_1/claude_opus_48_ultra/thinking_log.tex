@@ -1,0 +1,255 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+
+\title{Rewritten Chain of Thought for the\\
+Two-Minus Water-Wave Amplitude}
+\author{}
+\date{}
+
+\newcommand{\pp}[1]{\left[\,#1\,\right]_{+}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document is a first-person reconstruction of the chain of thought for an AI
+attempt at the closed-form tree amplitude $A_n$ in the two-minus sector of
+one-dimensional deep-water surface waves. It is rebuilt from the visible run
+trajectory (the raw private reasoning was encrypted, so only the narrated
+messages, tool calls, and outputs survive), and it keeps the original wording,
+the false starts, and the hedges rather than tidying them away. The honest
+outcome is partial. The prompt's hint was emphatic that $A_n$ is a \emph{single
+global rational function} with simple poles on factorization channels and
+\emph{no} chamber/piecewise structure, and instructed me to fit one $N/D$ ansatz
+on generic kinematics. I followed that route, watched it fail in a specific and
+diagnosable way, and concluded the opposite of the hint: the amplitude is
+genuinely \emph{piecewise}, controlled by the $|k_S|$ absolute values in the
+Berends--Giele propagators. I then proved non-rationality, extracted an exact
+general-$n$ closed form valid in the principal (softest-leg-is-a-minus-leg)
+regime, and a complete all-chamber formula \emph{only at $n=5$}. The fully
+general all-$n$, all-kinematics closed form I did \emph{not} reach; I document
+exactly where I stopped and why.
+\end{abstract}
+
+\section*{Rewritten Chain of Thought}
+
+I am allowed to read only \texttt{prompt.md} and \texttt{OnShellBG.m}, no sibling
+files, no parent files, no web. I read both. The task is a single global
+closed-form $A_n$ for $\sigma=(-1,-1,+1,\dots,+1)$, valid for all $n\ge4$ and all
+kinematics in the sector. The hint is unusually insistent: $A_n$ is a
+\emph{rational function} $N(\omega)/D(\omega)$, the denominator $D$ is the product
+of physical factorization-channel factors so $A_n$ carries simple poles on those
+channels, the efficient route is one global ansatz fit on a few hundred
+\emph{generic} points, and --- stated three times in different words --- there is
+``no piecewise / chamber decomposition, no absolute values, and no $\min$/$\max$,''
+while the answer is ``emphatically not a plain polynomial.'' I am even told to
+\emph{avoid} hierarchical or near-degenerate configurations because they only
+ill-condition the fit. I take the hint at face value to begin with; that is the
+honest thing to record. It is also, as I will find, wrong, and the way it is
+wrong is instructive.
+
+First I check the environment: \texttt{wolframscript}, \texttt{math}, and an
+anaconda Python with \texttt{numpy}/\texttt{sympy}/\texttt{mpmath} are present, 64
+cores. I re-type the kernel, vertex, propagator, and recursion definitions from
+\texttt{OnShellBG.m} into a definitions-only \texttt{bg\_defs.m} (re-typing what I
+read is permitted) and run a ground-truth driver over a handful of rational
+points. The first surprise is $n=4$: \texttt{BGAmplitude} returns
+\texttt{Indeterminate} --- ``\texttt{Power::infy} $1/0$'' and
+``\texttt{Infinity::indet} $0\cdot\text{ComplexInfinity}$.'' The two-minus
+manifold is rigid at $n=4$: solving the two conservation laws forces the four
+frequencies into two opposite pairs $\omega=(-b,a,b,-a)$, so the sub-channels
+$\{1,3\}$ and $\{2,4\}$ have $\omega_S=k_S=0$ simultaneously and the propagator
+hits a genuine $0/0$. I set $n=4$ aside, to recover later as a limit, and note
+that $n=5,6$ give clean, purely imaginary rationals --- $A_5=-2304\,i$,
+$A_6=-\tfrac{11907}{4}\,i$. So $A_n=i\,P_n$ and I chase $P_n$.
+
+The Mathematica oracle is slow ($n=7$ is several seconds an evaluation,
+$n=8\approx85$\,s), so I port the whole recursion to exact Gaussian-rational
+Python in \texttt{bg.py}. The first port is purely imaginary but the magnitude is
+wrong: it returns $27907\,i$ where the truth is $-2304\,i$. I localize the bug by
+comparing kernels directly --- \texttt{EKernel} agrees ($-81,-162,-216$) but
+\texttt{FKernel} at $n{=}4$ gives $-4$ where Mathematica gives $-16$. The
+Mathematica \texttt{FKernel}$[n\ge4]$ divides the whole result by $|p_2|$
+(\texttt{/qp2}); my port dropped it. With \texttt{/qp2} restored the port
+reproduces all four ground-truth points \emph{exactly} in exact rational
+arithmetic. Now I have a fast, validated evaluator.
+
+I measure the homogeneity. Scaling $\omega\to\lambda\omega$ scales $A_n$ by
+$\lambda^{2(n-2)}$ (ratios $64,256,1024$ for $n=5,6,7$), so $\deg A_n=2(n-2)$. On
+the manifold the two minus-leg frequencies obey
+\[
+\omega_1+\omega_2=-e_1(x),\qquad \omega_1\omega_2=e_2(x),\qquad
+\omega_1^2+\omega_2^2=\sum_{j\ge3}\omega_j^2,
+\]
+with $x=(\omega_3,\dots,\omega_n)$ the plus-legs and $e_1,e_2$ their elementary
+symmetric polynomials --- verified numerically. So $A_n$ is a symmetric function
+of the plus-frequencies. Good: this is exactly the setup the hint wants, and I
+proceed to fit a single global rational $N/D$, with $D$ built from the channel
+factors.
+
+Now the hint starts to break under me, and I want to be precise about how. I take
+a $1$-D slice $\omega_2{=}2,\omega_3{=}\tfrac52,\omega_4{=}t$ and reconstruct
+$A_5$ exactly:
+\[
+A_5(t) = -\,\frac{256\,(4t^2+18t+45)}{2t+9}.
+\]
+The $(2t+9)$ in the denominator looks like the channel pole the hint promised ---
+but it is a \emph{parametrization artifact}: $\omega_5\to\infty$ when
+$\omega_2+\omega_3+\omega_4=0$, and in fact $e_2(x)=-(4t^2+18t+45)/(2t+9)$ along
+this same slice, so $A_5=256\,e_2(x)=256\,\omega_1\omega_2$. The ``pole'' cancels
+the parametrization; there is no physical pole here. That ``$256$'' must hide
+degree-four dependence on the frozen frequencies. So I do the honest global thing
+the hint asks for: a general symmetric $N/D$ reconstruction, solving the
+homogeneous system $A\cdot D-N=0$ for symmetric $N,D$ and reading off the minimal
+denominator degree.
+
+It fails. The nullspace is empty all the way up to denominator degree $12$. I
+suspect a bug, so I validate the solver on a synthetic rational (it recovers it at
+$\deg D=4$) --- the solver is correct. I confirm $A_5$ really is symmetric in
+$\omega_1\leftrightarrow\omega_2$ and in the plus-legs. So the failure is real:
+\emph{$A_5$ is not a rational function of the plus-frequencies of any degree I can
+reach.} This is the first hard collision with the hint.
+
+The reason emerges when I stop fixing the kinematics and let $\omega_4$ roam.
+Defining $G\equiv A_5/(\omega_1\omega_2)=A_5/e_2$, I find $G=256$ at many points
+--- but $G=207$, then $112$, at others, specifically when a frequency like
+$\omega_4$ becomes small. A single rational function of homogeneous degree cannot
+take two different constant values of $G$ on two open sets. The values are not
+random either: in the regime where the smallest $|\omega|$ is a \emph{minus} leg,
+$G$ is always a perfect fourth power,
+\[
+G\in\{256,625,1296,2401,4096\}=\{4^4,5^4,6^4,7^4,8^4\},
+\qquad \text{base}=2\,\omega_{\min},
+\]
+and $256-G=16(\omega_2^2-\omega_4^2)^2$ when I cross into the deviation region.
+That squared difference is a $|k_S|$-type quantity: $k_{24}=\omega_4^2-\omega_2^2$
+is a \emph{type-1} channel momentum (one minus leg plus one plus leg). The only
+non-analytic object anywhere in the construction is $|k_S|=|\sum_{i\in
+S}\sigma_i\omega_i^2|$ inside the propagators and kernels, and an absolute value
+has a corner where its argument changes sign. So $A_n$ cannot be one polynomial or
+one rational function: it must be \emph{piecewise}, with break surfaces
+$\sum_{i\in S}\sigma_i\omega_i^2=0$. The hint's three-times-repeated ``no chamber
+structure, no absolute values'' is exactly backwards.
+
+I refuse to declare this from numerics alone, because being wrong here is
+expensive. So I do three things. First, I cross-check in the reference
+Mathematica itself (not my port): at the deviation points it returns the same
+chamber-dependent rationals ($-\tfrac{5589}{4}\,i$, $-\tfrac{7504}{11}\,i$, \dots),
+so the piecewise behaviour is \texttt{BGAmplitude}'s, not a port bug. Second, I
+re-read the code's own comment, ``No regularization \dots\ no poles in this
+sector'': the propagator poles \emph{cancel} in the full sum, leaving a bounded
+amplitude --- a scan shows $|A_5|/\text{scale}^6\lesssim3$, no real poles
+anywhere. A bounded function with corners is a spline, not a pole-carrying
+rational. Third, I build a symbolic chamber-resolved BG (\texttt{sbg.py}) that
+replaces each \texttt{Abs} argument by $\pm$ itself according to its sign at a
+reference point; inside a fixed chamber it reproduces $-2304\,i$ exactly and the
+expression is an honest rational function --- a \emph{different} rational function
+in each chamber. That settles it: the single global rational of the hint does not
+exist.
+
+There is a subtlety I chase down before trusting the word ``piecewise.'' Across
+the wall $\omega_4=\omega_2$ I check continuity and the one-sided slopes. The
+value is continuous (both limits $\approx-1910$), and at first the slopes look
+different ($\approx-378$ vs $-569$), suggesting a kink. But with smaller exact
+steps the one-sided slopes converge ($\approx-376$ vs $-381$, the gap scaling like
+curvature$\times$step), so the function is actually \emph{smooth} across that
+particular wall. For a moment this reopens the single-rational possibility --
+maybe $A_5=16\,\omega_1\omega_2^5$ held only coincidentally on my strictly-ordered
+grid. The decisive test is to evaluate at truly generic increasing-ordered
+points with nearly-equal magnitudes: $16\,\omega_1\omega_2^5$ still matches
+exactly. So the monomial holds on the whole \emph{open} region where a minus leg
+is globally smallest, and the amplitude is genuinely piecewise --- different
+closed forms on different open cells, even though it joins up continuously (and at
+some walls smoothly) between them.
+
+Having accepted the chamber structure, I extract what is clean. In the principal
+chamber --- where the softest $|\omega|$ is a minus leg --- I find for every
+tested $n$
+\[
+\boxed{\;A_n \;=\; i\,2^{\,n-1}\,\omega_1\omega_2\,
+\bigl(\min(\omega_1^2,\omega_2^2)\bigr)^{n-3}\;}
+\]
+verified to exact equality with zero error: $112/112$ points at $n=5$, $420/420$
+at $n=6$, and it \emph{never} holds when the smallest leg is a plus leg ($0/222$).
+On the sub-region $\omega_1^2<\omega_2^2$ this is $2^{n-1}\omega_1\omega_2\,
+\omega_1^{2(n-3)}$ and on $\omega_2^2<\omega_1^2$ it is the \emph{different}
+function $2^{n-1}\omega_1\omega_2\,\omega_2^{2(n-3)}$; the two agree on $67/67$ and
+$233/233$ of their respective points, which is the clean two-different-rational-
+functions-on-two-open-sets proof that no single rational function can exist. I
+later confirm this principal law is robust to random signs ($400/400$ when the
+softest is a minus leg) and holds at $n=6,7,8$ ($40/40$, $8/8$, plus exact $n=8$
+matches $-\tfrac{37496115}{352}\,i$ and $-\tfrac{115343360}{39}\,i$).
+
+For $n=4$ the principal law has $n-3=1$, predicting
+$A_4=i\,2^{3}\omega_1\omega_2\min(\omega_1^2,\omega_2^2)$. Since the oracle returns
+\texttt{Indeterminate} there, I recover it as an off-manifold limit
+$\omega\to(-b,a,b+\varepsilon,-a+\varepsilon)$, $\varepsilon\to0$: the BG values
+converge to $-192,-1080,-320,-864$ for $(a,b)=(2,3),(3,5),(2,5),(4,3)$, matching
+the formula. So the removable $0/0$ at $n=4$ is honest.
+
+Now the part where I want to be candid about the limits of the run. Generic
+kinematics --- the very thing the hint told me to sample --- usually has a
+\emph{plus} leg softest, and there the principal law fails and the region spans
+several chambers. To get a formula that matches \texttt{BGAmplitude} everywhere I
+fit the natural ansatz that puts the chamber structure where it belongs, in the
+type-1 absolute values:
+\[
+A_5 \;=\; i\Bigl[\,P_0(\omega)+\!\!\sum_{\mu\in\{1,2\}}\sum_{j\in\{3,4,5\}}\!\!
+P_{\mu j}(\omega)\,\bigl|\omega_j^2-\omega_\mu^2\bigr|\Bigr],
+\]
+a polynomial plus terms linear in the type-1 $|k_{\mu j}|$, with the $S_2\times
+S_3$ symmetry imposed. The augmented linear system is rank-deficient because the
+manifold relations make the basis functions dependent, so I row-reduce exactly and
+extract a particular solution. It is \emph{consistent across all $400$ points,
+spanning every chamber} --- a genuine single global expression for $n=5$, with
+\[
+P_0=8\,e_2\,(P_4-4e_1e_3),\quad P_4=\textstyle\sum\omega_j^4,\qquad
+P_{\mu j}=8\bigl(e_1^3\omega_{\mu'}+2e_1e_2\omega_j-e_1e_2\omega_{\mu'}
+-e_1\omega_{\mu'}^3+2e_2^2+e_2\omega_{\mu'}^2\bigr),
+\]
+verified against \texttt{BGAmplitude} at $800$ random points (all chambers, random
+signs and magnitudes): $0$ mismatches, max relative error $0$ in exact rational
+arithmetic.
+
+But this is where the run honestly stops short of the general answer. The same
+single-$|k|$ ansatz is \emph{inconsistent} at $n=6$: there the global formula
+needs \emph{products} of $|k_S|$ (multilinear in the type-1 momenta), reflecting
+$n-3$ nested soft channels. I can see the shape of it --- I find that $A_n$ in a
+sorted-leg analysis depends only on the $n-3$ softest legs, with clean boundary
+cases such as $G=16s_0^4$ (softest minus), $G=16s_0^2(2s_1^2-s_0^2)$ (softest plus,
+then a minus), $G=32s_0^2s_1^2$ (two softest plus), and the fully-passed all-plus
+limit $A_n=i\,2^{n-1}(n-3)!\,\omega_1\omega_2\prod_{\text{softest }n-3}\omega_j^2$.
+These are exactly the kind of inclusion--exclusion endpoints that a truncated-power
+/ B-spline over the kinematic chambers would produce, and in hindsight that is
+plainly what the object is. But I did not assemble them into one all-$n$ closed
+form. My sorted-by-magnitude attempt even failed $19/1500$ because the amplitude
+depends on the \emph{signs} of the frequencies (the vertices carry $\omega$
+linearly), not just on magnitudes, so the tidy sorted cases are only valid for
+particular sign patterns. The honestly verified deliverables are therefore: the
+piecewise/non-rational structural result (proved); the general-$n$ principal-regime
+law (exact, $n=4$ through $8$); and the complete all-chamber formula \emph{only at
+$n=5$}. The general all-$n$, all-kinematics formula --- the truncated-power spline
+the chambers were demanding --- I left as the chamber structure plus the
+soft-leg boundary laws, not as a single compressed expression.
+
+A closing word on the hint, because the task was really a test of whether I would
+let it steer me. It asked for one global rational function with simple poles, no
+absolute values, no chambers, fit on generic kinematics with the degenerate
+regimes deliberately avoided. Every one of those instructions pointed away from
+the truth: the amplitude has no real poles (they cancel; the code says so), it
+\emph{is} chamber-piecewise, the absolute values are essential and carry the
+chamber dependence, and it was precisely the ``hierarchical / near-degenerate''
+configurations the hint told me to avoid --- one frequency much smaller than the
+rest --- that exposed the $G=256\to207\to112$ jumps and the whole spline
+structure. I followed the hint long enough to watch the global rational fit fail
+in a diagnosable way, then trusted the oracle and the data over the prompt. I am
+satisfied that the structural conclusion is right and the principal and $n=5$
+formulas are exactly verified; I am not satisfied that I closed the general-$n$
+form, and I would not claim that I did.
+
+\end{document}

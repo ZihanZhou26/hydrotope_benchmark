@@ -1,0 +1,15 @@
+n | #pts | exact matches | w2 = min|w| | max rel.err
+--+------+---------------+-------------+------------
+5 | 30   | 30/30         | True        | 0.
+6 | 18   | 18/18         | True        | 0.
+7 | 8   | 8/8         | True        | 0.
+
+Explicit values (ascending positive free frequencies):
+  n=5  free={3/2, 2, 5/2}  : BG = (-891*I)/2 ,  formula = (-891*I)/2 ,  match = True
+  n=5  free={2, 3, 5}  : BG = -3328*I ,  formula = -3328*I ,  match = True
+  n=6  free={1, 3/2, 2, 5/2}  : BG = (-968*I)/7 ,  formula = (-968*I)/7 ,  match = True
+  n=6  free={2, 3, 5, 7}  : BG = (-753664*I)/17 ,  formula = (-753664*I)/17 ,  match = True
+  n=7  free={1, 3/2, 2, 5/2, 3}  : BG = (-1928*I)/5 ,  formula = (-1928*I)/5 ,  match = True
+  n=7  free={2, 3, 5, 7, 11}  : BG = (-4030464*I)/7 ,  formula = (-4030464*I)/7 ,  match = True
+
+(n=4 is verified separately via the 0/0 symbolic limit: see verify_n4.m)

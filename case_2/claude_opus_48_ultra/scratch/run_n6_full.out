@@ -1,0 +1,124 @@
+total n6 points: 5200
+=== n=6 : 122 signatures (5200 pts) ===
+  minus@{1, 6} n=132 EXACT  R = 2*mu1^3
+  minus@{1, 6} n=1056 EXACT  R = 2*mu1^3
+  minus@{2, 6} n=5 few
+  minus@{2, 6} n=48 EXACT  R = 2*mu1*(mu1^2 - 3*mu1*mu2 + 3*mu2^2)
+  minus@{2, 6} n=49 EXACT  R = 2*mu1*(mu1^2 - 3*mu1*mu2 + 3*mu2^2)
+  minus@{2, 6} n=62 EXACT  R = 2*mu1*(mu1^2 - 3*mu1*mu2 + 3*mu2^2)
+  minus@{2, 6} n=153 EXACT  R = 2*mu1*(mu1^2 - 3*mu1*mu2 + 3*mu2^2)
+  minus@{2, 6} n=310 EXACT  R = 2*mu1*(mu1^2 - 3*mu1*mu2 + 3*mu2^2)
+  minus@{2, 6} n=331 EXACT  R = 2*mu1*(mu1^2 - 3*mu1*mu2 + 3*mu2^2)
+  minus@{2, 6} n=352 EXACT  R = 2*mu1*(mu1^2 - 3*mu1*mu2 + 3*mu2^2)
+  minus@{3, 6} n=2 few
+  minus@{3, 6} n=3 few
+  minus@{3, 6} n=6 few
+  minus@{3, 6} n=9 few
+  minus@{3, 6} n=10 few
+  minus@{3, 6} n=15 few
+  minus@{3, 6} n=16 few
+  minus@{3, 6} n=19 few
+  minus@{3, 6} n=21 few
+  minus@{3, 6} n=22 few
+  minus@{3, 6} n=26 few
+  minus@{3, 6} n=27 few
+  minus@{3, 6} n=29 few
+  minus@{3, 6} n=45 EXACT  R = 2*(mu1^3 + mu2^3 - 3*mu1^2*mu3 - 3*mu2^2*mu3 + 3*mu1*mu3^2 + 3*mu2*mu3^2 - mu3^3)
+  minus@{3, 6} n=46 EXACT  R = 2*(mu1^3 + mu2^3 - 3*mu1^2*mu3 - 3*mu2^2*mu3 + 3*mu1*mu3^2 + 3*mu2*mu3^2 - mu3^3)
+  minus@{3, 6} n=49 EXACT  R = -6*mu1*mu2*(mu1 + mu2 - 2*mu3)
+  minus@{3, 6} n=52 EXACT  R = -6*mu1*mu2*(mu1 + mu2 - 2*mu3)
+  minus@{3, 6} n=54 EXACT  R = -6*mu1*mu2*(mu1 + mu2 - 2*mu3)
+  minus@{3, 6} n=88 EXACT  R = -6*mu1*mu2*(mu1 + mu2 - 2*mu3)
+  minus@{3, 6} n=92 EXACT  R = -6*mu1*mu2*(mu1 + mu2 - 2*mu3)
+  minus@{3, 6} n=95 EXACT  R = -6*mu1*mu2*(mu1 + mu2 - 2*mu3)
+  minus@{3, 6} n=200 EXACT  R = -6*mu1*mu2*(mu1 + mu2 - 2*mu3)
+  minus@{3, 6} n=209 EXACT  R = -6*mu1*mu2*(mu1 + mu2 - 2*mu3)
+  minus@{3, 6} n=233 EXACT  R = -6*mu1*mu2*(mu1 + mu2 - 2*mu3)
+  minus@{4, 5} n=119 EXACT  R = 12*mu1*mu2*mu3
+  minus@{4, 5} n=122 EXACT  R = 12*mu1*mu2*mu3
+  minus@{4, 5} n=133 EXACT  R = 12*mu1*mu2*mu3
+  minus@{4, 5} n=507 EXACT  R = 12*mu1*mu2*mu3
+  minus@{4, 6} n=1 few
+  minus@{4, 6} n=1 few
+  minus@{4, 6} n=1 few
+  minus@{4, 6} n=2 few
+  minus@{4, 6} n=2 few
+  minus@{4, 6} n=2 few
+  minus@{4, 6} n=2 few
+  minus@{4, 6} n=2 few
+  minus@{4, 6} n=2 few
+  minus@{4, 6} n=2 few
+  minus@{4, 6} n=2 few
+  minus@{4, 6} n=2 few
+  minus@{4, 6} n=3 few
+  minus@{4, 6} n=3 few
+  minus@{4, 6} n=3 few
+  minus@{4, 6} n=3 few
+  minus@{4, 6} n=3 few
+  minus@{4, 6} n=3 few
+  minus@{4, 6} n=3 few
+  minus@{4, 6} n=3 few
+  minus@{4, 6} n=3 few
+  minus@{4, 6} n=3 few
+  minus@{4, 6} n=4 few
+  minus@{4, 6} n=4 few
+  minus@{4, 6} n=4 few
+  minus@{4, 6} n=4 few
+  minus@{4, 6} n=4 few
+  minus@{4, 6} n=5 few
+  minus@{4, 6} n=5 few
+  minus@{4, 6} n=5 few
+  minus@{4, 6} n=5 few
+  minus@{4, 6} n=5 few
+  minus@{4, 6} n=5 few
+  minus@{4, 6} n=5 few
+  minus@{4, 6} n=5 few
+  minus@{4, 6} n=6 few
+  minus@{4, 6} n=6 few
+  minus@{4, 6} n=7 few
+  minus@{4, 6} n=7 few
+  minus@{4, 6} n=7 few
+  minus@{4, 6} n=7 few
+  minus@{4, 6} n=8 few
+  minus@{4, 6} n=8 few
+  minus@{4, 6} n=8 few
+  minus@{4, 6} n=9 few
+  minus@{4, 6} n=9 few
+  minus@{4, 6} n=10 few
+  minus@{4, 6} n=10 few
+  minus@{4, 6} n=11 few
+  minus@{4, 6} n=11 few
+  minus@{4, 6} n=11 few
+  minus@{4, 6} n=12 few
+  minus@{4, 6} n=13 few
+  minus@{4, 6} n=13 few
+  minus@{4, 6} n=13 few
+  minus@{4, 6} n=14 few
+  minus@{4, 6} n=14 few
+  minus@{4, 6} n=15 few
+  minus@{4, 6} n=18 few
+  minus@{4, 6} n=20 few
+  minus@{4, 6} n=23 few
+  minus@{5, 6} n=1 few
+  minus@{5, 6} n=1 few
+  minus@{5, 6} n=1 few
+  minus@{5, 6} n=1 few
+  minus@{5, 6} n=1 few
+  minus@{5, 6} n=1 few
+  minus@{5, 6} n=1 few
+  minus@{5, 6} n=2 few
+  minus@{5, 6} n=2 few
+  minus@{5, 6} n=2 few
+  minus@{5, 6} n=2 few
+  minus@{5, 6} n=2 few
+  minus@{5, 6} n=2 few
+  minus@{5, 6} n=2 few
+  minus@{5, 6} n=3 few
+  minus@{5, 6} n=3 few
+  minus@{5, 6} n=3 few
+  minus@{5, 6} n=3 few
+  minus@{5, 6} n=3 few
+  minus@{5, 6} n=3 few
+  minus@{5, 6} n=4 few
+  minus@{5, 6} n=4 few
+  minus@{5, 6} n=5 few

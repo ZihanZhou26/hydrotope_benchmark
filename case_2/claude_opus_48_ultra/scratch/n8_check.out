@@ -1,0 +1,34 @@
+fw={1, 2, 3, 4, 5, 6}
+  BG       = (-33920*I)/21
+  formula  = (-33920*I)/21
+  equal?     True   rel.err = 0
+fw={3/2, 5/2, 1, 4, 2, 7/2}
+  BG       = (-20761785*I)/232
+  formula  = (-20761785*I)/232
+  equal?     True   rel.err = 0
+
+                                 1
+Power::infy: Infinite expression - encountered.
+                                 0
+
+Infinity::indet: Indeterminate expression 0 ComplexInfinity encountered.
+
+                                 1
+Power::infy: Infinite expression - encountered.
+                                 0
+
+Infinity::indet: Indeterminate expression 0 ComplexInfinity encountered.
+
+                                 1
+Power::infy: Infinite expression - encountered.
+                                 0
+
+General::stop: Further output of Power::infy will be suppressed during this calculation.
+
+Infinity::indet: Indeterminate expression 0 ComplexInfinity encountered.
+
+General::stop: Further output of Infinity::indet will be suppressed during this calculation.
+fw={-2, 3, 5, 1, 6, 2}
+  BG       = Indeterminate
+  formula  = (29590528*I)/15
+  equal?     False   rel.err = If[Indeterminate == 0, Abs[N[af$26869819]], N[Abs[(amp$26869819 - af$26869819)/amp$26869819], 20]]

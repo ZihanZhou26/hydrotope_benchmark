@@ -1,0 +1,29 @@
+{
+  "run": "case_3/fugu_ultra",
+  "condition": "no-hint",
+  "model": "Fugu ultra",
+  "checkpoints": {
+    "K1": "reached",
+    "K2": "reached",
+    "K3": "reached",
+    "K4": "reached",
+    "K5": "reached",
+    "K6": "reached",
+    "K7": "partial",
+    "K8": "partial"
+  },
+  "evidence": {
+    "K1": "Built a working oracle: 'a wrapper that builds the two-minus sign vector, calls MakeKinematics, and feeds BGAmplitude'; loaded OnShellBG definitions by splitting off the TESTS block; ran n=5,6,7 and later 'five hundred random points for each n=4,...,8' -> independent scan, not just the given example.",
+    "K2": "All three invariants: imaginary phase ('purely imaginary rationals like -2304 i. So I write A_n = i P_n'); homogeneity ('Scaling omega->lambda omega multiplies A_n by lambda^(2n-4)'); sign-class symmetry ('flipping omega1,omega2 both negative or both positive gives the same B ... symmetric in the two negative legs').",
+    "K3": "Wrote the n-generalized principal-chamber monomial A_n =? i (2^(n-1)/g^(n-3)) omega1 omega2^(2n-5), i.e. omega1 omega2 (omega2^2)^(n-3); log confirms it is the principal-chamber monomial and reproduces the data in that chamber.",
+    "K4": "Concrete failing chamber and numeric point: monomial 'breaks the instant omega2 is not the smallest same-sign scale'; and channel guess 'predicts -3776 where the oracle says -701 for one point ... goes wrong once omega2 is not small' -> explicit oracle disagreement.",
+    "K5": "Committed to piecewise: 'An absolute value has a corner ... so A_n cannot be one polynomial --- it has to be a spline, a piecewise polynomial with break surfaces sum sigma_i omega_i^2 = 0.' Also abandoned the degree-6 symmetric-polynomial fit ('A_n is simply not a polynomial').",
+    "K6": "Identified walls as arbitrary subset sums: T_m(t;{a_j}) = sum_{S subset R} (-1)^|S| [t - sum_{j in S} a_j]_+^m, with 'The walls t = sum_{j in S} a_j are the |k_S| sign changes' over all subsets S of the plus-leg set R.",
+    "K7": "Right operator (truncated-power / box-spline inclusion-exclusion) but chart-tied: A_n = i (2^(n-1)/g^(n-3)) omega1 omega2 T_{n-3}(omega2^2; {omega_j^2}_{j=3}^{n-1}) with R={3,...,n-1} (S subset {3..n-1}) and threshold t=omega2^2 rather than the full S subset {3..n} with beta^2=min(omega1^2,omega2^2) -- exactly the rubric's partial example; 'I did not fold every sign cell into a single universal expression.'",
+    "K8": "Verified relative error 'identically zero in exact rational arithmetic for n=4,5,6,7 ... including non-generic regimes where one frequency is a hundred times larger or smaller' (hierarchical) and handled the n=4 removable 0/0 via the epsilon->0+ limit (-192 i). But all checks stayed 'in this one physical channel' inside positive MakeKinematics ('five hundred random points'); explicitly did NOT test hand-flipped mixed-sign / non-principal chambers -> coverage gap."
+  },
+  "divergence_rung": "K6",
+  "flags": ["F1", "F2", "F3"],
+  "final_outcome": "near",
+  "one_line_summary": "Fugu ultra reached the full box-spline/inclusion-exclusion structure with arbitrary subset-sum walls (K6) and verified exact-zero error within the positive MakeKinematics chart including the n=4 limit, but stalled at a chart-tied formula (S subset {3..n-1}, threshold omega2^2) and never folded the sign-general channels or tested mixed-sign chambers -- a 'near' miss."
+}

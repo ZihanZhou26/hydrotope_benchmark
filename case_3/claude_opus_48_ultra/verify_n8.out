@@ -1,0 +1,11 @@
+n=8 free={1, 2, 3, 4, 5, 6}  w2=1 smallest?=True
+   BG      = (-33920*I)/21
+   formula = (-33920*I)/21
+   relerr  = 0.   time=367.70000000000005s
+
+n=8 free={1/2, 2, 3, 5, 7, 11}  w2=1/2 smallest?=True
+   BG      = (-85*I)/76
+   formula = (-85*I)/76
+   relerr  = 0.   time=368.70000000000005s
+
+DONE verify_n8

@@ -1,0 +1,4 @@
+ws = {-((b^2 + c^2 + c*d + d^2 + b*(c + d) + a*(b + c + d))/(a + b + c + d)), a, b, c, d, -((a^2 + c*d + b*(c + d) + a*(b + c + d))/(a + b + c + d))}
+time = 2.312075
+LeafCount amp6 = 10756457
+saved amp6_symbolic.m

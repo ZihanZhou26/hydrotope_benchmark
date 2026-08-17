@@ -1,0 +1,18 @@
+Get[FileNameJoin[{DirectoryName[$InputFileName], "loader.wls"}]];
+pp[x_] := Max[x, 0];
+TP[m_, t_, a_List] := Sum[(-1)^Length[S] pp[t - Total[S]]^m, {S, Subsets[a]}];
+FormulaAmp[ws_, g_] := Module[{n=Length[ws], m, R}, m=n-3; R=Range[3,n-1];
+  I*2^(n-1)*ws[[1]]*ws[[2]]*TP[m, ws[[2]]^2, ws[[R]]^2]/g^(n-3)];
+TwoMinusKin[n_, fw_, g_] := MakeKinematics[n, fw, Join[{-1,-1},Table[1,n-2]], g];
+relErr[a_,b_]:=N[Abs[a-b]/Max[1,Abs[a],Abs[b]],20];
+cases={{8,{1,2,3,4,5,6},1},{8,{1/100,2,3,4,5,6},1},{8,{25,1,2,3,4,5},1}};
+maxE=0;
+Do[n=c[[1]];fw=c[[2]];g=c[[3]];
+  {ks,ws}=TwoMinusKin[n,fw,g];
+  ksN=N[ks,50]; wsN=N[ws,50];
+  bg=BGAmplitude[ksN,wsN,g];
+  fm=FormulaAmp[N[ws,50],g];
+  er=relErr[bg,fm]; maxE=Max[maxE,er];
+  Print["n=",n," fw=",InputForm[fw]," bg=",bg," fm=",fm," relErr=",ScientificForm[er,3]];
+,{c,cases}];
+Print["MAX relErr (n=8) = ",ScientificForm[maxE,3]," PASS=",maxE<=10^-10];

@@ -1,0 +1,156 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+
+\title{Rewritten Chain of Thought for the Solution to the\\
+Two-Minus Water-Wave Amplitude}
+\author{}
+\date{}
+
+\newcommand{\pp}[1]{\left[\,#1\,\right]_{+}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document is a first-person reconstruction of the chain of thought for the
+original AI derivation of the closed-form tree amplitude $A_n$ in the two-minus
+sector of one-dimensional deep-water surface waves. It is rebuilt from the
+visible run trajectory and tries to keep the original wording, the false starts,
+and the hedges rather than tidy them away.
+\end{abstract}
+
+\section*{Rewritten Chain of Thought}
+
+I can only use the prompt and \texttt{OnShellBG.m}, and I have to be careful not
+to read any other pre-existing file. I need a closed-form $A_n$ for
+$\sigma=(-1,-1,+1,\dots,+1)$, and I should understand how the kernels work for a
+faster implementation. First question: is \texttt{wolframscript} even available?
+Let's run \texttt{wolframscript}. It is. I think about how to use the code:
+maybe I copy some definitions, maybe I append to \texttt{OnShellBG}, maybe I
+write a separate loader that does \texttt{Get}. I write a wrapper that builds the
+two-minus sign vector, calls \texttt{MakeKinematics}, and feeds
+\texttt{BGAmplitude}, then I just \texttt{Get} the file --- and that was a
+mistake: \texttt{Get} runs the file's own demonstration tests, which are for a
+\emph{different} sector ($\sigma=(-1,+1,\dots,+1)$, where the amplitude is
+identically zero), and it prints a wall of ``$A_5=0$, $A_6=0$, \dots'' while the
+$n=8$ case grinds. I let it run for a bit, decide it is wasting time, and
+interrupt it. Better idea: import the file as text, split it at the
+\texttt{VI.\ TESTS} marker, and \texttt{ToExpression} only the part before that,
+so I load the definitions without the demo. (A \texttt{Do[\dots,\{\{n,fw\},\dots\}]}
+trips a ``Tag List is Protected'' error too, so I switch the loop to
+\texttt{Scan}; small things.)
+
+Now the oracle behaves. The first real surprise is $n=4$: the recursion returns
+\texttt{Indeterminate} --- ``$1/0$'', ``$0\cdot\text{ComplexInfinity}$''. The
+on-shell point forces an internal two-leg current to zero momentum, so a
+propagator blows up and a real cancellation hides behind a removable $0/0$. I set
+$n=4$ aside, to come back as a limit, and look at $n=5,6,7$, which give clean,
+purely imaginary rationals like $-2304\,i$. So I write $A_n=i\,P_n$ and chase
+$P_n$.
+
+I keep thinking about kernels, propagators, and the overall dimensions. Scaling
+$\omega\to\lambda\omega$ multiplies $A_n$ by $\lambda^{2n-4}$; changing $g$ shows
+$A_n\propto g^{-(n-3)}$; and a family where the second negative leg goes soft,
+$\omega_2=a\to0$, shows the amplitude going like $a^5$ when $\omega_2$ is the
+smallest scale around. Putting the degree, the $g$-power, and that soft behaviour
+together, the simplest thing that fits is the monomial
+\[
+A_n \;\stackrel{?}{=}\; i\,\frac{2^{\,n-1}}{g^{\,n-3}}\;\omega_1\,\omega_2^{\,2n-5}.
+\]
+It is suspiciously clean, and it does reproduce the soft data. But it breaks the
+instant $\omega_2$ is not the smallest same-sign scale. I notice something
+intriguing while poking at this: flipping $\omega_1,\omega_2$ both negative or
+both positive gives the same $B\equiv A/(-i)$, so whatever $P_n$ is, it looks
+symmetric in the two negative legs. That tempts me to fit a symmetric polynomial
+$f(\omega_1,\omega_2)$ of degree six --- $a(u^6{+}v^6)+b(u^5v{+}uv^5)+
+c(u^4v^2{+}u^2v^4)+d\,u^3v^3$. I solve for the coefficients on four points; the
+solver returns monstrous fractions, and they miss every other point by huge
+amounts. So $A_n$ is simply not a polynomial in the two negative frequencies. I
+toy with a divided-difference / Lagrange form,
+$\sum_i\sigma_i\omega_i^{2n-4}\prod_{j\ne i}\omega_j/(\omega_i-\omega_j)$, and
+with B-splines on the sorted (negative) phase velocities, ``normal-form
+coefficients based on the max of the frequencies'' --- these feel close to the
+right shape but I have no derivation for them yet.
+
+The derivation is hiding in the absolute values. The only non-analytic thing in
+the whole construction is $|k_S|=\big|\sum_{i\in S}\sigma_i\omega_i^2\big|/g$
+inside each propagator. An absolute value has a corner where its argument changes
+sign, so $A_n$ cannot be one polynomial --- it has to be a \emph{spline}, a
+piecewise polynomial with break surfaces $\sum_{i\in S}\sigma_i\omega_i^2=0$. That
+is exactly why my monomial held in one regime and failed in another: I had been
+sitting in one cell and then crossed a wall.
+
+So I stop guessing and resolve the absolute values by hand, chamber by chamber. I
+take the symbolic $n=5$ amplitude, collect every \texttt{Abs} argument, replace
+each one by $\pm$ itself according to its sign at a sample point in the cell, and
+simplify. Inside each cell the expression is an honest rational function, and
+after dividing out the common prefactor $i\,2^{4}\,\omega_1\,\omega_2$ the pieces
+are, with $x=\omega_2$ and the positive legs $y,z$,
+\[
+x<y,z:\;\; x^{4},\qquad
+y<x<z:\;\; x^4-(x^2-y^2)^2,\qquad
+y,z<x:\;\; x^4-(x^2-y^2)^2-(x^2-z^2)^2+(x^2-y^2-z^2)^2 .
+\]
+These are not separate answers; they are the running inclusion--exclusion
+corrections of one object. The function ``looks like $x^4-\sum(x^2-y_j^2)_+^2$''.
+Writing $t=\omega_2^2$, $a_j=\omega_j^2$, $m=n-3$, and using the truncated power
+$\pp{u}=\max(u,0)$, every cell is one value of
+\[
+T_m\big(t;\{a_j\}_{j\in R}\big)\;=\;\sum_{S\subseteq R}(-1)^{|S|}\,
+\pp{\,t-\sum_{j\in S}a_j\,}^{\,m},
+\]
+the truncated-power / B-spline form I had been circling. The walls
+$t=\sum_{j\in S}a_j$ are the $|k_S|$ sign changes, and below all of them only the
+$S=\varnothing$ term lives, so $T_m=t^m$ --- which is precisely the principal-chamber
+monomial I started from. The whole thing is one truncated power times a universal
+prefactor,
+\[
+\boxed{\;
+A_n \;=\; i\,\frac{2^{\,n-1}}{g^{\,n-3}}\;\omega_1\,\omega_2\,
+T_{n-3}\!\Big(\omega_2^2;\,\{\omega_j^2\}_{j=3}^{\,n-1}\Big)\;}
+\]
+with $R=\{3,\dots,n-1\}$ the $n-3$ positive plus-legs.
+
+Two loose ends. For $n=4$ the spline has $m=1$, so the formula predicts
+$A_4=i\,(8/g)\,\omega_1\omega_2\min(\omega_2^2,\omega_3^2)$, and I recover the
+removable $0/0$ honestly as the $\varepsilon\to0^+$ limit of the
+energy-conserving deformation
+$\omega=\{-\omega_3-\varepsilon,\omega_2,\omega_3,-\omega_2+\varepsilon\}$; the
+limit is finite and gives $-192\,i$ for $\{2,3\}$, matching. The other loose end
+is which leg is ``$t$'', and here I genuinely stumble: my first channel guess
+predicts $-3776$ where the oracle says $-701$ for one point, and it is fine for a
+small $\omega_2$ but goes wrong once $\omega_2$ is not small. I think the
+discrepancy is about signs, and I reframe it as a channel-selection question:
+counting left- and right-movers, my form works for one negative leg against
+$n-3$ same-sign plus legs, and the right rule is to let $p$ be the $\sigma=-$ leg
+whose sign is shared by exactly $n-3$ of the plus legs (the set $R$), with $q$ the
+other $\sigma=-$ leg, so
+$A_n=i\,2^{\,n-1}q\,p\,T_{n-3}(p^2;\{\omega_j^2\}_{j\in R})/g^{\,n-3}$.
+
+My first script for this channel-aware form fails on every line --- but the
+failure is a \texttt{Function::slotn} slot mistake in my selector code, not a
+disagreement with the oracle. I fix the selector and rerun, and now the closed
+form reproduces \texttt{BGAmplitude} \emph{exactly}: the relative error is
+identically zero in exact rational arithmetic for $n=4,5,6,7$, at many points per
+$n$, including non-generic regimes where one frequency is a hundred times larger
+or smaller than the others, and at $g\ne1$.
+
+I want to be honest about the scope rather than overclaim. For arbitrary positive
+free frequencies handed to \texttt{MakeKinematics} --- the setup the prompt
+actually specifies --- energy conservation drives the two solved legs negative
+and the kinematics always land in this one physical channel; I check five hundred
+random points for each $n=4,\dots,8$ and the boxed formula is exact on all of
+them. If instead one hand-flips the signs of the free frequencies into other
+cells of the spline, the same truncated-power structure persists but with a
+different leg as $p$ and a different same-sign set as $R$; I state that selection
+rule but I did not fold every sign cell into a single universal expression. So,
+honestly: within the prompt's own kinematics this is the closed-form answer and
+it is verified to exact equality; the fully sign-general statement I leave as the
+channel-selection rule plus the spline structure, not as one compressed formula.
+
+\end{document}

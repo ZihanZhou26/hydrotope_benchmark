@@ -1,0 +1,163 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+
+\title{Rewritten Chain of Thought for the Solution to the\\
+Two-Minus Water-Wave Amplitude}
+\author{}
+\date{}
+
+\newcommand{\pp}[1]{\left[\,#1\,\right]_{+}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document is a first-person reconstruction of the chain of thought for the
+original AI derivation of the closed-form tree amplitude $A_n$ in the two-minus
+sector of one-dimensional deep-water surface waves. It is rebuilt from the
+visible run trajectory and keeps the original wording, the false starts, and the
+hedges --- including a wrong first guess and a stretch where the machine ran out
+of memory --- rather than tidying them away.
+\end{abstract}
+
+\section*{Rewritten Chain of Thought}
+
+I inspect the case directory first so I can infer the deliverables rather than
+guess from the folder name. The prompt's restrictions are strict, so from here I
+use only \texttt{prompt.md}, \texttt{OnShellBG.m}, and files I create in the case
+directory, and I generate fresh amplitude data rather than relying on any prior
+attempt. I want a small Wolfram harness that imports only the \emph{definition}
+portion of \texttt{OnShellBG.m}, so the file's built-in demo block does not
+dominate the runs; the first target is exact low-point data, to see the algebraic
+pattern.
+
+The first exact probe shows that $n=5,6,7$ are finite and purely imaginary for a
+generic positive-frequency choice, so I write $A_n=i\,P_n$. The point $n=4$ is
+kinematically degenerate in this sector --- the recursion returns
+\texttt{Indeterminate} --- so I decide to handle it separately, as a
+limiting/regularized value, rather than treat the raw indeterminate as data.
+
+The low-point values are not just a constant times a simple all-frequency
+product, so I start by fitting against symmetric combinations allowed by the
+two-minus constraints. Two facts narrow this. First, the amplitude is
+homogeneous: scaling all frequencies by $\lambda$ scales $A_n$ by
+$\lambda^{2n-4}$. Second, on the resonant manifold the two negative-sector
+frequencies are determined by the elementary symmetric sums of the positive
+ones, so I should reduce the data to those invariants. For $n=5$ that makes a
+seven-term symmetric degree-six polynomial in the three positive-sector
+frequencies the first thing to rule in or out. I also remind myself that the
+absolute values in the interaction kernels mean the closed form may be
+\emph{piecewise} unless it collapses on the resonant manifold, so I check that
+directly at five points before committing to any ansatz.
+
+A pure symmetric polynomial fails on held-out five-point data. That is a clean
+negative result: it points to either denominator structure from the internal
+propagators or a piecewise dependence coming from the absolute-value kernels. So
+I shift from fitting the final amplitude to simplifying the building blocks. The
+cubic kernel is already sign-selective, which makes me think a closed form for
+the higher kernels could collapse the Berends--Giele result into a manageable
+subset-sum expression.
+
+A strong branch then emerges from the data: in the chambers where the
+second negative-momentum leg is the smallest scale, the amplitude obeys
+\[
+A_n \;=\; i\,2^{\,n-1}\,\omega_1\,\omega_2^{\,2n-5}
+\]
+for $n=5,6,7$. This is encouraging, but it is only one chamber, and I say so
+explicitly to myself: I am now \emph{mapping the other chambers to see the
+invariant way to state the all-kinematics formula}. Inside each absolute-value
+chamber the five-point expression factors cleanly, but there are several
+chambers, so I ask Wolfram for a compact absolute-value expression after imposing
+the two-minus conservation laws --- which is the right way to get a
+chamber-independent statement if it simplifies.
+
+It does not simplify quickly. The symbolic run drags, and then the environment
+turns hostile: the shell cannot fork because the machine reports out of memory,
+and for a while it refuses to create any new process at all, even a
+\texttt{sleep}. So I stop leaning on heavy symbolic simplification and fall back
+to small arithmetic checks and to inferring the pattern from \emph{normalized}
+numbers. The right normalization is suggested by the leading chamber: I divide
+the exact data by $i\,2^{\,n-1}\,h\,s$, where $s$ and $h$ are the two $\sigma=-1$
+frequencies with $s$ the smaller in magnitude. The normalized values then depend
+only on $U=s^2$ and on the positive-sector squares lying below $U$.
+
+My first compact candidate is to multiply the two negative-sector frequencies by
+a \emph{clamped-power} polynomial --- a smooth spline --- in the squared
+positive-sector frequencies. The cleanest way to see where it comes from, and
+where it breaks, is to track the normalized value as the soft scale $U=s^2$ rises
+through the sorted positive squares $x_1\le x_2\le\cdots$, at $n=5$ (so
+$m=n-3=2$). My first guess is just the leading chamber --- the bare monomial,
+\[
+U<x_1:\qquad U^{2},
+\]
+which is $A_5=i\,2^{4}\,\omega_1\,\omega_2^{\,5}$. As $U$ passes the first knot the
+exact data give
+\[
+x_1<U<x_2:\qquad U^2-(U-x_1)^2 \;=\; x_1\,(2U-x_1),
+\]
+which is exactly what a single clamped square $U^2-\pp{U-x_1}^2$ predicts --- so
+the smooth-spline picture still looks right, and I almost commit. It breaks when
+$U$ also passes the second knot. There the smooth clamp predicts
+$U^2-\pp{U-x_1}^2-\pp{U-x_2}^2$, but the exact \texttt{BGAmplitude} data give
+\[
+x_2<U:\qquad U^2-(U-x_1)^2-(U-x_2)^2+(U-x_1-x_2)^2 \;=\; 2\,x_1 x_2 .
+\]
+The two differ by exactly $(U-x_1-x_2)^2$ --- the ``simple rational amount'' I
+kept seeing on a physical $n=6$ point. That missing piece is an overlap:
+subtracting the two clamps double-counts the region past \emph{both} knots, and
+the $+(U-x_1-x_2)^2$ is the inclusion--exclusion term that restores it. So the
+correct object is not a smooth clamped spline at all; it is an \emph{alternating
+subset sum}, and I stop trying to bend a continuous function to fit.
+
+Once I read it as inclusion--exclusion the all-$m$ pattern writes itself. At
+$n=6$ ($m=3$) the corresponding chamber is
+$U^3-(U-x_1)^3-(U-x_2)^3+(U-x_1-x_2)^3$, and the fully-passed chamber collapses to
+$6\,x_1x_2x_3=3!\,x_1x_2x_3$. Letting $r$ count how many positive squares lie
+below $U$, every chamber is one finite difference over those knots,
+\[
+G_m\big(U;\{x_j\}\big) \;=\; \sum_{S\subseteq\{1,\dots,r\}} (-1)^{|S|}\,
+\Big(U-\sum_{j\in S} x_j\Big)^{m},
+\qquad r=\min\big(m,\;\#\{j:x_j<U\}\big),
+\]
+which is $U^m$ at the $r=0$ end (none passed) and $m!\,x_1\cdots x_m$ at the
+$r=m$ end (all $m$ passed), reproducing the two limits the chamber walk forced.
+This is the discrete inclusion--exclusion the absolute values were demanding all
+along; the smooth clamped spline was the right silhouette but the wrong object.
+The amplitude is therefore
+\[
+\boxed{\;
+A_n \;=\; i\,2^{\,n-1}\,g^{\,3-n}\,h\,s\;
+G_{\,n-3}\!\big(s^2;\,\{\omega_j^2\}_{\sigma_j=+1}\big)\;}
+\]
+with the $g$-power fixed by $|k|=\omega^2/g$ and the overall degree $2n-4$
+matching the homogeneity I started from. The earlier leading-chamber monomial is
+just the $r=0$ end, $G_m=U^m$, where $A_n=i\,2^{\,n-1}\omega_1\omega_2^{\,2n-5}$.
+
+Two things remain. For $n=4$ the manifold is entirely degenerate: a
+zero-energy/zero-momentum two-point subcurrent appears and the supplied recursion
+returns \texttt{Indeterminate}. I treat it as a limiting value approached from
+nearby on-shell external data; the finite continuation of the formula has $m=1$,
+so $G_1=U$ and, for example, $\omega=\{-3,2,3,-2\}$ gives $A_4=-192\,i/g$, which I
+document explicitly so the reader knows why $n=4$ is a limit rather than a direct
+evaluation. And I verify: against the supplied \texttt{BGAmplitude} in exact
+rational arithmetic, every nonzero check returns
+$\mathrm{Simplify}[\texttt{BGAmplitude}-\text{formula}]=0$, i.e.\ the difference is
+identically zero before any floating-point step. The tested points span $r=0$,
+the intermediate $r=1,2$, the saturated $r=m$ chamber, mixed signs among the free
+frequencies, and a small-frequency regime, for $n=5,6,7$.
+
+I will be honest about the end of the run. After the exact checks the machine
+again started refusing new shell processes with an out-of-memory error, so I
+could not do a final shell listing or re-run the saved verification script from
+the command line; I wrote the result file and the executable harness through the
+patch tool instead, and tightened the harness so it resolves \texttt{OnShellBG.m}
+relative to its own location rather than the caller's working directory. The
+formula and the exact $\mathrm{diff}=0$ checks already collected stand; what I did
+not get is one last clean shell rerun.
+
+\end{document}

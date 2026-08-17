@@ -1,0 +1,29 @@
+{
+  "run": "case_3/claude_opus_48_ultra",
+  "condition": "no-hint",
+  "model": "Claude ultra",
+  "checkpoints": {
+    "K1": "reached",
+    "K2": "reached",
+    "K3": "reached",
+    "K4": "reached",
+    "K5": "reached",
+    "K6": "partial",
+    "K7": "not",
+    "K8": "partial"
+  },
+  "evidence": {
+    "K1": "Read only prompt.md + OnShellBG.m, stripped the file to its definitions (BGcore.m) to call BGAmplitude/MakeKinematics, generated exact data at n=5,6,7,8 at many points, AND built an independent clean-room Python Berends-Giele recursion in exact Fraction arithmetic that reproduced the Mathematica values bit-for-bit (-891/2, -4224, -11907/4, -7302393/400). Working evaluator + independent scan -> reached.",
+    "K2": "All three invariants: imaginary phase ('oracle returns purely imaginary rationals ... so I write A_n = i P_n'); homogeneity ('omega -> lambda*omega multiplies A_n by lambda^{2n-4} ... homogeneous of degree 2(n-2)', plus A_n ~ g^{-(n-3)}); sign-class/permutation symmetry ('The oracle is fully Bose-symmetric: all leg permutations give the same value').",
+    "K3": "Wrote A_n = i 2^{n-1} omega_1 omega_2^{2n-5}/g^{n-3} generalized across n=5,6,7,8, and explicitly wrote+tested candidate M = 2^{n-1} i omega_1 omega_2 min(omega_1^2,omega_2^2)^{n-3}, finding 'the min form M is what survives the minus-leg discriminator' -- exactly the principal-chamber monomial, generalized in n.",
+    "K4": "Concrete in-sector failing points: 'With the free minus leg made large, {1000,1,1}, the monomial misses; with both minus legs negative, {-3/2,2,5/2}, it misses; with unsorted free frequencies, {7/3,11/5,13/7}, it misses.'",
+    "K5": "'A_n cannot be one rational function; it must be piecewise, with break surfaces sum_{i in S} sigma_i omega_i^2 = 0. This is a genuine hyperplane-chamber problem -- the waterhedron.' Abandoned the single-monomial global ansatz; also killed the Wolfram search for one universal rational form, 'decided it was genuinely piecewise'.",
+    "K6": "Identified break surfaces sum_{i in S} sigma_i omega_i^2 = 0 and concretely saw the 2-subset wall omega_2^2 = omega_3^2 + omega_4^2 at n=5, but framed the general structure as omega_2^2 crossing 'successive plus-leg thresholds' and explicitly did NOT recognize the arbitrary-subset inclusion-exclusion ('A sharper eye would have ... recognised the running inclusion-exclusion ... I did not'). No clean arbitrary-plus-leg-subset wall family committed for general n -> partial.",
+    "K7": "Did NOT assemble the global formula during the run. The truncated-power / inclusion-exclusion spline appears only in retrospect as 'the step I declined to take' ('the inclusion-exclusion that assembles it was the step I declined to take'); the monomial was reported as the deliverable. The retrospective form is also chart-tied (S subset {3..n-1}, threshold omega_2^2).",
+    "K8": "Extensive hostile checks -- 14 exact points at n=5,6,7 incl. extreme hierarchies (omega_2 ~ 1e-3 with plus legs ~1e6), n=8 exact, mixed-sign/non-principal points, an independent Python code, and n=4 recovered as a removable 0/0 limit (t->0 gives -54 i, matching 8 i omega_1 omega_2^3) -- but every check verified only the leading-chamber MONOMIAL, which correctly FAILS outside the principal chamber. No global formula verified across chambers; effective coverage is one chamber -> partial."
+  },
+  "divergence_rung": "K5",
+  "flags": ["F1", "F2", "F3"],
+  "final_outcome": "local",
+  "one_line_summary": "With exact-arithmetic data, an independent Berends-Giele port, and the correct leading-chamber monomial, it reached the piecewise commitment (K5) and glimpsed the subset-sum walls, but on hitting counterexamples it scoped the monomial to a 'principal chamber' (F3) and declined the inclusion-exclusion assembly (K7), delivering a chamber-local solution."
+}

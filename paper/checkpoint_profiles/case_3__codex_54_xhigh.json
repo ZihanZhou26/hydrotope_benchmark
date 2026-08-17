@@ -1,0 +1,29 @@
+{
+  "run": "case_3/codex_54_xhigh",
+  "condition": "no-hint",
+  "model": "Codex54",
+  "checkpoints": {
+    "K1": "reached",
+    "K2": "reached",
+    "K3": "reached",
+    "K4": "reached",
+    "K5": "partial",
+    "K6": "not",
+    "K7": "not",
+    "K8": "partial"
+  },
+  "evidence": {
+    "K1": "Ported the Berends-Giele recursion to an exact SymPy module analysis.py (EKernel/FKernel, Vertex, propagator, set-partition recursion, BGCurrent/amplitude, make_kinematics) and generated finite data across n=5,6,7 plus many independent scans (extreme, negative, and sign-flipped frequencies) - a working evaluator with an independent scan, not just the given example.",
+    "K2": "All three structural invariants found: purely imaginary phase ('finite and purely imaginary ... So I write A_n = i P_n'); homogeneity ('A_n is homogeneous of degree 2n-4' from scaling ratios 64,256,1024); and sign-class symmetry ('P_n is symmetric in the two minus legs and in the plus legs', verified by 1<->2 and plus-leg swaps giving -64 i).",
+    "K3": "Wrote the chamber-correct monomial generalized in n: 'A_n = i 2^{n-1} omega_1 omega_2^{2n-5}', explicitly '= i 2^{n-1} omega_1 omega_2 (omega_2^2)^{n-3} before the soft scale is named' - the deepest-chamber monomial with omega_2 as the soft scale.",
+    "K4": "Produced concrete in-sector points where the monomial disagrees with the oracle: sign-flipped probes {-1,2,3}->+49/2, {-2,3,5}->+341, {2,-3,5}->-89033/32, noting 'These are emphatically not values of my monomial' (the narration identifies them as 'other cells of a spline whose walls are the |k_S| sign changes').",
+    "K5": "Noted non-analyticity - 'A_5 is simply not a single polynomial in the free frequencies' and the brute monomial-basis fits all came back 'singular' - but did NOT commit to a piecewise answer; instead read it as 'the naive invariant ansatz was wrong' and 'a different physical branch', scoping to the leading chamber ('committed to the leading-chamber monomial'). Hence partial, not reached.",
+    "K6": "Subset-sum walls appear only in the hindsight narration ('every cell is one finite difference sum_S (-1)^|S| [U - sum_{j in S} omega_j^2]_+^{n-3}') explicitly framed as 'The correct object, which I did not reach'; at run time the walls were dismissed as a 'different physical branch'. Not reached.",
+    "K7": "The full inclusion-exclusion / truncated-power spline is described only as what was missed: 'I stopped one structural step short of it' and 'The all-kinematics closed form ... I did not reach.' No global formula assembled. Not reached.",
+    "K8": "Verified the monomial to exact rational equality for n=5,6,7 over a grid plus extreme small-frequency points, and resolved the n=4 removable 0/0 as a limit (deformation matching 8 i omega_1 omega_2^3), but every check sits inside the positive MakeKinematics chart (single chamber); mixed-sign / non-principal-chamber points were set aside rather than verified. Coverage-gap verification = partial."
+  },
+  "divergence_rung": "K4",
+  "flags": ["F1", "F2", "F3"],
+  "final_outcome": "local",
+  "one_line_summary": "Reached the correct leading-chamber monomial A_n = i 2^{n-1} w1 w2^{2n-5} and even generated sign-flipped counterexamples the monomial cannot match (K4), but read them as a 'different physical branch' and scoped the answer to the positive MakeKinematics chart (F3) instead of committing to a piecewise spline - stalling at the K4->K5 transition and never reaching the subset-sum walls (K6) or the global inclusion-exclusion formula (K7)."
+}

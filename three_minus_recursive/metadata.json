@@ -1,0 +1,13 @@
+{
+  "agent": "TBD",
+  "budget": "none (run to natural completion); experimenter logs realized compute externally",
+  "compute": "IAS compute servers + Typhon SLURM cluster permitted (see IAS_COMPUTE_GUIDE.md; submit via ssh typhon-login1 'sbatch ...')",
+  "condition": "open_with_known_neighbours_and_intuition",
+  "experiment": "three_minus_recursive",
+  "internet": "allowed (open problem)",
+  "key": "none (open problem; the oracle is the only judge)",
+  "oracle": "bg.cpp (fast exact GMP; no OnShellBG.m / Mathematica)",
+  "provided_context": "one-minus vanishing (A_n=0) + two-minus closed form given; physical intuition: n=5 two-/three-minus same type, nontrivial at n=6, chambers at subset-sum k=0, poles when internal line on-shell",
+  "scaffold": "recursive_process_improvement (live policy + ACTION_TRACE)",
+  "sector": "three_minus  sigma=(-1,-1,-1,+1,...,+1)"
+}

@@ -1,0 +1,204 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+
+\title{Rewritten Chain of Thought for the Solution to the\\
+Two-Minus Water-Wave Amplitude}
+\author{}
+\date{}
+
+\newcommand{\pp}[1]{\left[\,#1\,\right]_{+}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document is a first-person reconstruction of the chain of thought for the
+original AI derivation of the closed-form tree amplitude $A_n$ in the two-minus
+sector of one-dimensional deep-water surface waves. It is rebuilt from the
+visible run trajectory --- the raw private chain of thought was encrypted, so
+only the narrated messages, tool calls, and outputs survive --- and it tries to
+keep the original wording, the false starts, and the hedges rather than tidy them
+away: a wrong overall constant, per-chamber fits that looked mutually
+inconsistent, a stretch where I argued myself out of truncated powers right
+before they turned out to be exactly correct, and a long noisy tail where a
+second solver competing for Wolfram licenses kept starving my verification jobs.
+The run did reach a single all-kinematics closed form and verified it to exact
+rational equality against the supplied oracle at $n=4,\dots,8$.
+\end{abstract}
+
+\section*{Rewritten Chain of Thought}
+
+This is a blind benchmark, so I am only allowed to read \texttt{prompt.md} and
+\texttt{OnShellBG.m} and must not touch any sibling file or any of the other
+solution folders. I want a closed-form $A_n$ for $\sigma=(-1,-1,+1,\dots,+1)$,
+and the prompt hands me a real gift in its hint: the answer is a \emph{piecewise
+homogeneous polynomial}, the kinematic space \emph{decomposes into chambers}, and
+a \emph{different homogeneous polynomial} holds on each chamber. I decide up front
+to take that literally --- to hunt for the chamber walls and the per-chamber
+polynomials --- rather than to fish for one global expression by brute fitting. I
+check the environment (\texttt{wolframscript}, a Mathematica kernel, and
+\texttt{sympy} are all available), then write a small driver that loads the BG
+\emph{definitions} without running the file's own demo block, builds the
+two-minus sign vector, calls \texttt{MakeKinematics}, and feeds
+\texttt{BGAmplitude} in exact rational arithmetic.
+
+The first runs settle the gross structure. The amplitude is purely imaginary:
+$A_5=-2304\,i$, $A_6=-\tfrac{295936}{11}i$, $A_7=-\tfrac{4333568}{15}i$ on the
+file's own test points. A scaling test $\omega\to\lambda\omega$ shows
+$A_n\propto\lambda^{2(n-2)}$, i.e.\ homogeneous of degree $6,8,10$ at
+$n=5,6,7$, so I write $A_n=-i\,P_n$ with $P_n$ homogeneous of degree $2(n-2)$.
+And $n=4$ refuses to compute: the on-shell conditions in this sector \emph{force}
+$\omega_4=-\omega_2$ and $\omega_1=-\omega_3$, which lands an internal two-leg
+current on a propagator pole, so the recursion returns \texttt{Indeterminate} ---
+a removable $0/0$. I set $n=4$ aside to recover later as a limit.
+
+Because the external legs satisfy $|k_i|=\omega_i^2$ exactly, there is no sign
+ambiguity \emph{per leg}; the only non-analytic content --- the only thing that
+can make the answer piecewise --- lives in the absolute values of \emph{partial
+momentum sums} that mix the minus-legs with plus-legs inside the internal
+propagators. So I compute $A_5$ symbolically (it factors in $0.09$\,s), collect
+every \texttt{Abs} argument, and find that most are manifestly sign-definite
+(sums of squares) while the genuinely chamber-dependent walls are exactly the
+mixed subset sums like $\omega_2^2-\omega_3^2$ and
+$\omega_2^2-\omega_3^2-\omega_4^2$. This is the prompt's chamber structure made
+concrete, and it tells me where to cut. Resolving the symbolic $A_5$ in specific
+chambers gives strikingly clean factored polynomials --- in the chamber where
+$\omega_2$ is the smallest, $P_5=-16\,\omega_1\omega_2^5$; where it is the
+largest, $P_5=-32\,\omega_1\omega_2\omega_3^2\omega_4^2$ --- both carrying an
+overall $\omega_1\omega_2$, the product of the two minus-leg frequencies. So I
+write $P_n=-16\,\omega_1\omega_2\,R$ and chase $R$.
+
+My first attempt to nail $R$ goes wrong, and the way it goes wrong is
+instructive. I try to fit $R$ as a polynomial in the free frequencies, grouping
+points by the sign-signature of all partial momentum sums. The fit comes back
+\emph{inconsistent}, and for two reasons I only untangle in stages. First, $P_5$
+is \emph{rational}, not polynomial, in the free variables --- it carries a
+$1/(\omega_2{+}\omega_3{+}\omega_4)$ from \texttt{MakeKinematics} solving
+$\omega_1,\omega_5$ --- so I must divide it out. Second, when I broaden the
+sample to negative free frequencies I get $16$ raw signatures, but only five fit
+cleanly as polynomials in the free \emph{magnitudes}; the rest depend on the
+frequency \emph{signs}, not just $\omega_i^2$. My even-polynomial ansatz was
+simply too restrictive.
+
+The breakthrough is to change the invariant. Instead of grouping by raw
+signature, I sort the legs by magnitude and label each by its sign, and I find
+that two points give the \emph{same} $R$ as a function of the sorted magnitudes
+$\mu_1\le\dots\le\mu_n$ precisely when they share the same $\pm$ label sequence.
+The $16$ signatures collapse, and only a handful of label sequences are even
+realizable, because momentum conservation $\sum_i\sigma_i\omega_i^2=0$ forbids
+most sign orderings. At $n=5$ I find exactly four chambers, indexed by the sorted
+positions $\{p,q\}$ of the two minus-legs, with
+\[
+\{1,5\}:\;R=\mu_1^2,\quad
+\{2,5\}:\;R=2\mu_1\mu_2-\mu_1^2,\quad
+\{3,4\}:\;R=2\mu_1\mu_2,
+\]
+\[
+\{3,5\}:\;R=2\mu_3(\mu_1+\mu_2)-(\mu_1^2+\mu_2^2+\mu_3^2).
+\]
+I notice with some delight that the last one is
+$16\,(\text{Heron area})^2$ of a triangle with sides $|\omega_2|,|\omega_3|,
+|\omega_4|$, so triangle inequalities among magnitudes are going to be walls. The
+configuration $\{4,5\}$ never appears in four thousand points --- it is
+unrealizable under \emph{both} conservation laws. This is the hint's
+decomposition, found explicitly: one homogeneous polynomial per chamber, walls at
+subset-sum equalities.
+
+$n=6$ both confirms and complicates the picture. The same label-sequence grouping
+gives clean polynomials for some chambers ($\{1,6\}\to2\mu_1^3$,
+$\{2,6\}\to2\mu_1(\mu_1^2-3\mu_1\mu_2+3\mu_2^2)$, $\{4,5\}\to12\mu_1\mu_2\mu_3$)
+but the label sequence is \emph{not} a fine enough invariant: $\{3,6\}$ splits
+into sub-chambers across an extra wall, the triangle inequality
+$\mu_3=\mu_1+\mu_2$ among the three smallest legs. On one side
+$R=6\mu_1\mu_2(2\mu_3-\mu_1-\mu_2)$; on the other
+$R=2\,[\mu_3^3-(\mu_3-\mu_1)^3-(\mu_3-\mu_2)^3]$; and crucially $R$ is
+\emph{continuous} across the wall --- both give $6\mu_1\mu_2(\mu_1+\mu_2)$ at
+$\mu_3=\mu_1+\mu_2$. I write the difference between the two pieces as a single
+truncated-power correction,
+\[
+R_{\{3,6\}}=6\mu_1\mu_2(2\mu_3-\mu_1-\mu_2)-2\,\pp{\mu_1+\mu_2-\mu_3}^{3},
+\]
+and that is the moment the spline structure becomes unmistakable: a continuous
+piecewise polynomial with truncated-power corrections switching on at subset-sum
+walls. $R$ depends only on $a\equiv\min$ of the two minus-leg magnitudes and on
+the plus-leg magnitudes.
+
+I do stumble around the right object before grabbing it. I generate $n=6$ data in
+parallel (ten jobs, $\sim$5200 exact points), and at $n=7$ where BG is
+$\sim$15\,s per point I have far too little data to fit a degree-four polynomial
+per chamber. The per-chamber fits at first \emph{look} mutually contradictory ---
+the ``$6$ versus $6.25$'' kind of mismatch --- which I eventually trace to each
+chamber polynomial being defined only \emph{modulo} momentum conservation, a red
+herring rather than a real disagreement. I try a naive overall constant
+$(n-4)!$, and at one point I talk myself into believing there is ``no simple sum
+of truncated powers'' at all. The honest fix is to stop fitting and run a
+decisive experiment: test the truncated-power ansatz
+\[
+R \;\stackrel{?}{=}\; (n-4)!\sum_{S\subseteq\mathrm{Plus}}(-1)^{|S|}\,
+\pp{\,a-\sigma_S\,}^{\,n-3},\qquad
+a=\min(\omega_1^2,\omega_2^2),\;\;\sigma_S=\sum_{i\in S}\omega_i^2,
+\]
+directly against the raw amplitude at every collected point. It matches
+\emph{all} of $n=5$ ($375/375$) and \emph{all} of $n=6$ ($4500/4500$) exactly ---
+but every $n=7$ point is off by exactly $2/3$. That uniform factor is the tell:
+$(n-4)!$ gives $1,2,6$ at $n=5,6,7$ whereas the data want $1,2,4$, i.e.\ the
+constant is $2^{\,n-5}$, not $(n-4)!$ (they coincide at $n=5,6$ and first part
+ways at $n=7$). Folding the constant into the prefactor gives the master formula
+\[
+\boxed{\;
+A_n \;=\; i\,2^{\,n-1}\,\omega_1\omega_2
+\sum_{S\subseteq\mathrm{Plus}}(-1)^{|S|}\,
+\pp{\,a-\sigma_S\,}^{\,n-3}\;}
+\]
+with $a=\min(\omega_1^2,\omega_2^2)$, $\mathrm{Plus}=\{\omega_3^2,\dots,
+\omega_n^2\}$, and $\sigma_S=\sum_{i\in S}\omega_i^2$. The truncated powers carry
+the chamber decomposition automatically: a plus-subset $S$ contributes iff
+$\sigma_S<a$, so the walls are exactly $\sigma_S=a$, and on each chamber the live
+set of $S$ is fixed and $A_n$ is a single homogeneous polynomial of degree
+$2(n-2)$ --- a different polynomial on each chamber, precisely as the hint
+promised. The bare-monomial regime I started from, $R=a^{\,n-3}$, is just the
+chamber below every wall.
+
+Once I read it as inclusion--exclusion the structure stops looking like a
+coincidence. With $k=n-2$ plus-legs the exponent $n-3=k-1$ makes the sum a
+$B$-spline / Irwin--Hall density: $\sum_S(-1)^{|S|}\pp{a-\sigma_S}^{k-1}=
+(k-1)!\,\big(\prod_{\mathrm{Plus}}m_i\big)\,f_X(a)$ with $X=\sum_{\mathrm{Plus}}
+m_iU_i$ and $U_i$ uniform on $[0,1]$ --- so $R$ is, up to $\prod m_i$, the volume
+of a slice of the unit cube, the canonical positive-geometry ``waterhedron''
+volume. That is why it is a spline and why it is continuous across every wall.
+
+Two loose ends. For $n=4$ the formula has exponent $n-3=1$ and prefactor
+$2^{\,n-1}=8$; the recursion's $0/0$ is recovered as a direction-independent
+limit, e.g.\ $\{s,t\}=\{2,3\}$ gives $-192\,i$, $\{1,5\}$ gives $-40\,i$,
+$\{7,3\}$ gives $-1512\,i$, each matching the formula exactly. And I verify the
+\emph{single} boxed formula directly against \texttt{BGAmplitude} in exact
+rational arithmetic, where agreement is bit-exact and the relative error is
+identically zero, far below the $10^{-10}$ bar: $150$ points each at $n=5,6$
+spanning $4$ and $12$ distinct chambers, multi-chamber points at $n=7$, the
+original three test points (reproduced exactly), an exhaustive earlier sweep of
+$5435$ points with zero mismatches, an $n=8$ spot-check
+($A_8=-\tfrac{33920}{21}i$), an independent Python reimplementation, and the
+$n=4$ limits above. Sampling negative free frequencies on purpose pushes the
+kinematics into the other chambers, and the same formula holds there too --- the
+truncated powers simply switch a different subset of terms on.
+
+I want to be honest about the messy parts. A second solver was running on this
+same case and competing for Wolfram licenses; for a long stretch it starved my
+verification kernels, several of my background jobs hung mid-scan, and I spent
+real effort distinguishing my own stale processes from the foreign ones and
+re-launching clean runs rather than producing new mathematics. I also relabeled
+``chambers'' twice --- numeric activation fingerprints gave inflated counts
+($81$ at $n=5$) before I settled on the true combinatorial counts $4,14,59$ at
+$n=5,6,7$ --- and I corrected the overall constant once. None of that touched the
+final result: within the prompt's own kinematics, and in every chamber I could
+reach by sign-flipping the free frequencies, the boxed truncated-power formula
+reproduces \texttt{BGAmplitude} to exact equality at $n=4,\dots,8$. The hint
+pointed straight at the piecewise structure, and the chamber-by-chamber discipline
+it suggested is what turned a pile of clean factored fragments into one closed form.
+
+\end{document}

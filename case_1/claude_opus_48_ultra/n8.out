@@ -1,0 +1,8 @@
+n=8 free=['3/2', '2', '5/2', '3', '7/2', '4'] softest_minus=True
+   BG=-37496115/352
+   formula=-37496115/352
+   match=True  (83.9s)
+n=8 free=['2', '5/2', '3', '7/2', '4', '9/2'] softest_minus=True
+   BG=-115343360/39
+   formula=-115343360/39
+   match=True  (87.1s)

@@ -1,0 +1,201 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+
+\title{Rewritten Chain of Thought for the Solution to the\\
+Two-Minus Water-Wave Amplitude}
+\author{}
+\date{}
+
+\newcommand{\pp}[1]{\left[\,#1\,\right]_{+}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document is a first-person reconstruction of the chain of thought for the
+original AI derivation of the closed-form tree amplitude $A_n$ in the two-minus
+sector of one-dimensional deep-water surface waves. It is rebuilt from the
+visible run trajectory --- the raw private chain of thought was encrypted, so
+only the narrated messages, tool calls, and outputs survive --- and it tries to
+keep the original wording, the false starts, and the hedges rather than tidy them
+away. The prompt for this run gave a correct structural hint (the amplitude is a
+piecewise homogeneous polynomial; the kinematic space splits into chambers; a
+different polynomial holds on each), and the reconstruction is honest about how
+much of the work was the hint pointing the way versus the data forcing the hand.
+The run reached a single all-kinematics closed form and verified it against the
+Berends--Giele oracle to identically zero residual in exact rational arithmetic.
+\end{abstract}
+
+\section*{Rewritten Chain of Thought}
+
+I may read only \texttt{prompt.md} and \texttt{OnShellBG.m}; everything else I
+must generate. The prompt is unusually generous in one respect: it tells me the
+answer is a \emph{piecewise homogeneous polynomial}, that the kinematic space
+decomposes into \emph{chambers}, and that a different homogeneous polynomial
+holds on each chamber. I decide right away to treat that not as flavour text but
+as the skeleton of the search, and I write it into my own words before touching
+the oracle: with $g=1$ and $\sigma=(-1,-1,+1,\dots,+1)$ the external momenta are
+$k_i=\sigma_i\omega_i^2$, so the only place non-polynomial behaviour can enter is
+$|k_S|=\big|\sum_{i\in S}\sigma_i\omega_i^2\big|$ on \emph{internal} Berends--Giele
+momenta. The sign of each internal sum is what cuts the chamber walls. I keep
+that observation in reserve and start probing.
+
+First the environment: \texttt{wolframscript} and Python with exact rationals are
+both available. The demo block at the end of \texttt{OnShellBG.m} runs slow $n=8$
+cases I do not want, so I split the file at the test marker and load only the
+definition sections, then write a thin driver that builds the two-minus sign
+vector, calls \texttt{MakeKinematics}, and feeds \texttt{BGAmplitude}. The first
+data confirm the gross features the hint already half-promised: every $A_n$ is
+\emph{purely imaginary} and \emph{homogeneous of degree $2(n-2)$}. So I set
+$A_n=-i\,P_n$ with $P_n$ real and chase $P_n$. A representative symmetric point
+at $n=5$ returns $A_5=-2304\,i$; another gives $A_5=-45824\,i/17$. Clean rational
+imaginary numbers, exactly as a polynomial answer should give.
+
+The first real obstruction is $n=4$. Every two-minus point the solver produces
+comes back \texttt{Indeterminate} --- a $0\cdot\infty$. I work out why by hand:
+for $n=4$ the two conservation laws, after eliminating $\omega_1$, collapse to
+\[
+(\omega_2+\omega_4)(\omega_2+\omega_3)=0,
+\]
+so \emph{every} on-shell point forces $\omega_2+\omega_4=0$ or $\omega_2+\omega_3=0$,
+and then an internal two-leg current hits zero frequency and zero momentum at
+once, blowing up a propagator behind a removable $0/0$. $n=4$ is intrinsically
+degenerate: its kinematics is pinned to a chamber wall. I set it aside to recover
+later as a limit, and work with $n=5,6,7$, which are generically clean.
+
+Then I make the mistake the hint should have protected me from, and I want to be
+honest that I made it anyway. I check directly that $A_5$ is fully Bose-symmetric
+--- invariant under swapping the two minus legs $1\leftrightarrow2$ and under
+permuting the plus legs $3,4,5$ --- and confirm it is. From ``symmetric $+$
+polynomial'' I reason that $P_5$ must be a homogeneous degree-six polynomial in
+the elementary symmetric functions of the plus legs, and I try to fit it by exact
+rational linear algebra. It fails. I assume my sample points are clustered and
+rank-deficient, redo it with diverse exact sampling and a proper exact residual
+check, and it fails again --- badly, with residual $\sim 3.6\times10^{10}$ even in
+exact arithmetic. That is a clean contradiction, not numerical noise: $P_5$ is
+provably \emph{not} a polynomial in the plus-leg symmetric invariants, despite
+being symmetric.
+
+The contradiction is exactly the hint cashing in. A globally symmetric function
+that is not a global polynomial in the symmetric invariants can only be a
+\emph{piecewise} polynomial whose pieces are individually \emph{not} symmetric ---
+and the symmetry is restored by the way the chambers glue. Swapping
+$\omega_1\leftrightarrow\omega_2$ does not stay inside a chamber; it crosses a
+wall. So the symmetric fit was doomed because it tried to bend one polynomial
+across walls it could not see. This is the moment the parked chamber idea moves
+to the centre of the work.
+
+I stop trying to simplify the whole amplitude symbolically --- the
+$\mathrm{Vertex}$ sums over $n!$ permutations of nested kernels blow up memory
+every time I ask Wolfram to \texttt{Simplify} them, and a univariate symbolic
+attempt drowns the same way. Instead I reconstruct $A_5$ along a one-parameter
+\emph{line} by exact rational interpolation: evaluate at many exact points,
+recover the rational function, read off its denominator. The breakthrough is
+sharp. Along the line $\omega_3=4,\ \omega_4=9$, with $t=\omega_2$, I find that
+$A_5(t)\,(\omega_2+\omega_3+\omega_4)$ is a clean polynomial, and on the segment
+where $\omega_2$ is the smallest scale it reduces to
+\[
+A_5 \;=\; -16\,\omega_1\,\omega_2^{5}.
+\]
+I check this against the scattered earlier data and it reproduces them: free
+frequencies $\{1,4,11\}$ give $\omega_1=-49/4$, $\omega_2=1$ and
+$-16(-49/4)(1)=196$; $\{2,5,11\}$ gives $59648/9$; $\{3,7,13\}$ gives
+$1434672/23$ --- all matched. The earlier chamber-1 datum across $n$ generalizes
+this to $A_n=-2^{\,n-1}\,\omega_1\omega_2^{\,2n-5}$, verified for $n=5,6,7$. So in
+the chamber where $\omega_2$ is the unique smallest-magnitude leg, the answer is a
+bare monomial.
+
+Now I walk the line across the walls and reconstruct the polynomial on each
+chamber, and the corrections are too clean to miss. With $x=\omega_2^2$ and the
+plus squares $\omega_3^2,\omega_4^2$, the pieces are
+\[
+x<\text{all}:\;\; -x^{2},\qquad
+\omega_3^2<x<\omega_4^2:\;\; -x^2+(x-\omega_3^2)^2,
+\]
+\[
+x>\omega_3^2+\omega_4^2:\;\; -x^2+(x-\omega_3^2)^2+(x-\omega_4^2)^2-(x-\omega_3^2-\omega_4^2)^2
+\;=\; -2\,\omega_3^2\omega_4^2,
+\]
+each times the universal prefactor $16\,\omega_1\omega_2$. These are not three
+separate answers; they are the running inclusion--exclusion corrections of one
+object. Crossing the wall $\omega_2^2=q_S$ (where $q_S=\sum_{j\in S}\omega_j^2$,
+$S$ a subset of the plus legs) adds exactly $(-1)^{|S|+1}(\omega_2^2-q_S)^{\,n-3}$.
+The walls are precisely the $|k_T|$ sign changes I had parked at the start. So the
+whole amplitude is one truncated-power sum,
+\[
+A_n \;=\; 2^{\,n-1}\,\omega_1\omega_2\!\!\sum_{\substack{S\subseteq\{3,\dots,n\}\\ \omega_2^2>q_S}}
+(-1)^{|S|+1}\,(\omega_2^2-q_S)^{\,n-3},
+\qquad q_S=\sum_{j\in S}\omega_j^2,
+\]
+which is the bare monomial $-2^{\,n-1}\omega_1\omega_2^{\,2n-5}$ when only
+$S=\varnothing$ is active (the principal chamber) and grows term by term as
+$\omega_2^2$ passes each subset-sum knot. Writing it with the truncated power
+$\pp{u}=\max(u,0)$,
+\[
+\boxed{\;
+A_n \;=\; -\,i\,\frac{2^{\,n-1}}{g^{\,n-3}}\;\omega_1\,\omega_2
+\sum_{S\subseteq\{3,\dots,n\}}(-1)^{|S|+1}\,\Big[\pp{\,\omega_2^{2}-q_S\,}\Big]^{\,n-3}\;}
+\]
+a piecewise homogeneous polynomial of degree $2(n-2)$, exactly the shape the hint
+described. The chambers are the regions of constant active set
+$\mathcal A=\{S:\omega_2^2>q_S\}$; on each, $A_n$ is the single polynomial summing
+the active terms, and adjacent chambers differ by a term vanishing to order $n-3$
+on the shared wall --- a genuine spline.
+
+Two consistency checks surprise me by working. First, although I wrote the
+threshold with $\omega_2^2$, using $\omega_1^2$ instead --- or the smaller of the
+two --- gives \emph{identically zero residual} across all $21$ points I test at
+$n=5$, including points where $\omega_1$ is the small one. I track this to a
+finite-difference identity: there are $n-2$ plus legs but the power is only
+$n-3$, so the full alternating sum
+$\sum_{S\subseteq\{3,\dots,n\}}(-1)^{|S|}(x-q_S)^{n-3}\equiv0$, an
+$(n-2)$-fold finite difference annihilating a degree-$(n-3)$ polynomial; together
+with $\omega_1^2+\omega_2^2=q_{\{3..n\}}$ on shell this forces the two truncated
+sums to agree. I verify the identity symbolically for $n=4,\dots,7$. Second, I
+had assumed the formula was $g$-independent and wrote that into the Python
+docstring; a quick check shows it is wrong --- $A_n(g)=g^{-(n-3)}A_n(1)$ --- so I
+restore the $g^{-(n-3)}$ factor (equivalently, $|k_j|=\omega_j^2/g$ makes the
+$g$'s cancel inside the bracket). A small correction, but I had overclaimed and I
+fix it.
+
+For $n=4$ the spline has power $m=n-3=1$, so it is the continuous value
+$A_4=i\,2^3\,\omega_1\omega_2^3$ at the degenerate locus the oracle could not
+evaluate. I confirm this honestly as a limit: taking the exact symbolic
+$\lim_{d\to0}\texttt{BGAmplitude}$ along an energy-conserving deformation off the
+singular wall reproduces the formula at every test point --- $24$, $320$, $1512$
+for the configurations I tried, including an $a>b$ relabeling. The removable
+$0/0$ comes out finite and matches.
+
+Finally I verify, and here the only real friction is the machine, not the
+mathematics. \texttt{BGAmplitude} is slow at $n=7$, so my first comprehensive
+script times out mid-run and a stress loop trips a paired-iterator
+\texttt{Do} syntax bug; I rewrite the verifier to find distinct chambers cheaply
+(the active set needs no oracle call) and invoke the expensive
+\texttt{BGAmplitude} only on one representative per chamber. The clean run lands:
+against the oracle in exact rational arithmetic the residual
+$A_{\text{formula}}-A_{\text{BG}}$ is \emph{identically zero} for $n=4$ (symbolic
+limit), $n=5$ ($4$ chamber representatives plus a $76$-point stress over $5$
+chambers, and explicit $\omega_1$-smallest points), $n=6$ (chambers of active-set
+size $1$ through $8$ plus a $38$-point stress over $14$ chambers), and $n=7$ ($12$
+distinct chambers whose polynomials carry up to $16$ truncated-power terms). Every
+tested point matched with exactly zero residual, far inside the $10^{-10}$
+tolerance the prompt asked for.
+
+So I will state the scope plainly. The prompt gave the correct structural hint,
+and the run used it the way it was meant to be used: the chamber idea was parked
+at the first orientation, it was what turned the failed symmetric fit from a dead
+end into a diagnosis, and it named the walls ($|k_T|$ sign changes) before the
+data confirmed them. What the data still had to supply was everything
+quantitative --- the principal-chamber monomial, the exact wall-crossing increment
+$(-1)^{|S|+1}(\omega_2^2-q_S)^{n-3}$, the coefficient $2^{n-1}$, the power $n-3$,
+the $g$-scaling, and the inclusion--exclusion bookkeeping that assembles the
+pieces into one truncated-power sum. The result is a single all-kinematics closed
+form, valid in every chamber and at the degenerate $n=4$ locus, verified against
+the oracle to exact equality.
+
+\end{document}

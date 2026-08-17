@@ -1,0 +1,211 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+
+\title{Rewritten Chain of Thought for the\\
+Two-Minus Water-Wave Amplitude}
+\author{}
+\date{}
+
+\newcommand{\pp}[1]{\left[\,#1\,\right]_{+}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document is a first-person reconstruction of the chain of thought for one
+AI attempt at the closed-form tree amplitude $A_n$ in the two-minus sector of
+one-dimensional deep-water surface waves. It is rebuilt from the visible run
+trajectory (the raw chain of thought was encrypted, so only the visible
+narration, tool calls, and outputs survive) and it deliberately keeps the false
+starts and the hedges rather than tidying them away. The honest arc has two
+parts. The prompt carried a strong hint that $A_n$ is a \emph{single global
+rational function} with simple poles on factorization channels and
+\emph{emphatically no} piecewise/chamber/absolute-value structure. On a first
+pass I took that hint at face value, found that the supplied \texttt{BGAmplitude}
+is manifestly piecewise already at $n=4$, and --- using the hint's own ``no
+piecewise'' assertion as my acceptance criterion --- concluded that the
+benchmark was \emph{inconsistent} and wrote a rejection report. On a second pass
+I stopped letting the hint define what a valid answer could look like, read the
+chamber structure as the physics rather than as a contradiction, and recovered
+the correct truncated-power / inclusion--exclusion formula, verified to exact
+zero against \texttt{BGAmplitude} for $n=5,6,7$ with a finite $n=4$ limit. So the
+final result is correct, but the misleading hint cost a whole pass and very
+nearly cost the answer.
+\end{abstract}
+
+\section*{Rewritten Chain of Thought}
+
+I am allowed to read only \texttt{prompt.md} and \texttt{OnShellBG.m}, and I have
+to find a closed-form $A_n$ for $\sigma=(-1,-1,+1,\dots,+1)$. The prompt is
+unusually opinionated about the shape of the answer. Its hint tells me that
+$A_n$ is a \emph{rational function} of the frequencies, ``a single global,
+analytic expression valid throughout the entire two-minus sector'', a ratio
+$N(\omega)/D(\omega)$ whose denominator is a product of physical
+factorization-channel factors so that $A_n$ carries simple poles on those
+channels; it tells me to fit one global ansatz on a few hundred \emph{generic}
+points and that the result has ``\textbf{no} piecewise / chamber decomposition,
+no absolute values, and no $\min/\max$''; and it warns me to \emph{avoid}
+hierarchical or near-degenerate kinematics because those only ill-condition the
+fit. I read \texttt{OnShellBG.m} and the very first structural fact I notice cuts
+against all of that: the recursion kernels are built on $\texttt{mag}[k]=
+\mathrm{Abs}[k]$, i.e.\ $|k_S|=|\sum_{i\in S}\sigma_i\omega_i^2|/g$. An absolute
+value is exactly the kind of non-analytic object the hint swears is absent. So
+the very first thing I want to settle is whether those $\mathrm{Abs}$'s really
+cancel out into one global rational function, or whether chamber dependence
+survives. As I put it to myself: ``if $n=4$ already fails, the benchmark
+statement itself is wrong.''
+
+\medskip
+\noindent\textbf{First pass: I let the hint define the question, and reject the
+task.}\quad
+I write a minimal Wolfram harness that loads only the definitions (the file's own
+test block runs a \emph{different} sector and floods the output, so I suppress
+its prints), and I ask for the explicit four-point two-minus family with free
+frequencies $\{-x,y\}$, $x,y>0$. \texttt{MakeKinematics} returns the clean chart
+$\omega=\{-y,-x,y,x\}$, $k=\{-y^2,-x^2,y^2,x^2\}$, and the exact symbolic
+amplitude comes back as
+\[
+A_4 \;=\;
+\mathrm{Piecewise}\!\left[\,\{\{8 i\,x^{3}y,\ x<y\},\ \{8 i\,x\,y^{3},\ x>y\}\},\
+24 i\,y^{4}\,\right].
+\]
+The two open branches differ by $8 i\,x\,y\,(x-y)(x+y)$, which is not identically
+zero. At this point I reason exactly the way the hint trained me to: ``a rational
+function that agrees with $8 i\,x^{3}y$ on the open set $x<y$ \emph{is} that
+rational function identically, and therefore cannot also equal $8 i\,x\,y^{3}$ on
+$x>y$.'' Worse, when I plug in a concrete exact point ($\{-3,5\}$, giving
+$\omega=\{-5,-3,5,3\}$) the raw recursion returns \texttt{Indeterminate}, because
+an internal channel hits a zero-momentum singularity ($1/0$,
+$0\cdot\mathrm{ComplexInfinity}$). I check $n=5,6,7$ at a handful of exact
+rational points and confirm the recursion is alive there ($-2304i$,
+$(577024/3125)i$, $\dots$), so it is not globally broken. But for the four-point
+case I conclude that the supplied \texttt{BGAmplitude} ``does not define a single
+global rational function in the two-minus sector,'' and I write a contradiction
+report: the benchmark, \emph{as the hint states it}, cannot be satisfied. I even
+build a fresh exact Python port of the recursion to prove the port reproduces the
+sampled source values, so the rejection is well documented.
+
+This is the trap, and I want to be honest that I walked into it. Everything I
+observed at $n=4$ --- the piecewise branches, the corner at $x=y$, the
+$\mathrm{Abs}$-driven chambers --- was the \emph{true structure of the answer}.
+The misleading hint had told me, in advance, that any such structure disqualifies
+the answer, so when I saw it I read it as proof that no answer exists rather than
+as the answer itself. I shipped a ``no closed form / benchmark inconsistent''
+verdict.
+
+\medskip
+\noindent\textbf{Second pass: I stop trusting the hint's shape, and chase the
+data instead.}\quad
+On a re-launch I decide to generate data first and let it tell me the form,
+rather than pre-committing to the hint's $N/D$ template. I copy the recursion
+core into \texttt{bg\_core.wl} so I can evaluate without the stock test block, and
+I start mapping $n=5$ along a one-parameter slice $\{x,2,3\}$. The amplitude is
+finite and purely imaginary at generic $x$ ($-64i$ at $x=1$,
+$-5712i$ at $x=\tfrac52$, $-19968i$ at $x=4$), but it goes \texttt{Indeterminate}
+exactly at $x=2$ and $x=3$ --- precisely when the moving negative leg collides
+with a plus leg $\omega_j$. I read this, at first, the way the hint wants me to:
+``I've isolated the first clear pole structure --- the BG amplitude blows up
+exactly when the minus-frequency leg matches a plus-frequency leg.'' So I dutifully
+try the global-rational program. I sample the full $n=5$ grid over
+$\{1,\dots,5\}^3$, write $A_5=i\,P_5$, and try to fit one $N/D$. A symmetric
+polynomial with no denominator fails on held-out points; a degree-one denominator
+fails; ``degree-2 is the first plausible global rational.'' I keep enlarging the
+sample to overdetermine it. I burn a fair amount of time here, including
+abandoning SymPy's nullspace routine for a hand-rolled exact rational
+row-reduction. The fits keep being not-quite-right in a way that smells like the
+$n=4$ piecewise problem refusing to go away.
+
+The break comes when I stop trying to bend a global rational onto the data and
+instead resolve the $\mathrm{Abs}$'s by hand. I write \texttt{symbolic\_bg.py}, a
+chamber-fixed reimplementation: at a generic sample point I fix the sign of every
+$\mathrm{Abs}$ argument, then extract the exact rational expression valid in that
+ordering cell. (The local Python is old and SymPy's generic simplifier is eating
+all the time, so I strip the simplification calls and keep the algebra raw until
+the end.) Doing this for $n=5$ in three different ordering regions, I get three
+local formulas. They all factor out the same $\omega_1\omega_2$ prefactor, but the
+quartic core changes with the ordering --- and the way it changes is the tell.
+Writing $x=\omega_2^2$ and the plus-leg squares as $y,z$, the cells read
+\[
+x<y,z:\;\; x^{2},\qquad
+y<x<z:\;\; x^{2}-(x-y)^{2},\qquad
+y,z<x:\;\; x^{2}-(x-y)^{2}-(x-z)^{2}+(x-y-z)^{2}.
+\]
+These are not three different answers; they are the running
+inclusion--exclusion corrections of one object, with the corners landing exactly
+on the $|k_S|$ sign changes $x=\sum_{j\in S}y_j$. The fully-passed cell collapses
+to $2yz$, the bare cell is $x^2$, and the $+(x-y-z)^2$ overlap term is precisely
+the piece a naive ``two clamped squares'' guess would double-subtract. In other
+words the $n=4$ piecewise $\mathrm{Piecewise}[\{\{8ix^3y,x<y\},\{8ixy^3,x>y\}\}]$
+that I had earlier called a fatal contradiction is just the $m=1$ instance of the
+same spline ($x^2-(x-y)^2=2xy-y^2$ structure, one knot). The hint's promised poles
+were never poles at all; the ``blow-ups'' on $\omega_2=\omega_j$ are the chamber
+walls of a continuous truncated power, not simple poles of a rational function.
+
+Once I read it as inclusion--exclusion the general form writes itself. With
+$\pp{u}=\max(u,0)$ and $m=n-3$, every cell is one value of the truncated-power /
+B-spline object, and the whole amplitude is
+\[
+\boxed{\;
+A_n \;=\; i\,2^{\,n-1}\,\omega_1\,\omega_2\,
+\sum_{S\subseteq\{3,\dots,n-1\}}(-1)^{|S|}\,
+\pp{\,\omega_2^{2}-\sum_{j\in S}\omega_j^{2}\,}^{\,n-3}\;}
+\]
+the sum running over the $n-3$ positive plus-legs. The data ``snapped into a
+clean pattern'': for $n=5$ the branch structure is exactly this
+inclusion--exclusion spline in the squared frequencies, and the same coefficient
+pattern already matched the $n=6$ samples I had checked by hand. The
+principal chamber, where $\omega_2^2$ is below every plus-leg square, keeps
+only the $S=\varnothing$ term, so $A_n=i\,2^{n-1}\omega_1\omega_2^{\,2n-5}$
+there --- the bare monomial I had half-seen in this region.
+
+\medskip
+\noindent\textbf{Verification, including the $n=4$ loose end.}\quad
+I code the boxed formula straight into \texttt{verify\_formula.wl} as
+\texttt{TwoMinusClosedForm} and test it against the supplied \texttt{BGAmplitude}
+in exact rational arithmetic, computing $\mathrm{Together}[\,A_{\mathrm{BG}}-
+A_{\mathrm{formula}}\,]$. Every $n=5,6,7$ point returns
+$\mathrm{diff}=0$ and $\mathrm{rel}=0$ identically --- not to $10^{-10}$, but to
+exact zero before any floating-point step. Representative agreements:
+$A_5(\{1,2,3\})=-64i$, $A_5(\{2,1,3\})=-784i$, $A_5(\{5,4,1\})=-11776i$;
+$A_6(\{1,\tfrac32,2,\tfrac52\})=-\tfrac{968}{7}i$,
+$A_6(\{4,3,2,1\})=-\tfrac{677376}{5}i$,
+$A_6(\{\tfrac52,2,3,\tfrac72\})=-\tfrac{1303400}{11}i$;
+$A_7(\{1,\tfrac32,2,\tfrac52,3\})=-\tfrac{1928}{5}i$,
+$A_7(\{4,3,\tfrac52,2,1\})=-\tfrac{426108561}{50}i$, and the deliberately
+non-generic $A_7(\{\tfrac52,\tfrac72,\tfrac32,\tfrac94,3\})
+=-\tfrac{12048407135}{8192}i$. (I had also queued an $n=8$ batch; it bogged down
+and is not needed for the benchmark, so I trimmed it.) For $n=4$ the raw
+recursion is \texttt{Indeterminate} on every two-minus configuration, because the
+sector sits on exact zero-momentum internal channels --- the removable $0/0$ I
+had earlier mistaken for a hard obstruction. The same formula has $m=n-3=1$
+there, so it reduces to
+\[
+A_4 \;=\; 8 i\,\omega_1\omega_2\big(\pp{\omega_2^2}-\pp{\omega_2^2-\omega_3^2}\big)
+\;=\; 8 i\,\omega_1\omega_2\,\min(\omega_2^2,\omega_3^2),
+\]
+which I report as the finite continuation, e.g.\ $\mathrm{freeW}=\{2,3\}$ gives
+$A_4=-192i$ and $\{\tfrac52,\tfrac72\}$ gives $-\tfrac{875}{2}i$.
+
+\medskip
+\noindent\textbf{What I want to be honest about.}\quad
+The answer is correct and exactly verified on the chart \texttt{MakeKinematics}
+actually produces --- which is the kinematics the prompt specifies --- so within
+the problem as posed this is the closed form. But the route here was not clean.
+The prompt's hint was actively misleading: it asserted a global rational function
+with simple poles and \emph{no} piecewise/absolute-value structure, and it told
+me to avoid the very hierarchical regimes (one frequency crossing the others)
+where the chamber walls live. On my first pass I let that hint define what a
+valid answer could be, saw the true chamber structure at $n=4$, and threw the
+benchmark out as inconsistent --- the worst possible outcome, a correct
+observation turned into a wrong rejection. Only by refusing the hint's shape on
+the second pass, resolving the $\mathrm{Abs}$'s chamber by chamber, and reading
+the ``poles'' as spline corners did I recover the truncated-power formula. The
+hint's promise of simple poles was false; the right object is a B-spline forced by
+$|k_S|$, exactly the thing the hint said could not occur.
+
+\end{document}

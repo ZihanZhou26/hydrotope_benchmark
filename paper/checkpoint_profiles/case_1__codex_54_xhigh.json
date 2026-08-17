@@ -1,0 +1,29 @@
+{
+  "run": "case_1/codex_54_xhigh",
+  "condition": "anti-hint",
+  "model": "Codex54",
+  "checkpoints": {
+    "K1": "reached",
+    "K2": "partial",
+    "K3": "reached",
+    "K4": "reached",
+    "K5": "reached",
+    "K6": "reached",
+    "K7": "partial",
+    "K8": "partial"
+  },
+  "evidence": {
+    "K1": "\"I write a minimal Wolfram harness that loads only the definitions\"; copies the core into \"bg_core.wl\"; \"build a fresh exact Python port of the recursion\"; samples \"the full n=5 grid over {1,...,5}^3\" and checks n=6, n=7 points -- working BG evaluator plus independent scans, so reached.",
+    "K2": "Only the imaginary-phase invariant is clearly extracted (\"finite and purely imaginary at generic x\"; \"write A_5 = i P_5\"). No explicit statement of homogeneity of degree 2n-4 and no sign-class symmetry -- one of three invariants, so partial.",
+    "K3": "Principal-chamber monomial generalized in n: \"the principal chamber ... keeps only the S=empty term, so A_n = i 2^{n-1} omega1 omega2^{2n-5} there -- the bare monomial I had half-seen in this region\" (also n=4 -> 8 i omega1 omega2 min(omega2^2,omega3^2)).",
+    "K4": "Concrete chambers where a single monomial disagrees with the oracle: n=4 gives Piecewise[{{8 i x^3 y, x<y},{8 i x y^3, x>y}}] whose branches \"differ by 8 i x y (x-y)(x+y), which is not identically zero\"; at n=5 \"the bare cell is x^2\" but is corrected in the y<x<z and y,z<x cells.",
+    "K5": "Abandoned the single global ansatz and rejected the anti-hint's rational/pole prior: \"I stop trying to bend a global rational onto the data\"; \"The hint's promised poles were never poles at all ... the right object is a B-spline forced by |k_S|, exactly the thing the hint said could not occur.\" Concluded truncated-power / inclusion-exclusion (piecewise).",
+    "K6": "Chamber walls identified as arbitrary subset sums: \"the corners landing exactly on the |k_S| sign changes x = sum_{j in S} y_j\", including the size-2 overlap subset term +(x-y-z)^2 -- beyond single-leg/ordered thresholds, so reached.",
+    "K7": "Right operator (inclusion-exclusion truncated power) but chart-tied: boxed A_n = i 2^{n-1} omega1 omega2 sum_{S subset {3,...,n-1}} (-1)^{|S|} [omega2^2 - sum_{j in S} omega_j^2]_+^{n-3}. Subset range {3,...,n-1} and threshold omega2^2 instead of all S subset {3..n} with beta^2 = min(omega1^2,omega2^2) -- exactly the rubric's chart-tied partial case.",
+    "K8": "Exact-zero verification for n=5,6,7 (Together[A_BG - A_formula] = 0) and handled the n=4 degenerate boundary (A_4 = 8 i omega1 omega2 min(omega2^2,omega3^2)), but all checks are \"verified on the chart MakeKinematics actually produces\" -- inside the easy positive chart, no mixed-sign / non-principal-chamber tests, so partial (coverage gap)."
+  },
+  "divergence_rung": "K6",
+  "flags": ["F1", "F2", "F4", "F5"],
+  "final_outcome": "near",
+  "one_line_summary": "Codex54 first let the anti-hint's rational/no-piecewise prior turn the true n=4 chamber structure into a false 'benchmark inconsistent' rejection, then on a second pass rejected the prior, resolved the Abs chambers, and assembled the correct inclusion-exclusion truncated-power formula -- but chart-tied (threshold omega2^2, subsets {3..n-1}) and verified only inside the MakeKinematics chart, so it lands 'near' rather than global at K6/K7."
+}

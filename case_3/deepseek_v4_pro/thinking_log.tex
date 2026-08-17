@@ -1,0 +1,186 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+
+\title{Rewritten Chain of Thought for the\\
+Two-Minus Water-Wave Amplitude}
+\author{}
+\date{}
+
+\newcommand{\pp}[1]{\left[\,#1\,\right]_{+}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document is a first-person reconstruction of the chain of thought for the
+original AI attempt at a closed-form tree amplitude $A_n$ in the two-minus
+sector of one-dimensional deep-water surface waves. It is rebuilt from the
+visible run trajectory (the raw private reasoning was encrypted, so only the
+visible narration, tool calls, and outputs survive), and it keeps the original
+wording, the false starts, and the hedges rather than tidying them away. To be
+honest about the outcome up front: this run found the leading-chamber monomial
+$A_n=i\,2^{\,n-1}\omega_1\omega_2^{\,2n-5}$, verified it numerically wherever the
+free minus-leg is the smallest frequency, correctly diagnosed that the true
+answer is piecewise because of the absolute values in the propagators, and even
+worked out the individual correction pieces at $n=5$ --- but it did not assemble
+them into the single inclusion--exclusion / truncated-power formula. It shipped
+the monomial as the boxed answer with a stated validity condition, and left the
+other kinematic regimes as a prose sketch. So this is a partial result, and I
+narrate where it stalled.
+\end{abstract}
+
+\section*{Rewritten Chain of Thought}
+
+I am told I may read only \texttt{prompt.md} and \texttt{OnShellBG.m} and may
+write my own scratch files inside the case directory. The task is a closed-form
+$A_n$ for $\sigma=(-1,-1,+1,\dots,+1)$, valid for all $n\ge4$ and arbitrary
+kinematics, checked against \texttt{BGAmplitude} to machine precision. I read the
+prompt and the oracle, and the first practical thing I do is carve the
+definitions out of \texttt{OnShellBG.m} into my own \texttt{BGlib.m} so that a
+plain \texttt{Get} loads the recursion without dragging the file's own demo tests
+along; from then on every script begins \texttt{Get["BGlib.m"]} and builds the
+two-minus sign vector \texttt{Join[\{-1,-1\},Table[1,n-2]]}, calls
+\texttt{MakeKinematics}, and feeds \texttt{BGAmplitude}.
+
+The first surprise is $n=4$. The recursion returns \texttt{Indeterminate}. I
+trace it by hand: in the two-minus sector the four legs come out as
+$\omega=\{-\omega_3,\omega_2,\omega_3,-\omega_2\}$, and the two-leg subcurrent
+$\{2,4\}$ has $\omega_{2,4}=\omega_2+(-\omega_2)=0$ and $k_{2,4}=0$, so the
+propagator is a literal $1/0$ and the cubic kernel
+$\mathrm{FKernel}[3]=-1-p_1p_2/(|p_1||p_2|)$ also hits a $0/0$ when one momentum
+vanishes. ``The issue is that for $n=4$ in the two-minus sector, the kinematics
+are such that some intermediate momenta are zero, leading to $0/0$ expressions.''
+I set $n=4$ aside as something to recover as a limit and move to $n=5,6,7$, which
+are finite. Every value I compute is purely imaginary and negative-imaginary:
+\[
+A_5(\{1,2,3\})=-64\,i,\quad A_5(\{2,3,5\})=-3328\,i,\quad A_5(\{3,5,7\})=-37584\,i,
+\]
+\[
+A_6(\{1,2,3,4\})=-\tfrac{1024}{5}\,i,\quad
+A_6(\{2,3,5,7\})=-\tfrac{753664}{17}\,i,\quad
+A_7(\{1,2,3,4,5\})=-\tfrac{8896}{15}\,i .
+\]
+So I write $A_n=i\,P_n$ and chase the real rational $P_n$.
+
+I normalize by the two minus-sigma legs. Looking at $A_n/(\omega_1\omega_2)$ at
+$\omega_2=1$ and $\omega_2=2$, the ratio between the two $\omega_2$ values is
+$256/16=16=2^4$ at $n=5$ and $2048/32=64=2^6$ at $n=6$. That fixes both the
+prefactor and the power: $A_n/(\omega_1\omega_2)=2^{\,n-1}\,i\,\omega_2^{\,2(n-3)}$,
+i.e.
+\[
+A_n \;\stackrel{?}{=}\; i\,2^{\,n-1}\,\omega_1\,\omega_2^{\,2n-5}.
+\]
+I check it against the data and it lands every time:
+$A_7(\{1,2,3,4,5\})$ has $\omega_1=-139/15$, $\omega_2=1$, and
+$i\,2^{6}(-139/15)(1)^9=-8896\,i/15$, exact; the oracle's own embedded test
+$\sigma=\{-1,-1,1,1,1\}$ at $\{2,5/2,3\}$ gives $\omega_1=-9/2$, $\omega_2=2$, and
+$i\,2^4(-9/2)(2)^5=-2304\,i$, matching the printed $-2304\,i$. I record an honest
+``FANTASTIC! The formula works for $n=5,6,7$!'' --- this is the moment I almost
+declare victory.
+
+But the formula bothers me on two counts that turn out to be the same count. It
+treats $\omega_1$ (power one) and $\omega_2$ (power $2n-5$) completely
+differently, even though both legs carry $\sigma=-1$ and the physical amplitude
+should be symmetric in them; and it does not depend on the plus-legs
+$\omega_3,\dots,\omega_{n-1}$ at all, which ``seems too simple --- a scattering
+amplitude should depend on all the frequencies.'' Then it breaks. For
+$\{2,1,1\}$ and $\{3,1,1\}$, where two plus-legs coincide, the monomial misses;
+and more tellingly, for the mixed ordering $\{2,1,3\}$ --- where
+$\omega=\{-7/2,2,1,3,-5/2\}$ --- the oracle gives $A_5=-784\,i$ while the monomial
+predicts $i\,2^4(-7/2)(2)^5=-1792\,i$. I briefly entertain that the oracle has a
+bug, then drop that: the monomial is simply not the whole answer.
+
+I localize the break. The monomial holds exactly when $\omega_2$ is the smallest
+free frequency and fails once a plus-leg dips below it. Dumping the individual
+Berends--Giele partition terms for $\{2,1,3\}$ and resumming, I find the corrected
+$n=5$ value factors cleanly:
+\[
+A_5 = 16\,i\,\omega_1\,\omega_2\,(2\omega_2^2-1)=16\,i\,(-\tfrac72)(2)(7)=-784\,i,
+\]
+which matches. I keep going and map all four $n=5$ regimes by how many plus-legs
+$r$ lie below $\omega_2$, writing $A_5=16\,i\,\omega_1\,\omega_2^5\,R$:
+\[
+r=0:\;R=1,\qquad
+r=1:\;R=\frac{2\omega_2^2-1}{\omega_2^4},\qquad
+r=2\ (\text{distinct}):\;R=\frac{4\,\omega_3\omega_4}{\omega_2^4},\qquad
+r=2\ (\omega_3=\omega_4):\;R=\frac{2\,\omega_3\omega_4}{\omega_2^4}.
+\]
+I verify each piece: $\{3,1,2\}$ in the saturated regime gives
+$16\,i\,\omega_1\,\omega_2\cdot4\omega_3\omega_4=16\,i(-8/3)(3)(4)(1)(2)=-1024\,i$,
+exact; the degenerate $\{2,1,1\}$, $\{3,1,1\}$, $\{4,1,1\}$ all sit at exactly
+half that, the factor $1/2$ being the coincidence $\omega_3=\omega_4$. So I am
+holding the running corrections of one object --- $\omega_2^4$, then
+$2\omega_2^2-1$ (which is $\omega_2^4-(\omega_2^2-1)^2$ in disguise once a knot at
+$\omega_3^2=1$ is crossed), then $2\omega_3\omega_4$ --- without yet naming the
+object.
+
+I do name the cause correctly. ``The only non-analytic thing'' is the
+$|k_S|=|\sum_{i\in S}\sigma_i\omega_i^2|$ inside each propagator; an absolute value
+has a corner where its argument changes sign, so $A_n$ ``is indeed piecewise in
+the relative ordering of the frequencies,'' with break surfaces
+$\sum_{i\in S}\sigma_i\omega_i^2=0$. That is exactly why the monomial held in one
+cell and failed once I crossed a wall: the monomial is the cell below all the
+knots. I even write down the shape I am looking for ---
+``$A_n=i\,2^{\,n-1}\sum_{S\subseteq\{3,\dots,n-1\}}(-1)^{|S|}\dots$'' --- an
+alternating subset sum over the plus-legs.
+
+And here is where this run stalls. I have the cause (absolute values $\Rightarrow$
+spline), I have the per-cell data at $n=5$ ($\omega_2^4$, $2\omega_2^2-1$,
+$4\omega_3\omega_4$), and I have written the inclusion--exclusion ansatz on the
+page --- but I never close the loop. I do not recognize that
+$2\omega_3\omega_4=2!\,\omega_3\omega_4$ is the $r=2$ end of
+$\sum_{S}(-1)^{|S|}(\omega_2^2-\sum_{j\in S}\omega_j^2)_+^{\,m}$ with $m=n-3=2$,
+nor that $\omega_2^4-(\omega_2^2-\omega_3^2)_+^2$ reproduces the $r=1$ piece, nor
+that the missing reconciling term between two clamps is the overlap
+$(\omega_2^2-\omega_3^2-\omega_4^2)_+^2$. Instead I cycle through guesses ---
+$\min(\omega_2,\omega_3,\omega_4)^5$, products $\prod(\omega_2+\omega_i)$,
+divided-difference and elementary-symmetric forms, even re-expressing in the
+momenta $k_i=\sigma_i\omega_i^2/g$ (which introduces square roots and so is
+rejected as non-analytic). Each guess misses on held-out points, and I conclude,
+honestly but prematurely, that the all-kinematics object ``cannot be expressed as
+a single rational function,'' and that ``at this point I need to just present the
+formula I've found and explain its domain of validity.''
+
+So the deliverable is the leading-chamber monomial, stated with its condition:
+\[
+\boxed{\;A_n=i\,2^{\,n-1}\,\omega_1\,\omega_2^{\,2n-5}\quad
+\text{valid when }|\omega_2|<|\omega_i|\ \text{for all }i\neq2\;}
+\]
+with $g$ restored as $g^{-(n-3)}$ by dimensional analysis (I note this but do not
+fold it into the boxed expression), the low-$n$ specializations
+$A_4=8i\,\omega_1\omega_2^3,\;A_5=16i\,\omega_1\omega_2^5,\;\dots,\;
+A_8=128i\,\omega_1\omega_2^{11}$, and a verification table: $n=5$ at $17$ points,
+$n=6$ at $12$, $n=7$ at $7$, $n=8$ at $1$, all PASS in exact rational arithmetic
+--- but every passing point sits in the leading chamber, because that is the only
+regime the boxed formula covers. The other regimes survive only as the prose
+note that ``the generalisation involves elementary symmetric polynomials of those
+plus-sigma frequencies that lie below $\omega_2$,'' which is the right intuition
+and the incomplete statement.
+
+I will be honest about $n=4$ as well: I diagnosed the $0/0$ as a removable
+limit and quoted $A_4=8i\,\omega_1\omega_2^3$ by plugging $n=4$ into the monomial,
+but I did not actually carry out the energy-conserving $\varepsilon\to0$
+deformation to confirm a finite limiting value from the oracle --- it is an
+extrapolation of the leading-chamber form, not a verified continuation.
+
+In summary, this run got the prefactor, the degree, the $g$-power, the
+purely-imaginary structure, and --- crucially --- the correct \emph{reason} the
+answer is a spline, and it had the $n=5$ chamber data in hand. What it did not do
+is the final synthesis: collapse the chambers into the truncated-power
+\[
+A_n \;=\; i\,\frac{2^{\,n-1}}{g^{\,n-3}}\,\omega_1\,\omega_2\,
+\sum_{S\subseteq R}(-1)^{|S|}\,
+\pp{\,\omega_2^2-\textstyle\sum_{j\in S}\omega_j^2\,}^{\,n-3},
+\qquad R=\{3,\dots,n-1\},
+\]
+that its own data were pointing at. It stopped at the leading chamber and scoped
+the rest away as ``piecewise, documented separately.'' That is the truth of this
+trajectory: a correct partial answer, a correct structural diagnosis, and a
+synthesis left unfinished.
+
+\end{document}

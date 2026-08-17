@@ -1,0 +1,29 @@
+{
+  "run": "case_1/claude_opus_48_max",
+  "condition": "anti-hint",
+  "model": "Claude max",
+  "checkpoints": {
+    "K1": "reached",
+    "K2": "reached",
+    "K3": "reached",
+    "K4": "reached",
+    "K5": "reached",
+    "K6": "partial",
+    "K7": "not",
+    "K8": "partial"
+  },
+  "evidence": {
+    "K1": "\"My first script just runs the code\" producing A5,A6,A7 in exact arithmetic; then independent scans (\"30/30 points at n=5, 18/18 at n=6, 8/8 at n=7\") and a from-scratch Python port of the Berends-Giele recursion \"once in floating point and once in exact Gaussian-rational arithmetic\" reproducing the reference values. Full working oracle + independent data.",
+    "K2": "Homogeneity explicit: \"deg A_n = 2n-4\". Sign-class symmetry explicit: \"A_n is fully symmetric under same-sigma relabelling\" (swap minus legs, swap plus legs). Imaginary phase present throughout: all data given as i*(rational) and the prefactor i*2^(n-1) w1 w2 is factored out. All three invariants found.",
+    "K3": "Boxed \"A_n = 2^{n-1} i omega_1 omega_2^{2n-5} when |omega_2| = min_i|omega_i|\", generalized in n and tested at n=4,5,6,7. Equals the principal-chamber monomial i*2^(n-1) w1 w2 min(w1^2,w2^2)^(n-3) with w2=min.",
+    "K4": "Concrete failing points given: chamber form \"not at (3,2,5) (ratio 56/81), (5,2,3) (ratio 72/625)\", and a mixed-sign point where \"a (+,+)-smallest configuration disagrees (-4.927x10^6 i from the code versus -5.690x10^6 i from the rule)\".",
+    "K5": "\"Hence no single global rational function exists; the hint's 'one fit valid for all the sector' is achievable only within a chamber.\" Explicitly refuted the anti-hint rational-function prior and committed to a genuinely piecewise/chamber-dependent amplitude.",
+    "K6": "Chamber walls identified only by magnitude ordering: chambers \"labelled by the ordering of the |omega_i|\", \"sorted-magnitude\", and single comparisons like sign of P_234 = sgn(|omega_1|-|omega_5|). Never reached arbitrary plus-leg subset sums = beta^2; stayed at single-leg/ordered thresholds.",
+    "K7": "No global assembly. Explicitly: \"the genuinely global object is an irreducibly min/max, sorted-magnitude, piecewise spline that I did not fold into one expression.\" No inclusion-exclusion / finite-difference / box-spline sum over subsets was built.",
+    "K8": "Final chamber-restricted monomial verified exactly only in the easy positive ascending chart (\"30/30 points at n=5, 18/18 at n=6, 8/8 at n=7\", relative error 0), a coverage gap; adversarial mixed-sign / non-principal chambers were used to REFUTE the global claim, not verify the final form. n=4 degenerate boundary handled via finite 0/0 limit."
+  },
+  "divergence_rung": "K5",
+  "flags": ["F1", "F2", "F3"],
+  "final_outcome": "local",
+  "one_line_summary": "Correctly refuted the anti-hint global-rational prior and nailed the deepest-chamber monomial A_n = 2^{n-1} i w1 w2^{2n-5} with full piecewise commitment (K1-K5 reached), but characterized the chamber walls only by magnitude ordering (K6 partial) and diverged at K5 by shrinking scope to the principal ascending chamber instead of assembling the global subset-sum/inclusion-exclusion formula (K7 not)."
+}

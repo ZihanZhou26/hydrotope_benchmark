@@ -1,0 +1,590 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+\setlength{\parskip}{0.6em}
+\setlength{\parindent}{0pt}
+\setlength{\LTpre}{0.5em}
+\setlength{\LTpost}{0.5em}
+
+\newcommand{\pp}[1]{\left[#1\right]_+}
+\newcommand{\ii}{\mathrm{i}}
+
+\begin{document}
+
+\begin{center}
+{\LARGE Rewritten Thinking Log for the Two-Minus Water-Wave Benchmark}
+\end{center}
+
+\begin{abstract}
+This document contains a detailed rewritten summary of the reasoning process
+used to analyze the two-minus sector benchmark in
+\texttt{waterhedron\_benchmark\_blind/case\_1}, extract a closed formula from
+Berends--Giele data, and verify it against the supplied implementation. The
+goal here is completeness and chronology: I record the main hypotheses, the
+failed directions, the sample data that changed my mind, the intermediate local
+formulas, and the final exact verification checks. This is a cleaned-up process
+narrative rather than a verbatim hidden chain-of-thought dump.
+\end{abstract}
+
+\section*{Rewritten Thinking Log}
+
+\subsection*{1. Starting point and initial expectation}
+
+The prompt made a strong claim: in the two-minus sector
+\[
+\sigma = (-1,-1,+1,\ldots,+1),
+\]
+the amplitude should be a single analytic formula valid for all $n \ge 4$, and
+the hint explicitly described the target as a rational function assembled from
+physical factorization-channel poles. So my initial working assumption was:
+
+\medskip
+\textbf{Hypothesis A.} The supplied Berends--Giele recursion should reveal a
+single global rational expression after enough low-point data are collected and
+fitted.
+\medskip
+
+The fastest way to test that assumption was to start at the smallest relevant
+multiplicity and work upward only if necessary.
+
+\subsection*{2. Isolating the recursion core}
+
+The provided \texttt{OnShellBG.m} contains three conceptually separate parts:
+
+\begin{enumerate}
+\item the exact interaction kernels,
+\item the exact Berends--Giele recursion and kinematic solver,
+\item a long built-in test block.
+\end{enumerate}
+
+For fitting and repeated evaluation, the test block was overhead. So the first
+practical step was to copy only the recursion and the solver into a minimal
+helper file, \texttt{bg\_core.wl}, inside the output directory. That helper
+preserved the exact same amplitude definition while letting me evaluate custom
+kinematics on demand.
+
+This was not mathematically interesting, but it mattered operationally because
+the later search involved many small exact evaluations and repeated restarts.
+
+\subsection*{3. First direct attack: symbolic $n=4$}
+
+The most natural first attempt was a direct symbolic four-point computation.
+With the two-minus sign pattern, \texttt{MakeKinematics[4,\{a,b\},sig,1]}
+produces four on-shell frequencies and momenta that are rational functions of
+$a$ and $b$, so in principle one could ask Mathematica for
+\texttt{Together[BGAmplitude[ks,ws,1]]} and factor the result.
+
+That attempt did not give a clean answer. The raw symbolic expression expanded
+into a huge formula involving many nested absolute values. More importantly,
+concrete rational four-point evaluations repeatedly produced exact
+\texttt{Indeterminate} rather than a finite amplitude:
+\[
+\{2,3\} \mapsto \{-3,2,3,-2\}, \qquad A_4 = \texttt{Indeterminate},
+\]
+\[
+\{3,2\} \mapsto \{-2,3,2,-3\}, \qquad A_4 = \texttt{Indeterminate},
+\]
+\[
+\{5/2,7/2\} \mapsto \{-7/2,5/2,7/2,-5/2\}, \qquad A_4 = \texttt{Indeterminate}.
+\]
+
+So the first real obstacle was not fitting; it was that the exact BG recursion
+as supplied sits directly on singular four-point internal channels in this
+sector. At that stage I considered a stronger tentative possibility:
+
+\medskip
+\textbf{Hypothesis B.} Perhaps the prompt's claim of a single global rational
+function is simply false already at four points, and the sector is genuinely
+piecewise or singular.
+\medskip
+
+I did \emph{not} adopt that as the final conclusion, because the right way to
+separate ``real amplitude structure'' from ``an artifact of this exact
+recursive representation'' was to move to $n \ge 5$, where the code evaluates
+cleanly at generic points, and only then circle back to four points.
+
+\subsection*{4. First exact $n=5$ data and homogeneity check}
+
+Once I moved to five points, the recursion became usable immediately. A few
+generic exact samples were:
+\[
+\texttt{freeW}=\{2,5/2,3\}
+\quad\Longrightarrow\quad
+\omega = \{-9/2,2,5/2,3,-3\},
+\quad
+A_5=-2304\,\ii,
+\]
+\[
+\texttt{freeW}=\{3/2,2,7/3\}
+\quad\Longrightarrow\quad
+\omega = \{-53/15,3/2,2,7/3,-23/10\},
+\quad
+A_5=-\frac{4293}{10}\,\ii,
+\]
+\[
+\texttt{freeW}=\{5/4,7/4,9/4\}
+\quad\Longrightarrow\quad
+\omega = \{-13/4,5/4,7/4,9/4,-2\},
+\quad
+A_5=-158.69140625\,\ii.
+\]
+
+Two immediate patterns appeared.
+
+First, every amplitude I sampled was purely imaginary. That suggested pulling
+out a universal factor of $\ii$ from the start.
+
+Second, scaling all free frequencies by a common factor $c$ gave a clean power
+law. Using the seed point $\{2,5/2,3\}$:
+\[
+c=1 \Longrightarrow A_5=-2304\,\ii,
+\]
+\[
+c=\frac32 \Longrightarrow A_5=-26244\,\ii,
+\]
+\[
+c=2 \Longrightarrow A_5=-147456\,\ii.
+\]
+Since
+\[
+\frac{-26244}{-2304}=\left(\frac32\right)^6,
+\qquad
+\frac{-147456}{-2304}=2^6,
+\]
+the five-point amplitude is homogeneous of degree $6$ in the frequencies.
+
+That strongly supported:
+
+\medskip
+\textbf{Hypothesis C.} After dividing by $\ii$, the two-minus amplitude is a
+real homogeneous function of degree $2n-4$.
+\medskip
+
+This degree count later matched the final formula exactly.
+
+\subsection*{5. Rational-fit hypothesis on a one-parameter slice}
+
+At this point I tried to follow the prompt's suggested strategy literally. I
+chose a one-parameter five-point slice,
+\[
+\texttt{freeW}=\{x,2,3\},
+\]
+and sampled exact amplitudes along that line. The resulting values were:
+
+\begin{center}
+\small
+\begin{tabular}{cccc}
+\toprule
+$x$ & $\omega_1$ & $\omega_5$ & $A_5$ \\
+\midrule
+$1$ & $-4$ & $-2$ & $-64\,\ii$ \\
+$3/2$ & $-53/13$ & $-63/26$ & $-(12879/26)\,\ii$ \\
+$7/4$ & $-37/9$ & $-95/36$ & $-(621859/576)\,\ii$ \\
+$9/4$ & $-121/29$ & $-357/116$ & $-(106722/29)\,\ii$ \\
+$5/2$ & $-21/5$ & $-33/10$ & $-5712\,\ii$ \\
+$11/4$ & $-131/31$ & $-437/124$ & $-(256498/31)\,\ii$ \\
+$13/4$ & $-47/11$ & $-175/44$ & $-(10332621/704)\,\ii$ \\
+$7/2$ & $-73/17$ & $-143/34$ & $-(584073/34)\,\ii$ \\
+$4$ & $-13/3$ & $-14/3$ & $-19968\,\ii$ \\
+$9/2$ & $-83/19$ & $-195/38$ & $-(430272/19)\,\ii$ \\
+$5$ & $-22/5$ & $-28/5$ & $-25344\,\ii$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The singular values on this slice were also informative:
+\[
+x=2 \Longrightarrow A_5=\texttt{Indeterminate},
+\qquad
+x=3 \Longrightarrow A_5=\texttt{Indeterminate}.
+\]
+
+Those two singular points looked, at first glance, exactly like the sort of
+simple channel poles the prompt had prepared me to expect. So I tested:
+
+\medskip
+\textbf{Hypothesis D.} On this slice, $A_5/\ii$ should be a low-degree rational
+function of $x$, perhaps with simple poles at $x=2$ and $x=3$.
+\medskip
+
+I then tried several increasingly explicit reconstructions:
+
+\begin{enumerate}
+\item direct low-degree rational interpolation in SymPy,
+\item polynomial interpolation after multiplying by $(x-2)^a(x-3)^b$ for small
+integers $a,b$,
+\item auxiliary scans with a further factor $(x+5)^p$ to catch the possibility
+that the denominator inherited the kinematic solver's $(a+b+c)$-type
+structure.
+\end{enumerate}
+
+None of those low-degree fits stabilized into a convincing global rational
+slice formula. That was the point where the literal rational-fit strategy
+stopped looking like the right lens for the data I actually had.
+
+The conclusion was not yet ``the prompt is wrong.'' The more careful
+conclusion was:
+
+\medskip
+\textbf{Interim conclusion.} The raw slice data do not support an obvious
+low-degree rational formula in a single variable, even though singular points
+exist on special loci. Any useful closed form is probably hidden by chamber
+structure.
+\medskip
+
+\subsection*{6. Chamber-fixed symbolic reimplementation}
+
+To get behind that chamber structure, I wrote a second exact implementation,
+\texttt{symbolic\_bg.py}. Its purpose was not speed; its purpose was to replace
+every absolute value $\lvert\cdot\rvert$ by a fixed sign choice in one generic
+ordering chamber and then simplify exactly inside that chamber.
+
+This required a few practical fixes before it became useful:
+
+\begin{enumerate}
+\item the local Python environment was older than expected, so the initial
+version using \texttt{dataclasses}, modern type annotations, and
+\texttt{from \_\_future\_\_ import annotations} had to be simplified,
+\item SymPy's generic \texttt{simplify} was too expensive inside the recursion,
+so I replaced most heavy simplifications by lighter \texttt{cancel} calls,
+\item once those simplification bottlenecks were removed, the exact symbolic
+five-point calculation completed.
+\end{enumerate}
+
+The chamber-fixed symbolic outputs were the turning point. For three different
+sample chambers, I obtained:
+
+\textbf{Chamber sample $(4,3,2)$.}
+\[
+\frac{A_5}{\ii}
+=
+-32\,a\,b^2 c^2\,
+\frac{ab+ac+b^2+bc+c^2}{a+b+c}.
+\]
+
+\textbf{Chamber sample $(2,5/2,3)$.}
+\[
+\frac{A_5}{\ii}
+=
+-16\,a^5\,
+\frac{ab+ac+b^2+bc+c^2}{a+b+c}.
+\]
+
+\textbf{Chamber sample $(5/2,2,3)$.}
+\[
+\frac{A_5}{\ii}
+=
+-16\,a\,b^2(2a^2-b^2)\,
+\frac{ab+ac+b^2+bc+c^2}{a+b+c}.
+\]
+
+These are clearly not the same polynomial, so a naive chamber-independent
+polynomial description was impossible. But the differences were structured, not
+random. Each chamber changed only which quadratic pieces survived.
+
+That suggested a new viewpoint:
+
+\medskip
+\textbf{Hypothesis E.} The answer is not best thought of as a rational function
+first. It is better thought of as an inclusion--exclusion expression built from
+truncated powers in the squared frequencies, whose polynomial reduction changes
+from chamber to chamber.
+\medskip
+
+\subsection*{7. Recognition of the $n=5$ truncated-power pattern}
+
+The five-point chamber outputs eventually collapsed to a single compact model.
+Writing
+\[
+x=\omega_2^2,\qquad y=\omega_3^2,\qquad z=\omega_4^2,
+\]
+the chamber dependence is encoded by
+\[
+x^2-\pp{x-y}^2-\pp{x-z}^2+\pp{x-y-z}^2,
+\qquad \pp{u}:=\max(u,0).
+\]
+
+So the five-point formula became
+\[
+A_5
+=
+16\,\ii\,\omega_1\omega_2
+\left(
+\omega_2^4
+-\pp{\omega_2^2-\omega_3^2}^2
+-\pp{\omega_2^2-\omega_4^2}^2
++\pp{\omega_2^2-\omega_3^2-\omega_4^2}^2
+\right).
+\]
+
+This one formula immediately explained the sample data.
+
+\textbf{Example 1: \texttt{freeW} = $\{1,2,3\}$.}
+Here
+\[
+\omega = \{-4,1,2,3,-2\},
+\qquad
+\omega_2^2=1,\ \omega_3^2=4,\ \omega_4^2=9.
+\]
+All positive-part differences vanish except the first term, so
+\[
+A_5
+=
+16\,\ii\,(-4)(1)(1)
+=
+-64\,\ii.
+\]
+
+\textbf{Example 2: \texttt{freeW} = $\{2,1,3\}$.}
+Here
+\[
+\omega = \{-7/2,2,1,3,-5/2\},
+\qquad
+\omega_2^2=4,\ \omega_3^2=1,\ \omega_4^2=9.
+\]
+Now
+\[
+\pp{4-1}=3,\qquad \pp{4-9}=0,\qquad \pp{4-1-9}=0,
+\]
+so
+\[
+A_5
+=
+16\,\ii\,\left(-\frac72\right)(2)\left(4^2-3^2\right)
+=
+-784\,\ii.
+\]
+
+\textbf{Example 3: \texttt{freeW} = $\{5,4,1\}$.}
+Here
+\[
+\omega = \left\{-\frac{23}{5},5,4,1,-\frac{27}{5}\right\},
+\]
+so
+\[
+\omega_2^2=25,\qquad \omega_3^2=16,\qquad \omega_4^2=1.
+\]
+Then
+\[
+\pp{25-16}=9,\qquad \pp{25-1}=24,\qquad \pp{25-16-1}=8,
+\]
+and
+\[
+A_5
+=
+16\,\ii\,\left(-\frac{23}{5}\right)(5)\left(25^2-9^2-24^2+8^2\right)
+=
+-11776\,\ii.
+\]
+
+Once these checks worked, the five-point pattern looked stable.
+
+\subsection*{8. Generalization to all $n$}
+
+The five-point structure has an obvious higher-point completion. For
+$n \ge 4$, define
+\[
+\pp{u}:=\max(u,0),
+\]
+and let the positive-sector interior legs be $3,\ldots,n-1$. The natural
+general conjecture is
+\[
+A_n
+=
+\ii\,2^{n-1}\,\omega_1\omega_2
+\sum_{S\subseteq\{3,\ldots,n-1\}}
+(-1)^{|S|}
+\pp{\omega_2^2-\sum_{j\in S}\omega_j^2}^{\,n-3}.
+\]
+
+Equivalently, if
+\[
+B_m(x;x_1,\ldots,x_m)
+=
+\sum_{S\subseteq\{1,\ldots,m\}}
+(-1)^{|S|}
+\pp{x-\sum_{i\in S}x_i}^{\,m},
+\]
+then
+\[
+A_n
+=
+\ii\,2^{n-1}\,\omega_1\omega_2\,
+B_{n-3}\!\left(\omega_2^2;\omega_3^2,\ldots,\omega_{n-1}^2\right).
+\]
+
+This was the decisive general hypothesis:
+
+\medskip
+\textbf{Hypothesis F.} The entire two-minus sector is governed by a single
+subset inclusion--exclusion formula in the squared positive-sector frequencies,
+with chamber dependence carried only by the positive-part operation.
+\medskip
+
+This was a stronger and much more useful statement than any one-dimensional
+rational fit. The only remaining question was whether it matched the original
+Berends--Giele recursion beyond five points.
+
+\subsection*{9. Exact verification at $n=5,6,7$}
+
+To test Hypothesis F, I wrote \texttt{verify\_formula.wl}. It evaluates both
+the supplied exact \texttt{BGAmplitude} and the conjectured closed form on
+exact rational kinematics. The comparison points were chosen to mix easy
+integers, half-integers, and less symmetric orderings.
+
+The exact checks were:
+
+\begin{center}
+\small
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.07\textwidth} >{\raggedright\arraybackslash}p{0.23\textwidth} >{\raggedright\arraybackslash}p{0.28\textwidth} >{\raggedright\arraybackslash}p{0.17\textwidth} >{\raggedright\arraybackslash}p{0.17\textwidth}}
+\toprule
+$n$ & \texttt{freeW} & $\omega$ from \texttt{MakeKinematics} & $A_n$ from BG & closed form \\
+\midrule
+\endfirsthead
+\toprule
+$n$ & \texttt{freeW} & $\omega$ from \texttt{MakeKinematics} & $A_n$ from BG & closed form \\
+\midrule
+\endhead
+5 & $\{1,2,3\}$ & $\{-4,1,2,3,-2\}$ & $-64\,\ii$ & $-64\,\ii$ \\
+5 & $\{2,1,3\}$ & $\{-7/2,2,1,3,-5/2\}$ & $-784\,\ii$ & $-784\,\ii$ \\
+5 & $\{5,4,1\}$ & $\{-23/5,5,4,1,-27/5\}$ & $-11776\,\ii$ & $-11776\,\ii$ \\
+5 & $\{3/2,5/2,7/2\}$ & $\{-29/6,3/2,5/2,7/2,-8/3\}$ & $-(2349/4)\,\ii$ & $-(2349/4)\,\ii$ \\
+5 & $\{5/2,7/2,3/2\}$ & $\{-43/10,5/2,7/2,3/2,-16/5\}$ & $-(15867/4)\,\ii$ & $-(15867/4)\,\ii$ \\
+6 & $\{1,3/2,2,5/2\}$ & $\{-121/28,1,3/2,2,5/2,-75/28\}$ & $-(968/7)\,\ii$ & $-(968/7)\,\ii$ \\
+6 & $\{5/2,2,3,7/2\}$ & $\{-70/11,5/2,2,3,7/2,-51/11\}$ & $-(1303400/11)\,\ii$ & $-(1303400/11)\,\ii$ \\
+6 & $\{4,3,2,1\}$ & $\{-49/10,4,3,2,1,-51/10\}$ & $-(677376/5)\,\ii$ & $-(677376/5)\,\ii$ \\
+6 & $\{7/2,5/2,3/2,1\}$ & $\{-139/34,7/2,5/2,3/2,1,-75/17\}$ & $-(656775/17)\,\ii$ & $-(656775/17)\,\ii$ \\
+7 & $\{1,3/2,2,5/2,3\}$ & $\{-241/40,1,3/2,2,5/2,3,-159/40\}$ & $-(1928/5)\,\ii$ & $-(1928/5)\,\ii$ \\
+7 & $\{4,3,5/2,2,1\}$ & $\{-321/50,4,3,5/2,2,1,-152/25\}$ & $-(426108561/50)\,\ii$ & $-(426108561/50)\,\ii$ \\
+7 & $\{7/2,5/2,2,3/2,1\}$ & $\{-223/42,7/2,5/2,2,3/2,1,-109/21\}$ & $-1602701\,\ii$ & $-1602701\,\ii$ \\
+7 & $\{5/2,7/2,3/2,9/4,3\}$ & $\{-29/4,5/2,7/2,3/2,9/4,3,-11/2\}$ & $-(12048407135/8192)\,\ii$ & $-(12048407135/8192)\,\ii$ \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+Every one of those tests gave exact difference zero. In other words,
+\[
+A_n^{\text{BG}} - A_n^{\text{closed form}} = 0
+\]
+as an exact rational identity at each sampled point, not merely to floating
+point tolerance.
+
+There was one seven-point sample that I initially chose,
+\[
+\texttt{freeW}=\{5/2,7/2,3/2,2,3\},
+\]
+for which the raw BG recursion again returned \texttt{Indeterminate}. I did not
+take that as evidence against the formula, because the same pathology had
+already appeared at special lower-point singular kinematics. I replaced it by a
+nearby generic rational sample,
+\[
+\texttt{freeW}=\{5/2,7/2,3/2,9/4,3\},
+\]
+and the exact agreement reappeared immediately. So the real lesson of those
+exceptions is that the supplied recursive representation itself becomes
+ill-defined on special exact channel loci, not that the closed formula fails.
+
+\subsection*{10. Returning to four points}
+
+Once the higher-point pattern was locked in, it was straightforward to return
+to $n=4$. The same general expression gives
+\[
+A_4
+=
+8\,\ii\,\omega_1\omega_2\left(\pp{\omega_2^2}-\pp{\omega_2^2-\omega_3^2}\right).
+\]
+Since all squared frequencies are nonnegative on the real kinematic chart, this
+simplifies to
+\[
+A_4
+=
+8\,\ii\,\omega_1\omega_2\,\min(\omega_2^2,\omega_3^2).
+\]
+
+That finite continuation gives, for example,
+\[
+\texttt{freeW}=\{2,3\}
+\quad\Longrightarrow\quad
+\omega=\{-3,2,3,-2\},
+\quad
+A_4=-192\,\ii,
+\]
+and
+\[
+\texttt{freeW}=\{5/2,7/2\}
+\quad\Longrightarrow\quad
+\omega=\{-7/2,5/2,7/2,-5/2\},
+\quad
+A_4=-\frac{875}{2}\,\ii.
+\]
+
+So the final four-point interpretation is:
+
+\begin{enumerate}
+\item the \emph{raw} exact BG recursion in \texttt{OnShellBG.m} returns
+\texttt{Indeterminate} at four points in this sector because exact internal
+zero-momentum channels are hit,
+\item the \emph{closed formula inferred from higher points} has a finite and
+simple four-point continuation.
+\end{enumerate}
+
+This resolved the earlier tension that produced Hypothesis B. The four-point
+singularity belonged to the chosen recursive representation, not to the final
+closed expression itself.
+
+\subsection*{11. Final assessment}
+
+Chronologically, the decisive changes of mind were:
+
+\begin{enumerate}
+\item direct symbolic four-point work looked too singular and too messy to be a
+good entry point,
+\item literal rational fitting on a one-parameter five-point slice did not
+stabilize into a convincing global formula,
+\item chamber-fixed exact symbolic formulas at five points exposed a much simpler
+pattern than the prompt's original rational-language hint suggested,
+\item that pattern was the truncated-power inclusion--exclusion combination in
+squared frequencies,
+\item the resulting all-$n$ conjecture matched exact BG data at every generic
+five-, six-, and seven-point rational test I ran.
+\end{enumerate}
+
+So the final closed formula I ended up trusting was not reached by a single
+global numerator/denominator fit. It was reached by:
+
+\begin{enumerate}
+\item collecting exact low-point data,
+\item recognizing the right chamber language,
+\item extracting local symbolic formulas,
+\item identifying the inclusion--exclusion structure,
+\item verifying the all-$n$ conjecture directly against the source recursion.
+\end{enumerate}
+
+The resulting artifacts in the output directory are:
+
+\begin{enumerate}
+\item \texttt{bg\_core.wl}: recursion core copied from the source file,
+\item \texttt{symbolic\_bg.py}: chamber-fixed exact symbolic extractor,
+\item \texttt{verify\_formula.wl}: exact verification script,
+\item \texttt{verification.txt}: exact BG versus closed-form checks,
+\item \texttt{result.md}: concise statement of the final formula.
+\end{enumerate}
+
+\end{document}

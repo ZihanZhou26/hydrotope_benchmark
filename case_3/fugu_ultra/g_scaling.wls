@@ -1,0 +1,2 @@
+code=Import[FileNameJoin[{DirectoryName[$InputFileName],"..","OnShellBG.m"}],"Text"]; defs=StringSplit[code,"(* ================================================================ *)\n(*  VI. TESTS"][[1]]; ToExpression[defs];
+Do[sigmas={-1,-1,1,1,1};{ks,ws}=MakeKinematics[5,{2,5/2,3},sigmas,g];amp=BGAmplitude[ks,ws,g];Print["g=",g," amp=",InputForm[FullSimplify[amp]]," scaled=",InputForm[FullSimplify[amp*g^(5-3)]]];,{g,{1,2,3/2}}]

@@ -1,0 +1,180 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+
+\title{Rewritten Chain of Thought for the\\
+Two-Minus Water-Wave Amplitude}
+\author{}
+\date{}
+
+\newcommand{\pp}[1]{\left[\,#1\,\right]_{+}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document is a first-person reconstruction of the chain of thought for one
+AI run attacking the closed-form tree amplitude $A_n$ in the two-minus sector of
+one-dimensional deep-water surface waves. It is rebuilt from the visible run
+trajectory --- the raw private reasoning was encrypted, so only the narrated
+messages, tool calls, and outputs survive --- and it keeps the original wording,
+the false starts, and the hedges rather than tidying them away. I want to be
+clear at the outset about what this run did and did not achieve: it found the
+leading-chamber monomial $A_n=i\,2^{\,n-1}\omega_1\omega_2^{\,2n-5}$, verified it
+to exact equality against the oracle on the kinematics the supplied
+\texttt{MakeKinematics} hands out, resolved the $n=4$ endpoint as a limit, and
+\emph{stopped there}. It saw direct evidence that the amplitude is not a single
+polynomial --- a symmetric-polynomial fit that worked at some points and failed
+at others, and sign-flipped probes returning entirely different rationals --- but
+it read those as ``the ansatz was wrong'' and ``a different physical branch''
+rather than as the chamber walls of a piecewise spline. It never assembled the
+inclusion--exclusion / truncated-power formula that the absolute values in the
+propagators demand. So the boxed result below is honest for one chamber and
+scoped to it; it is not the all-kinematics closed form.
+\end{abstract}
+
+\section*{Rewritten Chain of Thought}
+
+I can only read \texttt{prompt.md} and \texttt{OnShellBG.m}, and I must not touch
+any other pre-existing file. The task is a closed-form $A_n$ for
+$\sigma=(-1,-1,+1,\dots,+1)$, valid for all $n\ge4$ and arbitrary kinematics, to
+be checked against \texttt{BGAmplitude} to machine precision. I read both files,
+confirm \texttt{wolframscript} is present (WolframScript 1.10.0) and that
+\texttt{sympy} 1.9 is available, and decide on a controllable plan: rather than
+fight the slow symbolic Wolfram recursion, I port the Berends--Giele code to an
+exact SymPy module \texttt{analysis.py} in my output folder --- the kernels
+\texttt{EKernel}/\texttt{FKernel}, the \texttt{Vertex}, the propagator, the
+set-partition recursion, \texttt{BGCurrent}/\texttt{amplitude}, and
+\texttt{make\_kinematics}. That gives me a fast generator of two-minus amplitudes
+I can validate against the original Wolfram file at the end.
+
+The first thing that bites is performance: I had wrapped \texttt{mag} in
+\texttt{sp.nsimplify}, and that drags every magnitude through PSLQ; a six-point
+run hangs and I interrupt it. The fix is trivial --- the inputs are already exact
+rationals, so \texttt{mag(k)} is just \texttt{abs(k)} --- and after that the port
+produces clean data in seconds.
+
+The first real surprise is $n=4$: the recursion returns \texttt{Indeterminate},
+with Wolfram spelling out ``Infinite expression $1/0$'' and ``$0\cdot
+\text{ComplexInfinity}$''. The on-shell point sends an internal two-leg current
+to zero momentum, so a propagator blows up behind a removable $0/0$. I set $n=4$
+aside to come back as a limit, and look at $n=5,6,7$, which come back finite and
+purely imaginary: $\{1,2,3\}\mapsto-64\,i$, $\{2,5/2,3\}\mapsto-2304\,i$,
+$\{1,2,3,4,5\}\mapsto-(8896/15)\,i$. So I write $A_n=i\,P_n$ and chase $P_n$.
+
+Two structural facts come quickly. Scaling $\omega_i\to2\,\omega_i$ multiplies the
+amplitude by a clean integer: I measure ratios $64,256,1024$ at $n=5,6,7$, i.e.\
+$A_n$ is homogeneous of degree $2n-4$. And dividing the data by
+$i\,\omega_1\,\omega_2^{\,2n-5}$ leaves a bare constant for many points; those
+constants run $16,32,64,\dots=2^{\,n-1}$. Putting the two together, the simplest
+object that fits the data I have is the monomial
+\[
+A_n \;\stackrel{?}{=}\; i\,2^{\,n-1}\,\omega_1\,\omega_2^{\,2n-5}.
+\]
+It is suspiciously clean, and on the points \texttt{MakeKinematics} keeps handing
+me it is exactly right.
+
+But I do not yet trust it, so I try to \emph{derive} the functional form rather
+than guess a monomial. On the resonant manifold the two negative legs $\omega_1$
+and $\omega_n$ are fixed by the positive ones, so for $n=5$ the amplitude ought to
+be a function of the three positive frequencies and of $\omega_2$. I reduce
+to elementary symmetric sums $e_1,e_2,e_3$ of the three free frequencies and fit a
+general degree-six combination. The solver hands back a wall of monstrous
+fractions,
+\[
+P_5 \;\stackrel{?}{=}\; -\tfrac{1}{15840}\big(123984\,e_1^6 - 1052496\,e_1^4 e_2
++ 1638168\,e_1^3 e_3 + 2028996\,e_1^2 e_2^2 - 5560716\,e_1 e_2 e_3
++ 279360\,e_2^3 + 4353013\,e_3^2\big),
+\]
+and when I test it on held-out points the result is damning in a very specific
+way: at $\{4,5,6\}$ it reproduces $-147456$ \emph{exactly}, but at $\{2,4,5\}$ it
+predicts $-104785134878/19487171$ where the oracle says $-40448/11$, and at
+$\{1,2,5\}$ it gives $-414550579/8192$ versus the true $-92$. A symmetric
+polynomial that is right on one held-out point and wildly wrong on its neighbours
+is not a numerical accident; it is telling me $A_5$ is simply not a single
+polynomial in the free frequencies. I even retry with a brute monomial basis in
+$(a,b,c)$ scaled by powers of the energy sum, and every degree comes back
+``singular'' --- the design matrices degenerate. In hindsight this is the corner
+of the absolute values announcing itself: the data live on a piecewise surface and
+no global polynomial can thread it. At the time I read it only as ``the naive
+invariant ansatz was wrong,'' and I moved on.
+
+I do probe the structure a little more. Swapping the two negative legs
+($\omega_1\leftrightarrow\omega_2$) leaves the amplitude unchanged ---
+$\{-4,1,2,3,-2\}$ and its $1\leftrightarrow2$ swap both give $-64\,i$, as does
+swapping two positive legs --- so $P_n$ is symmetric in the two minus legs and in
+the plus legs. Then I feed \texttt{MakeKinematics} \emph{negative} free
+frequencies to see how the amplitude responds. The values scatter:
+$\{-1,2,3\}\mapsto+49/2$, $\{-2,3,5\}\mapsto+341$, $\{2,-3,5\}\mapsto-89033/32$,
+while $\{1,2,-3\}$ and $\{-2,-3,5\}$ drive the solved legs to \texttt{zoo} (a
+division by zero in the solver) and return \texttt{nan}. These are emphatically
+not values of my monomial. The honest reading --- the one the companion runs
+eventually reached --- is that these points sit in \emph{other cells} of a spline
+whose walls are the $|k_S|$ sign changes. My reading at the time was narrower: I
+decided the clean monomial holds ``on the standard \texttt{MakeKinematics}
+branch,'' the regime where the free frequencies are positive and the solver
+returns $\omega_1,\omega_n<0$ with $\omega_2$ the smallest positive scale, and I
+treated the sign-flipped points as a different physical branch to be set aside
+rather than folded in. This is the decision that scopes the run: I stopped looking
+for the chamber-independent statement and committed to the leading-chamber
+monomial.
+
+Having committed, I do the verification carefully and to the oracle's own
+standard. I copy the \emph{definitions} of \texttt{OnShellBG.m} into
+\texttt{verify\_formula.wls} (dropping the file's demo block, which tests a
+different sector), define
+\texttt{CandidateAmplitude}$[\omega]=2^{\,\text{len}-1}\,i\,\omega_1\,
+\omega_2^{\,2\,\text{len}-5}$, and compare \texttt{BGAmplitude} against it with
+\texttt{FullSimplify} over a grid of points for $n=5,6,7$. Every comparison
+returns $\mathrm{diff}=0$ and relative error exactly $0$ in rational arithmetic:
+$\{1,2,3\}\mapsto-64\,i$, $\{2,5/2,3\}\mapsto-2304\,i$,
+$\{3/2,2,5/2,3\}\mapsto-(11907/4)\,i$, $\{2,3,4,9\}\mapsto-(145408/3)\,i$,
+$\{1,2,3,4,5\}\mapsto-(8896/15)\,i$, $\{1,4,5,6,20\}\mapsto-(14176/9)\,i$. I add
+non-generic small-frequency points in \texttt{extreme\_checks.py}, e.g.\
+$\{1/10,3,11\}$ at $n=5\mapsto-(274/146875)\,i$ and $\{1/10,2,3,5,13\}$ at
+$n=7\mapsto-(529/515625000)\,i$, and these too agree exactly. So within the
+chamber the formula is not merely a fit; it is verified to exact equality against
+the supplied recursion.
+
+That leaves $n=4$, where the raw oracle returns \texttt{Indeterminate}. I resolve
+it as a limit in \texttt{n4\_limit\_check.py}: hold the on-shell frequencies
+$\{-x,a,x,-a\}$ fixed but deform the external momenta off the exact singular point
+by a small $\delta$, $k=\{-x^2-\delta,-a^2-2\delta,x^2+3\delta,a^2+5\delta\}$, and
+watch the regularized BG value approach the monomial prediction
+$A_4=8\,i\,\omega_1\omega_2^3$. For $\{2,3\}$ the formula predicts $-192\,i$ and the
+deformation gives $-191.9999979\,i$ at $\delta=10^{-7}$, a relative error
+$1.09\times10^{-8}$; for $\{3/2,5\}$ it predicts $-135\,i$ against $-134.9999883\,i$,
+relative error $8.67\times10^{-8}$. The endpoint is a genuine removable $0/0$, and
+the monomial is its finite continuation --- consistent, within the same chamber.
+
+So I write the report. I am explicit in it about the scope: the result holds ``for
+the standard \texttt{MakeKinematics} branch used in the supplied examples,''
+$\omega_2,\dots,\omega_{n-1}>0$ with the solver returning $\omega_1<0$ and
+$\omega_n<0$, and there
+\[
+\boxed{\;A_n \;=\; i\,2^{\,n-1}\,\omega_1\,\omega_2^{\,2n-5},\qquad n\ge4\;}
+\]
+(equivalently $i\,2^{\,n-1}\,\omega_1\,\omega_2\,(\omega_2^2)^{\,n-3}$ before the
+soft scale is named). I verified it to exact equality for $n=5,6,7$ at many
+points including extreme frequency ratios, and resolved $n=4$ as a limit.
+
+I should be honest about what this is and is not. The prompt asked for a formula
+``valid for all $n\ge4$ and for arbitrary kinematics in this sector,'' and my
+boxed answer is not that --- it is the formula on one cell. The evidence that more
+was needed was in my own data: the symmetric-polynomial fit that nailed
+$\{4,5,6\}$ and missed $\{2,4,5\}$ and $\{1,2,5\}$, and the sign-flipped points
+$49/2$, $341$, $-89033/32$ that my monomial cannot produce. The correct object,
+which I did not reach, is the truncated-power / inclusion--exclusion spline: with
+$\omega_2$ written as the soft scale $U=\omega_2^2$ and the positive squares as
+knots, every cell is one finite difference
+$\sum_{S}(-1)^{|S|}\pp{\,U-\sum_{j\in S}\omega_j^2\,}^{\,n-3}$, and my monomial
+$U^{\,n-3}$ is precisely the $S=\varnothing$ corner where $U$ lies below every
+knot. I had the right prefactor and the right corner; I mistook the corner for the
+whole. The all-kinematics closed form was within reach of the data I had already
+generated, and I stopped one structural step short of it.
+
+\end{document}

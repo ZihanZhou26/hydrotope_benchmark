@@ -1,0 +1,218 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+
+\title{Rewritten Chain of Thought for the\\
+Two-Minus Water-Wave Amplitude}
+\author{}
+\date{}
+
+\newcommand{\pp}[1]{\left[\,#1\,\right]_{+}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document is a first-person reconstruction of the chain of thought for one
+blind-benchmark attempt at the closed-form tree amplitude $A_n$ in the two-minus
+sector of one-dimensional deep-water surface waves. It is rebuilt from the
+visible run trajectory --- the raw private reasoning was encrypted, so only the
+narrated messages, commands, and outputs survive --- and it keeps the false
+starts and hedges rather than tidying them away. It is honest about where the run
+landed: I found and exactly verified the leading-chamber monomial
+$A_n=i\,2^{\,n-1}g^{\,3-n}\,\omega_1\omega_2\,[\min(\omega_1^2,\omega_2^2)]^{\,n-3}$,
+I explicitly mapped the other kinematic chambers and even wrote down their
+individual rational forms, but I then concluded that no single globally-analytic
+expression exists and presented the monomial as ``the'' closed form with a scope
+caveat. I did \emph{not} assemble the chamber pieces into the inclusion--exclusion
+/ truncated-power formula they were terms of. So this is a partial result,
+stopped at the leading chamber.
+\end{abstract}
+
+\section*{Rewritten Chain of Thought}
+
+The ground rules come first, and they are strict. This is a blind benchmark, so I
+may read \emph{only} \texttt{prompt.md} and \texttt{OnShellBG.m} --- not
+\texttt{KEY.md}, not the sibling cases, nothing else --- and I may not use any
+web or literature lookup. Everything has to come from the Berends--Giele code and
+data I generate myself. I check the environment: \texttt{wolframscript} and a
+\texttt{math} kernel are present, and \texttt{sympy}/\texttt{numpy} are available
+under Anaconda. The one nuisance in \texttt{OnShellBG.m} is that its section~VI
+tests auto-run, and they are for the \emph{one-minus} sector
+$\sigma=(-1,+1,\dots,+1)$, which vanishes identically --- not my sector. So I
+\texttt{head -145 OnShellBG.m > bg\_core.m} to keep only the function definitions
+(sections I--V, ending at \texttt{MakeKinematics}) and drive the recursion myself.
+
+The first probes set the tone. At $n=4$ the recursion returns
+\texttt{Indeterminate}: with $\omega=\{-2,3/2,2,-3/2\}$ legs $2$ and $4$ satisfy
+$\omega_2+\omega_4=0$ and $k_2+k_4=0$, a null sub-channel that puts an internal
+line exactly on-shell and blows up a propagator as a removable $0/0$. I set $n=4$
+aside to recover later as a limit. The higher points are clean and purely
+imaginary: $A_5=-\tfrac{891}{2}i$, $A_6=-\tfrac{11907}{4}i$. So I write
+$A_n=i\,P_n$ and chase $P_n$.
+
+Before fitting anything I pin the gross structure. Since $|k_i|=\omega_i^2/g$
+regardless of the sign $\sigma_i$, power-counting the vertices and propagators
+predicts $A_n$ homogeneous of degree $2n-4$ in $\omega$ and $\propto g^{3-n}$. I
+check both numerically: scaling $\omega\to2\omega$ at $n=5$ multiplies $A_5$ by
+$64=2^6$, and $\omega\to3\omega$ by $729=3^6$, so degree $2n-4$ holds; and
+$A_5(g{=}1)=-3328i$, $A_5(g{=}2)=-832i=-3328i/4$, $A_5(g{=}3)=-3328i/9$, so
+$A_5\propto g^{-2}=g^{3-n}$. A clean reference point falls out:
+$\omega=\{-13/2,2,3,5,-7/2\}\Rightarrow A_5=-3328i=-2^8\cdot13\,i$. I also confirm
+a permutation symmetry: swapping any two plus legs, and (separately) swapping the
+two minus legs, leaves $A_5$ fixed, so $A_n$ carries an $S_2\times S_{n-2}$
+symmetry. I will hold onto that --- it turns out to be the thing that flags the
+piecewise structure.
+
+Now I try to fit. The natural ansatz, given the symmetry, is that
+$P_n=A_n/i$ is a symmetric polynomial in the group power sums --- minus group
+$m_1=\omega_1+\omega_2$, $m_2=\omega_1^2+\omega_2^2$, plus group
+$P_3,\dots$ --- with the two conservation laws eliminating $P_1=-m_1$ and
+$P_2=m_2$. I generate a big exact dataset, $64$ points ($30$ at $n=5$, $20$ at
+$n=6$, $14$ at $n=7$, e.g.\ \texttt{5 | \{-13/2,2,3,5,-7/2\} | -3328*I}), and
+solve the exact linear system for the polynomial coefficients. It is inconsistent
+at $n=5$ and again at $n=6$: \textbf{$P_n$ is not a polynomial}. That is a clean
+negative result --- it means either a genuine denominator from the internal
+propagators or piecewise dependence from the absolute values in the kernels.
+
+So I stop fitting the final number and resolve the non-analyticity by hand. The
+only non-analytic object anywhere is $\mathrm{mag}[k]=|k|$. I redefine
+$\texttt{mag}[z\_]:=z\,\mathrm{Sign}[z/.\mathrm{ref}]$ --- replace every
+\texttt{Abs} by its sign at a numeric reference point --- which turns the whole
+recursion into an honest rational function of the symbolic free frequencies,
+valid inside whatever chamber the reference point sits in. At reference
+$(\omega_2,\omega_3,\omega_4)=(2,3,5)$ I get
+\[
+P_5 \;=\; \frac{-16\,\omega_1\big(\omega_2\omega_3+\omega_3^2+\omega_2\omega_4
++\omega_3\omega_4+\omega_4^2\big)}{\omega_2+\omega_3+\omega_4},
+\]
+and using the conservation identity
+$\omega_2\omega_3+\omega_3^2+\omega_2\omega_4+\omega_3\omega_4+\omega_4^2
+=-\omega_1(\omega_2+\omega_3+\omega_4)$ this collapses to
+\[
+P_5 \;=\; 16\,\omega_1\,\omega_2^{\,5},
+\]
+\emph{depending only on the two minus legs}. The plus legs have dropped out
+entirely; they enter only through the constraint that fixed $\omega_1$. That is a
+genuinely striking thing to see, and I verify it directly: all $30$ of my $n=5$
+points used varied plus legs, and $16\,\omega_1\omega_2^5$ matches every one. At
+$n=6$ the same trick gives $P_6=32\,\omega_1\omega_2^7$, and the data confirm
+$P_7=64\,\omega_1\omega_2^9$, so
+\[
+P_n \;=\; 2^{\,n-1}\,\omega_1\,\omega_2^{\,2n-5}.
+\]
+
+But $16\,\omega_1\omega_2^5$ is \emph{asymmetric} under $\omega_1\leftrightarrow
+\omega_2$, and I just verified $A_n$ is symmetric in the two minus legs. The only
+way to reconcile this is that the reference-sign trick froze \emph{one chamber},
+and $16\,\omega_1\omega_2^5$ is the piece where $\omega_2$ happens to be the soft
+minus leg. The symmetric repair is to let whichever minus leg has the smaller
+magnitude carry the high power, i.e.
+\[
+P_n \;=\; 2^{\,n-1}\,(\omega_1\omega_2)\,\big[\min(\omega_1^2,\omega_2^2)\big]^{\,n-3}.
+\]
+I disambiguate which leg wins on hand-built points: $\omega=\{-1,4,2,-2,-3\}$ has
+$\omega_1=-1$ as the smaller-$|\cdot|$ leg and gives $P=-64=16\cdot(-4)\cdot1$,
+matching the $\min$ form, while the ``positive-frequency-leg gets the high power''
+hypothesis would predict $-16384$. So the rule is: the \emph{smaller-magnitude}
+minus leg carries $2n-5$. All $64$ data points match the $\min$ form exactly.
+
+This is the moment the run could have gone either way, and it is worth being
+precise about what I actually did. I knew the symmetric repair was a patch over a
+chamber boundary --- I noted to myself that ``the smooth piece is
+chamber-specific.'' So I broadened the verification deliberately. With ordered
+free frequencies fed to \texttt{MakeKinematics}, the $\min$ form passes exactly.
+But on freely-chosen minus legs, with the plus legs solved back from the
+constraints, it \textbf{fails} in several chambers --- and not by a little: a
+``both minus positive $(2,5)$'' point gives an \emph{irrational} BG value
+$\approx252.08\,i$, nowhere near the formula's $2560\,i$. So $A_n$ genuinely
+depends on the plus legs in general; the minus-only collapse was an artifact of
+which chamber \texttt{MakeKinematics} samples.
+
+I went chamber-hunting, and this is where I got close to the real answer without
+recognizing it. Extracting the symbolic $n=5$ amplitude in different cells, and
+writing $P_5=2^{4}(\omega_1\omega_2)\,M$ so $M$ is degree two in the momenta, I
+found three forms, with $a=\omega_2,b=\omega_3,c=\omega_4$:
+\[
+\text{C1 ($\omega_2$ small):}\;\; M=|k_2|^2,\qquad
+\text{C2 ($\omega_2$ large):}\;\; M=2\,|k_3||k_4|,\qquad
+\text{C3 (mixed):}\;\; M=|k_1|^2,
+\]
+and a genuinely intermediate cell where one plus and one minus leg are softest,
+\[
+M \;=\; |k_p|\big(2|k_m|-|k_p|\big),
+\]
+which at the sample point $a=4$ evaluated to $M=207$. I read these as a
+\emph{catalogue of separate chamber rules} governed by ``the sorted $|k|$ and the
+$\sigma$-type of the softest legs'': softest leg minus $\Rightarrow M=|k|^2$; two
+softest plus $\Rightarrow M=2|k_a||k_b|$; softest plus plus next minus
+$\Rightarrow M=|k_p|(2|k_m|-|k_p|)$. With hindsight every one of those is a
+truncated-power partial sum: writing $U=|k_{\rm soft}|^2$ and the lower plus
+squares $x_1\le x_2$, the intermediate form is exactly
+$U^2-(U-x_1)^2=|k_p|(2|k_m|-|k_p|)$, and the all-plus form is
+$U^2-(U-x_1)^2-(U-x_2)^2+(U-x_1-x_2)^2=2x_1x_2=2|k_3||k_4|$. The
+$+(U-x_1-x_2)^2$ overlap term is sitting right there in my C2 number. I did not
+see it. I treated the cells as a piecewise zoo rather than one inclusion--exclusion
+object.
+
+The environment then turned against the symbolic route. A \texttt{FullSimplify}
+with the \texttt{Abs} left unresolved along a $1$-D slice exhausted memory --- this
+is a shared cluster with strict overcommit, so concurrent Wolfram kernels die
+with ``out of memory'' even with free RAM --- and my $n=6$ chamber job
+(\texttt{n6chambers.m}, set up precisely to test whether the all-plus chamber
+gives $(n-3)!\prod|k_j|$, the saturated end of the very inclusion--exclusion I was
+missing) died from memory contention before returning. I cleaned up, resolved to
+run one kernel at a time, and --- here is the decision that fixed the outcome as
+partial --- I concluded that ``the clean formula is the intended physical
+result,'' the ``MHV/Parke--Taylor analogue,'' and that ``a single
+globally-analytic expression does not exist.'' A sorting-rule encoding of the
+chambers passed $227/233$ random points but missed $6$, all with mixed-sign minus
+legs; on $\omega=\{11/2,-4,-3,5,-7/2\}$ the exact $M=3087/16$ did not match the
+$2|k_3||k_5|$ the rule predicted, and I read this as evidence that the full
+structure depends on internal partial-momentum signs in a way no closed form
+captures --- rather than as evidence that I had the wrong (smooth/catalogue)
+object and needed the alternating subset sum.
+
+I tied off the two loose ends within the leading-chamber scope. For $n=4$, the
+sector forces $\{\omega_1,\omega_2\}=\{-\omega_3,-\omega_4\}$, which always lands
+on a factorization pole; I deformed off conservation by $\varepsilon$, with
+$\omega=(-\omega_3,-\omega_4-\varepsilon,\omega_3+\varepsilon,\omega_4)$, and took
+$\varepsilon\to0$. For $(\omega_3,\omega_4)=(3,2),(5,2),(7,3)$ the limits
+converge cleanly --- $192.82,192.082,192.008\to192$, then $320$, then $1512$ ---
+matching $A_4=i\,2^{3}g^{-1}\omega_1\omega_2\min(\omega_1^2,\omega_2^2)$ ($m=n-3=1$).
+Then I ran the full verification of the monomial in its regime: $16$
+\texttt{MakeKinematics} points ($n=5,6,7,8$, including a huge plus leg and
+$g\in\{2,7/3,5\}$) match with \emph{exact} zero relative error; a $95$-point
+domain scan restricted to the physical regime (both signs and extreme magnitudes
+of the minus legs, $81$ of them exercising the $\omega_1$-small branch) agrees to
+$<10^{-37}$. I ported the recursion to Python with an \texttt{mpmath}
+high-precision path (the float port matched the original $A_6=-11907/4=-2976.75$
+but only to $\sim10^{-10}$, borderline, so I needed the high-precision check,
+which agreed to $\sim10^{-59}$) and built an executed notebook. Across everything:
+$110+$ points, $0$ failures --- \emph{within the leading chamber}.
+
+So I will state the outcome honestly rather than dress it up. What I delivered is
+\[
+\boxed{\;
+A_n \;=\; i\,2^{\,n-1}\,g^{\,3-n}\,\omega_1\omega_2\,
+\big[\min(\omega_1^2,\omega_2^2)\big]^{\,n-3}\;}
+\]
+which is correct and exactly verified only in the chamber where a minus leg
+carries the smallest momentum --- the cell I called ``physical.'' It is the
+$r=0$, $S=\varnothing$ end of the true answer: the spline forced by the $|k_S|$
+sign changes in the propagators, whose generic cell is the alternating subset sum
+$\sum_{S}(-1)^{|S|}\pp{\,\omega_<^2-\sum_{j\in S}\omega_j^2\,}^{\,n-3}$. I had the
+$r=0$ term ($U^{\,n-3}$), I had a higher cell ($2|k_3||k_4|$, the saturated end at
+$n=5$), and I had the intermediate $U^2-(U-x_1)^2$ written out --- the
+inclusion--exclusion was assembled in pieces across my scripts --- but I read the
+pieces as a sign-dependent zoo and concluded no single formula exists, instead of
+recognizing them as one truncated power. The honest summary is therefore: this run
+reached and rigorously verified the leading-chamber monomial and mapped, but did
+not unify, the other chambers; the full inclusion--exclusion closed form was
+within reach and was not assembled.
+
+\end{document}

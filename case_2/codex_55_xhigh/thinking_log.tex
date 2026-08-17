@@ -1,0 +1,182 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{microtype}
+
+\title{Rewritten Chain of Thought for the Solution to the\\
+Two-Minus Water-Wave Amplitude}
+\author{}
+\date{}
+
+\newcommand{\pp}[1]{\left[\,#1\,\right]_{+}}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document is a first-person reconstruction of the chain of thought for the
+original AI derivation of the closed-form tree amplitude $A_n$ in the two-minus
+sector of one-dimensional deep-water surface waves. It is rebuilt from the
+visible run trajectory --- the raw private reasoning was encrypted, so this is
+reconstructed from the visible messages, the scripts I wrote, and the exact
+numbers they returned --- and it keeps the real shape of the run: the hint I was
+handed, a memory crash mid-way, a chamber-boundary \texttt{Indeterminate} that
+ate one of my $n=7$ checks, and the $n=4$ degeneracy I had to take as a limit.
+The end state is a single closed form, verified to exact rational difference
+zero against the supplied \texttt{BGAmplitude} at $n=5,6,7$ in several chambers,
+with $n=4$ recovered as a conserved-momentum boundary limit.
+\end{abstract}
+
+\section*{Rewritten Chain of Thought}
+
+I inspect the case folder before doing anything, so I can infer the deliverable
+rather than guess from its name. The prompt is strict: I may read only
+\texttt{prompt.md} and \texttt{OnShellBG.m}, no sibling files, no web, no other
+models. There is a \texttt{claude\_opus\_48\_max/} directory next to the prompt
+with somebody else's scratch in it; I note it exists but deliberately treat it as
+off-limits and generate all my own data. The task is a closed form for $A_n$ in
+the two-minus sector $\sigma=(-1,-1,+1,\dots,+1)$, valid for all $n\ge4$ and all
+kinematics in the sector.
+
+The prompt also hands me a strong hint, and I take it seriously rather than
+treating it as decoration. It tells me the answer is a \emph{piecewise
+homogeneous polynomial}: a genuine polynomial in the $\omega_i$ (no rationals, no
+transcendentals), homogeneous of fixed degree at each $n$, and \emph{piecewise}
+--- the two-minus kinematic space splits into chambers and a different
+homogeneous polynomial holds on each. That single sentence tells me what to
+measure (the degree, then the chamber walls) and warns me off the trap I would
+otherwise fall into, namely fitting one global polynomial. I keep coming back to
+it.
+
+\paragraph{Getting clean data out of the oracle.}
+\texttt{wolframscript} is available, so I use the supplied exact BG code
+directly. The file's tail is a demo block (section \texttt{VI.\ TESTS}) for a
+\emph{different} sector, $\sigma=(-1,+1,\dots,+1)$, where $A_n\equiv0$; I do not
+want that running on every call. So I copy the definition portion into a local
+scratch core, \texttt{bg\_core.wl}, and add a small two-minus driver
+\texttt{TwoMinusKinematics} that wires \texttt{MakeKinematics} with
+$\sigma=(-1,-1,+1,\dots,+1)$ into \texttt{BGAmplitude}. This keeps the original
+file intact and makes my data reproducible inside the case folder.
+
+My first exact probe already pins down two of the three things the hint asked
+for. For generic positive free frequencies, $n=5$ and $n=6$ come back
+\emph{purely imaginary} homogeneous polynomials, so I write $A_n=i\,P_n$ and chase
+$P_n$. And $n=4$ is degenerate: on the real two-minus resonant locus the raw
+recursion returns \texttt{Indeterminate}. I set $n=4$ aside to recover later as a
+limit. A scaling test nails the degree: sending all frequencies
+$\omega\to\lambda\omega$ at the point $\{-9/2,2,5/2,3,-3\}$ multiplies
+$A_5=-2304\,i$ by exactly $\lambda^6$, i.e.\ degree $2n-4$, the top tree degree.
+The hint's ``homogeneous of fixed degree'' is now a checked fact, $\deg=2n-4$.
+
+\paragraph{Where I under-use the hint, briefly.}
+I do not jump straight to resolving the absolute values. My first instinct is to
+sample sign patterns of the internal momentum sums and \emph{interpolate} chamber
+polynomials in low multiplicity --- ``so the final formula is based on repeated
+interpolation, not a single pattern match.'' That is the brute-force reading of
+the chamber hint, and it bites me: the larger exact $n=5$ batch hits a process
+memory limit and leaves a stray \texttt{WolframKernel} alive that I have to hunt
+down in \texttt{ps} and kill before I can continue. I also burn a little time on
+two structural side-checks --- whether the kernels' sign-resolved forms collapse,
+and whether the on-shell two-minus answer is just the cubic-tree part. The
+cubic-only hypothesis \emph{does not} match the full BG result, so contact terms
+matter; that is a clean negative result but not the answer.
+
+\paragraph{Using the hint properly: resolve the absolute values, chamber by
+chamber.} I stop interpolating blindly and do what the piecewise hint really
+points at. The only non-analytic objects in the whole construction are the
+$\mathrm{Abs}$ calls --- $|k_S|$ inside each propagator and kernel. An absolute
+value has a corner where its argument changes sign, and those corners are exactly
+the chamber walls. So I write a symbolic $n=5$ amplitude in free frequencies
+$\{x,y,z\}$, and in each chamber I override \texttt{mag} to replace every
+$\mathrm{Abs}$ by $\pm$ itself according to its sign at a numeric sample point,
+then \texttt{Factor}\,$\circ$\,\texttt{Simplify} the BG result. Inside a chamber
+it is an honest expression, and the chamber-to-chamber change is the
+piecewise-ness the hint promised. The collapse is sharp. For the first chamber
+($\{x,y,z\}=\{2,5/2,3\}$, signed $\omega=\{-9/2,2,5/2,3,-3\}$) I get
+\[
+\frac{A_5}{i}=\frac{-16\,x^5\,(xy+y^2+xz+yz+z^2)}{x+y+z}\;=\;-2304,
+\qquad\text{i.e.}\quad \frac{A_5}{i}=16\,\omega_1\,\omega_2^{\,5}
+\]
+once the conservation relation $\omega_1=-(x{+}y{+}z{+}\omega_5)$,
+$\omega_5=-(x{+}y)(x{+}z)/(x{+}y{+}z)$ is folded in. The same prefactor
+$16\,\omega_1\omega_2$ survives across chambers; only the polynomial multiplying
+it changes. Scanning a batch of ten sign choices makes the rule readable. When
+$\omega_2$ (the smaller negative magnitude) is the smallest scale the monomial is
+bare; as it crosses successive positive squares the factored form grows extra
+pieces. For instance $\{5,1,2\}$ gives $-32\,xy^2z^2(\dots)/(x{+}y{+}z)=-1760$,
+and $\{-1,2,5\}$ gives a long degree-six numerator evaluating to $14336/243$ ---
+different chambers, different polynomials, exactly as advertised.
+
+\paragraph{Reading the chambers as inclusion--exclusion.}
+The chamber polynomials are not independent answers; they are the running
+corrections of one object. Writing the normalized amplitude as
+$A_n/(i\,2^{\,n-1}\omega_1\omega_2)$, with $r=\min(\omega_1^2,\omega_2^2)$ the
+smaller negative magnitude squared and $q_j=\omega_j^2$ the positive-leg squares,
+each chamber is one value of a truncated-power / inclusion--exclusion sum,
+\[
+F\big(r;\{q_j\}\big)\;=\;\sum_{S\subseteq\{3,\dots,n\}}(-1)^{|S|}\,
+\pp{\,r-\textstyle\sum_{j\in S}q_j\,}^{\,n-3},
+\qquad \pp{u}=\max(u,0).
+\]
+The walls $r=\sum_{j\in S}q_j$ are precisely the $|k_S|$ sign changes; below all
+of them only $S=\varnothing$ survives and $F=r^{\,n-3}$, which is the bare-monomial
+chamber I started in. Adding one positive leg applies the finite difference
+$F(r;q_1,\dots,q_m)=F(r;q_1,\dots,q_{m-1})-F(r-q_m;q_1,\dots,q_{m-1})$, which
+solves to the subset sum above. The full amplitude is then
+\[
+\boxed{\;
+A_n \;=\; i\,2^{\,n-1}\,\omega_1\,\omega_2\,
+\sum_{S\subseteq\{3,\dots,n\}}(-1)^{|S|}\,
+\pp{\,\min(\omega_1^2,\omega_2^2)-\textstyle\sum_{j\in S}\omega_j^2\,}^{\,n-3}\;}
+\]
+(at $g=1$; the $|k|=\omega^2/g$ scaling restores a $g^{\,3-n}$). Inside one
+chamber the inactive subsets ($\sum_{j\in S}q_j>r$) drop out and what remains is
+an ordinary homogeneous polynomial of degree $2n-4$ --- the piecewise homogeneous
+polynomial the hint promised, now with its chambers labelled by the inequalities
+$\sum_{j\in S}\omega_j^2 \lessgtr \min(\omega_1^2,\omega_2^2)$.
+
+\paragraph{Verifying, including the rough edges.}
+I code \texttt{TwoMinusFormula} and run it against \texttt{BGAmplitude} in exact
+rational arithmetic, printing $\mathrm{Simplify}[(A_{\mathrm{BG}}-A_{\mathrm{formula}})/i]$.
+Every $n=5$ and $n=6$ row prints difference exactly $0$ --- e.g.\ $n=6$
+$\{3/2,2,5/2,3\}\!\to\!-11907/4$, $\{1,-2,3,4\}\!\to\!-309248/2187$,
+$\{5,1,2,3\}\!\to\!-172800$, each matched --- and the first $n=7$ row,
+$\{3/2,2,5/2,3,7/2\}\to-7302393/400$, matches too. Then a rough edge: one $n=7$
+sample, free $\{5,1,2,3,4\}$, lands exactly on a chamber boundary, an internal
+momentum sum hits zero, and the unregularized propagator blows up --- the run
+prints \texttt{Power::infy}, \texttt{0\,ComplexInfinity}, and
+\texttt{BGAmplitude=Indeterminate} while my formula gives the finite
+$-99036160/3$. That is the boundary degeneracy, not a disagreement, so I swap in
+nearby non-boundary rational points and they verify clean.
+
+\paragraph{The $n=4$ limit.}
+For $n=4$ the spline has exponent $m=n-3=1$, so the formula predicts
+$A_4=i\,8\,\omega_1\omega_2\min(\omega_1^2,\omega_2^2)$. The raw recursion cannot
+be evaluated there --- real two-minus four-point kinematics force a zero-momentum
+internal two-point current and a genuine $0/0$. I recover the value honestly by
+splitting the two positive momenta with a conserved deformation
+$k_3\to k_3+\delta$, $k_4\to k_4-\delta$, keeping total momentum fixed and the
+external frequencies untouched, and taking $\delta\to0^+$. For
+$\omega=\{-3,2,3,-2\}$ the BG ratio is $4(960-313\delta+7\delta^2)/(-20+\delta)$,
+whose limit is $-192$, matching the formula; $\{-5,1,5,-1\}$ gives $-40$, also
+matching, and the limit is direction-independent on the cases I tried.
+
+\paragraph{Honest scope.}
+What I have is a single closed form that reproduces \texttt{BGAmplitude} to exact
+rational difference zero at $n=5,6,7$ across several chambers --- including points
+where one free frequency is taken negative, so different legs play the role of the
+$\min$ --- plus the $n=4$ boundary value recovered as a conserved-momentum limit.
+The chamber selection is carried implicitly by the $\min(\omega_1^2,\omega_2^2)$
+and by which subset thresholds are active, so a reader gets the chamber-by-chamber
+homogeneous polynomials by expanding the boxed sum in a given chamber, exactly as
+the hint asked. I did \emph{not} prove the formula analytically from the BG
+recursion --- it is a conjecture forced by the sign-resolved chamber data and
+then verified pointwise --- and I packaged the result, the formula, and a
+self-contained verification script into the output folder, cleaning up a leftover
+Wolfram kernel at the end. Within the prompt's own kinematics this is the
+closed-form answer, verified to exact equality.
+
+\end{document}

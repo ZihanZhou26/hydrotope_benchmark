@@ -1,0 +1,20 @@
+=== n=6 : 19 signatures (700 pts) ===
+  minus@{1, 6} n=181 EXACT  R = 2*mu1^3
+  minus@{2, 6} n=46 EXACT  R = 2*mu1*(mu1^2 - 3*mu1*mu2 + 3*mu2^2)
+  minus@{2, 6} n=58 EXACT  R = 2*mu1*(mu1^2 - 3*mu1*mu2 + 3*mu2^2)
+  minus@{2, 6} n=66 EXACT  R = 2*mu1*(mu1^2 - 3*mu1*mu2 + 3*mu2^2)
+  minus@{3, 6} n=7 few
+  minus@{3, 6} n=10 few
+  minus@{3, 6} n=10 few
+  minus@{3, 6} n=44 EXACT  R = -6*mu1*mu2*(mu1 + mu2 - 2*mu3)
+  minus@{3, 6} n=51 EXACT  R = -6*mu1*mu2*(mu1 + mu2 - 2*mu3)
+  minus@{3, 6} n=51 EXACT  R = -6*mu1*mu2*(mu1 + mu2 - 2*mu3)
+  minus@{4, 5} n=136 EXACT  R = 12*mu1*mu2*mu3
+  minus@{4, 6} n=1 few
+  minus@{4, 6} n=1 few
+  minus@{4, 6} n=5 few
+  minus@{4, 6} n=5 few
+  minus@{4, 6} n=6 few
+  minus@{4, 6} n=6 few
+  minus@{4, 6} n=7 few
+  minus@{4, 6} n=9 few

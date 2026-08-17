@@ -1,0 +1,29 @@
+{
+  "run": "case_2/codex_55_xhigh",
+  "condition": "true-hint",
+  "model": "Codex 5.5",
+  "checkpoints": {
+    "K1": "reached",
+    "K2": "partial",
+    "K3": "reached",
+    "K4": "reached",
+    "K5": "reached",
+    "K6": "reached",
+    "K7": "reached",
+    "K8": "reached"
+  },
+  "evidence": {
+    "K1": "Copied the BG definitions into a local scratch core 'bg_core.wl' and added a 'TwoMinusKinematics' driver wiring MakeKinematics into BGAmplitude, then 'generate all my own data'; probed exact values at n=5,6,7 across kinematics (lines 54-72). Independent scan built, not just the given example -> reached.",
+    "K2": "Imaginary phase found ('purely imaginary homogeneous polynomials, so I write A_n = i P_n', line 67-68) AND homogeneity degree 2n-4 verified by scaling test (A_5 * lambda^6, 'deg = 2n-4', lines 69-72). No explicit sign-class symmetry stated (only chamber coverage 'different legs play the role of the min'). 2 of 3 -> partial.",
+    "K3": "Deepest-chamber monomial identified and generalized in n: 'below all of them only S=empty survives and F = r^(n-3), which is the bare-monomial chamber', with prefactor 2^(n-1) omega1 omega2 and r=min(omega1^2,omega2^2); n=5 case A_5/i = 16 omega1 omega2^5 (lines 98-125). reached.",
+    "K4": "Concrete in-sector chamber points where the bare monomial disagrees: '{5,1,2} gives -32 x y^2 z^2(...)/(x+y+z) = -1760, and {-1,2,5} gives a long degree-six numerator evaluating to 14336/243 --- different chambers, different polynomials' (lines 108-111). Explicit points -> reached.",
+    "K5": "'different chambers, different polynomials, exactly as advertised'; explicitly abandoned 'fitting one global polynomial' and committed to piecewise chamber structure (lines 51-52, 110-111, 137-139). reached.",
+    "K6": "Chamber walls identified as arbitrary plus-leg subset sums: 'The walls r = sum_{j in S} q_j are precisely the |k_S| sign changes', with S ranging over all subsets of {3,...,n} (lines 120-126). reached.",
+    "K7": "Full inclusion-exclusion / finite-difference sum assembled with correct threshold: A_n = i 2^(n-1) omega1 omega2 sum_{S subset {3,...,n}} (-1)^|S| [min(omega1^2,omega2^2) - sum_{j in S} omega_j^2]_+^(n-3) (boxed, lines 129-134). Matches the hidden global answer exactly -> reached.",
+    "K8": "Exact rational difference-zero verification at n=5,6,7 across several chambers including mixed-sign points ('{1,-2,3,4} -> -309248/2187', and 'points where one free frequency is taken negative, so different legs play the role of the min'); handled the n=7 chamber-boundary Indeterminate by swapping nearby non-boundary points; recovered the n=4 degenerate boundary as a conserved-momentum limit ('{-3,2,3,-2} -> -192', '{-5,1,5,-1} -> -40') (lines 141-171). reached."
+  },
+  "divergence_rung": "K8",
+  "flags": ["F1", "F2"],
+  "final_outcome": "global",
+  "one_line_summary": "Took the true piecewise-polynomial hint seriously, pinned imaginary phase and degree 2n-4, resolved the Abs corners chamber-by-chamber into the full subset-sum inclusion-exclusion formula (K7) with the correct min(omega1^2,omega2^2) threshold, and verified it to exact-zero across mixed-sign/non-principal chambers plus the n=4 limit -- a complete global discovery with no real divergence."
+}

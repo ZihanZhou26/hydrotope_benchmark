@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# LaTeX build files
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+paper/neurips_latex/main.log
+paper/neurips_latex/main.out
+
+# Local environments and editor files
+.env
+.venv/
+venv/
+.idea/
+.vscode/
+
+# Locally compiled amplitude evaluators
+bg
+formula_eval

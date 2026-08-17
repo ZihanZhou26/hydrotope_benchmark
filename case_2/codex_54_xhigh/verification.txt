@@ -1,0 +1,130 @@
+Exact On-Shell Checks
+=====================
+
+n = 5
+  freeW   = [2, 3, 4]
+  ws      = [Fraction(-17, 3), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(-10, 3)]
+  active  = [()]
+  BG      = -8704/3
+  formula = -8704/3
+  relerr  = 0.000e+00
+
+  freeW   = [5, 2, 3]
+  ws      = [Fraction(-22, 5), Fraction(5, 1), Fraction(2, 1), Fraction(3, 1), Fraction(-28, 5)]
+  active  = [(), (3,), (4,), (3, 4)]
+  BG      = -25344
+  formula = -25344
+  relerr  = 0.000e+00
+
+  freeW   = [2, 1, 3]
+  ws      = [Fraction(-7, 2), Fraction(2, 1), Fraction(1, 1), Fraction(3, 1), Fraction(-5, 2)]
+  active  = [(), (3,)]
+  BG      = -784
+  formula = -784
+  relerr  = 0.000e+00
+
+  freeW   = [4, 3, 3]
+  ws      = [Fraction(-51, 10), Fraction(4, 1), Fraction(3, 1), Fraction(3, 1), Fraction(-49, 10)]
+  active  = [(), (3,), (4,)]
+  BG      = -257856/5
+  formula = -257856/5
+  relerr  = 0.000e+00
+
+  freeW   = [3, 5, 7]
+  ws      = [Fraction(-29, 3), Fraction(3, 1), Fraction(5, 1), Fraction(7, 1), Fraction(-16, 3)]
+  active  = [()]
+  BG      = -37584
+  formula = -37584
+  relerr  = 0.000e+00
+
+
+n = 6
+  freeW   = [2, 3, 4, 5]
+  ws      = [Fraction(-121, 14), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(5, 1), Fraction(-75, 14)]
+  active  = [()]
+  BG      = -247808/7
+  formula = -247808/7
+  relerr  = 0.000e+00
+
+  freeW   = [2, 1, 3, 5]
+  ws      = [Fraction(-76, 11), Fraction(2, 1), Fraction(1, 1), Fraction(3, 1), Fraction(5, 1), Fraction(-45, 11)]
+  active  = [(), (3,)]
+  BG      = -179968/11
+  formula = -179968/11
+  relerr  = 0.000e+00
+
+  freeW   = [4, 3, 3, 5]
+  ws      = [Fraction(-42, 5), Fraction(4, 1), Fraction(3, 1), Fraction(3, 1), Fraction(5, 1), Fraction(-33, 5)]
+  active  = [(), (3,), (4,)]
+  BG      = -3666432
+  formula = -3666432
+  relerr  = 0.000e+00
+
+  freeW   = [3, 5, 7, 11]
+  ws      = [Fraction(-431, 26), Fraction(3, 1), Fraction(5, 1), Fraction(7, 1), Fraction(11, 1), Fraction(-245, 26)]
+  active  = [()]
+  BG      = -15081552/13
+  formula = -15081552/13
+  relerr  = 0.000e+00
+
+  freeW   = [2, 4, 7, 9]
+  ws      = [Fraction(-313, 22), Fraction(2, 1), Fraction(4, 1), Fraction(7, 1), Fraction(9, 1), Fraction(-171, 22)]
+  active  = [()]
+  BG      = -641024/11
+  formula = -641024/11
+  relerr  = 0.000e+00
+
+
+n = 7
+  freeW   = [2, 3, 4, 5, 6]
+  ws      = [Fraction(-241, 20), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(5, 1), Fraction(6, 1), Fraction(-159, 20)]
+  active  = [()]
+  BG      = -1974272/5
+  formula = -1974272/5
+  relerr  = 0.000e+00
+
+  freeW   = [6, 2, 3, 4, 5]
+  ws      = [Fraction(-209, 20), Fraction(6, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(5, 1), Fraction(-191, 20)]
+  active  = [(), (3,), (4,), (3, 4), (5,), (3, 5), (4, 5), (3, 4, 5), (6,), (3, 6), (4, 6)]
+  BG      = -5718079488/5
+  formula = -5718079488/5
+  relerr  = 0.000e+00
+
+  freeW   = [2, 1, 3, 5, 8]
+  ws      = [Fraction(-12, 1), Fraction(2, 1), Fraction(1, 1), Fraction(3, 1), Fraction(5, 1), Fraction(8, 1), Fraction(-7, 1)]
+  active  = [(), (3,)]
+  BG      = -268800
+  formula = -268800
+  relerr  = 0.000e+00
+
+  freeW   = [3, 5, 7, 11, 13]
+  ws      = [Fraction(-938, 39), Fraction(3, 1), Fraction(5, 1), Fraction(7, 1), Fraction(11, 1), Fraction(13, 1), Fraction(-583, 39)]
+  active  = [()]
+  BG      = -393869952/13
+  formula = -393869952/13
+  relerr  = 0.000e+00
+
+  freeW   = [2, 4, 7, 9, 10]
+  ws      = [Fraction(-633, 32), Fraction(2, 1), Fraction(4, 1), Fraction(7, 1), Fraction(9, 1), Fraction(10, 1), Fraction(-391, 32)]
+  active  = [()]
+  BG      = -648192
+  formula = -648192
+  relerr  = 0.000e+00
+
+
+Four-Point Limiting Checks
+==========================
+  case    = omega2^2 < omega3^2
+  target  = [Fraction(-3, 1), Fraction(1, 1), Fraction(3, 1), Fraction(-1, 1)]
+  delta   = 1/100000
+  BG      = -2399999999880000200001/100000000000000000000
+  formula = -24
+  relerr  = 5.000e-11
+
+  case    = omega2^2 > omega3^2
+  target  = [Fraction(-1, 1), Fraction(3, 1), Fraction(1, 1), Fraction(-3, 1)]
+  delta   = 1/100000000000
+  BG      = -2399999999935999999999240000000000600000000001/100000000000000000000000000000000000000000000
+  formula = -24
+  relerr  = 2.667e-11
+

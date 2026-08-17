@@ -1,0 +1,29 @@
+{
+  "run": "case_2/claude_opus_48_max",
+  "condition": "true-hint",
+  "model": "Claude max",
+  "checkpoints": {
+    "K1": "reached",
+    "K2": "reached",
+    "K3": "reached",
+    "K4": "reached",
+    "K5": "reached",
+    "K6": "reached",
+    "K7": "reached",
+    "K8": "reached"
+  },
+  "evidence": {
+    "K1": "Split OnShellBG.m at the test marker, loaded only the definitions, and 'write a thin driver that builds the two-minus sign vector, calls MakeKinematics, and feeds BGAmplitude'; generated exact-rational data across many points at n=5,6,7 (e.g. A_5=-2304 i, -45824 i/17) — an independent scan, not just the given example. Reached.",
+    "K2": "All three invariants found: 'every A_n is purely imaginary and homogeneous of degree 2(n-2)' (imaginary phase + degree 2n-4), plus an explicit symmetry check that 'A_5 is fully Bose-symmetric — invariant under swapping the two minus legs 1<->2 and under permuting the plus legs 3,4,5'. Reached.",
+    "K3": "Principal-chamber monomial found and generalized in n: on the line w3=4,w4=9 'A_5 = -16 w1 w2^5', and 'the earlier chamber-1 datum across n generalizes this to A_n = -2^(n-1) w1 w2^(2n-5), verified for n=5,6,7' (equals w1 w2 min(w1^2,w2^2)^(n-3) in the w2-smallest chamber). Reached.",
+    "K4": "Walked the line w3=4, w4=9 across the chamber walls and reconstructed the polynomial on each chamber, showing the bare monomial (-x^2) is concretely corrected to -x^2+(x-w3^2)^2 for w3^2<x<w4^2, etc. — a concrete in-sector regime where the monomial disagrees with the oracle. Reached.",
+    "K5": "Committed to piecewise once the global symmetric fit failed with exact residual ~3.6e10: 'This is the moment the parked chamber idea moves to the centre of the work. I stop trying to simplify the whole amplitude symbolically ... Instead I reconstruct A_5 along a one-parameter line', abandoning the single smooth global ansatz. Reached.",
+    "K6": "Walls identified as arbitrary plus-leg subset sums: 'Crossing the wall w2^2 = q_S (where q_S = sum_{j in S} w_j^2, S a subset of the plus legs) adds exactly (-1)^(|S|+1)(w2^2-q_S)^(n-3)'; noted these are the parked |k_T| sign changes. Reached.",
+    "K7": "Assembled the full inclusion-exclusion / truncated-power sum over ALL subsets: A_n = -i (2^(n-1)/g^(n-3)) w1 w2 sum_{S subset {3..n}} (-1)^(|S|+1) [ [w2^2 - q_S]_+ ]^(n-3), and established the threshold is min(w1^2,w2^2) ('using w1^2 instead — or the smaller of the two — gives identically zero residual'), explained via an (n-2)-fold finite-difference identity plus the on-shell constraint. Matches the hidden global answer. Reached.",
+    "K8": "Verified against the oracle to identically zero residual in exact rational arithmetic across chambers and the degenerate boundary: 'n=4 (symbolic limit), n=5 (4 chamber representatives plus a 76-point stress over 5 chambers, and explicit w1-smallest points), n=6 (chambers of active-set size 1 through 8 plus a 38-point stress over 14 chambers), and n=7 (12 distinct chambers ... up to 16 truncated-power terms)'; n=4 handled as a symbolic lim_{d->0} off the singular wall. Covers non-principal chambers, so no easy-chart coverage gap. Reached."
+  },
+  "divergence_rung": "K8",
+  "flags": ["F1", "F2"],
+  "final_outcome": "global",
+  "one_line_summary": "True-hint run parked the chamber idea at orientation, used a failed symmetric-invariant fit (exact residual ~3.6e10) to diagnose non-polynomiality, then line-by-line rational interpolation gave the principal-chamber monomial and the subset-sum inclusion-exclusion increments, assembling the full global truncated-power formula (threshold min(w1^2,w2^2)) verified to exactly zero residual across all chambers and the n=4 limit — reached global."
+}

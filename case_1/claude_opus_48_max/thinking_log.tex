@@ -1,0 +1,300 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\setlength{\parindent}{1.5em}
+\allowdisplaybreaks
+
+\title{Rewritten Chain of Thought: Refuting the Single-Rational-Function Hint
+and Reaching Only a Chamber-Restricted $A_n$\\
+in the Two-Minus Sector}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent This document is a first-person reconstruction of the chain of thought for an
+AI attempt to find a closed-form tree-level amplitude $A_n$ in the two-minus sector of
+1D deep-water surface waves, working only from the prompt, the code \texttt{OnShellBG.m},
+and the data that code produces. It is rebuilt from the visible run trajectory --- the
+raw private chain of thought was encrypted, so this is reconstructed from the visible
+messages, tool calls, and outputs --- and it keeps the hypotheses I formed, the concrete
+kinematic points I tested, the numbers the Berends--Giele code returned, and the
+dead-ends, in the order they actually happened. I should be honest about the outcome
+up front. The prompt's hint insisted that $A_n$ is a \emph{single global rational
+function} with simple poles on factorization channels, no chambers, no absolute values,
+and ``emphatically not a plain polynomial,'' and it told me to fit one $N/D$ ansatz on
+generic kinematics. I did not confirm that picture; I refuted it. The data forced a
+genuinely \emph{piecewise} amplitude (the $|k_S|$ in the propagators flip sign), and I
+proved that no single global rational function can exist. What I delivered is therefore a
+\emph{chamber-restricted} answer: the clean monomial
+$A_n=2^{\,n-1}i\,\omega_1\,\omega_2^{\,2n-5}$, exact (verified to relative error $0$)
+only in the chamber selected by the benchmark's standard ascending-positive sampling,
+together with its equivalent free-frequency ratio form and an explicit statement that the
+fully general object is an irreducibly $\min/\max$, sorted-magnitude, piecewise spline
+that I did not fold into one expression. So this is a partial result that saw through the
+hint rather than the all-kinematics closed form the task asked for.
+\end{abstract}
+
+\section*{Rewritten Chain of Thought}
+
+\noindent\textbf{Orienting myself.}
+The object is the on-shell tree amplitude $A_n$ in the sector
+$\sigma=(-1,-1,+1,\dots,+1)$: legs $1,2$ are ``minus'', legs $3,\dots,n$ are ``plus''.
+The dispersion ties momentum to frequency, $\omega_i^2 = g|k_i|$ with
+$k_i = \sigma_i\omega_i^2/g$, and the resonant manifold imposes $\sum_i\omega_i=0$ and
+$\sum_i\sigma_i\omega_i^2=0$. The recursion glues vertices with a propagator
+\[
+\frac{-i}{\;\omega_S^2/|k_S|-g\;},\qquad
+k_S=\sum_{i\in S}k_i=\tfrac1g\sum_{i\in S}\sigma_i\omega_i^2 .
+\]
+The hint wants $A_n=N(\omega)/D(\omega)$ with $D$ a product of channel factors, fit by
+matching at many points, a \emph{single} global rational function with no $|\cdot|$, no
+$\min/\max$, no chambers, and not a plain polynomial. I keep that target in mind, but the
+$|k_S|$ in the propagator is an immediate red flag, so I resolve to test the global-rational
+claim rather than assume it.
+
+\medskip
+\noindent\textbf{First contact: amplitudes and the scaling weight.}
+My first script just runs the code. At one generic point per $n$ I get
+\[
+A_5=-\tfrac{2349}{4}i,\qquad A_6=-\tfrac{483327}{152}i,\qquad A_7=-\tfrac{7302393}{400}i,
+\]
+with $A_7$ already costing about $19$ seconds in exact arithmetic --- a hint that I must be
+economical at high $n$. My $n=4$ point returns \texttt{Indeterminate}; I note it and move on,
+suspecting an accidental degeneracy ($k_{13}=0$ at the point I chose). I then scale all
+frequencies $\omega\to\lambda\omega$ and read off the weight: $A_5$ multiplies by $2^6$,
+$A_6$ by $2^8$. So
+\[
+\deg A_n = 2n-4 .
+\]
+Hypothesis 1, the bookkeeping one: $A_n=N/D$ is homogeneous of degree $2n-4$ (counting
+$\deg\omega_i=1$, since $k\sim\omega^2$ and the propagator is weight $0$).
+
+\medskip
+\noindent\textbf{Thinking about the denominator from physics.}
+Where are the poles? A propagator goes on shell at $\omega_S^2=|P_S|$, where
+$P_S\equiv\sum_{i\in S}\sigma_i\omega_i^2$. External legs are safe, $|k_i|=\omega_i^2/g$,
+because $\omega_i^2\ge0$. Internal lines are the worry. Splitting subsets by how they meet
+$\{1,2\}$:
+\begin{itemize}
+\item all-plus $S\subseteq\{3,\dots,n\}$: $P_S=\sum_{i\in S}\omega_i^2>0$, definite, and the
+channel factor is the clean polynomial $\omega_S^2-\sum_{i\in S}\omega_i^2=2e_2(S)$ with
+$e_2(S)=\sum_{i<j\in S}\omega_i\omega_j$;
+\item $S$ meeting exactly one of $\{1,2\}$: $P_S=-\omega_a^2+(\text{plus})$, sign indefinite.
+\end{itemize}
+Hypothesis 2: maybe $D_n=\prod_{S\subseteq\{3..n\},|S|\ge2}2e_2(S)$ (the safe channels only),
+and the mixed channels carry no pole. For $n=5$ that would be
+$D_5=(\omega_3\omega_4)(\omega_3\omega_5)(\omega_4\omega_5)(\omega_3\omega_4+\omega_3\omega_5+\omega_4\omega_5)$,
+degree $8$, forcing $\deg N=2n-4+8=14$ --- uncomfortably large, and it presupposes the
+mixed channels are inert. I distrust this enough to test the rationality claim directly
+before committing to any $D$.
+
+\medskip
+\noindent\textbf{The bottom of the tower forces my hand ($n=4$).}
+At $n=4$ the two conservation laws on four frequencies are rigid. Taking $\omega_2,\omega_3$
+free and solving, the solution is \emph{forced}:
+\[
+\omega_1=-\omega_3,\qquad \omega_4=-\omega_2,
+\]
+a two-parameter family $(-\omega_3,\omega_2,\omega_3,-\omega_2)$. (This also explains my
+earlier \texttt{Indeterminate}: with $\omega_1=-\omega_3$ one gets $k_2+k_4=0$ and
+$\omega_2+\omega_4=0$, so a sub-current propagator is $0/0$.) Computing the amplitude
+symbolically and simplifying with the magnitudes kept symbolic gives a \emph{piecewise}
+answer:
+\[
+A_4=-8i\,\omega_2^3\omega_3\ \ (\omega_2<\omega_3),\qquad
+A_4=-8i\,\omega_2\omega_3^3\ \ (\omega_2>\omega_3).
+\]
+This is decisive and unwelcome: in signed variables the pieces are
+$-8i\,\omega_1\omega_4^3$ and $-8i\,\omega_1^3\omega_4$, switching across
+$\omega_2^2=\omega_3^2$. By the identity theorem a single rational function equal to
+$-8i\,\omega_2^3\omega_3$ on an open set must equal it everywhere; it does not. So $A_4$ is
+genuinely piecewise. Hypothesis 3 (\emph{the amplitude is globally rational}) is in serious
+doubt. I conjecture instead that the hint's ``single rational function'' holds only
+chamber-by-chamber, and that the benchmark's sampling lives in one chamber.
+
+\medskip
+\noindent\textbf{A method to see chambers: resolve $|\cdot|$ by a reference sign.}
+To get an honest rational function I evaluate every $|x|$ in the symbolic amplitude by the
+sign of $x$ at a chosen numeric reference point; that is exactly valid throughout the open
+sign-chamber containing the reference, and I can then \texttt{Together}/\texttt{Factor}. At
+$n=5$ the raw amplitude has leafcount $\sim4\times10^5$, but the chamber with free
+frequencies $(a,b,c)=(\omega_2,\omega_3,\omega_4)=(2,3,5)$ collapses to
+\[
+A_5=\frac{-16\,i\,a^5\bigl(ab+b^2+ac+bc+c^2\bigr)}{a+b+c}.
+\]
+Two other reference chambers, $(7,11,2)$ and $(3,5,-2)$, give visibly \emph{different}
+rational functions. Hypothesis 3 is now refuted outright: $A_5$ is chamber-dependent.
+
+\medskip
+\noindent\textbf{Mapping where this chamber holds.}
+I test $f_A(a,b,c)=-16i\,a^5(ab+b^2+ac+bc+c^2)/(a+b+c)$ against the recursion. It matches at
+$(2,3,5)$ and $(2,5,3)$ but not at $(3,2,5)$ (ratio $56/81$), $(5,2,3)$ (ratio $72/625$),
+$(3,5,2)$, $(5,3,2)$. Reading the pattern: $f_A$ is exact precisely when $a=\omega_2$ is the
+\emph{smallest} of $a,b,c$, and it is symmetric in $b\leftrightarrow c$ (i.e.\ in the two
+free plus legs). So the chamber is ``$\omega_2$ smallest''.
+
+\medskip
+\noindent\textbf{The collapse to a monomial.}
+The denominator $a+b+c$ is exactly the quantity that blows up in the kinematic solver, so it
+should be a coordinate artifact. Using the conservation laws I find the identities
+\[
+ab+b^2+ac+bc+c^2=\omega_1(\omega_1+\omega_5),\qquad a+b+c=-(\omega_1+\omega_5),
+\]
+and the artifact cancels:
+\[
+A_5\big|_{\omega_2\ \mathrm{smallest}}=16\,i\,\omega_1\,\omega_2^5 .
+\]
+A pure monomial. I check it head-on: $(2,3,5)\!\mapsto\!-3328i$, $(3,5,7)\!\mapsto\!-37584i$,
+$(1,4,9)\!\mapsto\!-1168i/7$ --- all exact. As a function it uses only the two minus-leg
+frequencies, with the high power on the smaller one. This is beautiful but it is a
+\emph{polynomial}, contradicting ``not a plain polynomial'': another sign that the hint
+describes a per-chamber rational form, not the on-shell value.
+
+\medskip
+\noindent\textbf{Cataloguing the other chambers ($n=5$).}
+I grind out five more reference chambers and reduce each to $\omega$ variables:
+\begin{align*}
+\omega_2\ \text{smallest}:&\quad 16i\,\omega_1\omega_2^5,\\
+\omega_3\ \text{smallest},\ \omega_2\ \text{next}:&\quad 16i\,\omega_1\omega_2\,\omega_3^2(2\omega_2^2-\omega_3^2),\\
+\omega_3,\omega_4\ \text{smallest}:&\quad 32i\,\omega_1\omega_2\,\omega_3^2\omega_4^2,\\
+\omega_5,\omega_3\ \text{smallest}:&\quad 32i\,\omega_1\omega_2\,\omega_3^2\omega_5^2,\\
+\omega_5,\omega_2\ \text{smallest}:&\quad 16i\,\omega_1\omega_2\,\omega_5^2(2\omega_2^2-\omega_5^2).
+\end{align*}
+(For the last two I needed an auxiliary identity: the quartic $Q$ appearing there equals
+$a^2s^2-2abcs-b^2c^2$ with $s=a+b+c$, and $Q/s^2=2\omega_2^2-\omega_5^2$ on shell.) Every
+chamber reduces to a \emph{polynomial}; the solver artifact always cancels. So $A_5$ is a
+symmetric, piecewise-\emph{polynomial} function whose pieces are labelled by the ordering of
+the $|\omega_i|$ --- precisely the $\min/\max$ structure the hint forbids. Hypothesis 4
+(\emph{some chamber has a genuine non-polynomial pole}) fails too: on shell there are no
+poles at all.
+
+\medskip
+\noindent\textbf{Symmetry check.}
+$16i\,\omega_1\omega_2^5$ looks asymmetric under $1\leftrightarrow2$, but the recursion picks
+leg $1$ as a root, so I test directly: permuting the $(k,\omega)$ pairs --- swap the minus
+legs, swap two plus legs, cycle $3\!\to\!4\!\to\!5$, or an arbitrary permutation
+$\{3,1,5,2,4\}$ --- all return $-3328i$ at the $(2,3,5)$ point. So $A_n$ is fully symmetric
+under same-$\sigma$ relabelling; the monomial is a chamber \emph{representative}, valid when
+$\omega_2$ happens to be the smallest magnitude.
+
+\medskip
+\noindent\textbf{The conjecture and its test ($n=4,5,6,7$).}
+The clean chamber generalises. The coefficients $8,16,\dots$ at $n=4,5$ suggest $2^{n-1}$ and
+the power $2n-5$, so
+\[
+\boxed{\,A_n=2^{\,n-1}\,i\,\omega_1\,\omega_2^{\,2n-5}\,}\qquad\text{when }|\omega_2|=\min_i|\omega_i| .
+\]
+I throw a spread of points at it. At $n=5$: $(2,3,5),(1,4,9)$ exact. At $n=6$:
+$(2,3,5,7)\!\mapsto\!-\tfrac{753664}{17}i$, $(1,2,4,8)\!\mapsto\!-\tfrac{4928}{15}i$,
+$(3,4,5,6)\!\mapsto\!-762048i$, and crucially the lopsided $(2,3,100,101)$ also matches ---
+so it is not merely a ``comparable magnitude'' coincidence. At $n=7$:
+$(2,3,5,7,11)\!\mapsto\!-\tfrac{4030464}{7}i$ and $(1,2,3,4,5)\!\mapsto\!-\tfrac{8896}{15}i$.
+At $n=4$ the recursion is \texttt{Indeterminate} (the forced $0/0$), but the formula returns
+$-192i$ for $\{2,3\}$ and $-40i$ for $\{1,5\}$, matching the symbolic $n=4$ limit
+$8i\,\omega_1\omega_2^3=-8i\,\omega_2^3\omega_3$. Every test is exact.
+
+\medskip
+\noindent\textbf{Recovering the ``ratio with a pole'' the hint wants.}
+If I keep the solved frequencies eliminated rather than substituted, the monomial becomes a
+genuine rational function of the free frequencies. With $S_1=\omega_2+\dots+\omega_{n-1}=
+-(\omega_1+\omega_n)$ and
+$\omega_1=-(S_1^2-\omega_2^2+\sum_{i\ge3}\omega_i^2)/(2S_1)$,
+\[
+A_n=-\,2^{\,n-2}\,i\,
+\frac{\omega_2^{\,2n-5}\bigl(S_1^2-\omega_2^2+\sum_{i=3}^{n-1}\omega_i^2\bigr)}{S_1}.
+\]
+For $n=5$ the bracket is $2(ab+b^2+ac+bc+c^2)$, reproducing the chamber form; for $n=6$ at
+$(2,3,5,7)$ one has $S_1=17$ and bracket $=289-4+83=368$, giving $-16i\cdot128\cdot368/17=
+-\tfrac{753664}{17}i$, as it must. The numerator does not vanish at $S_1=0$ (for $n=5$ it
+reduces to $-\omega_3\omega_4$), so the pole on the channel sub-energy $S_1$ is genuine ---
+this is the ``ratio of polynomials, simple channel-sub-energy pole, not a plain polynomial''
+the hint describes, now correctly understood as a per-chamber statement.
+
+\medskip
+\noindent\textbf{Trying for the fully general (any-chamber) rule.}
+For robustness I attempt the generic $n=5$ law. Writing $A_5=16i\,(\omega_1\omega_2)\,\Phi$
+with $\Phi$ a degree-four factor, the chambers above suggest that $\Phi$ depends only on the
+two smallest magnitudes $f_1\le f_2$ and their signs $s_1,s_2$ ($-1$ for a minus leg):
+\[
+\Phi=\begin{cases}
+f_1^4,& s_1=-1,\\
+f_1^2(2f_2^2-f_1^2),& s_1=+1,\ s_2=-1,\\
+2f_1^2f_2^2,& s_1=+1,\ s_2=+1.
+\end{cases}
+\]
+(I also note that both minus legs can never be the two smallest: the momentum law gives
+$\kappa_1+\kappa_2=\kappa_3+\kappa_4+\kappa_5$ with $\kappa_i=\omega_i^2$, and if
+$\kappa_1,\kappa_2$ were smallest then $\kappa_3+\kappa_4+\kappa_5\ge3\max(\kappa_1,\kappa_2)
+>2\max\ge\kappa_1+\kappa_2$, a contradiction. So the ``$s_1=-1$'' case always has $s_2=+1$.)
+Testing this rule at $40$ random points gives $38$ exact matches; the two failures are
+instructive --- one point has $\omega_5=0$ (a genuine degeneracy, recursion
+\texttt{Indeterminate}), and one has \emph{negative} free frequencies, where a
+$(+,+)$-smallest configuration disagrees ($-4.927\times10^6 i$ from the code versus
+$-5.690\times10^6 i$ from the rule). So once signs are mixed the chamber structure is finer
+than ``the two smallest'', confirming that the genuinely global object is an irreducibly
+$\min/\max$/sorted thing. The clean single formula is the canonical-chamber one; the general
+case is the symmetric piecewise extension.
+
+\medskip
+\noindent\textbf{Why no single rational function can exist.}
+I make the obstruction precise. The channel $\{2,3,4\}$ has
+$P_{234}=-\kappa_2+\kappa_3+\kappa_4$, and using $\kappa_3+\kappa_4=\kappa_1+\kappa_2-\kappa_5$
+this is $P_{234}=\kappa_1-\kappa_5$, whose sign is $\mathrm{sgn}(|\omega_1|-|\omega_5|)$ ---
+not fixed across the sector. So the unregularised $|k_S|$ genuinely flips, and the recursion
+is piecewise. Since $A_5$ equals the monomial $16i\,\omega_1\omega_2^5$ on the entire open
+chamber $\{|\omega_2|=\min\}$, any rational function agreeing with the code there must
+\emph{be} that monomial, which disagrees in the adjacent chamber. Hence no single global
+rational function exists; the hint's ``one fit valid for all the sector'' is achievable only
+within a chamber.
+
+\medskip
+\noindent\textbf{Choosing the chamber and verifying hard.}
+The natural chamber is the one every example in the code inhabits: positive free frequencies
+in ascending order, so that $\omega_2$ (the lone free minus leg, smallest of the free set)
+ends up the global minimum magnitude. I confirm $\omega_2=\arg\min|\omega|$ holds at every
+such point. Against the \emph{provided} \texttt{BGAmplitude} the boxed formula then matches
+\emph{exactly} (relative error $0$): $30/30$ points at $n=5$, $18/18$ at $n=6$, $8/8$ at
+$n=7$, plus explicit values like $\{3/2,2,5/2\}\!\mapsto\!-\tfrac{891}{2}i$ ($n=5$),
+$\{1,3/2,2,5/2\}\!\mapsto\!-\tfrac{968}{7}i$ ($n=6$),
+$\{1,3/2,2,5/2,3\}\!\mapsto\!-\tfrac{1928}{5}i$ ($n=7$).
+
+\medskip
+\noindent\textbf{An independent re-implementation as insurance.}
+Because matching one code against a formula derived from it can hide a shared bug, I port the
+Berends--Giele recursion to Python from scratch --- once in floating point and once in
+\emph{exact} Gaussian-rational arithmetic (a small $a+bi$ class over the rationals). This
+separate codebase reproduces the Wolfram reference values
+($(2,3,5)\!\mapsto\!-3328i$, $(2,3,5,7)\!\mapsto\!-\tfrac{753664}{17}i$,
+$(2,3,5,7,11)\!\mapsto\!-\tfrac{4030464}{7}i$) and agrees \emph{exactly} with the closed
+form over a fresh random sweep: $40/40$ at $n=5$, $20/20$ at $n=6$, $6/6$ at $n=7$. I also
+confirm the two forms of the answer (the all-frequency monomial and the free-frequency ratio)
+agree at $50$ points each for $n=4,5,6,7$.
+
+\medskip
+\noindent\textbf{Closing $n=4$ honestly.}
+The recursion cannot evaluate $n=4$ directly: the forced kinematics make $k_2+k_4=0$ and
+$\omega_2+\omega_4=0$, so the $\{2,4\}$ propagator is a removable $0/0$ and the bare code
+returns \texttt{Indeterminate}. Taking the finite limit with $|\cdot|$ symbolic gives
+$A_4=-8i\,\omega_2^3\omega_3=8i\,\omega_1\omega_2^3$ for $\omega_2<\omega_3$ (and the swapped
+$-8i\,\omega_2\omega_3^3$ otherwise), exactly the formula; numeric limits
+$\{3/2,5/2\}\!\mapsto\!-\tfrac{135}{2}i$, $\{1,4\}\!\mapsto\!-32i$,
+$\{2,7\}\!\mapsto\!-448i$ confirm it.
+
+\medskip
+\noindent\textbf{What the structure is telling me.}
+The amplitude vanishing like $\omega_2^{\,2n-5}$ as the smallest frequency goes soft is a
+strong zero, not the single power one might expect, and it is the same phenomenon behind the
+$n=4$ result $-8i\,\omega_2^3\omega_3$. The mechanism is that conservation pins the two minus
+legs to the extremes of the magnitude ordering with the plus legs in the middle, so that
+everything except the softest minus leg is fixed and that leg carries the remaining mass
+dimension by itself. The clean statement is the monomial $A_n=2^{n-1}i\,\omega_1\omega_2^{2n-5}$
+(equivalently the displayed ratio with its $S_1$ pole), exact in the chamber selected by the
+standard ascending sampling; the genuinely global object is its symmetric, sorted-magnitude,
+piecewise extension, and no single rational function can represent it because the internal
+$|k_S|$ honestly changes sign within the sector.
+
+\end{document}

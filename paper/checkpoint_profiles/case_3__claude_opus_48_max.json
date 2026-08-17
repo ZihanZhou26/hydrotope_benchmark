@@ -1,0 +1,29 @@
+{
+  "run": "case_3/claude_opus_48_max",
+  "condition": "no-hint",
+  "model": "Claude max",
+  "checkpoints": {
+    "K1": "reached",
+    "K2": "reached",
+    "K3": "reached",
+    "K4": "reached",
+    "K5": "reached",
+    "K6": "partial",
+    "K7": "not",
+    "K8": "partial"
+  },
+  "evidence": {
+    "K1": "Built its own oracle: 'head -145 OnShellBG.m > bg_core.m to keep only the function definitions ... and drive the recursion myself.' Generated independent exact data (A5=-891/2 i, A6=-11907/4 i; 'a big exact dataset, 64 points (30 at n=5, 20 at n=6, 14 at n=7)') plus an mpmath high-precision Python port. Working evaluator + independent scan -> reached.",
+    "K2": "All three invariants: imaginary phase ('purely imaginary ... So I write A_n=i P_n'); homogeneity degree 2n-4 ('scaling omega->2omega at n=5 multiplies A5 by 64=2^6 ... so degree 2n-4 holds', plus g^{3-n}); and sign-class symmetry ('swapping any two plus legs, and (separately) swapping the two minus legs, leaves A5 fixed, so A_n carries an S_2 x S_{n-2} symmetry').",
+    "K3": "Wrote the principal-chamber monomial generalized in n: 'P_n = 2^{n-1} (omega_1 omega_2) [min(omega_1^2,omega_2^2)]^{n-3}', derived from P5=16 w1 w2^5, P6=32 w1 w2^7, P7=64 w1 w2^9, and disambiguated the min-branch on hand-built points.",
+    "K4": "Concrete counterexamples: a 'both minus positive (2,5)' point 'gives an irrational BG value approx 252.08 i, nowhere near the formula's 2560 i'; and omega={11/2,-4,-3,5,-7/2} where 'the exact M=3087/16 did not match the 2|k3||k5| the rule predicted.'",
+    "K5": "Abandoned the smooth global ansatz: exact linear system 'inconsistent at n=5 and again at n=6: P_n is not a polynomial', then went chamber-hunting and 'concluded that a single globally-analytic expression does not exist.' Committed to piecewise/chamber-dependent structure.",
+    "K6": "Partial: mapped several chambers (C1 M=|k2|^2, C2 M=2|k3||k4|, C3 M=|k1|^2, intermediate M=|kp|(2|km|-|kp|)) but governed them by 'the sorted |k| and the sigma-type of the softest legs' (ordered/sorting thresholds) and 'treated the cells as a piecewise zoo rather than one inclusion--exclusion object.' The arbitrary-subset truncated-power wall structure (U-x1, U-x1-x2) was recognized only 'with hindsight,' not during the run -> partial (ordered thresholds, not arbitrary subsets).",
+    "K7": "Not: explicitly did not assemble the global formula -- 'I did not assemble the chamber pieces into the inclusion--exclusion / truncated-power formula they were terms of' and 'the full inclusion--exclusion closed form was within reach and was not assembled.' Final boxed answer is only the chamber monomial.",
+    "K8": "Partial: verified the final monomial exhaustively but all within the leading chamber -- '16 MakeKinematics points ... match with exact zero relative error; a 95-point domain scan restricted to the physical regime ... agrees to <10^-37', mpmath agreement ~10^-59, 'Across everything: 110+ points, 0 failures -- within the leading chamber.' Handled the n=4 degenerate boundary via epsilon-deformation (limits 192, 320, 1512), but the final formula was never verified across the adversarial chambers (where it is known to fail) -> coverage-gap partial."
+  },
+  "divergence_rung": "K5",
+  "flags": ["F1", "F2", "F3"],
+  "final_outcome": "local",
+  "one_line_summary": "Built its own BG oracle, nailed all structural invariants (imaginary/degree-2n-4/S2xS_{n-2}) and the principal-chamber monomial w1 w2 min(w1^2,w2^2)^{n-3}, found explicit counterexamples and committed to piecewise structure, and even wrote out the individual chamber pieces -- but diverged at K5->K6/K7 by reading them as a sign-dependent 'zoo,' concluding no global form exists, and never assembling the inclusion-exclusion subset sum."
+}

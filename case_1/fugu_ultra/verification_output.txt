@@ -1,0 +1,17 @@
+Exact branch checks from verify_branch.wls:
+
+n=5 fw={2, 5/2, 3} ws={-9/2, 2, 5/2, 3, -3} BG/I=-2304 formula/I=-2304 diff=0
+n=5 fw={-9/2, 5/2, 3} ws={2, -9/2, 5/2, 3, -3} BG/I=-2304 formula/I=-2304 diff=0
+n=5 fw={3, 4, 5} ws={-22/3, 3, 4, 5, -14/3} BG/I=-28512 formula/I=-28512 diff=0
+n=5 fw={1, 2, 4} ws={-34/7, 1, 2, 4, -15/7} BG/I=-544/7 formula/I=-544/7 diff=0
+n=6 fw={3, 4, 5, 6} ws={-98/9, 3, 4, 5, 6, -64/9} BG/I=-762048 formula/I=-762048 diff=0
+n=6 fw={2, 3, 5, 7} ws={-184/17, 2, 3, 5, 7, -105/17} BG/I=-753664/17 formula/I=-753664/17 diff=0
+n=6 fw={-184/17, 3, 5, 7} ws={2, -184/17, 3, 5, 7, -105/17} BG/I=-753664/17 formula/I=-753664/17 diff=0
+n=7 fw={3, 4, 5, 6, 7} ws={-371/25, 3, 4, 5, 6, 7, -254/25} BG/I=-467353152/25 formula/I=-467353152/25 diff=0
+n=7 fw={2, 3, 5, 7, 11} ws={-123/7, 2, 3, 5, 7, 11, -73/7} BG/I=-4030464/7 formula/I=-4030464/7 diff=0
+
+Four-point limiting checks from n4_limit2.wls, eps=10^-7:
+
+a=2, x=5/2: BG/I=-159.99999057499943, limit=-160, absdiff=9.425e-6
+a=3, x=4: BG/I=-863.9999637999986, limit=-864, absdiff=3.62e-5
+a=5/3, x=7/3: BG/I=-86.41974621234524, limit=-86.41975308641975, absdiff=6.874e-6

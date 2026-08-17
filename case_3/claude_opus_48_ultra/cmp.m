@@ -1,0 +1,10 @@
+Get["/home/zihanz/waterhedron_benchmark_blind/case_3/claude_opus_48_ultra/BGcore.m"];
+Print["EK3 = ", EKernel[3, {3, -5, 7}]];
+Print["EK4 = ", EKernel[4, {3, -5, 7, 2}]];
+Print["EK5 = ", EKernel[5, {3, -5, 7, 2, -4}]];
+Print["FK3 = ", FKernel[3, {3, -5, 7}]];
+Print["FK4 = ", FKernel[4, {3, -5, 7, 2}]];
+Print["FK5 = ", FKernel[5, {3, -5, 7, 2, -4}]];
+Print["V3  = ", Vertex[3, {3, -5, 7}, {2, 3, 5}]];
+Print["V4  = ", Vertex[4, {3, -5, 7, 2}, {2, 3, 5, 7}]];
+Print["Prop= ", Propagator[3, -5, 1]];
