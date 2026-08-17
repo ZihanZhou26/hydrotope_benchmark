@@ -1,0 +1,6 @@
+r1 basis = 8
+r1+r2 basis = 16
+r1 status=inconsistent
+r1+r2 status=inconsistent
+r1+r2 rank=6/7
+invariance_passed=True

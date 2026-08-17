@@ -1,0 +1,28 @@
+[2026-07-26T06-33-58] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/verifier-bot.md identity=verifier
+Verification complete. Session ended per workflow. Here's the summary.
+
+## Round-3 independent verification — three-minus A₆
+
+**Setup.** Rebuilt `bg.cpp` fresh in `bots/verifier/code/` (md5 `41715c4a…`, byte-identical to shared), and reimplemented P_pole and the compact wall brick from the *written* derivations — no student evaluator imported. All arithmetic exact (Fraction), all wall work via two-sided limits.
+
+**What I attacked** (the newest load-bearing claims): student-2's compact same-energy wall brick with the **four-leg β=min selector**, and both students' verdict that the pair-wall brick **H_mp is itself a spline**.
+
+**Results — all confirmed with zero residual:**
+- **Foundation** re-confirmed on the fresh build: `R = A₆/i − P_pole` denominator-free across **all 8 chambers** (52/52 integer + 293/293 rational, exact). 5-pt calibration exact (4/4).
+- **Anchor wall jump** order-1, `H₂₄ = 12622720/27`.
+- **Compact four-leg-β brick** `H_mp|_{ωp=ωm} = −32·β²·[4a⁴+6a³s+2a²(s²+v)+(aS+v)(s²−2v)]`, β = min|ω_j| over the four non-primary legs: matches BG at **7/7** isolated environments. In the 5 plus-leg cases it differs from and **beats** the old minus-only rule → the four-leg selector is necessary and correct.
+- **H_mp is a spline**: on the affine slice H₂₄ = P(u) for u<3 and P(6−u) for u>3; four-leg formula matches BG at every u.
+
+**Key self-correction.** My first pass *appeared* to find two counterexamples (envs C, E). They were reconstruction artifacts — a coarse near-wall cluster silently locked onto a non-adjacent cell (a finer wall sits close). Enforcing **continuity R_L(t₀)=R_R(t₀)** removed them and the formula matched exactly. This independently validates student-2's rejection of "nongeneric nearby" environments.
+
+**Findings:**
+1. *(blocking)* No complete compact A₆ yet. Since H_mp is a spline, the single-orbit polynomial ansatz is dead; the global R₀ and the **coupled** β-fan assembly remain unknown → deliverable and its compactness account don't exist.
+2. *(minor)* `s1_004` mis-locates the branch switch: it's the pair wall **q₃₅=0 at u=3** (β flips w3→w5), not Q_{3;45}=0 at u=61/12. Pinned by u=2.9→P(u), u=3.1 & u=4→P(6−u). Matters for round-4 assembly (coupling is a sorted/min structure over the four |ω_j|).
+3. *(minor)* Stale/mislabeled column in `round3_wall_trace_scan.json` (`H_wall_compact_formula` uses the old minus-only β; the correct four-leg value is `H_wall_beta_formula`).
+4. *(minor)* Methodology + carried BG-SIGFPE caution.
+
+Wrote `VERIFICATION.md`, session JSON, and registered claims v_r3_001–004 + decision v_dec_r3_001. No board post (every audited claim confirmed — good news, not a warning).
+
+**VERDICT: GAPS REMAIN (1 blocking)**
+[usage] cost_usd=10.038898000000001 duration_ms=1987147 num_turns=76 in=122 out=121117 cache_read=9760346 cache_write=212956
+[2026-07-26T07-07-06] verifier-bot exited with code 0

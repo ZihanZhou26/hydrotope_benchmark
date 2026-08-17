@@ -1,0 +1,1154 @@
+{
+  "signature_hash": "12ea165a03",
+  "base_omega": [
+    "-20/7",
+    "9",
+    "8",
+    "2",
+    "-5",
+    "-78/7"
+  ],
+  "signature_labels": [
+    "wall_diff_a1_b1",
+    "wall_diff_a1_b2",
+    "wall_diff_a1_b3",
+    "wall_diff_a2_b1",
+    "wall_diff_a2_b2",
+    "wall_diff_a2_b3",
+    "wall_diff_a3_b1",
+    "wall_diff_a3_b2",
+    "wall_diff_a3_b3",
+    "wall_sum_a1_b1",
+    "wall_sum_a1_b2",
+    "wall_sum_a1_b3",
+    "wall_sum_a2_b1",
+    "wall_sum_a2_b2",
+    "wall_sum_a2_b3",
+    "wall_sum_a3_b1",
+    "wall_sum_a3_b2",
+    "wall_sum_a3_b3",
+    "h_r2_12",
+    "h_r2_13",
+    "h_r2_14",
+    "h_r2_15",
+    "h_r2_16",
+    "h_r2_23",
+    "h_r2_24",
+    "h_r2_25",
+    "h_r2_26",
+    "h_r2_34",
+    "h_r2_35",
+    "h_r2_36",
+    "h_r2_45",
+    "h_r2_46",
+    "h_r2_56",
+    "h_r3_123",
+    "h_r3_124",
+    "h_r3_125",
+    "h_r3_126",
+    "h_r3_134",
+    "h_r3_135",
+    "h_r3_136",
+    "h_r3_145",
+    "h_r3_146",
+    "h_r3_156",
+    "h_r3_234",
+    "h_r3_235",
+    "h_r3_236",
+    "h_r3_245",
+    "h_r3_246",
+    "h_r3_256",
+    "h_r3_345",
+    "h_r3_346",
+    "h_r3_356",
+    "h_r3_456"
+  ],
+  "signature_values": [
+    1,
+    -1,
+    -1,
+    1,
+    1,
+    -1,
+    1,
+    1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    1,
+    -1,
+    -1,
+    1,
+    -1,
+    -1,
+    -1,
+    1,
+    1,
+    1,
+    1,
+    -1,
+    -1,
+    1,
+    -1,
+    -1,
+    -1,
+    -1,
+    1,
+    1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    1
+  ],
+  "wall_signs": [
+    1,
+    -1,
+    -1,
+    1,
+    1,
+    -1,
+    1,
+    1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    1,
+    -1,
+    -1,
+    1
+  ],
+  "h_signs": [
+    -1,
+    -1,
+    -1,
+    1,
+    1,
+    1,
+    1,
+    -1,
+    -1,
+    1,
+    -1,
+    -1,
+    -1,
+    -1,
+    1,
+    1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1,
+    1
+  ],
+  "compare_matrix_23_45": [
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  "h16_branch": {
+    "subset": "{1,6}",
+    "h_value": "80",
+    "h_sign": 1,
+    "k_sign": 1
+  },
+  "scan": [
+    {
+      "V": [],
+      "scan": {
+        "status": "not_found",
+        "scan": [
+          {
+            "d": 0,
+            "nm": 1,
+            "npts": 520,
+            "r31": 1,
+            "r61": 1,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 1,
+            "nm": 4,
+            "npts": 520,
+            "r31": 4,
+            "r61": 4,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 2,
+            "nm": 10,
+            "npts": 520,
+            "r31": 10,
+            "r61": 10,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 3,
+            "nm": 20,
+            "npts": 520,
+            "r31": 20,
+            "r61": 20,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 4,
+            "nm": 35,
+            "npts": 520,
+            "r31": 35,
+            "r61": 35,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 5,
+            "nm": 56,
+            "npts": 520,
+            "r31": 56,
+            "r61": 56,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 6,
+            "nm": 84,
+            "npts": 520,
+            "r31": 84,
+            "r61": 84,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 7,
+            "nm": 120,
+            "npts": 520,
+            "r31": 120,
+            "r61": 120,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 8,
+            "nm": 165,
+            "npts": 520,
+            "r31": 165,
+            "r61": 165,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 9,
+            "nm": 220,
+            "npts": 520,
+            "r31": 220,
+            "r61": 220,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 10,
+            "nm": 286,
+            "npts": 520,
+            "r31": 286,
+            "r61": 286,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 11,
+            "nm": 364,
+            "npts": 520,
+            "r31": 364,
+            "r61": 364,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 12,
+            "nm": 455,
+            "npts": 520,
+            "r31": 455,
+            "r61": 455,
+            "status": "rank_mismatch"
+          }
+        ],
+        "dmax": 12
+      },
+      "status": "not_found"
+    },
+    {
+      "V": [
+        "x"
+      ],
+      "scan": {
+        "status": "not_found",
+        "scan": [
+          {
+            "d": 0,
+            "nm": 1,
+            "npts": 520,
+            "r31": 1,
+            "r61": 1,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 1,
+            "nm": 4,
+            "npts": 520,
+            "r31": 4,
+            "r61": 4,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 2,
+            "nm": 10,
+            "npts": 520,
+            "r31": 10,
+            "r61": 10,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 3,
+            "nm": 20,
+            "npts": 520,
+            "r31": 20,
+            "r61": 20,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 4,
+            "nm": 35,
+            "npts": 520,
+            "r31": 35,
+            "r61": 35,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 5,
+            "nm": 56,
+            "npts": 520,
+            "r31": 56,
+            "r61": 56,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 6,
+            "nm": 84,
+            "npts": 520,
+            "r31": 84,
+            "r61": 84,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 7,
+            "nm": 120,
+            "npts": 520,
+            "r31": 120,
+            "r61": 120,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 8,
+            "nm": 165,
+            "npts": 520,
+            "r31": 165,
+            "r61": 165,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 9,
+            "nm": 220,
+            "npts": 520,
+            "r31": 220,
+            "r61": 220,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 10,
+            "nm": 286,
+            "npts": 520,
+            "r31": 286,
+            "r61": 286,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 11,
+            "nm": 364,
+            "npts": 520,
+            "r31": 364,
+            "r61": 364,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 12,
+            "nm": 455,
+            "npts": 520,
+            "r31": 455,
+            "r61": 455,
+            "status": "rank_mismatch"
+          }
+        ],
+        "dmax": 12
+      },
+      "status": "not_found"
+    },
+    {
+      "V": [
+        "y"
+      ],
+      "scan": {
+        "status": "not_found",
+        "scan": [
+          {
+            "d": 0,
+            "nm": 1,
+            "npts": 520,
+            "r31": 1,
+            "r61": 1,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 1,
+            "nm": 4,
+            "npts": 520,
+            "r31": 4,
+            "r61": 4,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 2,
+            "nm": 10,
+            "npts": 520,
+            "r31": 10,
+            "r61": 10,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 3,
+            "nm": 20,
+            "npts": 520,
+            "r31": 20,
+            "r61": 20,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 4,
+            "nm": 35,
+            "npts": 520,
+            "r31": 35,
+            "r61": 35,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 5,
+            "nm": 56,
+            "npts": 520,
+            "r31": 56,
+            "r61": 56,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 6,
+            "nm": 84,
+            "npts": 520,
+            "r31": 84,
+            "r61": 84,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 7,
+            "nm": 120,
+            "npts": 520,
+            "r31": 120,
+            "r61": 120,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 8,
+            "nm": 165,
+            "npts": 520,
+            "r31": 165,
+            "r61": 165,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 9,
+            "nm": 220,
+            "npts": 520,
+            "r31": 220,
+            "r61": 220,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 10,
+            "nm": 286,
+            "npts": 520,
+            "r31": 286,
+            "r61": 286,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 11,
+            "nm": 364,
+            "npts": 520,
+            "r31": 364,
+            "r61": 364,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 12,
+            "nm": 455,
+            "npts": 520,
+            "r31": 455,
+            "r61": 455,
+            "status": "rank_mismatch"
+          }
+        ],
+        "dmax": 12
+      },
+      "status": "not_found"
+    },
+    {
+      "V": [
+        "z"
+      ],
+      "scan": {
+        "status": "not_found",
+        "scan": [
+          {
+            "d": 0,
+            "nm": 1,
+            "npts": 520,
+            "r31": 1,
+            "r61": 1,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 1,
+            "nm": 4,
+            "npts": 520,
+            "r31": 4,
+            "r61": 4,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 2,
+            "nm": 10,
+            "npts": 520,
+            "r31": 10,
+            "r61": 10,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 3,
+            "nm": 20,
+            "npts": 520,
+            "r31": 20,
+            "r61": 20,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 4,
+            "nm": 35,
+            "npts": 520,
+            "r31": 35,
+            "r61": 35,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 5,
+            "nm": 56,
+            "npts": 520,
+            "r31": 56,
+            "r61": 56,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 6,
+            "nm": 84,
+            "npts": 520,
+            "r31": 84,
+            "r61": 84,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 7,
+            "nm": 120,
+            "npts": 520,
+            "r31": 120,
+            "r61": 120,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 8,
+            "nm": 165,
+            "npts": 520,
+            "r31": 165,
+            "r61": 165,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 9,
+            "nm": 220,
+            "npts": 520,
+            "r31": 220,
+            "r61": 220,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 10,
+            "nm": 286,
+            "npts": 520,
+            "r31": 286,
+            "r61": 286,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 11,
+            "nm": 364,
+            "npts": 520,
+            "r31": 364,
+            "r61": 364,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 12,
+            "nm": 455,
+            "npts": 520,
+            "r31": 455,
+            "r61": 455,
+            "status": "rank_mismatch"
+          }
+        ],
+        "dmax": 12
+      },
+      "status": "not_found"
+    },
+    {
+      "V": [
+        "x",
+        "y"
+      ],
+      "scan": {
+        "status": "not_found",
+        "scan": [
+          {
+            "d": 0,
+            "nm": 1,
+            "npts": 520,
+            "r31": 1,
+            "r61": 1,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 1,
+            "nm": 4,
+            "npts": 520,
+            "r31": 4,
+            "r61": 4,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 2,
+            "nm": 10,
+            "npts": 520,
+            "r31": 10,
+            "r61": 10,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 3,
+            "nm": 20,
+            "npts": 520,
+            "r31": 20,
+            "r61": 20,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 4,
+            "nm": 35,
+            "npts": 520,
+            "r31": 35,
+            "r61": 35,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 5,
+            "nm": 56,
+            "npts": 520,
+            "r31": 56,
+            "r61": 56,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 6,
+            "nm": 84,
+            "npts": 520,
+            "r31": 84,
+            "r61": 84,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 7,
+            "nm": 120,
+            "npts": 520,
+            "r31": 120,
+            "r61": 120,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 8,
+            "nm": 165,
+            "npts": 520,
+            "r31": 165,
+            "r61": 165,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 9,
+            "nm": 220,
+            "npts": 520,
+            "r31": 220,
+            "r61": 220,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 10,
+            "nm": 286,
+            "npts": 520,
+            "r31": 286,
+            "r61": 286,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 11,
+            "nm": 364,
+            "npts": 520,
+            "r31": 364,
+            "r61": 364,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 12,
+            "nm": 455,
+            "npts": 520,
+            "r31": 455,
+            "r61": 455,
+            "status": "rank_mismatch"
+          }
+        ],
+        "dmax": 12
+      },
+      "status": "not_found"
+    },
+    {
+      "V": [
+        "x",
+        "z"
+      ],
+      "scan": {
+        "status": "not_found",
+        "scan": [
+          {
+            "d": 0,
+            "nm": 1,
+            "npts": 520,
+            "r31": 1,
+            "r61": 1,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 1,
+            "nm": 4,
+            "npts": 520,
+            "r31": 4,
+            "r61": 4,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 2,
+            "nm": 10,
+            "npts": 520,
+            "r31": 10,
+            "r61": 10,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 3,
+            "nm": 20,
+            "npts": 520,
+            "r31": 20,
+            "r61": 20,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 4,
+            "nm": 35,
+            "npts": 520,
+            "r31": 35,
+            "r61": 35,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 5,
+            "nm": 56,
+            "npts": 520,
+            "r31": 56,
+            "r61": 56,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 6,
+            "nm": 84,
+            "npts": 520,
+            "r31": 84,
+            "r61": 84,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 7,
+            "nm": 120,
+            "npts": 520,
+            "r31": 120,
+            "r61": 120,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 8,
+            "nm": 165,
+            "npts": 520,
+            "r31": 165,
+            "r61": 165,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 9,
+            "nm": 220,
+            "npts": 520,
+            "r31": 220,
+            "r61": 220,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 10,
+            "nm": 286,
+            "npts": 520,
+            "r31": 286,
+            "r61": 286,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 11,
+            "nm": 364,
+            "npts": 520,
+            "r31": 364,
+            "r61": 364,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 12,
+            "nm": 455,
+            "npts": 520,
+            "r31": 455,
+            "r61": 455,
+            "status": "rank_mismatch"
+          }
+        ],
+        "dmax": 12
+      },
+      "status": "not_found"
+    },
+    {
+      "V": [
+        "y",
+        "z"
+      ],
+      "scan": {
+        "status": "not_found",
+        "scan": [
+          {
+            "d": 0,
+            "nm": 1,
+            "npts": 520,
+            "r31": 1,
+            "r61": 1,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 1,
+            "nm": 4,
+            "npts": 520,
+            "r31": 4,
+            "r61": 4,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 2,
+            "nm": 10,
+            "npts": 520,
+            "r31": 10,
+            "r61": 10,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 3,
+            "nm": 20,
+            "npts": 520,
+            "r31": 20,
+            "r61": 20,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 4,
+            "nm": 35,
+            "npts": 520,
+            "r31": 35,
+            "r61": 35,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 5,
+            "nm": 56,
+            "npts": 520,
+            "r31": 56,
+            "r61": 56,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 6,
+            "nm": 84,
+            "npts": 520,
+            "r31": 84,
+            "r61": 84,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 7,
+            "nm": 120,
+            "npts": 520,
+            "r31": 120,
+            "r61": 120,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 8,
+            "nm": 165,
+            "npts": 520,
+            "r31": 165,
+            "r61": 165,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 9,
+            "nm": 220,
+            "npts": 520,
+            "r31": 220,
+            "r61": 220,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 10,
+            "nm": 286,
+            "npts": 520,
+            "r31": 286,
+            "r61": 286,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 11,
+            "nm": 364,
+            "npts": 520,
+            "r31": 364,
+            "r61": 364,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 12,
+            "nm": 455,
+            "npts": 520,
+            "r31": 455,
+            "r61": 455,
+            "status": "rank_mismatch"
+          }
+        ],
+        "dmax": 12
+      },
+      "status": "not_found"
+    },
+    {
+      "V": [
+        "x",
+        "y",
+        "z"
+      ],
+      "scan": {
+        "status": "not_found",
+        "scan": [
+          {
+            "d": 0,
+            "nm": 1,
+            "npts": 520,
+            "r31": 1,
+            "r61": 1,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 1,
+            "nm": 4,
+            "npts": 520,
+            "r31": 4,
+            "r61": 4,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 2,
+            "nm": 10,
+            "npts": 520,
+            "r31": 10,
+            "r61": 10,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 3,
+            "nm": 20,
+            "npts": 520,
+            "r31": 20,
+            "r61": 20,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 4,
+            "nm": 35,
+            "npts": 520,
+            "r31": 35,
+            "r61": 35,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 5,
+            "nm": 56,
+            "npts": 520,
+            "r31": 56,
+            "r61": 56,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 6,
+            "nm": 84,
+            "npts": 520,
+            "r31": 84,
+            "r61": 84,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 7,
+            "nm": 120,
+            "npts": 520,
+            "r31": 120,
+            "r61": 120,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 8,
+            "nm": 165,
+            "npts": 520,
+            "r31": 165,
+            "r61": 165,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 9,
+            "nm": 220,
+            "npts": 520,
+            "r31": 220,
+            "r61": 220,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 10,
+            "nm": 286,
+            "npts": 520,
+            "r31": 286,
+            "r61": 286,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 11,
+            "nm": 364,
+            "npts": 520,
+            "r31": 364,
+            "r61": 364,
+            "status": "rank_mismatch"
+          },
+          {
+            "d": 12,
+            "nm": 455,
+            "npts": 520,
+            "r31": 455,
+            "r61": 455,
+            "status": "rank_mismatch"
+          }
+        ],
+        "dmax": 12
+      },
+      "status": "not_found"
+    }
+  ],
+  "dmin": null,
+  "selected_V": null,
+  "fixed_denominator": {
+    "U": "0",
+    "V": [],
+    "Q": "",
+    "V_product": "1"
+  },
+  "P": "",
+  "Q": "",
+  "factorP": "",
+  "factorQ": "",
+  "degP": -1,
+  "degQ": -1,
+  "gcd_num_den": "1",
+  "gcd_singles": [],
+  "check": {
+    "ok": 0,
+    "total": 0,
+    "bad": 0,
+    "hold_ok": 0,
+    "hold_total": 0,
+    "hold_bad": 0
+  },
+  "status": "insufficient_points",
+  "point_file": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/data/round6_pieces/piece_12ea165a03_points.json",
+  "detail_file": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/data/round6_pieces/piece_12ea165a03_detail.json"
+}

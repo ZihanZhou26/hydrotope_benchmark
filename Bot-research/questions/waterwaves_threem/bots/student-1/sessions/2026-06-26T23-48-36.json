@@ -1,0 +1,30 @@
+{
+  "bot": "student-1",
+  "timestamp": "2026-06-26T23:48:36Z",
+  "task_id": "r4-student-1",
+  "status": "substantial-progress",
+  "summary": "Bottom-up round 4. Reduced the n=6 three-minus amplitude to FOUR symmetric invariants (e1,e2,e3m,e3p) and used the minus/plus cubics to (1) PROVE the team's degree-9 denominator collapses on the manifold to a perfect cube of one cubic invariant, prod_{i,j}(omega_i+omega_j) = (omega_1 omega_2 omega_3 + omega_4 omega_5 omega_6)^3 = (e3m+e3p)^3; and (2) show the TRUE minimal denominator is that cubic to the FIRST power -- A_6 = i 2^5 g^-3 N/(e3m+e3p) with N a degree-11 spline (NOT degree 17). This corrects the PI-verified 'D9 minimal' claim (D9 over-clears by (e3m+e3p)^2). Also pinned the spline jump structure exactly: across (1=1) walls omega_i=omega_j the jump ~ (k_ij)^1 (first-derivative kink), across (1=2) walls omega_i^2=omega_j^2+omega_k^2 the jump ~ (k_ijk)^3 (cubic kink) -- different exponents, unlike n=5's uniform exponent 2. The closed form for the degree-11 numerator N remains open, but is now tightly constrained.",
+  "work_done": [
+    "Proved D9 = prod_{i in {1,2,3}, j in {4,5,6}}(omega_i+omega_j) = (e3m+e3p)^3 on the manifold (Q(x)-p_-(x)=e3m+e3p constant => Q(omega_i)=e3m+e3p). Symbolic resultant + 8/8 random exact points (inv.py, verify_min_denom.py part P). Claim s1_011.",
+    "Showed the minimal denominator is (e3m+e3p)^1: A_6*(e3m+e3p) reconstructs to a pure-sumFree denominator (genuine 6-freq polynomial) on 8 slices across 4 chamber types; pole order of A_6 at e3m+e3p=0 is exactly 1 (verify_min_denom.py, pole_order2/3.py). N = A_6*(e3m+e3p)/(i2^5g^-3) has degree 11. Claim s1_012 (corrects s2_010/PI post_009).",
+    "Established the reduction to 4 invariants (e1,e2,e3m,e3p) via e1minus=-e1plus, e2minus=e2plus; Z_2 acts as (e1,e2,e3m,e3p)->(-e1,e2,e3p,e3m). Decision s1_dec_007.",
+    "Measured cross-wall jump orders on clean single-wall crossings (sign-diff=1): (1=1) wall -> jump order 1 in k_ij (C^0); (1=2) wall -> jump order 3 in k_ijk (C^2). Confirms team (1=2) 'cubic kink', pins both exponents; the split (1 vs 3) rules out a uniform-exponent box-spline for N. Identified the kink as living on the difference branch (omega_i-omega_j) (BG kernel |k_ij|=|omega_i-omega_j||omega_i+omega_j|). Claim s1_013, decision s1_dec_008.",
+    "Verified per-chamber N is a genuine degree-11 polynomial (pure-sumFree) but non-symmetric in legs (legs are cubic-root functions of the invariants), so only the GLOBAL N is invariant-valued (and a spline).",
+    "Noted all-n: Den_n = prod(omega_i+omega_j) = Res(p_-, Q_n); the perfect-cube collapse is special to n=6."
+  ],
+  "deliverables_status": {
+    "per_chamber_N": "N is a degree-11 polynomial per chamber (verified pure-sumFree across 4 chamber types). Explicit multivariate per-chamber polynomial not extracted (non-symmetric, degree 11 in legs); the minimal-denominator form + slice reconstructions are provided.",
+    "cross_wall_jumps": "DONE exactly: (1=1) jump ~ (k_ij)^1, (1=2) jump ~ (k_ijk)^3 (jumps_smoothness.py).",
+    "assemble_recognize": "OPEN. Reduced the target to a degree-11 symmetric odd spline N over the single cubic denominator (e3m+e3p), with the exact wall set and jump exponents. The split exponents (1,3) are the key new constraint for student-2's box-spline/matching-sum hunt."
+  },
+  "verification": {
+    "method": "exact rational; own copy of bg.cpp (byte-identical to shared, shared untouched); Pade-over-Q reconstruction on contiguous in-chamber slices; sympy symbolic resultant for the cube identity.",
+    "canonical_scripts": ["bots/student-1/code/verify_min_denom.py", "bots/student-1/code/jumps_smoothness.py", "bots/student-1/code/inv.py"]
+  },
+  "next_steps": [
+    "Closed form for the degree-11 numerator N: feed the minimal denominator (e3m+e3p) and the split jump exponents (1 at (1=1), 3 at (1=2)) into student-2's box-spline / matching-sum ansatz. A faithful N must reproduce a (k_ij)^1 jump at (1=1) walls and a (k_ijk)^3 jump at (1=2) walls.",
+    "Determine the minimal-denominator power for n=7 (does Res(p_-,Q_7) reduce, or is the n=6 collapse unique?).",
+    "Extract the full multivariate per-chamber N_6 (degree 11) if the box-spline recognition stalls -- now a degree-11 (not degree-17) fit."
+  ],
+  "citations": []
+}

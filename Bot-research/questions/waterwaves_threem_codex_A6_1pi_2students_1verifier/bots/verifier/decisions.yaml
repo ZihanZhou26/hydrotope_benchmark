@@ -1,0 +1,135 @@
+decisions:
+  - id: v_dec_r1_001
+    round: 1
+    timestamp: "2026-07-26T06:11:22"
+    decision: "VERDICT: GAPS REMAIN (1 blocking)"
+    rationale: >
+      Round 1 has no compact closed-form A_6 candidate to accept (blocking gap).
+      Every independently checkable claim produced this round was reproduced
+      EXACTLY on a fresh md5-verified BG oracle with verifier-authored code, so
+      the scaffolding is trustworthy, but the task deliverable does not exist.
+      No board warning posted: all audited claims verified, no false result to
+      flag, and the no-formula-yet status is already known to PI and students.
+    see: bots/verifier/VERIFICATION.md
+  - id: v_dec_r2_001
+    round: 2
+    timestamp: "2026-07-26T08:17:58"
+    decision: "VERDICT: GAPS REMAIN (1 blocking)"
+    rationale: >
+      Round 2 produced strong, independently-verified progress but not the
+      deliverable. student-1's compact pole part P_pole is CONFIRMED (correct,
+      table-free, denominator-removing in all 8 chambers, forced Q_T
+      normalization) and student-2's Delta=C^3 / D_min=C reduction plus the
+      order-1 pair-wall jump (cubic ruled out) are CONFIRMED exactly, all on a
+      fresh md5-verified oracle with verifier-authored reimplementations. But the
+      polynomial-spline remainder R_spline = A_6/i - P_pole (the degree-6 orbit
+      brick H_mp) is still unknown, so no complete compact A_6 exists -- the
+      single blocking gap persists. No board warning posted: every audited claim
+      was CONFIRMED (good news, not a warning); the no-complete-formula status
+      and two structural caveats (C=0 fully removable; cell structure finer than
+      8 words) are recorded in VERIFICATION.md and claims.yaml for the next PI.
+    see: bots/verifier/VERIFICATION.md
+  - id: v_dec_r3_001
+    round: 3
+    timestamp: "2026-07-26T11:03:49"
+    decision: "VERDICT: GAPS REMAIN (1 blocking)"
+    rationale: >
+      Round 3 produced strong, independently-verified LOCAL progress but not the
+      deliverable. Independently CONFIRMED on a fresh md5-verified oracle (verifier
+      reimplementation, no student evaluator): student-2's compact same-energy
+      wall brick with the FOUR-LEG beta=min selector (exact at 7/7 isolated
+      environments; the 5 plus-leg cases discriminate it from and beat the old
+      minus-only rule), and the pivotal verdict that H_mp is ITSELF a spline
+      (P(u)<->P(6-u), switch pinned to the pair wall q35=0 at u=3). Foundation
+      (R denominator-free, all 8 chambers) and 5-pt calibration re-confirmed exact.
+      But H_mp being a spline kills the single-orbit polynomial ansatz, and the
+      global R_0 plus the coupled inclusion-exclusion assembly of the beta-minimum
+      fan remain unknown -- no complete compact A_6, no table-free full evaluator,
+      so the single blocking gap G1 persists. No board post: every audited claim
+      was CONFIRMED (good news, not a warning); the two minor findings (s1_004
+      mis-locates the switch to Q_{3;45} instead of the q35 pair wall; a stale
+      mislabeled column in round3_wall_trace_scan.json) and the continuity/
+      adjacency methodology caution are recorded in VERIFICATION.md + claims.yaml
+      for the next PI, who should target a sorted/nested-min construction over the
+      four |omega_j| for the coupled assembly.
+    see: bots/verifier/VERIFICATION.md
+  - id: v_dec_r4_001
+    round: 4
+    timestamp: "2026-07-26T13:29:24"
+    decision: "VERDICT: GAPS REMAIN (1 blocking)"
+    rationale: >
+      Round 4 produced no complete A_6; both students filed obstructions. I
+      attacked the strongest/most consequential new claim -- student-2's s2_009
+      that R_spline (and A_6) also jump across the three-leg factorization walls
+      Q_{m;pq}=0 -- because it refutes the premise the whole round-4 plan rests on.
+      Independently CONFIRMED on a fresh md5-matched oracle with a verifier
+      table-free P_pole: witness R_spline=-49008548 reproduced exactly; a bespoke
+      on-shell POLYNOMIAL line crossing a single Q_{1;46}=0 wall inside one fixed
+      magnitude cell shows R_spline is clean deg-8 on the left (11/11 holdouts) but
+      jumps on the right; the wall is intrinsic to A_6 (A_6/i*C jumps too, so it is
+      the k_{m,p,q}=0 chamber wall, not a pole-subtraction artifact); the jump is
+      order EXACTLY 3 and forms an S3xS3 orbit (6 channels). student-1's s1_005
+      rank-17<18 is the consistent symptom. A board WARNING was posted (post_017):
+      the round-4 magnitude-ties-only premise (logic.yaml spline_structure/
+      open_minor, group notes, PI F14) is false and must be corrected before round
+      5 -- it even contradicts my own round-2 caveat v_r2_004(b); my round-3
+      Finding 2 was correct but the PI over-generalized it. Verdict remains GAPS
+      REMAIN (1 blocking): no compact A_6 exists, and the remaining structure is
+      now the larger JOINT {q_mp=0}(order 1) U {Q_{m;pq}=0}(order 3) fan plus R_0,
+      with wall-set completeness still unproven.
+    see: bots/verifier/VERIFICATION.md
+  - id: v_dec_r7_001
+    round: 7
+    timestamp: "2026-07-26T20:33:26"
+    decision: "VERDICT: GAPS REMAIN (2 blocking)"
+    rationale: >
+      Round 7 produced no surviving candidate. I attacked the only new closed-form
+      object -- student-2's manifestly-continuous symmetric q-brick B^sym / orbit
+      R_q^sym (s2_013/post_027) -- by HAND-TRANSCRIBING it from the boxed formula and
+      rerunning the decisive local cure test on a FRESH from-scratch oracle (bg_r7,
+      source byte-identical to shared bg.cpp), importing no student evaluator. RESULT:
+      REFUTED -- T=S-R_q^sym is C^0 value-continuous 18/18 and correct on-wall 21/21
+      but FULLY SMOOTH only 0/18, so no smooth global R_0. My independent first-wall
+      residual (q_23=0, t0=-1/2) 136585204640161305617743/14238281250000000 matches
+      student-2's reported number bit-for-bit -- an independent corroboration, not a
+      trust of their harness. Diagnosis (confirms s2_013 + F18): global C^0 continuity
+      + the on-wall trace does NOT determine the degree-6 off-wall cofactor. student-1's
+      round-7 hinge-orbit route (s1_009/post_028) obtained no rank and proposes no
+      candidate (technician-blocked, driver missing 17 R_0 columns), so there was no
+      positive claim to attack there; its durable checkpoint reproduces exactly. I
+      re-confirmed the trusted state on the fresh oracle (anchors; R_Q global 24/24
+      isolated Q-walls smooth). TWO blocking gaps: (1) do NOT promote R_q^sym (refuted);
+      (2) G1 persists -- no compact nested continuous q-orbit R_q, no global R_0, no
+      table-free full A_6 evaluator. A BOARD WARNING was posted for round 8: promote
+      nothing new, keep the pinned P_pole/R_Q/local-brick, and the sharp target is a
+      nested brick that ALSO reproduces the off-wall cofactor -- plus a process flag
+      that the technician wrote no artifact for the 3rd straight round (both students
+      round 7), which is now the actual bottleneck with only rounds 8-9 left.
+    see: bots/verifier/VERIFICATION.md
+  - id: v_dec_r8_001
+    round: 8
+    timestamp: "2026-07-26T23:55:49"
+    decision: "VERDICT: VERIFIED"
+    rationale: >
+      Round 8 produced the FIRST complete table-free A_6 candidate (student-1 s1_010 /
+      post_032): A_6 = i g^-3 (P_pole + R_Q + R_0 + R_q) with explicit seed polynomials
+      H0/H1/H2 (13/46/23 monomials). I attacked it independently: fresh from-scratch
+      bg_r8 (source md5=41715c... = shared reference), evaluator HAND-TRANSCRIBED from
+      the WRITTEN .md (student round8_compact_candidate.py NOT imported). It survives the
+      entire definition-of-done battery with ZERO mismatch over >6000 exact rational BG
+      comparisons: 359 generic points / 93 chamber signatures; 288 same-sign
+      permutations (formula invariant); 35 hierarchical regimes; 2202 points across 204
+      two-sided q/Q-wall crossings (off-wall EXACT -- decisively passing the cure test
+      the round-7 B^sym failed 0/18); d=0 and genuine D_S=0 crossings (BG finite /
+      removable, tracked exactly -> the sector is pole-free in the probed interior);
+      g-scaling; and the 5-pt calibration (BG A_5=-19968; independent two-minus master
+      21/21). Table-free confirmed (no coefficient table; 82 non-chamber-specific
+      monomials generate every chamber). G1 is CLOSED. Only TWO minors remain, neither a
+      correctness gap: the final "human-readable" compactness judgment on 82 monomials is
+      the PI's SOLVED.md call (verifier assessment: MET), and chamber coverage is
+      empirical not a symbolic proof (residual risk low). I posted a board update
+      (post_033) because this flips the 8-round G1-persists state -- the next PI should
+      spend round 9 on their OWN independent re-implementation + the compactness call and
+      writing SOLVED.md, not on re-deriving R_q. I did not re-audit the 900x605 rank /
+      Wolfram machinery -- the closed form stands on its own exact agreement with BG.
+    see: bots/verifier/VERIFICATION.md

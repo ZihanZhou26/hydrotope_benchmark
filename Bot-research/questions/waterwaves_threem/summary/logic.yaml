@@ -1,0 +1,186 @@
+thesis: >
+  Closed-form tree amplitude $A_n$ in the THREE-minus water-wave sector
+  ($\sigma=(-1,-1,-1,+1,\dots,+1)$, dispersion $\omega_i^2=g|k_i|$,
+  $k_i=\sigma_i\omega_i^2/g$). STATUS after round 8 (ALL load-bearing round-7 claims
+  now PI-REVERIFIED with the PI's own oracle + evaluator, no student code —
+  parity correction s1_020, soft recursion both legs s2_021, n=7 jump exponents
+  (1=1)->1/(1=2)->2 s1_021, with n=6 controls): $n=5$ AND $n=6$ are SOLVED EXACTLY.
+  The sector is piecewise-RATIONAL,
+  $A_n^{3-}=i\,2^{n-1}g^{3-n}\,N_n(\omega)/D_n(\omega)$, with $N_n$ a CONTINUOUS
+  truncated-power (box) SPLINE and MINIMAL denominator
+  $D_n=\prod_{i\in M,j\in P}(\omega_i+\omega_j)$ (PI-corroborated, s2_018): pole order 1,
+  degree $3(n-3)$; collapsing to $(e_3^-+e_3^+)^1$ ONLY at $n=6$. The full $n=6$ numerator is
+  now EXPLICIT and PI-VERIFIED EXACT (s1_018):
+  $N_6=B+\sum_{i,j}(b_j-a_i)_+P_{ij}+\sum_{\rm pairs}(b_j-a_i)_+(b_l-a_k)_+R+\sum_{i,\{j,k\}}(a_i-b_j-b_k)_+^3Q$,
+  $a_i=\omega_i^2,\,b_j=\omega_j^2$, $\deg N_6=11$, $S_3\wr Z_2$-symmetric, $\omega\to-\omega$-ODD.
+  The REMAINING OPEN problem (the whole task) is the EXPLICIT numerator $N_n$ for $n\ge7$ —
+  where the structure is genuinely new (the $Z_2$ swap is no longer a symmetry, only
+  $S_3\times S_{n-3}$; matchings become injections; $(1{=}1)$ edges couple to subset-sum
+  walls) — hence the single all-$n$ closed form. PARITY IS $n$-DEPENDENT (s1_020,
+  PI-verified): $N_n=A_n D_n^{\min}$ has parity $(-1)^{\deg D_n^{\min}}$; $A_n$ is ALWAYS
+  even ($\deg 2n-4$). So $N_6$ is ODD ($\deg D_6^{\min}=3$) but $N_7$ is EVEN
+  ($\deg D_7^{\min}=3(n-3)=12$); in general $N_n$ is even iff $n$ is odd. NOT yet SOLVED —
+  no SOLVED.md (a clean all-$n$ form is not yet reached).
+
+argument_flow:
+  - title: "Oracle is ground truth; reproduces all known facts (PI-rebuilt fresh, round 7)"
+    establishes: >
+      bg.cpp (exact GMP rationals) rebuilt independently in bots/pi/code round 7 (byte-identical
+      to shared). Reproduces: one-minus $A_n\equiv0$; the two-minus B-spline law EXACTLY; finite
+      rational three-minus values at n=5 ($-25344\,i$ at $w=2,3,5$), n=6 ($-29948208/17\,i$ at
+      free $w=2,3,5,7$), n=7. The oracle solves legs $1,n$ from the free frequencies; it SIGFPEs
+      (exact) on $|k_S|=0$ walls and $D_S=0$ channels and on the pole $e_3^-+e_3^+=0$ — approach
+      as limits, never sample. The F-CONSTANT slice (fix $\sum_{\rm free}\omega$) makes every
+      $\omega_i(t)$ POLYNOMIAL in the slice parameter — the key to exact reconstruction. A guarded
+      fast EXACT batch variant bgb.cpp (--batch) exists for high-volume verification (22/22 vs ./bg).
+    claims: [C-oracle]
+    confidence: certain
+  - title: "n=5 three-minus closed form (PI-verified exact, 24/24 + swap; reconfirmed round 7)"
+    establishes: >
+      Legs 1,2,3 minus, 4,5 plus:
+      $A_5 = i\,2^4 g^{-2}\,\omega_4\omega_5
+      \sum_{S\subseteq\{1,2,3\}}(-1)^{|S|}\big(\beta^2-\sum_{j\in S}\omega_j^2\big)_+^{2}$,
+      $\beta=\min(|\omega_4|,|\omega_5|)$. Two-minus law (item 2) on the sign-flipped
+      configuration (item 3). Realizable chambers only A,B,C,E (chamber D unrealizable).
+      Polynomial (degree 6), continuous, $C^1$. PI: bots/pi/code/verify_n5.py (24/24 exact,
+      re-run round 7 with the freshly-built oracle).
+    claims: [C-n5]
+    confidence: certain
+  - title: "n=6 three-minus FULL CLOSED FORM — PI-VERIFIED EXACT (s1_018), round 7"
+    establishes: >
+      $A_6=i\,2^5g^{-3}\,N_6/(e_3^-+e_3^+)$, $e_3^-=\omega_1\omega_2\omega_3$, $e_3^+=\omega_4\omega_5\omega_6$,
+      with $N_6 = B + \sum_{i\in M,j\in P}(b_j-a_i)_+P_{ij}
+      + \sum_{i\ne k,\,j\ne l}(b_j-a_i)_+(b_l-a_k)_+R_{ij,kl}
+      + \sum_{i,\{j,k\}}(a_i-b_j-b_k)_+^3 Q_{ijk}$ ($a_i=\omega_i^2$ minus, $b_j=\omega_j^2$ plus,
+      $(x)_+=\max(x,0)$), a degree-11 $S_3\wr Z_2$-symmetric, $\omega\to-\omega$-ODD, CONTINUOUS
+      truncated-power (box) SPLINE. The $(1{=}1)$ cross-term is a matching-PAIR product (exp $(1,1)$,
+      NO triple needed); $(1{=}2)$ exponent 3 with the explicit clean coefficient $Q$. Explicit
+      reference polynomials $B=(e_3^-+e_3^+)\tilde B/5$, $P^0$ (deg 9), $R^0=\omega_6^2(\dots)/10$
+      (deg 7), $Q$ (deg 5) in bots/student-1/code/r6_polys.txt. PI INDEPENDENT CHECK
+      (bots/pi/code/pi_r7_independent.py + pi_r7_walls.py; PI's own oracle, own group/orbit-sum/
+      assembly logic, only the published polynomials taken as the candidate): 140/140 generic points
+      across 58 distinct chamber labels EXACT; 6/6 non-generic (one freq $\gg$/$\ll$ rest) EXACT;
+      3/3 g-homogeneity (g=2,1/3,7/2) EXACT; two-sided wall limits onto a $(1{=}1)$, a $(1{=}2)$, AND
+      a matching corner ALL EXACT to $\varepsilon=10^{-4}$ (finite, continuous — kinks not poles);
+      $N_6$ odd and $A_6$ homogeneous degree 8 confirmed.
+    claims: [C-n6closed, C-Qexplicit, C-boxspline]
+    confidence: certain
+  - title: "Three-minus has NO factorization poles (PI-verified) — does NOT imply polynomial"
+    establishes: >
+      For every channel $S$, as $D_S=\omega_S^2/|k_S|-g\to0$ on-shell, $A_n$ stays FINITE and
+      $A_n D_S\to0$ (residue cancels) — INCLUDING $S=\{2,4,5\}$ (2+1 split = two-minus$\times$
+      two-minus) which still cancels. "No poles" does NOT imply "polynomial": the pole of $A_n$ sits
+      on $\{D_n=0\}=\{\prod(\omega_i+\omega_j)=0\}$ (the perfect-matching SUM-branch locus), which is
+      SHIELDED — it never vanishes on the physical chamber interiors — so $A_n$ is finite everywhere
+      yet genuinely rational.
+    claims: [C-nopole]
+    confidence: certain
+  - title: "A_n is piecewise-RATIONAL; MINIMAL denominator = prod(w_i+w_j), pole order 1 (PI-corroborated s2_018)"
+    establishes: >
+      $A_n^{3-}=i\,2^{n-1}g^{3-n}\,N_n/D_n$ with $D_n^{\min}=\prod_{i\in M,j\in P}(\omega_i+\omega_j)$,
+      degree $3(n-3)$, POLE ORDER 1. Mechanism (s2_018): $D_n^{\rm free}=\prod_{i\in M}Q_n(\omega_i)
+      =\prod_i r_n(\omega_i)$, $r_n:=Q_n\bmod p_-$ (using $e_1^-=-e_1^+$, $e_2^-=e_2^+$); the product
+      collapses to a perfect power IFF $r_n$ is CONSTANT, which happens ONLY at $n=6$ (the unique
+      $\deg p_-=\deg Q_n=3$ coincidence), giving $r_6=e_3^-+e_3^+$ and $D_9=(e_3^-+e_3^+)^3$, minimal
+      $(e_3^-+e_3^+)^1$. PI SYMBOLIC CHECK (round 7): $r_6$ is degree 0 ($=e_3^-+e_3^+$ exactly,
+      $1162/3$ at a test point), $r_7$ is degree 1 ($\Rightarrow$ no collapse, full 12-pair product
+      is minimal at $n=7$, deg $N_7=22$). Homogeneity $\Rightarrow\deg N_n=2n-4+3(n-3)=5n-13$.
+    claims: [C-rational, C-mindenom, C-denom]
+    confidence: certain
+  - title: "n=6 structural facts (PI-reverified): N_6 odd, deg 11, S_3 wr Z_2; jump exponents 1 and 3"
+    establishes: >
+      $A_6$ purely imaginary, EVEN under $\omega\to-\omega$, homogeneous degree 8, $S_3\wr Z_2$-invariant.
+      $N_6$ is degree 11 and ODD. $A_6$ kinks only across MIXED walls (same-type orderings
+      $\omega_4=\omega_5$ are ANALYTIC): jump $\propto(k_{ij})^1$ on the $(1{=}1)$ wall $\omega_i^2=\omega_j^2$
+      ($C^0$) and $\propto(k_{ijk})^3$ on the $(1{=}2)$ wall $\omega_i^2=\omega_j^2+\omega_k^2$ ($C^2$).
+      The $(1{=}1)$ kink lives on the DIFFERENCE branch $(\omega_i-\omega_j)$; the SUM branch is the
+      shielded pole $D^{\min}$. On the manifold everything reduces to four invariants
+      $e_1,e_2,e_3^-,e_3^+$; $Z_2$ acts as $(e_1,e_2,e_3^-,e_3^+)\to(-e_1,e_2,e_3^+,e_3^-)$.
+    claims: [C-struct, C-jumps]
+    confidence: certain
+  - title: "Soft recursion (PI-verified n=7, both legs), single-pair residues, matching/Cauchy — handles for all-n"
+    establishes: >
+      (1) SOFT THEOREM (s2_006/012/021): $A_n^{3-}\to2(n-3)\omega_p^2 A_{n-1}$ as any $\omega_p\to0$
+      (both a soft plus and a soft minus leg). PI-REVERIFIED EXACT at $n=7$ (round 8, own oracle,
+      F-const slice / $\varepsilon\to0$ in the soft chamber): a soft PLUS leg gives
+      $\lim A_7/(i\varepsilon^2)=8\,A_6^{3-}$ (e.g. $-3517680816/161$ at my test config) and a soft
+      MINUS leg gives $8\,A_6^{2-}$ (e.g. $-13249051200$); $N_7$ vanishes to exactly $O(\varepsilon^2)$.
+      After clearing $D_n$ this is a RECURSION on $N_n$ (boundary $N_5$ = two-minus law) fixing $N_n$
+      on each $\{\omega_p=0\}$ up to a $\prod_i\omega_i\times$(symmetric) ambiguity. (2) SINGLE-PAIR
+      RESIDUES (s2_020): for $n\ge7$ a
+      single mixed pair $\omega_i+\omega_j$ vanishes ALONE (impossible at $n=6$, where one pair
+      forces a full matching), so $\mathrm{Res}=\lim(\omega_i+\omega_j)A_n$ is a one-parameter limit
+      — a NEW all-$n$ constraint (chamber/branch-dependent, not a naive sub-amplitude). (3) $A_n$ is a
+      partial fraction over the perfect matchings (s2_013), simple poles all on $D_n=0$.
+    claims: [C-soft, C-residue, C-matching]
+    confidence: certain
+  - title: "OPEN: the explicit numerator N_n for n>=7 (hence the single all-n closed form)"
+    establishes: >
+      Target: explicit $N_n$, $n\ge7$, a degree-$(5n-13)$ truncated-power spline over
+      $D_n=\prod(\omega_i+\omega_j)$. The $n\ge7$ regime is genuinely new and the n=7 wall data is
+      now PI-VERIFIED (round 8): (i) the $Z_2$ swap is NO LONGER a symmetry (maps
+      3-minus$\to(n{-}3)$-minus); symmetry is only $S_3(\text{minus})\times S_{n-3}(\text{plus})$,
+      and PARITY is $n$-dependent ($N_7$ EVEN, s1_020 — NOT odd). (ii) The n=7 mixed-wall arrangement
+      is $42=12_{(1=1)}+18_{(1=2)}+12_{(1=3)}$ orbits under $S_3\times S_4$ (s1_020). (iii) SINGLE-WALL
+      JUMP EXPONENTS (PI-verified, single-wall windows + n=6 controls (1=1)->1,(1=2)->3): at $n=7$
+      $(1{=}1)\to1$, $(1{=}2)\to2$, $(1{=}3)\to4$ — so observed orders are NOT uniformly $n-3$;
+      $(1{=}2)\to2$ is read as the $(1{=}1)\times(1{=}1)$ matching cross-term ($1{+}1$) forced onto the
+      $(1{=}2)$ wall (s1_022, TENTATIVE — pure single-wall exponent conjectured $n-3$, observed orders
+      lowered by cross-terms). (iv) Two DISJOINT $(1{=}1)$ edges force a $(1{=}2)$-type subset-sum
+      relation, not a third $(1{=}1)$ edge (matchings become injections) — so the n=6 bijective-matching
+      PAIR cross-term is special to equal triples. Plan (round 8): bottom-up (student-1) extract the
+      clean subset-sum coefficients + pin the cross-term closing order, FIT $N_7$ (deg 22) EXACTLY
+      (scaled-up r6_fit/r6_extract, $S_3\times S_4$ orbit-sum, parity-EVEN templates; Typhon if needed),
+      verify across chambers + wall limits; top-down (student-2) SOLVE the soft recursion (now
+      PI-verified both legs) + single-pair residues + matching/Cauchy into an explicit all-$n$ $N_n$,
+      recovering n=5,6 and matching n=7.
+    claims: [C-open]
+    confidence: tentative
+
+gaps:
+  - >
+     The EXPLICIT numerator $N_n$ for $n\ge7$ — the whole remaining problem and the single all-$n$
+     closed form. The n=7 wall map ($42=12+18+12$), single-wall exponents ($(1{=}1)\to1$,
+     $(1{=}2)\to2$, $(1{=}3)\to4$) and EVEN parity are now PI-verified; what remains: (a) extract the
+     CLEAN chamber-independent subset-sum coefficients (the $(1{=}2)$/$(1{=}3)$ truncated-power
+     coefficients, analog of the n=6 $Q$); (b) PIN the cross-term closing order at $n=7$ (do disjoint
+     $(1{=}1)$ PAIRS suffice, or are $(1{=}1)\times$subset-sum / triples needed? — close the TENTATIVE
+     s1_022); (c) FIT all coefficients EXACTLY (deg 22; $S_3\times S_4$ orbit-sum, parity-EVEN
+     templates — hundreds-1000 exact coefficients, Typhon SLURM if needed); (d) assemble over
+     $D_7=\prod(\omega_i+\omega_j)$ and verify EXACTLY across chambers + two-sided wall limits. Then
+     lift to all $n$ by SOLVING the soft recursion (PI-verified both legs; boundary = two-minus law)
+     + single-pair residues + matching/Cauchy, recovering n=5,6 and matching n=7.
+  - >
+     RULED OUT (do not retry): box spline of $x_i=\omega_i^2$ (pole + $N_n$ odd, s2_015); $N_6$/$N_n$
+     as a per-region weighted-deg POLYNOMIAL in the invariants (algebraic, PI round 5); the SIMPLE
+     single-wall truncated-power sum without cross-terms (s1_014); a single global residue at the
+     matching pole (chamber-dependent, s2_016). Earlier ruled out for $A_n$: inner product
+     $\int_0^Q P_-P_+$; single-min cubic block; double-subset resonance spline; $A_n$ polynomial in
+     $\{\omega_i^2\}$; $e_2\mid N_6$; pure permanent of one Cauchy kernel.
+
+sensitivity:
+  - >
+     PI-VERIFIED EXACT and robust (rounds 1–7): the $n=5$ closed form; the FULL $n=6$ closed form
+     (s1_018 — 140/140 generic across 58 chamber labels, 6/6 non-generic, g-homogeneity, all wall
+     limits two-sided to $\varepsilon=10^{-4}$, $N_6$ odd, $A_6$ deg 8); no factorization poles; the
+     rational form with MINIMAL denominator $\prod(\omega_i+\omega_j)$, pole order 1 (collapse to
+     $(e_3^-+e_3^+)^1$ only at $n=6$ — PI symbolic check $r_6$ deg 0, $r_7$ deg 1); $A_6$ even /
+     $N_6$ odd / $S_3\wr Z_2$ symmetry; the split jump exponents (1 and 3); the explicit $(1{=}2)$
+     coefficient $Q$.
+  - >
+     THE n>=7 STRUCTURE is now PI-VERIFIED at the wall/exponent/parity level (round 8, own oracle):
+     parity EVEN ($N_7$), wall map $42=12+18+12$, single-wall exponents $(1{=}1)\to1$, $(1{=}2)\to2$,
+     $(1{=}3)\to4$ (with n=6 controls $(1{=}1)\to1$,$(1{=}2)\to3$ validating the method). STILL OPEN /
+     NOT pinned: the cross-term closing order (s1_022 TENTATIVE) and the explicit $N_{n\ge7}$
+     coefficients / all-$n$ form. CAUTION for $n\ge7$: the $Z_2$ swap is NOT a symmetry (only
+     $S_3\times S_{n-3}$); PARITY is $n$-dependent ($N_n$ even iff $n$ odd) — any $n\ge7$
+     symmetrization/fit must use the smaller group AND the correct (n-dependent) parity.
+  - >
+     METHOD CAUTIONS (all reconfirmed): (i) FLOATING-POINT rational reconstruction at clustered
+     nodes spuriously reports "polynomial" — EXACT arithmetic only, with controls. (ii) Cross-wall
+     JUMP measurements MUST use SINGLE-wall (sign-diff=1) crossings (multi-wall crossings report the
+     LOWEST exponent). (iii) Jump exponent = multiplicity of $(t-t_{\rm wall})$ in $N_L-N_R$, NOT a
+     Taylor-coeff comparison. (iv) Any proposed $N_n$/$A_n$ closed form must be checked against the
+     EXACT oracle at $\le$1e-10 (exact where exact) at many points per chamber and as two-sided wall
+     limits, at $n=5,6,7$, before SOLVED.md. The PI's independent evaluator must reproduce it with
+     the PI's own code (pi_r7_independent.py / pi_r7_walls.py for n=6).

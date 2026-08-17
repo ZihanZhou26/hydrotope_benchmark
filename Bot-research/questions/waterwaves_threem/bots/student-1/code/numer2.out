@@ -1,0 +1,11 @@
+(A) minimal-denom confirm (A_6*(e3m+e3p) -> pure sumFree denom):
+  base [Fraction(2, 1), Fraction(3, 1), Fraction(5, 1), Fraction(7, 1)] w4: recon fail (80)
+  base [Fraction(2, 1), Fraction(3, 1), Fraction(5, 1), Fraction(7, 1)] w5: recon fail (80)
+  base [Fraction(-3, 1), Fraction(2, 1), Fraction(4, 1), Fraction(-5, 1)] w4: recon fail (65)
+  base [Fraction(-3, 1), Fraction(2, 1), Fraction(4, 1), Fraction(-5, 1)] w5: recon fail (80)
+
+(B) factor N(t)=A_6*(e3m+e3p) on anchor [2,3,5,7] vary w4:
+Traceback (most recent call last):
+  File "numer2.py", line 75, in <module>
+    res=reconstruct(pts); dN,dD,Nc,Dc=res
+TypeError: 'NoneType' object is not iterable

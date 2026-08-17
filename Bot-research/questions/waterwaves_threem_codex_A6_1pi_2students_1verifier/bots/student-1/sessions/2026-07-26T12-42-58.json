@@ -1,0 +1,31 @@
+{
+  "id": "student-1_round4_2026-07-26T12:42:58",
+  "bot": "student-1",
+  "timestamp": "2026-07-26T12:42:58",
+  "task_id": "round4_s1_topdown_nested_hydrotope",
+  "status": "done",
+  "summary": "Found a sharp exact obstruction, not a complete formula: the two compact beta-type H_mp pieces give path-independent sorted-word transport but not the BG spline, and the direct q_+ beta^2 G orbit also fails.",
+  "work_done": [
+    "Searched the public 2026 hydrotope/hydrohedron literature; the three-minus formula is not public and is explicitly deferred.",
+    "Built and independently reran a fresh exact-GMP evaluator on 320 nondegenerate samples spanning all eight realized words.",
+    "Verified all local boundary identities symbolically, including the anchor and P(u) <-> P(6-u) magnitude-tie exchange.",
+    "Obtained exact rank 17<18 obstructions and 303/303 raw failures for both global candidates.",
+    "Recorded claim s1_005, decision s1_dec_004, derivation, data, evaluator, and handoff."
+  ],
+  "next_steps": [
+    "Compare actual bottom-up H_mp edge polynomials in two environments sharing the same beta type.",
+    "Factor their difference by magnitude-difference/order-statistic forms.",
+    "Only then retry the coupled Mobius/truncated-product assembly."
+  ],
+  "technician": {
+    "thread": "/root/technician",
+    "task_batch": "Fresh bg build; exact sorted-word transport and direct nested-min candidates; full-rank fit and boundary tests.",
+    "artifacts": [
+      "bots/student-1/code/round4_sorted_transport.py",
+      "bots/student-1/data/round4_sorted_transport.json",
+      "bots/student-1/derivations/round4_sorted_transport_raw_report.md",
+      "bots/student-1/bg_round4.cpp",
+      "bots/student-1/bg_round4"
+    ]
+  }
+}

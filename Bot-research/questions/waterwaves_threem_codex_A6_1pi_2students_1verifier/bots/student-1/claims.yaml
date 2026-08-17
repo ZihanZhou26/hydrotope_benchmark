@@ -1,0 +1,284 @@
+claims:
+  - id: s1_001
+    timestamp: "2026-07-26T05:55:42"
+    status: verified_negative
+    claim: >
+      The proposed symmetric minus-pair truncated-cubic ansatz for $A_6$ is
+      false for every $(e_m,e_p)\in\{\pm1\}^2$, both with one common pair
+      coefficient and with three labeled pair coefficients.  The combined
+      symmetry-orbit fallback with both min/max thresholds, all four sign
+      choices, and nine homogeneous degree-two prefactors is also exactly
+      inconsistent: on 40 exact training points its deduplicated feature
+      matrix has $\operatorname{rank}A=14$ but
+      $\operatorname{rank}[A|y]=15$.
+    evidence:
+      - bots/student-1/derivations/s1_001_h1_rejection.md
+      - bots/student-1/derivations/h1_fit_report.md
+      - bots/student-1/data/h1_results.json
+      - bots/student-1/data/exact_samples.json
+      - bots/student-1/code/h1_batch.py
+    verification: >
+      Fresh exact GMP BG at 80 nondegenerate rational on-shell points spanning
+      15 subset-sign signatures; two supplied six-point anchors exact; an
+      independent two-point $e_m=e_p=+1$ contradiction has residual
+      $507828301824/85\neq0$; exact five-point calibration gives
+      $A_5=-19968\,i$ on both BG and the sign-flipped two-minus formula.
+
+  - id: s1_002
+    timestamp: "2026-07-26T05:55:42"
+    status: literature_verified
+    claim: >
+      The 2026 hydrotope paper is the direct source of the two-minus
+      truncated-power formula and explicitly leaves the three-minus sector,
+      which first becomes independent at six points, to future work.  Its
+      two-minus no-pole uniqueness argument therefore does not justify a pure
+      hydrotope sum for $A_6^{---+++}$.
+    evidence:
+      - bots/student-1/derivations/literature_notes.md
+    sources:
+      - https://arxiv.org/abs/2606.28280
+      - https://arxiv.org/abs/1903.10854
+
+  - id: s1_003
+    timestamp: "2026-07-26T07:27:29"
+    verified_at: "2026-07-26T07:42:15"
+    status: verified_exact_denominator_part
+    claim: >
+      Direct BG propagator normalization gives the compact pole part
+      $P_{\mathrm{pole}}=\sum_{T:Q_T>0}Q_T h_{4,L}h_{4,R}/d_T$, where both
+      $h_4$ factors are the known stripped two-minus four-point amplitude,
+      the complementary factor is written after a global momentum-sign flip,
+      and the auxiliary internal-frequency branch cancels.  This orbit sum
+      reproduces the principal part at every nonzero-residue BG propagator;
+      subtracting it leaves a chamber polynomial.  Exact diagnostics find no
+      residual $\Delta$ denominator on 80 GMP samples.
+    evidence:
+      - bots/student-1/derivations/s1_003_pole_part.md
+      - bots/student-1/derivations/pole_batch_report.md
+      - bots/student-1/data/pole_results.json
+      - bots/student-1/code/pole_batch.py
+    verification: >
+      Algebraic factorization from the exact Propagator implementation in
+      bg.cpp.  After a clean rebuild, 77 fresh exact BG evaluations spanning
+      four sorted words and fifteen full signatures gave integral residual on
+      16/16 integer points and integral $L^8$-scaled residual on 61/61 rational
+      points.  The degree-six no-$Q_T$ control failed on 3/16 integer and 24/61
+      rational points.  At $\omega=(-8,2,3,4,5,-6)$,
+      $P_{\mathrm{pole}}=42588288/7$ and the residual is $-7396992$.
+
+  - id: s1_004
+    timestamp: "2026-07-26T10:05:10"
+    status: verified_exact_obstruction
+    claim: >
+      The degree-six pair-wall coefficient $H_{mp}$ is itself a nested
+      spline, not one global polynomial.  On the exact $q_{24}$ wall slice
+      $B=10$, $c=u$, $e=6-u$, a seven-point branch reconstruction plus two
+      same-cell holdouts gives an explicit degree-six polynomial $P(u)$.
+      After $Q_{3;\{4,5\}}=61-12u$ changes sign, five exact tests instead
+      give $H_{24}(u)=P(6-u)\neq P(u)$.  The simpler regular ansatz formed
+      from a global symmetric polynomial plus one orbit of products of the
+      two known $A_4$ hydrotope blocks is also exactly inconsistent, as is
+      its eight-prefactor side-symmetric extension.
+    evidence:
+      - bots/student-1/derivations/s1_004_nested_wall_obstruction.md
+      - bots/student-1/data/round3_wall_brick.json
+      - bots/student-1/data/round3_nested_results.json
+      - bots/student-1/derivations/round3_nested_raw_report.md
+      - bots/student-1/code/round3_wall_brick.py
+      - bots/student-1/code/round3_nested.py
+    verification: >
+      Every $H_{24}$ value was obtained from two off-wall exact BG branch
+      continuations (nine fit points and two holdouts per side), never by
+      evaluating BG on a wall.  The known anchor is reproduced exactly:
+      $H_{24}(10,2,3)=12622720/27$.  The affine-line single-polynomial
+      branch has two zero same-cell holdouts; all five tests beyond the
+      coupled $Q_{3;\{4,5\}}$ subdivision equal the exchanged branch
+      $P(6-u)$ exactly.  Separately, 200 orbit-inequivalent exact points
+      spanning eight sorted words, 61 signatures, and 32 nine-$Q$ patterns
+      give rank obstructions $13<14$ and $17<18$ for the one-block and
+      eight-prefactor nested candidates.
+
+  - id: s1_005
+    timestamp: "2026-07-26T12:42:58"
+    status: verified_exact_obstruction
+    claim: >
+      The two compact off-wall $H_{mp}$ pieces classified only by whether
+      the four-leg minimizer is a minus or plus leg do not globally determine
+      $R_{\mathrm{spline}}$.  Their oriented $q_{mp}H_{mp}$ transport is
+      path-independent on the connected graph of all eight realized sorted
+      words, but after transport no dual-$S_3$ degree-eight reference
+      polynomial exists: the exact system has
+      $\operatorname{rank}A=17<18=\operatorname{rank}[A|R_0]$.  A unique
+      17-point polynomial fit fails all $303/303$ remaining exact samples.
+      The direct truncated-min orbit
+      $-32\sum_{m,p}(q_{mp})_+\beta_{mp}^2G_m$ fails by the same
+      $17<18$ obstruction and $303/303$ raw residuals.
+    evidence:
+      - bots/student-1/derivations/s1_005_sorted_transport_obstruction.md
+      - bots/student-1/data/round4_sorted_transport.json
+      - bots/student-1/derivations/round4_sorted_transport_raw_report.md
+      - bots/student-1/code/round4_sorted_transport.py
+      - bots/student-1/bg_round4.cpp
+    verification: >
+      Fresh exact GMP build with SHA-256
+      `bd1afe67c45e1e9403c03a0b78373ebb492235be56fc1e5ee9281cbbec9040c1`;
+      320 exact nondegenerate samples covering all eight realized words;
+      full-rank 17-dimensional on-shell dual-symmetric basis; independent
+      rerun reproduced both rank obstructions and both 303/303 raw failure
+      counts.  All local boundary checks remain exact: both compact brick
+      types reduce to the verified four-leg-$\beta$ trace, the affine slice
+      gives $P(u)$ and $P(6-u)$ with zero symbolic residual, and the anchor
+      is $12622720/27$.
+
+  - id: s1_006
+    timestamp: "2026-07-26T14:52:36"
+    status: verified_kinematic_enumeration
+    claim: >
+      Away from external soft limits, every subset-momentum chamber wall in
+      the six-point three-minus sector belongs to exactly one of two
+      $S_3(M)\times S_3(P)$ orbits: the nine pair walls
+      $q_{mp}=\omega_p^2-\omega_m^2=0$ and the nine triple walls
+      $Q_{m;pq}=\omega_p^2+\omega_q^2-\omega_m^2=0$.  This follows by
+      classifying a subset by its minus/plus cardinalities, quotienting by
+      $k_S=-k_{S^c}$, and excluding same-sector sums of strictly positive
+      squares.  The public 2026 hydrotope paper contains no three-minus
+      crossing rule: it explicitly defers this sector to a hydrohedron work
+      still listed only as “to appear,” and the linked repository contains
+      only a numerical BG evaluator.
+    evidence:
+      - bots/student-1/derivations/s1_006_wallset_and_literature.md
+    sources:
+      - https://arxiv.org/abs/2606.28280
+      - https://github.com/ZihanZhou26/Hydrotope
+    verification: >
+      Exhaustive analytic classification of all subset types
+      $(a,b)=(|S\cap M|,|S\cap P|)$ modulo
+      $(a,b)\leftrightarrow(3-a,3-b)$.  The empirical single-degree-eight-
+      polynomial-per-open-component test is a separate pending check and is
+      not claimed by this entry.
+
+  - id: s1_007
+    timestamp: "2026-07-26T14:57:37"
+    status: verified_exact_wall_completeness
+    claim: >
+      The pole-subtracted remainder is one homogeneous degree-eight
+      polynomial on each tested open component of the joint 18-wall fan.
+      Eight distinct full signatures fixing all six energy signs, all nine
+      $q_{mp}$ signs, and all nine $Q_{m;pq}$ signs were reconstructed in
+      the 285-dimensional on-shell quotient basis.  Every exact solve had
+      rank 285 and zero residual, and all $160/160$ fresh exact holdouts
+      vanished.  Together with the exhaustive subset-cardinality
+      enumeration in `s1_006`, this confirms that no additional non-soft
+      subset-momentum wall orbit is missing.
+    evidence:
+      - bots/student-1/derivations/s1_007_joint_chamber_polynomial_audit.md
+      - bots/student-2/data/round3_context_a.json
+      - bots/student-2/data/round3_context_b.json
+      - bots/student-2/data/round3_context_c.json
+      - bots/student-2/data/round3_context_d.json
+    verification: >
+      Independent raw-record audit checked eight pairwise-distinct
+      24-sign vectors, rank 285 and exact solve status on every branch, and
+      every stored holdout residual.  The per-branch counts are eight times
+      $20/20$, totaling $160/160$ exact zero residuals.  The coefficient
+      arrays are used only as diagnostics, not as a candidate formula.
+
+  - id: s1_008
+    timestamp: "2026-07-26T17:44:23"
+    status: verified_exact_obstruction
+    claim: >
+      After using the settled degree-eight $P_{\rm pole}$ and subtracting
+      the confirmed
+      $R_Q=-32\sum_{m,p<q}(Q_{m;pq})_+^3\omega_m\omega_t$, neither previous
+      order-one $q$-wall assembly leaves a global dual-$S_3$ degree-eight
+      polynomial $R_0$.  Both the two-$\beta$-type path transport and the
+      direct compact orbit
+      $T=-32\sum_{m,p}(q_{mp})_+\beta_{mp}^2G_m$ give
+      $\operatorname{rank}A=17<18=\operatorname{rank}[A|y]$.  Thus the
+      hypothesis that the omitted $R_Q$ alone caused the old defect is
+      false, and the compact $R_q$ remains missing.
+    evidence:
+      - bots/student-1/derivations/s1_008_corrected_joint_assembly_obstruction.md
+      - bots/student-1/data/round6_assembly.json
+      - bots/student-1/data/round6_assembly_selfcheck.json
+      - bots/student-1/code/round6_assembly.py
+      - bots/student-1/bg_round6.cpp
+    verification: >
+      A fresh exact-GMP build evaluated 550 generic points spanning all eight
+      realized magnitude words and 113 distinct full chamber signatures.
+      Both exact 160-row systems and both full systems had ranks $17<18$;
+      a 17-point interpolation for either target failed every remaining
+      $533/533$ point.  Zero path-cycle disagreements were found.  An
+      independent rerun reproduced all headline metrics and the exact anchor
+      $A_6/i=-9190656/7$, $P_{\rm pole}=42588288/7$,
+      $R_{\rm spline}=-7396992$.  An earlier technician output using the
+      degree-six negative control $S_0$ was invalidated and overwritten.
+
+  - id: s1_009
+    timestamp: "2026-07-26T20:23:18"
+    status: verified_computational_blocker
+    claim: >
+      The round-7 top-down ansatz is the manifestly continuous dual-$S_3$
+      orbit span of homogeneous hinge monomials
+      $\prod_{m,p}(q_{mp})_+^{r_{mp}}\prod_i\omega_i^{\alpha_i}$ through
+      hinge depth four, supplemented by the 17-dimensional global $R_0$
+      basis.  Its implementation completed a fresh BG anchor and enumerated
+      588 nonzero canonical hinge-orbit features, but produced no rank:
+      pure-Python elimination exceeded both allowed waits, and the returned
+      driver omitted the required 17 $R_0$ columns.  Hence no rank
+      obstruction, $R_q$, $R_0$, or complete $A_6$ candidate is claimed.
+    evidence:
+      - bots/student-1/derivations/s1_009_round7_hinge_orbit_blocker.md
+      - bots/student-1/data/round7_hinge_orbit.json
+      - bots/student-1/code/round7_hinge_orbit.py
+      - bots/student-1/bg_round7.cpp
+    verification: >
+      The checkpoint records 550 exact rows and all eight words, 13,788 raw
+      seeds, and 588 canonical features split as 188/244/134/22 at hinge
+      depths 1/2/3/4.  The fresh copied BG source has the expected SHA-256
+      and exactly reproduces $A_6/i=-9190656/7$,
+      $P_{\rm pole}=42588288/7$, $R_Q=-136630560$, and $S=129233568$.
+      Absence of `rank_reports` plus source inspection verifies that the
+      scientific system was not run and that `basis_A` was not appended.
+
+  - id: s1_010
+    timestamp: "2026-07-26T23:31:11"
+    status: verified_exact_candidate
+    claim: >
+      The complete 605-column top-down system is exactly consistent:
+      on 900 exact rows spanning all eight realized magnitude words,
+      $\operatorname{rank}A=\operatorname{rank}[A|S]=182$ at each of
+      three primes.  Exact recovery and stabilizer reduction give the
+      table-free formula
+      $S=R_0+R_q$, where
+      $R_q=4\sum_{m,p}(q_{mp})_+H_1+
+      2\sum_{m,p,\phi}(q_{r,\phi(r)})_+
+      (q_{s,\phi(s)})_+H_2$ and
+      $R_0=H_0(u,v,e_-,e_+)$.  The explicit polynomials
+      $H_1,H_2,H_0$ contain respectively 46, 23, and 13 monomials.
+      Combined with the settled $P_{\rm pole}$ and $R_Q$, this gives the
+      complete candidate
+      $A_6=i g^{-3}(P_{\rm pole}+R_Q+R_0+R_q)$ with all chamber choices
+      encoded by positive parts and all genuine poles confined to
+      $P_{\rm pole}$.
+    evidence:
+      - bots/student-1/derivations/s1_010_round8_compact_hinge_candidate.md
+      - bots/student-1/code/round8_compact_candidate.py
+      - bots/student-1/data/round8_decisive_result.json
+      - bots/student-1/data/round8_hinge_decisive_diag.json
+      - bots/student-1/data/round8_hinge_decisive_solution.json
+      - bots/student-1/data/round8_wolfram_recovery.json
+      - bots/student-1/data/round8_fresh_holdouts.json
+    verification: >
+      Fresh exact-GMP source/copy SHA-256 matched
+      `bd1afe67c45e1e9403c03a0b78373ebb492235be56fc1e5ee9281cbbec9040c1`.
+      The matrix had shape $900\times605$ with the mandatory 17 global
+      columns and hinge split $188/244/134/22$.  Wolfram exact recovery
+      produced an 85-column particular support and direct `Fraction`
+      verification passed all $900/900$ rows.  Eighty fresh excluded BG
+      holdouts passed exactly.  A separately written compact evaluator
+      using only the displayed $H_0,H_1,H_2$ and the 9+18 orbit rules
+      passed all $980/980$ rows and reproduces the full anchor
+      $A_6/i=-9190656/7$.  The PI/verifier still must independently judge
+      the 82-monomial compactness and run the complete wall, hierarchy,
+      pole, permutation, and five-point acceptance battery.

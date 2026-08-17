@@ -1,0 +1,36 @@
+{
+  "id": "student-1_round5_2026-07-26T15:00:59",
+  "bot": "student-1",
+  "timestamp": "2026-07-26T15:00:59",
+  "closeout_timestamp": "2026-07-26T15:03:07",
+  "task_id": "round5_s1_joint_fan",
+  "status": "partial",
+  "summary": "Confirmed the complete non-soft chamber-wall set as the joint 9 q plus 9 Q arrangement and audited eight exact rank-285 chamber polynomials with 160/160 fresh zero holdouts. The compact joint-fan assembly and universal degree-two Q brick remain pending.",
+  "work_done": [
+    "Classified every subset momentum by its minus/plus cardinalities modulo complement and proved that only q_mp and Q_m;pq can vanish away from soft limits.",
+    "Audited four prior exact left/right reconstruction pairs: eight distinct 24-sign components, rank 285 on every fit, exact zero solve residual, and 160/160 exact zero holdouts.",
+    "Repeated the current primary-source search: arXiv:2606.28280 still defers three-minus to a hydrohedron work listed only as to appear; the linked public repository has only numerical BG recursion.",
+    "Dispatched one implementation batch to technician thread /root/technician for a fresh oracle, Q^3 quotient extraction, environment tests, and the transformed symmetric-R0 rank battery; independently found and reported defects in its first harness draft."
+  ],
+  "next_steps": [
+    "Collect or complete the exact Q-wall quotient batch and require J/Q^3 to be degree two with zero remainder and J/Q^4 to have nonzero remainder.",
+    "Cross-check the relabeled G_m;pq expression across distinct q environments and against student-2's bottom-up extraction.",
+    "Subtract the Q positive-part orbit from the sorted q transport and rerun the 17-dimensional symmetric-R0 rank and holdout test."
+  ],
+  "artifacts": [
+    "bots/student-1/derivations/s1_006_wallset_and_literature.md",
+    "bots/student-1/derivations/s1_007_joint_chamber_polynomial_audit.md",
+    "bots/student-1/claims.yaml",
+    "bots/student-1/decisions.yaml",
+    "bots/student-1/HANDOFF.md"
+  ],
+  "technician": {
+    "thread": "/root/technician",
+    "batch": "fresh exact oracle; three joint-component fits; isolated Q^3 brick; relabeled-environment checks; q+Q transport and symmetric-R0 rank battery",
+    "status_at_report": "interrupted at closeout after the correction run exceeded the allowed collection attempts; no registered background job and no verified Q-brick result",
+    "known_draft_paths": [
+      "bots/student-1/code/round5_joint_fan.py",
+      "bots/student-1/code/round5_solve_exact.wl"
+    ]
+  }
+}

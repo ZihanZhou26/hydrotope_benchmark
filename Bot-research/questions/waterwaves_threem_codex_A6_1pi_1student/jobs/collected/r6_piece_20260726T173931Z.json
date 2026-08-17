@@ -1,0 +1,9 @@
+{
+  "id": "r6_piece_20260726T173931Z",
+  "launched_by": "student-1",
+  "cmd": "python3 bots/student-1/code/round6_piece_pipeline.py --fast-fixed-den --bases 3 --points 520 --dmax 12 --seed 2026 --holdout 50 --run-mode block",
+  "run_ref": "2641394",
+  "result_path": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/data/round6_piece_report.json",
+  "blocking": false,
+  "note": "corrected on-shell fast-fixed-den run after root-order and Python-3.6 fixes"
+}

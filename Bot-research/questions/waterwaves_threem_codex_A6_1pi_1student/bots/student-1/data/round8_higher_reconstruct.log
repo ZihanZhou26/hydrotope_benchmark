@@ -1,0 +1,11 @@
+d12: ncol=741 fit=801 null=0 | 0
+d13: ncol=924 fit=984 null=0 | 0
+collecting in-piece points to 1250 (base points=1050)
+d14_topup: ncol=1135 fit=1195 null_p0=0 null_p1=0 null_p2=0
+d13_equal: ncol=1120 fit=1180 null=0 | 0
+copied bg.cpp -> /home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/code/bg_s1_r8.cpp
+built /home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/code/bg_s1_r8
+equal-mode collected to 1450 points: 1450
+d14_equal_topup: ncol=1360 fit=1420 null_p0=0 null_p1=0 null_p2=0
+no reconstruction relation found up to d14_topup with available points
+asymmetric_status=not_found

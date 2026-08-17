@@ -1,0 +1,126 @@
+decisions:
+  - id: s2_dec_001
+    timestamp: "2026-07-26T05:54:13"
+    decision: >
+      Use sorted-magnitude momentum words for the eight base chambers, and
+      treat the nine triple signs $q_{m;pq}>0$ as a separate symmetry orbit of
+      residue/truncated-power bricks rather than additional base words.
+    reason: >
+      Triple signs vary within a fixed word, while pair walls generate the
+      complete word adjacency graph.
+  - id: s2_dec_002
+    timestamp: "2026-07-26T05:54:13"
+    decision: >
+      Do not implement the nontrivial interpolation/evaluator batch in the
+      main student session after the sole reusable technician thread
+      `/root/technician` exhausted its context twice without artifacts.
+    reason: >
+      Required by the student role's technician-failure protocol.
+  - id: s2_dec_003
+    timestamp: "2026-07-26T07:52:30"
+    decision: >
+      Replace the degree-nine denominator $\Delta$ by the on-shell symmetric
+      degree-three denominator $C=e_3^-+e_3^+$, and search for the polynomial
+      remainder in the linear truncated-power class
+      $\sum_{m,p}(q_{mp})_+H_{mp}$ with $\deg H_{mp}=6$, not in a
+      truncated-cubic class.
+    reason: >
+      Analytically $\Delta=C^3$ and every surviving channel denominator
+      divides $C$. Exact branch interpolation establishes that $C$ is
+      minimal, while three pole-subtracted wall paths have nonzero
+      multiplicity-one jumps in $q_{mp}$.
+  - id: s2_dec_004
+    timestamp: "2026-07-26T09:59:49"
+    decision: >
+      Reject the single residual-symmetric polynomial-brick ansatz
+      $R_{\rm spline}=R_0+\sum_{m,p}(q_{mp})_+H_{mp}$ and treat the
+      pair-wall coefficient as a nested spline / coupled wall object.
+    reason: >
+      Full exact cell reconstruction gives an intrinsic $H_{24}$ that
+      changes to a provably unequal polynomial under a symmetry-related
+      physical wall environment. Two individually adjacent controls
+      ($q_{25}$ and $Q_{1;45}$) leave it unchanged, so the change is
+      coupled rather than an isolated one-wall correction.
+  - id: s2_dec_005
+    timestamp: "2026-07-26T10:31:23"
+    decision: >
+      Preserve the compact minus-beta and plus-beta intrinsic wall
+      blocks, but do not assemble them as an independent sum
+      $\sum(q_{mp})_+H_{mp}^{(\beta)}$ or report the resulting
+      cell-dependent polynomial as $R_0$.
+    reason: >
+      The two local block formulas pass $4/4$ exact polynomial checks,
+      but exact subtraction across eight reconstructed cells leaves
+      seven unequal $R_0$ candidates. A primary wall also changes beta
+      selectors inside other pair bricks, requiring coupled
+      inclusion-exclusion.
+  - id: s2_dec_006
+    timestamp: "2026-07-26T13:01:23"
+    decision: >
+      Stop the magnitude-only Möbius extraction and enlarge the
+      remainder fan to the joint orbit arrangement
+      $\{q_{mp}=0\}\cup\{Q_{m;pq}=0\}$ before searching for a common
+      symmetric $R_0$.
+    reason: >
+      Exact fixed-energy continuation tests keep every pair sign and
+      the labeled magnitude order unchanged but fail whenever one
+      $Q_T$ sign flips: $21/21$ controls agree and $0/15$ isolated
+      one-$Q_T$ probes agree. Wall quotients extracted from a
+      magnitude-only mixed interpolation would therefore be spurious.
+  - id: s2_dec_007
+    timestamp: "2026-07-26T15:09:43"
+    decision: >
+      Integrate and subtract the complete order-three orbit as
+      $R_Q=-16\sum_{m,p<q}(Q_{m;pq})_+^3
+      [\omega_m^2+(q_{mt})_+]$ before restarting transport over the
+      magnitude fan.
+    reason: >
+      The exact quotient is a nested spline, not a global quadratic.
+      Its $(Q)_+^3(q)_+$ product both removes every observed
+      triple-wall jump and supplies the explicit coupled correction
+      $-16(Q_{m;P\setminus\{t\}})_+^3$ to the old order-one pair brick.
+  - id: s2_dec_008
+    timestamp: "2026-07-26T17:40:04"
+    decision: >
+      Retire claim $s2_010$ and its nested
+      $-16(Q_{m;P\setminus\{t\}})_+^3$ pair correction. Use the
+      verifier- and PI-confirmed
+      $R_Q=-32\sum(Q_{m;pq})_+^3\omega_m\omega_t$, and retest the
+      unchanged round-3 two-block pair-orbit candidate only after this
+      corrected orbit has been subtracted.
+    reason: >
+      The verifier refuted the old max-selector in $24/27$ isolated
+      crossings, and the PI independently discriminated the formulas on
+      two lines. The required round-6 implementation was delegated to
+      the sole reusable technician thread, which exhausted its context
+      twice without producing artifacts; the role protocol forbids a
+      replacement agent or nontrivial main-session implementation.
+  - id: s2_dec_009
+    timestamp: "2026-07-26T19:57:43"
+    decision: >
+      Reject the continuous symmetrized extension $R_q^{\rm sym}$ and
+      do not search further using only the common wall trace
+      $-32\beta^2E$. Preserve the complete off-wall cofactor through
+      coupled $q_+^2$ and $q_+^3$ positive-part terms in the next
+      ansatz.
+    reason: >
+      The symmetrization removes the selector's value discontinuity on
+      all $18/18$ tested walls and matches the wall trace on $24/24$,
+      yet it matches the exact off-wall cofactor on $0/24$ and leaves
+      a nonzero polynomial-continuation jump on $18/18$. The missing
+      information is precisely the $q$- and $q^2$-dependent part of
+      the local cofactor, not the four-leg minimum itself.
+  - id: s2_dec_010
+    timestamp: "2026-07-26T22:03:57"
+    decision: >
+      Treat $\mathrm{MPPM}$ and $\mathrm{PMMP}$ as the complete
+      physically realized four-environment cell list on a pair wall,
+      and reject any attempt to make the old two raw cell templates
+      into an individually continuous brick without reallocating their
+      cofactor through mixed pair-wall terms.
+    reason: >
+      On $q_{mp}=0$ the two environment square sums are equal, which
+      allows only the two extreme-matched words.  The old raw branches
+      have the nonzero boundary cocycle
+      $H^{(+)}-H^{(-)}=32qJ$ with witness $-21144$, so continuous
+      truncated powers cannot join those unchanged branch values.

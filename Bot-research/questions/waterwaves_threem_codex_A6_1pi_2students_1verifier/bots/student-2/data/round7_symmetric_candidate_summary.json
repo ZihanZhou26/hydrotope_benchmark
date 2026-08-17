@@ -1,0 +1,30 @@
+{
+  "candidate": "Rq_sym = sum_{m,p} pos(q_mp) Bsym_mp",
+  "formula_reference": "bots/student-2/derivations/s2_013_round7_continuous_symmetrization_refuted.md",
+  "oracle": "bots/verifier/code/bg_r6",
+  "fresh_student2_build": false,
+  "exact_checks": {
+    "jump_divisible_by_q": {
+      "passed": 24,
+      "tested": 24
+    },
+    "onwall_trace_matches": {
+      "passed": 24,
+      "tested": 24
+    },
+    "offwall_cofactor_matches": {
+      "passed": 0,
+      "tested": 24
+    },
+    "value_continuity": {
+      "passed": 18,
+      "tested": 18
+    },
+    "polynomial_smoothness": {
+      "passed": 0,
+      "tested": 18
+    }
+  },
+  "first_exact_continuation_residual": "136585204640161305617743/14238281250000000",
+  "verdict": "refuted"
+}

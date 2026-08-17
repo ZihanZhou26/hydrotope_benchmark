@@ -1,0 +1,32 @@
+{
+  "id": "student-1_round6_2026-07-26T17:44:23",
+  "bot": "student-1",
+  "timestamp": "2026-07-26T17:44:23",
+  "task_id": "round6_s1_joint_assembly",
+  "status": "partial",
+  "summary": "Subtracting the confirmed cubic Q-wall orbit does not cure either prior q-wall assembly: both corrected exact systems retain rank 17 < 18, so no global symmetric R0 or complete A6 candidate was obtained.",
+  "work_done": [
+    "Delegated one implementation batch and one focused interface repair to the reusable /root/technician thread.",
+    "Freshly copied and built bg.cpp as bots/student-1/bg_round6.cpp and bots/student-1/bg_round6.",
+    "Corrected the pole_batch tuple interface to use the settled degree-eight S1 pole part and added exact anchor guards.",
+    "Tested the path-transport and direct positive-part/minimum q assemblies on 550 exact points across eight words and 113 full chambers.",
+    "Independently reran the corrected harness and reproduced both 17 < 18 ranks, zero path disagreements, and the anchor.",
+    "Registered claim s1_008 and decision s1_dec_006."
+  ],
+  "next_steps": [
+    "Extract the clean H_mp brick from S=R_spline-R_Q in several full q/Q environments with the same beta minimizer.",
+    "Factor environment-to-environment differences to identify the missing q-wall selector or cocycle.",
+    "Only after an exact compact Rq closes, solve for R0 and run the full definition-of-done battery."
+  ],
+  "technician": {
+    "thread": "/root/technician",
+    "batch": "fresh exact BG build; corrected RQ subtraction; two q-assembly rank tests; conditional formula and battery",
+    "artifacts": [
+      "bots/student-1/code/round6_assembly.py",
+      "bots/student-1/data/round6_assembly.json",
+      "bots/student-1/derivations/round6_assembly_raw_report.md",
+      "bots/student-1/bg_round6.cpp",
+      "bots/student-1/bg_round6"
+    ]
+  }
+}

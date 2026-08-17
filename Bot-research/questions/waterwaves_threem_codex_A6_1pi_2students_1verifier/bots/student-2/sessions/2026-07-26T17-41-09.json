@@ -1,0 +1,20 @@
+{
+  "id": "student-2-round6-2026-07-26T17:41:09",
+  "bot": "student-2",
+  "timestamp": "2026-07-26T17:41:09",
+  "task_id": "round6_s2_qorbit",
+  "status": "blocked",
+  "summary": "Adopted the corrected order-three orbit, unified the prior pair-wall traces, and wrote the explicit two-block q-orbit candidate. The required corrected-R_Q cure test and fresh exact BG validation were not completed because the sole mandated technician thread exhausted its context twice without artifacts.",
+  "work_done": [
+    "Retired s2_010 and adopted R_Q=-32 sum (Q_m;pq)_+^3 omega_m omega_t.",
+    "Derived H_mp|q=0=-32 beta^2 [F+(a+omega_p)D], verifying exact symbolic reduction to both prior energy-component traces.",
+    "Documented the nine-term, two-block table-free candidate R_q^cand=sum (q_mp)_+ H_mp^(beta).",
+    "Dispatched the required implementation batch to /root/technician and one scoped continuation; both failed with context exhaustion and created no artifact.",
+    "Updated claims, decisions, derivation, and HANDOFF with explicit unverified status."
+  ],
+  "next_steps": [
+    "In a fresh scheduled session, run the eight-cell cure test: R0_cell=R_spline_cell-R_Q_cell-R_q^cand_cell and require 8/8 exact equality.",
+    "If cured, run fresh exact GMP audits across all nine Q walls and nine q walls, beta-tie limits, and at least 40 multi-chamber holdouts.",
+    "Reject or refine the candidate if any exact residual remains; do not promote it from s2_012 before those tests."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "bot": "pi",
+  "timestamp": "2026-06-26T18:15:35Z",
+  "round": 1,
+  "summary": "First working session. Built bg.cpp (exact GMP) in bots/pi/code and reproduced all stated known facts (one-minus A_n=0; finite rational three-minus at n=5,6,7). Independently verified the n=5 three-minus closed form: with legs 1,2,3 minus and 4,5 plus, A_5 = i*2^4*g^{-2}*w4*w5*sum_{S subset {1,2,3}} (-1)^|S| (beta^2 - sum_{j in S} w_j^2)_+^2, beta=min(|w4|,|w5|) -- the two-minus truncated-power law under the plus/minus swap. Exact rational agreement at 11/11 non-degenerate points (incl. extreme non-generic 100,1,2 and 1,1,100). Established that the swap maps three-minus -> (n-3)-minus, so it only closes the loop at n=5; n>=6 is genuinely new. Noted oracle SIGFPE/inf exactly on |k_S|=0 walls. A naive A_6 frequency sweep shows smooth polynomial-like growth, so the conjectured poles need a TARGETED channel search, not generic scanning.",
+  "verifications": {
+    "oracle_built": true,
+    "n5_closed_form": "exact match 11/11 non-degenerate points via bots/pi/code/verify_n5.py",
+    "known_facts": "one-minus n=5 -> 0; three-minus n=5,6,7 finite rational"
+  },
+  "claims_recorded": ["C-oracle", "C-n5", "C-swap"],
+  "tasks_assigned": [
+    {"assignee": "student-1", "id": "r1-student-1", "title": "Lock down and document the n=5 closed form + its chamber decomposition (verify >=20 pts incl. wall limits)"},
+    {"assignee": "student-2", "id": "r1-student-2", "title": "n=6 structure: targeted pole search on channels omega_S^2=g|k_S|, chamber walls, polynomial-vs-rational, first ansatz"}
+  ],
+  "artifacts": [
+    "summary/logic.yaml",
+    "summary/group_meeting_notes.md",
+    "bots/pi/code/bg",
+    "bots/pi/code/bg.cpp",
+    "bots/pi/code/verify_n5.py",
+    "bots/pi/claims.yaml"
+  ],
+  "next_steps": "After student-2 reports whether/where n=6 poles exist: if no poles, fit a piecewise-polynomial A_6; if poles, build and fix the channel-decomposed rational ansatz (channel residues x lower-point pieces + polynomial remainder). Then extend the validated A_n structure to n=7 and search for the general-n pattern."
+}

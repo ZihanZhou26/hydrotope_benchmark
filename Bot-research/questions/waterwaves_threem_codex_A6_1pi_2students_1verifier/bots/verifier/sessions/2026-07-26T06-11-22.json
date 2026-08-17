@@ -1,0 +1,49 @@
+{
+  "id": "verifier_session_20260726T061122",
+  "bot": "verifier",
+  "timestamp": "2026-07-26T06:11:22",
+  "round": 1,
+  "task_id": "round1_verifier_audit",
+  "status": "complete",
+  "summary": "Independently rebuilt the BG oracle from an md5-verified copy of the shared bg.cpp and adversarially audited every load-bearing round-1 claim. There is no compact A_6 formula candidate yet; round 1 produced verified scaffolding plus one negative result. Every independently checkable claim (PI baseline facts F1-F5, both anchors, student-1's H1 rejection, student-2's 8-word selector, Delta denominator, d_T factorization, and pole cancellation) reproduced EXACTLY on my own oracle and my own from-scratch implementations. No student evaluator was used as the verification.",
+  "oracle": {
+    "path": "bots/verifier/code/bg",
+    "build": "g++ 8.5.0 -O2 -std=c++17 -lgmpxx -lgmp",
+    "md5_matches_shared_bg_cpp": true,
+    "md5": "41715c4af3ee5a61b1c4bfce40426ac8"
+  },
+  "checks_rerun_result": {
+    "F1_five_point_calibration": "PASS exact (A5=-19968 i; two-minus sign-flip sum re-derived by hand = 72)",
+    "anchors_six_point": "PASS exact (both {-8,2,3,4,5,-6} and {-154/17,3,5,2,7,-135/17})",
+    "F2_degree8": "PASS exact (x2 -> x256)",
+    "F3_permutation_symmetry": "PASS exact (all 36 minus x plus leg permutations equal; minus-leg symmetry, previously only expected, now confirmed)",
+    "F4_purely_imaginary": "PASS (Re=0 everywhere sampled)",
+    "amp_vs_onshell_consistency": "PASS (my own kinematics solver matches BG)",
+    "s1_H1_point1": "PASS exact (A6/i=-1476, sumPhi++=-9, C=164)",
+    "s1_H1_point2_residual": "PASS exact (residual 507828301824/85 != 0 => H1 false)",
+    "s1_H1_all_four_signs_commonC": "PASS (rejected for every (e_m,e_p))",
+    "s2_eight_word_witnesses": "PASS exact (all 8 A6/i values)",
+    "s2_eight_word_selector_sampling": "PASS (3683 random standard-sheet points, 0 outside the 8-word set, all 8 realized)",
+    "s2_delta_denominator_clearing": "PASS exact (student's 8 integer points + 87 additional all-integer nondegenerate points found by scan, all cleared)",
+    "s2_dT_factorization_algebra": "PASS exact (both q_T signs)",
+    "s2_three_pair_cancellation": "PASS exact (Delta=0 on-shell forces plus set = {-x,-y})",
+    "s2_pole_removable": "numerically bounded to |t|=1/640, no 1/t growth (not a proof)"
+  },
+  "gaps_found": [
+    {"severity": "blocking", "text": "No compact closed-form A_6 candidate exists yet; the required analytic-numerator deliverable has not been produced. Round 1 output is verified scaffolding + one dead ansatz class, not a solution."},
+    {"severity": "minor", "text": "Student-1's stronger rank claims (labeled-3-coeff rank 3<4; 72-feature rank 14<15) not independently reproduced; only the decisive exact contradictions were re-derived. Conclusion (H1 dead) stands."},
+    {"severity": "minor", "text": "Delta minimality unproven and possibly over-complete; removable-pole evidence suggests the reduced-form denominator may be smaller than Delta, so the degree-17 cleared-numerator figure is contingent. Exact numerator divisibility by Delta unproven."},
+    {"severity": "minor", "text": "8-word chamber selector proven/verified only on the standard sheet; sheet-independence remains conjectural."},
+    {"severity": "minor", "text": "BG oracle is exactly singular (SIGFPE) at some on-shell wall/pole points; final evaluator + verification must use limits at walls, not direct evaluation."}
+  ],
+  "artifacts": [
+    "bots/verifier/VERIFICATION.md",
+    "bots/verifier/code/bg (fresh, md5-verified)",
+    "bots/verifier/code/oracle.py",
+    "bots/verifier/code/battery.py",
+    "bots/verifier/code/delta_extra.py",
+    "bots/verifier/code/extra_checks.py"
+  ],
+  "board_post": "none (all audited claims verified; no immediate warning warranted; the no-formula-yet status is already known to the team)",
+  "verdict": "GAPS REMAIN (1 blocking)"
+}

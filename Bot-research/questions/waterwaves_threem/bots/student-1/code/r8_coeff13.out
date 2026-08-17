@@ -1,0 +1,2 @@
+slice [Fraction(9, 1), Fraction(7, 2), Fraction(6, 1), Fraction(6, 1), Fraction(3, 1)]: SKIP (sd!=1, fitfail, order!=4, or v^4 nondivide)
+slice [Fraction(7, 1), Fraction(9, 2), Fraction(6, 1), Fraction(3, 1), Fraction(2, 1)]: order-4 OK, S deg=18, samples so far 10

@@ -1,0 +1,42 @@
+{
+  "id": "student-2_round3_2026-07-26T10:32:56",
+  "bot": "student-2",
+  "timestamp": "2026-07-26T10:32:56",
+  "task_id": "round3_s2_exact_spline_brick",
+  "status": "partial",
+  "summary": "Reconstructed eight exact degree-eight remainder branches, proved the intrinsic pair-wall coefficient is a nested spline, factored its two beta-selected local polynomial types into compact blocks, found a universal compact same-energy wall trace verified in 17 environments, and exactly rejected naive independent positive-part integration. The remaining obstruction is coupled Mobius/inclusion-exclusion assembly and the global R0.",
+  "work_done": [
+    "Built exact homogeneous on-shell quotient bases of dimensions 285 at degree 8 and 140 at degree 6.",
+    "Solved eight full-rank 285-by-285 exact branch systems in four q24-wall environments; all 160 independent exact BG holdouts had zero residual.",
+    "Extracted exact H24/H14 polynomials and verified exact q24 divisibility, including the independent wall value 12622720/27.",
+    "Proved Hmp is itself a spline using an unequal symmetry-related physical wall polynomial, while isolated q25 and Q1;45 controls leave it unchanged.",
+    "Factored the other-minus-beta H piece into three blocks and the other-plus-beta H piece into seven blocks; all 4/4 reconstructed intrinsic-piece checks have zero symbolic residual.",
+    "Found Hmp on isolated same-energy walls as -32 beta^2 times one symmetric quartic, beta the minimum magnitude among all four non-primary legs; verified 17/17 environments and 102/102 branch holdouts.",
+    "Matched the compact beta selector symbolically to student-1's independent P(u) and P(6-u) branch exchange.",
+    "Tested R0_cell=R_cell-sum q_mp,+ H_mp(beta) exactly and found agreement in only 1/8 cells, identifying coupled beta exchanges and the need for Mobius/inclusion-exclusion.",
+    "Appended claims s2_007 and s2_008 and board posts post_009, post_011, post_012, and post_013."
+  ],
+  "next_steps": [
+    "Construct the Mobius/inclusion-exclusion integration over simultaneous beta-minimum exchanges, using the stored eight branch polynomials as exact constraints.",
+    "Recover one cell-independent dual-S3 polynomial R0 and verify it across all reconstructed cells before extending the candidate to fresh BG points.",
+    "Only after global assembly passes, combine with P_pole and run the full eight-word, hierarchy, wall, pole-orbit, permutation, and five-point definition-of-done battery."
+  ],
+  "technician": {
+    "thread": "/root/technician",
+    "status": "failed_context_limit_twice_without_artifacts",
+    "fallback": "Exact implementation completed inline as explicitly permitted by the round-3 task brief."
+  },
+  "artifacts": [
+    "bots/student-2/derivations/s2_007_exact_cell_brick_and_nested_verdict.md",
+    "bots/student-2/code/round3_bottomup.py",
+    "bots/student-2/code/round3_compare.py",
+    "bots/student-2/code/round3_wall_trace_scan.py",
+    "bots/student-2/code/round3_assemble_candidate.py",
+    "bots/student-2/data/round3_context_a.json",
+    "bots/student-2/data/round3_context_b.json",
+    "bots/student-2/data/round3_context_c.json",
+    "bots/student-2/data/round3_context_d.json",
+    "bots/student-2/data/round3_wall_trace_scan.json",
+    "bots/student-2/data/round3_assemble_candidate.json"
+  ]
+}

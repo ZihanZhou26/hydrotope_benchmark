@@ -1,0 +1,25 @@
+[2026-07-26T08-07-07] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/pi-bot.md identity=none
+All files valid and written. Round 4 (PI phase) is complete. Here's the summary.
+
+## Round 4 PI session — done
+
+**Round 4 of 9, normal research round** (final summary comes after round 9), so I directed research rather than writing SOLVED/FINAL.
+
+**State (all verifier-confirmed, zero residual on a fresh md5-matched BG):**
+- Decomposition A₆ = i·g⁻³·(P_pole + R_spline) holds; **P_pole is compact, table-free, correct in all 8 chambers**; minimal denominator D_min = C = ω₁ω₂ω₃ + ω₄ω₅ω₆.
+- Round 3 localized the last unknown, R_spline (deg-8, dual-S₃ spline):
+  - **F11** compact same-energy brick H_mp|_{ωp=ωm} = −32·β²·[4a⁴+6a³s+2a²(s²+v)+(as+v)(s²−2v)] with a **four-leg selector** β = min|ω_j| over the four non-primary legs (7/7 environments).
+  - **F12** the brick H_mp is **itself a spline** ⇒ R_spline is a nested/≥2D hydrotope (signed sum of *products* of truncated powers).
+  - **F13** the naive independent-orbit sum R₀ + Σ(q_mp)₊H_mp does **not** integrate (1/8 cells) — a primary wall flip co-exchanges β in another brick ⇒ a **coupled Möbius/inclusion-exclusion**.
+
+**PI double-check (pi_vchk_002, recorded in verified.yaml):** there was one student↔verifier conflict on a load-bearing directional claim. I rebuilt bg.cpp cleanly (md5 matches the immutable reference and the verifier's oracle), reproduced the anchor A₆ = −9190656/7·i exactly, and independently confirmed via the four-leg β-minimizer kinematics that the H₂₄ branch switch is the **magnitude tie q₃₅=0 (u=3)**, not the Q_T wall Q_{3;45}=0 (u=61/12) as student-1 claimed. **Verifier confirmed, student-1 corrected.** Consequence: the coupling fan is magnitude ties |ω_i|=|ω_j|, not Q_T walls. (Directional only — does not clear the gap.)
+
+**Blocking gap G1 persists**, now reduced to exactly two pieces: the global symmetric R₀, and the coupled β-fan assembly rule.
+
+**Tasks assigned (complementary):**
+- **student-1 — top-down:** synthesize R_spline as a signed sum of *products* of ℋ/(·)₊ blocks organized by the four-leg β-min sort; enforce the three verified boundary conditions; mine the 2026 hydrotope literature; test exactly vs fresh BG.
+- **student-2 — bottom-up:** reconstruct R_spline per cell of the full magnitude-tie arrangement, extract R₀ + exact signed increments, derive the coupled inclusion-exclusion rule that kills the 1/8-cell double-counting, factor to human-readable form, assemble A₆ and run the full definition-of-done battery. (Also flagged the stale `H_wall_compact_formula` column for cleanup.)
+
+Files written: `summary/logic.yaml`, `summary/group_meeting_notes.md`, `tasks/student-1.md`, `tasks/student-2.md`, `bots/pi/verified.yaml` (+pi_vchk_002), `bots/pi/sessions/2026-07-26T12-12-08.json`, and `board.json` (post_014). `jobs/` was empty (no blocking job). Ending the session.
+[usage] cost_usd=3.400998 duration_ms=651220 num_turns=33 in=52 out=50748 cache_read=2197018 cache_write=103293
+[2026-07-26T08-18-00] pi-bot exited with code 0

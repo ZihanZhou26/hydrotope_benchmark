@@ -1,0 +1,92 @@
+{
+  "basis_counts": {
+    "r1": 8,
+    "r1+r2": 16
+  },
+  "invariance": {
+    "status": "passed",
+    "passed": true,
+    "tested_records": [
+      "base-1",
+      "base-3",
+      "base-4"
+    ],
+    "failures": []
+  },
+  "r1": {
+    "status": "inconsistent",
+    "feature_names": [
+      "r1_A_A_diag",
+      "r1_A_C",
+      "r1_A_R",
+      "r1_C_C_diag",
+      "r1_C_C_off",
+      "r1_C_R",
+      "r1_R_R_diag",
+      "r1_R_R_off"
+    ],
+    "feature_count": 8,
+    "train_count": 212,
+    "test_count": 13,
+    "matrix_rank": 4,
+    "matrix_rank_aug": 5,
+    "first_inconsistent_prefix": {
+      "prefix_rows": 145,
+      "conflict_row": {
+        "sample_id": "base-6",
+        "base_id": "base-6",
+        "wall_signature": "I01_J01:-1|I01_J02:1|I01_J04:1|I02_J01:-1|I02_J02:1|I02_J04:1|I04_J01:-1|I04_J02:1|I04_J04:1|S_01_03:-1|S_01_05:-1|S_01_06:1|S_02_03:-1|S_02_05:-1|S_02_06:1|S_04_03:-1|S_04_05:-1|S_04_06:1",
+        "exact_y": "-6431484880/189783"
+      },
+      "rankA": 4,
+      "rankAug": 5
+    },
+    "fit_meta": {
+      "status": "inconsistent",
+      "matrix_rank": 4,
+      "matrix_rank_aug": 5
+    }
+  },
+  "r1+r2": {
+    "status": "inconsistent",
+    "feature_names": [
+      "r1_A_A_diag",
+      "r1_A_C",
+      "r1_A_R",
+      "r1_C_C_diag",
+      "r1_C_C_off",
+      "r1_C_R",
+      "r1_R_R_diag",
+      "r1_R_R_off",
+      "r2_A_A_diag",
+      "r2_A_A_off",
+      "r2_A_C",
+      "r2_A_R",
+      "r2_C_C_diag",
+      "r2_C_R",
+      "r2_R_R_diag",
+      "r2_R_R_off"
+    ],
+    "feature_count": 16,
+    "train_count": 212,
+    "test_count": 13,
+    "matrix_rank": 6,
+    "matrix_rank_aug": 7,
+    "first_inconsistent_prefix": {
+      "prefix_rows": 182,
+      "conflict_row": {
+        "sample_id": "aff-1--1-1/4",
+        "base_id": "aff-1--1-1/4",
+        "wall_signature": "I01_J01:-1|I01_J02:1|I01_J04:1|I02_J01:-1|I02_J02:1|I02_J04:1|I04_J01:-1|I04_J02:1|I04_J04:1|S_01_03:-1|S_01_05:-1|S_01_06:1|S_02_03:-1|S_02_05:-1|S_02_06:1|S_04_03:-1|S_04_05:-1|S_04_06:1",
+        "exact_y": "-19689925/541956096"
+      },
+      "rankA": 6,
+      "rankAug": 7
+    },
+    "fit_meta": {
+      "status": "inconsistent",
+      "matrix_rank": 6,
+      "matrix_rank_aug": 7
+    }
+  }
+}

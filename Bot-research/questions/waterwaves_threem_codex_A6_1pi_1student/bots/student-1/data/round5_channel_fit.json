@@ -1,0 +1,79 @@
+{
+  "timestamp_utc": "2026-07-26T15:37:33",
+  "bg_binary": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/code/bg_round5_channels",
+  "point_info": {
+    "total": 790,
+    "train": 670,
+    "holdout": 120,
+    "holdout_target": 120,
+    "sample_target": 790,
+    "signature_unique_18": 140,
+    "signature_unique_53": 387
+  },
+  "stageA": {
+    "name": "StageA",
+    "feature_count": 27,
+    "status": "inconsistent",
+    "prime_results": {
+      "2305843009213693951": {
+        "rows": 670,
+        "rankX": 23,
+        "rankAug": 24,
+        "ncols": 27,
+        "consistent": false
+      },
+      "1000000007": {
+        "rows": 670,
+        "rankX": 23,
+        "rankAug": 24,
+        "ncols": 27,
+        "consistent": false
+      }
+    }
+  },
+  "feature_counts": {
+    "P2": 3,
+    "StageA_raw": 24,
+    "StageA_total": 27,
+    "stageB_base": 300,
+    "stageB_pair": 263,
+    "StageB_tested_total": 590,
+    "StageB_solver_feature_count": 590
+  },
+  "stageB_candidates": {
+    "base": 300,
+    "pair": 263,
+    "pair_orbit_total": 399,
+    "status": "pair_tier_included",
+    "pair_tier_inclusion_bound_cols": 590,
+    "pair_included": true
+  },
+  "target_definition": {
+    "H": "im(A6)/prod(omega)",
+    "conservation_checked": true,
+    "conservation_eq": "sum(omega)=0 and sum(sig_i*omega_i^2)=0"
+  },
+  "stageB": {
+    "name": "StageB",
+    "feature_count": 590,
+    "status": "inconsistent",
+    "prime_results": {
+      "2305843009213693951": {
+        "rows": 670,
+        "rankX": 166,
+        "rankAug": 167,
+        "ncols": 590,
+        "consistent": false
+      },
+      "1000000007": {
+        "rows": 670,
+        "rankX": 166,
+        "rankAug": 167,
+        "ncols": 590,
+        "consistent": false
+      }
+    }
+  },
+  "outcome": "no-fit",
+  "timing_sec": 129.705
+}

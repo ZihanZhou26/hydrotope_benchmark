@@ -1,0 +1,555 @@
+claims:
+  - id: v_r1_001
+    round: 1
+    timestamp: "2026-07-26T06:11:22"
+    status: verified
+    statement: >
+      All independently checkable round-1 claims reproduce EXACTLY on a fresh,
+      md5-verified rebuild of bg.cpp (bots/verifier/code/bg), using verifier
+      implementations rather than any student evaluator. Verified: PI baseline
+      facts F1-F5 (5pt calibration A_5=-19968 i with a by-hand re-derivation of
+      the sign-flipped two-minus sum; both 6pt anchors; degree-8 homogeneity;
+      dual S_3 permutation symmetry INCLUDING the minus legs; purely imaginary);
+      student-1's H1 rejection (exact (+,+) two-point residual 507828301824/85,
+      plus common-C rejection for all four (e_m,e_p)); student-2's eight-word
+      standard-sheet chamber selector (8 witnesses + 3683-point random sampling
+      with zero escapes) and its Delta=prod_{m,p}(omega_m+omega_p) common
+      denominator (16 student points + 87 additional all-integer points all
+      cleared), the d_T factorization identity, and the three-pair cancellation
+      at Delta=0.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/battery.py
+      - bots/verifier/code/delta_extra.py
+      - bots/verifier/code/extra_checks.py
+  - id: v_r1_002
+    round: 1
+    timestamp: "2026-07-26T06:11:22"
+    status: blocking_gap
+    statement: >
+      No compact closed-form A_6 candidate exists after round 1. The task's
+      required deliverable (an explicit human-readable numerator from a few
+      defined analytic building blocks) has not been produced; existing output
+      is verified scaffolding (baseline facts, dead minus-pair ansatz class,
+      valid but possibly non-minimal denominator Delta, eight-word selector,
+      one triple-channel residue orbit). Nothing is acceptable as solved.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+  - id: v_r1_003
+    round: 1
+    timestamp: "2026-07-26T06:11:22"
+    status: caveat
+    statement: >
+      Open items the next PI must not treat as settled: (a) Delta minimality is
+      unproven and removable-pole evidence hints Delta may be over-complete, so
+      the degree-17 cleared-numerator figure is contingent and exact numerator
+      divisibility by Delta is unproven; (b) the eight-word selector is proven
+      only on the standard sheet; (c) student-1's rank-based inconsistency
+      numbers (3<4, 14<15) were not independently reproduced (only the exact
+      contradictions were); (d) BG is exactly singular (SIGFPE) at some on-shell
+      wall/pole points, so any final evaluator must use limits at walls.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+  - id: v_r2_001
+    round: 2
+    timestamp: "2026-07-26T08:17:58"
+    status: verified
+    statement: >
+      student-1's compact pole part P_pole is CONFIRMED on a fresh md5-verified
+      oracle with a verifier reimplementation (bots/verifier/code/pole_verify.py,
+      transcribed from the written formula, no student evaluator). P_pole =
+      -64 sum_T (w_m w_t Q_T^2 / d_T) H(min(w_m^2,Q_T);p,q) H(min(w_t^2,Q_T);r,s),
+      one H block + one S3(M)xS3(P) orbit (<=9 channels), no coefficient table.
+      The Q_T numerator is forced by bg.cpp's Propagator=-iQ_T/(g d_T). Verified:
+      anchor P_pole(-8,2,3,4,5,-6)=42588288/7 with integer residual -7396992;
+      A_6/i - P_pole is denominator-free (28/28 integer-w residuals integral,
+      212/212 rational-w residuals integral after xL^8) across ALL 8 physical
+      chambers (student-1 had tested only 4 sorted words); P_pole and R are
+      dual-S3 symmetric (all 36 perms) and degree-8 homogeneous.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/pole_verify.py
+  - id: v_r2_002
+    round: 2
+    timestamp: "2026-07-26T08:17:58"
+    status: verified
+    statement: >
+      student-2's denominator reduction and pair-wall order are CONFIRMED.
+      Delta=prod_{m,p}(w_m+w_p)=C^3 with C=w1 w2 w3 + w4 w5 w6 (exact 136/136);
+      1/d_T=(w_m+w_r)/(2C) (r=omitted plus leg, exact). D_min=C (degree 3) is a
+      genuine per-analytic-cell denominator: inside one full-signature cell A_6/i
+      is not polynomial (deg 8-12 fits fail) while B=C*A_6/i IS polynomial with C
+      not dividing B. The pair-wall jump is order EXACTLY 1 (linear): setting
+      (B,c,e)=(10,2,3), wall q24=0 at t=5, deg R_L=deg R_R=6, R_L(5)-R_R(5)=0,
+      lim (R_L-R_R)/q24 = 12622720/27 (matches student-2 exactly); a cubic
+      truncated-power brick is ruled out. 8-word selector reproduced (ascending
+      vs descending |w| sort). 5-pt calibration exact on 4 points.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/pole_verify.py
+  - id: v_r2_003
+    round: 2
+    timestamp: "2026-07-26T08:17:58"
+    status: blocking_gap
+    statement: >
+      No complete compact closed-form A_6 after round 2. The pole half is solved
+      and compact (P_pole) and the denominator is reduced to C (deg 3), but the
+      polynomial-spline remainder R_spline = A_6/i - P_pole -- a degree-8 dual-S3
+      spline whose only known handle is the orbit form sum_{m,p}(q_mp)_+ H_mp
+      with deg H_mp=6 UNKNOWN -- has not been reduced to a human-readable
+      expression. This is the entire remaining deliverable; it clears only when a
+      future round produces and a verifier confirms the closed form of R_spline.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+  - id: v_r2_004
+    round: 2
+    timestamp: "2026-07-26T08:17:58"
+    status: caveat
+    statement: >
+      Two structural cautions for the next PI, both independently verified. (a)
+      The 'genuine real factorization pole' framing (F9) is imprecise: every real
+      C=0 point is a triple mixed-pair coincidence (on-shell prod_p(w_m+w_p)=C
+      forces a perfect matching) where the diverging channel terms CANCEL, so
+      A_6/i and P_pole stay finite -- there is no approachable real pole; C is a
+      denominator only per analytic cell. This removability is exactly why R is a
+      pure polynomial spline; the decomposition is sound. (b) A_6's analytic cell
+      structure is finer than the 8-word selector: within one 8-word chamber A_6/i
+      switches branch at Q_T=0 (triple-sign) and q_mp=0 (pair-sign) walls
+      (holding only the 8-word fixed gave a spurious deg-17 line interpolant;
+      holding the full signature fixed gave clean deg-9 B). R_spline is not merely
+      eight polynomials. (Carried: BG SIGFPE at walls -> use two-sided limits.)
+    evidence:
+      - bots/verifier/VERIFICATION.md
+  - id: v_r3_001
+    round: 3
+    timestamp: "2026-07-26T11:03:49"
+    status: verified
+    statement: >
+      student-2's COMPACT same-energy pair-wall brick is CONFIRMED on a fresh
+      md5-verified oracle with a verifier reimplementation (no student evaluator).
+      For a same-energy wall omega_p=omega_m=a, other minus legs with s=w_m'+w_m'',
+      v=w_m' w_m'', and beta=min|w_j| over ALL FOUR non-primary legs:
+      H_mp|_{wp=wm} = -32 beta^2 [4a^4 + 6a^3 s + 2a^2(s^2+v) + (a s+v)(s^2-2v)].
+      Independently reconstructed H_24 at seven isolated same-energy walls by exact
+      two-sided BG branch continuation and matched the formula EXACTLY in all 7
+      (A 12622720/27; B 111840; C 6186304/27; D 1761408; E 7411415872/12167;
+      F 2169430528/2197; G 116055433/1372). In the 5 plus-leg cases the four-leg
+      minimum differs from and beats the earlier minus-only rule, so the four-leg
+      selector is necessary and correct. Genuine compact table-free LOCAL block.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/round3_verify.py
+      - bots/verifier/code/round3_run2.py
+      - bots/verifier/code/round3_pathcheck.py
+  - id: v_r3_002
+    round: 3
+    timestamp: "2026-07-26T11:03:49"
+    status: verified
+    statement: >
+      The pivotal structural verdict is CONFIRMED: the pair-wall brick H_mp is
+      ITSELF A SPLINE, not a single degree-6 polynomial. On student-1's affine
+      slice B=10,c=u,e=6-u the reconstructed H_24(u)=P(u) for u<3 and P(6-u) for
+      u>3, with P(u)=-(u^2/16)(219u^4-2628u^3+55226u^2-284052u-2037485); the
+      four-leg beta formula matches BG at every u. The branch switch is exactly the
+      pair wall q35=0 at u=3 (four-leg beta minimizer flips w3->w5), pinned by
+      u=29/10->P(u), u=31/10->P(6-u), u=4->P(6-u). NOTE: s1_004 mis-attributes the
+      switch to Q_{3;45}=61-12u (u=61/12); it is the pair wall q35=0 at u=3. This
+      does not affect the verified brick and refines the round-4 assembly picture
+      (coupling is a pair-wall/sorted-min structure over the four |omega_j|).
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/round3_run2.py
+  - id: v_r4_001
+    round: 4
+    timestamp: "2026-07-26T13:29:24"
+    status: verified
+    statement: >
+      student-2's s2_009 is CONFIRMED independently: R_spline = A_6/i - P_pole is
+      NOT a single polynomial on the magnitude-tie arrangement -- it also jumps
+      across the three-leg factorization walls Q_{m;pq}=omega_p^2+omega_q^2-omega_m^2
+      =0. Fresh md5-matched oracle + verifier table-free P_pole (no student
+      evaluator). (a) Reproduced the witness R_spline(21/2,-8,1,-7,-6,19/2)
+      =-49008548 exactly. (b) DECISIVE independent test: an on-shell POLYNOMIAL
+      line omega(t)=P+t d with P=(8,2,-3,-5,4,-6), d=(-2,1,0,2,-1,0) crosses a
+      single Q_{1;46}=0 wall at t0=1/4 inside ONE constant magnitude cell (full
+      order fixed, all nine q_mp signs fixed); a degree-8 fit from the left
+      reproduces 11/11 left holdouts but FAILS on the right. So within one
+      magnitude cell R_spline is not one polynomial. (c) The wall is INTRINSIC to
+      A_6: (A_6/i)*C is clean deg-8 on the left and jumps from the first right
+      point past t0, so Q_T=0 (=k_{m,p,q}=0, a 3-leg subset-momentum chamber wall
+      per question.md) is a genuine amplitude wall, NOT a P_pole-subtraction
+      artifact. (d) The jump is ORDER 3 (a0=a1=a2=0, a3=-1555200, holdout-
+      validated), softer than the order-1 q_mp walls; it is a systematic S3xS3
+      orbit (6 distinct channels jump).
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/r4_verify.py
+      - bots/verifier/code/r4_line_test3.py
+      - bots/verifier/code/r4_mechanism2.py
+      - bots/verifier/code/r4_order_final.py
+      - bots/verifier/code/r4_orbit3.py
+  - id: v_r4_002
+    round: 4
+    timestamp: "2026-07-26T13:29:24"
+    status: blocking_gap
+    statement: >
+      DIRECTIONAL/HEADLINE: the round-4 standing premise 'the coupling fan is
+      magnitude ties |omega_i|=|omega_j|, NOT Q_T walls' (logic.yaml
+      spline_structure + open_minor, group_meeting_notes standing rules, PI F14
+      generalization) is REFUTED by v_r4_001. It also contradicts my own round-2
+      caveat v_r2_004(b) already on record. My round-3 Finding 2 (the specific
+      H_24 branch switch on the B=10 slice is the magnitude tie q_35=0, not
+      Q_{3;45}) remains correct and NARROW; the PI over-generalized it into a
+      blanket 'no Q_T walls' rule. Both a magnitude switch (round 3) and Q_T walls
+      (round 4) are real and coexist. student-1's magnitude-only-transport rank
+      17<18 (s1_005) is the predicted symptom of the unmodeled Q-orbit. The
+      remaining deliverable is now LARGER: R_spline must be assembled over the
+      JOINT {q_mp=0}(order 1) U {Q_{m;pq}=0}(order 3) fan, plus global R_0. No
+      complete compact A_6 exists (G1 persists). Wall-set completeness beyond
+      these two orbits is unproven (other k_S=0 subsets neither shown nor
+      excluded).
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/r4_mechanism2.py
+      - bots/verifier/code/r4_orbit3.py
+  - id: v_r3_003
+    round: 3
+    timestamp: "2026-07-26T11:03:49"
+    status: blocking_gap
+    statement: >
+      No complete compact closed-form A_6 after round 3 (G1 persists). Because
+      H_mp is itself a spline (four-leg beta=min selector, verified), the
+      single-orbit polynomial ansatz R_spline = R_0 + sum (q_mp)_+ H_mp^poly is
+      dead. The two remaining pieces -- the global symmetric R_0 and the COUPLED
+      Moebius/inclusion-exclusion integration of the beta-minimum fan into one
+      human-readable R_spline -- remain unknown, and no table-free evaluator that
+      reconstructs the full numerator exists. So the deliverable and its required
+      compactness account do not exist. Clears only when a future round produces a
+      compact R_spline AND a verifier confirms the assembled A_6. (student-2's
+      exact 1/8-cell naive-assembly-failure count was NOT independently rebuilt --
+      it needs their R_0 -- but the underlying obstruction is verified here.)
+    evidence:
+      - bots/verifier/VERIFICATION.md
+  - id: v_r3_004
+    round: 3
+    timestamp: "2026-07-26T11:03:49"
+    status: caveat
+    statement: >
+      Two cautions for the next PI/verifier. (a) Near-wall two-sided
+      reconstructions MUST certify continuity R_L(t0)=R_R(t0) (cell-adjacency),
+      not just holdout fits: when a finer wall sits very close to the target wall a
+      coarse cluster silently locks onto a NON-adjacent cell and returns a
+      contaminated (discontinuous) jump. My own first pass produced two false
+      'counterexamples' (envs C,E) that vanished once continuity was enforced;
+      this validates student-2's rejection of nongeneric nearby environments. (b)
+      Documentation: student-2's round3_wall_trace_scan.json column
+      H_wall_compact_formula is stale (uses the old minus-only beta, nonzero
+      'residual' at all 6 plus-leg walls); the claimed four-leg value is in
+      H_wall_beta_formula (residual 0). The four-leg claim is correct; only the
+      column/meta labeling is inconsistent.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+  - id: v_r5_001
+    round: 5
+    timestamp: "2026-07-26T16:11:08"
+    status: refuted_with_correction
+    statement: >
+      student-2's round-5 order-3 Q-wall brick (s2_010, post_020) is REFUTED as a
+      global formula, and the CORRECT brick is supplied. Fresh md5-matched bg_r5 +
+      verifier reimplementations of P_pole/R_spline/Q_T and the candidate brick (no
+      student evaluator; P_pole cross-checked in both equivalent forms, R_spline
+      dual-S3 + denominator-free at the test chambers). The claimed selector
+      G_{m;pq}=-16 max(w_m^2,w_t^2) (equivalently -16[w_m^2+(q_mt)_+]) and orbit
+      R_Q=-16 sum (Q_{m;pq})_+^3 [w_m^2+(q_mt)_+] FAIL: R_spline - R_Q is non-smooth
+      across 24 of 27 independently extracted isolated Q-wall crossings (right only
+      in special cells such as the canonical worked line, where w_1=2 w_5 makes
+      -16 w_m^2 = -32 w_m w_t). The 'no energy-sign selector' claim is also false.
+      CORRECT cofactor (verifier, exact on all 10 diverse (1;46) extractions and
+      0/27 non-smooth over 9 channels x 4 energy-sign chambers):
+      G_{m;pq} = -32 w_m w_t (t = omitted plus leg), i.e.
+      R_Q^corr = -32 sum_{m,p<q} (Q_{m;pq})_+^3 w_m w_t. It is a plain degree-2
+      MONOMIAL (no max, no nested (q_mt)_+), automatically continuous, and is
+      genuinely energy-sign dependent. student-2's 'assembly consequence'
+      (-16 (Q_{m;P\{t}})_+^3 correction to H_mt) is moot under the corrected brick.
+      The corrected brick should be re-derived/confirmed by the students before it
+      is treated as settled.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/r5_test_corrected.py
+      - bots/verifier/code/r5_findG.py
+      - bots/verifier/code/r5_findG2.py
+      - bots/verifier/code/r5_pipeline_and_wall.py
+  - id: v_r5_002
+    round: 5
+    timestamp: "2026-07-26T16:11:08"
+    status: verified
+    statement: >
+      The STRUCTURAL claims about the Q-wall jump are CONFIRMED (independent of the
+      selector controversy). On my own on-shell polynomial lines crossing an
+      isolated Q_{m;pq}=0 wall inside one magnitude cell: R_spline jumps at ORDER
+      EXACTLY 3 (branch difference dR is divisible by Q_{m;pq}^3 with remainder 0
+      and a degree-2 quotient, and is NOT divisible by Q^4); the effect is a
+      systematic S3(M)xS3(P) orbit (8/9 channels directly extracted, all 9 covered
+      in the smoothness sweep). Canonical anchor dR = -1555200 u^3 + 829440 u^4
+      - 110592 u^5 in u=t-1/4 reproduced exactly. So the order-3 degree-2-cofactor
+      orbit structure is real; only student-2's cofactor VALUE was wrong (see
+      v_r5_001). Also reconfirmed: A_6 = i g^-3 (P_pole + R_spline); table-free
+      P_pole (both forms); R_spline denominator-free/dual-S3/degree-8.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/r5_test1_extract.py
+      - bots/verifier/code/r5_diag_walls.py
+  - id: v_r5_003
+    round: 5
+    timestamp: "2026-07-26T16:11:08"
+    status: corroborated
+    statement: >
+      student-1's 18-hyperplane wall-set completeness (s1_006/s1_007, post_019) is
+      CORROBORATED empirically but NOT independently proven. On 6 on-shell lines,
+      23 of 23 segments that contain an interior magnitude-order change but no
+      q_{mp}=0 / Q_{m;pq}=0 crossing show R_spline is a SINGLE degree-8 polynomial
+      (zero holdout residual) -> same-sector magnitude-order changes are not walls,
+      and no hidden wall was found off the {q_mp=0} U {Q_{m;pq}=0} arrangement.
+      Combined with 27 clean isolated Q-wall reconstructions (jumps occur only at
+      q/Q loci), this supports 9 q + 9 Q = 18 walls. I did NOT rebuild student-1's
+      rank-285 dual-S3 chamber fit; a symbolic completeness proof is still owed.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/r5_completeness.py
+  - id: v_r5_004
+    round: 5
+    timestamp: "2026-07-26T16:11:08"
+    status: blocking_gap
+    statement: >
+      No complete compact closed-form A_6 after round 5 (G1 persists). The pole
+      part (P_pole), denominator (C), order-1 q-brick (H_mp), the 18-wall map, and
+      now the CORRECTED order-3 Q-brick (R_Q^corr = -32 sum (Q_{m;pq})_+^3 w_m w_t,
+      v_r5_001) are all in hand, but the global symmetric R_0 and the full
+      assembly are still missing and unverified, and no table-free evaluator for
+      the complete A_6 exists. Firmer next step: subtract R_Q^corr, confirm the
+      remainder is a pure spline over the 9 q_mp=0 walls (order-1 H_mp) + R_0,
+      solve R_0, assemble, and submit a full A_6 candidate for end-to-end
+      verification. Clears only when a compact A_6 exists AND a later verifier
+      confirms it against fresh BG.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+  - id: v_r6_001
+    round: 6
+    timestamp: "2026-07-26T18:26:27"
+    status: verified
+    statement: >
+      R_Q = -32 sum_{m,p<q} (Q_{m;pq})_+^3 w_m w_tbar is RE-CONFIRMED globally on a
+      fresh md5-matched oracle (bg_r6) with a from-scratch pipeline (r6_core.py; no
+      student evaluator; P_pole in both equivalent forms, sum-of-squares H-block,
+      reproduces anchors incl. student-1's s1_008 R_Q=-136630560 and S=129233568).
+      On 24 isolated Q-wall crossings (channels (0,3,4),(0,3,5),(0,4,5),(1,3,4),
+      (2,3,4); 4 q-chambers; 4 energy-sign chambers) R_spline JUMPS while
+      S=R_spline-R_Q is a single SMOOTH, CONTINUOUS degree-8 polynomial across the
+      wall -- 24/24, zero residual. Combined with round-5's 27/27 (9 channels x 4
+      chambers) the corrected order-3 brick is solidly established. Also verified:
+      S is dual-S3 symmetric (0/36 permutation violations), degree-8 homogeneous,
+      and jumps at order EXACTLY 1 across q-walls (jump divisible by q_mp, 24/24);
+      within one chamber S is a general 285-dim non-symmetric on-shell polynomial
+      (Hilbert series (1+t)/(1-t)^4, [t^8]=285), matching student-1's rank-285.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/r6_core.py
+      - bots/verifier/code/r6_checkA.py
+      - bots/verifier/data/r6_checkA.json
+      - bots/verifier/code/r6_checkB2.py
+  - id: v_r6_002
+    round: 6
+    timestamp: "2026-07-26T18:26:27"
+    status: refuted
+    statement: >
+      student-2's active two-block q-orbit candidate R_q^cand (s2_011/s2_012,
+      post_023) is REFUTED as a global formula -- the blocked round-6 cure test,
+      run independently. Local R_0-free test: if the candidate brick were the correct
+      q-jump then T=S-R_q^cand must be smooth across every q-wall. Result over 18
+      isolated q-walls: S jumps 18/18 (control) but T=S-R_q^cand JUMPS 18/18 (smooth
+      0/18) -> no smooth global R_0 exists for this candidate. IMPORTANT nuance: the
+      per-wall brick VALUE is locally CORRECT -- the BG-extracted brick
+      [S_{q>0}-S_{q<0}]/q_mp equals -32 beta^2[F+(a+b)D] on-wall (24/24, generalizing
+      the round-3-verified F11) AND equals student-2's H_cand off-wall (24/24,
+      minus-block). The failure is in the ASSEMBLY: the four-leg beta=min selector's
+      two blocks H^(-beta)/H^(+beta) do NOT match when the argmin flips across a
+      cross-sector tie (a q-wall), so every OTHER brick injects a spurious
+      discontinuity at each q-wall. Localized exactly: at the q_{23}=0 wall the
+      crossed (2,3) brick jump == S jump, but bricks (1,4),(1,5) jump spuriously;
+      brick(1,4)'s argmin flips leg3(plus)->leg2(minus) across |w2|=|w3| and the two
+      blocks disagree (H_cand(1,4) below -1490802280435/12800000 vs above
+      -1439384171371/12800000, q_{14} uncrossed). Same-sector ties are NOT the cause
+      (R_q^cand smooth 20/20). Do NOT promote this candidate.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/r6_checkC.py
+      - bots/verifier/code/r6_checkC2.py
+      - bots/verifier/code/r6_checkC3.py
+      - bots/verifier/code/r6_debug.py
+      - bots/verifier/data/r6_checkC.json
+      - bots/verifier/data/r6_evidence_summary.md
+  - id: v_r6_003
+    round: 6
+    timestamp: "2026-07-26T18:26:27"
+    status: blocking_gap
+    statement: >
+      student-1's obstruction (s1_008/post_024: rank 17<18, no global symmetric R_0
+      after subtracting confirmed P_pole and R_Q) is INDEPENDENTLY CONFIRMED, and
+      G1 persists. The decomposition A_6 = i g^-3 (P_pole + R_0 + R_q + R_Q) is sound
+      (P_pole and R_Q pinned; S a genuine order-1 dual-S3 spline over the 9 q-walls),
+      but the naive single-two-block q-assembly does not close: the compact NESTED
+      q-orbit R_q and the global symmetric R_0 remain unsolved and no table-free
+      evaluator for the complete A_6 exists. The concrete blocker is that the q-wall
+      bricks must be MUTUALLY CONTINUOUS when a shared leg crosses a magnitude tie
+      (cross-sector), which student-2's two independent blocks are not -- exactly
+      student-1's "environment dependence beyond the four-leg-minimum selector." The
+      correct R_q likely needs a nested/hydrotope positive-part structure. Clears
+      only when a future round produces a compact R_spline AND a later verifier
+      confirms the assembled A_6 vs fresh BG.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/r6_checkC.py
+      - bots/verifier/code/r6_debug.py
+  - id: v_r6_004
+    round: 6
+    timestamp: "2026-07-26T18:26:27"
+    status: caveat
+    statement: >
+      Minor documentation caveat for the next PI/students. The H-block notation
+      'omega_S^2' in summary/logic.yaml (line 44) is ambiguous: the correct threshold
+      is the SUM OF SQUARES sum_{j in S} omega_j^2, as written in question.md's
+      two-minus template (beta^2 - sum_{j in S} omega_j^2)_+, NOT (sum_{j in S}
+      omega_j)^2. Only the sum-of-squares reading reproduces the verified anchor
+      P_pole=42588288/7 (the other gives 67665600/7). Recommend stating
+      sum_{j in S} omega_j^2 explicitly. Carried: wall-set completeness (18 walls)
+      corroborated not proven; BG SIGFPE on walls/poles -> two-sided limits only.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/r6_core.py
+  - id: v_r7_001
+    round: 7
+    timestamp: "2026-07-26T20:33:26"
+    status: refuted
+    statement: >
+      student-2's NEW manifestly-continuous symmetric q-brick B^sym and orbit
+      R_q^sym = sum (q_mp)_+ B^sym (s2_013/post_027, the only new closed-form object
+      proposed this round) is REFUTED as a global formula. Fresh from-scratch bg_r7
+      (source md5 41715c...=shared) + my own reimplementations; B^sym HAND-TRANSCRIBED
+      from the boxed s2_013 formula (B^sym = -32 beta^2 E - 16 q ([3a^2+2a(s+b)-v]
+      (s^2-2v)+b s(s^2-v)) + 16 b s q^2, E=F+(a+b)D, beta^2=min_{j notin {m,p}} w_j^2);
+      no student evaluator imported. Local R_0-free cure test over 18 isolated q-walls:
+      S jumps 18/18 (control); T=S-R_q^sym is C^0 value-continuous 18/18 (the min WAS
+      made continuous) and correct on-wall 21/21, but FULLY SMOOTH 0/18 -> retains a
+      nonzero continuation jump at every wall, so NO smooth global R_0. My independent
+      first-wall (q_23=0, t0=-1/2) left-poly/right-point residual
+      136585204640161305617743/14238281250000000 is IDENTICAL to student-2's reported
+      value -- a bit-for-bit corroboration from a clean transcription, not a trust of
+      their harness. DIAGNOSIS (confirms s2_013 + F18): global C^0 continuity PLUS the
+      on-wall trace -32 beta^2[F+(a+b)D] does NOT determine the degree-6 OFF-WALL
+      cofactor; the correct nested brick must retain the exact q and q^2 off-wall pieces
+      via coupled q_+^2/q_+^3 terms (student-1's mixed-depth hinge features). Do NOT
+      promote R_q^sym. Also hand-verified the cross-sector witness at
+      (a,b,x,y,z)=(2,4,13/2,-7/2,-7/2): H^(+)-H^(-)=-21144=32*12*(-881/16), J=-881/16.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/r7_check.py
+      - bots/verifier/data/r7_check.json
+  - id: v_r7_002
+    round: 7
+    timestamp: "2026-07-26T20:33:26"
+    status: verified
+    statement: >
+      The trusted state is RE-CONFIRMED on a freshly built round-7 oracle (bg_r7,
+      source byte-identical to shared bg.cpp). Anchor {-8,2,3,4,5,-6}: A6/i=-9190656/7;
+      table-free P_pole in BOTH equivalent forms = 42588288/7; R_spline=-7396992;
+      R_Q=-136630560; S=129233568 -- matches student-1's s1_009 durable checkpoint and
+      student-2's settled inputs exactly. R_Q=-32 sum (Q_{m;pq})_+^3 w_m w_tbar
+      re-confirmed globally: on 24 isolated Q-wall crossings (channels (0,3,4),(0,3,5),
+      (0,4,5),(1,3,4),(2,3,4); 4 q-chambers; 4 energy-sign chambers) R_spline JUMPS while
+      S=R_spline-R_Q is a single smooth continuous deg-8 poly, 24/24 zero residual
+      (+ round-5 27/27, round-6 24/24). The decomposition A_6=i g^-3(P_pole+R_0+R_q+R_Q)
+      and its three pinned pieces (P_pole F9, R_Q F17, local q-brick value F18b) remain
+      sound and unchanged.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/code/r6_core.py
+      - bots/verifier/code/r6_checkA.py
+      - bots/verifier/code/bg_r7
+  - id: v_r7_003
+    round: 7
+    timestamp: "2026-07-26T20:33:26"
+    status: blocking_gap
+    statement: >
+      No complete compact A_6 after round 7 (G1 persists). Neither student produced a
+      globally-continuous q-orbit R_q or a global R_0: student-2's new candidate is
+      refuted (v_r7_001); student-1's top-down hinge-orbit route (s1_009/post_028)
+      obtained NO rank and proposes NO candidate -- the technician stalled and returned
+      a driver missing the 17 R_0 columns, so student-1 explicitly claims nothing and
+      warns its own late rank is invalid. Its 588-feature enumeration (depth split
+      188/244/134/22, summing to 588) is internally consistent and its durable checkpoint
+      reproduces (v_r7_002), but there is no positive scientific claim to verify. The
+      compact nested q-orbit R_q and global symmetric R_0 remain unbuilt; no table-free
+      evaluator for the full A_6 exists. Sharp target for rounds 8-9: a nested/hydrotope
+      q-orbit whose bricks are on-wall -32 beta^2[F+(a+b)D], C^0-continuous at cross-sector
+      ties, AND reproduce the exact degree-6 off-wall cofactor (coupled q_+^2/q_+^3).
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/data/r7_check.json
+  - id: v_r7_004
+    round: 7
+    timestamp: "2026-07-26T20:33:26"
+    status: caveat
+    statement: >
+      PROCESS caveat -- the round's real bottleneck is orchestration, not mathematics.
+      For the THIRD consecutive round the sole /root/technician thread exhausted context
+      and wrote no artifact (round 6 student-2; round 7 BOTH students). Consequence:
+      round 7 produced essentially no NEW student exact compute -- student-2's only exact
+      numbers came from reusing my round-6 harness (r6_core/r6_checkC), and student-1 got
+      no rank at all. The PI's own round-7 plan already warned to hand the technician ONE
+      small write-file-then-run script rather than a long interactive batch; that fix was
+      not executed. With only rounds 8-9 left, the next PI must resolve this first or G1
+      will not close. Carried minors: wall-set completeness (18 walls) corroborated not
+      proven; BG SIGFPE on walls/poles -> two-sided limits only.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+  - id: v_r8_001
+    round: 8
+    timestamp: "2026-07-26T23:55:49"
+    status: verified
+    statement: >
+      student-1's s1_010 (post_032) COMPLETE table-free candidate
+      A_6 = i g^-3 (P_pole + R_Q + R_0 + R_q), with R_0=H0(u,v,e-,e+) and
+      R_q = 4 sum_{m,p} h_mp H1 + 2 sum_{m,p,phi} h_{r,phi(r)} h_{s,phi(s)} H2
+      (seed polynomials H1/H2/H0 = 46/23/13 monomials), is VERIFIED. On a fresh
+      from-scratch bg_r8 (source md5=41715c... = shared reference; sha256=bd1afe67...)
+      with my OWN hand-transcription of the WRITTEN .md formula (student evaluator
+      round8_compact_candidate.py NOT imported), the formula reproduces exact BG
+      bit-for-bit over >6000 exact rational comparisons with ZERO mismatch:
+      both anchors incl. component split (P_pole=42588288/7, R_Q=-136630560,
+      S=R0+Rq=129233568); 359/359 generic points over 93 chamber signatures
+      (55 q-patterns, 31 Q-patterns); 288/288 same-sign (minus AND plus) permutations
+      with the formula manifestly invariant; 35/35 hierarchical regimes (1/200..1000);
+      2202 points straddling 204 two-sided q- and Q-wall crossings (the decisive cure
+      test the round-7 B^sym failed 0/18 -- here off-wall EXACT); 40/40 both-sided at
+      d_{m;pq}=0 pole loci (BG finite, removable); 3406 points straddling 1552 genuine
+      internal-line D_S=0 crossings (probed to |D_S|~1e-10, BG finite ~1.3e5 -> sector
+      pole-free in probed interior, formula tracks exactly); g-scaling 4/4; and the
+      5-pt calibration (BG A_5=-19968 exact; independent two-minus master matches BG
+      21/21). Table-free confirmed: evaluator loads no coefficient table; 82 monomials
+      in 3 seeds generate every chamber via 9 single-hinge + 18 matching + 9 Q-orbit +
+      9 pole channels + 1 global; 0 chamber-specific coefficients. This is the FIRST
+      complete candidate to survive independent attack; G1 (missing compact R_q/R_0)
+      is CLOSED. Two MINOR items remain, neither a correctness gap: (1) the final
+      "human-readable" compactness judgment on 82 monomials is the PI's SOLVED.md call
+      (verifier assessment: MET -- table-free, non-chamber-specific, a finite
+      positive-part orbit sum); (2) chamber coverage is empirical, not a symbolic
+      completeness proof (residual risk low). NOT re-audited (and not needed): the
+      900x605 rank / Wolfram recovery machinery -- the closed form stands on its own
+      >6000-point exact agreement.
+    evidence:
+      - bots/verifier/VERIFICATION.md
+      - bots/verifier/data/round8_verification_summary.json
+      - bots/verifier/code/vr8_core.py
+      - bots/verifier/code/vr8_walls.py
+      - bots/verifier/code/vr8_polehunt.py
+      - bots/verifier/code/bg_r8

@@ -1,0 +1,48 @@
+{
+  "id": "verifier_session_20260726T182627",
+  "bot": "verifier",
+  "timestamp": "2026-07-26T18:26:27",
+  "round": 6,
+  "task_id": "round6_verifier_audit",
+  "status": "complete",
+  "summary": "Audited the strongest round-6 claims: student-1's obstruction (s1_008/post_024: after subtracting confirmed P_pole and R_Q, both q-assemblies give rank 17<18, no global R_0) and student-2's UNVERIFIED two-block q-orbit candidate R_q^cand (s2_011/s2_012, cure test blocked when technician died). Built a fresh md5-matched bg_r6 and reimplemented P_pole (both forms), R_Q, R_spline, S from the written formulas (no student evaluator). Reproduced all anchors incl. student-1's s1_008 values (R_Q=-136630560, S=129233568). GLOBALLY re-confirmed R_Q=-32 sum (Q_{m;pq})_+^3 w_m w_tbar: S=R_spline-R_Q smooth across 24/24 isolated Q-walls (5 channels, 4 q-chambers, 4 energy-sign chambers) + round-5 27/27. Verified S is dual-S3/deg-8, an order-1 spline over the 9 q-walls (within-chamber it is a 285-dim non-symmetric poly, matching student-1's rank-285). RAN THE BLOCKED CURE TEST on student-2's active candidate: T=S-R_q^cand still JUMPS across 18/18 isolated q-walls -> no smooth global R_0. Showed the per-wall brick is LOCALLY correct (extracted brick == student-2's H_cand on AND off wall, 24/24) but the four-leg beta selector's two blocks fail to match across cross-sector ties, so OTHER bricks inject spurious discontinuities at every q-wall (localized: brick(1,4) block-switches leg3->leg2 across the q_{23} wall, blocks disagree). This independently CONFIRMS student-1's obstruction and refutes student-2's candidate. No complete compact A_6 (G1 persists).",
+  "oracle": {
+    "path": "bots/verifier/code/bg_r6",
+    "build": "g++ -O2 -std=c++17 -lgmpxx -lgmp",
+    "md5_matches_shared_bg_cpp": true,
+    "md5": "41715c4af3ee5a61b1c4bfce40426ac8"
+  },
+  "checks_rerun_result": {
+    "V0_foundation": "PASS exact (A6/i=-9190656/7; P_pole form1==form2=42588288/7; R_spline=-7396992; R_Q=-136630560; S=129233568 == student-1 s1_008 anchor)",
+    "V1_RQ_global": "PASS (S=R_spline-R_Q smooth+continuous across 24/24 isolated Q-walls while R_spline jumps; 5 channels, 4 q-chambers, 4 energy-sign chambers; + round-5 27/27) -> R_Q=-32 sum (Q_{m;pq})_+^3 w_m w_tbar CONFIRMED",
+    "V2_S_structure": "PASS (S dual-S3 symmetric 0/36 violations, degree-8 homogeneous, order-1 q-wall jumps 24/24 divisible by q_mp; per-chamber S is a 285-dim non-symmetric poly = student-1's rank-285; framework A6=i(P_pole+R0+Rq+RQ) sound)",
+    "V3_brick_local_correct": "PASS (BG-extracted brick == -32 beta^2[F+(a+b)D] on-wall 24/24 (F11 generalized guard) AND == student-2 H_cand off-wall 24/24; jump order-1 divisible 24/24)",
+    "V4_cure_test": "REFUTED for student-2 (T=S-R_q^cand jumps 18/18 isolated q-walls; T smooth 0/18) -> no smooth global R_0 for the candidate",
+    "V5_mechanism": "PASS (per-brick decomposition: crossed (2,3) brick jump == S jump exactly; bricks (1,4),(1,5) jump spuriously; brick(1,4) beta-argmin flips leg3->leg2 across |w2|=|w3| and student-2's plus/minus blocks disagree, H_cand(1,4) below -1490802280435/12800000 vs above -1439384171371/12800000, q_{14} uncrossed). Same-sector ties are NOT the culprit (R_q^cand smooth 20/20)."
+  },
+  "gaps_found": [
+    {"severity": "blocking", "text": "student-2's active q-orbit candidate R_q^cand (s2_011/s2_012) is WRONG as a global formula: S - R_q^cand is non-smooth across 18/18 isolated q-walls, so no global symmetric R_0 exists for it. The per-wall brick value is locally correct (on/off wall, 24/24), but the four-leg beta selector's two blocks H^(-beta)/H^(+beta) fail to match across cross-sector ties, so every OTHER brick injects a spurious discontinuity at each q-wall (localized on brick(1,4) at the q_{23} wall). Do NOT promote this candidate. A correct R_q needs a NESTED/hydrotope positive-part construction whose bricks join continuously under a shared-leg magnitude tie."},
+    {"severity": "blocking", "text": "No complete compact A_6 (G1 persists). student-1's obstruction (rank 17<18: no global R_0 after subtracting confirmed P_pole and R_Q) is INDEPENDENTLY CONFIRMED. P_pole and R_Q are pinned; the compact nested q-orbit R_q and the global symmetric R_0 remain unsolved, and no table-free evaluator for the complete A_6 exists. Clears only when a future round produces a compact R_spline AND a later verifier confirms the assembled A_6 vs fresh BG."},
+    {"severity": "minor", "text": "The H-block 'omega_S^2' notation in summary/logic.yaml is ambiguous. The correct threshold is the SUM OF SQUARES sum_{j in S} omega_j^2 (per question.md's two-minus template); only that reproduces P_pole=42588288/7. Recommend the summary state sum_{j in S} omega_j^2 explicitly (my own fresh transcription initially mis-read it and gave 67665600/7 until corrected)."},
+    {"severity": "minor", "text": "Wall-set completeness (18 hyperplanes) corroborated but not proven; BG is exactly singular (SIGFPE) on walls/poles, so all near-wall work uses two-sided limits off the wall (carried)."}
+  ],
+  "checks_rerun_result_headline": "student-1's obstruction CONFIRMED; student-2's R_q^cand REFUTED (T jumps 18/18); R_Q re-confirmed globally (24/24).",
+  "verdict": "GAPS REMAIN (2 blocking)",
+  "artifacts": [
+    "bots/verifier/VERIFICATION.md",
+    "bots/verifier/code/bg_r6.cpp",
+    "bots/verifier/code/r6_core.py",
+    "bots/verifier/code/r6_walls.py",
+    "bots/verifier/code/r6_checkA.py",
+    "bots/verifier/code/r6_checkB.py",
+    "bots/verifier/code/r6_checkB2.py",
+    "bots/verifier/code/r6_checkC.py",
+    "bots/verifier/code/r6_checkC2.py",
+    "bots/verifier/code/r6_checkC3.py",
+    "bots/verifier/code/r6_debug.py",
+    "bots/verifier/data/r6_checkA.json",
+    "bots/verifier/data/r6_checkB.json",
+    "bots/verifier/data/r6_checkC.json",
+    "bots/verifier/data/r6_evidence_summary.md"
+  ]
+}

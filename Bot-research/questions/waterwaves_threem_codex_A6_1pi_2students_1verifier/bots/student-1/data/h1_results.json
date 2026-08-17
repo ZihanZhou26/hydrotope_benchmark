@@ -1,0 +1,270 @@
+{
+  "timestamp": "2026-07-26T05:55:29",
+  "anchors": {
+    "seed_2_3_4_5": {
+      "seed_free": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "expected_omega": "(-8,2,3,4,5,-6)",
+      "expected_im": "-9190656/7",
+      "observed_omega": [
+        "-8",
+        "2",
+        "3",
+        "4",
+        "5",
+        "-6"
+      ],
+      "observed_im": "-9190656/7"
+    },
+    "seed_3_5_2_7": {
+      "seed_free": [
+        "3",
+        "5",
+        "2",
+        "7"
+      ],
+      "expected_omega": "(-154/17,3,5,2,7,-135/17)",
+      "expected_im": "-641893056/85",
+      "observed_omega": [
+        "-154/17",
+        "3",
+        "5",
+        "2",
+        "7",
+        "-135/17"
+      ],
+      "observed_im": "-641893056/85"
+    }
+  },
+  "sample_count": 80,
+  "chamber_signature_count": 15,
+  "chamber_signature_top": {
+    "-------+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+++++++": 28,
+    "-------+-+-+-+-+-+-+-+-+++++++-+-------+-+-+-+-+-+-+-+-+++++++": 17,
+    "-------+-------+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+++++++-+++++++": 10,
+    "-------+-+-+-+-+-------+-+-+-+-+-+-+-+-+++++++-+-+-+-+-+++++++": 8,
+    "-------+-------+++++++-+++++++-+-------+-------+++++++-+++++++": 3,
+    "-------+-------+-------+-------+++++++-+++++++-+++++++-+++++++": 3,
+    "-------++--++--++--++--++--++--++--++--++--++--++--++--+++++++": 2,
+    "-------+-------++--++--++--++--++--++--++--++--+++++++-+++++++": 2
+  },
+  "h1": {
+    "seed_train_indices": [
+      27,
+      6,
+      41,
+      66,
+      7,
+      45,
+      69,
+      11,
+      59,
+      49,
+      37,
+      61,
+      44,
+      76,
+      26,
+      55,
+      48,
+      8,
+      50,
+      73,
+      72,
+      42,
+      60,
+      68,
+      3,
+      79,
+      17,
+      39,
+      63,
+      2,
+      54,
+      38,
+      33,
+      23,
+      1,
+      19,
+      77,
+      9,
+      29,
+      46
+    ],
+    "common": {
+      "e_m=1,e_p=1": {
+        "type": "common",
+        "status": "no_common_coeff",
+        "em": 1,
+        "ep": 1,
+        "witness": {
+          "reference_point_id": "s0027",
+          "witness_point_id": "s0006",
+          "reference_x": "13699/8192",
+          "reference_y": "312245/2304",
+          "witness_x": "-819698688/17",
+          "witness_y": "-164324622336/85",
+          "coef": "9991840/123291",
+          "residual": "2299082631233536/1164415"
+        }
+      },
+      "e_m=1,e_p=-1": {
+        "type": "common",
+        "status": "no_common_coeff",
+        "em": 1,
+        "ep": -1,
+        "witness": {
+          "reference_point_id": "s0027",
+          "witness_point_id": "s0006",
+          "reference_x": "-91535/4096",
+          "reference_y": "312245/2304",
+          "witness_x": "-55136191488/289",
+          "witness_y": "-164324622336/85",
+          "coef": "-999184/164763",
+          "residual": "-245241501175939072/79360845"
+        }
+      },
+      "e_m=-1,e_p=1": {
+        "type": "common",
+        "status": "no_common_coeff",
+        "em": -1,
+        "ep": 1,
+        "witness": {
+          "reference_point_id": "s0027",
+          "witness_point_id": "s0006",
+          "reference_x": "-58019/2048",
+          "reference_y": "312245/2304",
+          "witness_x": "-31138897920/289",
+          "witness_y": "-164324622336/85",
+          "coef": "-2497960/522171",
+          "residual": "-47374692244307968/19347105"
+        }
+      },
+      "e_m=-1,e_p=-1": {
+        "type": "common",
+        "status": "no_common_coeff",
+        "em": -1,
+        "ep": -1,
+        "reason": "zero_train_phi_with_nonzero_amp"
+      }
+    },
+    "pair": {
+      "e_m=1,e_p=1": {
+        "type": "pair",
+        "status": "no_exact_pair_coeff",
+        "em": 1,
+        "ep": 1,
+        "rank_A": 3,
+        "rank_augmented": 4,
+        "inconsistency_witness": {
+          "type": "inconsistent_row",
+          "sample_id": "s0066",
+          "residual": "1628067343045088/39896535"
+        }
+      },
+      "e_m=1,e_p=-1": {
+        "type": "pair",
+        "status": "no_exact_pair_coeff",
+        "em": 1,
+        "ep": -1,
+        "rank_A": 3,
+        "rank_augmented": 4,
+        "inconsistency_witness": {
+          "type": "inconsistent_row",
+          "sample_id": "s0027",
+          "residual": "6622724737/47858688"
+        }
+      },
+      "e_m=-1,e_p=1": {
+        "type": "pair",
+        "status": "no_exact_pair_coeff",
+        "em": -1,
+        "ep": 1,
+        "rank_A": 3,
+        "rank_augmented": 4,
+        "inconsistency_witness": {
+          "type": "inconsistent_row",
+          "sample_id": "s0066",
+          "residual": "794042748231116672/42818177865"
+        }
+      },
+      "e_m=-1,e_p=-1": {
+        "type": "pair",
+        "status": "no_exact_pair_coeff",
+        "em": -1,
+        "ep": -1,
+        "rank_A": 0,
+        "rank_augmented": 1,
+        "inconsistency_witness": {
+          "type": "inconsistent_row",
+          "sample_id": "s0027",
+          "residual": "312245/2304"
+        }
+      }
+    },
+    "selected_candidate": null,
+    "feature_fallback": {
+      "status": "no_exact_fit",
+      "train_total": 40,
+      "heldout_total": 40,
+      "rank_A": 14,
+      "rank_augmented": 15,
+      "inconsistency_witness": {
+        "type": "inconsistent_row",
+        "sample_id": "s0050",
+        "residual": "-635447501494274122999623549046546326551/208607721820258517895591082031825570805"
+      }
+    },
+    "pairwise_invariance": [
+      {
+        "point": "s0000",
+        "oracle_invariant": true,
+        "h1_invariant": true
+      },
+      {
+        "point": "s0001",
+        "oracle_invariant": true,
+        "h1_invariant": true
+      },
+      {
+        "point": "s0002",
+        "oracle_invariant": true,
+        "h1_invariant": true
+      },
+      {
+        "point": "s0003",
+        "oracle_invariant": true,
+        "h1_invariant": true
+      },
+      {
+        "point": "s0004",
+        "oracle_invariant": true,
+        "h1_invariant": true
+      },
+      {
+        "point": "s0005",
+        "oracle_invariant": true,
+        "h1_invariant": true
+      },
+      {
+        "point": "s0006",
+        "oracle_invariant": true,
+        "h1_invariant": true
+      },
+      {
+        "point": "s0007",
+        "oracle_invariant": true,
+        "h1_invariant": true
+      }
+    ]
+  },
+  "artifacts": {
+    "exact_samples_json": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_2students_1verifier/bots/student-1/data/exact_samples.json",
+    "h1_results_json": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_2students_1verifier/bots/student-1/data/h1_results.json",
+    "h1_report_md": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_2students_1verifier/bots/student-1/derivations/h1_fit_report.md"
+  }
+}

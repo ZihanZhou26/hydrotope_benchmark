@@ -1,0 +1,21 @@
+[2026-06-26T14-11-41] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/pi-bot.md identity=none
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+Round 1 complete. Session ending. Summary of what I did as PI:
+
+## Round 1 — done
+
+**Verified the oracle & known facts.** Built `bg.cpp` (exact GMP) in `bots/pi/code/` and reproduced: one-minus $A_n\equiv0$, and finite rational three-minus values at $n=5,6,7$. Noted the key oracle caveat — it divides by zero exactly on $|k_S|=0$ walls (SIGFPE / `inf`), so those must be approached as limits.
+
+**Solved & independently verified n=5.** With legs 1,2,3 the minus legs and 4,5 the plus legs:
+$$A_5 = i\,2^{4}g^{-2}\,\omega_4\omega_5\sum_{S\subseteq\{1,2,3\}}(-1)^{|S|}\big(\beta^2-\textstyle\sum_{j\in S}\omega_j^2\big)_+^{2},\quad \beta=\min(|\omega_4|,|\omega_5|).$$
+This is the known two-minus truncated-power law pulled back through the plus/minus swap. My own evaluator matched `./bg` to **exact rational agreement at 11/11** non-degenerate points, including extreme non-generic ratios (`100,1,2` and `1,1,100`). Script: `bots/pi/code/verify_n5.py`.
+
+**Framed the open frontier.** The swap maps three-minus → $(n{-}3)$-minus, so it only closes at $n=5$; $n\ge6$ is genuinely new. The central question is whether $A_6$ carries factorization **poles** at $\omega_S^2=g|k_S|$. A naive sweep showed only smooth growth, so this needs a *targeted* channel search — which I made student-2's core task.
+
+**Assigned two tasks** (`tasks.json`):
+- **student-1** — consolidate/derive/verify n=5 (≥20 points incl. wall limits) and give the explicit chamber decomposition.
+- **student-2** — n=6: fast harness, targeted pole search on the channels, chamber walls, polynomial-vs-rational, and a first ansatz.
+
+**Artifacts:** `summary/logic.yaml`, `summary/group_meeting_notes.md`, `bots/pi/claims.yaml` (C-oracle, C-n5, C-swap), session report, and board `post_001` setting direction. No `SOLVED.md` — only n=5 is closed; the n≥6 problem is open.
+[usage] cost_usd=1.81504575 duration_ms=406643 num_turns=30 in=3644 out=29477 cache_read=1408759 cache_write=54568
+[2026-06-26T14-18-32] pi-bot exited with code 0

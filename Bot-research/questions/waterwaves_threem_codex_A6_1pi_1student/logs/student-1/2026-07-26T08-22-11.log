@@ -1,0 +1,1334 @@
+[2026-07-26T08-22-11] provider=codex model=gpt-5.6-sol effort=xhigh budget_usd=unavailable prompt=prompts/student-bot.md identity=student-1 technician_model=gpt-5.3-codex-spark
+Reading additional input from stdin...
+2026-07-26T12:31:11.169407Z ERROR codex_core::tools::router: error=apply_patch verification failed: Failed to find expected lines in /home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/code/h_mask_scan_lean.py:
+PRIMES = (1_000_003, 1_000_033, 1_000_037)
+
+2026-07-26T12:31:32.814228Z ERROR codex_core::tools::router: error=apply_patch verification failed: Failed to find expected lines in /home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/code/h_mask_scan_lean.py:
+    mat = [[_mod(int(v), p) + [_mod(int(r), p)] for row, r in zip(A, b)]
+2026-07-26T12:31:37.227268Z ERROR codex_core::tools::router: error=apply_patch verification failed: Failed to find expected lines in /home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/code/h_mask_scan_lean.py:
+    A = []
+    b = []
+    for x, y in values[:need_train]:
+        xi = _mod(int(x), p)
+        row = [pow(xi, k, p) for k in range(need_train)]
+        try:
+            yi = _frac_to_mod(y, p)
+            return False
+        A.append(row)
+        b.append(yi)
+2026-07-26T12:31:51.568574Z ERROR codex_core::tools::router: error=apply_patch verification failed: Failed to find expected lines in /home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/code/h_mask_scan_lean.py:
+def _scan_masks(lines: List["LineSample"]) -> List[Dict[str, object]]:
+    results: List[Dict[str, object]] = []
+
+    for mask in ALL_MASKS:
+        k = mask.bit_count() if hasattr(int, "bit_count") else bin(mask).count("1")
+        d = 2 + 2 * k
+
+        tested = 0
+        pass_count = 0
+        modular_fails = 0
+        exact_fails = 0
+        exact_checks = 0
+        line_reports: List[Dict[str, object]] = []
+
+        for line in lines:
+            rpt = _test_mask_on_line(line, mask, d, run_exact=False)
+            if rpt["status"] == "insufficient_points":
+                continue
+            tested += 1
+            line_reports.append(rpt)
+            if rpt["status"] == "modular_pass":
+                pass_count += 1
+            elif rpt["status"] == "modular_fail":
+                modular_fails += 1
+            elif rpt["status"] == "insufficient_points":
+                continue
+            elif rpt["status"] == "modular_pass":
+                pass_count += 1
+            elif rpt["status"] in ("exact_solve_error", "exact_holdout_fail"):
+                exact_fails += 1
+            else:
+                exact_fails += 1
+
+            if exact_checks < MIN_EXACT_LINES and rpt["status"] == "modular_pass":
+
+        results.append(
+            {
+                "mask": mask,
+                "bit_count": k,
+                "d": d,
+                "factor_expr": _mask_expr(mask),
+                "pass": tested >= MIN_LINES_FOR_MASK and pass_count >= MIN_EXACT_LINES,
+                "tested_lines": tested,
+                "good_lines": pass_count,
+                "modular_fail_lines": modular_fails,
+                "exact_fail_lines": exact_fails,
+                "exact_check_lines": exact_checks,
+                "pass_modular_only": pass_count,
+                "line_reports": line_reports,
+            }
+        )
+
+    return results
+2026-07-26T12:31:55.367393Z ERROR codex_core::tools::router: error=apply_patch verification failed: Failed to find expected lines in /home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/code/h_mask_scan_lean.py:
+        tested = 0
+        pass_count = 0
+        modular_fails = 0
+        exact_fails = 0
+        exact_checks = 0
+        line_reports: List[Dict[str, object]] = []
+
+        for line in lines:
+            rpt = _test_mask_on_line(line, mask, d, run_exact=False)
+            if rpt["status"] == "insufficient_points":
+                continue
+            tested += 1
+            line_reports.append(rpt)
+            if rpt["status"] == "modular_pass":
+                pass_count += 1
+            elif rpt["status"] == "modular_fail":
+                modular_fails += 1
+            elif rpt["status"] == "insufficient_points":
+                continue
+            elif rpt["status"] == "modular_pass":
+                pass_count += 1
+            elif rpt["status"] in ("exact_solve_error", "exact_holdout_fail"):
+                exact_fails += 1
+            else:
+                exact_fails += 1
+
+            if exact_checks < MIN_EXACT_LINES and rpt["status"] == "modular_pass":
+
+                exact_rpt = _test_mask_on_line(line, mask, d, run_exact=True)
+                line_reports[-1] = exact_rpt
+                exact_checks += 1
+                if exact_rpt["status"] == "pass":
+                    pass_count += 1
+                else:
+                    exact_fails += 1
+
+        results.append(
+            {
+                "mask": mask,
+                "bit_count": k,
+                "d": d,
+                "factor_expr": _mask_expr(mask),
+                "pass": tested >= MIN_LINES_FOR_MASK and pass_count >= MIN_EXACT_LINES,
+                "tested_lines": tested,
+                "good_lines": pass_count,
+                "modular_fail_lines": modular_fails,
+                "exact_fail_lines": exact_fails,
+                "exact_check_lines": exact_checks,
+                "pass_modular_only": pass_count,
+                "line_reports": line_reports,
+            }
+        )
+
+    return results
+2026-07-26T12:33:44.890534Z ERROR codex_core::tools::router: error=write_stdin failed: Unknown process id 71511
+2026-07-26T12:36:48.690916Z ERROR codex_core::tools::router: error=write_stdin failed: Unknown process id 94571
+2026-07-26T12:45:12.766912Z ERROR codex_core::tools::router: error=exec_command failed for `/usr/bin/bash -lc "cat > /tmp/new_script.py <<'PY'
+#"'!/usr/bin/env python3
+"""Build line-based denominator scans and univariate denominator fingerprints.
+
+This script reads the fixed-chamber exact oracle in
+`data/h_rational_probe_oracle.jsonl`, constructs cached affine free-coordinate
+lines, then runs:
+
+1) a 4-factor denominator-family scan over
+   Q = C''^c R''^r T''^t Z''^z (0<=c,r,t,z<=3),
+   d = 2 + 18c + 2r + t + 12z,
+   checking Y = H * Q * S''^d as a univariate polynomial in the line parameter t.
+2) an exact-rational denominator fingerprint on each line via
+   nullspace-style numerator/denominator fitting with (m, n) constraints.
+
+Factor definitions (documented, mutable by design if needed):
+- a_i = omega_i''^2 for i=0,1,2 (minus leg squares)
+- b_j = omega_{3+j}''^2 for j=0,1,2 (plus leg squares)
+- C = '"\\prod_{i=0}"'^2'"\\prod_{j=0}"'^2 (a_i + b_j)
+- R = S''^2 where S = omega_0+omega_1+omega_2+omega_3
+- T = a_0 + a_1 + a_2
+- Z = ('"\\prod_{k=0}"'^5 omega_k)''^2
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import shutil
+import subprocess
+from fractions import Fraction
+from pathlib import Path
+from typing import Dict, List, Optional, Sequence, Tuple
+
+import common
+
+ROOT = Path(__file__).resolve().parent.parent
+QUESTION_DIR = ROOT.parent.parent
+CODE_DIR = ROOT / "code"
+DATA_DIR = ROOT / "data"
+BG_SRC = QUESTION_DIR / "bg.cpp"
+BG_SRC_COPY = CODE_DIR / "bg_den_line.cpp"
+BG_BIN = CODE_DIR / "bg_den_line"
+
+SIG_FULL = common.SIG_FULL
+WALL_CATALOG = common.build_wall_catalog()
+PRIMES = (1_000_003, 1_000_033, 1_000_037)
+
+HALF_WIDTH_DEFAULT = 72
+LINE_MIN_POINTS = 145
+LINE_MIN_COUNT = 6
+HOLDOUT_FAMILY = 16
+DEN_FP_MIN_HOLDOUT = 12
+MAX_M_DEN = 66
+MAX_N_DEN = 64
+
+DEFAULT_LINE_DIRECTIONS: Tuple[Tuple[int, int, int, int], ...] = (
+    (1, -2, 3, -4),
+    (1, 1, -2, 2),
+    (2, -1, -2, 1),
+    (-3, 2, 1, -1),
+    (1, -1, 2, -2),
+    (2, 2, -1, -3),
+)
+
+
+
+def utc_timestamp() -> str:
+    return subprocess.check_output(["date", "-u", "+%Y-%m-%dT%H:%M:%S"], universal_newlines=True).strip()
+
+
+def frac(v):
+    if isinstance(v, Fraction):
+        return v
+    return common.parse_fraction(v)
+
+
+def frac_to_str(v: Fraction) -> str:
+    return common.frac_to_str(v)
+
+
+def _to_mod(v: int | Fraction, p: int) -> int:
+    if isinstance(v, Fraction):
+        num = v.numerator % p
+        den = v.denominator % p
+        if den == 0:
+            raise ZeroDivisionError
+        return num * pow(den, p - 2, p) % p
+    x = int(v) % p
+    return x if x >= 0 else x + p
+
+
+def _mod(v: int, p: int) -> int:
+    v %= p
+    if v < 0:
+        v += p
+    return v
+
+
+def _mod_inv(v: int, p: int) -> int:
+    v = _mod(v, p)
+    if v == 0:
+        raise ZeroDivisionError
+    return pow(v, p - 2, p)
+
+
+def _parse_bg_output(txt: str) -> Tuple[Fraction, Fraction]:
+    m = re.search(r"A_6'"\\s*=\\s*\\(\\s*(["'^)]*?)'"\\s*\\)\\s*\\+\\s*i\\s*\\(\\s*(["'^)]*?)'"\\s*\\)\", txt)
+    if m:
+        return frac(m.group(1)), frac(m.group(2))
+
+    m = re.search(r\"A_6\\s*=\\s*i\\*?\\s*\\(?\\s*(["'^ )'"\\\\n]+)\\s*\\)?\", txt)
+    if m:
+        return Fraction(0), frac(m.group(1))
+
+    raise ValueError(f\"unable to parse bg output: {txt[:1200]}\")
+
+
+def _sort_by_groups(omega: Sequence[Fraction]) -> Tuple[Fraction, ...]:
+    minus = sorted(range(3), key=lambda i: (omega[i] * omega[i], omega[i]))
+    plus = sorted(range(3), key=lambda i: (omega[3 + i] * omega[3 + i], omega[3 + i]))
+    return tuple(omega[i] for i in minus) + tuple(omega[3 + i] for i in plus)
+
+
+def _wall_signature(omega: Sequence[Fraction]) -> str:
+    return common.serialize_signs(common.wall_sign_map(omega, WALL_CATALOG), WALL_CATALOG)
+
+
+def _safe_generic(omega: Sequence[Fraction]) -> None:
+    if any(w == 0 for w in omega):
+        raise ValueError(\"zero frequency\")
+    if sum(omega) "'!= 0:
+        raise ValueError("not_on_shell")
+    if sum(SIG_FULL[i] * omega[i] * omega[i] for i in range(6)) != 0:
+        raise ValueError("not_on_shell_dispersion")
+
+
+def _ensure_bg_binary() -> None:
+    stale = not BG_BIN.exists() or not BG_SRC_COPY.exists()
+    if not stale:
+        if BG_SRC_COPY.stat().st_mtime < BG_SRC.stat().st_mtime:
+            stale = True
+        elif BG_BIN.stat().st_mtime < BG_SRC_COPY.stat().st_mtime:
+            stale = True
+
+    if stale:
+        shutil.copy2(BG_SRC, BG_SRC_COPY)
+        proc = subprocess.run(
+            [
+                "g++",
+                "-O2",
+                "-std=c++17",
+                "-o",
+                str(BG_BIN),
+                str(BG_SRC_COPY),
+                "-lgmpxx",
+                "-lgmp",
+            ],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            universal_newlines=True,
+            check=False,
+        )
+        if proc.returncode != 0:
+            raise RuntimeError(f"bg compilation failed: {proc.stderr.strip() or proc.stdout.strip()}")
+
+
+def run_bg_from_free(free: Sequence[Fraction]) -> Tuple[Tuple[Fraction, ...], Fraction]:
+    if len(free) != 4:
+        raise ValueError("free coordinates must have length 4")
+
+    omega_uns = common.solve_from_free(list(free), SIG_FULL)
+    omega = _sort_by_groups(tuple(omega_uns))
+
+    _safe_generic(omega)
+    sign = _wall_signature(omega)
+
+    for k in common.internal_subset_bits(6):
+        h, _q = common.h_T(omega, k, SIG_FULL)
+        if h == 0 or _q == 0:
+            raise ValueError("internal_zero")
+
+    mom = ",".join(frac_to_str(SIG_FULL[i] * omega[i] * omega[i]) for i in range(6))
+    wtxt = ",".join(frac_to_str(w) for w in omega)
+    cmd = [str(BG_BIN), "--amp", "-K", mom, "-W", wtxt]
+    proc = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=False, universal_newlines=True)
+    if proc.returncode != 0:
+        raise RuntimeError(f"bg failed: {proc.stderr.strip() or proc.stdout.strip()}")
+
+    a_re, a_im = _parse_bg_output(proc.stdout)
+    if a_re != 0:
+        raise ValueError("non-imaginary A_6")
+    if a_im == 0:
+        raise ValueError("zero A_im")
+
+    prod = Fraction(1)
+    for w in omega:
+        prod *= w
+    if prod == 0:
+        raise ValueError("product_zero")
+
+    h = a_im / prod
+    return omega, h, sign
+
+
+def _line_factors(omega: Sequence[Fraction], s_val: Fraction) -> Tuple[Fraction, Fraction, Fraction, Fraction]:
+    a = [omega[i] * omega[i] for i in range(3)]
+    b = [omega[3 + i] * omega[3 + i] for i in range(3)]
+
+    cprod = Fraction(1)
+    for i in range(3):
+        for j in range(3):
+            cprod *= (a[i] + b[j])
+
+    tval = a[0] + a[1] + a[2]
+    rval = s_val * s_val
+
+    p = Fraction(1)
+    for w in omega:
+        p *= w
+    zval = p * p
+
+    return cprod, rval, tval, zval
+
+
+def _free_key(v: Sequence[Fraction]) -> Tuple[Tuple[int, int], ...]:
+    return tuple((x.numerator, x.denominator) for x in v)
+
+
+class OracleRow:
+    __slots__ = ("sample_id", "free", "omega", "H", "wall_signature_raw", "split")
+
+    def __init__(self, sample_id: str, free: Sequence[Fraction], omega: Sequence[Fraction], H: Fraction, wall_signature_raw: str, split: str = ""):
+        self.sample_id = sample_id
+        self.free = tuple(free)
+        self.omega = tuple(omega)
+        self.H = H
+        self.wall_signature_raw = wall_signature_raw
+        self.split = split
+
+
+class LinePoint:
+    __slots__ = ("t", "sample_id", "free", "omega", "H", "s", "C", "R", "T", "Z", "wall_signature_raw")
+
+    def __init__(
+        self,
+        t: Fraction,
+        sample_id: str,
+        free: Sequence[Fraction],
+        omega: Sequence[Fraction],
+        H: Fraction,
+        s: Fraction,
+        c: Fraction,
+        r: Fraction,
+        tval: Fraction,
+        z: Fraction,
+        wall_signature_raw: str,
+    ):
+        self.t = t
+        self.sample_id = sample_id
+        self.free = tuple(free)
+        self.omega = tuple(omega)
+        self.H = H
+        self.s = s
+        self.C = c
+        self.R = r
+        self.T = tval
+        self.Z = z
+        self.wall_signature_raw = wall_signature_raw
+
+
+class LineSample:
+    __slots__ = ("line_id", "anchor_sample_id", "direction", "points")
+
+    def __init__(self, line_id: str, anchor_sample_id: str, direction: Sequence[int], points: List[LinePoint]):
+        self.line_id = line_id
+        self.anchor_sample_id = anchor_sample_id
+        self.direction = tuple(int(v) for v in direction)
+        self.points = points
+
+    @property
+    def wall_signature_raw(self) -> str:
+        return self.points[0].wall_signature_raw if self.points else ""
+
+    @property
+    def point_count(self) -> int:
+        return len(self.points)
+
+
+def parse_oracle(path: Path) -> List[OracleRow]:
+    rows: List[OracleRow] = []
+    with path.open("r", encoding="utf-8") as f:
+        for ln in f:
+            ln = ln.strip()
+            if not ln:
+                continue
+            d = json.loads(ln)
+            free = [frac(x) for x in d["free_w"]]
+            omega = [frac(x) for x in d["omega"]]
+            h = d.get("H")
+            if h is None:
+                h = frac(d["A_im"]) / _prod(omega)
+            H = frac(h)
+            wall_sig = d["wall_signature_raw"]
+            sample = d.get("sample_id", "")
+            split = d.get("split", "")
+            rows.append(OracleRow(sample, free, omega, H, wall_sig, split))
+    if not rows:
+        raise RuntimeError(f"empty oracle file: {path}")
+    return rows
+
+
+def _prod(items: Sequence[Fraction]) -> Fraction:
+    out = Fraction(1)
+    for x in items:
+        out *= x
+    return out
+
+
+def _square_orders(omega: Sequence[Fraction]) -> Tuple[Tuple[int, ...], Tuple[int, ...]]:
+    om = list(omega)
+    m = tuple(sorted(range(3), key=lambda i: (om[i] * om[i], om[i])))
+    p = tuple(sorted(range(3), key=lambda i: (om[3 + i] * om[3 + i], om[3 + i])))
+    return m, p
+
+
+def _build_line_points(
+    anchor: OracleRow,
+    direction: Sequence[int],
+    t_values: Sequence[Fraction],
+    target_sig: str,
+    eval_cache: Dict[Tuple[Tuple[int, int], ...], Optional[Tuple[Tuple[Fraction, ...], Fraction, str]]],
+) -> List[LinePoint]:
+    out: List[LinePoint] = []
+    dir4 = tuple(Fraction(v) for v in direction)
+    anchor_orders: Optional[Tuple[Tuple[int, ...], Tuple[int, ...]]] = None
+
+    for t in t_values:
+        free = [anchor.free[i] + dir4[i] * t for i in range(4)]
+        key = _free_key(free)
+        cached = eval_cache.get(key)
+
+        if cached is None and key in eval_cache:
+            continue
+
+        if cached is None:
+            try:
+                omega, H, sig = run_bg_from_free(free)
+            except Exception:
+                eval_cache[key] = None
+                continue
+            eval_cache[key] = (omega, H, sig)
+            cached = (omega, H, sig)
+
+        if cached is None:
+            continue
+
+        omega, H, sig = cached
+        if sig != target_sig:
+            continue
+
+        if t == 0 and anchor.sample_id and anchor.sample_id in ("", "-"):
+            # anchor identity is not needed for the signature gate, but we keep explicit consistency check
+            pass
+
+        orders = _square_orders(omega)
+        if anchor_orders is None:
+            if t == 0:
+                anchor_orders = orders
+            else:
+                # require the anchor-free parameter to be present in-band
+                anchor_orders = orders
+
+        if orders != anchor_orders:
+            return []
+
+        s = sum(omega[:4])
+        C, R, T, Z = _line_factors(omega, s)
+        if s == 0 or C == 0:
+            continue
+        if R == 0 or T == 0 or Z == 0:
+            continue
+
+        out.append(LinePoint(t, anchor.sample_id, free, omega, H, s, C, R, T, Z, sig))
+
+    return out
+
+
+def build_lines(
+    rows: List[OracleRow],
+    target_signature: str,
+    line_count: int,
+    t_min: int,
+    t_max: int,
+    directions: Sequence[Tuple[int, int, int, int]],
+) -> List[LineSample]:
+    t_values = [Fraction(t, 1) for t in range(t_min, t_max + 1)]
+    eval_cache: Dict[Tuple[Tuple[int, int], ...], Optional[Tuple[Tuple[Fraction, ...], Fraction, str]]] = {}
+    row_map = {r.sample_id: r for r in rows}
+    _ = row_map
+    anchors = [r for r in rows if r.wall_signature_raw == target_signature]
+
+    lines: List[LineSample] = []
+    for anchor in anchors:
+        if len(lines) >= line_count:
+            break
+
+        for didx, direction in enumerate(directions):
+            if len(lines) >= line_count:
+                break
+
+            points = _build_line_points(anchor, direction, t_values, target_signature, eval_cache)
+            if len(points) < LINE_MIN_POINTS:
+                continue
+
+            if any(p.t != t_values[i] for i, p in enumerate(points[:5])):
+                # not the contiguous block around anchor in practice when BG pathologies occur
+                continue
+
+            line_id = f"L{len(lines):02d}"
+            lines.append(LineSample(line_id=line_id, anchor_sample_id=anchor.sample_id, direction=direction, points=points))
+
+    if not lines:
+        raise RuntimeError("could not build any valid lines with requested constraints")
+
+    return lines
+
+
+def write_line_oracle(path: Path, lines: List[LineSample]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as f:
+        for line in lines:
+            for idx, p in enumerate(line.points):
+                payload = {
+                    "line_id": line.line_id,
+                    "line_anchor": line.anchor_sample_id,
+                    "line_index": idx,
+                    "line_direction": [str(v) for v in line.direction],
+                    "t": frac_to_str(p.t),
+                    "free_w": [frac_to_str(x) for x in p.free],
+                    "omega": [frac_to_str(x) for x in p.omega],
+                    "H": frac_to_str(p.H),
+                    "s": frac_to_str(p.s),
+                    "C": frac_to_str(p.C),
+                    "R": frac_to_str(p.R),
+                    "T": frac_to_str(p.T),
+                    "Z": frac_to_str(p.Z),
+                    "wall_signature_raw": p.wall_signature_raw,
+                }
+                f.write(json.dumps(payload) + "'"\\n\")
+
+
+def poly_eval(coeffs: Sequence[Fraction], x: Fraction) -> Fraction:
+    out = Fraction(0)
+    p = Fraction(1)
+    for c in coeffs:
+        out += c * p
+        p *= x
+    return out
+
+
+def _solve_linear_rational(A: List[List[Fraction]], b: List[Fraction]) -> Optional[List[Fraction]]:
+    if not A:
+        return None
+    n = len(A)
+    if any(len(row) "'!= len(A[0]) for row in A):
+        return None
+    if n == 0:
+        return None
+    m = len(A[0])
+    if len(b) != n:
+        return None
+    if n != m:
+        return None
+
+    mat = [row[:] + [rhs] for row, rhs in zip(A, b)]
+    row = 0
+    col = 0
+
+    while row < n and col < n:
+        pivot = row
+        while pivot < n and mat[pivot][col] == 0:
+            pivot += 1
+        if pivot == n:
+            col += 1
+            continue
+        if pivot != row:
+            mat[row], mat[pivot] = mat[pivot], mat[row]
+
+        inv = Fraction(1, 1) / mat[row][col]
+        mat[row] = [x * inv for x in mat[row]]
+
+        for rr in range(n):
+            if rr == row:
+                continue
+            fac = mat[rr][col]
+            if fac == 0:
+                continue
+            mat[rr] = [a - fac * b for a, b in zip(mat[rr], mat[row])]
+
+        row += 1
+        col += 1
+
+    for rr in range(n):
+        pivot = None
+        for cc in range(n):
+            if mat[rr][cc] != 0:
+                pivot = cc
+                break
+        if pivot is None:
+            if mat[rr][n] != 0:
+                return None
+            continue
+
+    x = [Fraction(0)] * n
+    for rr in range(n):
+        pivot = None
+        for cc in range(n):
+            if mat[rr][cc] != 0:
+                pivot = cc
+                break
+        if pivot is not None:
+            x[pivot] = mat[rr][n]
+
+    return x
+
+
+def _solve_linear_mod(A: List[List[int]], b: List[int], p: int) -> Optional[List[int]]:
+    if not A:
+        return None
+    n = len(A)
+    if any(len(row) != len(A[0]) for row in A):
+        return None
+    m = len(A[0])
+    if len(b) != n:
+        return None
+    if n != m:
+        return None
+
+    mat = [[x % p for x in row] + [bb % p] for row, bb in zip(A, b)]
+    row = 0
+    col = 0
+
+    while row < n and col < n:
+        pivot = row
+        while pivot < n and mat[pivot][col] % p == 0:
+            pivot += 1
+        if pivot == n:
+            col += 1
+            continue
+
+        if pivot != row:
+            mat[row], mat[pivot] = mat[pivot], mat[row]
+
+        inv = pow(mat[row][col], p - 2, p)
+        for j in range(col, n + 1):
+            mat[row][j] = mat[row][j] * inv % p
+
+        for rr in range(n):
+            if rr == row:
+                continue
+            fac = mat[rr][col]
+            if fac == 0:
+                continue
+            for j in range(col, n + 1):
+                mat[rr][j] = (mat[rr][j] - fac * mat[row][j]) % p
+        row += 1
+        col += 1
+
+    if row < n:
+        return None
+
+    x = [Fraction(0)] * n
+    for rr in range(n):
+        pivot = None
+        for cc in range(n):
+            if mat[rr][cc] % p != 0:
+                pivot = cc
+                break
+        if pivot is None:
+            if mat[rr][n] % p != 0:
+                return None
+            continue
+        x[pivot] = Fraction(mat[rr][n] % p, 1)
+
+    if any(v.denominator != 1 for v in x):
+        return None
+
+    return [int(v.numerator % p) for v in x]
+
+
+def _rref_nullspace_mod(A: List[List[int]], p: int) -> Tuple[int, List[List[int]]]:
+    mat = [row[:] for row in A]
+    if not mat:
+        return 0, []
+
+    rows = len(mat)
+    cols = len(mat[0])
+    r = 0
+    c = 0
+    pivots: List[int] = []
+
+    while r < rows and c < cols:
+        pivot = r
+        while pivot < rows and mat[pivot][c] % p == 0:
+            pivot += 1
+        if pivot == rows:
+            c += 1
+            continue
+
+        if pivot != r:
+            mat[r], mat[pivot] = mat[pivot], mat[r]
+
+        inv = _mod_inv(mat[r][c], p)
+        for j in range(c, cols):
+            mat[r][j] = _mod(mat[r][j] * inv, p)
+
+        for rr in range(rows):
+            if rr == r:
+                continue
+            fac = mat[rr][c]
+            if fac == 0:
+                continue
+            for j in range(c, cols):
+                mat[rr][j] = _mod(mat[rr][j] - fac * mat[r][j], p)
+
+        pivots.append(c)
+        r += 1
+        c += 1
+
+    rank = len(pivots)
+    free = [j for j in range(cols) if j not in pivots]
+    basis: List[List[int]] = []
+    for fcol in free:
+        vec = [0] * cols
+        vec[fcol] = 1
+        for pcol, prow in reversed(list(zip(pivots, range(len(pivots))))):
+            vec[pcol] = (-mat[prow][fcol]) % p
+        basis.append(vec)
+
+    return rank, basis
+
+
+def _modular_poly_coeffs(values: Sequence[Tuple[Fraction, Fraction]], d: int, p: int) -> Optional[List[int]]:
+    need_train = 2 * d + 1
+    need_holdout = HOLDOUT_FAMILY
+    if len(values) < need_train + need_holdout:
+        return None
+
+    rows = values[:need_train]
+    A: List[List[int]] = []
+    b: List[int] = []
+    for x, y in rows:
+        try:
+            xi = [ _to_mod(x, p) ]
+        except ZeroDivisionError:
+            return None
+        row = [pow(_to_mod(x, p), k, p) for k in range(2 * d + 1)]
+        A.append(row)
+        try:
+            b.append(_to_mod(y, p))
+        except ZeroDivisionError:
+            return None
+
+    coeff = _solve_linear_mod(A, b, p)
+    if coeff is None:
+        return None
+
+    coeff_f = [Fraction(v, 1) for v in coeff]
+    for i in range(need_train, need_train + need_holdout):
+        x, y = values[i]
+        px = Fraction(0)
+        power = Fraction(1)
+        for c in coeff_f:
+            px += c * power
+            power *= x
+        try:
+            if _to_mod(px - y, p) % p != 0:
+                return None
+        except ZeroDivisionError:
+            return None
+
+    return coeff
+
+
+def _exact_poly_coeffs(values: Sequence[Tuple[Fraction, Fraction]], d: int) -> Optional[List[Fraction]]:
+    need_train = 2 * d + 1
+    holdout = HOLDOUT_FAMILY
+    if len(values) < need_train + holdout:
+        return None
+
+    rows = values[:need_train]
+    A: List[List[Fraction]] = []
+    b: List[Fraction] = []
+    for x, y in rows:
+        A.append([x ** k for k in range(2 * d + 1)])
+        b.append(y)
+
+    coeff = _solve_linear_rational(A, b)
+    if coeff is None:
+        return None
+
+    for i in range(need_train, need_train + holdout):
+        x, y = values[i]
+        ypred = poly_eval(coeff, x)
+        if ypred != y:
+            return None
+
+    return coeff
+
+
+def _line_family_values(
+    line: LineSample,
+    c: int,
+    r: int,
+    texp: int,
+    z: int,
+    d: int,
+) -> List[Tuple[Fraction, Fraction]]:
+    out: List[Tuple[Fraction, Fraction]] = []
+    for pnt in line.points:
+        y = pnt.H
+        if pnt.s == 0:
+            continue
+        q = (pnt.C ** c) * (pnt.R ** r) * (pnt.T ** texp) * (pnt.Z ** z)
+        if q == 0:
+            continue
+        y = y * q * (pnt.s ** d)
+        out.append((pnt.t, y))
+    out.sort(key=lambda x: (x[0].numerator, x[0].denominator))
+    return out
+
+
+def scan_family_on_lines(lines: List[LineSample]) -> Dict[str, object]:
+    families: List[Dict[str, object]] = []
+
+    for c in range(4):
+        for r in range(4):
+            for texp in range(4):
+                for z in range(4):
+                    d = 2 + 18 * c + 2 * r + texp + 12 * z
+                    if d > 64:
+                        continue
+
+                    family = {
+                        "c": c,
+                        "r": r,
+                        "t": texp,
+                        "z": z,
+                        "d": d,
+                        "line_reports": [],
+                        "tested_lines": 0,
+                        "modular_pass_lines": 0,
+                        "exact_pass_lines": 0,
+                        "line_holdout_failures": 0,
+                    }
+                    for line in lines:
+                        entry: Dict[str, object] = {
+                            "line_id": line.line_id,
+                            "status": "insufficient_points",
+                            "d": d,
+                        }
+                        vals = _line_family_values(line, c, r, texp, z, d)
+                        need = 2 * d + 1 + HOLDOUT_FAMILY
+                        if len(vals) < need:
+                            entry["point_count"] = len(vals)
+                            entry["status"] = "insufficient_points"
+                            family["line_reports"].append(entry)
+                            family["tested_lines"] += 1
+                            continue
+
+                        family["tested_lines"] += 1
+                        mod_ok = True
+                        prime_coeffs = {}
+                        for p in PRIMES:
+                            cmod = _modular_poly_coeffs(vals, d, p)
+                            if cmod is None:
+                                mod_ok = False
+                                prime_coeffs[str(p)] = "fail"
+                                break
+                            prime_coeffs[str(p)] = "pass"
+
+                        if not mod_ok:
+                            entry["status"] = "modular_fail"
+                            entry["prime_coeffs"] = prime_coeffs
+                            family["line_reports"].append(entry)
+                            continue
+
+                        family["modular_pass_lines"] += 1
+                        coeff = _exact_poly_coeffs(vals, d)
+                        if coeff is None:
+                            entry["status"] = "exact_fail"
+                            family["line_reports"].append(entry)
+                            continue
+
+                        family["exact_pass_lines"] += 1
+                        entry["status"] = "pass"
+                        entry["prime_coeffs"] = prime_coeffs
+                        entry["point_count"] = len(vals)
+                        entry["coeff_head"] = [frac_to_str(x) for x in coeff[: min(8, len(coeff))]]
+                        family["line_reports"].append(entry)
+
+                    families.append(family)
+
+    passing = [f for f in families if f["exact_pass_lines"] >= 2]
+    minimal = []
+    for idx, f in enumerate(passing):
+        dominated = False
+        for g in passing:
+            if g is f:
+                continue
+            if (
+                g["c"] <= f["c"]
+                and g["r"] <= f["r"]
+                and g["t"] <= f["t"]
+                and g["z"] <= f["z"]
+                and (g["c"] < f["c"] or g["r"] < f["r"] or g["t"] < f["t"] or g["z"] < f["z"])
+            ):
+                dominated = True
+                break
+        if not dominated:
+            minimal.append(f)
+
+    # keep deterministic ordering
+    families.sort(key=lambda x: (x["exact_pass_lines"], -(x["d"]), x["c"], x["r"], x["t"], x["z"]), reverse=True)
+
+    return {
+        "families": families,
+        "passing_family_count": len(passing),
+        "passing_tuples": [
+            {"c": f["c"], "r": f["r"], "t": f["t"], "z": f["z"], "d": f["d"], "exact_pass_lines": f["exact_pass_lines"]}
+            for f in passing
+        ],
+        "minimal_tuples": [
+            {"c": f["c"], "r": f["r"], "t": f["t"], "z": f["z"], "d": f["d"]}
+            for f in minimal
+        ],
+    }
+
+
+def _modular_rational_exists(values: Sequence[Tuple[Fraction, Fraction]], m: int, n: int) -> bool:
+    # augmented nullspace over [t''^0..t''^m, -t''^0*y..,-t''^n*y]
+    total_cols = m + n + 2
+    need = m + n + 2
+    if len(values) < need + DEN_FP_MIN_HOLDOUT:
+        return False
+
+    for p in PRIMES:
+        rows = values[:need]
+        A: List[List[int]] = []
+        for x, y in rows:
+            row: List[int] = []
+            xmod = _to_mod(x, p)
+            ymod = _to_mod(y, p)
+            row.extend(pow(xmod, k, p) for k in range(m + 1))
+            row.extend([(-ymod * pow(xmod, k, p)) % p for k in range(n + 1)])
+            A.append(row)
+
+        try:
+            rank, ns = _rref_nullspace_mod(A, p)
+        except Exception:
+            return False
+
+        if rank >= total_cols:
+            return False
+
+        # enforce nonzero leading denominator term by choosing a null vector with coefficient at t''^n nonzero
+        need_ok = False
+        den_lead_index = m + n + 1
+        for vec in ns:
+            if vec[den_lead_index] % p != 0:
+                need_ok = True
+                break
+        if not need_ok:
+            return False
+
+    return True
+
+
+def _fit_rational_exact(values: Sequence[Tuple[Fraction, Fraction]], m: int, n: int) -> Optional[Tuple[List[Fraction], List[Fraction]]]:
+    ntrain = m + n + 1
+    if len(values) < ntrain + DEN_FP_MIN_HOLDOUT:
+        return None
+
+    rows = values[:ntrain]
+    A: List[List[Fraction]] = []
+    b: List[Fraction] = []
+    for x, y in rows:
+        A.append([x ** k for k in range(m + 1)] + [-(y * (x ** k)) for k in range(n)])
+        b.append(y)
+
+    sol = _solve_linear_rational(A, b)
+    if sol is None:
+        return None
+
+    if n == 0:
+        num = sol
+        den = [Fraction(1)]
+    else:
+        num = sol[: m + 1]
+        den = sol[m + 1 :] + [Fraction(1)]
+
+    def eval_num_den(t: Fraction) -> Tuple[Fraction, Fraction]:
+        num_v = poly_eval(num, t)
+        den_v = poly_eval(den, t)
+        return num_v, den_v
+
+    for x, y in values[ntrain : ntrain + DEN_FP_MIN_HOLDOUT]:
+        num_v, den_v = eval_num_den(x)
+        if den_v == 0:
+            return None
+        pred = num_v / den_v
+        if pred != y:
+            return None
+
+    return num, den
+
+
+def _poly_derivative(coeffs: Sequence[Fraction]) -> List[Fraction]:
+    if len(coeffs) <= 1:
+        return [Fraction(0)]
+    return [coeffs[i + 1] * (i + 1) for i in range(len(coeffs) - 1)]
+
+
+def _den_factor_overlap(line: LineSample, num: Sequence[Fraction], den: Sequence[Fraction]) -> Dict[str, object]:
+    # crude constitutive check: detect sampled coincidences den(t)==0 wherever each factor also vanishes,
+    # plus multiplicity from first derivative checks.
+    d0 = list(den)
+    d1 = _poly_derivative(d0)
+    overlaps = {}
+    for name in ("C", "R", "T", "Z"):
+        count = 0
+        mults = []
+        for p in line.points:
+            tv = getattr(p, name)
+            if tv != 0:
+                continue
+            denom_v = poly_eval(d0, p.t)
+            if denom_v != 0:
+                continue
+            count += 1
+            mult = 1
+            d1v = poly_eval(d1, p.t)
+            if d1v == 0:
+                mult = 2
+                d2 = _poly_derivative(d1)
+                d2v = poly_eval(d2, p.t)
+                if d2v == 0:
+                    mult = 3
+            mults.append(mult)
+        overlaps[name] = {
+            "count": count,
+            "multiplicities": mults,
+            "max_multiplicity": max(mults) if mults else 0,
+        }
+    return overlaps
+
+
+def scan_denominator_fingerprint(lines: List[LineSample]) -> List[Dict[str, object]]:
+    out: List[Dict[str, object]] = []
+
+    for line in lines:
+        entries = [(p.t, p.H) for p in line.points]
+        entries.sort(key=lambda x: (x[0].numerator, x[0].denominator))
+        npts = len(entries)
+        result: Dict[str, object] = {
+            "line_id": line.line_id,
+            "line_points": npts,
+            "status": "no_candidate",
+        }
+
+        if npts < DEN_FP_MIN_HOLDOUT + 2:
+            result["status"] = "insufficient_points"
+            out.append(result)
+            continue
+
+        max_total = min(MAX_M_DEN + MAX_N_DEN, npts - DEN_FP_MIN_HOLDOUT - 2)
+        found = False
+        for total in range(max_total + 1):
+            if found:
+                break
+            for n in range(min(MAX_N_DEN, total) + 1):
+                m = total - n
+                if m > MAX_M_DEN:
+                    continue
+                if m + n < 0:
+                    continue
+                if m + n + 2 > npts:
+                    continue
+
+                if not _modular_rational_exists(entries, m, n):
+                    continue
+
+                exact = _fit_rational_exact(entries, m, n)
+                if exact is None:
+                    continue
+
+                num, den = exact
+                overlaps = _den_factor_overlap(line, num, den)
+
+                result.update(
+                    {
+                        "status": "pass",
+                        "m": m,
+                        "n": n,
+                        "num_degree": len(num) - 1,
+                        "den_degree": len(den) - 1,
+                        "num_head": [frac_to_str(v) for v in num[: min(10, len(num))]],
+                        "den_head": [frac_to_str(v) for v in den[: min(10, len(den))]],
+                        "factor_overlap": overlaps,
+                    }
+                )
+                found = True
+                break
+
+        if not found:
+            result["status"] = "no_candidate"
+        out.append(result)
+
+    return out
+
+
+def parse_args() -> argparse.Namespace:
+    p = argparse.ArgumentParser()
+    p.add_argument("--oracle", default=str(DATA_DIR / "h_rational_probe_oracle.jsonl"))
+    p.add_argument("--line-oracle", default=str(DATA_DIR / "h_denominator_line_oracle.jsonl"))
+    p.add_argument("--report", default=str(DATA_DIR / "h_denominator_family_scan_report.json"))
+    p.add_argument("--report-md", default=str(DATA_DIR / "h_denominator_family_scan_report.md"))
+    p.add_argument("--lines", type=int, default=LINE_MIN_COUNT)
+    p.add_argument("--line-t-min", type=int, default=-HALF_WIDTH_DEFAULT)
+    p.add_argument("--line-t-max", type=int, default=HALF_WIDTH_DEFAULT)
+    p.add_argument("--line-directions", type=str, default="")
+    p.add_argument("--skip-lines", action="store_true")
+    p.add_argument("--force-build", action="store_true", help="rebuild line oracle even if it exists")
+    return p.parse_args()
+
+
+def _parse_direction_arg(v: str) -> List[Tuple[int, int, int, int]]:
+    if not v:
+        return list(DEFAULT_LINE_DIRECTIONS)
+    out: List[Tuple[int, int, int, int]] = []
+    for token in v.split(";"):
+        bits = token.split(",")
+        if len(bits) != 4:
+            raise ValueError(f"bad direction token: {token}")
+        out.append((int(bits[0]), int(bits[1]), int(bits[2]), int(bits[3])))
+    return out
+
+
+def main() -> None:
+    args = parse_args()
+
+    _ensure_bg_binary()
+    oracle_path = Path(args.oracle)
+    oracle = parse_oracle(oracle_path)
+
+    counts: Dict[str, int] = {}
+    for r in oracle:
+        counts[r.wall_signature_raw] = counts.get(r.wall_signature_raw, 0) + 1
+    target_sig, target_count = max(counts.items(), key=lambda kv: kv[1])
+
+    line_oracle = Path(args.line_oracle)
+    if args.skip_lines and line_oracle.exists():
+        lines = []
+        with line_oracle.open("r", encoding="utf-8") as f:
+            grouped: Dict[str, List[LinePoint]] = {}
+            for ln in f:
+                d = json.loads(ln)
+                lid = d["line_id"]
+                p = LinePoint(
+                    t=frac(d["t"]),
+                    sample_id=d["line_anchor"],
+                    free=[frac(x) for x in d["free_w"]],
+                    omega=[frac(x) for x in d["omega"]],
+                    H=frac(d["H"]),
+                    s=frac(d["s"]),
+                    c=frac(d["C"]),
+                    r=frac(d["R"]),
+                    tval=frac(d["T"]),
+                    z=frac(d["Z"]),
+                    wall_signature_raw=d["wall_signature_raw"],
+                )
+                grouped.setdefault(lid, []).append(p)
+            for lid, pts in grouped.items():
+                anchor = pts[0].sample_id
+                lines.append(LineSample(lid, anchor, tuple(int(0) for _ in range(4)), pts))
+    else:
+        # use directions and anchors to build cached lines
+        dirs = _parse_direction_arg(args.line_directions)
+        anchors = [r for r in oracle if r.wall_signature_raw == target_sig]
+        if not anchors:
+            raise RuntimeError("no anchor rows found for target signature")
+
+        # keep at least required points from dense contiguous interval around each anchor
+        t_min = int(args.line_t_min)
+        t_max = int(args.line_t_max)
+        if t_max <= t_min:
+            raise ValueError("line_t-max must be greater than line_t-min")
+
+        lines = build_lines(anchors, target_sig, args.lines, t_min, t_max, tuple(dirs))
+        write_line_oracle(line_oracle, lines)
+
+        # if we built fewer than requested lines, continue with what is available and report
+
+    lines = lines[: args.lines] if len(lines) > args.lines else lines
+
+    for i, line in enumerate(lines):
+        if not line.points:
+            continue
+
+    if not lines:
+        raise RuntimeError("no valid lines built")
+
+    family_payload = scan_family_on_lines(lines)
+    fingerprint_payload = scan_denominator_fingerprint(lines)
+
+    payload: Dict[str, object] = {
+        "timestamp": utc_timestamp(),
+        "bg_binary": str(BG_BIN),
+        "oracle_rows": len(oracle),
+        "target_signature": target_sig,
+        "target_signature_count": target_count,
+        "line_oracle": str(line_oracle),
+        "line_points_file": str(line_oracle),
+        "line_config": {
+            "requested_lines": args.lines,
+            "min_points_per_line": LINE_MIN_POINTS,
+            "line_t_min": args.line_t_min,
+            "line_t_max": args.line_t_max,
+            "directions": [list(d) for d in _parse_direction_arg(args.line_directions)] if args.line_directions else [list(d) for d in DEFAULT_LINE_DIRECTIONS],
+        },
+        "lines_built": len(lines),
+        "line_ids": [line.line_id for line in lines],
+        "family_scan": family_payload,
+        "denominator_fingerprint": {
+            "prime_set": list(PRIMES),
+            "den_max_m": MAX_M_DEN,
+            "den_max_n": MAX_N_DEN,
+            "holdout": DEN_FP_MIN_HOLDOUT,
+            "line_results": fingerprint_payload,
+        },
+    }
+
+    rep = Path(args.report)
+    rep.parent.mkdir(parents=True, exist_ok=True)
+    with rep.open("w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
+
+    md_lines = [
+        "# denominator family scan",
+        f"target signature: `{target_sig}` (count {target_count})",
+        f"lines built: {len(lines)}",
+        f"line ids: {'"', '.join(line.line_id for line in lines)}\",
+        f\"line cache: "'`{line_oracle}`",
+        f"passing families: {family_payload['"'passing_family_count']}\",
+        \"\",
+        \"## minimal tuples\",
+    ]
+    for item in family_payload[\"minimal_tuples\"]:
+        md_lines.append(f\"- c={item['c']} r={item['r']} t={item['t']} z={item['z']} (d={item['d']})\")
+
+    md_lines.extend([
+        \"\",
+        \"## denominator fingerprints\",
+    ])
+    for item in fingerprint_payload:
+        if item.get(\"status\") == \"pass\":
+            md_lines.append(
+                f\"- {item['line_id']}: pass (m={item['m']}, n={item['n']}), \"
+                f\"num deg={item['num_degree']}, den deg={item['den_degree']}\"
+            )
+        else:
+            md_lines.append(f\"- {item['line_id']}: {item.get('status')}\")
+
+    Path(args.report_md).write_text(\"\\n\".join(md_lines) + \"\\n\", encoding=\"utf-8\")
+
+    print(json.dumps({
+        \"done\": True,
+        \"report\": str(rep),
+        \"line_count\": len(lines),
+        \"passing_family_count\": len(family_payload[\"passing_tuples\"]),
+        \"minimal_tuples\": family_payload[\"minimal_tuples\"],
+    }, indent=2))
+
+
+if __name__ == \"__main__\":
+    main()
+PY
+mv /tmp/new_script.py bots/student-1/code/h_denominator_family_scan.py"`: CreateProcess { message: "Rejected(\"Failed to create unified exec process: No such file or directory (os error 2)\")" }
+2026-07-26T12:54:06.304262Z ERROR codex_core::tools::router: error=exec_command failed for `/usr/bin/bash -lc 'python3 -m py_compile bots/student-1/code/h_denominator_family_scan.py'`: CreateProcess { message: "Rejected(\"Failed to create unified exec process: No such file or directory (os error 2)\")" }
+Round 4 completed with partial status.
+
+Exact result `s1_015`: all 512 square-free subproducts of \(\prod_{i,j}(a_i+b_j)\), including the full product, fail on six exact-GMP fixed-chamber lines. Thus this denominator hypothesis is ruled out.
+
+Updated:
+
+- [HANDOFF.md](/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/HANDOFF.md)
+- [Derivation](/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/derivations/round4_denominator_negative.md)
+- [Scan report](/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/data/h_mask_scan_lean.json)
+- [Session report](/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/sessions/2026-07-26T13-04-34.json)
+
+Posted `post_007` to the board. No background processes remain.
+[usage] provider=codex cost_usd=unavailable duration_ms=2639000 num_turns=1 in=118405 input_total=2127493 out=22906 cache_read=2009088 cache_write=unavailable reasoning_out=11914
+[2026-07-26T09-06-10] student-bot (Codex) exited with code 0

@@ -1,0 +1,21 @@
+[2026-06-27T00-38-06] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/student-bot.md identity=student-2
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+Cleanup complete — student-1's directory is restored, no scratch files outside my bot directory. My round-7 session is finished. Here's a summary.
+
+## Round 7 (student-2, top-down/all-$n$) — complete
+
+I did **not** reach the explicit all-$n$ numerator $N_n$ (the open frontier), but I established and exactly-verified three results that sharpen the all-$n$ picture and prune the search — the "most complete validated description" deliverable.
+
+**1. Soft recursion is EXACT at $n=7$, both legs** (`r7_soft.py`). Via an F-constant slice (so the limit is exact, not extrapolated), $A_n^{3-}\to 2(n{-}3)\,\omega_p^2 A_{n-1}$ with $2(n{-}3)=8$:
+- plus leg → $-239585664/17 = 8\,A_6^{3-}/i$ (surviving = 6-pt three-minus);
+- minus leg → $-13369344/25 = 8\,A_6^{2-}/i$ (surviving = 6-pt two-minus).
+
+This extends s2_012 to the genuinely-new $n\ge7$ regime and ties the PI-verified explicit $n=6$ form to the $N_7$ boundary on every $\{\omega_p=0\}$.
+
+**2. The single-pair residue is a RECURSIVE matching object** (`r7_resid_mod.py`). On the wall $\{\omega_i+\omega_j=0\}$ the merged pair drops out of both conservation laws, so the residue, at fixed surviving config, is rational in the merged scale with poles **only** at the 5 sub-collision loci (where a second pair vanishes): $\mathrm{Res}_{25}\cdot$(those 5 factors) is a **degree-7 polynomial** (mod $2^{61}{-}1$, cross-validated against exact values). **Consequence:** a clean matching-injection partial fraction $\sum_\sigma \Phi_\sigma/\prod(\omega_i+\omega_{\sigma(i)})$ with *polynomial* $\Phi_\sigma$ is **ruled out** — the numerators must be rational/spline. This is the precise recursive form of the matching/Cauchy structure.
+
+**3. Proposed all-$n$ form, pinned vs open stated** (s2_023): the truncated-power spline over $\prod(\omega_i+\omega_j)$ with the unified exponent law ($(1{=}1)\to1$, every other mixed subset-sum wall $\to n{-}3$), specializing to student-1's $n=6$ box spline. **Pinned for all $n$:** denominator, degree $5n{-}13$, symmetry, parity, soft recursion, pole structure. **Open:** explicit cross-term coefficients for $n\ge7$.
+
+**Registered:** claims s2_021/022/023, derivation `n7_softrec_residue_alln.md`, session report, board post_019, one-command `verify_r7.py` (both checks PASS). All amplitudes from my own `./bg`; final verdicts exact or modular-with-exact-cross-validation.
+[usage] cost_usd=21.281555749999995 duration_ms=3700891 num_turns=114 in=8126 out=208081 cache_read=24879372 cache_write=573610
+[2026-06-27T01-39-56] student-bot exited with code 0

@@ -1,0 +1,28 @@
+{
+  "bot": "student-1",
+  "timestamp": "2026-06-26T21:14:44Z",
+  "task_id": "r2-student-1",
+  "status": "done",
+  "summary": "Round-2 bottom-up attack on n=6 three-minus. Enumerated the mixed chamber-wall arrangement (12 realizable types) and attempted to extract the per-chamber degree-8 'core'. In doing so I rigorously established that A_6 is piecewise-RATIONAL, NOT piecewise-polynomial -- a correction to the round-1 'gate' (which is otherwise right that there are no physical poles). This kills the polynomial-spline / box-spline ansatz family the group was pursuing and points to a rational ansatz N/prod|k_S|.",
+  "work_done": [
+    "Built my own copy of bg.cpp (untouched shared oracle); validated against known A_5,A_6 values and against student-2's symbolic BG engine (reproduces ./bg exactly at n=5,6).",
+    "CHAMBER ENUMERATION (s1_004): mixed momentum-subset walls reduce to exactly two orbit types -- (1=1) omega_i^2=omega_j^2 and (1=2) omega_i^2=omega_j^2+omega_k^2 (i minus; j,k plus); 18 walls. A 1.5e6-point exact manifold scan gives 336 raw sign patterns = 12 chamber types under S_3 wr Z_2, all realizable with interior rational reps. (code/chambers_n6.py).",
+    "RATIONAL-NOT-POLYNOMIAL (s1_005, the headline): direct exact test on a 1-D slice inside ONE full chamber shows A_6*sumFree^p is non-polynomial for p=1..14, beating the p<=8 bound any genuine degree-8 polynomial in the frequencies must satisfy (legs 1,6 are eliminated by a rational solve with sumFree denominators). Confirmed in 4 free variables (700-point full-chamber modular fit, p=1..6 inconsistent). Hence A_6 is rational. The non-cancelling denominators are BG-kernel momentum magnitudes |k_S| (they cancel at n=5 -> polynomial two-minus law; not at n=6). (code/verify_n6_rational.py, findp_slice.py, rationalfit.py, symslice.py).",
+    "NO PHYSICAL POLES (s1_006): drove onto channels D_S->0 incl. S={2,4,5} (1 minus+2 plus, k_S>0) where the naive factorization predicts a two-minus x two-minus residue and hence a pole; A_6 stays finite, A_6*D_S->0 (removable). So the surviving |k_S| in the denominator are sums of squares that never vanish on the manifold (round-1 'no poles' holds; 'polynomial' does not). (code/polehunt.py).",
+    "ANSATZ RULING-OUTS (s1_007): the double-subset resonance spline is impossible (its only degree-8 member, exponent 4, is identically 0; p=3 gives B_3 but A_6 != (deg-2)*B_3); A_6 is not polynomial in {omega_i^2}, {omega_i^2,S}, or {omega_i^2,S,prod omega} per raw chamber. (code/cand.py, rawfit.py, modfit.py).",
+    "Wrote derivations/n6_chambers_and_rational_structure.md and the consolidated reproducible check code/verify_n6_rational.py."
+  ],
+  "key_results": {
+    "mixed_walls": ["omega_i^2 = omega_j^2 (i minus, j plus)", "omega_i^2 = omega_j^2 + omega_k^2 (i minus; j,k plus)"],
+    "n_chamber_types": 12,
+    "A6_structure": "piecewise-RATIONAL (NOT polynomial); finite on the whole manifold (no physical poles)",
+    "ruled_out": ["polynomial spline / box-spline of omega_i^2", "double-subset resonance spline (deg-8 member vanishes)", "polynomial in {squares}, {squares,S}, {squares,S,prod omega}"],
+    "recommended_ansatz": "A_6 = i 2^5 g^-3 * N(omega) / prod_{S in D} |k_S|, with D the non-cancelling BG momentum magnitudes (sums of squares) and N piecewise-polynomial on the mixed-union-same-type arrangement"
+  },
+  "next_steps": [
+    "Extract the EXACT reduced denominator (set of non-cancelling |k_S|) per chamber -- the symbolic single-slice run (code/symslice.py) yields the uncancelled BG denominator; isolate the surviving sum-of-squares factors.",
+    "Fit the rational numerator N per chamber (now that the denominator is known, N is polynomial -> the earlier polynomial machinery applies to A_6 * prod|k_S|).",
+    "Re-examine the all-n picture: WHY |k_S| cancel at n<=5 but not n>=6 (BG-recursion argument); generalize.",
+    "PI: please re-verify s1_005 (rational not polynomial) independently -- it corrects the gate; the test is code/verify_n6_rational.py part A."
+  ]
+}

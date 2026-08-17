@@ -1,0 +1,46 @@
+{
+  "id": "pi_r9_session",
+  "bot": "pi",
+  "timestamp": "2026-07-27T01:32:23",
+  "round": 9,
+  "phase": "pi",
+  "status": "SOLVED",
+  "summary": "Round 9 (final research round). The round-8 verifier returned VERDICT: VERIFIED on student-1's first complete table-free A_6 (s1_010), closing blocking gap G1 with no correctness gap and explicitly directing the round-9 PI to do its own independent re-implementation and write SOLVED.md. Under the definition of done (PI must independently implement and verify) and the exceptional-policy trigger (a claimed complete compact formula), I re-built and re-verified the formula from scratch. Result: the problem is SOLVED. My clean-room oracle bg_r9 (rebuilt from the immutable shared bg.cpp, md5 41715c..., sha256 bd1afe67...9040c1) + my own hand-transcribed evaluator bots/pi/code/pi_r9_eval.py (fractions only; NO import of student-1's round8_compact_candidate.py or the verifier's vr8_core.py) reproduce fresh exact BG bit-for-bit across 5733 comparisons with ZERO residual, spanning the entire acceptance battery. Compactness judgment: MET (82 monomials in 3 seeds + one H-block + positive parts; zero chamber-specific coefficients). Wrote summary/SOLVED.md, updated summary/logic.yaml (status SOLVED, F20, G1 cleared) and group_meeting_notes.md, recorded pi_vchk_006 in bots/pi/verified.yaml, posted post_034.",
+  "formula": "A_6 = i g^{-3} ( P_pole + R_Q + R_0 + R_q ), M={1,2,3} minus, P={4,5,6} plus; R_Q=-32 sum (Q_{m;pq})_+^3 w_m w_t; R_0=H_0(u,v,e_-,e_+) [13 mon]; R_q=4 sum h_mp H_1 + 2 sum h h H_2 [seeds H_1=46, H_2=23 mon]; P_pole = one H-block orbit over 9 Q>0 channels. h_mp=(w_p^2-w_m^2)_+. Full display in summary/SOLVED.md.",
+  "pi_double_check": {
+    "id": "pi_vchk_006",
+    "kind": "definition_of_done_independent_reimplementation",
+    "outcome": "PASS (5733 exact rational BG comparisons, zero residual)",
+    "note": "Exceptional-policy check for a claimed complete compact formula. Own oracle + own evaluator, no student/verifier code imported. Records F20; clears no verifier gap by itself but the round-8 verifier VERIFIED report already cleared G1."
+  },
+  "battery": {
+    "total_exact_comparisons": 5733,
+    "residual": "zero",
+    "anchors": "PASS (A_6/i=-9190656/7, -641893056/85; split P_pole=42588288/7, R_Q=-136630560, S=129233568)",
+    "generic_sweep": "260/260 across 81 distinct (q,Q)-chambers (54 q-, 32 Q-patterns)",
+    "permutations": "216/216 (6 bases x 6x6 same-sign), BG invariant",
+    "hierarchical": "28/28 (scale 1/200..1000)",
+    "two_sided_walls": "19 q-wall + 35 Q-wall straddles + 106 internal-line D_S=0 crossings, exact both sides, A_6 finite",
+    "removable_pole_d0": "4733 near-pole + clean two-sided d_{2;45}=0 straddle (active channel, BG finite, formula==BG both sides)",
+    "g_scaling": "5/5 (g in {1,2,3/2,5,1/3})",
+    "five_point_calibration": "anchor A_5=-19968 i + 28/28 random vs two-minus master (sign-flip)"
+  },
+  "compactness_ruling": "MET. 82 integer monomials in 3 displayed seeds + H-block + positive parts; finite S_3xS_3 orbit sums; zero chamber-specific coefficients; table-free evaluator; a task-permitted positive-part orbit form.",
+  "definition_of_done": "ALL criteria met: exact agreement; >=20 generic samples across chambers (260/81); minus/plus permutations; hierarchical regimes; two-sided wall + pole-orbit approaches; 5-pt calibration; PI independent re-implementation; displayable in a few blocks; not a coefficient list; table-free.",
+  "tasks_assigned": "NONE. This is a solve round: writing summary/SOLVED.md causes run.sh to break the research loop, so no student tasks were assigned. tasks/student-1.md and tasks/student-2.md updated to 'TASK CLOSED -- solved'.",
+  "artifacts": [
+    "summary/SOLVED.md",
+    "summary/logic.yaml",
+    "summary/group_meeting_notes.md",
+    "bots/pi/verified.yaml (pi_vchk_006)",
+    "bots/pi/code/pi_r9_eval.py (independent table-free evaluator)",
+    "bots/pi/code/pi_r9_battery.py + pi_r9_battery.log (main battery, 994/0)",
+    "bots/pi/code/pi_r9_poles.py + pi_r9_poles.log (near-pole, 4733/0)",
+    "bots/pi/code/pi_r9_dpole.py (clean two-sided d=0 removable-pole straddle)",
+    "bots/pi/code/bg_r9 (clean-room oracle)",
+    "board.json post_034"
+  ],
+  "caveat": "One non-blocking minor: chamber-coverage completeness is empirical, not a symbolic proof (a symbolic argument that the wall set is exactly the 18 hyperplanes is still owed). Low residual risk; not a correctness gap; recorded in SOLVED.md.",
+  "credit": "Formula: student-1 (s1_010, round 8), realizing student-2's predicted off-wall single/double-hinge cocycle. Verification: Claude verifier (round 8, VERIFIED) + PI (round 9, pi_vchk_006).",
+  "next_steps": "None required for correctness. The scheduled final PI-only summary round will incorporate this state into summary/FINAL_SUMMARY.md. Optional future work: a symbolic proof of wall-set completeness (the sole non-blocking minor)."
+}

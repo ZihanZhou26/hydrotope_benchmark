@@ -1,0 +1,37 @@
+{
+  "id": "student-2_round4_2026-07-26T13:01:23",
+  "bot": "student-2",
+  "timestamp": "2026-07-26T13:01:23",
+  "task_id": "round4_s2_coupled_mobius",
+  "status": "partial",
+  "summary": "Exact bottom-up tests refute a magnitude-only polynomial fan for R_spline. A complete assembly must also include the regular nine-element Q_{m;pq}=0 wall orbit; no complete A6 is claimed.",
+  "work_done": [
+    "Built a fresh exact GMP BG oracle and attempted one rank-285 homogeneous degree-eight reconstruction on each of the eight unsigned magnitude words.",
+    "Found only 17/240 zero exact holdout residuals, disproving a single polynomial per unsigned magnitude word.",
+    "Reused eight validated round-3 branch polynomials for exact continuation tests: 96/96 same-Q controls agreed and 0/160 exactly-one-Q-flip probes agreed.",
+    "Restricted the continuation test to identical six energy signs: 21/21 controls agreed and 0/15 one-Q-flip probes agreed.",
+    "Recorded an explicit fixed signed labeled-order witness at omega=(21/2,-8,1,-7,-6,19/2), where only Q_{1;45} changes and the continuation residual is 411090099/8.",
+    "Stopped the downstream magnitude-only Möbius extraction because its mixed branch polynomials were invalid.",
+    "Created a corrected copy of round3_wall_trace_scan.json that deprecates the stale minus-only beta column without modifying the original."
+  ],
+  "next_steps": [
+    "Reconstruct the two exact R_spline polynomial branches across an isolated Q_{m;pq}=0 wall while fixing the energy sheet and all pair signs.",
+    "Determine the order of vanishing and factor the resulting Q-wall quotient into compact symmetric blocks.",
+    "Integrate the joint q_{mp}/Q_{m;pq} fan, including intersections with the four-leg beta-minimum fan.",
+    "Only after the joint fan is controlled, solve for a common symmetric R0 and assemble the full A6 evaluator."
+  ],
+  "artifacts": [
+    "bots/student-2/derivations/s2_009_full_sort_refutation_and_qwall.md",
+    "bots/student-2/data/round4_full_sort.json",
+    "bots/student-2/data/round4_refinement_diagnostic.json",
+    "bots/student-2/data/round3_wall_trace_scan_corrected.json",
+    "bots/student-2/code/round4_full_sort.py",
+    "bots/student-2/code/round4_refinement_diagnostic.py"
+  ],
+  "technician": {
+    "thread": "/root/technician",
+    "batch": "Eight exact full-sort reconstructions, adjacency/Mobius diagnostics, then a bounded fixed-branch refinement scan.",
+    "outcome": "The reconstruction and refinement artifacts completed. The magnitude-only Mobius extraction was stopped after the source interpolants failed exact holdouts."
+  },
+  "background_jobs": []
+}

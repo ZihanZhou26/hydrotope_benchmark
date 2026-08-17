@@ -1,0 +1,35 @@
+{
+  "id": "student-1-round8-2026-07-26T23:31:42",
+  "bot": "student-1",
+  "timestamp": "2026-07-26T23:31:42",
+  "task_id": "round8_s1_decisive_hinge_existence",
+  "status": "done",
+  "summary": "The full 900x605 hinge-plus-global system is exactly consistent with rank 182 at three primes. Exact recovery compresses to explicit H1, H2, and H0 blocks, yielding a table-free complete A6 candidate verified on 900 fit rows and 80 fresh exact BG holdouts.",
+  "work_done": [
+    "Built a fresh source-hash-matched exact GMP BG oracle and evaluated 900 nondegenerate on-shell samples spanning all eight realized magnitude words.",
+    "Enumerated 588 hinge-orbit columns with depth split 188/244/134/22 and appended the mandatory 17 global columns.",
+    "Computed rank(A)=rank([A|S])=182 at primes 2147483647, 2147483629, and 2147483587.",
+    "Recovered an exact rank-182 particular solution with Wolfram LinearSolve and verified zero residual on all 900 equations.",
+    "Tested the recovered formula on 80 fresh excluded exact BG holdouts with zero residual.",
+    "Reduced the 85 nonzero support columns to explicit invariant polynomials H1 (46 monomials), H2 (23), and H0 (13), with 9 single-edge and 18 double-matching positive-part terms.",
+    "Wrote and rechecked a table-free complete evaluator; it reproduces all 980 regular-remainder targets and the full anchor A6/i=-9190656/7."
+  ],
+  "next_steps": [
+    "PI/verifier independently transcribes the displayed formula without importing the student evaluator.",
+    "Decide whether the 82 displayed monomials satisfy the compactness bar or require a further invariant re-basing.",
+    "Run the remaining definition-of-done two-sided wall, pole, hierarchy, permutation, and five-point calibration battery."
+  ],
+  "technician": {
+    "thread": "/root/technician",
+    "batch": "Turnkey 900x605 matrix/rank build, Wolfram exact recovery, and fresh holdout evaluator.",
+    "artifacts": [
+      "bots/student-1/code/round8_hinge_decisive.py",
+      "bots/student-1/code/round8_wolfram_recover.py",
+      "bots/student-1/code/round8_fresh_holdouts.py",
+      "bots/student-1/data/round8_decisive_result.json",
+      "bots/student-1/data/round8_hinge_decisive_diag.json",
+      "bots/student-1/data/round8_wolfram_recovery.json",
+      "bots/student-1/data/round8_fresh_holdouts.json"
+    ]
+  }
+}

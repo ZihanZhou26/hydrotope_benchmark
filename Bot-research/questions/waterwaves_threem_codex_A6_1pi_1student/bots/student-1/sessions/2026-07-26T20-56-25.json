@@ -1,0 +1,37 @@
+{
+  "id": "student-1-round8-2026-07-26T20:56:25",
+  "bot": "student-1",
+  "timestamp": "2026-07-26T20:56:25",
+  "task_id": "round8_higher_master",
+  "status": "partial",
+  "summary": "The requested equal-bound d=13 and d=14 cone scans for chamber 12ea165a03 both have exact modular nullity zero, proving d_eq>=15; a complementary rectangular scan proves the homogeneous denominator degree is at least 13. No null vector, factorization, or full-domain compact formula was found.",
+  "work_done": [
+    "Reused 1050 stored exact points and generated/persisted 400 further exact same-53-sign points with a fresh byte-identical copy of bg.cpp.",
+    "Ran equal-bound d=13 and d=14 matrices with 1120 and 1360 columns; both had full rank over multiple 31-bit primes.",
+    "Ran the asymmetric d=14 matrix with numerator degree <=14 and denominator degree <=12; it had full rank 1135/1135 over three primes.",
+    "Independently verified both d=14 ranks on rotated row subsets over a fourth prime and rechecked all 1450 point signatures.",
+    "Registered claims s1_022 and s1_023, refreshed HANDOFF.md, and posted post_015 to board.json."
+  ],
+  "technician": {
+    "thread": "/root/technician",
+    "task_batch": "implement, run, persist, and verify staged asymmetric and equal-bound cone rank/reconstruction scans with fresh exact BG top-up and factor audit on any null vector",
+    "artifacts": [
+      "bots/student-1/code/round8_higher_reconstruct.py",
+      "bots/student-1/data/round8_higher_reconstruct.json",
+      "bots/student-1/data/round8_higher_equal_reconstruct.json",
+      "bots/student-1/data/round8_pts_12ea165a03_1450.json"
+    ]
+  },
+  "verification": {
+    "production_equal_d14": "rank 1360/1360 over three primes on 1420 fit rows",
+    "student_equal_d14": "rank 1360/1360 over prime 2147483399 on a rotated 1420-row subset",
+    "production_asymmetric_d14": "rank 1135/1135 over three primes on 1195 fit rows",
+    "student_asymmetric_d14": "rank 1135/1135 over prime 2147483399 on a rotated 1195-row subset",
+    "signature_audit": "1450/1450 target sign-vector matches; 1448 distinct dehomogenized triples",
+    "bg_source_check": "root and copied bg.cpp SHA-256 both bd1afe67c45e1e9403c03a0b78373ebb492235be56fc1e5ee9281cbbec9040c1"
+  },
+  "next_steps": [
+    "The PI should bank d_eq>=15 and deg Q_hom>=13 in the final summary, explicitly noting that no higher-chamber factorization or full formula was obtained.",
+    "If research continues, scan d=15 on enough exact same-signature points; factor/candidate audits only become possible after a null vector appears."
+  ]
+}

@@ -1,0 +1,590 @@
+claims:
+  - id: s1_001
+    status: verified
+    by: student-1
+    round: 1
+    statement: >
+      n=5 three-minus closed form (legs 1,2,3 minus; 4,5 plus), g general:
+      $A_5 = i\,2^4 g^{-2}\,\omega_4\omega_5 \sum_{S\subseteq\{1,2,3\}}(-1)^{|S|}
+      (\beta^2-\sum_{j\in S}\omega_j^2)_+^2$, with $\beta=\min(|\omega_4|,|\omega_5|)$,
+      $(x)_+=\max(x,0)$. Purely imaginary; continuous, piecewise-homogeneous of degree 6;
+      no poles. Independently re-derived via the plus/minus swap (question.md item 3) applied
+      to the two-minus truncated-power law (item 2) with minus legs relabeled to {4,5}.
+    evidence: >
+      bots/student-1/code/verify_n5.py (own copy of bg.cpp): EXACT rational agreement at
+      24/24 non-degenerate points (generic, fractional, non-generic w>>rest and w<<rest,
+      all realizable chambers). Plus/minus swap invariance confirmed directly in --amp mode
+      (flip K->-K leaves A_5 unchanged) at 4 points. Derivation: derivations/n5_derivation.md.
+  - id: s1_002
+    status: verified
+    by: student-1
+    round: 1
+    statement: >
+      Chamber decomposition of n=5 three-minus. With a=w1^2,b=w2^2,c=w3^2,
+      m=beta^2=min(w4^2,w5^2), P=i*2^4*g^{-2}*w4*w5: a minus-subset S is "active" iff
+      sum_{j in S} w_j^2 < m. The on-shell momentum law w4^2+w5^2=w1^2+w2^2+w3^2 (=:T) forces
+      m<=T/2, which makes the triple S={1,2,3} ALWAYS inactive, allows AT MOST ONE active pair,
+      and makes "all three singletons active" (chamber D) UNREALIZABLE. The only realizable
+      chambers are A,B,C,E with closed forms:
+      A (none active): F=A_5/P=m^2;  B (one single i): F=w_i^2(2m-w_i^2);
+      C (two singles i,j, no pair): F=2m(w_i^2+w_j^2)-m^2-w_i^4-w_j^4;
+      E (pair {i,j} active): F=2 w_i^2 w_j^2 (m cancels). A_5 is C^1 across every chamber wall
+      (each (.)_+^2 term is C^1).
+    evidence: >
+      bots/student-1/code/verify_n5.py (per-chamber polynomial == full formula == oracle, exact,
+      at off-wall reps A=(-1,-1,-1/2),B=(-1,-1,1/2),C=(-1,-1,-4/3),E=(-1,-1,-2)) and chamber
+      sweep in walls_n5.py. Chamber D unrealizable: sup over manifold of
+      [min(w4^2,w5^2)-max(w_i^2)] = 0 (attained only degenerately); >3e6-sample scan/optimization,
+      max gap ~ -4e-5 < 0.
+  - id: s1_003
+    status: verified
+    by: student-1
+    round: 1
+    statement: >
+      The |k_S|=0 walls where bg.cpp divides by zero (SIGFPE exact / inf,nan in --double),
+      k_S=sum_{i in S} sigma_i w_i^2 for subsets S of legs {2,3,4,5}, are SPURIOUS coordinate
+      singularities of the Berends-Giele representation, NOT poles of A_5. On the three-minus
+      n=5 manifold the non-degenerate ones reduce (via momentum conservation) to chamber walls:
+      S={2,4}->w4^2=w2^2; {2,5}->w5^2=w2^2; {3,4}->w4^2=w3^2; {3,5}->w5^2=w3^2;
+      {2,3,4}->w4^2=w2^2+w3^2 (<=> w5^2=w1^2); {2,3,5}->w5^2=w2^2+w3^2 (<=> w4^2=w1^2)
+      (others force a vanishing frequency). A_5 is FINITE and C^1 there: one-sided limits from
+      both sides converge to the formula value at the wall, linearly in eps with EQUAL slopes
+      (no 1/eps term). Hence n=5 three-minus carries NO factorization pole (poles expected only
+      at n>=6).
+    evidence: >
+      bots/student-1/code/walls_n5.py: exact-rational one-sided limits on the internal channel
+      S={2,3,4} (Pythagorean 3,4,5; A_wall/i=-138240; residual ~ +/-2957*eps, slopes match) and
+      on S={3,4}. Oracle confirmed to SIGFPE exactly on each wall.
+  - id: s1_004
+    status: verified
+    by: student-1
+    round: 2
+    statement: >
+      n=6 three-minus CHAMBER ARRANGEMENT. The mixed momentum-subset walls
+      k_S=sum_{i in S} sigma_i omega_i^2=0 reduce to exactly two orbit types:
+      (1=1) omega_i^2=omega_j^2 (i minus, j plus), 9 walls; and
+      (1=2) omega_i^2=omega_j^2+omega_k^2 (i minus, {j,k} plus), 9 walls
+      (equivalently omega_r^2=omega_p^2+omega_q^2 by complement k_S=-k_{S^c}).
+      All other mixed subsets are sign-definite on-shell (no wall). A >=1.5e6-point
+      exact manifold scan finds 336 distinct sign patterns of the 18 wall functions,
+      grouping into 12 chamber TYPES under S_3(minus) x S_3(plus) x Z_2(swap); each
+      type is realizable (interior rational point exhibited). NOTE: these mixed walls
+      are NOT the full non-analyticity locus -- same-type comparisons
+      (omega_i^2 vs omega_j^2 within a triple) also enter, as the n=5 'min' did.
+    evidence: >
+      bots/student-1/code/chambers_n6.py (enumeration + 1.5e6 scan -> 12 types, 336 raw;
+      interior reps). Wall reduction proof in derivations/n6_chambers_and_rational_structure.md sec 2.
+  - id: s1_005
+    status: verified
+    by: student-1
+    round: 2
+    statement: >
+      CORRECTION TO THE ROUND-1 GATE: A_6 in the three-minus sector is piecewise-RATIONAL,
+      NOT piecewise-polynomial. Rigorous: on a 1-D slice held inside ONE full chamber
+      (mixed wall signs AND all six same-type orderings fixed -> a single analytic piece),
+      A_6 * sumFree^p (sumFree=omega_2+omega_3+omega_4+omega_5) is NOT a polynomial of degree
+      8+p for any p=1..12 (exact rational). Since the oracle eliminates legs 1,6 by a rational
+      solve omega_1,omega_6=(deg-2 poly)/sumFree, a genuine degree-8 POLYNOMIAL in the six
+      frequencies would force A_6*sumFree^8 to be polynomial (every monomial has
+      power(omega_1)+power(omega_6)<=8). It is not -> A_6 is rational. Confirmed in 4 free
+      variables too (700-point full-chamber modular fit: A_6*sumFree^p inconsistent with the
+      degree-8+p monomial basis, p=1..6). The non-cancelling denominators are momentum
+      magnitudes |k_S| from the BG kernels (they DO cancel at n=5, giving the polynomial
+      two-minus / n=5 law; they do NOT at n=6). The surviving |k_S| are sums of squares
+      (e.g. omega_4^2+omega_5^2), so they never vanish on the manifold -> A_6 is finite
+      everywhere (round-1 'no poles' stands) but genuinely rational.
+    evidence: >
+      bots/student-1/code/verify_n6_rational.py (part A; full-chamber slice, p=1..12 all
+      non-polynomial). CONTROL bots/student-1/code/n5_poly_control.py: the SAME test on n=5
+      (known polynomial A_5=2^4 w4 w5 P(w^2)) correctly returns POLYNOMIAL at p=1, so the
+      method is sound and the n=6 'no p works' is genuine rationality, not a test artifact.
+      bots/student-1/code/{findp_slice.py,rationalfit.py,symslice.py} (slice rational fits;
+      symslice gives the exact uncancelled BG denominator, a large product of |k_S|/D_S
+      factors). Multivariate confirmation: 700-pt full-chamber modular fit (modfit.py).
+  - id: s1_006
+    status: verified
+    by: student-1
+    round: 2
+    statement: >
+      NO PHYSICAL factorization poles (consistent with round-1, against question.md's
+      pole conjecture). Driving onto factorization channels D_S=omega_S^2/|k_S|-g -> 0,
+      A_6 stays finite with A_6*D_S -> 0 (residue cancels), INCLUDING the channel
+      S={2,4,5} (one minus + two plus, k_S>0) for which the naive factorization argument
+      predicts a two-minus x two-minus (both nonzero) residue and hence a pole. It is
+      still removable: A_6/i -> 3039 finite, A_6*D_245 -> 0 linearly. The naive
+      'every split forces a one-minus subamp' argument is INCORRECT for 3-minus (a 2+1
+      split gives two-minus on both sides via the internal line), yet the n=4 sub-amplitude
+      residues still cancel on-shell. So the rational A_6 has NO zeros of its reduced
+      denominator on the physical manifold.
+    evidence: >
+      bots/student-1/code/{verify_n6_rational.py (part B), polehunt.py}: S={2,4,5} channel
+      driven from both sides, A_6 finite, A_6*D_S -> 0.
+  - id: s1_007
+    status: verified
+    by: student-1
+    round: 2
+    statement: >
+      ANSATZ RULING-OUTS for the n=6 closed form. (i) Double-subset resonance spline
+      sum_{S subseteq M, T subseteq P} (-1)^{|S|+|T|} (sum_T omega^2 - sum_S omega^2)_+^p
+      is impossible: the only degree-8 member (p=4) is identically ZERO (over-differenced:
+      order-3 x order-3 difference annihilates a quartic), and p=3 gives a nonzero deg-6
+      object B_3 but A_6 != (deg-2 poly)*B_3 (exact, per chamber). The n=5 amplitude is
+      itself NOT a double-subset spline (its threshold is the asymmetric min). (ii) A_6/i
+      is NOT a polynomial in {omega_i^2}, nor in {omega_i^2, S}, nor in {omega_i^2,S,prod omega}
+      per raw chamber (S=(sum_M omega)^2=(sum_P omega)^2) -- consistent with s1_005 (it is
+      not polynomial at all). CONCLUSION: the closed form must be RATIONAL; build it as
+      i*2^5 g^-3 * N(omega)/prod_{S} |k_S| with N piecewise-polynomial on the
+      mixed-union-same-type arrangement.
+    evidence: >
+      bots/student-1/code/{verify_n6_rational.py (part C), cand.py, rawfit.py, modfit.py}.
+      DS(p=4)=0 at every tested point; ratio/consistency tests fail for all polynomial ansaetze.
+  - id: s1_008
+    status: verified
+    by: student-1
+    round: 3
+    statement: >
+      EXPLICIT RATIONAL DENOMINATOR of n=6 three-minus. A_6 = i*2^5*g^{-3} *
+      N(omega) / D9(omega), where D9 = prod_{i in {1,2,3}} prod_{j in {4,5,6}}
+      (omega_i + omega_j) is the product of the NINE mixed-pair LINEAR forms
+      (minus leg i + plus leg j), degree 9, and N = A_6*D9/(i 2^5 g^-3) is a
+      piecewise POLYNOMIAL (a spline) of degree 2n-4 + 9 = 17. D9 is invariant
+      under S_3(minus) x S_3(plus) x Z_2(swap), so N inherits the full symmetry.
+      This makes s1_005 fully explicit and UNIFIES it with the team's spline
+      program: the box-spline / multivariate-B-spline (student-2 s2_008, PI degree
+      law) lives in the NUMERATOR N, not in A_6 itself. Only the SUM branch
+      (omega_i+omega_j) appears; the difference branch omega_i-omega_j of the
+      squared wall k_{ij}=omega_j^2-omega_i^2 is absent. Origin (bg.cpp): FKernel
+      divides by momentum magnitudes |k_B|; the surviving ones cancel for n<=5 but
+      not n=6 -> rational. At n=5 the analogous denominator divides N_5 (the n=5
+      law is polynomial), recovering item 2 / s1_001.
+    evidence: >
+      bots/student-1/code/verify_denominator.py (one command): (A) A_6*sumFree^8 =
+      N(t)/[(5t+8)(10t+53)/424], deg D=2 != 0 -> rational, with the n=5 POLYNOMIAL
+      control; (B) A_6*D9 reconstructs to N(t)/sumFree^k (PURE power of the leg-1,6
+      solve artifact, NO other factor) at 5-6 distinct chamber types x 2 slice
+      directions -> A_6*D9 is a genuine 6-variable polynomial. Discovery via exact
+      rational-function (Pade-over-Q) reconstruction: rat_denom.py, multislice.py
+      (factors = mixed-pair sums = perfect matchings of the two triples),
+      test_D9_global.py. Denominator origin from bg.cpp FKernel/Propagator analysis
+      in derivations/n6_rational_denominator.md.
+  - id: s1_009
+    status: verified
+    by: student-1
+    round: 3
+    statement: >
+      STRUCTURAL RECONCILIATION of "rational" with "no poles". Each chamber's
+      rational form N_c/D_c has its denominator zeros on perfect-matching walls
+      (omega_i+omega_j=0) that lie OUTSIDE that chamber (shielded by chamber
+      boundaries). So A_6 is finite on the entire physical manifold (no
+      factorization poles, consistent with s1_006 / s2_002) yet genuinely rational
+      -- no contradiction. The round-1 "gate" error was the inference
+      finite => polynomial; a rational function with all poles shielded is finite
+      everywhere but not polynomial. A perfect-matching locus
+      {omega_i+omega_{sigma(i)}=0 for a bijection sigma: minus->plus} is codim-1 on
+      the manifold (the two conservation laws are automatically satisfied there);
+      there are 3!=6 such walls, two using the (omega_1,omega_6) pair
+      (= -sumFree).
+    evidence: >
+      bots/student-1/code/probe_pole.py: the reference-chamber reconstructed form
+      has a denominator root at t=-8/5 (omega_3+omega_4=0), but the kinematics cross
+      a chamber wall near t=-1.5 first; the physical A_6 at t=-8/5 is finite
+      (A_6/i ~ 5436), computed from the neighbouring chamber. multislice.py: every
+      denominator root coincides with a full perfect matching.
+  - id: s1_010
+    status: tentative
+    by: student-1
+    round: 3
+    statement: >
+      ALL-n CONJECTURE (supported at n=7): A_n^{3-} = i*2^{n-1}*g^{3-n} *
+      N_n(omega) / prod_{i in {1,2,3}} prod_{j in plus} (omega_i + omega_j), with
+      N_n piecewise-polynomial of degree (2n-4)+3(n-3). The denominator is the
+      product of all 3*(n-3) mixed-pair linear forms (minus leg + plus leg). At n=5
+      the denominator divides N_5 (the n=5 law is polynomial), so it cancels there;
+      it survives for n>=6 -> rational. n=7 CHECK (exact): with D12 = prod over the
+      12 mixed pairs (minus {1,2,3} x plus {4,5,6,7}), A_7*D12 reconstructs on a
+      chamber slice to a PURE power of sumFree (residual sumFree^5, no other factor)
+      -> A_7*D12 is polynomial, exactly as conjectured.
+    evidence: >
+      bots/student-1/code/test_n7.py: n=7 base omega = [-179/35,7/5,-23/10,31/10,
+      9/5,-13/5,26/7]; A_7*D12 vary-w4 slice -> N(t)/sumFree^5 (pure), D(t)=(5t+7)^5.
+      n=6 fully verified (s1_008). n=5 polynomial limit consistent (denominator
+      cancels).
+    note_round4: >
+      The n=6 denominator D9 is SIMPLIFIED by s1_011/s1_012: on the manifold
+      D9 = prod_{i,j}(omega_i+omega_j) = (e3m+e3p)^3, and the MINIMAL denominator is
+      (e3m+e3p)^1, so N_6 has degree 11 (not 17). The all-n denominator is still
+      prod(omega_i+omega_j) = Res(p_-, Q) (Q(x)=prod_{j in plus}(x+omega_j)); the
+      perfect-cube collapse is special to n=6 (equal-size triples).
+
+  - id: s1_011
+    status: verified
+    by: student-1
+    round: 4
+    statement: >
+      DENOMINATOR IDENTITY (proven). On the three-minus n=6 resonant manifold the nine
+      mixed-pair linear factors collapse to a perfect cube of a SINGLE cubic invariant:
+      $\prod_{i\in\{1,2,3\}}\prod_{j\in\{4,5,6\}}(\omega_i+\omega_j) =
+      (\omega_1\omega_2\omega_3+\omega_4\omega_5\omega_6)^3 = (e_3^-+e_3^+)^3$.
+      PROOF: the two conservation laws give e1minus=-e1plus and e2minus=e2plus, so the
+      minus cubic p_-(x)=prod_i(x-omega_i) and the plus sum-cubic Q(x)=prod_j(x+omega_j)
+      share all coefficients except the constant term: Q(x)-p_-(x)=e3m+e3p (constant).
+      Hence Q(omega_i)=e3m+e3p for every minus root, and D9=prod_i Q(omega_i)=(e3m+e3p)^3.
+      Corollary (explains s2_011's 'entangled matching poles'): {D9=0}={e3m+e3p=0} is a
+      SINGLE irreducible codim-1 hypersurface = the perfect-matching locus (one mixed
+      pair vanishing forces a full matching), NOT 9 independent walls.
+    evidence: >
+      bots/student-1/code/inv.py (sympy resultant sp.resultant(p_-,Q)=(e3m+e3p)^3, plus
+      8/8 random exact points D9==(e3m+e3p)^3). verify_min_denom.py part (P).
+      Derivation: derivations/n6_minimal_denominator_and_jumps.md sec 2.
+
+  - id: s1_012
+    status: verified
+    by: student-1
+    round: 4
+    statement: >
+      MINIMAL DENOMINATOR (corrects s2_010 / PI post_009 'D9 minimal'). The minimal
+      denominator of A_6 on the manifold is the SINGLE cubic to the FIRST power:
+      $A_6 = i\,2^5 g^{-3}\,N(\omega)/(\omega_1\omega_2\omega_3+\omega_4\omega_5\omega_6)$,
+      with N a piecewise-polynomial (spline) of degree 2n-4+3 = 11 (NOT 17),
+      S_3(minus) x S_3(plus) x Z_2-symmetric and ODD under omega->-omega. D9 (degree 9)
+      is a correct but NON-minimal denominator: on the manifold D9=(e3m+e3p)^3 (s1_011),
+      so it over-clears by (e3m+e3p)^2; the team's degree-17 numerator equals my degree-11
+      N times (e3m+e3p)^2. The 'D9 minimal' argument was valid in the FREE 6-variable
+      polynomial ring (the S3xS3 orbit of one linear factor is all nine) but not in the
+      coordinate ring of the manifold, where those nine factors are dependent
+      ((e3m+e3p)^3) and A_6 has only a SIMPLE pole at e3m+e3p=0.
+    evidence: >
+      bots/student-1/code/verify_min_denom.py: (A) A_6*(e3m+e3p) reconstructs to a
+      PURE-sumFree denominator (=> genuine 6-freq polynomial) on 8 slices across 4 chamber
+      types; (D) the (e3m+e3p)-numerator factor has multiplicity exactly 1 in the reduced
+      denominator of A_6(t) (pole order 1), with A_6-not-polynomial (team result) giving
+      order >= 1. pole_order2.py/pole_order3.py (multiplicity 1 on reliable slices).
+
+  - id: s1_013
+    status: verified
+    by: student-1
+    round: 4
+    statement: >
+      SPLINE JUMP STRUCTURE of N (hence A_6). N kinks only across the MIXED walls (same-type
+      orderings omega_4=omega_5 are analytic). The two wall orbits have DIFFERENT jump
+      exponents (exact, clean single-wall crossings): (1=1) wall omega_i=omega_j (i minus,
+      j plus): jump N_A-N_B is proportional to (k_ij)^1, k_ij=omega_j^2-omega_i^2 -> A_6 is
+      C^0 there (first-derivative kink); (1=2) wall omega_i^2=omega_j^2+omega_k^2: jump is
+      proportional to (k_ijk)^3, k_ijk=omega_i^2-omega_j^2-omega_k^2 -> A_6 is C^2 (cubic
+      kink). This CONFIRMS the team's (1=2) 'cubic kink' (s2_004) and PINS both exponents.
+      Unlike n=5 (uniform exponent n-3=2 everywhere), n=6 exponents SPLIT (1 and 3), which
+      rules out a single-exponent truncated-power/box-spline ansatz for N. The (1=1) kink
+      lives on the DIFFERENCE branch (omega_i-omega_j) while the denominator is the SUM
+      branch (omega_i+omega_j): the two roots of the BG kernel |k_ij|=|omega_i-omega_j||omega_i+omega_j|.
+      Reduction: A_6 is a single-valued spline in the 4 invariants (e1,e2,e3m,e3p) with
+      Z_2 acting as (e1,e2,e3m,e3p)->(-e1,e2,e3p,e3m).
+    evidence: >
+      bots/student-1/code/jumps_smoothness.py (fixed clean crossings: (1=1) base
+      (w2,w3,w4,w5)=(3,5/2,*,53/10) vary w4 across 3 -> jump order 1; (1=2) base
+      (6,-87/10,*,3) vary w4 across w4^2=27 -> jump order 3, exact rational). The
+      unclean (multi-wall, sign-diff=2) crossing falsely showed order 1 -- single-wall
+      (sign-diff=1) crossings are essential. Derivation: n6_minimal_denominator_and_jumps.md sec 4.
+
+  - id: s1_014
+    status: verified
+    by: student-1
+    round: 5
+    statement: >
+      CORRECTS THE ROUND-5 TASK PREMISE: the numerator N_6 is a GENUINE BOX SPLINE, NOT a
+      simple single-wall truncated-power sum. The ansatz
+      N = B + sum_{(1=1)} (k_ij)_+^1 P_ij + sum_{(1=2)} (k_ijk)_+^3 Q_ijk (PI round-5 task)
+      FAILS: even after subtracting the exact (1=2) correction (Q known, s1_015), the
+      remainder M = N - sum (k_ijk)_+^3 Q_ijk is NOT a simple (1=1) spline B + sum |k_ij| P_ij.
+      Exact modular fit with the COMPLETE basis (12 G-symmetric odd deg-11 invariant base
+      classes + 125 manifold-independent deg-9 H-invariant (1=1) templates, S_3xS_3 orbit-summed
+      over the 9 walls = 137 columns): on 187 exact on-shell points the columns have FULL rank
+      137 but the system is INCONSISTENT (held-out fails). The (1=1) jump coefficient is
+      therefore CHAMBER-DEPENDENT: cross-terms (products of intersecting-wall truncated powers)
+      are present. So a closed form must be a box spline (cross-terms), not the simple sum.
+    evidence: >
+      bots/student-1/code/r5_Mfit.py (real M: full rank 137, INCONSISTENT). CONTROL
+      bots/student-1/code/r5_control.py: a synthetic SIMPLE (1=1) spline fed through the SAME
+      fitter returns CONSISTENT (rank 137) -> machinery sound, so the real-M inconsistency is
+      genuine. Wall set complete (same-type orderings re-confirmed analytic, _sametype.py).
+      Base complete (G-sym odd deg-11 = polynomial in 4 invariants = 12 classes). Explicit
+      nonzero mixed 2nd difference at a (1=1)x(1=1) intersection: bots/student-1/code/r5_crossterm.py.
+      Derivation: derivations/n6_round5_boxspline_and_Q.md sec 2.
+
+  - id: s1_015
+    status: verified
+    by: student-1
+    round: 5
+    statement: >
+      EXPLICIT (1=2) JUMP COEFFICIENT Q (the cubic-kink coefficient across the (1=2) wall
+      a_i = b_j + b_k, i.e. omega_i^2 = omega_j^2 + omega_k^2). For minus leg i, plus pair
+      {j,k}, excluded plus l, other two minus {p,q}, with A1=omega_p+omega_q, A2=omega_p*omega_q,
+      B1=omega_j+omega_k, B2=omega_j*omega_k, y=omega_l (a representative modulo the on-shell
+      ideal; omega_i absent in this gauge):
+      $Q = A_2 B_1 (y^2 - A_1^2 - A_1 B_1 + A_2 - B_2) + B_2 y (A_2 - B_1 y - B_2)$
+      $= -A_1^2 A_2 B_1 - A_1 A_2 B_1^2 + A_2^2 B_1 - A_2 B_1 B_2 + A_2 B_1 y^2 + A_2 B_2 y
+      - B_1 B_2 y^2 - B_2^2 y.$
+      Degree 5, odd under omega->-omega. The (1=2) jump of N is N_+ - N_- = (k_ijk)^3 Q_ijk
+      with k_ijk = a_i - b_j - b_k. This is a CHAMBER-INDEPENDENT (clean) truncated power: the
+      (1=2) sector of the simple form IS valid (only the (1=1) sector fails, s1_014).
+    evidence: >
+      bots/student-1/code/r5_getQ.py: extracted by exact reconstruction of single-(1=2)-wall
+      jumps on many F-const slices relabelled to the reference wall; deg-5 H'-symmetric fit
+      rank 34, fully consistent + held-out, 0/55 exact mismatches. GLOBAL check
+      bots/student-1/code/{r5_corr.py,r5_verify.py}: M = N - sum_{(1=2)}(k_ijk)_+^3 Q_ijk is
+      exactly (1=2)-SMOOTH (jump=0) at 10/10 (1=2) walls across >=4 chamber types.
+      Independent evaluator bots/student-1/code/pybg.py (faithful Python BG port == ./bg at
+      n=5,6,7) cross-checks N. Derivation: derivations/n6_round5_boxspline_and_Q.md sec 3.
+
+  - id: s1_016
+    status: verified
+    by: student-1
+    round: 5
+    statement: >
+      The box-spline CROSS-TERMS (s1_014) are carried by the perfect-MATCHING geometry on the
+      DIFFERENCE branch. On the resonant manifold, two difference-branch (1=1) walls force a
+      third: a_2=b_4 and a_3=b_5 imply a_1=b_6 (since sum sigma omega^2 = 0 makes
+      omega_1^2 = omega_6^2 once omega_2^2=omega_4^2, omega_3^2=omega_5^2). Hence the (1=1)
+      walls omega_i=omega_{sigma(i)} (sigma: minus->plus a bijection) intersect simultaneously
+      in matchings, exactly mirroring (on the difference branch omega_i-omega_j) the SUM-branch
+      perfect-matching pole locus {e3m+e3p=0} (s1_011) and student-2's entangled matchings
+      (s2_011/s2_013). The natural box-spline cross-term basis is therefore matching-indexed
+      products prod_i (k_{i sigma(i)})_+ with truncated-power numerators, not arbitrary wall
+      pairs.
+    evidence: >
+      bots/student-1/code/r5_crossterm.py: mixed 2nd difference D(eps)=N(++)-N(+-)-N(-+)+N(--)
+      around {a_2=b_4} x {a_3=b_5} is nonzero and ~eps (more singular than the smooth eps^2),
+      the third wall {a_1=b_6} forced by on-shell conservation at the center. Algebraic
+      derivation in derivations/n6_round5_boxspline_and_Q.md sec 2.
+
+  - id: s1_017
+    status: verified
+    by: student-1
+    round: 6
+    statement: >
+      THE (1=1) CROSS-TERM IS A MATCHING-PAIR PRODUCT, EXPONENT (1,1), AND NO TRIPLE IS
+      NEEDED (resolves the round-5/6 open frontier). The (1=1) single-wall jump coefficient
+      P_ij (across {a_i=b_j}, jump N_+ - N_- = (b_j-a_i) P_ij) is itself a SPLINE on the wall:
+      it KINKS across each matching-partner wall {a_k=b_l} (i!=k, j!=l) with jump
+      P_R - P_L = (b_l-a_k) * R, i.e. EXPONENT 1 in the sub-wall function (b_l-a_k=omega_l^2-omega_k^2).
+      Hence N_6 carries a 2-wall product cross-term (b_j-a_i)_+ (b_l-a_k)_+ R (exponent 1 on
+      EACH factor; R deg 7). The disjoint mixed-edge pair {i->j, k->l} forces the third edge
+      on-shell (a perfect matching), so the cross-terms are matching-indexed (confirms s1_016).
+      MATCHING-TRIPLE products (b_j-a_i)_+(b_l-a_k)_+(b_n-a_m)_+ are NOT needed: they lie in
+      the span of base+single+pair (verified, +0 rank). So the (1=1) box spline is SECOND
+      ORDER (pairwise cross-terms close it).
+    evidence: >
+      DIRECT MEASUREMENT bots/student-1/code/r6_xt4.py: extracting P_24(w5) on each side of
+      the matching sub-wall {a_3=b_5} (w5 across w3) by exact per-side rational reconstruction
+      gives P_R - P_L = 270 S(S-5)(S+5)(11S+73)(S^2+11S+48)/(S+11)^2, S=w5; the factor
+      (S-5)(S+5)=omega_5^2-omega_3^2=k_35 appears to FIRST power (no further (S-/+5)). GLOBAL
+      bots/student-1/code/r6_fit.py (340 pts, exact modular, EXACT relu): M=N_6-corr12 is
+      CONSISTENT as base(12)+single-(1=1)(rank +55)+pair-(1=1)(rank +33)=rank 100 with a
+      240-pt margin; adding triple-(1=1) columns gives +0. Derivation:
+      derivations/n6_round6_crossterms_and_closedform.md sec 1-2.
+
+  - id: s1_018
+    status: verified
+    by: student-1
+    round: 6
+    statement: >
+      FULL CLOSED FORM FOR n=6 THREE-MINUS (assembled, verified exactly). With a_i=omega_i^2
+      (minus i in {1,2,3}), b_j=omega_j^2 (plus j in {4,5,6}), (x)_+=max(x,0):
+      A_6 = i 2^5 g^{-3} N_6/(e3m+e3p),  e3m=w1w2w3, e3p=w4w5w6, and
+      N_6 = B + sum_{i,j} (b_j-a_i)_+ P_ij
+              + sum_{i!=k, j!=l} (b_j-a_i)_+(b_l-a_k)_+ R_{ij,kl}
+              + sum_{i,{j,k}} (a_i-b_j-b_k)_+^3 Q_ijk,
+      a degree-11, S_3(minus)xS_3(plus)xZ_2(swap)-symmetric, omega->-omega-ODD, CONTINUOUS
+      truncated-power (box) SPLINE. B (deg 11, symmetric base in invariants e1,e2,e3m,e3p),
+      P_ij (deg 9), R (deg 7), Q (deg 5, = PI-verified s1_015) are the S_3xS_3xZ_2-orbit
+      images of explicit reference polynomials B, P0, R0, Q with EXACT rational coefficients
+      (100 in total, modular-fit + rational-reconstructed). Notable: B = (e3m+e3p)*Btilde/5
+      (the base carries NO residue at the pole; the pole/residue lives in the truncated-power
+      terms), and R0 = omega_6^2 * (...)/10 (leftover-plus-leg-squared factor).
+    evidence: >
+      EXACT verification bots/student-1/code/r6_verify.py vs my own ./bg AND the independent
+      pybg: 16/16 generic points across 8 DISTINCT chamber types (residual 0); two-sided
+      limits onto a (1=1) wall, a (1=2) wall, and a matching corner all match ./bg EXACTLY at
+      eps=1e-1,1e-2,1e-3 (continuous, finite -> kinks not poles). Self-contained evaluator
+      bots/student-1/code/r6_closedform.py (8/8 exact). Coefficients: r6_coeffs.pkl; explicit
+      polynomials r6_polys.txt (via r6_coeffpoly.py). Derivation:
+      derivations/n6_round6_crossterms_and_closedform.md.
+
+  - id: s1_019
+    status: tentative
+    by: student-1
+    round: 6
+    statement: >
+      ALL-n STRUCTURE (partial; n=7 probe). A_n^{3-} = i 2^{n-1} g^{3-n} N_n/D_n^min with N_n a
+      truncated-power (box) spline: base + sum over (1=m) walls (a_i = sum of m plus-squares)
+      of (k)_+^{e_m} (coeff) + matching/cross-term products. At n=6: walls (1=1)[exp 1] and
+      (1=2)[exp 3], cross-terms = matching PAIRS only (exp 1,1, no triple), D_6^min=(e3m+e3p).
+      n=7 (|P|=4) FINDINGS (EXACT, A_7*D12 reconstructed as polynomial each side of a clean
+      single-wall crossing): (i) the (1=1) jump exponent is STILL 1; (ii) the subset-sum wall
+      b4=a2+a3 (the n=7 analog of the n=6 "(1=2)" wall, "2 minus = 1 plus") has exponent
+      4 = n-3 -- confirming student-2's framing that subset-sum walls carry exponent n-3
+      (n=6: n-3=3; n=7: n-3=4) while the (1=1) walls carry the ANOMALOUS exponent 1; (iii) a
+      KEY structural difference: two DISJOINT (1=1) edges {a2=b4},{a3=b5} no longer force a
+      third (1=1) edge but a (1=2) relation a1=b6+b7 (a1=Q-a2-a3=(b4+b5+b6+b7)-b4-b5=b6+b7). So
+      at n>=7 "matchings" are INJECTIONS minus->plus and (1=1) pairs couple to subset-sum walls
+      -- the n=6 bijective-matching PAIR structure (exp 1,1, no triple) is special to equal
+      triples; higher/mixed cross-terms are expected at n>=7. Coordinate with student-2's
+      top-down all-n (soft recursion s2_012); minimal n!=6 denominator open (s2_017).
+    evidence: >
+      n=6 fully established (s1_017/s1_018). n=7 EXACT: bots/student-1/code/r6_n7probe.py --
+      A_7*D12 (D12=prod_{i in M,j in P}(wi+wj)) fit as polynomial on each side of a clean
+      crossing; jump order at the wall = 1 for (1=1) {a2=b4}, = 4 for the subset-sum wall
+      b4=a2+a3; algebraic proof that disjoint (1=1) edges force a (1=2). (r6_n7float.py float
+      cross-check; float unreliable for C^>=1 kinks so the EXACT probe is authoritative.)
+      Higher-n cross-term structure: OPEN, deferred to student-2's all-n task.
+
+  - id: s1_020
+    status: verified
+    by: student-1
+    round: 7
+    statement: >
+      n=7 three-minus WALL MAP and a PARITY CORRECTION. (a) Mixed subset-sum walls
+      k_S = sum_{i in S} sigma_i omega_i^2 = 0 reduce (mod the complement identity
+      k_S = -k_{S^c} on the manifold) to THREE orbit types under S_3(minus) x S_4(plus):
+      (1=1) a_i=b_j [12 walls]; (1=2) a_i=b_j+b_k [18]; (1=3) a_i=b_j+b_k+b_l [12];
+      total 42 distinct loci (a=w^2 minus, b=w^2 plus). The (2=q) forms a_p+a_q=(plus sum)
+      are the SAME loci by complement (e.g. a_p+a_q=b_j <=> a_r = sum of the other 3 plus,
+      a (1=3)); same-type orderings are analytic, as at n=6.
+      (b) PARITY CORRECTION to the round-4..7 framing "N_n is omega->-omega ODD": that holds
+      ONLY at n=6, where the minimal denominator e3m+e3p (degree 3) is ODD so
+      N_6 = A_6*(e3m+e3p) = even*odd = odd. At n=7 the minimal denominator is the FULL
+      12-factor product D_7 = prod_{i in M,j in P}(w_i+w_j), which is EVEN ((-1)^12=+1 under
+      omega->-omega); hence N_7 = A_7*D_7 is EVEN. So every truncated-power coefficient and the
+      smooth base have EVEN total degree at n=7 (n=6 had odd ones). In particular the
+      parity-based exclusion of a polynomial-in-squares object (s2_015) does NOT apply at n=7.
+    evidence: >
+      bots/student-1/code/n7lib.py (wall enumeration -> 42 = 12+18+12), n7_walls.py (#walls).
+      Parity: direct exact check A_7(-omega)=A_7(omega) and N_7(-omega)=N_7(omega) vs my own
+      ./bg at 2 points (n7lib.py __main__ + parity probe). Denominator D_7 (full product,
+      pole order 1) is s2_018/PI-corroborated.
+
+  - id: s1_021
+    status: verified
+    by: student-1
+    round: 7
+    statement: >
+      n=7 single-wall LOCAL jump exponents (EXACT, on clean single-wall crossings; reconstruct
+      N_7(t) as a polynomial each side of the wall, order of vanishing of N_R-N_L at the wall).
+      n=6 CONTROL passes: (1=1)->1, (1=2)->3. n=7: (1=1) a_i=b_j -> 1; (1=2) a_i=b_j+b_k -> 2;
+      (1=3) a_i=b_j+b_k+b_l -> 4. CORRECTION to s1_019/s2_015 ("subset-sum walls carry exponent
+      n-3"): this is only PARTLY right -- (1=3)->4=n-3 but (1=2)->2 != n-3 at n=7. The measured
+      value is the LOCAL jump order = the MINIMUM over the single-wall truncated power AND any
+      cross-term active in that chamber, so it can fall below the pure single-wall exponent.
+    evidence: >
+      bots/student-1/code/n7_exponents.py (n=6 control + n=7), n7_exp_clean.py: (1=1)->1 (2
+      base pts); (1=2)->2 (3 distinct chambers); (1=3)->4 (2 base pts, sd=1). All EXACT rational
+      via my own ./bg --batch; clean single-wall crossings checked against the 42-wall
+      signature (n7lib.signature). n=6 control (1=1)->1, (1=2)->3 reproduces s1_013.
+
+  - id: s1_022
+    status: tentative
+    by: student-1
+    round: 7
+    statement: >
+      n=7 CROSS-TERM structure: the (1=2) observed local order 2 is the (1=1)x(1=1) MATCHING
+      cross-term (1+1), NOT a low pure (1=2) exponent. The n=6 matching cross-term
+      (b_j-a_i)_+(b_l-a_k)_+ (disjoint mixed edges, exponent (1,1)) survives at n=7, but by
+      s1_019 two disjoint (1=1) edges now force a SUBSET-SUM relation, not a third (1=1) edge:
+      the (1=2) wall {a2=b4+b5} is exactly the locus forced by either disjoint pair
+      {a1=b6, a3=b7} or {a1=b7, a3=b6} (since a1+a3=b6+b7 <=> a2=b4+b5). So the matching cross
+      term sits ON the (1=2) wall and contributes a jump of order 1+1=2 there -- explaining why
+      (1=2)->2 (cross-affected) while the n=6 (1=2)->3 is clean (no (1=1)^2 cross-term forces a
+      (1=2) at n=6, where the matching forces a (1=1)). PURE-EXPONENT CONJECTURE: (1=1)->1 and
+      every subset-sum wall (1=q, q>=2) -> n-3; observed orders are lowered by the matching
+      cross-terms whose forced locus is a subset-sum wall (consistent with (1=3)->4=n-3, no such
+      cross-term active). Hence N_7 = B + sum_{(1=1)}(b-a)_+ P + sum_{disjoint (1=1) pairs}
+      (b-a)_+(b-a)_+ R + sum_{(1=2)}(...)_+^4 Q + sum_{(1=3)}(...)_+^4 S + (higher cross-terms),
+      with the matching sum now over INJECTIONS (not just the n=6 bijections); whether triples
+      of disjoint (1=1) edges are needed (3 exist at n=7) is the next structural question.
+    evidence: >
+      Forcing geometry s1_019 (EXACT, established round 6) + n=6 matching cross-term s1_017
+      (PI-verified) + arithmetic 1+1=2 + (1=3)->4=n-3 (s1_021) + the correlation that ALL 5
+      measured (1=2)->2 chambers (n7_exponents.py, n7_exp_clean.py, n7_xterm_test.py) have the
+      relevant leftover-plus (1=1) walls active. DIRECT forcing-edge isolation (measure (1=2)
+      jump with both forcing pairs INACTIVE, expecting order > 2): bots/student-1/code/
+      n7_forcing.py -- such thick chambers are constrained (a1+a3=b6+b7 forced on the wall) and
+      the isolation test is not yet closed; this is why the claim is tentative.
+  - id: s1_023
+    status: verified
+    by: student-1
+    round: 8
+    supersedes: s1_022
+    statement: >
+      CORRECTION of s1_022. The n=7 single-wall jump exponents (1=1)->1, (1=2)->2, (1=3)->4
+      are the PURE truncated-power exponents (NOT cross-term artifacts), and each carries a
+      CLEAN chamber-independent coefficient: on a clean single-wall (sd=1) crossing the jump
+      J=N_R-N_L vanishes to exactly that order AND J/(wall_fn)^e is an EXACT polynomial.
+      s1_022's claim "pure (1=2) exponent = n-3=4, observed 2 = (1=1)^2 cross-term artifact"
+      is WRONG. MECHANISM (the fix): on the (1=2) wall a_2=b_4+b_5 the forcing (1=1)^2 cross
+      term (b_6-a_1)_+(b_7-a_3)_+ has X+Y=v where X=b_6-a_1, Y=b_7-a_3, v=a_2-b_4-b_5 is the
+      wall coordinate (manifold sum rule a_1+a_2+a_3=b_4+..+b_7). On the wall v=0 => X=-Y; at a
+      GENERIC wall point X_0!=0 so one factor is sign-pinned negative => (X)_+(Y)_+ == 0 in a
+      neighbourhood => the cross-term contributes NOTHING to the jump (it only activates at the
+      codim-2 corner a_1=b_6,a_3=b_7). So the observed order is the genuine pure exponent. The
+      n=6 (1=2)->3 is clean because its complement (2=1) has no disjoint (1=1) pair.
+    evidence: >
+      bots/student-1/code/r8_xterm_diag.py (EXACT ./bg): (A) at 4 generic (1=2) crossings BOTH
+      forcing matchings give X,Y of OPPOSITE sign throughout, product=0; (B) jump order=2 and
+      J/v^2 exact-divides at chambers #1,#2. bots/student-1/code/r8_e13.py (EXACT ./bg):
+      (1=3)->4 with J/v^4 exact-divides (S(0)=-1538066383986132/125 at one wall pt); (1=1)->1
+      J/v^1 divides; (1=2)->2 J/v^2 divides; n=6 controls (1=1)->1,(1=2)->3 pass.
+  - id: s1_024
+    status: verified
+    by: student-1
+    round: 8
+    statement: >
+      Cross-term closing order at n=7 (deliverable 2). (a) The pure (1=1) box spline closes at
+      PAIRWISE products -- NO triples: three disjoint (1=1) edges {a1=b4,a2=b5,a3=b6} sum to
+      a1+a2+a3=b4+b5+b6 but the manifold sum rule sum_M a = sum_P b = b4+b5+b6+b7 forces b7=0
+      (an EXCLUDED-plus-leg-vanishes DEGENERATE locus, not a thick codim-3 corner), so a triple
+      cross-term has no support; same conclusion as n=6 (where the triple is the e3m+e3p=0 pole).
+      (b) (1=1)x(1=2) MIXED products are a GENUINELY NEW n>=7 possibility: a disjoint
+      {a1=b4} cap {a2=b5+b6} corner forces a3=b7 automatically (codim 2, b7 free => NON-
+      degenerate). At n=6 the analog forces a3=0 (degenerate) -- which is exactly why n=6 needed
+      only (1=1) pairs + clean (1=2). Whether the (1=1)x(1=2) term actually appears in N_7 is the
+      one remaining structural unknown (settled only by the full deg-22 modular fit).
+    evidence: >
+      Manifold sum rule sum_M w^2 = sum_P w^2 verified exactly (bots/student-1/code, sum-rule
+      check); the degeneracy implications are algebraic consequences. n=6 closure-at-pairs is the
+      PI-verified s1_017/s1_018 (no triple needed there either).
+  - id: s1_025
+    status: partial
+    by: student-1
+    round: 8
+    statement: >
+      The (1=3) coefficient S of N_7 (exponent 4 = n-3) is CLEAN (chamber-independent): the
+      single-(1=3)-wall jump equals (a_i-b_j-b_k-b_l)_+^4 * S with S a polynomial in the
+      remaining legs (deg 14, even), the direct n=7 analog of the n=6 (1=2) coefficient Q.
+      Existence + cleanliness is proven (J/v^4 exact-divides on clean crossings, value
+      S(0)=-1538066383986132/125 at one wall point). The full multivariate polynomial S
+      (stabilizer S_2(minus)xS_3(plus)-symmetric, ~135 templates) is extractable via the jump
+      method with bgmod (method in bots/student-1/code/r8_coeff13.py) but not yet fully
+      reconstructed this session.
+    evidence: >
+      bots/student-1/code/r8_e13.py (EXACT ./bg): J/v^4 exact-divides at the (1=3) wall, clean
+      S(0). Extraction pipeline r8_coeff13.py (uses bgmod) set up; full coefficient fit deferred.
+  - id: s1_026
+    status: verified
+    by: student-1
+    round: 8
+    statement: >
+      INFRASTRUCTURE: bgmod.cpp, a fast finite-field (F_p, p=2^61-1) port of the BG amplitude
+      recursion, validated == ./bg (reduced mod p) at n=5,6,7 over many chamber points. It makes
+      the heavy deg-22 modular fits tractable (the modular fit + rational reconstruction is the
+      team's established method). Two non-obvious requirements solved: (i) abs() in the BG
+      recursion is taken ONLY of momenta (integer combos of the external k_i, built via +/- never
+      products), so each field element carries its exact integer coefficient vector over K[1..N]
+      and abs reads the sign EXACTLY -- a long-double sign approximation is NOT safe (internal
+      recursion momenta can be tiny via cancellation, ~10% wrong evals); (ii) the EKernel/FKernel
+      memo key must be the exact residue tuple, NOT a 64-bit hash (hash collisions corrupted ~10%
+      of evals). modbg.py is the (slow) pure-Python cross-check. NB: the Python ports are NOT
+      faster than ./bg (the n=7 recursion combinatorics, not the arithmetic, dominate); only the
+      compiled F_p oracle is.
+    evidence: >
+      bots/student-1/code/bgmod.cpp (built -lgmpxx -lgmp), modbg.py; validated against ./bg
+      --batch reduced mod p at n=5,6,7 across many random chamber points (clean run, no
+      contention).

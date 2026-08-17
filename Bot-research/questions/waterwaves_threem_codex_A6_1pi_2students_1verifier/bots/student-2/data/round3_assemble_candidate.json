@@ -1,0 +1,565 @@
+{
+  "R0_comparisons": [
+    {
+      "coefficient_witness": null,
+      "context": "a",
+      "difference_terms": 1,
+      "equals_context_a_left": true,
+      "side": "left"
+    },
+    {
+      "coefficient_witness": {
+        "coefficient": "32",
+        "monomial": [
+          7,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "context": "a",
+      "difference_terms": 273,
+      "equals_context_a_left": false,
+      "side": "right"
+    },
+    {
+      "coefficient_witness": {
+        "coefficient": "32",
+        "monomial": [
+          8,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "context": "b",
+      "difference_terms": 273,
+      "equals_context_a_left": false,
+      "side": "left"
+    },
+    {
+      "coefficient_witness": {
+        "coefficient": "32",
+        "monomial": [
+          7,
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      "context": "b",
+      "difference_terms": 270,
+      "equals_context_a_left": false,
+      "side": "right"
+    },
+    {
+      "coefficient_witness": {
+        "coefficient": "-32",
+        "monomial": [
+          8,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "context": "c",
+      "difference_terms": 265,
+      "equals_context_a_left": false,
+      "side": "left"
+    },
+    {
+      "coefficient_witness": {
+        "coefficient": "-32",
+        "monomial": [
+          8,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "context": "c",
+      "difference_terms": 188,
+      "equals_context_a_left": false,
+      "side": "right"
+    },
+    {
+      "coefficient_witness": {
+        "coefficient": "-32",
+        "monomial": [
+          8,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "context": "d",
+      "difference_terms": 271,
+      "equals_context_a_left": false,
+      "side": "left"
+    },
+    {
+      "coefficient_witness": {
+        "coefficient": "-32",
+        "monomial": [
+          8,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "context": "d",
+      "difference_terms": 271,
+      "equals_context_a_left": false,
+      "side": "right"
+    }
+  ],
+  "candidate": "R0_cell=R_cell-sum_{q_mp>0} q_mp H_mp(beta), using the compact intrinsic minus-beta/plus-beta pieces",
+  "cells": [
+    {
+      "R0_candidate_terms": 264,
+      "R_terms": 120,
+      "context": "a",
+      "integrated_terms": 265,
+      "sample_omega": [
+        "-10508473/2258",
+        "2937",
+        "1221",
+        "3041",
+        "1833",
+        "-9885783/2258"
+      ],
+      "selectors": [
+        {
+          "beta_leg": 3,
+          "beta_type": "minus",
+          "pair": [
+            2,
+            4
+          ]
+        },
+        {
+          "beta_leg": 3,
+          "beta_type": "minus",
+          "pair": [
+            2,
+            6
+          ]
+        },
+        {
+          "beta_leg": 5,
+          "beta_type": "plus",
+          "pair": [
+            3,
+            4
+          ]
+        },
+        {
+          "beta_leg": 2,
+          "beta_type": "minus",
+          "pair": [
+            3,
+            5
+          ]
+        },
+        {
+          "beta_leg": 5,
+          "beta_type": "plus",
+          "pair": [
+            3,
+            6
+          ]
+        }
+      ],
+      "side": "left"
+    },
+    {
+      "R0_candidate_terms": 263,
+      "R_terms": 122,
+      "context": "a",
+      "integrated_terms": 264,
+      "sample_omega": [
+        "-3676819/1016",
+        "2391",
+        "955",
+        "2348",
+        "1418",
+        "-3548973/1016"
+      ],
+      "selectors": [
+        {
+          "beta_leg": 3,
+          "beta_type": "minus",
+          "pair": [
+            2,
+            6
+          ]
+        },
+        {
+          "beta_leg": 5,
+          "beta_type": "plus",
+          "pair": [
+            3,
+            4
+          ]
+        },
+        {
+          "beta_leg": 4,
+          "beta_type": "plus",
+          "pair": [
+            3,
+            5
+          ]
+        },
+        {
+          "beta_leg": 5,
+          "beta_type": "plus",
+          "pair": [
+            3,
+            6
+          ]
+        }
+      ],
+      "side": "right"
+    },
+    {
+      "R0_candidate_terms": 219,
+      "R_terms": 198,
+      "context": "b",
+      "integrated_terms": 134,
+      "sample_omega": [
+        "-1741438/907",
+        "859",
+        "744",
+        "941",
+        "1084",
+        "-1549158/907"
+      ],
+      "selectors": [
+        {
+          "beta_leg": 3,
+          "beta_type": "minus",
+          "pair": [
+            2,
+            4
+          ]
+        },
+        {
+          "beta_leg": 3,
+          "beta_type": "minus",
+          "pair": [
+            2,
+            5
+          ]
+        },
+        {
+          "beta_leg": 3,
+          "beta_type": "minus",
+          "pair": [
+            2,
+            6
+          ]
+        },
+        {
+          "beta_leg": 2,
+          "beta_type": "minus",
+          "pair": [
+            3,
+            4
+          ]
+        },
+        {
+          "beta_leg": 2,
+          "beta_type": "minus",
+          "pair": [
+            3,
+            5
+          ]
+        },
+        {
+          "beta_leg": 2,
+          "beta_type": "minus",
+          "pair": [
+            3,
+            6
+          ]
+        }
+      ],
+      "side": "left"
+    },
+    {
+      "R0_candidate_terms": 226,
+      "R_terms": 205,
+      "context": "b",
+      "integrated_terms": 144,
+      "sample_omega": [
+        "-372653/298",
+        "610",
+        "468",
+        "560",
+        "746",
+        "-337779/298"
+      ],
+      "selectors": [
+        {
+          "beta_leg": 3,
+          "beta_type": "minus",
+          "pair": [
+            2,
+            5
+          ]
+        },
+        {
+          "beta_leg": 3,
+          "beta_type": "minus",
+          "pair": [
+            2,
+            6
+          ]
+        },
+        {
+          "beta_leg": 2,
+          "beta_type": "minus",
+          "pair": [
+            3,
+            4
+          ]
+        },
+        {
+          "beta_leg": 4,
+          "beta_type": "plus",
+          "pair": [
+            3,
+            5
+          ]
+        },
+        {
+          "beta_leg": 4,
+          "beta_type": "plus",
+          "pair": [
+            3,
+            6
+          ]
+        }
+      ],
+      "side": "right"
+    },
+    {
+      "R0_candidate_terms": 250,
+      "R_terms": 230,
+      "context": "c",
+      "integrated_terms": 264,
+      "sample_omega": [
+        "31241482/5581",
+        "-5443",
+        "1464",
+        "-5373",
+        "-1810",
+        "31053640/5581"
+      ],
+      "selectors": [
+        {
+          "beta_leg": 3,
+          "beta_type": "minus",
+          "pair": [
+            2,
+            6
+          ]
+        },
+        {
+          "beta_leg": 5,
+          "beta_type": "plus",
+          "pair": [
+            3,
+            4
+          ]
+        },
+        {
+          "beta_leg": 4,
+          "beta_type": "plus",
+          "pair": [
+            3,
+            5
+          ]
+        },
+        {
+          "beta_leg": 5,
+          "beta_type": "plus",
+          "pair": [
+            3,
+            6
+          ]
+        }
+      ],
+      "side": "left"
+    },
+    {
+      "R0_candidate_terms": 268,
+      "R_terms": 228,
+      "context": "c",
+      "integrated_terms": 265,
+      "sample_omega": [
+        "37528517/4964",
+        "-7154",
+        "1892",
+        "-7243",
+        "-2387",
+        "36395371/4964"
+      ],
+      "selectors": [
+        {
+          "beta_leg": 3,
+          "beta_type": "minus",
+          "pair": [
+            2,
+            4
+          ]
+        },
+        {
+          "beta_leg": 3,
+          "beta_type": "minus",
+          "pair": [
+            2,
+            6
+          ]
+        },
+        {
+          "beta_leg": 5,
+          "beta_type": "plus",
+          "pair": [
+            3,
+            4
+          ]
+        },
+        {
+          "beta_leg": 2,
+          "beta_type": "minus",
+          "pair": [
+            3,
+            5
+          ]
+        },
+        {
+          "beta_leg": 5,
+          "beta_type": "plus",
+          "pair": [
+            3,
+            6
+          ]
+        }
+      ],
+      "side": "right"
+    },
+    {
+      "R0_candidate_terms": 271,
+      "R_terms": 216,
+      "context": "d",
+      "integrated_terms": 270,
+      "sample_omega": [
+        "-9576558/1837",
+        "1173",
+        "-4789",
+        "1206",
+        "573",
+        "12951127/1837"
+      ],
+      "selectors": [
+        {
+          "beta_leg": 5,
+          "beta_type": "plus",
+          "pair": [
+            1,
+            6
+          ]
+        },
+        {
+          "beta_leg": 5,
+          "beta_type": "plus",
+          "pair": [
+            2,
+            4
+          ]
+        },
+        {
+          "beta_leg": 5,
+          "beta_type": "plus",
+          "pair": [
+            2,
+            6
+          ]
+        },
+        {
+          "beta_leg": 5,
+          "beta_type": "plus",
+          "pair": [
+            3,
+            6
+          ]
+        }
+      ],
+      "side": "left"
+    },
+    {
+      "R0_candidate_terms": 271,
+      "R_terms": 223,
+      "context": "d",
+      "integrated_terms": 268,
+      "sample_omega": [
+        "-9730527/1882",
+        "1208",
+        "-4818",
+        "1161",
+        "567",
+        "13272451/1882"
+      ],
+      "selectors": [
+        {
+          "beta_leg": 5,
+          "beta_type": "plus",
+          "pair": [
+            1,
+            6
+          ]
+        },
+        {
+          "beta_leg": 5,
+          "beta_type": "plus",
+          "pair": [
+            2,
+            6
+          ]
+        },
+        {
+          "beta_leg": 5,
+          "beta_type": "plus",
+          "pair": [
+            3,
+            6
+          ]
+        }
+      ],
+      "side": "right"
+    }
+  ],
+  "counts": {
+    "R0_cell_total": 8,
+    "R0_equal_cells": 1,
+    "intrinsic_piece_check_total": 4,
+    "intrinsic_piece_exact_checks": 4
+  },
+  "interpretation": "The compact H pieces are exact, but their naive independent positive-part sum is not integrable to one R0. Coupled beta selector changes in other pair bricks occur on a primary wall, so M\u00f6bius/inclusion-exclusion assembly is still required.",
+  "piece_checks": {
+    "minus_beta_equals_context_a": true,
+    "minus_beta_equals_context_b": true,
+    "minus_beta_equals_context_c": true,
+    "minus_beta_terms": 29,
+    "plus_beta_equals_context_d": true,
+    "plus_beta_terms": 109
+  }
+}

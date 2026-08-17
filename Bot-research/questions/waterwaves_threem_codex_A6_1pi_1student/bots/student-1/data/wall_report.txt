@@ -1,0 +1,2 @@
+orbit=(1, 1) status=scan found=True samples=12 class=covered
+orbit=(1, 2) status=scan found=True samples=12 class=covered

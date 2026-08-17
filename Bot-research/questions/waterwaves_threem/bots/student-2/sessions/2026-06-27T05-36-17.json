@@ -1,0 +1,30 @@
+{
+  "bot": "student-2",
+  "timestamp": "2026-06-27T05:36:17Z",
+  "task_id": "r7-student-2",
+  "status": "partial",
+  "summary": "Top-down, all-n round. Did NOT reach the explicit all-n numerator N_n (the home run), but established and exactly-verified three results that sharpen the all-n picture and prune the search. (1) The soft recursion A_n^{3-} -> 2(n-3) omega_p^2 A_{n-1} is EXACT at n=7 for BOTH legs (F-constant slice, not numerical extrapolation): plus leg -> 8*A_6^{3-}=-239585664/17 i, minus leg -> 8*A_6^{2-}=-13369344/25 i. This ties the PI-verified explicit n=6 form to the n=7 soft boundary and gives the N_n recursion on every {omega_p=0}. (2) The n>=7 single-pair residue Res_{ij}=lim(omega_i+omega_j)A_n is characterized: at fixed surviving config it is a rational function of the merged scale whose ONLY poles are the 5 sub-collision loci (where a 2nd mixed pair vanishes); Res_{25}*(5 sub-collision factors) is a degree-7 polynomial (mod 2^61-1, cross-validated vs exact). This makes the matching/Cauchy structure precise and RECURSIVE, and RULES OUT a clean matching-injection partial fraction with polynomial numerators. (3) Proposed the explicit all-n truncated-power-spline ansatz with the unified exponent law and stated exactly what is pinned vs open.",
+  "work_done": [
+    "r7_soft.py: EXACT soft recursion at n=7, both legs, via F-constant slice (eps^2-coefficient extraction). plus: lim A_7/(i eps^2)=-239585664/17=8*A_6^{3-}/i; minus: -13369344/25=8*A_6^{2-}/i. Both EXACT. (claim s2_021)",
+    "par.py: parallel exact-oracle batch helper (64-core machine); used to make slice scans fast.",
+    "r7_residue.py / r7_resid_scale3.py / r7_resid_fast.py: exact single-pair residue extraction (F-const slices); merged scale isolated at fixed surviving config (the merged pair drops out of both conservation laws).",
+    "r7_resid_mod.py: modular (p=2^61-1) confirmation that P(omega_2)=Res_{25}*(omega_1-omega_2)(omega_3-omega_2)(omega_2+omega_4)(omega_2+omega_6)(omega_2+omega_7) is a degree-7 POLYNOMIAL -> residue poles are EXACTLY the sub-collisions (recursive matching). Cross-validated: red(exact Res w2=2) == mod-run value. (claim s2_022)",
+    "alln_denom.py re-run: re-confirmed minimal denominator mechanism (collapse iff n=6).",
+    "r7_walls_fast.py: attempted clean single-wall (1=3)/(2=2) exponent measurement; generic F-const slices cross multiple walls (multi-wall hazard) -> no clean sign-diff=1 crossing; deferred to student-1.",
+    "verify_r7.py: one-command bundled check (soft both legs + residue degree-7).",
+    "derivations/n7_softrec_residue_alln.md: full writeup. claims s2_021/022/023."
+  ],
+  "results": {
+    "soft_n7_plus": "lim A_7/(i eps^2) = -239585664/17 = 8 * A_6^{3-}/i (EXACT)",
+    "soft_n7_minus": "lim A_7/(i eps^2) = -13369344/25 = 8 * A_6^{2-}/i (EXACT)",
+    "residue_structure": "Res_{25}(omega_2)*(5 sub-collision factors) = degree-7 polynomial (mod p, cross-validated exact). Only poles = sub-collisions => recursive matching; clean polynomial-numerator matching-injection partial fraction ruled out.",
+    "all_n_ansatz": "A_n=i2^{n-1}g^{3-n} N_n/prod(omega_i+omega_j); N_n truncated-power spline, unified exponent law ((1=1)->1, else ->n-3); pinned: denom/degree/symmetry/parity/soft/pole-structure; OPEN: explicit cross-term coefficients for n>=7."
+  },
+  "verification": "All amplitudes from my own ./bg (exact GMP). Soft recursion EXACT (F-const slice). Residue degree-7 verdict mod 2^61-1 with held-out + cross-validated against exact residue values. verify_r7.py is the one-command re-run.",
+  "next_steps": [
+    "Combine s2_021 (soft boundary) + s2_022 (recursive residues) + student-1's bottom-up N_7 wall/exponent/cross-term table to assemble the explicit N_7, then lift to all n.",
+    "Pin the (1=3),(2=2) wall exponents with clean single-wall slices (student-1's targeted method) to confirm the unified exponent law.",
+    "Investigate whether the degree-7 residue numerator P(omega_2) relates to the 5pt two-minus amplitude of the survivors times a clean factor (a possible residue recursion), per chamber.",
+    "Use the recursive-matching residue structure (s2_022) as the spec for a matching/Cauchy ansatz with RATIONAL (not polynomial) per-injection numerators."
+  ]
+}

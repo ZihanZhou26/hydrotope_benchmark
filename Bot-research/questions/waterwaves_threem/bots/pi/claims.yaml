@@ -1,0 +1,30 @@
+claims:
+  - id: C-oracle
+    status: verified
+    by: pi
+    round: 1
+    statement: >
+      bg.cpp built in bots/pi/code reproduces all stated known facts (one-minus
+      A_n=0; finite rational three-minus values at n=5,6,7). Oracle divides by zero
+      on |k_S|=0 walls (SIGFPE exact / inf,nan in --double); approach as limits.
+    evidence: "bots/pi/code/bg; runs in session report 2026-06-26T18-15-35"
+  - id: C-n5
+    status: verified
+    by: pi
+    round: 1
+    statement: >
+      n=5 three-minus closed form (legs 1,2,3 minus; 4,5 plus):
+      A_5 = i*2^4*g^{-2}*w4*w5*sum_{S subset {1,2,3}} (-1)^|S| (beta^2 - sum_{j in S} w_j^2)_+^2,
+      beta = min(|w4|,|w5|). Equals the two-minus truncated-power law under the
+      plus/minus swap.
+    evidence: >
+      bots/pi/code/verify_n5.py — exact rational agreement at 11/11 non-degenerate
+      points incl. extreme non-generic (100,1,2),(1,1,100); SIGFPE only on |k_S|=0 walls.
+  - id: C-swap
+    status: verified
+    by: pi
+    round: 1
+    statement: >
+      Plus/minus swap maps three-minus to (n-3)-minus. Useful only at n=5
+      (-> known two-minus); n=6 -> three-minus (self-map), n=7 -> four-minus.
+    evidence: "question.md item 3; consistent with C-n5"

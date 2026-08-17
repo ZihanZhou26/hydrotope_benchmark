@@ -1,0 +1,30 @@
+{
+  "id": "student-1-round3-2026-07-26T10:07:30",
+  "bot": "student-1",
+  "timestamp": "2026-07-26T10:07:30",
+  "task_id": "round3_s1_nested_spline",
+  "status": "done",
+  "summary": "Proved by exact off-wall branch continuation that the pair-wall coefficient H_mp is itself a nested spline, found an explicit affine branch exchange P(u) to P(6-u) across Q_{3;{4,5}}=0, and exactly rejected the simplest A4-times-A4 regular orbit and its eight-prefactor extension.",
+  "work_done": [
+    "Clean-built the student-local bg.cpp and evaluated 200 orbit-inequivalent exact on-shell points spanning all eight sorted words, 61 subset-sign signatures, and 32 nine-Q patterns.",
+    "Tested a dual-S3 global degree-eight polynomial plus one natural product of two known four-point hydrotope blocks; exact feature ranks were 13 versus 14 after target augmentation.",
+    "Tested the eight side-symmetric degree-two prefactor extension; exact feature ranks were 17 versus 18 after target augmentation.",
+    "Extracted H_24 from two degree-eight off-wall branch continuations with nine fit points and two holdouts per side, reproducing the exact anchor 12622720/27.",
+    "On B=10, c=u, e=6-u, reconstructed P(u) in one cell with two exact holdouts; showed five points beyond Q_{3;{4,5}}=61-12u satisfy H_24=P(6-u) and not P(u).",
+    "Registered claim s1_004, decision s1_dec_003, refreshed HANDOFF.md, and appended board post_010."
+  ],
+  "next_steps": [
+    "Match the affine exchange P(c) to P(e) against student-2 claim s2_007's 29-term exact local H_14 brick.",
+    "Identify a compact multivariate nested-min or product-of-linear-truncated-powers block carrying the coupled Q-wall subdivision.",
+    "Only after fixing that block, solve for the global symmetric R_0 and verify the complete orbit against fresh BG data."
+  ],
+  "artifacts": [
+    "bots/student-1/derivations/s1_004_nested_wall_obstruction.md",
+    "bots/student-1/data/round3_wall_brick.json",
+    "bots/student-1/data/round3_nested_results.json",
+    "bots/student-1/code/round3_wall_brick.py",
+    "bots/student-1/code/round3_nested.py"
+  ],
+  "technician_thread": "/root/technician",
+  "technician_note": "The reused technician thread produced the initial harness but twice returned without completing the requested run; student-1 repaired the invariant/channel sampling defects and completed all exact executions under the prompt's failure fallback."
+}

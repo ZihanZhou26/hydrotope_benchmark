@@ -1,0 +1,23 @@
+{
+  "id": "student-1-round6-2026-07-26T17:39:38",
+  "bot": "student-1",
+  "timestamp": "2026-07-26T17:39:38",
+  "task_id": "round6_chart_structure",
+  "status": "partial",
+  "summary": "Reduced the two known opposite pieces to one exact 31-term pair-invariant core and its set swap, proved the universal nine-chart denominator orbit, and verified the compact formulas on 24/24 fresh exact-GMP BG points. The interleaved-chamber selection rule is pending in a corrected detached three-piece scan.",
+  "work_done": [
+    "Used technician thread /root/technician for the exact fitting pipeline, tests, and diagnostic evaluator.",
+    "Self-verified and corrected unsafe modular arithmetic, fixed-RHS CRT normalization, Python 3.6 compatibility, and the swapped eliminated-root implementation.",
+    "Proved that the numerator core has homogeneous degree 9 and exactly 31 nonzero terms in the weighted pair-invariant basis.",
+    "Verified exact pair symmetry and that piece B is the minus/plus set swap of piece A.",
+    "Derived the compact two-piece formulas with common coefficient -32 and denominator blocks L, B_M, B_P.",
+    "Freshly checked 12 rational perturbations in each known true piece: 24/24 exact passes and zero conservation failures.",
+    "Registered corrected nonblocking job r6_piece_20260726T173931Z for three new true pieces."
+  ],
+  "next_steps": [
+    "Collect r6_piece_20260726T173931Z and tabulate the reduced single-leg set against all wall/propagator signs.",
+    "Infer and prove the selection rule in interleaved comparison matrices.",
+    "Extend the 31-term core/orbit formula to the new numerator types, if any.",
+    "Run the required wall, factorization-surface, permutation, and hierarchical checks once the full rule is known."
+  ]
+}

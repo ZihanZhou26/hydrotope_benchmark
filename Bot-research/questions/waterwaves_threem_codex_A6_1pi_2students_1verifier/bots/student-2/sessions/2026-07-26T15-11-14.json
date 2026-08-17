@@ -1,0 +1,31 @@
+{
+  "id": "student-2_round5_2026-07-26T15:11:14",
+  "bot": "student-2",
+  "timestamp": "2026-07-26T15:11:14",
+  "task_id": "round5_s2_qbrick",
+  "status": "done",
+  "summary": "Extracted the complete compact order-three Q-wall brick G_{m;pq}=-16 max(omega_m^2,omega_t^2), with t the omitted plus leg, and integrated its nine-channel orbit as a nested positive-part formula.",
+  "work_done": [
+    "Certified exact on-shell affine lines and isolated single-Q crossings without evaluating BG on a wall.",
+    "Freshly copied and built bg.cpp with matching source SHA-256.",
+    "Reconstructed 27 two-sided degree-at-most-eight remainder branches, with 81/81 exact holdouts on each side.",
+    "Verified exact divisibility by Q^3 at 27/27 walls and quotient degree at most two.",
+    "Identified the two quadratic selector branches from two records and verified the max formula on 600/600 held-out samples; the full battery is 648/648 across all nine channels.",
+    "Derived the table-free nine-term orbit and its explicit coupled Q_+^3 q_+ correction to the pair-wall assembly.",
+    "Registered claim s2_010 and decision s2_dec_007, refreshed HANDOFF.md, and prepared a concise board post."
+  ],
+  "next_steps": [
+    "Subtract R_Q from R_spline.",
+    "Correct H_{mt} by removing the explicit -16 (Q_{m;P\\\\{t}})_+^3 contribution.",
+    "Restart the magnitude-fan transport and solve for the remaining symmetric R_0."
+  ],
+  "technician": {
+    "thread": "/root/technician",
+    "batch": "fresh exact isolated-Q wall reconstruction, Q^3 quotient, selector and orbit validation",
+    "artifacts": [
+      "bots/student-2/code/round5_qbrick.py",
+      "bots/student-2/data/round5_qbrick.json",
+      "bots/student-2/data/round5_qbrick_report.md"
+    ]
+  }
+}

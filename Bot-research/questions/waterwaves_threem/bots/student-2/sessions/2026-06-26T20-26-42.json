@@ -1,0 +1,30 @@
+{
+  "bot": "student-2",
+  "timestamp": "2026-06-26T20:26:42Z",
+  "round": 2,
+  "task_id": "r2-student-2",
+  "status": "partial — strong structural constraints + new soft theorem; explicit closed form still open",
+  "summary": "Top-down attack on the three-minus n>=6 closed form. New exact result: a UNIFORM SOFT THEOREM A_n^{3-} -> 2(n-3) omega_p^2 A_{n-1} as any leg omega_p -> 0 (surviving amp is three-minus for a soft plus leg, the KNOWN two-minus for a soft minus leg), factor 2(n-3)=6 verified exactly at n=6 by rational Richardson extrapolation. This re-derives the universal prefactor i 2^{n-1} g^{3-n} and exponent n-3 and shows every leg is a 'knot' (soft-omega^2), pointing to a d=3 box spline / multivariate truncated power (deg = N-d = n-3). Ruled out a large family of explicit closed forms exactly (even-in-omega^2, prod(omega)*linear, e2*poly, double-subset resonance splines for p=2,3,4 and |.|, same-type and mixed-type pair sums); the chamber polynomial has genuine mixed parity and is not a 1-D B-spline. Found on-shell identity e2(minus)=e2(plus). Literature: no published closed form for this sector.",
+  "work_done": [
+    "Rebuilt own oracle (code/bg from code/bg.cpp, g++ -O2 -std=c++17); reproduced n=5,6,7 three-minus and one-minus=0.",
+    "SOFT THEOREM (code/soft_limit.py, soft_exact.py, soft_minus.py, verify_r2.py): A_6 ~ omega_p^2 for soft plus AND soft minus legs; exact Richardson limit A_6/(i omega_p^2 A_5) = 6 = 2(n-3); soft minus leg lands on the known two-minus law. Mechanism = finite-difference of a degree-(n-3) truncated power with knot a_p=omega_p^2.",
+    "Verified e2(minus)=e2(plus) on-shell (degree-2, Z_2-symmetric; generalizes n=5 prefactor omega4 omega5) and homogeneity degree 2n-4=8 (verify_r2.py, 7/7 exact).",
+    "Built exact candidate tester (code/cand_test.py) and exact in-chamber polynomial fitters (chamber_fit2.py, extract_even.py); validated the fitter on n=5 (sanity_n5.py: known structure detected, HOLDS 20/20).",
+    "Ruled out (exact, non-constant ratio): even-in-omega^2, prod(omega)*linear, e2*poly(omega^2) (chamber_fit2.py/extract_even.py); double-subset resonance splines exp 2/3/4 and |.| with/without e2 (batch1.py); mixed-type pair sums with 5 thresholds (batch2.py). Confirmed chamber polynomial has mixed parity.",
+    "Exact on-shell line-slice machinery (code/line_slice.py, slice_interp.py): degree-8 confirmed on a chamber.",
+    "Literature pass (WebSearch): no published closed form for this water-wave sector; cited B-spline/box-spline theory (Curry-Schoenberg 1966; de Boor-Hollig-Riemenschneider 1993; De Concini-Procesi-Vergne 2010), Berends-Giele (1988), and gauge-theory single-minus parallels (arXiv 2602.12176, 2603.04330).",
+    "Wrote derivations/n6_topdown.md; appended claims s2_006 (soft theorem), s2_007 (ruled-out families), s2_008 (d=3 box-spline lead + e2 identity)."
+  ],
+  "results": {
+    "soft_theorem": "A_n^{3-} -> 2(n-3) omega_p^2 A_{n-1}; factor 6 at n=6 exact, both leg types",
+    "universal_prefactor": "i 2^{n-1} g^{3-n}, exponent n-3 (re-derived from soft theorem)",
+    "e2_identity": "e2(minus)=e2(plus)=((w1+w2+w3)^2 - Q)/2 on-shell, 7/7 exact",
+    "ruled_out": "even; prod(w)*linear; e2*poly; double-subset (p=2,3,4,abs,+/-e2); same-type & mixed-type pair sums",
+    "lead": "d=3 multivariate truncated power / box spline of moment-curve columns, deg=N-d=n-3, walls {k_S=0}"
+  },
+  "next_steps": [
+    "Fit student-1's exact per-chamber degree-8 polynomials to a d=3 truncated power T_M with moment-curve columns a_i=(1, sigma_i omega_i, sigma_i omega_i^2) at x=0; use the soft theorem (s2_006) and the n=5 / two-minus reductions as normalization/boundary constraints.",
+    "Test the resulting all-n candidate exactly at n=6 (chambers + two-sided wall limits) and n=7 (>=6 points incl. non-generic).",
+    "Cross-check the soft theorem at n=7 (soft plus -> three-minus A_6; soft minus -> two-minus A_6) and verify the 2(n-3)=8 factor."
+  ]
+}

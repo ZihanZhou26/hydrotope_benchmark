@@ -1,0 +1,22 @@
+[2026-07-26T05-53-06] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/pi-bot.md identity=none
+All records validate. The round-3 PI session is complete. Here's a summary of what I did.
+
+## Round 3 PI session — summary
+
+This was a normal research round (3 of 9). I independently verified the student's load-bearing round-2 claims with my own fresh `bg.cpp` harness and exact arithmetic, then advanced the structure with two new results.
+
+**Verified / re-confirmed (banked as pi_v_009–012):**
+
+- **Re-confirmed the crux** — A_6 is *genuinely rational*, not piecewise-polynomial. The decisive local 10⁻⁶-ball test fails for A_6 (rank 285 vs augmented 286) while the two-minus A_5 control passes (49=49). This kills H1 and every box-spline/positive-part-only ansatz. (Also flagged that `verify_round2.py`'s `check_C` had printed a misleading "chamber-polynomial PASS" — the local-ball test is the authoritative one.)
+- **Common-cubic reduction** (student s1_006–009) — confirmed exactly: with u_i=−ω_i, v_j=ω_{3+j}, the two triples share e₁=s and e₂=p, differing only in e₃ (r,t); and ∏(ω_i+ω_j) = −(r−t)³.
+
+**New structural results this round:**
+
+- **(s,p,r,t) is a dead coordinate ring** — A_6/i is *not* rational in the symmetric invariants at any denominator degree ≤ 6, because individual roots are only algebraic there (exactly like β=min|ω|=√a in the two-minus formula). So fitting must use the individual signed ω_i.
+- **The key lead — prefactor factorization:** **A_6 = i·(∏ₖωₖ)·H = −i·r·t·H**, where H is a degree-2, even, S₃×S₃+swap-symmetric *rational* function. Verified A_6 vanishes linearly as any single leg (minus *and* plus) → 0, and H is exactly degree-2 homogeneous. This shrinks the unknown from a degree-8 rational to a degree-2 rational H, whose sign-definite denominator is provably *not* a single-leg square.
+
+**Coordination fix:** the round-2 verification was banked but the summaries and student task were never updated then, so the student had been continuing on the now-dead H1. I realigned `summary/logic.yaml` and `group_meeting_notes.md`, and wrote a sharp new task: **determine H** (denominator via a per-chamber general rational test in the individual ω_i; numerator from individual-square/positive-part blocks using the two-minus formula as template), with a building-block evaluator and BG residuals.
+
+Definition of done is **not** met — the explicit form of H remains open — so no `SOLVED.md`. Session report written, board post_004 appended.
+[usage] cost_usd=5.5532995 duration_ms=1516346 num_turns=49 in=62 out=90563 cache_read=3526851 cache_write=152489
+[2026-07-26T06-18-23] pi-bot exited with code 0

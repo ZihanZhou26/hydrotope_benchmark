@@ -1,0 +1,30 @@
+{
+  "id": "student-1_round2_2026-07-26T07:42:15",
+  "bot": "student-1",
+  "timestamp": "2026-07-26T07:42:15",
+  "task_id": "round2_s1_pole",
+  "status": "done",
+  "summary": "Derived and exactly verified the compact nine-channel pole part P_pole=sum_{Q_T>0} Q_T h4_L h4_R/d_T. Subtraction removes every observed Delta denominator and leaves a degree-eight chamber-polynomial residual.",
+  "work_done": [
+    "Derived the unit normalization and required Q_T numerator directly from the BG propagator D_T=d_T/Q_T.",
+    "Eliminated the internal square root by writing the complementary A4 after a global momentum-sign flip.",
+    "Delegated the exact build/evaluator batch to technician thread /root/technician, audited its output, repaired three implementation defects, cleanly rebuilt bg, and reran the batch independently.",
+    "Verified 77 fresh exact BG points across four sorted momentum-sign words and fifteen full subset-sign signatures: 16/16 integer residuals integral and 61/61 rational residuals integral after L^8 scaling.",
+    "Documented that pointwise resonant A4 calibration is impossible because all real (-,-,+,+) four-point kinematics are exchange-degenerate in the BG oracle."
+  ],
+  "artifacts": [
+    "bots/student-1/derivations/s1_003_pole_part.md",
+    "bots/student-1/code/pole_batch.py",
+    "bots/student-1/code/README.md",
+    "bots/student-1/data/pole_results.json",
+    "bots/student-1/derivations/pole_batch_report.md",
+    "bots/student-1/claims.yaml",
+    "bots/student-1/decisions.yaml",
+    "bots/student-1/HANDOFF.md"
+  ],
+  "next_steps": [
+    "Student-2 should fit or derive the compact degree-eight polynomial spline R_spline=A6/i-P_pole.",
+    "The PI should independently implement the one-orbit nine-term pole formula and combine it with the spline candidate."
+  ],
+  "background_jobs": []
+}

@@ -1,0 +1,18 @@
+[2026-06-26T15-31-33] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/student-bot.md identity=student-1
+Task `r2-student-1` is complete. Session summary:
+
+## What I did (bottom-up attack on n=6 three-minus)
+
+**1. Chamber arrangement (my assigned deliverable).** The mixed momentum-subset walls $k_S=0$ reduce to exactly two orbits: $\omega_i^2=\omega_j^2$ (9 walls) and $\omega_i^2=\omega_j^2+\omega_k^2$ (9 walls), $i$ minus, $j,k$ plus. A $1.5\times10^6$-point exact scan gives **336 raw sign patterns = 12 realizable chamber types** under $S_3\wr Z_2$, all certified with interior rational points.
+
+**2. The headline — A_6 is piecewise-RATIONAL, not polynomial.** This **corrects the round-1 "gate"** (and student-2's box-spline plan, since a box spline is polynomial). Inside a single full chamber, $A_6\cdot S_F^{\,p}$ is non-polynomial for *every* $p=1\dots14$, whereas a genuine degree-8 polynomial in the frequencies would force it polynomial at $p\le8$. The **n=5 control** (known-polynomial $A_5$) correctly returns polynomial at $p=1$ under the identical test, so the method is sound and n=6's rationality is real. The non-cancelling denominators are BG kernel momentum magnitudes $|k_S|$ (sums of squares → no physical poles, but genuinely a ratio).
+
+**3. No physical factorization poles** (gate's "no poles" stands) — verified even for the $S=\{2,4,5\}$ channel where the naive 2+1 factorization predicts a two-minus×two-minus residue; it's still removable.
+
+**4. Ruled out** the double-subset resonance spline (its degree-8 member $\equiv0$) and all polynomial-in-$\{\omega^2,S,\prod\omega\}$ ansätze.
+
+**Recommendation handed to round 3:** $A_6 = i\,2^5 g^{-3}\,\mathcal N/\prod|k_S|$ — extract the surviving $|k_S|$ from `symslice.py`, then the polynomial machinery applies to $\mathcal N$.
+
+Registered in `claims.yaml` (s1_004–s1_007), `decisions.yaml`, `derivations/n6_chambers_and_rational_structure.md`, the session report, and **board post_006** (flagged the rationality finding for PI re-verification via the one-command `code/verify_n6_rational.py`). Shared `bg.cpp` untouched throughout. Ending the session.
+[usage] cost_usd=32.03173149999999 duration_ms=6390468 num_turns=164 in=22458 out=348859 cache_read=39888311 cache_write=518254
+[2026-06-26T17-18-04] student-bot exited with code 0

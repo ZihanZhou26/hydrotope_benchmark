@@ -1,0 +1,36 @@
+{
+  "bot": "student-2",
+  "timestamp": "2026-06-26T19:14:07Z",
+  "task_id": "r1-student-2",
+  "status": "completed",
+  "summary": "Determined the n=6 three-minus structure. KEY RESULT: the three-minus amplitude has NO factorization poles - every channel D_S = omega_S^2/|k_S| - g = 0 is a spurious/removable singularity (A_6 stays finite, A_6*D_S -> 0), verified at n=5,6,7 across all channel types. Hence A_6 is PIECEWISE-POLYNOMIAL, not rational (resolves the PI's round-1 gate question). A_6 is purely imaginary, homogeneous degree 8, and symmetric under S_3 (minus legs) x S_3 (plus legs) x Z_2 (triple swap). Chamber walls are the mixed momentum subset walls k_S = sum sigma_i omega_i^2 = 0, where |k_S| flips and A_6 is continuous with a derivative kink. First ansatz: naive two-minus pair-sum candidates FAIL (structure genuinely new); identified the B-spline picture as the round-2 lead.",
+  "work_done": [
+    "Built own copy of bg.cpp and a fast harness (harness.py) wrapping ./bg in on-shell and raw --amp modes, exact + double, reproducing the oracle's on-shell solve.",
+    "Wrote channels.py (factorization channel / propagator-denominator bookkeeping) and symbolic_bg.py (faithful sympy reimplementation of the full BG algorithm; reproduces ./bg exactly at n=5,6 numeric points).",
+    "TARGETED POLE SEARCH (targeted_pole.py, reachability.py): for every genuine size-3 channel type (2m1p {2,3,4},{2,3,5}; 1m2p {2,4,5},{3,4,5}; 3m0p {1,2,3}={4,5,6}) built one-parameter on-shell families driving a single D_S -> 0. A_6 stays FINITE in every case (A_6*D_S -> 0). Confirmed pole-free at n=5,6,7. Established three-minus is piecewise-polynomial, NOT rational.",
+    "CHAMBER WALLS (kinkmap.py, wallcheck.py): walls are the mixed-subset momentum walls k_S=0; A_6 is finite and continuous there (oracle SIGFPEs on |k_S|=0 but the limit exists) with a derivative kink. Confirmed at k_{24}=0, k_{34}=0 (first-derivative kink) and k_{234}=0 (cubic kink). D_S=0 channels are distinct and smooth.",
+    "Established A_6 structure: purely imaginary, degree-8 homogeneous, invariant under S_3 wr Z_2 (verify_threem.py, all exact).",
+    "FIRST ANSATZ (candidates.py): ruled out naive two-minus pair-sum forms (0/10 exact, non-constant ratios). Identified the B-spline / truncated-power identity as the structural lead for round 2.",
+    "Wrote consolidated reproducible check verify_threem.py (all checks pass, exact rational) and derivations/n6_structure.md.",
+    "Recorded claims s2_001..s2_005."
+  ],
+  "next_steps": [
+    "Round 2: extract the exact per-chamber cubic polynomial with symbolic_bg.py (freeze chamber signs from a reference point; D_S denominators cancel since pole-free) - no fitting needed.",
+    "Match the per-chamber cubics to a box-spline / B-spline of the omega_i^2 with breakpoints at the k_S=0 walls, then symmetrize under S_3 wr Z_2 to assemble the closed form for A_6.",
+    "Verify the assembled formula against ./bg at n=5,6,7 across chambers and wall limits; then attempt the general-n three-minus law."
+  ],
+  "claims": ["s2_001", "s2_002", "s2_003", "s2_004", "s2_005"],
+  "files": [
+    "bots/student-2/code/harness.py",
+    "bots/student-2/code/channels.py",
+    "bots/student-2/code/symbolic_bg.py",
+    "bots/student-2/code/targeted_pole.py",
+    "bots/student-2/code/reachability.py",
+    "bots/student-2/code/kinkmap.py",
+    "bots/student-2/code/wallcheck.py",
+    "bots/student-2/code/candidates.py",
+    "bots/student-2/code/verify_threem.py",
+    "bots/student-2/code/bg.cpp",
+    "bots/student-2/derivations/n6_structure.md"
+  ]
+}

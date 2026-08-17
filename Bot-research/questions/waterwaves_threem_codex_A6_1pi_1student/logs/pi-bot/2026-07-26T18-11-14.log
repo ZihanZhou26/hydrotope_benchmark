@@ -1,0 +1,21 @@
+[2026-07-26T18-11-14] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/pi-bot.md identity=none
+[2026-07-26T18-11-14] extra_prompt=This is the final PI summary round. Assign no new work. Read the latest student handoff, independently verify the final load-bearing claims you can, update summary/logic.yaml and summary/group_meeting_notes.md, and write summary/FINAL_SUMMARY.md. Write summary/SOLVED.md only if the full definition of done is met.
+Both residual jobs are `blocking: false` and superseded/dead (the r6_piece exploratory run collected 0 points). No completed blocking job needs priority. The final-summary round is complete.
+
+## Final PI summary round — done
+
+**Verdict: NOT SOLVED (verified partial).** The full acceptance bar in `question.md` is not met, so `summary/SOLVED.md` was correctly **not** written; `summary/FINAL_SUMMARY.md` records the best verified progress and the precise obstruction.
+
+**What I independently re-verified this round** — built a truly fresh binary `bg_r10` from a byte-identical copy of the immutable root `bg.cpp` (md5 `41715c4a…`, sha256 `bd1afe67…c9040c1`; canonical check reproduces A_6 = i·(-29948208/17)), then reran every load-bearing claim with my own code and my own data (`bots/pi/code/round10_final_verify.py`, all PASS):
+
+- **Calibration** 6/6 exact: three-minus A_5 = sign-flipped two-minus formula + two-minus n=5 self-check → BG harness sound.
+- **Symbolic (BG-independent):** `cancel(fourblock − PI's own 31-term core) = 0` for both chambers; the propagator identities `B_M+B_P = ω_S²` and `4·B_M·B_P = ω_S⁴ − k_S²` (S = {1,6}^c); and reduced H_A genuinely rational (gcd=1, deg N=12, deg Q=10) factoring **exactly** as `u·v·(r+u)(r+v)(s+u)(s+v)·B_M·B_P`.
+- **Numeric:** four-block H_A, H_B reproduce `bg_r10` **exactly** (`Fraction`), 40/40 in-piece points per chamber.
+- **Boundary:** both formulas fail at chamber `12ea165a03` (0/30 in-piece).
+- **Obstruction:** equal-bound cone rank scan on **1250 in-piece points I collected myself** with `bg_r10` is full column rank over two primes at **both d=12 and d=13** ⇒ deg Q_hom ≥ 12 there — strictly above the solved chambers' 10. Independently reconfirms pi_v_025/029 with entirely fresh data; the student's deg Q_hom ≥ 13 (via d=14) accepted as reported.
+
+**Best result banked:** the two opposite chambers solved compactly (four signed rational channel blocks, equivalently one 31-term core F), reconstructed + factored + re-verified, plus the full structural skeleton. **Precise blocker (unchanged):** the other realized chambers are strictly higher-degree and none was reconstructed/factored, so the single **rational signed-channel master** object (a pure box-spline master is excluded) is untested; the first candidate reconstruction is a 4-variable degree-≥15 cone fit — a tractability obstruction, not a wrong method.
+
+**Files written:** `summary/FINAL_SUMMARY.md` (round-10 final), updated `summary/logic.yaml` and `summary/group_meeting_notes.md`, appended `bots/pi/verified.yaml` (`pi_v_030`, `pi_note_004`), session report `bots/pi/sessions/2026-07-26T22-11-23.json`, and board `post_017`. No new task assigned; `jobs/` clear of blocking work.
+[usage] cost_usd=4.0631925 duration_ms=767630 num_turns=47 in=73 out=44377 cache_read=3570269 cache_write=116759
+[2026-07-26T18-24-03] pi-bot exited with code 0

@@ -1,0 +1,26 @@
+{
+  "bot": "pi",
+  "timestamp": "2026-06-27T06:51:27Z",
+  "round": 8,
+  "summary": "Round-8 PI review. Re-read question.md, board.json (no matias posts), logic.yaml, group_meeting_notes.md, both students' newest sessions + claims + decisions. Round 7 (post_019 student-2, post_020 student-1) produced no new closed form but three load-bearing facts about the n>=7 regime; I INDEPENDENTLY RE-VERIFIED all three with my own freshly-built oracle and my own code (no student code). All hold. n=5 and the full n=6 closed form remain SOLVED & PI-verified; the explicit numerator N_n for n>=7 (hence the all-n closed form) remains the whole open problem. NOT writing SOLVED.md. Assigned two round-8 tasks: student-1 assembles the explicit N_7 (deg 22); student-2 solves the soft recursion into an explicit all-n N_n.",
+  "verification": {
+    "method": "Rebuilt ./bg fresh from my own copy of bg.cpp (diff -q vs shared = IDENTICAL). Wrote my own batched exact-rational evaluator bots/pi/code/pi_batch.cpp (faithful copy of the bg.cpp Engine, --amp from stdin, ZeroDiv guard) -- cross-checked vs ./bg exactly. Reimplemented the on-shell leg-solve from the bg.cpp formula (cross-checked vs ./bg's printed omega). All verdicts EXACT rational; slice reconstructions by exact Lagrange interpolation with held-out confirmation. Scripts: pi_r8_verify.py, pi_r8_fix.py, pi_r8_fix2.py. No student code imported.",
+    "s1_020_parity": "CONFIRMED. A_n even under w->-w at n=6 and n=7 (even homogeneity deg 2n-4). N_6 = A_6*(e3m+e3p) ODD (deg-3 minimal denom); N_7 = A_7*D_7 EVEN (12-factor product, deg 12). General rule: N_n even iff n odd. The 'N_n odd' framing was n=6-only.",
+    "s2_021_soft_recursion": "CONFIRMED EXACT at n=7, BOTH legs. Soft PLUS leg: lim A_7/(i eps^2) = -3517680816/161 = 8*A_6^{3-} (my own independent surviving 3-minus). Soft MINUS leg: = -13249051200 = 8*A_6^{2-} (my own surviving 2-minus). N_7 vanishes to exactly O(eps^2). Subtlety: take eps->0 in the SOFT chamber (a wide eps window sits in a different chamber -- my first wide-window minus-leg attempt gave garbage; small eps in the eps->0 chamber gave the exact match, confirmed both by decimal convergence ->1 and exact deg-26 reconstruction).",
+    "s1_021_n7_exponents": "CONFIRMED. n=6 controls pass ((1=1)->1, (1=2)->3). n=7: (1=1)->1 and (1=2)->2 directly re-measured on clean single-wall windows (continuous, single wall flips). CAUTION found: at n=7 a second wall (12_2_4_5) sits ~0.045 from the (1=2) crossing -- a pre-scan + tiny window was required (my first attempt failed: did not settle). (1=3)->4 taken from student-1; method now validated at 4 wall types.",
+    "tentative_not_required": "s1_022 (the (1=2)->2 = (1=1)x(1=1) matching cross-term interpretation; pure exponent conjectured n-3) remains TENTATIVE and is exactly what round 8 must pin -- not re-verified as established."
+  },
+  "tasks_assigned": [
+    {"id": "r8-student-1", "assignee": "student-1", "title": "Assemble + exactly verify explicit N_7 (deg 22): clean subset-sum coefficients, cross-term closing order, full S_3xS_4 even-parity fit (Typhon if needed)"},
+    {"id": "r8-student-2", "assignee": "student-2", "title": "Solve the soft recursion (both legs) + single-pair residues + matching/Cauchy into an explicit all-n N_n; recover n=5,6; test exactly at n=7,8"}
+  ],
+  "status": {
+    "solved_pi_verified": ["n=5 closed form", "FULL n=6 closed form (A_6 = i 2^5 g^-3 N_6/(e3m+e3p), deg-11 box spline)", "no factorization poles (n=5,6,7)", "all-n minimal denominator prod(w_i+w_j), pole order 1 (collapse to (e3m+e3p)^1 only at n=6)", "deg N_n = 5n-13", "symmetry S_3 wr Z_2 (n=6) / S_3 x S_{n-3} (n>=7)", "n-dependent parity (N_n even iff n odd)", "n=7 wall map 42=12+18+12 + exponents (1=1)->1,(1=2)->2,(1=3)->4", "explicit (1=2) coefficient Q", "soft recursion both legs", "single-pair residue structure"],
+    "open": ["explicit numerator N_n for n>=7 (hence the single all-n closed form)", "cross-term closing order at n=7 (s1_022 tentative)"]
+  },
+  "next_steps": [
+    "Independently re-verify whichever N_7 / all-n N_n candidate the students produce, with my own oracle + own evaluator, across >=4 chamber types + two-sided wall limits at n=6,7 (n=8 spot-check).",
+    "On a passing candidate: write summary/SOLVED.md (per-n explicit forms + all-n structure: denominator, degree, symmetry, parity, wall-exponent law, numerator). The run then stops.",
+    "If N_{n>=7} refuses to close: record the most complete validated all-n description (explicit n=5,6 + all-n denominator/degree/symmetry/parity/wall-exponent law + pinned part of N_{n>=7}) in logic.yaml + group_meeting_notes.md and keep assigning."
+  ]
+}

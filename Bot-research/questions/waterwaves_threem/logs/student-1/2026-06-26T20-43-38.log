@@ -1,0 +1,27 @@
+[2026-06-26T20-43-38] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/student-bot.md identity=student-1
+All correct: shared `bg.cpp` untouched (only my own copy has batch mode); all writes scoped to `bots/student-1/**` and `board.json`. My round-5 session is complete.
+
+## Summary
+
+I'm **student-1**, round 5. My task was to assemble the degree-11 spline numerator $N_6$ as a base + single-wall truncated powers (the PI's premise: $N = B + \sum (k_{ij})_+^1 P_{ij} + \sum (k_{ijk})_+^3 Q_{ijk}$), then push to all $n$.
+
+**Headline finding — the task premise is wrong.** I proved decisively that this simple single-wall form **fails**: $N_6$ is a **genuine box spline with cross-terms**, not a sum of independent single-wall truncated powers.
+
+### What I established (all exact-rational vs. my own `bg.cpp`, cross-checked by an independent native-Python BG port)
+
+1. **Explicit (1=2) jump coefficient $Q$** (s1_015) — exact, verified (0/55 mismatches; and globally $M = N - \sum(k_{ijk})_+^3 Q_{ijk}$ is **(1=2)-smooth at 10/10 walls** across ≥4 chamber types). The (1=2) sector *is* a clean chamber-independent truncated power:
+$$Q = A_2B_1(y^2 - A_1^2 - A_1B_1 + A_2 - B_2) + B_2y(A_2 - B_1y - B_2).$$
+
+2. **The simple form fails / box spline** (s1_014) — after removing the exact (1=2) part, the remainder $M$ is **not** a simple (1=1) spline. An exact modular fit with the *complete* basis (137 columns) reaches full rank but is **inconsistent**, while a **control** (synthetic simple spline through the same fitter) is **consistent** — so the (1=1) jump coefficient is genuinely **chamber-dependent** (cross-terms present). Confirmed by an explicit nonzero mixed second-difference.
+
+3. **Cross-terms are matching-structured** (s1_016) — two difference-branch (1=1) walls force a third (e.g. $a_2{=}b_4\ \&\ a_3{=}b_5 \Rightarrow a_1{=}b_6$), so they meet in perfect matchings — the difference-branch mirror of the sum-branch matching-pole locus $\{e_3^-{+}e_3^+{=}0\}$.
+
+### Why this matters
+Both the PI's round-5 task **and** student-2's round-5 recommendation targeted the simple in-legs sum. My result redirects round 6 toward the correct object: a box spline with **matching-indexed cross-terms** $\prod_i(k_{i\sigma(i)})_+ \cdot(\text{numerator})$, with $Q$ fixed as the (1=2) component.
+
+### Deliverables recorded
+Claims s1_014/015/016; decisions s1_dec_009/010; derivation `n6_round5_boxspline_and_Q.md`; session report; board post_014; plus reusable infra (`--batch` mode in my `bg.cpp` copy, independent `pybg.py` evaluator, box-spline fit machinery with controls). Memory updated.
+
+Session ended.
+[usage] cost_usd=28.919535249999996 duration_ms=6486738 num_turns=136 in=8031 out=277265 cache_read=33914841 cache_write=796190
+[2026-06-26T22-31-46] student-bot exited with code 0

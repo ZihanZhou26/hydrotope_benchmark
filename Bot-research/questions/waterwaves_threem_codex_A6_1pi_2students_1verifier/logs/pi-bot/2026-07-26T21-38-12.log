@@ -1,0 +1,30 @@
+[2026-07-26T21-38-12] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/pi-bot.md identity=none
+[2026-07-26T21-38-12] extra_prompt=This is the final PI summary round. Assign no new work and do not routinely duplicate the verifier's calculations. Read both latest student handoffs and the latest Claude verifier report. You may independently double-check one affected load-bearing claim if there is significant progress, a suspected error, or conflicting evidence; record any such check in bots/pi/verified.yaml. Distinguish verifier-confirmed results from unverified claims, update summary/logic.yaml and summary/group_meeting_notes.md, and write summary/FINAL_SUMMARY.md. Write summary/SOLVED.md only if the full definition of done is met and no blocking verifier gap remains.
+All files valid. The final PI summary round is complete. Here's the wrap-up.
+
+## Final PI summary round — complete
+
+**Verdict: SOLVED, signed off.** The problem was already solved in round 9; this final round read the latest handoffs and verifier report, ran one bounded independent double-check, distinguished confirmed from unverified claims, and wrote the final summary.
+
+**The result.** The six-point three-minus water-wave amplitude has a compact closed form:
+
+  A₆ = i·g⁻³·(P_pole + R_Q + R₀ + R_q),  M={1,2,3} minus, P={4,5,6} plus
+
+- R_q = 4·Σ h_mp·H₁ + 2·Σ h·h·H₂ — continuous order-1 q-orbit (h_mp = (ω_p²−ω_m²)₊)
+- R₀ = H₀(u,v,e₋,e₊) — smooth global remainder
+- R_Q = −32·Σ (Q_{m;pq})₊³·ω_m·ω_t — order-3 Q-orbit
+- P_pole — one truncated ℋ-block over 9 factorization channels (only removable 1/d poles)
+
+The whole numerator is **82 integer monomials in three displayed seeds** (H₁=46, H₂=23, H₀=13), assembled by finite S₃×S₃ orbit sums over positive parts — **zero chamber-specific coefficients**, table-free evaluator.
+
+**Verifier-confirmed vs. unverified (kept distinct in FINAL_SUMMARY.md):**
+- *Verifier-confirmed* (round-8 Claude verifier, VERDICT: VERIFIED, >6000 exact BG comparisons): the full decomposition and every piece, exact agreement across all definition-of-done tests, table-free structure, **blocking gap G1 CLOSED**.
+- *PI-confirmed independently*: round 9 full re-implementation (pi_vchk_006, 5733 exact, 0 residual); and **this round** a fresh spot-check (pi_vchk_007) on a newly rebuilt md5-matched `bg_final` — **82/82 exact over 40 distinct chambers, zero residual**.
+- *PI acceptance call*: compactness "human-readable" → ruled **MET**.
+- *Sole remaining item (non-blocking)*: chamber-coverage completeness is empirical, not a symbolic wall-set proof — low risk, not a correctness gap.
+
+**My targeted double-check.** Under the exceptional policy (a claimed complete compact formula), rather than trust the prior session I rebuilt BG from the immutable source (md5 41715c4a…, byte-identical across all five copies) and reconfirmed the load-bearing claim on a fresh binary. Recorded as `pi_vchk_007` in `bots/pi/verified.yaml`.
+
+**Files written/updated:** `summary/FINAL_SUMMARY.md` (new), `summary/SOLVED.md` (ratification note), `summary/logic.yaml`, `summary/group_meeting_notes.md`, `bots/pi/verified.yaml` (pi_vchk_007), `bots/pi/sessions/2026-07-27T01-40-47.json`, and board post_035. No new tasks assigned; no blocking verifier gap remains.
+[usage] cost_usd=2.454511 duration_ms=362801 num_turns=31 in=42 out=27322 cache_read=1741300 cache_write=89986
+[2026-07-26T21-44-16] pi-bot exited with code 0

@@ -1,0 +1,19 @@
+{
+  "id": "student-1-round5-2026-07-26T15:41:42",
+  "bot": "student-1",
+  "timestamp": "2026-07-26T15:41:42",
+  "task_id": "round5_compact_sum",
+  "status": "partial",
+  "summary": "No published exact three-minus A6 formula was found, and a 590-block universal simple-channel orbit ansatz was ruled out exactly over two primes.",
+  "work_done": [
+    "Searched primary literature and documented why arXiv:2606.28280 and the 2012 compact-Zakharov six-wave calculation do not contain the requested exact amplitude.",
+    "Specified a four-channel-orbit ansatz for H using degree-four cell-symmetric numerators over simple pair/triple propagators.",
+    "Delegated implementation to technician /root/technician and independently corrected/verified the target normalization, modular powers, orbit grouping, homogeneity, and Stage-B augmentation.",
+    "Tested 590 universal orbit features on 670 exact-GMP training points spanning 387 full sign signatures; both primes gave rank 166 versus augmented rank 167.",
+    "Independently reran 220 fresh exact points and reproduced the same two-prime rank jump with conservation and exact-to-modular checks passing."
+  ],
+  "next_steps": [
+    "Test compatible double-propagator tree-orbit blocks 1/(h_S h_T) with symmetry-complete degree-six numerators.",
+    "Alternatively derive a genuinely new positive-part or geometric construction rather than adding more numerator monomials to the simple-channel class."
+  ]
+}

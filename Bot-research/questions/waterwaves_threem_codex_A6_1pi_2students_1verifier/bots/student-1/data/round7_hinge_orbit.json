@@ -1,0 +1,79 @@
+{
+  "generated_at": "2026-07-26T20:19:12.447090Z",
+  "script_path": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_2students_1verifier/bots/student-1/code/round7_hinge_orbit.py",
+  "script_sha256": "b1f481c5cb3959491460306a7d0c4fa95fd919a321b05698951ea6074923fd45",
+  "input_path": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_2students_1verifier/bots/student-1/data/round6_assembly_selfcheck.json",
+  "checkpoints": [
+    {
+      "stage": "start",
+      "time": "2026-07-26T20:19:12.447531Z"
+    },
+    {
+      "stage": "anchor",
+      "time": "2026-07-26T20:19:15.886196Z"
+    },
+    {
+      "stage": "cache",
+      "time": "2026-07-26T20:19:16.400050Z"
+    },
+    {
+      "stage": "features",
+      "time": "2026-07-26T20:21:02.418373Z"
+    }
+  ],
+  "compile": {
+    "source": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_2students_1verifier/bg.cpp",
+    "copied": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_2students_1verifier/bots/student-1/bg_round7.cpp",
+    "binary": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_2students_1verifier/bots/student-1/bg_round7",
+    "command": "g++ -O2 -std=c++17 -o /home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_2students_1verifier/bots/student-1/bg_round7 /home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_2students_1verifier/bots/student-1/bg_round7.cpp -lgmpxx -lgmp",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "",
+    "source_sha256": "bd1afe67c45e1e9403c03a0b78373ebb492235be56fc1e5ee9281cbbec9040c1",
+    "copied_sha256": "bd1afe67c45e1e9403c03a0b78373ebb492235be56fc1e5ee9281cbbec9040c1"
+  },
+  "anchor": {
+    "omega": [
+      "-8",
+      "2",
+      "3",
+      "4",
+      "5",
+      "-6"
+    ],
+    "A6_im": "-9190656/7",
+    "P_pole": "42588288/7",
+    "RQ": "-136630560",
+    "S": "129233568",
+    "status": "ok"
+  },
+  "input_rows": 550,
+  "input_words": [
+    "+-+--+",
+    "+--++-",
+    "+--+-+",
+    "+---++",
+    "-+++--",
+    "-++-+-",
+    "-++--+",
+    "-+-++-"
+  ],
+  "feature_generation": {
+    "seed_count": 13788,
+    "seed_by_depth": {
+      "1": 4158,
+      "2": 5670,
+      "3": 3465,
+      "4": 495
+    },
+    "kept_count": 588,
+    "zero_removed": 8,
+    "duplicate_removed": 0,
+    "kept_by_depth": {
+      "1": 188,
+      "2": 244,
+      "3": 134,
+      "4": 22
+    }
+  }
+}

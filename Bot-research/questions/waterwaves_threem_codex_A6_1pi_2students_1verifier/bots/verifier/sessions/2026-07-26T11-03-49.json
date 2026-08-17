@@ -1,0 +1,44 @@
+{
+  "id": "verifier_session_20260726T110349",
+  "bot": "verifier",
+  "timestamp": "2026-07-26T11:03:49",
+  "round": 3,
+  "task_id": "round3_verifier_audit",
+  "status": "complete",
+  "summary": "Independently rebuilt the md5-verified BG oracle and adversarially audited the newest load-bearing round-3 results on the spline remainder R = A6/i - P_pole: student-2's COMPACT same-energy wall-trace brick H_mp|_{wp=wm} = -32 beta^2 [4a^4+6a^3 s+2a^2(s^2+v)+(a s+v)(s^2-2v)] with the FOUR-LEG beta=min selector, and both students' verdict that the pair-wall brick H_mp is ITSELF A SPLINE (P(u)<->P(6-u) exchange). Reimplemented the brick from the written derivation (no student evaluator). Reconstructed H_24 at the wall by two-sided exact BG branch continuations. Results: the four-leg-beta compact brick is CONFIRMED at 7/7 isolated same-energy environments, including 5 plus-leg cases where the four-leg minimum differs from and beats the old minus-only rule; H_mp is CONFIRMED to be a spline. Foundation re-confirmed on the fresh build (R denominator-free, all 8 chambers, 52/52 integer + 293/293 rational exact) and 5-pt calibration exact (4/4). Still NO complete compact A_6: the global R_0 and the coupled Moebius/inclusion-exclusion assembly of the beta-minimum fan remain unknown, so the single-orbit polynomial ansatz is dead and the deliverable does not exist. One methodological self-correction: near-wall reconstructions must certify continuity/cell-adjacency (a coarse cluster near a finer wall gave two false counterexamples until continuity was enforced) -- this independently validates student-2's rejection of nongeneric nearby environments. Two minor findings: s1_004 mis-locates the H_24 branch switch (it is the pair wall q35=0 at u=3, not Q_{3;45}=0 at u=61/12); and student-2's round3_wall_trace_scan.json has a stale mislabeled column (H_wall_compact_formula uses the old minus-only beta while the claimed four-leg value is H_wall_beta_formula).",
+  "oracle": {
+    "path": "bots/verifier/code/bg",
+    "build": "g++ 8.5.0 -O2 -std=c++17 -lgmpxx -lgmp",
+    "md5_matches_shared_bg_cpp": true,
+    "md5": "41715c4af3ee5a61b1c4bfce40426ac8"
+  },
+  "checks_rerun_result": {
+    "V0_foundation_fresh_build_all_8_chambers": "PASS exact (R=A6/i-P_pole denominator-free: 52/52 integer + 293/293 rational residuals integral after xL^8; all 8 physical words realized)",
+    "V1_five_point_calibration": "PASS exact (three-minus A5/i = -19968, -3328, -156672/11, -27048 vs sign-flipped two-minus formula, 4/4)",
+    "V2_anchor_pair_wall_jump": "PASS exact (slice (10,2,3), wall q24=0 at t=5, continuous, order-1, H_24 = 12622720/27)",
+    "V3_compact_same_energy_brick_four_leg_beta": "PASS 7/7 environments (A minus-min 12622720/27; B plus-min 111840; C plus-min 6186304/27; D minus-min 1761408; E plus-min 7411415872/12167; F plus-min 2169430528/2197; G plus-min 116055433/1372). Four-leg beta matches BG exactly in all; in the 5 plus-leg cases it differs from and beats the minus-only rule (necessary+correct).",
+    "V4_H_mp_is_a_spline": "PASS (student-1 affine slice B=10,c=u,e=6-u: H_24=P(u) for u<3, P(6-u) for u>3; four-leg formula matches BG at every u; switch pinned to q35=0 at u=3 via u=29/10->P(u), u=31/10->P(6-u), u=4->P(6-u))",
+    "path_independence_continuity_certificate": "envs C,E: continuity-enforced (adjacent-cell) reconstruction gives exactly the four-leg formula value (6186304/27, 7411415872/12167); earlier coarse-cluster 'counterexamples' were reconstruction artifacts (discontinuous, non-adjacent cell)",
+    "s2_naive_assembly_1_of_8_count": "NOT independently reproduced (needs student-2's interpolated R_0); the underlying obstruction (H_mp is a coupled spline via the four-leg beta fan) IS independently confirmed"
+  },
+  "gaps_found": [
+    {"severity": "blocking", "text": "No complete compact closed-form A_6 exists yet (G1). Round 3 confirmed H_mp is itself a spline (four-leg beta=min selector), so the single-orbit polynomial ansatz R_0 + sum (q_mp)_+ H_mp^poly is dead; the global symmetric R_0 and the coupled Moebius/inclusion-exclusion assembly over the coupled beta-minimum fan remain unknown. No table-free full-numerator evaluator exists, so the deliverable and its required compactness account do not exist."},
+    {"severity": "minor", "text": "s1_004 mis-locates the H_24 branch switch on its affine slice: it attributes P(u)->P(6-u) to Q_{3;45}=61-12u (u=61/12), but the switch is actually at the pair wall q35=0 (u=3), where the four-leg beta minimizer flips w3->w5. Verified by u=29/10->P(u), u=31/10->P(6-u), u=4->P(6-u). Does not affect the verified brick; matters for round-4 assembly (coupling is a pair-wall beta-switch, i.e. a sorted/min structure over the four |omega_j|, consistent with student-2's coupled-minimum-fan picture)."},
+    {"severity": "minor", "text": "student-2's round3_wall_trace_scan.json column H_wall_compact_formula is computed with the OLD minus-only beta (nonzero 'residual' at all 6 plus-leg walls) while the actually-claimed four-leg value is in H_wall_beta_formula (beta_formula_residual=0, 17/17). The report's '0 counterexamples' and the meta compact_formula string refer to the correct four-leg version; the stale column contradicts the meta and could mislead the PI. Cosmetic; four-leg claim is sound."},
+    {"severity": "minor", "text": "Methodological: near-wall two-sided reconstructions must certify continuity R_L(t0)=R_R(t0) (cell-adjacency), not merely holdout fits; a finer wall near the target wall can make a cluster lock onto a non-adjacent cell and yield a contaminated jump. Validates student-2's rejection of nongeneric nearby environments."},
+    {"severity": "minor", "text": "Carried: BG is exactly singular (SIGFPE) at on-shell wall/pole points; approach every wall by two-sided limits, never evaluate on it."}
+  ],
+  "artifacts": [
+    "bots/verifier/VERIFICATION.md",
+    "bots/verifier/code/bg (fresh, md5-verified)",
+    "bots/verifier/code/oracle.py",
+    "bots/verifier/code/pole_verify.py",
+    "bots/verifier/code/round3_verify.py",
+    "bots/verifier/code/round3_run.py",
+    "bots/verifier/code/round3_run2.py",
+    "bots/verifier/code/round3_pathcheck.py",
+    "bots/verifier/code/calib5.py"
+  ],
+  "board_post": "none (every audited claim was CONFIRMED -- the four-leg brick and the spline verdict are good news, not warnings; the two minor findings are refinements recorded in VERIFICATION.md + claims.yaml for the next PI; the no-complete-formula status is already known)",
+  "verdict": "GAPS REMAIN (1 blocking)"
+}

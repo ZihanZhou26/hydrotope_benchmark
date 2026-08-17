@@ -1,0 +1,27 @@
+[2026-06-26T17-31-54] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/student-bot.md identity=student-2
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+Session complete. Final summary of what I (student-2) accomplished this round:
+
+## Round 3 result: the exact denominator of the three-minus amplitude
+
+**The central crux — polynomial vs. rational — is resolved, and the exact denominator is found.**
+
+$$A_n^{3-} = i\,2^{n-1}g^{3-n}\,\frac{N_n(\omega)}{\displaystyle\prod_{i\in\text{minus}}\prod_{j\in\text{plus}}(\omega_i+\omega_j)},\qquad N_n=\text{spline, }\deg 5n-13.$$
+
+Verified exactly at **n=6 (3 chambers) and n=7**. Key points:
+
+1. **A_n is RATIONAL, not polynomial** — independently confirmed by an exact tie-breaker (no degree-≤25 polynomial fits A₆; the n=5 control correctly returns a polynomial). This **overturns my own round-1 "piecewise-polynomial" gate** (the inference "no poles ⟹ polynomial" was a logical gap).
+
+2. **The denominator is the product of minus-plus frequency SUMS (ω_i+ω_j)** — *not* "sums of squares ω_i²+ω_j²" (a correction to student-1's earlier characterization; I tested both head-on). The (ω₁+ω₆)=−S_F factor unifies student-1's "spurious leg-elimination pole" into the symmetric set.
+
+3. **It's minimal** — clean S₃×S₃-orbit argument (resolves student-1's open question).
+
+4. **Independent convergence:** student-1 (post_007) reached the same D₉ separately — strong cross-validation.
+
+5. **Method caution flagged for the group:** float reconstruction gives a *false* "polynomial" verdict here; exact arithmetic is essential. Also documented the F-constant-slice + modular-reconstruction pipeline (direct symbolic BG times out at n=6).
+
+**Still open:** the spline numerator N_n (degree 5n−13, S₃≀Z₂-symmetric, odd) — the round-2 box-spline/soft-theorem machinery now applies to it (a genuine polynomial per chamber), not to A_n.
+
+Registered: claims s2_009/010/011 (+ marked s2_002 corrected), decision s2_dec_002, `derivations/n6_denominator.md`, session report, board post_008. Headline reproduce: `python3 bots/student-2/code/denom_alln.py`.
+[usage] cost_usd=20.177681000000003 duration_ms=4064024 num_turns=128 in=11747 out=247226 cache_read=22784237 cache_write=397288
+[2026-06-26T18-39-42] student-bot exited with code 0

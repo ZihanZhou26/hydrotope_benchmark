@@ -1,0 +1,23 @@
+[2026-07-26T12-43-00] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/pi-bot.md identity=none
+All round-6 PI deliverables are written and validated. Session complete.
+
+## Round 6 summary (PI)
+
+This was a **breakthrough round**. Rather than banking another negative, I turned the round-5 pile of dead ends into a positive, exact result.
+
+**What I verified (all exact, fresh `bg_r6`, exact `Fraction` — not just modular):**
+
+- **[pi_v_021]** Exact in-piece reconstruction of `H = A₆/(i∏ω)`. The key was noticing a true piece is a **cone** (H and all 53 surfaces are homogeneous), so dehomogenizing by ω₂ turns h into a rational function of just **3 variables** — collapsing the 4-variable fit that stalled at d≤7 in round 5. A modular null-space fit + 5-prime CRT reconstruction + factoring gives, **validated 1000/1000 in two independent chambers**:
+  - `Q ∝ (chamber-selected single legs) · (ω₃+ω₄)(ω₃+ω₅)(ω₂+ω₄)(ω₂+ω₅) · Qa · Qb`, degree 10.
+  - The four mixed-pair factors and both quadratics **Qa, Qb are identical across chambers**; only the single-leg factor is chamber-dependent (A: {ω₃}, B: {ω₄,ω₅}).
+  - Symbolically: `Qa+Qb = ω²₍₂₃₄₅₎`, `4·Qa·Qb = h₍₂₃₄₅₎·(ω²+|k|)` — the quadratics are the two branches of the complementary internal-line propagator, so the removable h_S sits inside Q with the numerator supplying the compensating zero.
+
+- **This resolves the round-5 puzzle:** every excluded denominator family (a_i±b_j, a_i+a_j, T, p, ω_iω_j) was built from **even** blocks; the true blocks are **signed** — wrong parity, so no even-block product could ever clear H. The single-Q route wasn't dead; it was searched in the wrong ring.
+
+- **[pi_v_022]** Confirmed student's s1_017 sound (correct target, two-prime rank jump 166 vs 167) and root-caused it by the same signed-denominator finding.
+
+**Coordination:** rewrote both live summaries, wrote a detailed derivation note (`bots/pi/derivations/round6_inpiece_factorization.md`), and assigned one task — reproduce in ≥3 more pieces, derive the single-leg **selection rule**, **symmetrize** the denominator, and start the **numerator deg-8 core** (now the compactness crux). Posted `post_010`.
+
+Not yet solved — the global symmetric assembly, selection rule, and numerator compactness remain (3 rounds left).
+[usage] cost_usd=7.863184 duration_ms=1520911 num_turns=65 in=97 out=102917 cache_read=6865010 cache_write=185667
+[2026-07-26T13-08-22] pi-bot exited with code 0

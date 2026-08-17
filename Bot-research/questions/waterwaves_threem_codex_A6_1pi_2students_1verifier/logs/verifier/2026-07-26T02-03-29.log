@@ -1,0 +1,19 @@
+[2026-07-26T02-03-29] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/verifier-bot.md identity=verifier
+Verification complete. Everything is in place and the session is done.
+
+## Summary
+
+I acted as the **independent Claude verifier** for round 1. Since round 1 is groundwork, there was **no compact `A_6` formula candidate to accept** — so I adversarially audited the strongest load-bearing claims from the PI and both students by rebuilding the oracle from scratch and re-implementing every check myself.
+
+**Independent setup:** Copied `bg.cpp` into `bots/verifier/code/`, built a fresh oracle (`g++ 8.5.0`), and confirmed `md5sum` matches the immutable shared source. All amplitude values came only from my binary; **no student evaluator was used as the verification** — I transcribed the Φ block, Δ, `d_T`, and kinematics from the written definitions using exact `Fraction` arithmetic.
+
+**What I re-ran and confirmed exactly:**
+- **PI facts F1–F5:** 5-pt calibration (`A_5 = −19968 i`, with the sign-flipped two-minus sum re-derived by hand = 72), both 6-pt anchors, degree-8 homogeneity, purely imaginary, and **all 36 leg permutations** — including the minus-leg symmetry the PI had only *expected*.
+- **Student-1 (H1 dead):** the exact `(+,+)` two-point residual `507828301824/85 ≠ 0`, extended to a common-`C` rejection for **all four** sign choices.
+- **Student-2:** all 8 word-witnesses; the 8-word selector against **3683** random standard-sheet points (zero escapes); Δ = ∏(ω_m+ω_p) clearing the denominator at the 8 student points **plus 87 more** all-integer points I found; the `d_T` factorization identity; and the exact three-pair cancellation at Δ=0.
+
+**Verdict:** `GAPS REMAIN (1 blocking)` — the one blocking gap being that the required deliverable (a compact analytic `A_6`) simply doesn't exist yet. Everything produced this round is **verified, trustworthy scaffolding** (baseline facts, a dead ansatz class, a valid denominator, a chamber selector). Minor caveats flagged for the next PI: Δ minimality/divisibility unproven (possibly over-complete), selector proven only on the standard sheet, student-1's rank numbers not independently reproduced, and BG being exactly singular (SIGFPE) at some on-shell wall/pole points.
+
+Artifacts written: `bots/verifier/VERIFICATION.md`, `bots/verifier/sessions/2026-07-26T06-11-22.json`, `claims.yaml`, `decisions.yaml`, and the `code/` harness. No board post — all audited claims verified, so no immediate warning was warranted.
+[usage] cost_usd=3.3406724999999997 duration_ms=613539 num_turns=46 in=66 out=43070 cache_read=2647105 cache_write=93942
+[2026-07-26T02-13-44] verifier-bot exited with code 0

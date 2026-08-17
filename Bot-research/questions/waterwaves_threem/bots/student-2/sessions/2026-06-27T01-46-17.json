@@ -1,0 +1,24 @@
+{
+  "bot": "student-2",
+  "timestamp": "2026-06-27T01:46:17Z",
+  "task_id": "r5-student-2",
+  "status": "partial",
+  "summary": "Top-down round 5. Did NOT reach the explicit all-n N_n, but produced load-bearing structural results that sharpen the search: (1) RULED OUT the literal box-spline-of-omega^2 closed form (retires my s2_008) on two independent grounds -- A_n has a genuine pole (not piecewise-poly) and N_n is ODD (a box spline of the even knots omega_i^2 is even); the closed form must be a truncated-power spline in LEG variables. (2) Showed the simple-pole residue is irreducibly CHAMBER/BRANCH-dependent (depends on signed-minus invariants AND chamber; same matched magnitudes give unrelated residues), which both kills the global-residue shortcut and explains the PI's 'N_6 is algebraic in the invariants' negative. (3) Re-confirmed exactly: A_6 even + Z_2-swap-invariant; (1=2) jump order 3, (1=1) jump order 1; the soft recursion on N_n. Built a validated in-process exact BG evaluator (fastbg.py) and ran a literature pass (no published closed form exists).",
+  "work_done": [
+    "Rebuilt own bg.cpp oracle; reproduced n=5,6,7 exactly.",
+    "Literature pass (subagent): no published sigma-sector water-wave closed form; cited perturbiner/Berends-Giele (Mizera-Skrzypek 1809.02096), single-minus gluon/graviton (2602.12176, 2603.04330), Dyachenko-Lvov-Zakharov 1995, Geogjaev 2025, box-spline theory. Structure is novel.",
+    "fastbg.py: faithful pure-Fraction in-process BG evaluator, validated vs ./bg (n=5,6,7). (n>=6 slower than the GMP oracle, but subprocess-free for scripting.)",
+    "fastsym.py: fast single-variable symbolic chamber engine (float sign resolution + F-const slice); reproduced chamber-1 A_6(t) form exactly.",
+    "verify_r5.py: A_6 EVEN under omega->-omega and INVARIANT under Z_2 triple swap (exact); A_6 rational/pole; N_6(-omega)=-N_6(omega) ODD (exact); soft recursion re-checked.",
+    "jump_extract.py: clean single-wall crossings via rational reconstruction -> (1=2) jump ORDER 3, (1=1) ORDER 1 (independent re-confirmation of s1_013/s2_004).",
+    "residue_global.py / residue_canon.py: computed rho = N_6 at matching points; found rho depends on signed-minus invariants AND chamber (multivalued over matched magnitudes) -> residue is a spline, not global. Hand-verified chamber-1 rho(t=10) = -62519040.",
+    "n7_denom.py: attempted the n=7 minimal denominator; reduced-denominator slice-degree exceeds the reconstruction cap -> n!=6 minimal denominator remains OPEN (cube-collapse is special to equal triples).",
+    "Registered claims s2_015 (box-spline ruled out), s2_016 (residue chamber-dependent), s2_017 (all-n denominator status); writeup derivations/n6_residue_and_boxspline.md."
+  ],
+  "next_steps": [
+    "Assemble N_n in LEG variables (NOT box-spline-of-squares): B + sum_{(1=1)}(k_ij)_+^1 P_ij + sum_{(1=2)}(k_ijk)_+^3 Q_ijk. The (1=2) coefficient Q (exponent n-3) should match a two-minus B-spline on a sub-configuration; the (1=1) coefficient P (exponent 1) is the new piece from the |k_ij| difference-branch.",
+    "Extract P_ij (deg 9) and Q_ijk (deg 5) as multivariate polynomials on clean single-wall crossings (student-1's bottom-up), then symmetrize + verify exactly across chambers and two-sided wall limits at n=6, push to n=7.",
+    "Constrain the assembly with the soft recursion (s2_012) and the universal jump exponents (1,3); do NOT chase a box spline of squares or a per-region invariant polynomial (both ruled out).",
+    "Pin the n!=6 minimal denominator (reconstruct A_7 with a higher-degree rational reconstruction or a multi-slice multivariate fit)."
+  ]
+}

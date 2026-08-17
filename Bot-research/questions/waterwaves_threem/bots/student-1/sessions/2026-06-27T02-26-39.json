@@ -1,0 +1,29 @@
+{
+  "bot": "student-1",
+  "timestamp": "2026-06-27T02:26:39Z",
+  "task_id": "r5-student-1",
+  "status": "completed",
+  "summary": "Attacked the round-5 task (assemble the degree-11 spline numerator N_6 as base + single-wall truncated powers, in leg variables). Headline result: the simple single-wall truncated-power form FAILS - N_6 is a GENUINE BOX SPLINE with cross-terms, correcting the round-5 task premise. I nonetheless extracted the (1=2) jump coefficient Q explicitly and exactly (the (1=2) sector IS a clean chamber-independent truncated power); the (1=1) sector carries chamber-dependent cross-terms organized by the perfect-matching geometry. All exact-rational against my own bg.cpp (shared untouched), cross-checked by an independent native-Python BG port.",
+  "work_done": [
+    "Built fast infrastructure: added a guarded --batch mode to my OWN bg.cpp copy (exact GMP, per-point ZeroDiv guard so wall-hits don't SIGFPE-abort a batch); wrote pybg.py, a faithful native-Python BG port that reproduces ./bg EXACTLY at n=5,6,7 (independent second evaluator).",
+    "Re-confirmed the kink locus: same-type orderings (omega_i=omega_j within a triple) are ANALYTIC; only the mixed (1=1) and (1=2) walls carry kinks (_sametype.py).",
+    "EXTRACTED the (1=2) jump coefficient Q exactly (s1_015): degree-5, odd, H'-symmetric. Method: exact reconstruction of single-(1=2)-wall jumps on F-const slices, relabelled to a reference wall by S_3xS_3, fit deg-5 H'-sym (rank 34, consistent, held-out clean, 0/55 exact mismatches). Q = A2 B1 (y^2 - A1^2 - A1 B1 + A2 - B2) + B2 y (A2 - B1 y - B2) with A1,A2 (other 2 minus), B1,B2 (the plus pair), y (excluded plus).",
+    "GLOBAL validation of Q: M = N - sum_{(1=2)} (k_ijk)_+^3 Q_ijk is exactly (1=2)-SMOOTH (jump=0) at 10/10 (1=2) walls across >=4 chamber types (r5_corr.py, r5_verify.py).",
+    "PROVED the simple form fails / N is a box spline (s1_014): fit M against the COMPLETE basis (12 G-sym odd deg-11 invariant base classes + 125 manifold-independent deg-9 (1=1) templates, orbit-summed over the 9 walls = 137 columns). Real M -> FULL rank 137 but INCONSISTENT (r5_Mfit.py). CONTROL: a synthetic simple (1=1) spline through the SAME fitter -> CONSISTENT (r5_control.py), so the machinery is sound and the inconsistency is genuine.",
+    "Exhibited an explicit nonzero mixed second-difference (cross-term) at a (1=1)x(1=1) intersection (r5_crossterm.py); the chosen difference-branch walls force a third (a_2=b_4 & a_3=b_5 => a_1=b_6), tying cross-terms to the perfect-MATCHING geometry (s1_016).",
+    "Recorded claims s1_014/015/016, decisions s1_dec_009/010, derivation derivations/n6_round5_boxspline_and_Q.md."
+  ],
+  "results": {
+    "Q_1eq2_jump_coefficient": "verified exact (0/55 mismatches; M (1=2)-smooth 10/10 walls)",
+    "simple_truncated_power_form": "FALSE (full rank 137, inconsistent; control consistent) -> N_6 is a box spline",
+    "1eq2_jumps": "clean / chamber-independent",
+    "1eq1_jumps": "chamber-dependent (cross-terms present)",
+    "cross_term_geometry": "perfect matchings (difference branch); a_2=b_4 & a_3=b_5 force a_1=b_6",
+    "independent_evaluator": "pybg.py == ./bg exactly at n=5,6,7"
+  },
+  "next_steps": [
+    "Determine the (1=1) box-spline cross-terms (the whole remaining problem). Target matching-indexed products prod_i (k_{i sigma(i)})_+ with truncated-power numerators, NOT the failed simple sum; this dovetails student-2's matching/Cauchy partial-fraction (s2_013) and the d=3 box-spline lead (s2_008) - now correctly aimed at the cross-term part.",
+    "Use the verified Q as the fixed (1=2) component: work on M = N - sum(k_ijk)_+^3 Q_ijk, which is purely a (1=1)-arrangement box spline.",
+    "Coordinate with student-2: the (1=1) walls' difference-branch matchings are the analog of their sum-branch matching poles; the same 6 matchings index both."
+  ]
+}

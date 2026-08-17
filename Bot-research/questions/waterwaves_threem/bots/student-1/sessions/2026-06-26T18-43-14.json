@@ -1,0 +1,47 @@
+{
+  "bot": "student-1",
+  "timestamp": "2026-06-26T18:43:14Z",
+  "task_id": "r1-student-1",
+  "status": "completed",
+  "summary": "Locked down and fully documented the n=5 three-minus closed form. Independently re-derived it via the plus/minus swap (clean leg relabeling), re-verified it against my own copy of bg.cpp at 24/24 exact rational points plus a direct --amp swap-invariance check, gave the explicit chamber decomposition in the original frequencies (proving only A,B,C,E are realizable and chamber D is empty), and characterized the |k_S|=0 SIGFPE walls as finite C^1 points (no poles).",
+  "work_done": [
+    "Copied bg.cpp into bots/student-1/code/ and built it (g++ -O2 -std=c++17 ...); never touched the shared bg.cpp.",
+    "Re-derived A_5 = i*2^4*g^{-2}*w4*w5*sum_{S subset {1,2,3}}(-1)^|S|(beta^2-sum_S w_j^2)_+^2, beta=min(|w4|,|w5|), by applying the plus/minus swap (question.md item 3) to the two-minus law (item 2) with minus legs relabeled to {4,5}; wrote the step-by-step leg map in derivations/n5_derivation.md.",
+    "verify_n5.py: EXACT rational agreement at 24/24 non-degenerate points (generic, fractional, w>>rest, w<<rest, all realizable chambers); reports the exact residual at each (all 0). Also confirmed the plus/minus swap directly via --amp (flip K->-K leaves A_5 unchanged) at 4 points.",
+    "Chamber decomposition: with m=min(w4^2,w5^2), a minus-subset S is active iff sum_S w_j^2<m. The on-shell momentum law w4^2+w5^2=w1^2+w2^2+w3^2 forces m<=T/2, which (a) makes the triple always inactive, (b) allows at most one active pair, (c) PROVES chamber D (all three singletons) unrealizable (sup of min(plus^2)-max(minus^2) over the manifold = 0, attained only degenerately; >3e6-sample scan/opt). Realizable chambers A,B,C,E each have an explicit homogeneous-degree-6 polynomial form (E: F=2 w_i^2 w_j^2, m-independent), all matched to the oracle exactly off-wall.",
+    "walls_n5.py: showed A_5 is C^1 across chamber walls (each (.)_+^2 is C^1) via an E->C->A sweep, and characterized the |k_S|=0 SIGFPE walls: non-degenerate ones reduce to chamber walls on-shell; exact one-sided limits on the internal channel S={2,3,4} (Pythagorean 3,4,5) and S={3,4} converge to the formula value with EQUAL left/right slopes (~ +/-2957*eps), no 1/eps blow-up => NO factorization pole at n=5.",
+    "Registered s1_001 (formula), s1_002 (chamber decomposition + D-empty), s1_003 (|k_S|=0 walls finite/no-pole) in claims.yaml; s1_dec_001/002 in decisions.yaml; full writeup in derivations/n5_derivation.md."
+  ],
+  "key_findings": {
+    "formula_status": "n=5 three-minus closed form independently verified exact at 24/24 points + swap invariance.",
+    "realizable_chambers": "Only A, B, C, E (chamber D and triple/2-pair are unrealizable on-shell).",
+    "chamber_forms": {
+      "A": "F = m^2 (= beta^4)",
+      "B": "F = w_i^2 (2m - w_i^2)  [one active minus singleton i]",
+      "C": "F = 2m(w_i^2+w_j^2) - m^2 - w_i^4 - w_j^4  [two active singletons, no pair]",
+      "E": "F = 2 w_i^2 w_j^2  [active pair {i,j}; m cancels]",
+      "P": "A_5 = P*F with P = i*2^4*g^{-2}*w4*w5, m = min(w4^2,w5^2)"
+    },
+    "poles": "NONE at n=5; |k_S|=0 walls are spurious BG-coordinate singularities (finite C^1 limits). The factorization channel that becomes a pole at n>=6 is regular at n=5.",
+    "selection_rule": "m=min(w4^2,w5^2) <= (w4^2+w5^2)/2 = T/2 on-shell, which drives the entire chamber selection."
+  },
+  "verification": {
+    "oracle_copy": "bots/student-1/code/bg (own build from own bg.cpp copy)",
+    "exact_points": "24/24 exact rational agreement (residual 0 at each)",
+    "swap_check": "A(3-minus) == A(K->-K) at 4 points via --amp",
+    "wall_limits": "two-sided exact limits at S={2,3,4} and S={3,4} -> finite formula value, slopes match"
+  },
+  "next_steps": [
+    "n=5 is fully consolidated and ready for PI independent re-verification (rebuild from PI's own bg.cpp, compare at n=5 across chambers + near walls).",
+    "Hand off to student-2's n=6 work: the n=5 result confirms NO poles at n=5; the internal channel S={2,3,4} type omega_S^2=g|k_S| is the one to watch for the first genuine pole at n=6.",
+    "Suggest the group adopt the per-chamber polynomial forms (esp. the clean E: F=2 w_i^2 w_j^2) and the m<=T/2 selection rule as the n=5 baseline against which the n>=6 'contact + pole' ansatz is built."
+  ],
+  "files": [
+    "bots/student-1/code/bg.cpp",
+    "bots/student-1/code/verify_n5.py",
+    "bots/student-1/code/walls_n5.py",
+    "bots/student-1/derivations/n5_derivation.md",
+    "bots/student-1/claims.yaml",
+    "bots/student-1/decisions.yaml"
+  ]
+}

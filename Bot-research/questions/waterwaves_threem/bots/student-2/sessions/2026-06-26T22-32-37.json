@@ -1,0 +1,28 @@
+{
+  "bot": "student-2",
+  "timestamp": "2026-06-26T22:32:37Z",
+  "task_id": "r2-student-2",
+  "round": 3,
+  "status": "major_progress",
+  "summary": "Resolved the polynomial-vs-rational crux that split the group and found the EXACT denominator of the three-minus amplitude. A_n^{3-} is RATIONAL (not polynomial), and A_n = i 2^{n-1} g^{3-n} N_n(omega) / prod_{i in minus, j in plus}(omega_i+omega_j), with N_n a polynomial of degree 5n-13, S_3 wr Z_2-symmetric and odd under omega->-omega. Verified exactly at n=6 (multiple slices) and n=7. This corrects my own round-1 'piecewise-polynomial' gate (s2_002) AND student-1's 'sums of squares' denominator characterization (s1_005): the denominator is the product of all minus-plus FREQUENCY SUMS (omega_i+omega_j), 3(n-3) of them, not omega_i^2+omega_j^2. The (omega_1+omega_6)=-S_F factor unifies student-1's 'spurious leg-elimination pole' into the symmetric set.",
+  "work_done": [
+    "Independently CONFIRMED A_6 is rational, not polynomial, by an exact tie-breaker (settle.py): no exact polynomial of degree <=25 fits A_6 on a chamber-interior slice, while the identical test on n=5 (known polynomial) correctly returns degree 4. Closes my round-1 logical gap ('no poles => polynomial' is false).",
+    "Documented a methodological trap: a floating-point reconstruction spuriously reports A_6 'polynomial' (residual ~1e-22) at clustered nodes; only exact arithmetic is trustworthy (recon_numeric.py kept as a flagged cautionary example).",
+    "Built the F-constant-slice + modular-rational-reconstruction pipeline (recon_modular.py, get_denom.py) since direct symbolic BG reduction (cancel/together/gcd) times out for n=6. On the omega=(2,3,5,7) slice the reduced denominator is (t-200)(t-180)(t+140)(t+160) = the four free-free mixed frequency sums.",
+    "Re-symmetrised and VERIFIED the exact denominator D = prod_{i in minus, j in plus}(omega_i+omega_j): A_n * D is an exact polynomial in the slice parameter at n=6 (3 independent slices, deg 12-14) and n=7 (deg 16); A_n alone is rational. Sums-of-squares (omega_i^2+omega_j^2), Q, e2(plus/minus) and their products all FAIL the same test (verify_denom.py).",
+    "Pinned minimality by symmetry: the S_3 x S_3 orbit of one mixed pair is the whole set, so the only symmetric divisors are 1 and the full product; A_n rational => denominator is exactly the full product.",
+    "Derived the structural origin from bg.cpp: mixed-pair |k_{ij}| = |omega_i^2-omega_j^2| = |omega_i-omega_j||omega_i+omega_j|; the (omega_i+omega_j) branch survives, everything else (the (omega_i-omega_j) branch, same-type sums of squares, propagator D_S) cancels. No physical pole because (omega_i+omega_j)=0 is a chamber wall (k_{ij}=0) where A_n is finite (kink).",
+    "Proved the pole loci omega_i+omega_j=0 intersect PAIRWISE on the manifold ((omega_2+omega_3+omega_5)^2=omega_2^2+omega_3^2-omega_5^2 <=> (omega_5+omega_2)(omega_5+omega_3)=0), which blocks a naive single-channel residue recursion and explains the per-slice coincidences.",
+    "Registered claims s2_009 (rational, exact), s2_010 (exact denominator, all-n, verified n=6,7), s2_011 (numerator constraints); marked s2_002 corrected; wrote derivations/n6_denominator.md and decision s2_dec_002."
+  ],
+  "deliverables": {
+    "denominator": "A_n^{3-} = i 2^{n-1} g^{3-n} N_n / prod_{i in minus, j in plus}(omega_i+omega_j), deg N_n = 5n-13, N_n symmetric S_3 wr Z_2 and odd under omega->-omega. EXACT, verified n=6 (multiple chambers) and n=7.",
+    "verification_script": "bots/student-2/code/denom_alln.py (headline: A_n*prod_mixed is polynomial at n=6,7; A_n rational), settle.py (exact poly-vs-rational + n=5 control), verify_denom.py (rules out sums-of-squares/Q/e2).",
+    "open": "The numerator N_n (degree 5n-13 symmetric polynomial). Constraints: soft theorem s2_006 (now a recursion on N_n, boundary N_5 = A_5 * prod_{6 mixed}), full symmetry, parity. The round-2 box-spline/truncated-power picture should target N_n (polynomial), not A_n (rational)."
+  },
+  "next_steps": [
+    "Determine N_n: extract N_6 (deg-17 symmetric, odd) as a polynomial in the S_3 wr Z_2 invariants (modulo the conservation ideal sum omega=0, sum sigma omega^2=0) using the soft recursion + n=5 boundary as constraints; or seek a sum-over-channels form A_n = sum_{mixed pairs} R_{ij}/(omega_i+omega_j) + polynomial, mindful that residues are entangled by the pairwise collisions (s2_011).",
+    "Cross-check with student-1's per-chamber extraction: their exact per-chamber polynomials are A_n * (one chamber's |k_S| product); reconcile against N_n / prod(omega_i+omega_j).",
+    "Recommend PI independently re-verify s2_010 (the corrected denominator) with its own evaluator: confirm A_6*prod(omega_i+omega_j) and A_7*prod(omega_i+omega_j) are polynomial, and that prod(omega_i^2+omega_j^2) is NOT a denominator."
+  ]
+}

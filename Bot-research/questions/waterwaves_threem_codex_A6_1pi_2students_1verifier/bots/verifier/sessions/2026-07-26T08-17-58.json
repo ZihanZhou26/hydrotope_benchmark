@@ -1,0 +1,43 @@
+{
+  "id": "verifier_session_20260726T081758",
+  "bot": "verifier",
+  "timestamp": "2026-07-26T08:17:58",
+  "round": 2,
+  "task_id": "round2_verifier_audit",
+  "status": "complete",
+  "summary": "Independently rebuilt the md5-verified BG oracle and adversarially audited the two newest load-bearing results: student-1's compact pole part P_pole and student-2's denominator reduction (Delta=C^3, D_min=C) plus the linear pair-wall jump. Reimplemented P_pole, C, Delta, d_T and the two-minus A_4/A_5 formula from the written derivations (no student evaluator imported). All independently checkable claims reproduced EXACTLY. P_pole is correct and denominator-removing in ALL 8 chambers (student-1 had tested only 4 sorted words); Delta=C^3, 1/d_T=(w_m+w_r)/(2C), D_min=C genuine per analytic cell, and the pair-wall jump is order exactly 1 with limit 12622720/27 (cubic brick ruled out) all confirmed. Still NO complete compact A_6: the polynomial-spline remainder R = A_6/i - P_pole (degree-6 orbit brick H_mp) is unknown. Two structural caveats surfaced: every real C=0 point is a triple-coincidence wall where residues cancel (A_6/i finite -> no approachable real pole; C is a per-cell denominator only), and A_6's analytic cell structure is finer than the 8-word selector (finer Q_T=0 and q_mp=0 walls).",
+  "oracle": {
+    "path": "bots/verifier/code/bg",
+    "build": "g++ 8.5.0 -O2 -std=c++17 -lgmpxx -lgmp",
+    "md5_matches_shared_bg_cpp": true,
+    "md5": "41715c4af3ee5a61b1c4bfce40426ac8"
+  },
+  "checks_rerun_result": {
+    "propagator_normalization_source": "PASS (bg.cpp Propagator=-i/D_T, D_T=g d_T/Q_T => Propagator=-iQ_T/(g d_T); the Q_T numerator in P_pole is forced by the oracle, not fitted)",
+    "P_pole_anchor": "PASS exact (P_pole(-8,2,3,4,5,-6)=42588288/7; residual A6/i-P_pole=-7396992 integer)",
+    "P_pole_denominator_removal_all_8_chambers": "PASS (240 fresh nondegenerate pts, 6 SIGFPE walls skipped: 28/28 integer-w residuals integral, 212/212 rational-w residuals integral after xL^8; extended student-1's 4-word coverage to all 8 words)",
+    "P_pole_compactness": "PASS (one H block + one S3(M)xS3(P) orbit <=9 channels; no coefficient table / no pieces_sparse)",
+    "P_pole_R_dual_S3_symmetry": "PASS (all 36 minus x plus permutations invariant)",
+    "P_pole_R_degree8_homogeneity": "PASS (scale w->2w gives x256)",
+    "Delta_equals_C_cubed": "PASS exact (136/136 nondegenerate pts)",
+    "inv_dT_identity": "PASS exact (1/d_T=(w_m+w_r)/(2C) every channel)",
+    "D_min_equals_C_genuine": "PASS (single full-signature cell: A6/i not polynomial deg 8-12; B=C*A6/i IS polynomial with C not dividing B => genuine per-cell denominator C)",
+    "pair_wall_jump_order_one": "PASS exact (setting (10,2,3): deg R_L=deg R_R=6, R_L(5)-R_R(5)=0, lim (R_L-R_R)/q24 = 12622720/27, order exactly 1; cubic brick ruled out)",
+    "eight_word_selector": "PASS (my ascending-|w| sort == student-2 descending sort word-reversed; all 8 realized)",
+    "five_point_calibration": "PASS exact (4 pts: A5/i(BG) == independent sign-flipped two-minus formula, incl. -19968, -3328, -156672/11, -27048)"
+  },
+  "gaps_found": [
+    {"severity": "blocking", "text": "No complete compact closed-form A_6 yet. Pole half solved+compact (P_pole), denominator reduced to C (deg 3), but the polynomial-spline remainder R_spline = A_6/i - P_pole (degree-8 dual-S3 spline; only known handle is sum_{m,p}(q_mp)_+ H_mp with deg H_mp=6 UNKNOWN) is not reduced to a human-readable expression. Deliverable does not exist."},
+    {"severity": "minor", "text": "'Genuine real factorization pole' language (F9/round-2 premise) is imprecise: every real C=0 point is a triple mixed-pair coincidence where diverging channel terms cancel, so A_6/i and P_pole stay finite (removable). A_6/i has no approachable real pole; C is a genuine denominator only per analytic cell. The decomposition is still sound (this cancellation is why R is a pure polynomial spline)."},
+    {"severity": "minor", "text": "A_6's analytic cell structure is finer than the 8-word selector: within one 8-word chamber A_6/i still switches branch at Q_T=0 (triple sign) and q_mp=0 (pair sign) walls. Holding only the 8-word fixed gave a spurious degree-17 line interpolant; holding the full pair/triple signature fixed gave a clean degree-9 B=C*A6/i. R_spline is not merely eight polynomials."},
+    {"severity": "minor", "text": "BG is exactly singular (SIGFPE) at on-shell wall/pole points; 6/246 sampled nondegenerate points were skipped. Final evaluator + verification must use two-sided limits at walls."}
+  ],
+  "artifacts": [
+    "bots/verifier/VERIFICATION.md",
+    "bots/verifier/code/pole_verify.py (independent P_pole/C/Delta/d_T + two-minus A4/A5, my own)",
+    "bots/verifier/code/bg (fresh, md5-verified)",
+    "bots/verifier/code/oracle.py"
+  ],
+  "board_post": "none (all audited claims CONFIRMED; no false result to warn about; the no-complete-formula-yet status and the two structural caveats are recorded here and in claims.yaml for the next PI; not an immediate warning)",
+  "verdict": "GAPS REMAIN (1 blocking)"
+}

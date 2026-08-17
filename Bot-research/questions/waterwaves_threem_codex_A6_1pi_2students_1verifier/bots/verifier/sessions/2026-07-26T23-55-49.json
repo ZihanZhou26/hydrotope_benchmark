@@ -1,0 +1,57 @@
+{
+  "id": "verifier_session_20260726T235549",
+  "bot": "verifier",
+  "timestamp": "2026-07-26T23:55:49",
+  "round": 8,
+  "task_id": "round8_verifier_audit",
+  "status": "complete",
+  "summary": "Audited the strongest round-8 item: student-1's s1_010/post_032, the FIRST complete table-free candidate A_6 = i g^-3 (P_pole + R_Q + R_0 + R_q), with R_0=H0 and R_q=4 sum h_mp H1 + 2 sum h h H2 and explicit seed polynomials H0/H1/H2 (13/46/23 monomials). Built a fresh from-scratch bg_r8 (source md5=41715c... = shared reference, sha256=bd1afe67...) and HAND-TRANSCRIBED the full formula from the WRITTEN .md into my own evaluator vr8_core.py; did NOT import round8_compact_candidate.py. Ran the entire definition-of-done battery against exact BG and found ZERO mismatches over >6000 exact rational comparisons. RESULT: VERIFIED -- the candidate survives independent attack; G1 is closed subject only to the PI's compactness judgment. This is strictly stronger than the round-7 B^sym failure mode: the new R_q is off-wall-CORRECT (exact on both sides of 204 wall crossings), not merely C^0. student-2 (s2_014/s2_015/post_031) shipped off-wall cofactor ground truth but no R_q candidate -- nothing to promote there.",
+  "candidate_audited": {
+    "id": "s1_010",
+    "formula": "A_6 = i g^-3 (P_pole + R_Q + R_0 + R_q)",
+    "artifacts": [
+      "bots/student-1/derivations/s1_010_round8_compact_hinge_candidate.md",
+      "bots/student-1/code/round8_compact_candidate.py"
+    ]
+  },
+  "oracle": {
+    "path": "bots/verifier/code/bg_r8",
+    "build": "g++ -O2 -std=c++17 -o bg_r8 bg_r8.cpp -lgmpxx -lgmp",
+    "source_md5": "41715c4af3ee5a61b1c4bfce40426ac8",
+    "source_sha256": "bd1afe67c45e1e9403c03a0b78373ebb492235be56fc1e5ee9281cbbec9040c1",
+    "source_md5_matches_shared_bg_cpp": true,
+    "independence": "evaluator vr8_core.py hand-transcribed from the .md LaTeX; student round8_compact_candidate.py NOT imported"
+  },
+  "checks_rerun_result": {
+    "V0_anchors": "PASS exact (A6/i=-9190656/7 with split P_pole=42588288/7, R_Q=-136630560, S=129233568; and A6/i=-641893056/85)",
+    "V1_multichamber": "PASS 359/359 exact; 93 distinct chamber signatures, 55 q-sign patterns, 31 Q-sign patterns",
+    "V2_permutations": "PASS 288/288 exact; formula and BG both invariant under all same-sign (minus and plus) permutations",
+    "V3_hierarchical": "PASS 35/35 exact; scales 1/200 .. 1000",
+    "V4_two_sided_walls": "PASS 2202 points straddling 204 q-wall AND Q-wall crossings, 0 mismatch (the decisive cure test the round-7 B^sym failed 0/18 -- here off-wall EXACT)",
+    "V5_pole_loci_d0": "PASS 40/40 exact both sides at d_{m;pq}=0; BG finite (removable), no spurious divergence introduced",
+    "V6_genuine_internal_DS0": "PASS 3406 points straddling 1552 genuine D_S=w_S^2/|k_S|-g=0 crossings, 0 mismatch; probed to |D_S|~1e-10 -> BG finite (~1.3e5) -> sector pole-free in probed interior, formula tracks exactly",
+    "V7_g_scaling": "PASS 4/4 exact; A6/i = g^-3 stripped(omega), omega-manifold g-independent",
+    "V8_5pt_calibration": "PASS BG A_5=-19968 exact; independent two-minus master (sign-flipped minus legs 4,5) matches BG 21/21",
+    "V9_compactness": "PASS structural (table-free: imports only fractions/itertools/argparse, no file/json/table load; 82 monomials in 3 seeds H1/H2/H0 = 46/23/13 generate every chamber, 0 chamber-specific coefficients); human-readable adjective is PI judgment"
+  },
+  "checks_rerun_result_headline": "Complete s1_010 candidate VERIFIED: >6000 exact BG comparisons, ZERO mismatches, across all chambers, same-sign permutations, hierarchical regimes, 204 two-sided q/Q wall crossings, d=0 and genuine D_S=0 crossings (finite/removable), g-scaling, and 5-pt calibration. Table-free. First complete candidate to survive independent attack; off-wall-correct (not merely C^0).",
+  "gaps_found": [
+    {"severity": "minor", "text": "Compactness clears the letter of the task bar (82 non-chamber-specific integer coefficients in 3 seeds << 'hundreds of chamber-specific coefficients'; a finite positive-part orbit sum, one of the task's own permitted examples; genuinely table-free, verifier-reproduced no-table). The only soft point is that a single seed H1 carries 46 coefficients; whether 82 monomials is 'genuinely human-readable' is the PI's final acceptance judgment for SOLVED.md. Verifier assessment: MET."},
+    {"severity": "minor", "text": "Chamber coverage is empirical, not a symbolic completeness proof. Sampling reaches only physically-realizable chambers (BG cannot leave the on-shell manifold either); hit 93 chamber signatures / 55 q-patterns / 31 Q-patterns and crossed 204 wall boundaries, corroborating but not proving that every realizable chamber is covered. Residual risk low (piecewise-polynomial formula matches BG at many generic points per chamber plus both sides of every crossed wall). Carried caveat; not a defect of this candidate."}
+  ],
+  "did_not_reaudit": "student-1's 900x605 rank / Wolfram-recovery machinery -- not needed: the displayed closed form reproduces fresh BG exactly on its own; correctness rests on the >6000-point exact agreement, not the fit's linear algebra.",
+  "verdict": "VERIFIED",
+  "board_post": "post_033 (status flip: first complete candidate independently VERIFIED)",
+  "artifacts": [
+    "bots/verifier/VERIFICATION.md",
+    "bots/verifier/code/bg_r8",
+    "bots/verifier/code/vr8_core.py",
+    "bots/verifier/code/vr8_sweep.py",
+    "bots/verifier/code/vr8_perm_hier.py",
+    "bots/verifier/code/vr8_walls.py",
+    "bots/verifier/code/vr8_poles.py",
+    "bots/verifier/code/vr8_polehunt.py",
+    "bots/verifier/code/vr8_genuine_pole.py",
+    "bots/verifier/data/round8_verification_summary.json"
+  ]
+}

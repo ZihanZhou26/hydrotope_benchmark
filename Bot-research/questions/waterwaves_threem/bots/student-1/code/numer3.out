@@ -1,0 +1,39 @@
+(A) minimal-denom confirm (A_6*(e3m+e3p) -> pure sumFree denom):
+  base [Fraction(2, 1), Fraction(3, 1), Fraction(5, 1), Fraction(7, 1)] w4: degN=4 degD=2 pureSF=True (143pts)
+  base [Fraction(2, 1), Fraction(3, 1), Fraction(5, 1), Fraction(7, 1)] w5: degN=4 degD=2 pureSF=True (223pts)
+  base [Fraction(2, 1), Fraction(3, 1), Fraction(5, 1), Fraction(7, 1)] w2: degN=8 degD=2 pureSF=True (144pts)
+  base [Fraction(-3, 1), Fraction(2, 1), Fraction(4, 1), Fraction(-5, 1)] w4: degN=4 degD=2 pureSF=True (70pts)
+  base [Fraction(-3, 1), Fraction(2, 1), Fraction(4, 1), Fraction(-5, 1)] w5: degN=4 degD=2 pureSF=True (86pts)
+  base [Fraction(-3, 1), Fraction(2, 1), Fraction(4, 1), Fraction(-5, 1)] w2: degN=8 degD=2 pureSF=True (71pts)
+  base [Fraction(3, 1), Fraction(-7, 2), Fraction(5, 2), Fraction(-4, 1)] w4: degN=14 degD=8 pureSF=True (32pts)
+  base [Fraction(3, 1), Fraction(-7, 2), Fraction(5, 2), Fraction(-4, 1)] w5: degN=14 degD=8 pureSF=True (44pts)
+  base [Fraction(3, 1), Fraction(-7, 2), Fraction(5, 2), Fraction(-4, 1)] w2: degN=16 degD=8 pureSF=True (36pts)
+
+(B) factor numerator N along anchor [2,3,5,7], vary w4:
+  degN=4 degD=2, npts=143
+  D(t)/sumFree^2 = 1/289
+  N(t) factored:
+     ⎛      4          3            2                       ⎞
+6912⋅⎝2440⋅t  + 88787⋅t  + 1318803⋅t  + 8869883⋅t + 21837235⎠
+─────────────────────────────────────────────────────────────
+                             289                             
+  mixed (1=1) wall fn roots (k_ij=w_j^2-w_i^2):
+    k_14: [-11 - 3*I, -11 + 3*I]
+    k_15: [-8, -7, -29/2 - sqrt(335)*I/2, -29/2 + sqrt(335)*I/2]
+    k_16: [-5 - 6*I, -5 + 6*I]
+    k_24: [-7, -3]
+    k_25: []
+    k_26: [-74/7, -8]
+    k_34: [-8, -2]
+    k_35: []
+    k_36: [-11, -7]
+  (1=2) wall fn roots (w_i^2 - w_j^2 - w_k^2):
+    1-45: [-1147/131 - 90*sqrt(13)/131, -1147/131 + 90*sqrt(13)/131]
+    1-46: []
+    1-56: [-5 - sqrt(13), -5 + sqrt(13)]
+    2-45: [-5 - 3*sqrt(5)*I, -5 + 3*sqrt(5)*I]
+    2-46: [-11 - sqrt(10) - sqrt(-44 - 12*sqrt(10)), -11 - sqrt(10) + sqrt(-44 - 12*sqrt(10)), -11 + sqrt(10) - sqrt(-44 + 12*sqrt(10)), -11 + sqrt(10) + sqrt(-44 + 12*sqrt(10))]
+    2-56: [-79/7 - 10*sqrt(5)*I/7, -79/7 + 10*sqrt(5)*I/7]
+    3-45: [-5 - 2*sqrt(10)*I, -5 + 2*sqrt(10)*I]
+    3-46: [-11 - 3*sqrt(5)/2 - sqrt(-171/4 - 18*sqrt(5)), -11 - 3*sqrt(5)/2 + sqrt(-171/4 - 18*sqrt(5)), -11 + 3*sqrt(5)/2 - sqrt(-171/4 + 18*sqrt(5)), -11 + 3*sqrt(5)/2 + sqrt(-171/4 + 18*sqrt(5))]
+    3-56: [-256/23 - 45*sqrt(10)*I/46, -256/23 + 45*sqrt(10)*I/46]

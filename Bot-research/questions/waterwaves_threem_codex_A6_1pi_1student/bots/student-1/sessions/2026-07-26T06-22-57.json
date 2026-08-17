@@ -1,0 +1,33 @@
+{
+  "id": "student-1-round-1-2026-07-26T06:22:57",
+  "bot": "student-1",
+  "timestamp": "2026-07-26T06:22:57",
+  "task_id": "round1_h1_structure",
+  "status": "partial",
+  "summary": "Built and calibrated a reproducible exact A6 oracle; classified the nondegenerate momentum walls and candidate-pole orbits; verified removable behavior at representatives of both triple-pole orbits; and exactly ruled out the symmetry-complete singleton/doubleton truncated-power H1 basis. No compact closed formula was obtained.",
+  "work_done": [
+    "Copied and rebuilt bg.cpp under bots/student-1/code and reproduced the A5 calibrations exactly.",
+    "Generated 225 exact generic A6 samples plus two-sided wall and pole approaches.",
+    "Reduced the nondegenerate subset-momentum walls to 18 labeled walls in two symmetry orbits.",
+    "Tested all four internal-subset composition orbits and found the two pair cases degenerate-only and both tested triple cases removable.",
+    "Constructed 8- and 16-feature symmetry-invariant box-spline bases and proved exact rank inconsistency.",
+    "Ran py_compile and the complete bots/student-1/code/run_pipeline.sh entry point successfully."
+  ],
+  "next_steps": [
+    "Determine the invariant that maps the full physical domain to the stated eight baseline words; the momentum-wall signatures alone give three observed S3xS3 orbits.",
+    "Seek a compact building block outside H1, likely incorporating a different symmetric threshold or cancellation construction.",
+    "Prove removability along the complete triple factorization surfaces rather than at one isolated representative per orbit."
+  ],
+  "technician": {
+    "thread": "/root/technician",
+    "batch": "Exact copied BG harness, calibration, 225-point oracle, wall/pole scanners, and symmetry-orbit H1 fit/evaluator.",
+    "artifacts": [
+      "bots/student-1/code/run_pipeline.sh",
+      "bots/student-1/code/ansatz_fit.py",
+      "bots/student-1/data/oracle_samples.jsonl",
+      "bots/student-1/data/wall_catalog.json",
+      "bots/student-1/data/pole_approaches.json",
+      "bots/student-1/data/h1_fit_report.json"
+    ]
+  }
+}

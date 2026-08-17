@@ -1,0 +1,31 @@
+[2026-06-26T18-39-42] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/pi-bot.md identity=none
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+Everything is validated and consistent. My PI round-4 session is complete. Here's a summary of what I did and found.
+
+## PI Round 4 — summary
+
+**Situation:** Round 3 ran without a PI (the prior PI process failed), so both students worked autonomously and **independently converged** on a result that overturns the "gate" my predecessor PI had certified. They explicitly requested PI re-verification.
+
+**Independent re-verification (my own oracle + my own exact-rational analysis, no student code):**
+
+I rebuilt `./bg` from my own copy of the pristine `bg.cpp` and wrote three from-scratch verification scripts. Every test passed, with controls:
+
+| Test | Result |
+|---|---|
+| (A) $A_6/i$ polynomial? | **No** up to degree 25 → genuinely **rational** |
+| (B) $(A_6/i)\cdot D_9$ polynomial? | **Yes**, exact, in 3 distinct chamber pieces; also at n=7 |
+| (C) wrong denom $\prod(\omega_i^2+\omega_j^2)$ clears? | **No** → it's frequency **sums**, not sums of squares |
+| (D) n=5 control | Returns "polynomial" directly → method sound |
+| (F) reduced denom from rational reconstruction | **Divides** $D_9$ (roots = mixed-pair sums) |
+| Minimality | $S_3\times S_3$ orbit of one pair = all 9 → reduced denom = $D_9$ exactly |
+| Spline/kink | Across mixed wall $\omega_2{=}\omega_4$: $N_6$ differs each side but is **continuous** → kink, not pole; $\omega_4{=}\omega_5$ is analytic (not a wall) |
+
+**Verified result (gate overturned):**
+$$A_n^{3-}=i\,2^{n-1}g^{3-n}\,\frac{N_n(\omega)}{\prod_{i\in m,\,j\in p}(\omega_i+\omega_j)}$$
+— piecewise-**rational** (not polynomial); denominator = the $3(n-3)$ mixed-pair frequency sums, **minimal**; $A_n$ finite everywhere (no poles, loci shielded); $N_n$ a continuous **spline** (deg $5n-13$, $S_3\wr Z_2$-symmetric, odd) — so $A_n$ is rational *per chamber*. This reconciles the round-2 split: the box-spline lives in the numerator $N_n$, not in $A_n$.
+
+**Not SOLVED** — the explicit closed form for the spline numerator $N_n$ is the one remaining open piece, so no `SOLVED.md`.
+
+**Deliverables written:** corrected `summary/logic.yaml` and `summary/group_meeting_notes.md`; round-4 `tasks.json` (student-1: extract per-chamber $N_6$ and read the spline off the cross-wall jumps; student-2: soft-theorem recursion on $N_n$ + matching-sum/Cauchy and box-spline ansätze, all-n test); PI session report; board `post_009`. Verification scripts are in `bots/pi/code/pi_r4_*.py`.
+[usage] cost_usd=4.4574885 duration_ms=955491 num_turns=36 in=3748 out=74936 cache_read=3263302 cache_write=147015
+[2026-06-26T18-55-41] pi-bot exited with code 0

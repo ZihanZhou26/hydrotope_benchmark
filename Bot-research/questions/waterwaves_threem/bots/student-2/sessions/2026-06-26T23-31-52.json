@@ -1,0 +1,28 @@
+{
+  "bot": "student-2",
+  "timestamp": "2026-06-26T23:31:52Z",
+  "task_id": "r4-student-2",
+  "status": "progress",
+  "summary": "Top-down round 4 on the spline numerator N_n. (1) Turned the soft theorem into an EXPLICIT recursion on N_n for both a soft plus leg and a soft minus leg (verified exact, ratio 2(n-3)=6); boundary is the known two-minus law. (2) NEW concrete matching-sum/Cauchy structure: A_6 is a partial fraction with SIMPLE poles exactly at the 6 perfect-matching loci omega_i+omega_sigma(i)=0; per chamber A_6 = (sextic core)/(active matching linear forms), with D_9 appearing as those factors CUBED on a slice (triple collision). Clean rational residues extracted. Tested Cauchy permanent/determinant kernels: degree mismatch + collision + spline structure mean a naive single matching-sum does not close. (3) Box-spline reading retargeted to N_n: parity forces the box-spline content into the per-chamber EVEN numerator core (deg 2n-4), not N_n itself; walls = box-spline cones. Documented a verified hazard: naive cross-wall jump extraction is wall-contaminated. (4) Independently re-confirmed the all-n skeleton (A_n D_n polynomial at n=6 deg 14, n=7 deg 16). Closed form for N_n still OPEN; assembled the determining handles for round 5.",
+  "work_done": [
+    "Re-verified soft theorem for BOTH leg types (exact Richardson): plus leg -> A_5 three-minus, minus leg -> A_5 two-minus, ratio exactly 6 = 2(n-3). soft_minus.py, soft_exact.py, verify_r4.py.",
+    "Derived the soft-theorem recursion on N_n (clearing D_n, which factorises in the soft limit): plus-leg N_n -> (n-3) g w1 w2 w3 w_p^2 N_{n-1}^{3-}; minus-leg N_n -> (n-3) g w_p^2 w_a w_b Sigma (prod_plus w_j) D_{n-1}^{2-}. Noted it leaves a prod_i(w_i) ambiguity. claim s2_012.",
+    "Tested off-manifold: A_6*D_9 is NOT polynomial off the resonant manifold (offmanifold.py) -> the closed form lives strictly on the manifold; cannot fit a global 6-var polynomial off-shell.",
+    "Found symbolic full-amplitude extraction (6 free symbols, and even 2 free symbols) intractable via sympy cancel (timed out 400s/300s) -> pivoted to exact numerical reconstruction.",
+    "Exact reconstruction of A_6 per chamber on F-const slices (recon_num.py): A_6/i = (sextic)/(4 active matching linear forms); D_9(t) = those 4 forms CUBED. Two clean chambers exhibited.",
+    "Showed every pole of A_6 is a PERFECT-MATCHING locus omega_i+omega_sigma(i)=0 (sigma:M->P bijection); extracted clean rational residues (residue.py, residue2.py). claim s2_013.",
+    "Computed Cauchy permanent/determinant numerators (cauchy.py) -- the natural S_3 wr Z_2-symmetric objects with denominator D_9; they do not alone reproduce A_6 (degree mismatch).",
+    "Box-spline parity argument: N_n odd -> box-spline content is the per-chamber even core, not N_n; walls map to box-spline cones in x_i=omega_i^2. claim s2_014.",
+    "Documented the cross-wall jump hazard (jump.py): naive N_6^A-N_6^B is contaminated by other walls within the slice range.",
+    "Independent re-confirmation: A_n*D_n exact polynomial on a chamber slice at n=6 (deg 14) and n=7 (deg 16). verify_r4.py.",
+    "Wrote derivations/n6_matching_and_soft.md; registered claims s2_012, s2_013, s2_014."
+  ],
+  "next_steps": [
+    "Pin the per-chamber EVEN numerator core (deg 2n-4): fit student-1's exact per-chamber polynomials to a d=3 truncated power / box spline, using the soft recursion s2_012 (boundary two-minus) and the matching-pole residues s2_013 as constraints.",
+    "Resolve the matching-residue entanglement (s2_011 collision) -- e.g. approach matchings along a 2-parameter family or use a symmetric residue at the codim-1 matching locus.",
+    "Determine the prod_i(w_i) ambiguity left by the soft recursion using a wall value or a higher-order soft coefficient.",
+    "Coordinate with student-1's per-chamber N_6 table + clean cross-wall (k_S)^p jumps (single-chamber tracking) to assemble the truncated-power spline numerator and test all-n at n=6,7."
+  ],
+  "claims_registered": ["s2_012", "s2_013", "s2_014"],
+  "verification": "All exact-rational against own copy of bg.cpp. One command: python3 bots/student-2/code/verify_r4.py"
+}

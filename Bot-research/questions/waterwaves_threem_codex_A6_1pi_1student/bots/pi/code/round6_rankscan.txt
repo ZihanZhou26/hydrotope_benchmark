@@ -1,0 +1,2 @@
+need=1000 dmax=12 dmin=12 npts=1000
+need=1000 dmax=12 dmin=11 npts=1000

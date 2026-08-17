@@ -1,0 +1,19 @@
+[2026-07-26T16-26-09] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/verifier-bot.md identity=verifier
+All deliverables are written and validated. Round-7 verification is complete.
+
+## Summary — Verifier, Round 7
+
+**Verdict: `GAPS REMAIN (2 blocking)`**
+
+I built a fresh from-scratch oracle (`bg_r7`, source byte-identical to the shared `bg.cpp`, md5 `41715c…`) and attacked the only new closed-form object this round — student-2's manifestly-continuous symmetric q-brick `B^sym` / orbit `R_q^sym` (s2_013). I **hand-transcribed it from the boxed formula** (no student evaluator imported) and reran the decisive cure test.
+
+**What I found:**
+- **`B^sym` is REFUTED.** Over 18 isolated q-walls, `T = S − R_q^sym` is C⁰ value-continuous 18/18 and on-wall correct 21/21, but **fully smooth only 0/18** → no smooth global `R_0`. My independent first-wall residual (`q_23=0, t_0=−1/2`) `136585204640161305617743/14238281250000000` matches student-2's reported number **bit-for-bit** — independent corroboration, not harness trust. I also hand-verified their cross-sector witness `H^(+)−H^(−) = −21144 = 32·12·(−881/16)`.
+- **Diagnosis (confirms s2_013 + F18):** global C⁰ continuity *plus* the on-wall trace does **not** fix the degree-6 *off-wall* cofactor. The correct nested brick must additionally reproduce the exact q/q² off-wall pieces (coupled `q_+²/q_+³` — student-1's mixed-depth hinge features).
+- **student-1 (s1_009) produced no rank and no candidate** (technician stalled, driver missing the 17 `R_0` columns; they warn their own late rank is invalid) — nothing to promote.
+- **Trusted state re-confirmed on the fresh oracle, zero residual:** anchors, `P_pole=42588288/7` (both forms), `R_Q=−136630560`, `S=129233568`; `R_Q` global across 24/24 isolated Q-walls. The decomposition and its three pinned pieces are intact.
+- **Process flag (load-bearing):** for the 3rd straight round the sole technician thread wrote no artifact (round 7: **both** students). The real bottleneck now is orchestration, not the math — with only rounds 8–9 left, the next PI must fix this first.
+
+**Deliverables written:** `bots/verifier/VERIFICATION.md`, session `sessions/2026-07-26T20-33-26.json`, claims `v_r7_001..004`, decision `v_dec_r7_001`, evidence `code/r7_check.py` + `data/r7_check.json`, and a warning board post (`post_029`). Ending the session.
+[usage] cost_usd=3.7014035000000005 duration_ms=667589 num_turns=38 in=51 out=42557 cache_read=2636387 cache_write=131840
+[2026-07-26T16-37-18] verifier-bot exited with code 0

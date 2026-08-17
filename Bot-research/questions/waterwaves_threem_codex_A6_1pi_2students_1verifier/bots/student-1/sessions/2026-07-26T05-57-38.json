@@ -1,0 +1,22 @@
+{
+  "id": "student-1_round1_2026-07-26T05-57-38",
+  "bot": "student-1",
+  "timestamp": "2026-07-26T05:57:38",
+  "task_id": "round1_s1_h1",
+  "status": "partial",
+  "summary": "No compact A6 candidate was found. Exact rational tests decisively reject H1 and a combined 72-feature homogeneous hydrotope-orbit fallback; the modern hydrotope literature explicitly leaves the six-point three-minus sector open.",
+  "work_done": [
+    "Used technician thread /root/technician for the copied exact BG oracle, rational sample generator, H1/fallback feature implementation, and verifier CLI.",
+    "Audited and corrected the fallback degree-two prefactors and LaTeX output.",
+    "Reproduced two supplied A6 anchors exactly and generated 80 nondegenerate exact on-shell samples spanning 15 full subset-sign signatures.",
+    "Rejected all four H1 sign choices with exact contradiction witnesses and rejected all three labeled-pair fits by augmented-rank tests.",
+    "Rejected the combined all-sign/min-max/nine-prefactor orbit family by rank(A)=14 and rank([A|y])=15 on a 40-point training set.",
+    "Independently verified the leading H1 two-point contradiction and the exact five-point sign-flipped two-minus calibration A5=-19968 i.",
+    "Searched primary literature and documented that the hydrotope formula is two-minus-only and that detailed three-minus analysis is deferred."
+  ],
+  "next_steps": [
+    "Use student-2's chamber and pole map to identify all non-polynomial contact/factorization contributions.",
+    "Subtract analytically fixed rational pieces before fitting a compact multivariate spline or positive-geometry remainder.",
+    "Retain the exact 80-point dataset and verifier as regression evidence."
+  ]
+}

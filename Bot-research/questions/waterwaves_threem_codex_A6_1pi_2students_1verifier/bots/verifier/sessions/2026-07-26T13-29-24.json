@@ -1,0 +1,42 @@
+{
+  "id": "verifier_session_20260726T132924",
+  "bot": "verifier",
+  "timestamp": "2026-07-26T13:29:24",
+  "round": 4,
+  "task_id": "round4_verifier_audit",
+  "summary": "Round 4 produced no complete A_6; both students filed obstructions. I independently attacked the strongest/most consequential new claim -- student-2 [s2_009]: R_spline = A_6/i - P_pole ALSO jumps across the triple factorization walls Q_{m;pq}=0, refuting the round-4 standing premise that the coupling fan is magnitude ties only. On a fresh md5-matched oracle with a verifier table-free P_pole (no student evaluator imported), I reproduced student-2's witness R_spline(21/2,-8,1,-7,-6,19/2)=-49008548 exactly, then ran an independent decisive test: an on-shell POLYNOMIAL line crossing a single Q_{1;46}=0 wall inside one constant magnitude cell. R_spline is a clean degree-8 polynomial on the left (11/11 holdout controls) but deviates on the right -> it is NOT a single polynomial on the magnitude-tie arrangement. CONFIRMED. Refinements beyond the students: (i) the wall is intrinsic to A_6 itself (A_6/i*C also jumps at t0), i.e. Q_T=omega_p^2+omega_q^2-omega_m^2=k_{m,p,q} is a genuine 3-leg subset-momentum chamber wall per question.md, NOT a pole-subtraction artifact; (ii) the jump is ORDER 3 (leading (Q_T)_+^3, holdout-validated), softer than the order-1 q_mp walls; (iii) it is a systematic S3xS3 orbit (6 distinct channels jump). student-1's rank-17<18 magnitude-only-transport obstruction [s1_005] is consistent with and explained by this. The PI's round-4 'not Q_T walls' rule over-generalized my round-3 Finding 2 and contradicts my own round-2 caveat v_r2_004(b). No complete compact A_6; G1 persists and the remaining structure is now the JOINT {q_mp=0} U {Q_{m;pq}=0} fan (possibly finer).",
+  "oracle": {
+    "path": "bots/verifier/code/bg_r4",
+    "build": "g++ 8.5.0 -O2 -std=c++17 -lgmpxx -lgmp",
+    "md5_matches_shared_bg_cpp": true,
+    "md5": "41715c4af3ee5a61b1c4bfce40426ac8"
+  },
+  "checks_rerun_result": {
+    "V0_anchors_and_calibration": "PASS exact (both 6pt anchors; A_5=-19968 i; table-free P_pole(anchor)=42588288/7, R_spline=-7396992)",
+    "V0_foundation_battery": "PASS (R_spline denominator-free across 6 words/12 points; dual-S3 36/36; hierarchical omega5=100 finite & denominator-free)",
+    "V1_student2_witness_value": "PASS exact (A_6/i=-27198784, table-free P_pole=21809764, R_spline=-49008548 == student-2)",
+    "V2_qt_wall_jump_decisive": "PASS -- on-shell polynomial line, one magnitude cell, single Q_{1;46}=0 crossing at t0=1/4: left deg-8 fit reproduces 11/11 left holdouts, FAILS on right -> R_spline is NOT one polynomial on the magnitude cell. student-2 s2_009 CONFIRMED.",
+    "V3_wall_intrinsic_to_A6": "PASS -- (A_6/i)*C is clean deg-8 on the left but jumps from the first right point past t0 => A_6 itself non-smooth at Q_T=0 (=k_{m,p,q}=0 chamber wall), not a P_pole artifact.",
+    "V4_jump_order_and_orbit": "PASS -- jump order EXACTLY 3 in (t-t0)~Q_T (a0=a1=a2=0, a3=-1555200, holdout-validated); 6 distinct S3xS3 channels all jump.",
+    "V5_student1_consistency": "CONSISTENT -- magnitude-only transport rank-17<18 (s1_005) is the predicted symptom of an unmodeled Q_T-wall orbit; not numerically rebuilt, corroborated structurally."
+  },
+  "gaps_found": [
+    {"severity": "blocking", "text": "No complete compact A_6 (G1 persists); no table-free full evaluator. Remaining structure is LARGER than the round-4 plan assumed: R_spline is a spline over at least the JOINT {q_mp=0} U {Q_{m;pq}=0} arrangement, with an order-3 Q-brick still to extract/factor in addition to the order-1 q-brick and global R_0."},
+    {"severity": "blocking", "text": "HEADLINE/directional: the round-4 standing premise 'coupling fan is magnitude ties, NOT Q_T walls' (logic.yaml spline_structure/open_minor, group notes, PI F14 generalization) is REFUTED. R_spline and A_6 genuinely jump across Q_{m;pq}=0 (order 3, S3xS3 orbit). Contradicts even the round-2 verifier caveat v_r2_004(b). My round-3 Finding 2 (specific H_24 switch = magnitude tie q_35) stays correct and narrow; the PI over-generalized it. Continuing over the magnitude-tie fan alone cannot produce a correct A_6."},
+    {"severity": "minor", "text": "Wall-set completeness unproven: only the 2-leg (q_mp) and 3-leg (Q_{m;pq}) cross-sector k_S=0 orbits are verified. Further k_S=0 walls (other 3-leg subsets, 4-leg subsets) are neither established nor excluded; my line encountered additional unclassified wall(s) farther right. Next round must MAP the arrangement, not assume two orbits."},
+    {"severity": "minor", "text": "BG SIGFPE on walls/poles (carried); all near-wall work used two-sided off-wall sampling; order-3 fits are holdout-validated for continuity/adjacency."}
+  ],
+  "verdict": "GAPS REMAIN (1 blocking)",
+  "board_post": "post_017 -- immediate warning: independently CONFIRMED that R_spline/A_6 jump across Q_{m;pq}=0 (order 3, S3xS3 orbit); the round-4 magnitude-ties-only premise is false; correct logic.yaml before round 5.",
+  "artifacts": [
+    "bots/verifier/VERIFICATION.md",
+    "bots/verifier/code/bg_r4 (fresh, md5-verified)",
+    "bots/verifier/code/r4_verify.py",
+    "bots/verifier/code/r4_line_test.py",
+    "bots/verifier/code/r4_line_test3.py",
+    "bots/verifier/code/r4_mechanism2.py",
+    "bots/verifier/code/r4_order_final.py",
+    "bots/verifier/code/r4_orbit3.py",
+    "bots/verifier/code/r4_battery.py"
+  ]
+}

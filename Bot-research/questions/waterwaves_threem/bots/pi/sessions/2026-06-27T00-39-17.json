@@ -1,0 +1,20 @@
+{
+  "bot": "pi",
+  "timestamp": "2026-06-27T00:39:17Z",
+  "round": 5,
+  "summary": "Reviewed round-4 work from both students (post_010 student-2 top-down: soft recursion on N_n + partial-fraction-over-matchings; post_011 student-1 bottom-up: the MINIMAL denominator is a single cubic to the first power, and the spline jump exponents). Rebuilt my own oracle from my own bg.cpp (byte-identical, rebuilt fresh) and INDEPENDENTLY RE-VERIFIED every round-4 load-bearing claim with my own exact-rational code (no student code): (1) s1_011 D9 = (e3m+e3p)^3 on the manifold -- symbolic (Q-p_- is x-independent = e3m+e3p) + numeric exact 5/5 (pi_r5_min_denom.py CHECK1); (2) s1_012 minimal denominator = (e3m+e3p)^1, pole order exactly 1, deg N=11 -- A_6 not polynomial, A_6*(e3m+e3p) IS (slice deg 6), A_6*(e3m+e3p)^3 over-clears (deg 14), homogeneity A_6(2w)/A_6(w)=256 (CHECK2); n=5 polynomial control passes (CHECK3); (3) s1_013 jump exponents -- clean single-wall crossings (tracking all deduped mixed walls incl. solved legs 1,6) give (1=1) jump factor (2t-1)^1 and (1=2) jump factor (5t-1)^3, confirming C^0 and C^2 kinks (pi_r5_kinks.py CHECK4). I independently hit and confirmed the multi-wall contamination hazard (single-wall discipline essential). NEW PI NEGATIVE RESULT: the global symmetric N_6 restricted to a single symmetric region is NOT a weighted-deg-11 polynomial in the invariants (e1,e2,e3m,e3p) -- fails in all 12 canonical chamber-types and by (signW1,signW2) -- because a per-chamber piece is non-symmetric in legs hence algebraic in the invariants (confirms student-1 dec_007). So the closed form must be built in LEG variables (truncated-power spline) or as an explicit symmetric ansatz; NOT by per-region invariant fitting. Updated logic.yaml + group_meeting_notes.md; assigned round-5 tasks. Not SOLVED: the explicit degree-11 spline numerator N_6 (and all-n) remains the whole open problem; no SOLVED.md.",
+  "verification": {
+    "oracle": "bots/pi/code/bg rebuilt from own bg.cpp (cmp == shared, IDENTICAL); n=5 w=2,3,5 -> -25344 i; n=6 free w=2,3,5,7 -> -29948208/17 i",
+    "scripts": [
+      "bots/pi/code/pi_r5_min_denom.py  (CHECK1 cube identity sym+5/5; CHECK2 minimal denom + pole order 1 + deg N=11; CHECK3 n=5 polynomial control)",
+      "bots/pi/code/pi_r5_kinks.py  (CHECK4 single-wall jump exponents: (1=1)->1, (1=2)->3, with full mixed-wall sign tracking)",
+      "bots/pi/code/pi_r5_invariant_region.py  (NEGATIVE: N is not a weighted-deg-11 invariant polynomial per symmetric region; 12 canonical types reproduced)"
+    ],
+    "results": "All round-4 load-bearing claims (s1_011/012/013) PASS independent PI re-verification, exact. New PI negative result on invariant-polynomial-per-region established."
+  },
+  "tasks_assigned": [
+    {"id": "r5-student-1", "assignee": "student-1", "title": "Assemble the explicit degree-11 spline numerator N_6 in LEG variables (base + truncated-power jumps), then push to all n"},
+    {"id": "r5-student-2", "assignee": "student-2", "title": "Conjecture and test an explicit all-n closed form for N_n (box-spline of x_i=w_i^2 / matching-sum) from the soft recursion + jump structure"}
+  ],
+  "next_steps": "If either student produces an N_n (hence A_n) candidate, independently re-verify it with my own oracle + exact evaluator across >=4 chamber types and two-sided wall limits at n=5,6,7; on success write summary/SOLVED.md (formula, domain incl. minimal denominator (e3m+e3p)/Res(p_-,Q_n) and the jump/wall structure, exact kinematic points + residuals, producing student/session). Otherwise iterate: the leg-variable truncated-power spline assembly (student-1) and the box-spline/matching-sum all-n ansatz (student-2) are the two live attacks; the verified per-chamber N_6 table + minimal denominator + jump structure is already a complete fallback description."
+}

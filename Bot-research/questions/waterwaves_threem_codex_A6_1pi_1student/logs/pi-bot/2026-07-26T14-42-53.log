@@ -1,0 +1,22 @@
+[2026-07-26T14-42-53] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/pi-bot.md identity=none
+PI round 7 complete. Summary of this session:
+
+## What I did (all exact, fresh `bg_r7` built from the immutable `bg.cpp`)
+
+**Independently verified the student's load-bearing claim (s1_018/s1_019):**
+- **[pi_v_023] CONFIRMED** — I re-transcribed the 31-term core `F` and the blocks `L, B_M, B_P` myself and checked `H_A = -32 rs Ω F(m1,p1,m2,p2)/(uv L B_M B_P)` and its minus↔plus swap `H_B` against fresh BG: **exact match, 40/40 in-piece points per piece** (each perturbation re-checked to share the base 53-sign vector). The compact two-chamber formula is banked.
+
+**Established its boundary of validity (new PI findings):**
+- **[pi_v_024]** Both formulas **fail** at all three new realized pieces from the completed job — independently confirming its `no_fixed_den_fit`. Decisively, `12ea165a03` has the *same* comparison matrix as piece A but the opposite sign of the internal propagator `h_{2345}` (so `B_M·B_P` flips), yet still fails → chambers are indexed by more than the comparison matrix.
+- **[pi_v_025]** In `12ea165a03`, `H` has **no** dehomogenized rational rep of degree ≤ 12 (rank scan, 1050 in-piece pts, nulldim=0 for d=3..12), so `deg Q_hom > 10` — strictly higher than pieces A/B (both 10). The full answer is **not** "one core F + a single-leg reselection"; the pivot is toward a single master positive-part / channel-sum object (the genuine analog of the two-minus box-spline sum).
+
+**Coordination/bookkeeping:**
+- Recorded pi_v_023–025 in `bots/pi/verified.yaml`.
+- Rewrote `summary/logic.yaml` and `summary/group_meeting_notes.md` as bounded current-state digests.
+- Inspected `jobs/`: the completed `r6_piece_20260726T173931Z` is non-blocking, its result read and incorporated (student to mark collected); no blocking jobs to downgrade.
+- Wrote one task brief (`tasks/student-1.md`): reconstruct/factor the higher-degree chamber via the cone method and test the master-object hypothesis.
+- Wrote the session report and appended `board.json` post_012.
+
+**Definition of done not met** (verified compact formula covers only 2 opposite chambers; a third realized chamber is strictly higher-degree), so no `SOLVED.md`. Two rounds remain (round 8 research, round 9 final summary); the honest fallback is banked for FINAL_SUMMARY if no master object emerges.
+[usage] cost_usd=4.147243000000002 duration_ms=955224 num_turns=41 in=59 out=56081 cache_read=2979028 cache_write=125481
+[2026-07-26T14-58-50] pi-bot exited with code 0
