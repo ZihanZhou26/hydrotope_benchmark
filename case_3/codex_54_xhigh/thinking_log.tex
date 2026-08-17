@@ -16,26 +16,6 @@ Two-Minus Water-Wave Amplitude}
 
 \maketitle
 
-\begin{abstract}
-This document is a first-person reconstruction of the chain of thought for one
-AI run attacking the closed-form tree amplitude $A_n$ in the two-minus sector of
-one-dimensional deep-water surface waves. It is rebuilt from the visible run
-trajectory --- the raw private reasoning was encrypted, so only the narrated
-messages, tool calls, and outputs survive --- and it keeps the original wording,
-the false starts, and the hedges rather than tidying them away. I want to be
-clear at the outset about what this run did and did not achieve: it found the
-leading-chamber monomial $A_n=i\,2^{\,n-1}\omega_1\omega_2^{\,2n-5}$, verified it
-to exact equality against the oracle on the kinematics the supplied
-\texttt{MakeKinematics} hands out, resolved the $n=4$ endpoint as a limit, and
-\emph{stopped there}. It saw direct evidence that the amplitude is not a single
-polynomial --- a symmetric-polynomial fit that worked at some points and failed
-at others, and sign-flipped probes returning entirely different rationals --- but
-it read those as ``the ansatz was wrong'' and ``a different physical branch''
-rather than as the chamber walls of a piecewise spline. It never assembled the
-inclusion--exclusion / truncated-power formula that the absolute values in the
-propagators demand. So the boxed result below is honest for one chamber and
-scoped to it; it is not the all-kinematics closed form.
-\end{abstract}
 
 \section*{Rewritten Chain of Thought}
 

@@ -1,9 +1,5 @@
 # Rewritten Thinking Log for the Two-Minus Water-Wave Amplitude
 
-## Abstract
-
-This document is an expanded rewritten summary of the reasoning process used to solve the benchmark task in `case_3`. It follows the style of the example in `thinking_log_format`: a title, an abstract, and a continuous technical narrative. It is not a raw private chain-of-thought transcript. Instead, it records the concrete hypotheses that were tested, the examples that were generated, the failed reconstruction attempts, the branch issues that had to be isolated, and the exact checks that led to the final formula.
-
 ## Rewritten Thinking Log
 
 The target was to find a closed-form expression for the tree-level on-shell amplitude `A_n` in the two-minus sector

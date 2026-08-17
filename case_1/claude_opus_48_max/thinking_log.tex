@@ -14,29 +14,6 @@ in the Two-Minus Sector}
 \begin{document}
 \maketitle
 
-\begin{abstract}
-\noindent This document is a first-person reconstruction of the chain of thought for an
-AI attempt to find a closed-form tree-level amplitude $A_n$ in the two-minus sector of
-1D deep-water surface waves, working only from the prompt, the code \texttt{OnShellBG.m},
-and the data that code produces. It is rebuilt from the visible run trajectory --- the
-raw private chain of thought was encrypted, so this is reconstructed from the visible
-messages, tool calls, and outputs --- and it keeps the hypotheses I formed, the concrete
-kinematic points I tested, the numbers the Berends--Giele code returned, and the
-dead-ends, in the order they actually happened. I should be honest about the outcome
-up front. The prompt's hint insisted that $A_n$ is a \emph{single global rational
-function} with simple poles on factorization channels, no chambers, no absolute values,
-and ``emphatically not a plain polynomial,'' and it told me to fit one $N/D$ ansatz on
-generic kinematics. I did not confirm that picture; I refuted it. The data forced a
-genuinely \emph{piecewise} amplitude (the $|k_S|$ in the propagators flip sign), and I
-proved that no single global rational function can exist. What I delivered is therefore a
-\emph{chamber-restricted} answer: the clean monomial
-$A_n=2^{\,n-1}i\,\omega_1\,\omega_2^{\,2n-5}$, exact (verified to relative error $0$)
-only in the chamber selected by the benchmark's standard ascending-positive sampling,
-together with its equivalent free-frequency ratio form and an explicit statement that the
-fully general object is an irreducibly $\min/\max$, sorted-magnitude, piecewise spline
-that I did not fold into one expression. So this is a partial result that saw through the
-hint rather than the all-kinematics closed form the task asked for.
-\end{abstract}
 
 \section*{Rewritten Chain of Thought}
 

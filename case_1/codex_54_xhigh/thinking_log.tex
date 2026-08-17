@@ -16,27 +16,6 @@ Two-Minus Water-Wave Amplitude}
 
 \maketitle
 
-\begin{abstract}
-This document is a first-person reconstruction of the chain of thought for one
-AI attempt at the closed-form tree amplitude $A_n$ in the two-minus sector of
-one-dimensional deep-water surface waves. It is rebuilt from the visible run
-trajectory (the raw chain of thought was encrypted, so only the visible
-narration, tool calls, and outputs survive) and it deliberately keeps the false
-starts and the hedges rather than tidying them away. The honest arc has two
-parts. The prompt carried a strong hint that $A_n$ is a \emph{single global
-rational function} with simple poles on factorization channels and
-\emph{emphatically no} piecewise/chamber/absolute-value structure. On a first
-pass I took that hint at face value, found that the supplied \texttt{BGAmplitude}
-is manifestly piecewise already at $n=4$, and --- using the hint's own ``no
-piecewise'' assertion as my acceptance criterion --- concluded that the
-benchmark was \emph{inconsistent} and wrote a rejection report. On a second pass
-I stopped letting the hint define what a valid answer could look like, read the
-chamber structure as the physics rather than as a contradiction, and recovered
-the correct truncated-power / inclusion--exclusion formula, verified to exact
-zero against \texttt{BGAmplitude} for $n=5,6,7$ with a finite $n=4$ limit. So the
-final result is correct, but the misleading hint cost a whole pass and very
-nearly cost the answer.
-\end{abstract}
 
 \section*{Rewritten Chain of Thought}
 

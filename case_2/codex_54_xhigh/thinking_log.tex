@@ -16,24 +16,6 @@ Two-Minus Water-Wave Amplitude}
 
 \maketitle
 
-\begin{abstract}
-This document is a first-person reconstruction of the chain of thought for the
-original AI derivation of a conjectured closed-form tree amplitude $A_n$ in the two-minus
-sector ($\sigma=(-1,-1,+1,\dots,+1)$) of one-dimensional deep-water surface
-waves. It is rebuilt from the visible run trajectory --- agent messages, tool
-calls, and outputs --- because the raw private reasoning was stored encrypted
-and is not recoverable. The prompt carried a correct structural hint --- that
-$A_n$ is a \emph{piecewise} homogeneous polynomial whose kinematic space breaks
-into chambers, with a different polynomial on each chamber --- and this
-reconstruction tries to show honestly how the run leaned on that hint, including
-the false starts (an older Python runtime, a Python port that choked on
-removable singularities) and the one caveat I never fully closed (I could not
-activate the Wolfram kernel to run the supplied \texttt{OnShellBG.m} directly, so
-the verification rests on my own exact rational reimplementation of the allowed
-BG code). The outcome was a single all-$n$ truncated-power closed form that
-reproduces the recursion to exact rational equality at eleven test points across
-$n=5,6,7$ spanning several chambers, plus an $n=4$ limiting check.
-\end{abstract}
 
 \section*{Rewritten Chain of Thought}
 

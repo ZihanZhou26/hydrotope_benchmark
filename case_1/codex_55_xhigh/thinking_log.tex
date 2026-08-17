@@ -14,25 +14,6 @@ Two-Minus Water-Wave Amplitude}
 
 \maketitle
 
-\begin{abstract}
-This document is a first-person reconstruction of the chain of thought for an
-AI run that was asked to find the closed-form tree amplitude $A_n$ in the
-two-minus sector ($\sigma=(-1,-1,+1,\dots,+1)$) of one-dimensional deep-water
-surface waves. It is rebuilt from the visible run trajectory --- the raw
-private chain of thought was encrypted, so only the visible narration, tool
-calls, and outputs survive --- and it keeps the false starts and the hedges
-rather than tidying them away. Honesty first: \emph{this run did not produce a
-verified closed form}. It was hampered by a host that repeatedly refused to
-fork processes (``\texttt{Out of memory (os error 12)}''), and, more
-importantly, it took the prompt's hint at face value. The prompt insisted the
-answer was a \emph{single global rational function} with \emph{no} piecewise /
-chamber structure and \emph{no} absolute values. When the oracle returned a
-manifestly chamber-dependent four-point amplitude, the run read that as a
-\emph{contradiction in the task} and rejected the prompt as inconsistent,
-rather than recognizing the chamber structure as the actual shape of the
-answer. The deliverable was a report declaring the supplied task ill-posed,
-backed by a minimal four-point counterexample.
-\end{abstract}
 
 \section*{Rewritten Chain of Thought}
 
