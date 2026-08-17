@@ -1,0 +1,52 @@
+decisions:
+  - id: s2_dec_001
+    round: 1
+    decision: "Resolve the abs(.) in the symbolic recursion by the sign at a generic reference point per kinematic chamber."
+    rationale: >
+      The kernels/propagator use abs of momentum partial-sums; for fixed signs the
+      result is a single rational function. Resolving abs at a generic chamber
+      reference makes the symbolic BG recursion produce the exact rational function
+      valid in that chamber, which is then reduced on-shell.
+    consequence: "Got exact a_4, a_5 symbolically; revealed the piecewise (chamber) structure."
+  - id: s2_dec_002
+    round: 1
+    decision: "Treat omega_i as INDEPENDENT (off-shell --amp continuation) for n=4, then restrict to the surface."
+    rationale: >
+      On-shell n=4 the {2,4} current is a literal 0/0. Off-shell BGAmplitude is a
+      smooth polynomial; restricting it to the surface recovers the finite value and
+      proves finiteness without numerics.
+    consequence: "Explained n=4 finiteness; obtained a_4 = 8 w1 w2^3 in closed form."
+  - id: s2_dec_003
+    round: 1
+    decision: "Use EXACT rational arithmetic for verification at all n including n=7."
+    rationale: >
+      The Python port runs exact n=7 in ~2 s/point; ./bg --double loses accuracy in
+      extreme regimes (e.g. one freq ~1e3-1e6) and cannot certify <=1e-10 there.
+      Exact gives relative residual identically 0.
+    consequence: "Certified the formula to residual 0 at n=5,6,7; n=4 by delta-limit."
+  - id: s2_dec_004
+    round: 1
+    decision: "Report the formula as the PRINCIPAL-chamber expression with an explicit validity rule (omega_2 = min free freq), not as a globally-rational closed form."
+    rationale: >
+      The amplitude is genuinely piecewise (abs(k_S) chambers) and S_2 x S_{n-2}
+      symmetric; no single low-degree rational function of symmetric invariants fits
+      across chambers. Being honest about the domain prevents a false 'universal'
+      claim while still covering all pass-bar points.
+    consequence: "Closed form passes every reference/pass-bar point; universal abs-covariant form flagged for round 2."
+  - id: s2_dec_005
+    round: 2
+    decision: "Pursue the PI's two flagged-open (not-required) items rather than redo settled work, since the question is already SOLVED and no new task is assigned."
+    rationale: >
+      post_004/SOLVED.md accept student-1's all-chamber form and list two open items
+      that fall in the theory/derivation lane (student-2): a first-principles
+      telescoping proof, and a g-dependence check. Both build on settled work without
+      redoing it.
+    consequence: "g-dependence fully derived+verified (s2_005); B-spline structure proven (s2_006); telescoping advanced but full partition-sum proof left open (s2_007)."
+  - id: s2_dec_006
+    round: 2
+    decision: "Establish g-dependence by homogeneity counting of the engine, then VERIFY against ./bg -g, rather than trust the source read alone."
+    rationale: >
+      Homogeneity counting under (K->muK, G->G/mu) is exact and n-independent, but a
+      sign/normalization slip is easy; an exact-rational check at several n and g (and
+      the n=4 delta-limit) makes the g^(3-n) law falsifiable.
+    consequence: "21/21 on-shell points + n=8 + n=4 limit all bit-exact; g-restored formula certified."

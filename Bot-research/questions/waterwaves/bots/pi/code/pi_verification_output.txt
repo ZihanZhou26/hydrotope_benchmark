@@ -1,0 +1,167 @@
+==============================================================================
+PI INDEPENDENT VERIFICATION of student-1 universal closed form
+oracle: /Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves/bots/pi/code/bg
+==============================================================================
+
+--- (A) PI reference points (group_meeting_notes.md) ---
+  OK  n=5 b0m3h0   -w [1, 2, 4]                    a=                -544/7  EXACT  ref
+  OK  n=5 b0m3h0   -w [2, 3, 5]                    a=                 -3328  EXACT  ref
+  OK  n=6 b0m4h0   -w [1, 2, 3, 4]                 a=               -1024/5  EXACT  ref
+  OK  n=7 b0m5h0   -w [1, 2, 3, 4, 5]              a=              -8896/15  EXACT  ref
+  OK  n=7 b0m5h0   -w [1, 2, 3, 4, 1000]           a=         -32322048/505  EXACT  ref
+
+--- (B) n=4 via independent delta->0 limit ---
+  OK  n=4 omega=('-3', '1', '3', '-1') oracle_limit=-24 formula=-24 relerr=0.00e+00 (matches ref)
+  OK  n=4 omega=('-5', '2', '5', '-2') oracle_limit=-320 formula=-320 relerr=0.00e+00 (matches ref)
+  OK  n=4 omega=('-7', '3', '7', '-3') oracle_limit=-1512 formula=-1512 relerr=0.00e+00 
+  OK  n=4 omega=('-5', '1', '5', '-1') oracle_limit=-40 formula=-40 relerr=0.00e+00 
+
+--- (C) Non-generic regimes (one freq >> or << the rest) ---
+  OK  n=5 b0m3h0   -w [1, 2, 1000]                 a=        -16048096/1003  EXACT  one plus >>
+  OK  n=5 b1m2h0   -w [1, 2, Fraction(1, 1000)]    a=-12005995996999/187562500000000000  EXACT  one plus <<
+  OK  n=5 b0m3h0   -w [Fraction(1, 1000), 2, 3]    a=-1267/20837500000000000  EXACT  free minus << 
+  OK  n=6 b0m4h0   -w [1, 2, 3, 500]               a=          -4048384/253  EXACT  one plus >>
+  OK  n=6 b0m4h0   -w [Fraction(1, 100), 2, 3, 4]  a=-5509/2815625000000000  EXACT  free minus <<
+  OK  n=7 b0m5h0   -w [1, 2, 3, 4, 5000]           a=       -801602048/2505  EXACT  one plus >>
+  OK  n=7 b1m4h0   -w [1, 2, 3, 4, Fraction(1, 500)] a=-1000306560640629984994999/152618408203125000000000000  EXACT  one plus <<
+
+--- (D) Deliberate NON-PRINCIPAL chambers (truncation must fire) ---
+  OK  n=5 b2m0h1   -w [6, 1, 2]                    a=               -6400/3  EXACT  w2 large, small plus
+  OK  n=5 b2m0h1   -w [8, 1, 3]                    a=                 -8640  EXACT  w2 large
+  OK  n=6 b3m0h1   -w [7, 1, 2, 3]                 a=           -3241728/13  EXACT  w2 large, 3 small plus
+  OK  n=6 b3m1h0   -w [Fraction(9, 2), 1, 2, 4]    a=          -29385153/92  EXACT  mixed
+  OK  n=7 b4m0h1   -w [8, 1, 2, 3, 4]              a=             -57016320  EXACT  w2 large, 4 small plus
+  OK  n=7 b4m1h0   -w [6, 1, 2, 3, 5]              a=        -1207338240/17  EXACT  mixed
+
+--- (E) Random all-chamber scans (exact rational) ---
+  OK  n=5 b1m2h0   -w [Fraction(8, 1), Fraction(17, 2), Fraction(11, 3)] a=        -508802624/243  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(11, 3), Fraction(20, 3), Fraction(7, 1)] a=      -1102877248/9477  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(5, 2), Fraction(17, 3), Fraction(6, 1)] a=              -86875/6  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(14, 3), Fraction(5, 3), Fraction(8, 5)] a=        -21426176/6885  EXACT  
+  OK  n=5 b2m1h0   -w [Fraction(5, 1), Fraction(14, 3), Fraction(11, 5)] a=-1351105735168/13516875  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(10, 3), Fraction(6, 5), Fraction(7, 5)] a=       -38798592/55625  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(16, 3), Fraction(7, 3), Fraction(7, 2)] a=       -315164864/5427  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(8, 1), Fraction(13, 2), Fraction(2, 1)] a=          -11010688/33  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(7, 1), Fraction(7, 3), Fraction(1, 1)] a=          -3172064/837  EXACT  
+  OK  n=5 b1m2h0   -w [Fraction(2, 1), Fraction(1, 5), Fraction(10, 3)] a=      -27057632/778125  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(1, 5), Fraction(17, 2), Fraction(3, 2)] a=               -28/625  EXACT  
+  OK  n=5 b1m2h0   -w [Fraction(4, 3), Fraction(9, 2), Fraction(1, 3)] a=        -1010848/26973  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(1, 3), Fraction(9, 5), Fraction(1, 1)] a=           -8368/57105  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(1, 1), Fraction(11, 3), Fraction(19, 3)] a=               -1136/9  EXACT  
+  OK  n=5 b1m2h0   -w [Fraction(5, 1), Fraction(4, 5), Fraction(19, 2)] a=     -2369122048/95625  EXACT  
+  OK  n=5 b2m1h0   -w [Fraction(6, 1), Fraction(14, 3), Fraction(13, 3)] a=      -2134326752/3645  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(10, 1), Fraction(20, 3), Fraction(3, 5)] a=         -27986944/777  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(3, 5), Fraction(5, 1), Fraction(15, 2)] a=         -196344/16375  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(2, 1), Fraction(3, 5), Fraction(2, 3)] a=         -215296/18375  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(2, 3), Fraction(8, 3), Fraction(2, 1)] a=             -5632/729  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(6, 1), Fraction(4, 3), Fraction(16, 3)] a=         -30408704/513  EXACT  
+  OK  n=5 b1m2h0   -w [Fraction(14, 3), Fraction(10, 3), Fraction(8, 1)] a=        -189683200/729  EXACT  
+  OK  n=5 b1m2h0   -w [Fraction(2, 1), Fraction(11, 3), Fraction(9, 5)] a=         -7067682/3125  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(6, 5), Fraction(17, 3), Fraction(10, 3)] a=          -889344/3125  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(4, 3), Fraction(4, 1), Fraction(9, 2)] a=        -6447104/14337  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(5, 3), Fraction(5, 1), Fraction(3, 1)] a=         -9350000/7047  EXACT  
+  OK  n=5 b1m2h0   -w [Fraction(11, 3), Fraction(4, 1), Fraction(9, 5)] a=    -5026174032/221875  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(2, 1), Fraction(5, 1), Fraction(5, 2)] a=             -60160/19  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(7, 5), Fraction(9, 1), Fraction(2, 1)] a=       -79597952/96875  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(6, 1), Fraction(2, 1), Fraction(3, 1)] a=            -338688/11  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(10, 1), Fraction(3, 1), Fraction(5, 2)] a=           -2799000/31  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(8, 1), Fraction(19, 3), Fraction(2, 5)] a=    -8040561664/745875  EXACT  
+  OK  n=5 b1m2h0   -w [Fraction(8, 3), Fraction(1, 5), Fraction(3, 1)] a=      -69589328/928125  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(3, 5), Fraction(13, 3), Fraction(9, 2)] a=       -7444872/884375  EXACT  
+  OK  n=5 b1m2h0   -w [Fraction(14, 3), Fraction(4, 3), Fraction(7, 1)] a=         -14823424/351  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(15, 2), Fraction(14, 3), Fraction(9, 5)] a=     -1040421312/10475  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(20, 3), Fraction(11, 3), Fraction(2, 5)] a=     -587986432/326025  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(3, 1), Fraction(9, 5), Fraction(4, 3)] a=         -4359168/2875  EXACT  
+  OK  n=5 b1m2h0   -w [Fraction(2, 1), Fraction(1, 2), Fraction(13, 2)] a=              -7409/18  EXACT  
+  OK  n=5 b1m2h0   -w [Fraction(11, 5), Fraction(11, 2), Fraction(1, 1)] a=       -19497016/10875  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(3, 1), Fraction(10, 1), Fraction(20, 3)] a=           -3045600/59  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(17, 3), Fraction(8, 3), Fraction(9, 5)] a=        -39620608/2375  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(4, 1), Fraction(10, 3), Fraction(2, 3)] a=          -1715200/729  EXACT  
+  OK  n=5 b1m2h0   -w [Fraction(1, 2), Fraction(9, 2), Fraction(2, 5)] a=           -18632/9375  EXACT  
+  OK  n=5 b1m2h0   -w [Fraction(10, 3), Fraction(8, 3), Fraction(11, 3)] a=      -644792320/21141  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(7, 5), Fraction(2, 1), Fraction(10, 3)] a=     -353888192/946875  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(9, 5), Fraction(2, 1), Fraction(14, 3)] a=      -133529472/79375  EXACT  
+  OK  n=5 b2m0h1   -w [Fraction(7, 1), Fraction(3, 1), Fraction(11, 5)] a=       -346633056/7625  EXACT  
+  OK  n=5 b1m2h0   -w [Fraction(13, 2), Fraction(17, 2), Fraction(8, 3)] a=     -7285323136/12879  EXACT  
+  OK  n=5 b0m3h0   -w [Fraction(9, 5), Fraction(7, 1), Fraction(7, 3)] a=    -1241131248/521875  EXACT  
+  -> n=5: 50/50 pass (exact=50), non-principal(b>0)=33, chambers={'b1m2h0': 14, 'b0m3h0': 17, 'b2m0h1': 17, 'b2m1h0': 2}
+  OK  n=6 b3m0h1   -w [Fraction(7, 1), Fraction(8, 3), Fraction(6, 1), Fraction(1, 1)] a=          -70418432/25  EXACT  
+  OK  n=6 b2m2h0   -w [Fraction(20, 3), Fraction(17, 2), Fraction(8, 5), Fraction(4, 3)] a=-67278740652032/27489375  EXACT  
+  OK  n=6 b2m2h0   -w [Fraction(19, 3), Fraction(9, 5), Fraction(12, 1), Fraction(4, 3)] a=-5275176167936/1509375  EXACT  
+  OK  n=6 b1m3h0   -w [Fraction(11, 2), Fraction(13, 2), Fraction(1, 5), Fraction(6, 1)] a= -204250069463/1015625  EXACT  
+  OK  n=6 b0m4h0   -w [Fraction(5, 1), Fraction(19, 3), Fraction(7, 1), Fraction(19, 2)] a=      -20903750000/501  EXACT  
+  OK  n=6 b3m0h1   -w [Fraction(15, 2), Fraction(5, 1), Fraction(9, 2), Fraction(6, 5)] a=         -844216992/91  EXACT  
+  OK  n=6 b2m2h0   -w [Fraction(11, 3), Fraction(5, 2), Fraction(11, 1), Fraction(4, 5)] a=    -18888006608/55125  EXACT  
+  OK  n=6 b3m0h1   -w [Fraction(19, 2), Fraction(11, 5), Fraction(1, 3), Fraction(5, 2)] a=       -136735324/4905  EXACT  
+  OK  n=6 b1m3h0   -w [Fraction(4, 3), Fraction(8, 3), Fraction(1, 1), Fraction(11, 1)] a=           -639400/243  EXACT  
+  OK  n=6 b2m2h0   -w [Fraction(8, 5), Fraction(8, 3), Fraction(2, 3), Fraction(1, 1)] a=      -87225344/100125  EXACT  
+  OK  n=6 b0m4h0   -w [Fraction(8, 5), Fraction(17, 2), Fraction(6, 1), Fraction(11, 5)] a=-747290755072/71484375  EXACT  
+  OK  n=6 b1m3h0   -w [Fraction(4, 1), Fraction(17, 2), Fraction(3, 1), Fraction(9, 2)] a=           -29153304/5  EXACT  
+  OK  n=6 b1m3h0   -w [Fraction(4, 1), Fraction(7, 1), Fraction(11, 2), Fraction(6, 5)] a=-6358714601472/4609375  EXACT  
+  OK  n=6 b1m3h0   -w [Fraction(5, 3), Fraction(1, 1), Fraction(5, 1), Fraction(6, 1)] a=              -68320/9  EXACT  
+  OK  n=6 b0m4h0   -w [Fraction(6, 5), Fraction(12, 1), Fraction(11, 2), Fraction(16, 3)] a=-104654260224/56328125  EXACT  
+  OK  n=6 b1m3h0   -w [Fraction(5, 1), Fraction(6, 1), Fraction(9, 5), Fraction(20, 3)] a=-10917008123184/1140625  EXACT  
+  OK  n=6 b3m0h1   -w [Fraction(6, 1), Fraction(14, 3), Fraction(1, 1), Fraction(7, 5)] a=        -112525952/375  EXACT  
+  OK  n=6 b2m2h0   -w [Fraction(11, 3), Fraction(5, 3), Fraction(5, 1), Fraction(10, 3)] a=      -7195168640/6561  EXACT  
+  OK  n=6 b1m3h0   -w [Fraction(5, 2), Fraction(3, 2), Fraction(3, 1), Fraction(8, 1)] a=             -564921/4  EXACT  
+  OK  n=6 b3m1h0   -w [Fraction(15, 2), Fraction(16, 3), Fraction(19, 3), Fraction(6, 5)] a=-219941030518892/9546875  EXACT  
+  OK  n=6 b0m4h0   -w [Fraction(11, 3), Fraction(7, 1), Fraction(6, 1), Fraction(13, 3)] a=  -497000809184/137781  EXACT  
+  OK  n=6 b0m4h0   -w [Fraction(2, 1), Fraction(16, 3), Fraction(19, 3), Fraction(8, 1)] a=             -282624/5  EXACT  
+  OK  n=6 b1m3h0   -w [Fraction(6, 1), Fraction(9, 1), Fraction(19, 2), Fraction(7, 3)] a=   -935978980832/16767  EXACT  
+  OK  n=6 b1m3h0   -w [Fraction(2, 1), Fraction(3, 1), Fraction(8, 3), Fraction(3, 2)] a=            -201411/10  EXACT  
+  OK  n=6 b3m0h1   -w [Fraction(12, 1), Fraction(3, 1), Fraction(11, 2), Fraction(7, 2)] a=          -154800261/2  EXACT  
+  OK  n=6 b3m0h1   -w [Fraction(17, 3), Fraction(2, 1), Fraction(3, 1), Fraction(2, 5)] a=      -304100352/10375  EXACT  
+  OK  n=6 b0m4h0   -w [Fraction(8, 5), Fraction(9, 2), Fraction(19, 3), Fraction(7, 1)] a=-1463006789632/136640625  EXACT  
+  OK  n=6 b2m2h0   -w [Fraction(16, 3), Fraction(14, 3), Fraction(10, 1), Fraction(3, 2)] a=     -12416995136/1161  EXACT  
+  OK  n=6 b1m3h0   -w [Fraction(5, 2), Fraction(7, 1), Fraction(8, 5), Fraction(6, 1)] a= -452895422272/2671875  EXACT  
+  OK  n=6 b2m2h0   -w [Fraction(15, 2), Fraction(10, 3), Fraction(2, 1), Fraction(9, 1)] a=    -130395152000/3537  EXACT  
+  OK  n=6 b3m0h1   -w [Fraction(7, 1), Fraction(9, 2), Fraction(7, 3), Fraction(1, 1)] a=          -87893064/89  EXACT  
+  OK  n=6 b3m0h1   -w [Fraction(9, 1), Fraction(9, 2), Fraction(3, 5), Fraction(17, 3)] a=   -274894883352/74125  EXACT  
+  OK  n=6 b1m3h0   -w [Fraction(2, 1), Fraction(11, 2), Fraction(1, 3), Fraction(7, 2)] a=       -90955736/37179  EXACT  
+  OK  n=6 b3m0h1   -w [Fraction(5, 1), Fraction(4, 1), Fraction(5, 3), Fraction(11, 5)] a=      -2288382976/1737  EXACT  
+  OK  n=6 b3m0h1   -w [Fraction(20, 3), Fraction(4, 1), Fraction(2, 1), Fraction(1, 1)] a=          -20070400/41  EXACT  
+  OK  n=6 b0m4h0   -w [Fraction(1, 2), Fraction(8, 3), Fraction(9, 1), Fraction(20, 3)] a=             -1461/452  EXACT  
+  OK  n=6 b0m4h0   -w [Fraction(2, 1), Fraction(11, 5), Fraction(13, 2), Fraction(11, 1)] a=        -65021952/1085  EXACT  
+  OK  n=6 b3m0h1   -w [Fraction(10, 1), Fraction(4, 3), Fraction(16, 3), Fraction(15, 2)] a=        -1869414400/29  EXACT  
+  OK  n=6 b1m3h0   -w [Fraction(3, 2), Fraction(9, 2), Fraction(1, 3), Fraction(16, 3)] a=         -5131198/8505  EXACT  
+  OK  n=6 b0m4h0   -w [Fraction(1, 2), Fraction(6, 1), Fraction(1, 1), Fraction(9, 2)] a=                -67/32  EXACT  
+  -> n=6: 40/40 pass (exact=40), non-principal(b>0)=31, chambers={'b3m0h1': 11, 'b2m2h0': 7, 'b1m3h0': 12, 'b0m4h0': 9, 'b3m1h0': 1}
+  OK  n=7 b0m5h0   -w [Fraction(1, 3), Fraction(11, 5), Fraction(12, 1), Fraction(3, 5), Fraction(2, 1)] a=       -119104/2810295  EXACT  
+  OK  n=7 b1m4h0   -w [Fraction(16, 3), Fraction(9, 1), Fraction(13, 2), Fraction(7, 1), Fraction(5, 2)] a=-493672014872275/199017  EXACT  
+  OK  n=7 b1m4h0   -w [Fraction(5, 3), Fraction(11, 3), Fraction(1, 5), Fraction(6, 1), Fraction(8, 3)] a=-1757760966593216/545895703125  EXACT  
+  OK  n=7 b3m2h0   -w [Fraction(6, 1), Fraction(3, 1), Fraction(6, 5), Fraction(11, 1), Fraction(5, 3)] a=     -115877535744/875  EXACT  
+  OK  n=7 b0m5h0   -w [Fraction(1, 1), Fraction(19, 2), Fraction(7, 5), Fraction(19, 3), Fraction(5, 2)] a=         -4085584/4665  EXACT  
+  OK  n=7 b0m5h0   -w [Fraction(1, 3), Fraction(5, 1), Fraction(1, 2), Fraction(14, 3), Fraction(12, 1)] a=       -133856/2657205  EXACT  
+  OK  n=7 b0m5h0   -w [Fraction(2, 3), Fraction(7, 2), Fraction(11, 2), Fraction(2, 1), Fraction(4, 5)] a=   -248356864/18403605  EXACT  
+  OK  n=7 b4m0h1   -w [Fraction(13, 2), Fraction(5, 2), Fraction(1, 3), Fraction(3, 5), Fraction(9, 5)] a=        -49935366/1375  EXACT  
+  OK  n=7 b2m3h0   -w [Fraction(10, 3), Fraction(12, 1), Fraction(16, 3), Fraction(8, 5), Fraction(8, 3)] a=-626892838247858176/19170421875  EXACT  
+  OK  n=7 b2m3h0   -w [Fraction(4, 1), Fraction(13, 3), Fraction(7, 1), Fraction(5, 2), Fraction(4, 5)] a=-112858017659008/5240625  EXACT  
+  OK  n=7 b2m3h0   -w [Fraction(10, 3), Fraction(19, 3), Fraction(16, 3), Fraction(3, 2), Fraction(4, 5)] a=-787670751441728/218953125  EXACT  
+  OK  n=7 b0m5h0   -w [Fraction(4, 5), Fraction(9, 2), Fraction(20, 3), Fraction(1, 1), Fraction(11, 5)] a=-226433695744/2666015625  EXACT  
+  OK  n=7 b3m2h0   -w [Fraction(7, 3), Fraction(7, 5), Fraction(7, 1), Fraction(2, 3), Fraction(6, 5)] a=   -54652301312/421875  EXACT  
+  OK  n=7 b4m0h1   -w [Fraction(10, 1), Fraction(13, 3), Fraction(8, 5), Fraction(11, 2), Fraction(4, 1)] a=-741097871900672/171675  EXACT  
+  OK  n=7 b0m5h0   -w [Fraction(1, 2), Fraction(5, 3), Fraction(2, 1), Fraction(8, 1), Fraction(11, 5)] a=          -31699/25860  EXACT  
+  OK  n=7 b3m2h0   -w [Fraction(17, 3), Fraction(16, 3), Fraction(7, 5), Fraction(20, 3), Fraction(1, 5)] a=-45465692274688/12909375  EXACT  
+  OK  n=7 b2m3h0   -w [Fraction(5, 1), Fraction(5, 2), Fraction(13, 2), Fraction(7, 1), Fraction(1, 1)] a=        -3078933125/22  EXACT  
+  OK  n=7 b0m5h0   -w [Fraction(3, 5), Fraction(11, 5), Fraction(5, 1), Fraction(1, 1), Fraction(4, 1)] a=     -51746607/9765625  EXACT  
+  OK  n=7 b4m0h1   -w [Fraction(7, 1), Fraction(6, 1), Fraction(9, 5), Fraction(2, 5), Fraction(1, 1)] a=      -4912717824/3125  EXACT  
+  OK  n=7 b4m0h1   -w [Fraction(19, 2), Fraction(2, 1), Fraction(19, 3), Fraction(4, 5), Fraction(1, 2)] a= -1014041583616/322875  EXACT  
+  OK  n=7 b4m0h1   -w [Fraction(19, 2), Fraction(4, 5), Fraction(6, 1), Fraction(7, 5), Fraction(6, 5)] a=     -24083103744/3125  EXACT  
+  OK  n=7 b4m1h0   -w [Fraction(11, 3), Fraction(3, 2), Fraction(7, 2), Fraction(7, 3), Fraction(2, 1)] a=-59246177308835/4094064  EXACT  
+  OK  n=7 b1m4h0   -w [Fraction(2, 1), Fraction(2, 5), Fraction(13, 2), Fraction(12, 1), Fraction(11, 5)] a=-4964573200384/64453125  EXACT  
+  OK  n=7 b2m3h0   -w [Fraction(17, 3), Fraction(10, 1), Fraction(3, 1), Fraction(7, 1), Fraction(1, 5)] a=-1261164926680288/68203125  EXACT  
+  OK  n=7 b3m2h0   -w [Fraction(9, 2), Fraction(4, 1), Fraction(2, 5), Fraction(3, 1), Fraction(14, 3)] a=-10959704776409832/970703125  EXACT  
+  OK  n=7 b4m0h1   -w [Fraction(11, 1), Fraction(6, 5), Fraction(3, 1), Fraction(8, 5), Fraction(1, 1)] a=  -918982361088/278125  EXACT  
+  OK  n=7 b4m0h1   -w [Fraction(7, 1), Fraction(1, 3), Fraction(5, 3), Fraction(3, 1), Fraction(8, 3)] a=       -1194188800/891  EXACT  
+  OK  n=7 b3m2h0   -w [Fraction(15, 2), Fraction(1, 5), Fraction(13, 3), Fraction(9, 1), Fraction(3, 5)] a=-10463727379456/6084375  EXACT  
+  OK  n=7 b3m2h0   -w [Fraction(3, 1), Fraction(7, 5), Fraction(2, 1), Fraction(15, 2), Fraction(2, 5)] a= -314402715648/1015625  EXACT  
+  OK  n=7 b1m4h0   -w [Fraction(11, 3), Fraction(12, 1), Fraction(14, 3), Fraction(8, 1), Fraction(2, 1)] a=  -5007402594304/45927  EXACT  
+  -> n=7: 30/30 pass (exact=30), non-principal(b>0)=23, chambers={'b0m5h0': 7, 'b1m4h0': 4, 'b3m2h0': 6, 'b4m0h1': 7, 'b2m3h0': 5, 'b4m1h0': 1}
+
+==============================================================================
+TOTAL: 142/142 points pass (<=1e-10); 142 bit-exact; 95 in non-principal chambers (truncation fired)
+VERDICT: ALL PASS
+==============================================================================
+n=8 spot checks (beyond required range):
+  OK  n=8 b0m6h0   -w [1, 2, 3, 4, 5, 6]           a=             -33920/21  EXACT  principal
+  OK  n=8 b5m0h1   -w [9, 1, 2, 3, 4, 5]           a=          -22809600000  EXACT  non-principal b5m0h1

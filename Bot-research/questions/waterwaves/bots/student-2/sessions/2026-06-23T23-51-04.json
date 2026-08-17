@@ -1,0 +1,31 @@
+{
+  "bot": "student-2",
+  "timestamp": "2026-06-23T23:51:04",
+  "task_id": "t_r1_s2",
+  "round": 2,
+  "status": "completed_open_items",
+  "summary": "Question already SOLVED & accepted (post_004 / summary/SOLVED.md); my round-1 task t_r1_s2 was complete (s2_001..s2_004). No new task in tasks.json. I took on the two items the PI explicitly flagged as open/not-required, both in the theory lane: (A) an explicit g-dependence check, and (B) a first-principles proof of the B-spline/telescoping structure. (A) is fully derived AND verified bit-exact; (B) is proven at the level of the divided-difference characterization (upgrading several round-1 numerically-observed properties to theorems), with the full term-by-term partition-sum telescoping honestly left open.",
+  "work_done": [
+    "Rebuilt my faithful oracle copy (bots/student-2/code/bg, diff vs canonical bg.cpp = identical).",
+    "Derived g-dependence by homogeneity counting of the BG engine: A_n(g) = g^(3-n) A_n(g=1). Source basis: on-shell K_i = sigma_i omega_i^2/g and Propagator D = wS^2/|kS| - g; the on-shell constraints are g-independent so the omega's and the closed-form structure do not move with g.",
+    "Cross-checked the exponent two independent ways (pure-omega scaling => degree 2n-4 at any g; combined omega->rho omega, g->rho^2 g => A_n -> rho^2 A_n).",
+    "Verified the g-restored closed form A_n = i g^(3-n) 2^(n-1) w1 w2 sum_S (-1)^|S| max(0,P-sum w_j^2)^(n-3) against ./bg, EXACT rational: 21/21 points at n=5,6,7 x g in {1,2,3} (principal/non-principal/extreme) residual 0; n=8 g in {1,2} exact; n=4 delta->0 limit at g=1 and g=2 exact.",
+    "Proved (symbolic/exact) that the accepted form is a B-spline / (n-2)-fold divided difference: operator form == subset sum; principal-chamber collapse to P^(n-3) (=> a_n=2^(n-1)w1 w2^(2n-5)); homogeneity 2n-4; full-overlap vanishing D_n=0 for P>=sum t_j; continuity C^(n-4) across chamber walls (kink not pole); MANIFEST S_2 x S_{n-2} symmetry; only-smaller-minus-P-enters.",
+    "Noted on-shell identity w1^2+w2^2 = sum_{j>=3} w_j^2 => P < sum_plus strictly, so the formula's vanishing region sits just outside the physical locus (self-consistency).",
+    "Wrote derivations/round2_telescoping.md; produced figures/round2_structure.png; registered s2_005, s2_006, s2_007, s2_dec_005, s2_dec_006, s2_fig_002."
+  ],
+  "artifacts": {
+    "derivation": "bots/student-2/derivations/round2_telescoping.md",
+    "code": ["bots/student-2/code/round2_gcheck.py", "bots/student-2/code/round2_structure.py", "bots/student-2/code/round2_make_fig.py"],
+    "data": ["bots/student-2/data/round2_gcheck_output.txt", "bots/student-2/data/round2_structure_output.txt"],
+    "figure": "bots/student-2/figures/round2_structure.png"
+  },
+  "verification": {
+    "g_restored_formula_vs_oracle": "EXACT rational, residual identically 0: n=5,6,7 x g in {1,2,3} = 21/21; n=8 g in {1,2}; n=4 delta-limit g in {1,2}",
+    "structure_theorems": "all symbolic/exact checks pass (operator==subset, principal reduction, order>degree vanishing, continuity, plus-node symmetry) for n in 4..7"
+  },
+  "next_steps": [
+    "Open (still): complete term-by-term proof that the BGAmplitude/BGCurrent partition sum collapses to the alternating subset sum D_n in a general chamber (s2_007). The target is now a single clean B-spline object and the g-dependence is fixed, which should make this tractable.",
+    "Optional: confirm g-restored form holds in additional non-principal chambers at n>=7 if the PI wants wider coverage."
+  ]
+}

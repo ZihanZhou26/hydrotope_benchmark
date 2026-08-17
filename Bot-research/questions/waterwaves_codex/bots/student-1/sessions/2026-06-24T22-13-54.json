@@ -1,0 +1,21 @@
+{
+  "bot": "student-1",
+  "timestamp": "2026-06-24T22:13:54",
+  "task_id": "round2_student1_n4_limit_obstruction",
+  "status": "completed_with_path_independent_limit_conjecture",
+  "summary": "Resolved the assigned strict n=4 obstruction up to a limiting prescription: the direct strict copied oracle remains singular, but exact raw --amp probes that lift both zero pairs converge path-independently to A_4(-b,a,b,-a) = -8i a b min(a^2,b^2) in the tested regimes.",
+  "work_done": [
+    "Characterized strict n=4 two-minus kinematics as omega=(-b,a,b,-a), K=(-b^2,-a^2,b^2,a^2).",
+    "Identified both zero total pairs {1,3} and {2,4}; single-pair perturbations still trigger SIGFPE, while paths lifting both pairs are finite.",
+    "Created bots/student-1/code/n4_limit_probes.py to reproduce exact-rational raw --amp probes.",
+    "Generated bots/student-1/data/n4_limit_probes_round2.json and bots/student-1/data/n4_limit_probes_round2.md.",
+    "Ran four off-shell paths for (a,b)=(2,3), (2,100), and (2,1/100) with epsilon from 10^-1 through 10^-18.",
+    "Found convergence to A_4(-b,a,b,-a) = -8i a b min(a^2,b^2), with largest last-row relative residual about 2.0e-12 across the required path/regime table.",
+    "Wrote bots/student-1/derivations/n4_limit_analysis_round2.md and updated claims.yaml, figures.yaml, and decisions.yaml."
+  ],
+  "next_steps": [
+    "PI should decide whether the off-shell limiting value is an accepted n=4 verification prescription despite the direct strict oracle SIGFPE.",
+    "If accepted, combine this A_4 limiting formula with student-2's finite n=5,6,7 formula search.",
+    "If not accepted, final verification still needs a separate rule for the strict n=4 singular oracle point."
+  ]
+}

@@ -1,0 +1,35 @@
+figures:
+  - id: s2_fig_001
+    timestamp: "2026-06-24T22:00:14Z"
+    type: data_artifact
+    path: "bots/student-2/data/oracle_dataset.json"
+    description: >-
+      Exact-rational oracle dataset generated from the copied `student-2`
+      `bg.cpp` build for $n=4,5,6,7$, including recorded `SIGFPE` failures.
+  - id: s2_fig_002
+    timestamp: "2026-06-24T22:00:14Z"
+    type: data_artifact
+    path: "bots/student-2/data/ansatz_checks.json"
+    description: >-
+      Exact residuals for product-only, $e_m(p)P_{n-2}(u,v)$, and simple
+      monomial/rational ansatz families.
+  - id: s2_fig_003
+    timestamp: "2026-06-24T22:00:14Z"
+    type: data_artifact
+    path: "bots/student-2/data/structural_checks.json"
+    description: >-
+      Positive-sign leg permutation checks and scaling-by-two homogeneity checks.
+  - id: s2_fig_004
+    timestamp: "2026-06-24T22:25:01Z"
+    type: data_artifact
+    path: "bots/student-2/data/round2_candidate_checks.json"
+    description: >-
+      Exact-GMP fit, held-out, and optional $n=8$ smoke residuals for the
+      truncated-power candidate formula.
+  - id: s2_fig_005
+    timestamp: "2026-06-24T22:25:01Z"
+    type: derivation_report
+    path: "bots/student-2/derivations/round2_candidate_formula.md"
+    description: >-
+      Round-2 derivation note describing the candidate formula, the $n=5$
+      chamber reasoning, and representative exact residual checks.

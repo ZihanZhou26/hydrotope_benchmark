@@ -1,0 +1,21 @@
+figures:
+  - id: s1_fig_001
+    title: "n=5 closed form tracks the oracle through a chamber wall"
+    timestamp: "2026-06-23T22:27:14"
+    path: "bots/student-1/figures/fig_s1_scan_n5.png"
+    caption: >
+      a_5 vs a varying plus-leg frequency omega_4 (with omega_2=1 minus, omega_3=2
+      plus). Blue dots = oracle ./bg; red curve = the truncated inclusion-exclusion
+      closed form (claim s1_001). The slope change near omega_4=1 is the chamber
+      wall |omega_4|=|omega_2|; the closed form reproduces both chambers exactly.
+    code: "bots/student-1/code/make_figures.py"
+  - id: s1_fig_002
+    title: "Bit-exact agreement across 115 in-sector points (n=4..7)"
+    timestamp: "2026-06-23T22:27:14"
+    path: "bots/student-1/figures/fig_s1_residuals.png"
+    caption: >
+      Relative residual of the closed form vs the oracle over the full dataset
+      (n=4 delta-limit, 5, 6, 7; all chambers). Every residual is exactly 0
+      (exact rational arithmetic); plotted at 1e-17 to show against the 1e-10
+      pass bar (dashed). Data: bots/student-1/data/dataset.csv.
+    code: "bots/student-1/code/make_figures.py"

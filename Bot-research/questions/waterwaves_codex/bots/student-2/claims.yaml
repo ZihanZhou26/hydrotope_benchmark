@@ -1,0 +1,68 @@
+claims:
+  - id: s2_001
+    timestamp: "2026-06-24T22:00:14Z"
+    status: supported_by_student2_oracle_data
+    claim: >-
+      For the finite exact rows tested at $n=5,6,7$, $A_n$ is purely imaginary,
+      symmetric under tested permutations of the $\sigma=+1$ legs, and scales as
+      $A_n(\lambda\omega)=\lambda^{2n-4}A_n(\omega)$ for $\lambda=2$.
+    evidence:
+      - "bots/student-2/data/structural_checks.json"
+      - "bots/student-2/derivations/ansatz_report.md"
+  - id: s2_002
+    timestamp: "2026-06-24T22:00:14Z"
+    status: failed_ansatz
+    claim: >-
+      The product-only ansatz $A_n/i=C_n e_m(p)$ is false for $n=5,6,7$; the
+      tested ratios $(A_n/i)/e_m(p)$ vary across kinematic points.
+    evidence:
+      - "bots/student-2/data/ansatz_checks.json"
+      - "bots/student-2/derivations/ansatz_report.md"
+  - id: s2_003
+    timestamp: "2026-06-24T22:00:14Z"
+    status: failed_ansatz
+    claim: >-
+      The broader family $A_n/i=e_m(p)P_{n-2}(u,v)$, with $P_{n-2}$ a
+      homogeneous polynomial in $u=-\omega_1$ and $v=\omega_2$, fails on
+      held-out exact oracle rows at $n=5$ and $n=6$.
+    evidence:
+      - "bots/student-2/data/ansatz_checks.json"
+      - "bots/student-2/derivations/ansatz_report.md"
+  - id: s2_004
+    timestamp: "2026-06-24T22:00:14Z"
+    status: oracle_failure_observed
+    claim: >-
+      In the exact on-shell constructor, $n=4$ two-minus kinematics force
+      $\omega=(-b,a,b,-a)$ and the copied oracle encounters zero-momentum
+      subcurrents, exiting with `SIGFPE`; double mode returns `nan`.
+    evidence:
+      - "bots/student-2/data/oracle_dataset.json"
+      - "bots/student-2/derivations/ansatz_report.md"
+  - id: s2_005
+    timestamp: "2026-06-24T22:25:01Z"
+    status: finite_candidate_supported
+    claim: >-
+      For every finite exact-GMP row I tested at $n=5,6,7$, the amplitude is
+      matched by
+      $$\frac{A_n}{i}=-2^{n-1}uv\sum_{S\subseteq\{1,\ldots,m\}}(-1)^{|S|}
+      \left(v^2-\sum_{j\in S}p_j^2\right)_+^{n-3},$$
+      where $u=-\omega_1$, $v=\omega_2$, $p_j=\omega_{j+2}$, and
+      $(x)_+^d=x^d$ for $x>0$ and $0$ otherwise. The exact residual was $0$ on
+      9 fit rows and 18 held-out rows at $n=5,6,7$; two optional exact $n=8$
+      smoke checks also had residual $0$.
+    evidence:
+      - "bots/student-2/data/round2_candidate_checks.json"
+      - "bots/student-2/derivations/round2_candidate_formula.md"
+  - id: s2_006
+    timestamp: "2026-06-24T22:26:53Z"
+    status: compatibility_check
+    claim: >-
+      If the truncated-power candidate is extended to $n=4$ and evaluated on
+      strict kinematics $\omega=(-b,a,b,-a)$, it gives
+      $$A_4=-8i\,ab\,\min(a^2,b^2),$$
+      matching the limiting prescription reported by `student-1` on the board.
+      This is an algebraic compatibility check, not an independent resolution
+      of the strict $n=4$ oracle singularity.
+    evidence:
+      - "board.json"
+      - "bots/student-2/derivations/round2_candidate_formula.md"

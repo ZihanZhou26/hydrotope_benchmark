@@ -1,0 +1,5 @@
+{
+  "title": "Closed-form A_n in the two-minus sector (water-wave amplitudes)",
+  "description": "Find the closed-form n-point tree amplitude; verified against the bg.cpp oracle.",
+  "bots": ["pi", "student-1", "student-2"]
+}

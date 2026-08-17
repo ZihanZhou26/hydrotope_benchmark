@@ -1,0 +1,696 @@
+{
+  "timestamp": "2026-06-24T22:35:22",
+  "bg_path": "bots/pi/code/bg",
+  "candidate": "A_n/i = -2^(n-1) u v sum_S (-1)^|S| (v^2 - sum_{j in S} p_j^2)_+^(n-3)",
+  "finite_checks": [
+    {
+      "label": "n5_generic_pi",
+      "n": 5,
+      "free_w": [
+        "5",
+        "4",
+        "4"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg -n 5 -w 5,4,4 -s -1,-1,1,1,1",
+      "returncode": 0,
+      "omega": [
+        "-88/13",
+        "5",
+        "4",
+        "4",
+        "-81/13"
+      ],
+      "oracle_re": "0",
+      "oracle_im": "-3259520/13",
+      "candidate_im": "-3259520/13",
+      "residual": "0",
+      "relative_error": "0",
+      "passed": true
+    },
+    {
+      "label": "n5_large_positive_leg_pi",
+      "n": 5,
+      "free_w": [
+        "5",
+        "20",
+        "3"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg -n 5 -w 5,20,3 -s -1,-1,1,1,1",
+      "returncode": 0,
+      "omega": [
+        "-146/7",
+        "5",
+        "20",
+        "3",
+        "-50/7"
+      ],
+      "oracle_re": "0",
+      "oracle_im": "-4309920/7",
+      "candidate_im": "-4309920/7",
+      "residual": "0",
+      "relative_error": "0",
+      "passed": true
+    },
+    {
+      "label": "n5_small_positive_leg_pi",
+      "n": 5,
+      "free_w": [
+        "5",
+        "1/100",
+        "3"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg -n 5 -w 5,1/100,3 -s -1,-1,1,1,1",
+      "returncode": 0,
+      "omega": [
+        "-80267/26700",
+        "5",
+        "1/100",
+        "3",
+        "-1336/267"
+      ],
+      "oracle_re": "0",
+      "oracle_im": "-240801/556250",
+      "candidate_im": "-240801/556250",
+      "residual": "0",
+      "relative_error": "0",
+      "passed": true
+    },
+    {
+      "label": "n5_signed_pi",
+      "n": 5,
+      "free_w": [
+        "5",
+        "3",
+        "-3"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg -n 5 -w 5,3,-3 -s -1,-1,1,1,1",
+      "returncode": 0,
+      "omega": [
+        "-9/5",
+        "5",
+        "3",
+        "-3",
+        "-16/5"
+      ],
+      "oracle_re": "0",
+      "oracle_im": "-944784/625",
+      "candidate_im": "-944784/625",
+      "residual": "0",
+      "relative_error": "0",
+      "passed": true
+    },
+    {
+      "label": "n6_generic_pi",
+      "n": 6,
+      "free_w": [
+        "4",
+        "2",
+        "3",
+        "5"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg -n 6 -w 4,2,3,5 -s -1,-1,1,1,1,1",
+      "returncode": 0,
+      "omega": [
+        "-109/14",
+        "4",
+        "2",
+        "3",
+        "5",
+        "-87/14"
+      ],
+      "oracle_re": "0",
+      "oracle_im": "-14314752/7",
+      "candidate_im": "-14314752/7",
+      "residual": "0",
+      "relative_error": "0",
+      "passed": true
+    },
+    {
+      "label": "n6_large_positive_leg_pi",
+      "n": 6,
+      "free_w": [
+        "2",
+        "50",
+        "3",
+        "4"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg -n 6 -w 2,50,3,4 -s -1,-1,1,1,1,1",
+      "returncode": 0,
+      "omega": [
+        "-3001/59",
+        "2",
+        "50",
+        "3",
+        "4",
+        "-480/59"
+      ],
+      "oracle_re": "0",
+      "oracle_im": "-12292096/59",
+      "candidate_im": "-12292096/59",
+      "residual": "0",
+      "relative_error": "0",
+      "passed": true
+    },
+    {
+      "label": "n6_small_positive_leg_pi",
+      "n": 6,
+      "free_w": [
+        "5",
+        "2",
+        "1/100",
+        "3"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg -n 6 -w 5,2,1/100,3 -s -1,-1,1,1,1,1",
+      "returncode": 0,
+      "omega": [
+        "-40091/9100",
+        "5",
+        "2",
+        "1/100",
+        "3",
+        "-510/91"
+      ],
+      "oracle_re": "0",
+      "oracle_im": "-4329828/284375",
+      "candidate_im": "-4329828/284375",
+      "residual": "0",
+      "relative_error": "0",
+      "passed": true
+    },
+    {
+      "label": "n6_signed_pi",
+      "n": 6,
+      "free_w": [
+        "5",
+        "-1",
+        "1",
+        "1"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg -n 6 -w 5,-1,1,1 -s -1,-1,1,1,1,1",
+      "returncode": 0,
+      "omega": [
+        "-7/6",
+        "5",
+        "-1",
+        "1",
+        "1",
+        "-29/6"
+      ],
+      "oracle_re": "0",
+      "oracle_im": "-1943515/4374",
+      "candidate_im": "-1943515/4374",
+      "residual": "0",
+      "relative_error": "0",
+      "passed": true
+    },
+    {
+      "label": "n7_generic_pi",
+      "n": 7,
+      "free_w": [
+        "5",
+        "2/3",
+        "7/2",
+        "7/2",
+        "2/3"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg -n 7 -w 5,2/3,7/2,7/2,2/3 -s -1,-1,1,1,1,1,1",
+      "returncode": 0,
+      "omega": [
+        "-1069/160",
+        "5",
+        "2/3",
+        "7/2",
+        "7/2",
+        "2/3",
+        "-3193/480"
+      ],
+      "oracle_re": "0",
+      "oracle_im": "-79831105907/52488",
+      "candidate_im": "-79831105907/52488",
+      "residual": "0",
+      "relative_error": "0",
+      "passed": true
+    },
+    {
+      "label": "n7_large_positive_leg_pi",
+      "n": 7,
+      "free_w": [
+        "2",
+        "50",
+        "3",
+        "4",
+        "5"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg -n 7 -w 2,50,3,4,5 -s -1,-1,1,1,1,1,1",
+      "returncode": 0,
+      "omega": [
+        "-3321/64",
+        "2",
+        "50",
+        "3",
+        "4",
+        "5",
+        "-775/64"
+      ],
+      "oracle_re": "0",
+      "oracle_im": "-1700352",
+      "candidate_im": "-1700352",
+      "residual": "0",
+      "relative_error": "0",
+      "passed": true
+    },
+    {
+      "label": "n7_small_positive_leg_pi",
+      "n": 7,
+      "free_w": [
+        "4",
+        "2",
+        "1/100",
+        "3",
+        "5"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg -n 7 -w 4,2,1/100,3,5 -s -1,-1,1,1,1,1,1",
+      "returncode": 0,
+      "omega": [
+        "-1091401/140100",
+        "4",
+        "2",
+        "1/100",
+        "3",
+        "5",
+        "-8714/1401"
+      ],
+      "oracle_re": "0",
+      "oracle_im": "-7465143549564/4560546875",
+      "candidate_im": "-7465143549564/4560546875",
+      "residual": "0",
+      "relative_error": "0",
+      "passed": true
+    },
+    {
+      "label": "n7_signed_pi",
+      "n": 7,
+      "free_w": [
+        "5",
+        "-1",
+        "1",
+        "1",
+        "2"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg -n 7 -w 5,-1,1,1,2 -s -1,-1,1,1,1,1,1",
+      "returncode": 0,
+      "omega": [
+        "-23/8",
+        "5",
+        "-1",
+        "1",
+        "1",
+        "2",
+        "-41/8"
+      ],
+      "oracle_re": "0",
+      "oracle_im": "-88320",
+      "candidate_im": "-88320",
+      "residual": "0",
+      "relative_error": "0",
+      "passed": true
+    }
+  ],
+  "n4_direct_on_shell": [
+    {
+      "label": "n4_generic_direct_on_shell",
+      "free_w": [
+        "2",
+        "3"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg -n 4 -w 2,3 -s -1,-1,1,1",
+      "returncode": -8,
+      "stdout": "",
+      "stderr": "",
+      "expected_behavior": "direct strict call is singular in the oracle",
+      "passed": true
+    },
+    {
+      "label": "n4_b_much_larger_direct_on_shell",
+      "free_w": [
+        "2",
+        "100"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg -n 4 -w 2,100 -s -1,-1,1,1",
+      "returncode": -8,
+      "stdout": "",
+      "stderr": "",
+      "expected_behavior": "direct strict call is singular in the oracle",
+      "passed": true
+    },
+    {
+      "label": "n4_b_much_smaller_direct_on_shell",
+      "free_w": [
+        "2",
+        "1/100"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg -n 4 -w 2,1/100 -s -1,-1,1,1",
+      "returncode": -8,
+      "stdout": "",
+      "stderr": "",
+      "expected_behavior": "direct strict call is singular in the oracle",
+      "passed": true
+    }
+  ],
+  "n4_limit_checks": [
+    {
+      "label": "n4_generic_k_plus_12",
+      "a": "2",
+      "b": "3",
+      "epsilon": "1/1000000000000000000",
+      "path": "k_plus_12",
+      "K": [
+        "-9",
+        "-4",
+        "9000000000000000009/1000000000000000000",
+        "500000000000000001/125000000000000000"
+      ],
+      "W": [
+        "-3",
+        "2",
+        "3",
+        "-2"
+      ],
+      "strict_limit_im": "-192",
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg --amp -K -9,-4,9000000000000000009/1000000000000000000,500000000000000001/125000000000000000 -W -3,2,3,-2",
+      "returncode": 0,
+      "oracle_re": "0",
+      "oracle_im_decimal": "-1.920000000000E+2",
+      "residual_decimal": "3.460000000000E-16",
+      "relative_error": "1.802083333333E-18",
+      "passed": true
+    },
+    {
+      "label": "n4_generic_k_plus_31",
+      "a": "2",
+      "b": "3",
+      "epsilon": "1/1000000000000000000",
+      "path": "k_plus_31",
+      "K": [
+        "-9",
+        "-4",
+        "9000000000000000027/1000000000000000000",
+        "1000000000000000001/250000000000000000"
+      ],
+      "W": [
+        "-3",
+        "2",
+        "3",
+        "-2"
+      ],
+      "strict_limit_im": "-192",
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg --amp -K -9,-4,9000000000000000027/1000000000000000000,1000000000000000001/250000000000000000 -W -3,2,3,-2",
+      "returncode": 0,
+      "oracle_re": "0",
+      "oracle_im_decimal": "-1.920000000000E+2",
+      "residual_decimal": "9.380000000000E-16",
+      "relative_error": "4.885416666667E-18",
+      "passed": true
+    },
+    {
+      "label": "n4_generic_plus_legs_onshell",
+      "a": "2",
+      "b": "3",
+      "epsilon": "1/1000000000000000000",
+      "path": "plus_legs_onshell",
+      "K": [
+        "-9",
+        "-4",
+        "9000000000000000018000000000000000009/1000000000000000000000000000000000000",
+        "250000000000000001000000000000000001/62500000000000000000000000000000000"
+      ],
+      "W": [
+        "-3",
+        "2",
+        "3000000000000000003/1000000000000000000",
+        "-500000000000000001/250000000000000000"
+      ],
+      "strict_limit_im": "-192",
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg --amp -K -9,-4,9000000000000000018000000000000000009/1000000000000000000000000000000000000,250000000000000001000000000000000001/62500000000000000000000000000000000 -W -3,2,3000000000000000003/1000000000000000000,-500000000000000001/250000000000000000",
+      "returncode": 0,
+      "oracle_re": "0",
+      "oracle_im_decimal": "-1.920000000000E+2",
+      "residual_decimal": "1.960000000000E-16",
+      "relative_error": "1.020833333333E-18",
+      "passed": true
+    },
+    {
+      "label": "n4_generic_negative_momenta",
+      "a": "2",
+      "b": "3",
+      "epsilon": "1/1000000000000000000",
+      "path": "negative_momenta",
+      "K": [
+        "-8999999999999999991/1000000000000000000",
+        "-499999999999999999/125000000000000000",
+        "9",
+        "4"
+      ],
+      "W": [
+        "-3",
+        "2",
+        "3",
+        "-2"
+      ],
+      "strict_limit_im": "-192",
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg --amp -K -8999999999999999991/1000000000000000000,-499999999999999999/125000000000000000,9,4 -W -3,2,3,-2",
+      "returncode": 0,
+      "oracle_re": "0",
+      "oracle_im_decimal": "-1.920000000000E+2",
+      "residual_decimal": "5.040000000000E-16",
+      "relative_error": "2.625000000000E-18",
+      "passed": true
+    },
+    {
+      "label": "n4_b_much_larger_k_plus_12",
+      "a": "2",
+      "b": "100",
+      "epsilon": "1/1000000000000000000",
+      "path": "k_plus_12",
+      "K": [
+        "-10000",
+        "-4",
+        "1000000000000000001/100000000000000",
+        "500000000000000001/125000000000000000"
+      ],
+      "W": [
+        "-100",
+        "2",
+        "100",
+        "-2"
+      ],
+      "strict_limit_im": "-6400",
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg --amp -K -10000,-4,1000000000000000001/100000000000000,500000000000000001/125000000000000000 -W -100,2,100,-2",
+      "returncode": 0,
+      "oracle_re": "0",
+      "oracle_im_decimal": "-6.400000000000E+3",
+      "residual_decimal": "2.041168640000E-10",
+      "relative_error": "3.189326000000E-14",
+      "passed": true
+    },
+    {
+      "label": "n4_b_much_larger_k_plus_31",
+      "a": "2",
+      "b": "100",
+      "epsilon": "1/1000000000000000000",
+      "path": "k_plus_31",
+      "K": [
+        "-10000",
+        "-4",
+        "1000000000000000003/100000000000000",
+        "1000000000000000001/250000000000000000"
+      ],
+      "W": [
+        "-100",
+        "2",
+        "100",
+        "-2"
+      ],
+      "strict_limit_im": "-6400",
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg --amp -K -10000,-4,1000000000000000003/100000000000000,1000000000000000001/250000000000000000 -W -100,2,100,-2",
+      "returncode": 0,
+      "oracle_re": "0",
+      "oracle_im_decimal": "-6.399999999999E+3",
+      "residual_decimal": "6.121584320000E-10",
+      "relative_error": "9.564975500000E-14",
+      "passed": true
+    },
+    {
+      "label": "n4_b_much_larger_plus_legs_onshell",
+      "a": "2",
+      "b": "100",
+      "epsilon": "1/1000000000000000000",
+      "path": "plus_legs_onshell",
+      "K": [
+        "-10000",
+        "-4",
+        "1000000000000000002000000000000000001/100000000000000000000000000000000",
+        "250000000000000001000000000000000001/62500000000000000000000000000000000"
+      ],
+      "W": [
+        "-100",
+        "2",
+        "1000000000000000001/10000000000000000",
+        "-500000000000000001/250000000000000000"
+      ],
+      "strict_limit_im": "-6400",
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg --amp -K -10000,-4,1000000000000000002000000000000000001/100000000000000000000000000000000,250000000000000001000000000000000001/62500000000000000000000000000000000 -W -100,2,1000000000000000001/10000000000000000,-500000000000000001/250000000000000000",
+      "returncode": 0,
+      "oracle_re": "0",
+      "oracle_im_decimal": "-6.400000000000E+3",
+      "residual_decimal": "2.006406400000E-11",
+      "relative_error": "3.135010000000E-15",
+      "passed": true
+    },
+    {
+      "label": "n4_b_much_larger_negative_momenta",
+      "a": "2",
+      "b": "100",
+      "epsilon": "1/1000000000000000000",
+      "path": "negative_momenta",
+      "K": [
+        "-999999999999999999/100000000000000",
+        "-499999999999999999/125000000000000000",
+        "10000",
+        "4"
+      ],
+      "W": [
+        "-100",
+        "2",
+        "100",
+        "-2"
+      ],
+      "strict_limit_im": "-6400",
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg --amp -K -999999999999999999/100000000000000,-499999999999999999/125000000000000000,10000,4 -W -100,2,100,-2",
+      "returncode": 0,
+      "oracle_re": "0",
+      "oracle_im_decimal": "-6.400000000000E+3",
+      "residual_decimal": "4.129600000000E-12",
+      "relative_error": "6.452500000000E-16",
+      "passed": true
+    },
+    {
+      "label": "n4_b_much_smaller_k_plus_12",
+      "a": "2",
+      "b": "1/100",
+      "epsilon": "1/1000000000000000000",
+      "path": "k_plus_12",
+      "K": [
+        "-1/10000",
+        "-4",
+        "1000000000000000001/10000000000000000000000",
+        "500000000000000001/125000000000000000"
+      ],
+      "W": [
+        "-1/100",
+        "2",
+        "1/100",
+        "-2"
+      ],
+      "strict_limit_im": "-1/62500",
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg --amp -K -1/10000,-4,1000000000000000001/10000000000000000000000,500000000000000001/125000000000000000 -W -1/100,2,1/100,-2",
+      "returncode": 0,
+      "oracle_re": "0",
+      "oracle_im_decimal": "-1.599999999997E-5",
+      "residual_decimal": "3.199999201000E-17",
+      "relative_error": "1.999999500625E-12",
+      "passed": true
+    },
+    {
+      "label": "n4_b_much_smaller_k_plus_31",
+      "a": "2",
+      "b": "1/100",
+      "epsilon": "1/1000000000000000000",
+      "path": "k_plus_31",
+      "K": [
+        "-1/10000",
+        "-4",
+        "1000000000000000003/10000000000000000000000",
+        "1000000000000000001/250000000000000000"
+      ],
+      "W": [
+        "-1/100",
+        "2",
+        "1/100",
+        "-2"
+      ],
+      "strict_limit_im": "-1/62500",
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg --amp -K -1/10000,-4,1000000000000000003/10000000000000000000000,1000000000000000001/250000000000000000 -W -1/100,2,1/100,-2",
+      "returncode": 0,
+      "oracle_re": "0",
+      "oracle_im_decimal": "-1.599999999998E-5",
+      "residual_decimal": "1.599997603000E-17",
+      "relative_error": "9.999985018750E-13",
+      "passed": true
+    },
+    {
+      "label": "n4_b_much_smaller_plus_legs_onshell",
+      "a": "2",
+      "b": "1/100",
+      "epsilon": "1/1000000000000000000",
+      "path": "plus_legs_onshell",
+      "K": [
+        "-1/10000",
+        "-4",
+        "1000000000000000002000000000000000001/10000000000000000000000000000000000000000",
+        "250000000000000001000000000000000001/62500000000000000000000000000000000"
+      ],
+      "W": [
+        "-1/100",
+        "2",
+        "1000000000000000001/100000000000000000000",
+        "-500000000000000001/250000000000000000"
+      ],
+      "strict_limit_im": "-1/62500",
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg --amp -K -1/10000,-4,1000000000000000002000000000000000001/10000000000000000000000000000000000000000,250000000000000001000000000000000001/62500000000000000000000000000000000 -W -1/100,2,1000000000000000001/100000000000000000000,-500000000000000001/250000000000000000",
+      "returncode": 0,
+      "oracle_re": "0",
+      "oracle_im_decimal": "-1.600000000000E-5",
+      "residual_decimal": "-1.628020000000E-21",
+      "relative_error": "1.017512500000E-16",
+      "passed": true
+    },
+    {
+      "label": "n4_b_much_smaller_negative_momenta",
+      "a": "2",
+      "b": "1/100",
+      "epsilon": "1/1000000000000000000",
+      "path": "negative_momenta",
+      "K": [
+        "-999999999999999999/10000000000000000000000",
+        "-499999999999999999/125000000000000000",
+        "1/10000",
+        "4"
+      ],
+      "W": [
+        "-1/100",
+        "2",
+        "1/100",
+        "-2"
+      ],
+      "strict_limit_im": "-1/62500",
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/pi/code/bg --amp -K -999999999999999999/10000000000000000000000,-499999999999999999/125000000000000000,1/10000,4 -W -1/100,2,1/100,-2",
+      "returncode": 0,
+      "oracle_re": "0",
+      "oracle_im_decimal": "-1.600000000003E-5",
+      "residual_decimal": "-3.199999201000E-17",
+      "relative_error": "1.999999500625E-12",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "finite_rows": 12,
+    "finite_failures": 0,
+    "n4_direct_singular_rows": 3,
+    "n4_direct_non_singular_rows": 0,
+    "n4_limit_rows": 12,
+    "n4_limit_failures": 0,
+    "max_finite_relative_error": "0",
+    "max_n4_limit_relative_error": "1.999999500625E-12"
+  }
+}

@@ -1,0 +1,3559 @@
+{
+  "records": [
+    {
+      "case_id": "s1_n4_lim_generic",
+      "regime": "generic",
+      "a": "2",
+      "b": "3",
+      "conjectured_limit": "$A_4=-8i\\,a b\\,\\min(a^2,b^2)$",
+      "conjectured_limit_im": "-192",
+      "conjectured_limit_im_decimal": "-1.920000000000000000E+2",
+      "strict_omega": [
+        "-3",
+        "2",
+        "3",
+        "-2"
+      ],
+      "strict_K": [
+        "-9",
+        "-4",
+        "9",
+        "4"
+      ],
+      "zero_pairs": [
+        {
+          "legs": [
+            1,
+            3
+          ],
+          "omega_sum": "0",
+          "K_sum": "0",
+          "role": "zero internal momentum sum visible to the vertex kernel"
+        },
+        {
+          "legs": [
+            2,
+            4
+          ],
+          "omega_sum": "0",
+          "K_sum": "0",
+          "role": "zero rest-side BG subcurrent propagator"
+        }
+      ],
+      "strict_on_shell_status": {
+        "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 4 -w 2,3 -s -1,-1,1,1",
+        "returncode": -8,
+        "stdout": "",
+        "stderr": ""
+      },
+      "paths": [
+        {
+          "path_id": "k_plus_12",
+          "description": "$K_3=b^2(1+\\epsilon)$, $K_4=a^2(1+2\\epsilon)$; all $\\omega_i$ fixed",
+          "rows": [
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,99/10,24/5 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-20482316/130835)\nA_4 (numeric) = 0 + -156.551 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-20482316/130835",
+              "epsilon": "1/10",
+              "K": [
+                "-9",
+                "-4",
+                "99/10",
+                "24/5"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.565507394810257194E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,909/100,102/25 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-11420559778/60576175)\nA_4 (numeric) = 0 + -188.532 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-11420559778/60576175",
+              "epsilon": "1/100",
+              "K": [
+                "-9",
+                "-4",
+                "909/100",
+                "102/25"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.885322039234071811E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,9009/1000,501/125 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5755171980989/30028980875)\nA_4 (numeric) = 0 + -191.654 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5755171980989/30028980875",
+              "epsilon": "1/1000",
+              "K": [
+                "-9",
+                "-4",
+                "9009/1000",
+                "501/125"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.916539227536805310E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,90009/10000,5001/1250 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5759518639791989/30002899808750)\nA_4 (numeric) = 0 + -191.965 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5759518639791989/30002899808750",
+              "epsilon": "1/10000",
+              "K": [
+                "-9",
+                "-4",
+                "90009/10000",
+                "5001/1250"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919653992282536556E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,900009/100000,50001/12500 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-117550038334651061/612250816287500)\nA_4 (numeric) = 0 + -191.997 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-117550038334651061/612250816287500",
+              "epsilon": "1/100000",
+              "K": [
+                "-9",
+                "-4",
+                "900009/100000",
+                "50001/12500"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919965399922832537E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,9000009/1000000,500001/125000 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5759995187983979001989/30000028999980875000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5759995187983979001989/30000028999980875000",
+              "epsilon": "1/1000000",
+              "K": [
+                "-9",
+                "-4",
+                "9000009/1000000",
+                "500001/125000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919996539999228333E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,900000009/100000000,50000001/12500000 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5759999951879998397900001989/30000000289999998087500000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5759999951879998397900001989/30000000289999998087500000",
+              "epsilon": "1/100000000",
+              "K": [
+                "-9",
+                "-4",
+                "900000009/100000000",
+                "50000001/12500000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999965399999923E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,90000000009/10000000000,5000000001/1250000000 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5759999999518799999839790000001989/30000000002899999999808750000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5759999999518799999839790000001989/30000000002899999999808750000000",
+              "epsilon": "1/10000000000",
+              "K": [
+                "-9",
+                "-4",
+                "90000000009/10000000000",
+                "5000000001/1250000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999999654000000E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,9000000000009/1000000000000,500000000001/125000000000 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5759999999995187999999983979000000001989/30000000000028999999999980875000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5759999999995187999999983979000000001989/30000000000028999999999980875000000000",
+              "epsilon": "1/1000000000000",
+              "K": [
+                "-9",
+                "-4",
+                "9000000000009/1000000000000",
+                "500000000001/125000000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999999996540000E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,900000000000009/100000000000000,50000000000001/12500000000000 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5759999999999951879999999998397900000000001989/30000000000000289999999999998087500000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5759999999999951879999999998397900000000001989/30000000000000289999999999998087500000000000",
+              "epsilon": "1/100000000000000",
+              "K": [
+                "-9",
+                "-4",
+                "900000000000009/100000000000000",
+                "50000000000001/12500000000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999999999965400E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,90000000000000009/10000000000000000,5000000000000001/1250000000000000 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5759999999999999518799999999999839790000000000001989/30000000000000002899999999999999808750000000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5759999999999999518799999999999839790000000000001989/30000000000000002899999999999999808750000000000000",
+              "epsilon": "1/10000000000000000",
+              "K": [
+                "-9",
+                "-4",
+                "90000000000000009/10000000000000000",
+                "5000000000000001/1250000000000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999999999999654E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,9000000000000000009/1000000000000000000,500000000000000001/125000000000000000 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5759999999999999995187999999999999983979000000000000001989/30000000000000000028999999999999999980875000000000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5759999999999999995187999999999999983979000000000000001989/30000000000000000028999999999999999980875000000000000000",
+              "epsilon": "1/1000000000000000000",
+              "K": [
+                "-9",
+                "-4",
+                "9000000000000000009/1000000000000000000",
+                "500000000000000001/125000000000000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999999999999997E+2"
+            }
+          ],
+          "limit_summary": {
+            "last_epsilon": "1/1000000000000000000",
+            "last_im": "-5759999999999999995187999999999999983979000000000000001989/30000000000000000028999999999999999980875000000000000000",
+            "last_im_decimal": "-1.919999999999999997E+2",
+            "previous_im": "-5759999999999999518799999999999839790000000000001989/30000000000000002899999999999999808750000000000000",
+            "previous_im_decimal": "-1.919999999999999654E+2",
+            "last_minus_previous": "-2242080000000000269405783999999996061147695999999995805437680000000002738853/65454545454545460935999999999999588801909090909090501693636363636363902375000000000000000",
+            "last_minus_previous_decimal": "-3.425400000000000077E-14",
+            "conjectured_limit_im": "-192",
+            "conjectured_limit_im_decimal": "-1.920000000000000000E+2",
+            "last_minus_conjectured_limit": "10380000000000000012348999999999999998011/30000000000000000028999999999999999980875000000000000000",
+            "last_minus_conjectured_limit_decimal": "3.460000000000000001E-16",
+            "relative_last_minus_conjectured_limit_decimal": "1.802083333333333334E-18"
+          }
+        },
+        {
+          "path_id": "k_plus_31",
+          "description": "$K_3=b^2(1+3\\epsilon)$, $K_4=a^2(1+\\epsilon)$; all $\\omega_i$ fixed",
+          "rows": [
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,117/10,22/5 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-11533532/130615)\nA_4 (numeric) = 0 + -88.3017 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-11533532/130615",
+              "epsilon": "1/10",
+              "K": [
+                "-9",
+                "-4",
+                "117/10",
+                "22/5"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-8.830174176013474716E+1"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,927/100,101/25 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-11083382746/60719075)\nA_4 (numeric) = 0 + -182.535 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-11083382746/60719075",
+              "epsilon": "1/100",
+              "K": [
+                "-9",
+                "-4",
+                "927/100",
+                "101/25"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.825354346389499511E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,9027/1000,1001/250 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5738884295273/30036895375)\nA_4 (numeric) = 0 + -191.061 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5738884295273/30036895375",
+              "epsilon": "1/1000",
+              "K": [
+                "-9",
+                "-4",
+                "9027/1000",
+                "1001/250"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.910611673951339586E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,90027/10000,10001/2500 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5757895602734273/30003698953750)\nA_4 (numeric) = 0 + -191.906 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5757895602734273/30003698953750",
+              "epsilon": "1/10000",
+              "K": [
+                "-9",
+                "-4",
+                "90027/10000",
+                "10001/2500"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919061916868961512E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,900027/100000,100001/25000 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5759789632027124273/30000369989537500)\nA_4 (numeric) = 0 + -191.991 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5759789632027124273/30000369989537500",
+              "epsilon": "1/100000",
+              "K": [
+                "-9",
+                "-4",
+                "900027/100000",
+                "100001/25000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919906199168818963E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,9000027/1000000,1000001/250000 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5759978963920271024273/30000036999895375000)\nA_4 (numeric) = 0 + -191.999 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5759978963920271024273/30000036999895375000",
+              "epsilon": "1/1000000",
+              "K": [
+                "-9",
+                "-4",
+                "9000027/1000000",
+                "1000001/250000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919990619991688319E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,900000027/100000000,100000001/25000000 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5759999789639992027100024273/30000000369999989537500000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5759999789639992027100024273/30000000369999989537500000",
+              "epsilon": "1/100000000",
+              "K": [
+                "-9",
+                "-4",
+                "900000027/100000000",
+                "100000001/25000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999906199999169E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,90000000027/10000000000,10000000001/2500000000 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5759999997896399999202710000024273/30000000003699999998953750000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5759999997896399999202710000024273/30000000003699999998953750000000",
+              "epsilon": "1/10000000000",
+              "K": [
+                "-9",
+                "-4",
+                "90000000027/10000000000",
+                "10000000001/2500000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999999062000000E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,9000000000027/1000000000000,1000000000001/250000000000 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-97627118643711254237286784254237288547/508474576271813559322032125000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-97627118643711254237286784254237288547/508474576271813559322032125000000000",
+              "epsilon": "1/1000000000000",
+              "K": [
+                "-9",
+                "-4",
+                "9000000000027/1000000000000",
+                "1000000000001/250000000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999999990620000E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,900000000000027/100000000000000,100000000000001/25000000000000 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5759999999999789639999999992027100000000024273/30000000000000369999999999989537500000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5759999999999789639999999992027100000000024273/30000000000000369999999999989537500000000000",
+              "epsilon": "1/100000000000000",
+              "K": [
+                "-9",
+                "-4",
+                "900000000000027/100000000000000",
+                "100000000000001/25000000000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999999999906200E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,90000000000000027/10000000000000000,10000000000000001/2500000000000000 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5759999999999997896399999999999202710000000000024273/30000000000000003699999999999998953750000000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5759999999999997896399999999999202710000000000024273/30000000000000003699999999999998953750000000000000",
+              "epsilon": "1/10000000000000000",
+              "K": [
+                "-9",
+                "-4",
+                "90000000000000027/10000000000000000",
+                "10000000000000001/2500000000000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999999999999062E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,9000000000000000027/1000000000000000000,1000000000000000001/250000000000000000 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-5759999999999999978963999999999999920271000000000000024273/30000000000000000036999999999999999895375000000000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-5759999999999999978963999999999999920271000000000000024273/30000000000000000036999999999999999895375000000000000000",
+              "epsilon": "1/1000000000000000000",
+              "K": [
+                "-9",
+                "-4",
+                "9000000000000000027/1000000000000000000",
+                "1000000000000000001/250000000000000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999999999999991E+2"
+            }
+          ],
+          "limit_summary": {
+            "last_epsilon": "1/1000000000000000000",
+            "last_im": "-5759999999999999978963999999999999920271000000000000024273/30000000000000000036999999999999999895375000000000000000",
+            "last_im_decimal": "-1.919999999999999991E+2",
+            "previous_im": "-5759999999999997896399999999999202710000000000024273/30000000000000003699999999999998953750000000000000",
+            "previous_im_decimal": "-1.919999999999999062E+2",
+            "last_minus_previous": "-526461732283464679625264692913381560971884976377947099142110866141748120737/5669291338582677871559055118110039346527559055117863947322834645669980875000000000000000",
+            "last_minus_previous_decimal": "-9.286200000000000831E-14",
+            "conjectured_limit_im": "-192",
+            "conjectured_limit_im_decimal": "-1.920000000000000000E+2",
+            "last_minus_conjectured_limit": "28140000000000000059640999999999999975727/30000000000000000036999999999999999895375000000000000000",
+            "last_minus_conjectured_limit_decimal": "9.380000000000000008E-16",
+            "relative_last_minus_conjectured_limit_decimal": "4.885416666666666671E-18"
+          }
+        },
+        {
+          "path_id": "plus_legs_onshell",
+          "description": "$\\omega_3=b(1+\\epsilon)$, $\\omega_4=-a(1+2\\epsilon)$ with plus-leg dispersion",
+          "rows": [
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,1089/100,144/25 -W -3,2,33/10,-12/5",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 33/10, -12/5}\nA_4 = i * (-187779/1250)\nA_4 (numeric) = 0 + -150.223 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-187779/1250",
+              "epsilon": "1/10",
+              "K": [
+                "-9",
+                "-4",
+                "1089/100",
+                "144/25"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "33/10",
+                "-12/5"
+              ],
+              "amplitude_im_decimal": "-1.502232000000000000E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,91809/10000,2601/625 -W -3,2,303/100,-51/25",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 303/100, -51/25}\nA_4 = i * (-4745992173/25000000)\nA_4 (numeric) = 0 + -189.84 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-4745992173/25000000",
+              "epsilon": "1/100",
+              "K": [
+                "-9",
+                "-4",
+                "91809/10000",
+                "2601/625"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "303/100",
+                "-51/25"
+              ],
+              "amplitude_im_decimal": "-1.898396869200000000E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,9018009/1000000,251001/62500 -W -3,2,3003/1000,-501/250",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3003/1000, -501/250}\nA_4 = i * (-47950504423323/250000000000)\nA_4 (numeric) = 0 + -191.802 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-47950504423323/250000000000",
+              "epsilon": "1/1000",
+              "K": [
+                "-9",
+                "-4",
+                "9018009/1000000",
+                "251001/62500"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3003/1000",
+                "-501/250"
+              ],
+              "amplitude_im_decimal": "-1.918020176932920000E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,900180009/100000000,25010001/6250000 -W -3,2,30003/10000,-5001/2500",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 30003/10000, -5001/2500}\nA_4 = i * (-479950950494234823/2500000000000000)\nA_4 (numeric) = 0 + -191.98 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-479950950494234823/2500000000000000",
+              "epsilon": "1/10000",
+              "K": [
+                "-9",
+                "-4",
+                "900180009/100000000",
+                "25010001/6250000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "30003/10000",
+                "-5001/2500"
+              ],
+              "amplitude_im_decimal": "-1.919803801976939292E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,90001800009/10000000000,2500100001/625000000 -W -3,2,300003/100000,-50001/25000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 300003/100000, -50001/25000}\nA_4 = i * (-4799950995049942349823/25000000000000000000)\nA_4 (numeric) = 0 + -191.998 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-4799950995049942349823/25000000000000000000",
+              "epsilon": "1/100000",
+              "K": [
+                "-9",
+                "-4",
+                "90001800009/10000000000",
+                "2500100001/625000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "300003/100000",
+                "-50001/25000"
+              ],
+              "amplitude_im_decimal": "-1.919980398019976940E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,9000018000009/1000000000000,250001000001/62500000000 -W -3,2,3000003/1000000,-500001/250000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3000003/1000000, -500001/250000}\nA_4 = i * (-47999950999504999423499823/250000000000000000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-47999950999504999423499823/250000000000000000000000",
+              "epsilon": "1/1000000",
+              "K": [
+                "-9",
+                "-4",
+                "9000018000009/1000000000000",
+                "250001000001/62500000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3000003/1000000",
+                "-500001/250000"
+              ],
+              "amplitude_im_decimal": "-1.919998039980199977E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,90000001800000009/10000000000000000,2500000100000001/625000000000000 -W -3,2,300000003/100000000,-50000001/25000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 300000003/100000000, -50000001/25000000}\nA_4 = i * (-4799999950999995049999942349999823/25000000000000000000000000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-4799999950999995049999942349999823/25000000000000000000000000000000",
+              "epsilon": "1/100000000",
+              "K": [
+                "-9",
+                "-4",
+                "90000001800000009/10000000000000000",
+                "2500000100000001/625000000000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "300000003/100000000",
+                "-50000001/25000000"
+              ],
+              "amplitude_im_decimal": "-1.919999980399998020E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,900000000180000000009/100000000000000000000,25000000010000000001/6250000000000000000 -W -3,2,30000000003/10000000000,-5000000001/2500000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 30000000003/10000000000, -5000000001/2500000000}\nA_4 = i * (-479999999950999999950499999994234999999823/2500000000000000000000000000000000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-479999999950999999950499999994234999999823/2500000000000000000000000000000000000000",
+              "epsilon": "1/10000000000",
+              "K": [
+                "-9",
+                "-4",
+                "900000000180000000009/100000000000000000000",
+                "25000000010000000001/6250000000000000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "30000000003/10000000000",
+                "-5000000001/2500000000"
+              ],
+              "amplitude_im_decimal": "-1.919999999804000000E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,9000000000018000000000009/1000000000000000000000000,250000000001000000000001/62500000000000000000000 -W -3,2,3000000000003/1000000000000,-500000000001/250000000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3000000000003/1000000000000, -500000000001/250000000000}\nA_4 = i * (-47999999999950999999999504999999999423499999999823/250000000000000000000000000000000000000000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-47999999999950999999999504999999999423499999999823/250000000000000000000000000000000000000000000000",
+              "epsilon": "1/1000000000000",
+              "K": [
+                "-9",
+                "-4",
+                "9000000000018000000000009/1000000000000000000000000",
+                "250000000001000000000001/62500000000000000000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3000000000003/1000000000000",
+                "-500000000001/250000000000"
+              ],
+              "amplitude_im_decimal": "-1.919999999998040000E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,90000000000001800000000000009/10000000000000000000000000000,2500000000000100000000000001/625000000000000000000000000 -W -3,2,300000000000003/100000000000000,-50000000000001/25000000000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 300000000000003/100000000000000, -50000000000001/25000000000000}\nA_4 = i * (-4799999999999950999999999995049999999999942349999999999823/25000000000000000000000000000000000000000000000000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-4799999999999950999999999995049999999999942349999999999823/25000000000000000000000000000000000000000000000000000000",
+              "epsilon": "1/100000000000000",
+              "K": [
+                "-9",
+                "-4",
+                "90000000000001800000000000009/10000000000000000000000000000",
+                "2500000000000100000000000001/625000000000000000000000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "300000000000003/100000000000000",
+                "-50000000000001/25000000000000"
+              ],
+              "amplitude_im_decimal": "-1.919999999999980400E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,900000000000000180000000000000009/100000000000000000000000000000000,25000000000000010000000000000001/6250000000000000000000000000000 -W -3,2,30000000000000003/10000000000000000,-5000000000000001/2500000000000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 30000000000000003/10000000000000000, -5000000000000001/2500000000000000}\nA_4 = i * (-479999999999999950999999999999950499999999999994234999999999999823/2500000000000000000000000000000000000000000000000000000000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-479999999999999950999999999999950499999999999994234999999999999823/2500000000000000000000000000000000000000000000000000000000000000",
+              "epsilon": "1/10000000000000000",
+              "K": [
+                "-9",
+                "-4",
+                "900000000000000180000000000000009/100000000000000000000000000000000",
+                "25000000000000010000000000000001/6250000000000000000000000000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "30000000000000003/10000000000000000",
+                "-5000000000000001/2500000000000000"
+              ],
+              "amplitude_im_decimal": "-1.919999999999999804E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9,-4,9000000000000000018000000000000000009/1000000000000000000000000000000000000,250000000000000001000000000000000001/62500000000000000000000000000000000 -W -3,2,3000000000000000003/1000000000000000000,-500000000000000001/250000000000000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3000000000000000003/1000000000000000000, -500000000000000001/250000000000000000}\nA_4 = i * (-47999999999999999950999999999999999504999999999999999423499999999999999823/250000000000000000000000000000000000000000000000000000000000000000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-47999999999999999950999999999999999504999999999999999423499999999999999823/250000000000000000000000000000000000000000000000000000000000000000000000",
+              "epsilon": "1/1000000000000000000",
+              "K": [
+                "-9",
+                "-4",
+                "9000000000000000018000000000000000009/1000000000000000000000000000000000000",
+                "250000000000000001000000000000000001/62500000000000000000000000000000000"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3000000000000000003/1000000000000000000",
+                "-500000000000000001/250000000000000000"
+              ],
+              "amplitude_im_decimal": "-1.919999999999999998E+2"
+            }
+          ],
+          "limit_summary": {
+            "last_epsilon": "1/1000000000000000000",
+            "last_im": "-47999999999999999950999999999999999504999999999999999423499999999999999823/250000000000000000000000000000000000000000000000000000000000000000000000",
+            "last_im_decimal": "-1.919999999999999998E+2",
+            "previous_im": "-479999999999999950999999999999950499999999999994234999999999999823/2500000000000000000000000000000000000000000000000000000000000000",
+            "previous_im_decimal": "-1.919999999999999804E+2",
+            "last_minus_previous": "-4851000000000004949505000000000576499423500000017699999823/250000000000000000000000000000000000000000000000000000000000000000000000",
+            "last_minus_previous_decimal": "-1.940400000000001980E-14",
+            "conjectured_limit_im": "-192",
+            "conjectured_limit_im_decimal": "-1.920000000000000000E+2",
+            "last_minus_conjectured_limit": "49000000000000000495000000000000000576500000000000000177/250000000000000000000000000000000000000000000000000000000000000000000000",
+            "last_minus_conjectured_limit_decimal": "1.960000000000000020E-16",
+            "relative_last_minus_conjectured_limit_decimal": "1.020833333333333344E-18"
+          }
+        },
+        {
+          "path_id": "negative_momenta",
+          "description": "$K_1=-b^2(1-\\epsilon)$, $K_2=-a^2(1-2\\epsilon)$; all $\\omega_i$ fixed",
+          "rows": [
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -81/10,-16/5,9,4 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-4223/30)\nA_4 (numeric) = 0 + -140.767 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-4223/30",
+              "epsilon": "1/10",
+              "K": [
+                "-81/10",
+                "-16/5",
+                "9",
+                "4"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.407666666666666667E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -891/100,-98/25,9,4 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-1163776/6225)\nA_4 (numeric) = 0 + -186.952 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-1163776/6225",
+              "epsilon": "1/100",
+              "K": [
+                "-891/100",
+                "-98/25",
+                "9",
+                "4"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.869519678714859438E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -8991/1000,-499/125,9,4 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-59818538/312375)\nA_4 (numeric) = 0 + -191.496 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-59818538/312375",
+              "epsilon": "1/1000",
+              "K": [
+                "-8991/1000",
+                "-499/125",
+                "9",
+                "4"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.914959199679871949E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -89991/10000,-4999/1250,9,4 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-2999092519/15624375)\nA_4 (numeric) = 0 + -191.95 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-2999092519/15624375",
+              "epsilon": "1/10000",
+              "K": [
+                "-89991/10000",
+                "-4999/1250",
+                "9",
+                "4"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919495991999679987E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -899991/100000,-49999/12500,9,4 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-299990925019/1562493750)\nA_4 (numeric) = 0 + -191.995 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-299990925019/1562493750",
+              "epsilon": "1/100000",
+              "K": [
+                "-899991/100000",
+                "-49999/12500",
+                "9",
+                "4"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919949599919999680E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -8999991/1000000,-499999/125000,9,4 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-29999909250019/156249937500)\nA_4 (numeric) = 0 + -191.999 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-29999909250019/156249937500",
+              "epsilon": "1/1000000",
+              "K": [
+                "-8999991/1000000",
+                "-499999/125000",
+                "9",
+                "4"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919994959999200000E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -899999991/100000000,-49999999/12500000,9,4 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-299999990925000019/1562499993750000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-299999990925000019/1562499993750000",
+              "epsilon": "1/100000000",
+              "K": [
+                "-899999991/100000000",
+                "-49999999/12500000",
+                "9",
+                "4"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999949599999920E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -89999999991/10000000000,-4999999999/1250000000,9,4 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-2999999999092500000019/15624999999375000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-2999999999092500000019/15624999999375000000",
+              "epsilon": "1/10000000000",
+              "K": [
+                "-89999999991/10000000000",
+                "-4999999999/1250000000",
+                "9",
+                "4"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999999496000000E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -8999999999991/1000000000000,-499999999999/125000000000,9,4 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-29999999999909250000000019/156249999999937500000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-29999999999909250000000019/156249999999937500000000",
+              "epsilon": "1/1000000000000",
+              "K": [
+                "-8999999999991/1000000000000",
+                "-499999999999/125000000000",
+                "9",
+                "4"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999999994960000E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -899999999999991/100000000000000,-49999999999999/12500000000000,9,4 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-299999999999990925000000000019/1562499999999993750000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-299999999999990925000000000019/1562499999999993750000000000",
+              "epsilon": "1/100000000000000",
+              "K": [
+                "-899999999999991/100000000000000",
+                "-49999999999999/12500000000000",
+                "9",
+                "4"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999999999949600E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -89999999999999991/10000000000000000,-4999999999999999/1250000000000000,9,4 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-2999999999999999092500000000000019/15624999999999999375000000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-2999999999999999092500000000000019/15624999999999999375000000000000",
+              "epsilon": "1/10000000000000000",
+              "K": [
+                "-89999999999999991/10000000000000000",
+                "-4999999999999999/1250000000000000",
+                "9",
+                "4"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999999999999496E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -8999999999999999991/1000000000000000000,-499999999999999999/125000000000000000,9,4 -W -3,2,3,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 = i * (-29999999999999999909250000000000000019/156249999999999999937500000000000000)\nA_4 (numeric) = 0 + -192 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-29999999999999999909250000000000000019/156249999999999999937500000000000000",
+              "epsilon": "1/1000000000000000000",
+              "K": [
+                "-8999999999999999991/1000000000000000000",
+                "-499999999999999999/125000000000000000",
+                "9",
+                "4"
+              ],
+              "W": [
+                "-3",
+                "2",
+                "3",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.919999999999999995E+2"
+            }
+          ],
+          "limit_summary": {
+            "last_epsilon": "1/1000000000000000000",
+            "last_im": "-29999999999999999909250000000000000019/156249999999999999937500000000000000",
+            "last_im_decimal": "-1.919999999999999995E+2",
+            "previous_im": "-2999999999999999092500000000000019/15624999999999999375000000000000",
+            "previous_im_decimal": "-1.919999999999999496E+2",
+            "last_minus_previous": "-21656249999999999472275000000000000209/434027777777777760243055555555555562500000000000000",
+            "last_minus_previous_decimal": "-4.989600000000000080E-14",
+            "conjectured_limit_im": "-192",
+            "conjectured_limit_im_decimal": "-1.920000000000000000E+2",
+            "last_minus_conjectured_limit": "78749999999999999981/156249999999999999937500000000000000",
+            "last_minus_conjectured_limit_decimal": "5.040000000000000001E-16",
+            "relative_last_minus_conjectured_limit_decimal": "2.625000000000000000E-18"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "s1_n4_lim_large_b",
+      "regime": "$b\\gg a$",
+      "a": "2",
+      "b": "100",
+      "conjectured_limit": "$A_4=-8i\\,a b\\,\\min(a^2,b^2)$",
+      "conjectured_limit_im": "-6400",
+      "conjectured_limit_im_decimal": "-6.400000000000000000E+3",
+      "strict_omega": [
+        "-100",
+        "2",
+        "100",
+        "-2"
+      ],
+      "strict_K": [
+        "-10000",
+        "-4",
+        "10000",
+        "4"
+      ],
+      "zero_pairs": [
+        {
+          "legs": [
+            1,
+            3
+          ],
+          "omega_sum": "0",
+          "K_sum": "0",
+          "role": "zero internal momentum sum visible to the vertex kernel"
+        },
+        {
+          "legs": [
+            2,
+            4
+          ],
+          "omega_sum": "0",
+          "K_sum": "0",
+          "role": "zero rest-side BG subcurrent propagator"
+        }
+      ],
+      "strict_on_shell_status": {
+        "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 4 -w 2,100 -s -1,-1,1,1",
+        "returncode": -8,
+        "stdout": "",
+        "stderr": ""
+      },
+      "paths": [
+        {
+          "path_id": "k_plus_12",
+          "description": "$K_3=b^2(1+\\epsilon)$, $K_4=a^2(1+2\\epsilon)$; all $\\omega_i$ fixed",
+          "rows": [
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,11000,24/5 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-1307432201408/323935)\nA_4 (numeric) = 0 + -4.03609e+06 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-1307432201408/323935",
+              "epsilon": "1/10",
+              "K": [
+                "-10000",
+                "-4",
+                "11000",
+                "24/5"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-4.036094282519641286E+6"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,10100,102/25 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (3747825480088/1719025)\nA_4 (numeric) = 0 + 2.1802e+06 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "3747825480088/1719025",
+              "epsilon": "1/100",
+              "K": [
+                "-10000",
+                "-4",
+                "10100",
+                "102/25"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "2.180204173928825933E+6"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,10010,501/125 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (252404599170796/1274868625)\nA_4 (numeric) = 0 + 197985 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "252404599170796/1274868625",
+              "epsilon": "1/1000",
+              "K": [
+                "-10000",
+                "-4",
+                "10010",
+                "501/125"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "1.979847917041616739E+5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,10001,5001/1250 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (1786770931395814/127505723125)\nA_4 (numeric) = 0 + 14013.3 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "1786770931395814/127505723125",
+              "epsilon": "1/10000",
+              "K": [
+                "-10000",
+                "-4",
+                "10001",
+                "5001/1250"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "1.401326064120397498E+4"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,100001/10,50001/12500 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-277875966669708421/63750321340625)\nA_4 (numeric) = 0 + -4358.82 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-277875966669708421/63750321340625",
+              "epsilon": "1/100000",
+              "K": [
+                "-10000",
+                "-4",
+                "100001/10",
+                "50001/12500"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-4.358816721644216900E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,1000001/100,500001/125000 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-394987741937303771701/63750032485906250)\nA_4 (numeric) = 0 + -6195.88 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-394987741937303771701/63750032485906250",
+              "epsilon": "1/1000000",
+              "K": [
+                "-10000",
+                "-4",
+                "1000001/100",
+                "500001/125000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.195882990720467438E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,100000001/10000,50000001/12500000 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-58267125368455102150104643/9107142903606584375000)\nA_4 (numeric) = 0 + -6397.96 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-58267125368455102150104643/9107142903606584375000",
+              "epsilon": "1/100000000",
+              "K": [
+                "-10000",
+                "-4",
+                "100000001/10000",
+                "50000001/12500000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.397958831345484191E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,10000000001/1000000,5000000001/1250000000 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-407998698775807838571489746812501/63750000003252499609062500000)\nA_4 (numeric) = 0 + -6399.98 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-407998698775807838571489746812501/63750000003252499609062500000",
+              "epsilon": "1/10000000000",
+              "K": [
+                "-10000",
+                "-4",
+                "10000000001/1000000",
+                "5000000001/1250000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399979588313598548E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,1000000000001/100000000,500000000001/125000000000 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-407999986987758079983857148959354812501/63750000000032524999960906250000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-407999986987758079983857148959354812501/63750000000032524999960906250000000",
+              "epsilon": "1/1000000000000",
+              "K": [
+                "-10000",
+                "-4",
+                "1000000000001/100000000",
+                "500000000001/125000000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399999795883136000E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,100000000000001/10000000000,50000000000001/12500000000000 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-58285714267125368685714055102127988593544643/9107142857142903607142856584375000000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-58285714267125368685714055102127988593544643/9107142857142903607142856584375000000000",
+              "epsilon": "1/100000000000000",
+              "K": [
+                "-10000",
+                "-4",
+                "100000000000001/10000000000",
+                "50000000000001/12500000000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399999997958831360E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,10000000000000001/1000000000000,5000000000000001/1250000000000000 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-407999999998698775807999999838571489592000154812501/63750000000000003252499999999609062500000000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-407999999998698775807999999838571489592000154812501/63750000000000003252499999999609062500000000000",
+              "epsilon": "1/10000000000000000",
+              "K": [
+                "-10000",
+                "-4",
+                "10000000000000001/1000000000000",
+                "5000000000000001/1250000000000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399999999979588314E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,1000000000000000001/100000000000000,500000000000000001/125000000000000000 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-407999999999986987758079999999983857148959200000154812501/63750000000000000032524999999999960906250000000000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-407999999999986987758079999999983857148959200000154812501/63750000000000000032524999999999960906250000000000000",
+              "epsilon": "1/1000000000000000000",
+              "K": [
+                "-10000",
+                "-4",
+                "1000000000000000001/100000000000000",
+                "500000000000000001/125000000000000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399999999999795883E+3"
+            }
+          ],
+          "limit_summary": {
+            "last_epsilon": "1/1000000000000000000",
+            "last_im": "-407999999999986987758079999999983857148959200000154812501/63750000000000000032524999999999960906250000000000000",
+            "last_im_decimal": "-6.399999999999795883E+3",
+            "previous_im": "-407999999998698775807999999838571489592000154812501/63750000000000003252499999999609062500000000000",
+            "previous_im_decimal": "-6.399999999979588314E+3",
+            "last_minus_previous": "-23890858346880002947069638401787395495121620057816135338744039129743033948759/1182272727272727333649554545447294646672290909087173121568181822627843750000000000000",
+            "last_minus_previous_decimal": "-2.020756953600000145E-8",
+            "conjectured_limit_im": "-6400",
+            "conjectured_limit_im_decimal": "-6.400000000000000000E+3",
+            "last_minus_conjectured_limit": "13012450080000000015892651040799999845187499/63750000000000000032524999999999960906250000000000000",
+            "last_minus_conjectured_limit_decimal": "2.041168640000000001E-10",
+            "relative_last_minus_conjectured_limit_decimal": "3.189326000000000002E-14"
+          }
+        },
+        {
+          "path_id": "k_plus_31",
+          "description": "$K_3=b^2(1+3\\epsilon)$, $K_4=a^2(1+\\epsilon)$; all $\\omega_i$ fixed",
+          "rows": [
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,13000,22/5 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-14523880992/42505)\nA_4 (numeric) = 0 + -341698 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-14523880992/42505",
+              "epsilon": "1/10",
+              "K": [
+                "-10000",
+                "-4",
+                "13000",
+                "22/5"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-3.416981764968827197E+5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,10300,101/25 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (5928518700004/437525)\nA_4 (numeric) = 0 + 1.35501e+07 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "5928518700004/437525",
+              "epsilon": "1/100",
+              "K": [
+                "-10000",
+                "-4",
+                "10300",
+                "101/25"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "1.355012559283240958E+7"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,10030,1001/250 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (57418474980014/94063375)\nA_4 (numeric) = 0 + 610423 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "57418474980014/94063375",
+              "epsilon": "1/1000",
+              "K": [
+                "-10000",
+                "-4",
+                "10030",
+                "1001/250"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "6.104232915309917383E+5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,10003,10001/2500 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (34527377152001/629688125)\nA_4 (numeric) = 0 + 54832.5 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "34527377152001/629688125",
+              "epsilon": "1/10000",
+              "K": [
+                "-10000",
+                "-4",
+                "10003",
+                "10001/2500"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "5.483250482451292852E+4"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,100003/10,100001/25000 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-375460939671407/1349225581250)\nA_4 (numeric) = 0 + -278.279 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-375460939671407/1349225581250",
+              "epsilon": "1/100000",
+              "K": [
+                "-10000",
+                "-4",
+                "100003/10",
+                "100001/25000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-2.782788474285808017E+2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,1000003/100,1000001/250000 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-54663016132207498489/9444458375687500)\nA_4 (numeric) = 0 + -5787.84 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-54663016132207498489/9444458375687500",
+              "epsilon": "1/1000000",
+              "K": [
+                "-10000",
+                "-4",
+                "1000003/100",
+                "1000001/250000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-5.787840229453958320E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,100000003/10000,100000001/25000000 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-60386630374205159485348889/9444444584272568750000)\nA_4 (numeric) = 0 + -6393.88 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-60386630374205159485348889/9444444584272568750000",
+              "epsilon": "1/100000000",
+              "K": [
+                "-10000",
+                "-4",
+                "100000003/10000",
+                "100000001/25000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.393878415546472970E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,10000000003/1000000,10000000001/2500000000 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-20147955434587780171962423462963/3148148148614259085625000000)\nA_4 (numeric) = 0 + -6399.94 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-20147955434587780171962423462963/3148148148614259085625000000",
+              "epsilon": "1/10000000000",
+              "K": [
+                "-10000",
+                "-4",
+                "10000000003/1000000",
+                "10000000001/2500000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399938784156786648E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,1000000000003/100000000,1000000000001/250000000000 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-60444438663037635534051588665774388889/9444444444458427777725687500000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-60444438663037635534051588665774388889/9444444444458427777725687500000000",
+              "epsilon": "1/1000000000000",
+              "K": [
+                "-10000",
+                "-4",
+                "1000000000003/100000000",
+                "1000000000001/250000000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399999387841567999E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,100000000000003/10000000000,100000000000001/25000000000000 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-60444444386630376355553405158866516174388889/9444444444444584277777772568750000000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-60444444386630376355553405158866516174388889/9444444444444584277777772568750000000000",
+              "epsilon": "1/100000000000000",
+              "K": [
+                "-10000",
+                "-4",
+                "100000000000003/10000000000",
+                "100000000000001/25000000000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399999993878415680E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,10000000000000003/1000000000000,10000000000000001/2500000000000000 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-20148148147955434587851851780171962217185391462963/3148148148148148614259259259085625000000000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-20148148147955434587851851780171962217185391462963/3148148148148148614259259259085625000000000000",
+              "epsilon": "1/10000000000000000",
+              "K": [
+                "-10000",
+                "-4",
+                "10000000000000003/1000000000000",
+                "10000000000000001/2500000000000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399999999938784157E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,1000000000000000003/100000000000000,1000000000000000001/250000000000000000 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-60444444444438663037635555555534051588665155556174388889/9444444444444444458427777777777725687500000000000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-60444444444438663037635555555534051588665155556174388889/9444444444444444458427777777777725687500000000000000",
+              "epsilon": "1/1000000000000000000",
+              "K": [
+                "-10000",
+                "-4",
+                "1000000000000000003/100000000000000",
+                "1000000000000000001/250000000000000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399999999999387842E+3"
+            }
+          ],
+          "limit_summary": {
+            "last_epsilon": "1/1000000000000000000",
+            "last_im": "-60444444444438663037635555555534051588665155556174388889/9444444444444444458427777777777725687500000000000000",
+            "last_im_decimal": "-6.399999999999387842E+3",
+            "previous_im": "-20148148147955434587851851780171962217185391462963/3148148148148148614259259259085625000000000000",
+            "previous_im_decimal": "-6.399999999938784157E+3",
+            "last_minus_previous": "-262094499034074171007144757733550216455708696660676781753554307621363685463/4324728769173214264375458286330846904457762812961675698279088483562500000000000000",
+            "last_minus_previous_decimal": "-6.060368476800001335E-8",
+            "conjectured_limit_im": "-6400",
+            "conjectured_limit_im_decimal": "-6.400000000000000000E+3",
+            "last_minus_conjectured_limit": "5781496302222222243392811334844443825611111/9444444444444444458427777777777725687500000000000000",
+            "last_minus_conjectured_limit_decimal": "6.121584320000000013E-10",
+            "relative_last_minus_conjectured_limit_decimal": "9.564975500000000021E-14"
+          }
+        },
+        {
+          "path_id": "plus_legs_onshell",
+          "description": "$\\omega_3=b(1+\\epsilon)$, $\\omega_4=-a(1+2\\epsilon)$ with plus-leg dispersion",
+          "rows": [
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,12100,144/25 -W -100,2,110,-12/5",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 110, -12/5}\nA_4 = i * (326168816/125)\nA_4 (numeric) = 0 + 2.60935e+06 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "326168816/125",
+              "epsilon": "1/10",
+              "K": [
+                "-10000",
+                "-4",
+                "12100",
+                "144/25"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "110",
+                "-12/5"
+              ],
+              "amplitude_im_decimal": "2.609350528000000000E+6"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,10201,2601/625 -W -100,2,101,-51/25",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 101, -51/25}\nA_4 = i * (3123550129/15625)\nA_4 (numeric) = 0 + 199907 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "3123550129/15625",
+              "epsilon": "1/100",
+              "K": [
+                "-10000",
+                "-4",
+                "10201",
+                "2601/625"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "101",
+                "-51/25"
+              ],
+              "amplitude_im_decimal": "1.999072082560000000E+5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,1002001/100,251001/62500 -W -100,2,1001/10,-501/250",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 1001/10, -501/250}\nA_4 = i * (2143798986397/156250000)\nA_4 (numeric) = 0 + 13720.3 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "2143798986397/156250000",
+              "epsilon": "1/1000",
+              "K": [
+                "-10000",
+                "-4",
+                "1002001/100",
+                "251001/62500"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "1001/10",
+                "-501/250"
+              ],
+              "amplitude_im_decimal": "1.372031351294080000E+4"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,100020001/10000,25010001/6250000 -W -100,2,10001/100,-5001/2500",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 10001/100, -5001/2500}\nA_4 = i * (-6864111749952923/1562500000000)\nA_4 (numeric) = 0 + -4393.03 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-6864111749952923/1562500000000",
+              "epsilon": "1/10000",
+              "K": [
+                "-10000",
+                "-4",
+                "100020001/10000",
+                "25010001/6250000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "10001/100",
+                "-5001/2500"
+              ],
+              "amplitude_im_decimal": "-4.393031519969870720E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,10000200001/1000000,2500100001/625000000 -W -100,2,100001/1000,-50001/25000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100001/1000, -50001/25000}\nA_4 = i * (-96864902181479546123/15625000000000000)\nA_4 (numeric) = 0 + -6199.35 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-96864902181479546123/15625000000000000",
+              "epsilon": "1/100000",
+              "K": [
+                "-10000",
+                "-4",
+                "10000200001/1000000",
+                "2500100001/625000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100001/1000",
+                "-50001/25000"
+              ],
+              "amplitude_im_decimal": "-6.199353739614690952E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,1000002000001/100000000,250001000001/62500000000 -W -100,2,1000001/10000,-500001/250000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 1000001/10000, -500001/250000}\nA_4 = i * (-996864981218212795478123/156250000000000000000)\nA_4 (numeric) = 0 + -6379.94 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-996864981218212795478123/156250000000000000000",
+              "epsilon": "1/1000000",
+              "K": [
+                "-10000",
+                "-4",
+                "1000002000001/100000000",
+                "250001000001/62500000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "1000001/10000",
+                "-500001/250000"
+              ],
+              "amplitude_im_decimal": "-6.379935879796561891E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,10000000200000001/1000000000000,2500000100000001/625000000000000 -W -100,2,100000001/1000000,-50000001/25000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100000001/1000000, -50000001/25000000}\nA_4 = i * (-99996864989912182199279547998123/15625000000000000000000000000)\nA_4 (numeric) = 0 + -6399.8 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-99996864989912182199279547998123/15625000000000000000000000000",
+              "epsilon": "1/100000000",
+              "K": [
+                "-10000",
+                "-4",
+                "10000000200000001/1000000000000",
+                "2500000100000001/625000000000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100000001/1000000",
+                "-50000001/25000000"
+              ],
+              "amplitude_im_decimal": "-6.399799359354379661E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,100000000020000000001/10000000000000000,25000000010000000001/6250000000000000000 -W -100,2,10000000001/100000000,-5000000001/2500000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 10000000001/100000000, -5000000001/2500000000}\nA_4 = i * (-9999996864989999121821999927954799998123/1562500000000000000000000000000000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-9999996864989999121821999927954799998123/1562500000000000000000000000000000000",
+              "epsilon": "1/10000000000",
+              "K": [
+                "-10000",
+                "-4",
+                "100000000020000000001/10000000000000000",
+                "25000000010000000001/6250000000000000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "10000000001/100000000",
+                "-5000000001/2500000000"
+              ],
+              "amplitude_im_decimal": "-6.399997993593599438E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,1000000000002000000000001/100000000000000000000,250000000001000000000001/62500000000000000000000 -W -100,2,1000000000001/10000000000,-500000000001/250000000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 1000000000001/10000000000, -500000000001/250000000000}\nA_4 = i * (-999999996864989999991218219999992795479999998123/156250000000000000000000000000000000000000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-999999996864989999991218219999992795479999998123/156250000000000000000000000000000000000000000",
+              "epsilon": "1/1000000000000",
+              "K": [
+                "-10000",
+                "-4",
+                "1000000000002000000000001/100000000000000000000",
+                "250000000001000000000001/62500000000000000000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "1000000000001/10000000000",
+                "-500000000001/250000000000"
+              ],
+              "amplitude_im_decimal": "-6.399999979935936000E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,10000000000000200000000000001/1000000000000000000000000,2500000000000100000000000001/625000000000000000000000000 -W -100,2,100000000000001/1000000000000,-50000000000001/25000000000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100000000000001/1000000000000, -50000000000001/25000000000000}\nA_4 = i * (-99999999996864989999999912182199999999279547999999998123/15625000000000000000000000000000000000000000000000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-99999999996864989999999912182199999999279547999999998123/15625000000000000000000000000000000000000000000000000",
+              "epsilon": "1/100000000000000",
+              "K": [
+                "-10000",
+                "-4",
+                "10000000000000200000000000001/1000000000000000000000000",
+                "2500000000000100000000000001/625000000000000000000000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100000000000001/1000000000000",
+                "-50000000000001/25000000000000"
+              ],
+              "amplitude_im_decimal": "-6.399999999799359360E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,100000000000000020000000000000001/10000000000000000000000000000,25000000000000010000000000000001/6250000000000000000000000000000 -W -100,2,10000000000000001/100000000000000,-5000000000000001/2500000000000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 10000000000000001/100000000000000, -5000000000000001/2500000000000000}\nA_4 = i * (-9999999999996864989999999999121821999999999927954799999999998123/1562500000000000000000000000000000000000000000000000000000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-9999999999996864989999999999121821999999999927954799999999998123/1562500000000000000000000000000000000000000000000000000000000",
+              "epsilon": "1/10000000000000000",
+              "K": [
+                "-10000",
+                "-4",
+                "100000000000000020000000000000001/10000000000000000000000000000",
+                "25000000000000010000000000000001/6250000000000000000000000000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "10000000000000001/100000000000000",
+                "-5000000000000001/2500000000000000"
+              ],
+              "amplitude_im_decimal": "-6.399999999997993594E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -10000,-4,1000000000000000002000000000000000001/100000000000000000000000000000000,250000000000000001000000000000000001/62500000000000000000000000000000000 -W -100,2,1000000000000000001/10000000000000000,-500000000000000001/250000000000000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 1000000000000000001/10000000000000000, -500000000000000001/250000000000000000}\nA_4 = i * (-999999999999996864989999999999991218219999999999992795479999999999998123/156250000000000000000000000000000000000000000000000000000000000000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-999999999999996864989999999999991218219999999999992795479999999999998123/156250000000000000000000000000000000000000000000000000000000000000000",
+              "epsilon": "1/1000000000000000000",
+              "K": [
+                "-10000",
+                "-4",
+                "1000000000000000002000000000000000001/100000000000000000000000000000000",
+                "250000000000000001000000000000000001/62500000000000000000000000000000000"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "1000000000000000001/10000000000000000",
+                "-500000000000000001/250000000000000000"
+              ],
+              "amplitude_im_decimal": "-6.399999999999979936E+3"
+            }
+          ],
+          "limit_summary": {
+            "last_epsilon": "1/1000000000000000000",
+            "last_im": "-999999999999996864989999999999991218219999999999992795479999999999998123/156250000000000000000000000000000000000000000000000000000000000000000",
+            "last_im_decimal": "-6.399999999999979936E+3",
+            "previous_im": "-9999999999996864989999999999121821999999999927954799999999998123/1562500000000000000000000000000000000000000000000000000000000",
+            "previous_im_decimal": "-6.399999999997993594E+3",
+            "last_minus_previous": "-310365990000000087809018220000007204512795480000187699998123/156250000000000000000000000000000000000000000000000000000000000000000",
+            "last_minus_previous_decimal": "-1.986342336000000562E-9",
+            "conjectured_limit_im": "-6400",
+            "conjectured_limit_im_decimal": "-6.400000000000000000E+3",
+            "last_minus_conjectured_limit": "3135010000000000008781780000000000007204520000000000001877/156250000000000000000000000000000000000000000000000000000000000000000",
+            "last_minus_conjectured_limit_decimal": "2.006406400000000006E-11",
+            "relative_last_minus_conjectured_limit_decimal": "3.135010000000000009E-15"
+          }
+        },
+        {
+          "path_id": "negative_momenta",
+          "description": "$K_1=-b^2(1-\\epsilon)$, $K_2=-a^2(1-2\\epsilon)$; all $\\omega_i$ fixed",
+          "rows": [
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9000,-16/5,10000,4 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (1034736816/2545)\nA_4 (numeric) = 0 + 406576 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "1034736816/2545",
+              "epsilon": "1/10",
+              "K": [
+                "-9000",
+                "-16/5",
+                "10000",
+                "4"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "4.065763520628683694E+5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9900,-98/25,10000,4 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (4448388408/127475)\nA_4 (numeric) = 0 + 34896.2 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "4448388408/127475",
+              "epsilon": "1/100",
+              "K": [
+                "-9900",
+                "-98/25",
+                "10000",
+                "4"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "3.489616323200627574E+4"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9990,-499/125,10000,4 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-14473505796/6374875)\nA_4 (numeric) = 0 + -2270.4 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-14473505796/6374875",
+              "epsilon": "1/1000",
+              "K": [
+                "-9990",
+                "-499/125",
+                "10000",
+                "4"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-2.270398367967999373E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9999,-4999/1250,10000,4 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-1908365252898/318749375)\nA_4 (numeric) = 0 + -5987.04 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-1908365252898/318749375",
+              "epsilon": "1/10000",
+              "K": [
+                "-9999",
+                "-4999/1250",
+                "10000",
+                "4"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-5.987039983679968000E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -99999/10,-49999/12500,10000,4 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-101341825126449/15937496875)\nA_4 (numeric) = 0 + -6358.7 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-101341825126449/15937496875",
+              "epsilon": "1/100000",
+              "K": [
+                "-99999/10",
+                "-49999/12500",
+                "10000",
+                "4"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.358703999836799968E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -999999/100,-499999/125000,10000,4 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-10193418250126449/1593749968750)\nA_4 (numeric) = 0 + -6395.87 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-10193418250126449/1593749968750",
+              "epsilon": "1/1000000",
+              "K": [
+                "-999999/100",
+                "-499999/125000",
+                "10000",
+                "4"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.395870399998368000E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -99999999/10000,-49999999/12500000,10000,4 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-101999341825000126449/15937499996875000)\nA_4 (numeric) = 0 + -6399.96 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-101999341825000126449/15937499996875000",
+              "epsilon": "1/100000000",
+              "K": [
+                "-99999999/10000",
+                "-49999999/12500000",
+                "10000",
+                "4"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399958703999999837E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9999999999/1000000,-4999999999/1250000000,10000,4 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-1019999934182500000126449/159374999999687500000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-1019999934182500000126449/159374999999687500000",
+              "epsilon": "1/10000000000",
+              "K": [
+                "-9999999999/1000000",
+                "-4999999999/1250000000",
+                "10000",
+                "4"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399999587040000000E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -999999999999/100000000,-499999999999/125000000000,10000,4 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-10199999993418250000000126449/1593749999999968750000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-10199999993418250000000126449/1593749999999968750000000",
+              "epsilon": "1/1000000000000",
+              "K": [
+                "-999999999999/100000000",
+                "-499999999999/125000000000",
+                "10000",
+                "4"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399999995870400000E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -99999999999999/10000000000,-49999999999999/12500000000000,10000,4 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-101999999999341825000000000126449/15937499999999996875000000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-101999999999341825000000000126449/15937499999999996875000000000",
+              "epsilon": "1/100000000000000",
+              "K": [
+                "-99999999999999/10000000000",
+                "-49999999999999/12500000000000",
+                "10000",
+                "4"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399999999958704000E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9999999999999999/1000000000000,-4999999999999999/1250000000000000,10000,4 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-1019999999999934182500000000000126449/159374999999999999687500000000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-1019999999999934182500000000000126449/159374999999999999687500000000000",
+              "epsilon": "1/10000000000000000",
+              "K": [
+                "-9999999999999999/1000000000000",
+                "-4999999999999999/1250000000000000",
+                "10000",
+                "4"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399999999999587040E+3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -999999999999999999/100000000000000,-499999999999999999/125000000000000000,10000,4 -W -100,2,100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 = i * (-10199999999999993418250000000000000126449/1593749999999999999968750000000000000)\nA_4 (numeric) = 0 + -6400 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-10199999999999993418250000000000000126449/1593749999999999999968750000000000000",
+              "epsilon": "1/1000000000000000000",
+              "K": [
+                "-999999999999999999/100000000000000",
+                "-499999999999999999/125000000000000000",
+                "10000",
+                "4"
+              ],
+              "W": [
+                "-100",
+                "2",
+                "100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-6.399999999999995870E+3"
+            }
+          ],
+          "limit_summary": {
+            "last_epsilon": "1/1000000000000000000",
+            "last_im": "-10199999999999993418250000000000000126449/1593749999999999999968750000000000000",
+            "last_im_decimal": "-6.399999999999995870E+3",
+            "previous_im": "-1019999999999934182500000000000126449/159374999999999999687500000000000",
+            "previous_im_decimal": "-6.399999999999587040E+3",
+            "last_minus_previous": "-332302459499999999355174588990000000012518451/812812499999999998390312500000000000031250000000000000",
+            "last_minus_previous_decimal": "-4.088304000000000000E-10",
+            "conjectured_limit_im": "-6400",
+            "conjectured_limit_im_decimal": "-6.400000000000000000E+3",
+            "last_minus_conjectured_limit": "6581549999999999999873551/1593749999999999999968750000000000000",
+            "last_minus_conjectured_limit_decimal": "4.129600000000000000E-12",
+            "relative_last_minus_conjectured_limit_decimal": "6.452500000000000000E-16"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "s1_n4_lim_small_b",
+      "regime": "$b\\ll a$",
+      "a": "2",
+      "b": "1/100",
+      "conjectured_limit": "$A_4=-8i\\,a b\\,\\min(a^2,b^2)$",
+      "conjectured_limit_im": "-1/62500",
+      "conjectured_limit_im_decimal": "-1.600000000000000000E-5",
+      "strict_omega": [
+        "-1/100",
+        "2",
+        "1/100",
+        "-2"
+      ],
+      "strict_K": [
+        "-1/10000",
+        "-4",
+        "1/10000",
+        "4"
+      ],
+      "zero_pairs": [
+        {
+          "legs": [
+            1,
+            3
+          ],
+          "omega_sum": "0",
+          "K_sum": "0",
+          "role": "zero internal momentum sum visible to the vertex kernel"
+        },
+        {
+          "legs": [
+            2,
+            4
+          ],
+          "omega_sum": "0",
+          "K_sum": "0",
+          "role": "zero rest-side BG subcurrent propagator"
+        }
+      ],
+      "strict_on_shell_status": {
+        "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 4 -w 2,1/100 -s -1,-1,1,1",
+        "returncode": -8,
+        "stdout": "",
+        "stderr": ""
+      },
+      "paths": [
+        {
+          "path_id": "k_plus_12",
+          "description": "$K_3=b^2(1+\\epsilon)$, $K_4=a^2(1+2\\epsilon)$; all $\\omega_i$ fixed",
+          "rows": [
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,11/100000,24/5 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (61718544170144001/337768021000000000)\nA_4 (numeric) = 0 + 0.182725 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "61718544170144001/337768021000000000",
+              "epsilon": "1/10",
+              "K": [
+                "-1/10000",
+                "-4",
+                "11/100000",
+                "24/5"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "1.827246522255699304E-1"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,101/1000000,102/25 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (749640497135977143/6891657430000000000)\nA_4 (numeric) = 0 + 0.108775 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "749640497135977143/6891657430000000000",
+              "epsilon": "1/100",
+              "K": [
+                "-1/10000",
+                "-4",
+                "101/1000000",
+                "102/25"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "1.087750667746085491E-1"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,1001/10000000,501/125 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (515277677430670400001/19296088200100000000000)\nA_4 (numeric) = 0 + 0.0267037 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "515277677430670400001/19296088200100000000000",
+              "epsilon": "1/1000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "1001/10000000",
+                "501/125"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "2.670373767404317867E-2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,10001/100000000,5001/1250 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (51203826832708016000001/16401608100001000000000000)\nA_4 (numeric) = 0 + 0.00312188 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "51203826832708016000001/16401608100001000000000000",
+              "epsilon": "1/10000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "10001/100000000",
+                "5001/1250"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "3.121878447559352069E-3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,100001/1000000000,50001/12500 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (4887906796442497472000001/16112160802800010000000000000)\nA_4 (numeric) = 0 + 0.000303368 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "4887906796442497472000001/16112160802800010000000000000",
+              "epsilon": "1/100000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "100001/1000000000",
+                "50001/12500"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "3.033675530095916924E-4"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,1000001/10000000000,500001/125000 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (257229440778241992032000001/16083216080208000100000000000000)\nA_4 (numeric) = 0 + 1.59937e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "257229440778241992032000001/16083216080208000100000000000000",
+              "epsilon": "1/1000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "1000001/10000000000",
+                "500001/125000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "1.599365695862212838E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,100000001/1000000000000,50000001/12500000 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-36019273679281419436229481142857/2297147451543142971430000000000000000)\nA_4 (numeric) = 0 + -1.568e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-36019273679281419436229481142857/2297147451543142971430000000000000000",
+              "epsilon": "1/100000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "100000001/1000000000000",
+                "50000001/12500000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.568000071353057312E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,10000000001/100000000000000,5000000001/1250000000 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-257228549158565974593605613446367999999/16080000321608020000080001000000000000000000)\nA_4 (numeric) = 0 + -1.59968e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-257228549158565974593605613446367999999/16080000321608020000080001000000000000000000",
+              "epsilon": "1/10000000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "10000000001/100000000000000",
+                "5000000001/1250000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.599680000086236318E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,1000000000001/10000000000000000,500000000001/125000000000 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-257279485491585761373459360561597446367999999/16080000003216080200000008000100000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-257279485491585761373459360561597446367999999/16080000003216080200000008000100000000000000000000",
+              "epsilon": "1/1000000000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "1000000000001/10000000000000000",
+                "500000000001/125000000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.599996800000799634E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,100000000000001/1000000000000000000,50000000000001/12500000000000 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-36754284979273693946271049419436594285349481142857/2297142857147451543142857142971430000000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-36754284979273693946271049419436594285349481142857/2297142857147451543142857142971430000000000000000000000",
+              "epsilon": "1/100000000000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "100000000000001/1000000000000000000",
+                "50000000000001/12500000000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.599999968000007990E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,10000000000000001/100000000000000000000,5000000000000001/1250000000000000 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-257279999948549158576239989734593605615999997446367999999/16080000000000321608020000000000080001000000000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-257279999948549158576239989734593605615999997446367999999/16080000000000321608020000000000080001000000000000000000000000",
+              "epsilon": "1/10000000000000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "10000000000000001/100000000000000000000",
+                "5000000000000001/1250000000000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.599999999680000080E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,1000000000000000001/10000000000000000000000,500000000000000001/125000000000000000 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-257279999999485491585762399998973459360561599999997446367999999/16080000000000003216080200000000000008000100000000000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-257279999999485491585762399998973459360561599999997446367999999/16080000000000003216080200000000000008000100000000000000000000000000",
+              "epsilon": "1/1000000000000000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "1000000000000000001/10000000000000000000000",
+                "500000000000000001/125000000000000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.599999999996800001E-5"
+            }
+          ],
+          "limit_summary": {
+            "last_epsilon": "1/1000000000000000000",
+            "last_im": "-257279999999485491585762399998973459360561599999997446367999999/16080000000000003216080200000000000008000100000000000000000000000000",
+            "last_im_decimal": "-1.599999999996800001E-5",
+            "previous_im": "-257279999948549158576239989734593605615999997446367999999/16080000000000321608020000000000080001000000000000000000000000",
+            "previous_im_decimal": "-1.599999999680000080E-5",
+            "last_minus_previous": "-819138150671392101051248628811597484539333159121373803784044758287118612205018249575920099/258566400000005223171531216001035603730004812000259862528401002000000640016000100000000000000000000000000",
+            "last_minus_previous_decimal": "-3.167999208989936643E-15",
+            "conjectured_limit_im": "-1/62500",
+            "conjectured_limit_im_decimal": "-1.600000000000000000E-5",
+            "last_minus_conjectured_limit": "514559871520800001026540767440000000002553632000001/16080000000000003216080200000000000008000100000000000000000000000000",
+            "last_minus_conjectured_limit_decimal": "3.199999200999999366E-17",
+            "relative_last_minus_conjectured_limit_decimal": "1.999999500624999604E-12"
+          }
+        },
+        {
+          "path_id": "k_plus_31",
+          "description": "$K_3=b^2(1+3\\epsilon)$, $K_4=a^2(1+\\epsilon)$; all $\\omega_i$ fixed",
+          "rows": [
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,13/100000,22/5 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (1047900588768001/6556447000000000)\nA_4 (numeric) = 0 + 0.159828 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "1047900588768001/6556447000000000",
+              "epsilon": "1/10",
+              "K": [
+                "-1/10000",
+                "-4",
+                "13/100000",
+                "22/5"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "1.598275085222226306E-1"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,103/1000000,101/25 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (96220228077280001/1191244670000000000)\nA_4 (numeric) = 0 + 0.0807729 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "96220228077280001/1191244670000000000",
+              "epsilon": "1/100",
+              "K": [
+                "-1/10000",
+                "-4",
+                "103/1000000",
+                "101/25"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "8.077285086805886905E-2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,1003/10000000,1001/250 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (3175965822028266667/218373488900000000000)\nA_4 (numeric) = 0 + 0.0145437 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "3175965822028266667/218373488900000000000",
+              "epsilon": "1/1000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "1003/10000000",
+                "1001/250"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "1.454373348168943720E-2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,10003/100000000,10001/2500 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (943358316398400000001/601512006667000000000000)\nA_4 (numeric) = 0 + 0.00156831 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "943358316398400000001/601512006667000000000000",
+              "epsilon": "1/10000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "10003/100000000",
+                "10001/2500"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "1.568311697759090278E-3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,100003/1000000000,100001/25000 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (85751277400945552000001/596151200266670000000000000)\nA_4 (numeric) = 0 + 0.000143841 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "85751277400945552000001/596151200266670000000000000",
+              "epsilon": "1/100000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "100003/1000000000",
+                "100001/25000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "1.438414908207638291E-4"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,1000003/10000000000,1000001/250000 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-319267410394309333333/198538373340888900000000000000)\nA_4 (numeric) = 0 + -1.60809e-09 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-319267410394309333333/198538373340888900000000000000",
+              "epsilon": "1/1000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "1000003/10000000000",
+                "1000001/250000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.608089182065220112E-9"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,100000003/1000000000000,100000001/25000000 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-9433609672118863125315727999999/595556151200222266670000000000000000)\nA_4 (numeric) = 0 + -1.584e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-9433609672118863125315727999999/595556151200222266670000000000000000",
+              "epsilon": "1/100000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "100000003/1000000000000",
+                "100000001/25000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.584000039812760215E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,10000000003/100000000000000,10000000001/2500000000 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-9527936096730598286312538595727999999/595555561512002222226667000000000000000000)\nA_4 (numeric) = 0 + -1.59984e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-9527936096730598286312538595727999999/595555561512002222226667000000000000000000",
+              "epsilon": "1/10000000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "10000000003/100000000000000",
+                "10000000001/2500000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.599840000241284278E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,1000000000003/10000000000000000,1000000000001/250000000000 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-3176293120322435641276210417955531909333333/198518518538373340740740888900000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-3176293120322435641276210417955531909333333/198518518538373340740740888900000000000000000000",
+              "epsilon": "1/1000000000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "1000000000003/10000000000000000",
+                "1000000000001/250000000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.599998400002397158E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,100000000000003/1000000000000000000,100000000000001/25000000000000 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-9528888793609673069332382863125386666595727999999/595555555556151200222222222266670000000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-9528888793609673069332382863125386666595727999999/595555555556151200222222222266670000000000000000000000",
+              "epsilon": "1/100000000000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "100000000000003/1000000000000000000",
+                "100000000000001/25000000000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.599999984000023970E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,10000000000000003/100000000000000000000,10000000000000001/2500000000000000 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-9528888887936096730693333238286312538666666595727999999/595555555555561512002222222222226667000000000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-9528888887936096730693333238286312538666666595727999999/595555555555561512002222222222226667000000000000000000000000",
+              "epsilon": "1/10000000000000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "10000000000000003/100000000000000000000",
+                "10000000000000001/2500000000000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.599999999840000240E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,1000000000000000003/10000000000000000000000,1000000000000000001/250000000000000000 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-3176296296293120322435644444441276210417955555555531909333333/198518518518518538373340740740740740888900000000000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-3176296296293120322435644444441276210417955555555531909333333/198518518518518538373340740740740740888900000000000000000000000000",
+              "epsilon": "1/1000000000000000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "1000000000000000003/10000000000000000000000",
+                "1000000000000000001/250000000000000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.599999999998400002E-5"
+            }
+          ],
+          "limit_summary": {
+            "last_epsilon": "1/1000000000000000000",
+            "last_im": "-3176296296293120322435644444441276210417955555555531909333333/198518518518518538373340740740740740888900000000000000000000000000",
+            "last_im_decimal": "-1.599999999998400002E-5",
+            "previous_im": "-9528888887936096730693333238286312538666666595727999999/595555555555561512002222222222226667000000000000000000000000",
+            "previous_im_decimal": "-1.599999999840000240E-5",
+            "last_minus_previous": "-17024922642647705418860159603674243926580937285779692474786981395914452057030938680001/10748073325851212200664823045278321225441381219611544805238685372240987663300000000000000000000000000",
+            "last_minus_previous_decimal": "-1.583997626969984159E-15",
+            "conjectured_limit_im": "-1/62500",
+            "conjectured_limit_im_decimal": "-1.600000000000000000E-5",
+            "last_minus_conjectured_limit": "3176291537807407410575643804444444444468090666667/198518518518518538373340740740740740888900000000000000000000000000",
+            "last_minus_conjectured_limit_decimal": "1.599997602999999842E-17",
+            "relative_last_minus_conjectured_limit_decimal": "9.999985018749999010E-13"
+          }
+        },
+        {
+          "path_id": "plus_legs_onshell",
+          "description": "$\\omega_3=b(1+\\epsilon)$, $\\omega_4=-a(1+2\\epsilon)$ with plus-leg dispersion",
+          "rows": [
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,121/1000000,144/25 -W -1/100,2,11/1000,-12/5",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 11/1000, -12/5}\nA_4 = i * (3005952169/100000000000)\nA_4 (numeric) = 0 + 0.0300595 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "3005952169/100000000000",
+              "epsilon": "1/10",
+              "K": [
+                "-1/10000",
+                "-4",
+                "121/1000000",
+                "144/25"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "11/1000",
+                "-12/5"
+              ],
+              "amplitude_im_decimal": "3.005952169000000000E-2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,10201/100000000,2601/625 -W -1/100,2,101/10000,-51/25",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 101/10000, -51/25}\nA_4 = i * (22789660099/100000000000000)\nA_4 (numeric) = 0 + 0.000227897 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "22789660099/100000000000000",
+              "epsilon": "1/100",
+              "K": [
+                "-1/10000",
+                "-4",
+                "10201/100000000",
+                "2601/625"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "101/10000",
+                "-51/25"
+              ],
+              "amplitude_im_decimal": "2.278966009900000000E-4"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,1002001/10000000000,251001/62500 -W -1/100,2,1001/100000,-501/250",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1001/100000, -501/250}\nA_4 = i * (-1506674770601/100000000000000000)\nA_4 (numeric) = 0 + -1.50667e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-1506674770601/100000000000000000",
+              "epsilon": "1/1000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "1002001/10000000000",
+                "251001/62500"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1001/100000",
+                "-501/250"
+              ],
+              "amplitude_im_decimal": "-1.506674770601000000E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,100020001/1000000000000,25010001/6250000 -W -1/100,2,10001/1000000,-5001/2500",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 10001/1000000, -5001/2500}\nA_4 = i * (-1613722960170401/100000000000000000000)\nA_4 (numeric) = 0 + -1.61372e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-1613722960170401/100000000000000000000",
+              "epsilon": "1/10000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "100020001/1000000000000",
+                "25010001/6250000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "10001/1000000",
+                "-5001/2500"
+              ],
+              "amplitude_im_decimal": "-1.613722960170401000E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,10000200001/100000000000000,2500100001/625000000 -W -1/100,2,100001/10000000,-50001/25000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 100001/10000000, -50001/25000}\nA_4 = i * (-1601602451632457681/100000000000000000000000)\nA_4 (numeric) = 0 + -1.6016e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-1601602451632457681/100000000000000000000000",
+              "epsilon": "1/100000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "10000200001/100000000000000",
+                "2500100001/625000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "100001/10000000",
+                "-50001/25000"
+              ],
+              "amplitude_im_decimal": "-1.601602451632457681E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,1000002000001/10000000000000000,250001000001/62500000000 -W -1/100,2,1000001/100000000,-500001/250000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1000001/100000000, -500001/250000}\nA_4 = i * (-1600162546320355159409/100000000000000000000000000)\nA_4 (numeric) = 0 + -1.60016e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-1600162546320355159409/100000000000000000000000000",
+              "epsilon": "1/1000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "1000002000001/10000000000000000",
+                "250001000001/62500000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1000001/100000000",
+                "-500001/250000"
+              ],
+              "amplitude_im_decimal": "-1.600162546320355159E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,10000000200000001/100000000000000000000,2500000100000001/625000000000000 -W -1/100,2,100000001/10000000000,-50000001/25000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 100000001/10000000000, -50000001/25000000}\nA_4 = i * (-40000040699860801996303989977/2500000000000000000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-40000040699860801996303989977/2500000000000000000000000000000000",
+              "epsilon": "1/100000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "10000000200000001/100000000000000000000",
+                "2500000100000001/625000000000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "100000001/10000000000",
+                "-50000001/25000000"
+              ],
+              "amplitude_im_decimal": "-1.600001627994432080E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,100000000020000000001/1000000000000000000000000,25000000010000000001/6250000000000000000 -W -1/100,2,10000000001/1000000000000,-5000000001/2500000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 10000000001/1000000000000, -5000000001/2500000000}\nA_4 = i * (-1000000010175123402005018470099750613/62500000000000000000000000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-1000000010175123402005018470099750613/62500000000000000000000000000000000000000",
+              "epsilon": "1/10000000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "100000000020000000001/1000000000000000000000000",
+                "25000000010000000001/6250000000000000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "10000000001/1000000000000",
+                "-5000000001/2500000000"
+              ],
+              "amplitude_im_decimal": "-1.600000016280197443E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,1000000000002000000000001/10000000000000000000000000000,250000000001000000000001/62500000000000000000000 -W -1/100,2,1000000000001/100000000000000,-500000000001/250000000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1000000000001/100000000000000, -500000000001/250000000000}\nA_4 = i * (-12500000001271890623002506273434001246882811/781250000000000000000000000000000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-12500000001271890623002506273434001246882811/781250000000000000000000000000000000000000000000",
+              "epsilon": "1/1000000000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "1000000000002000000000001/10000000000000000000000000000",
+                "250000000001000000000001/62500000000000000000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1000000000001/100000000000000",
+                "-500000000001/250000000000"
+              ],
+              "amplitude_im_decimal": "-1.600000000162802000E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,10000000000000200000000000001/100000000000000000000000000000000,2500000000000100000000000001/625000000000000000000000000 -W -1/100,2,100000000000001/10000000000000000,-50000000000001/25000000000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 100000000000001/10000000000000000, -50000000000001/25000000000000}\nA_4 = i * (-2500000000002543781249960050125468749300249376562497/156250000000000000000000000000000000000000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-2500000000002543781249960050125468749300249376562497/156250000000000000000000000000000000000000000000000000000",
+              "epsilon": "1/100000000000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "10000000000000200000000000001/100000000000000000000000000000000",
+                "2500000000000100000000000001/625000000000000000000000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "100000000000001/10000000000000000",
+                "-50000000000001/25000000000000"
+              ],
+              "amplitude_im_decimal": "-1.600000000001628020E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,100000000000000020000000000000001/1000000000000000000000000000000000000,25000000000000010000000000000001/6250000000000000000000000000000 -W -1/100,2,10000000000000001/1000000000000000000,-5000000000000001/2500000000000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 10000000000000001/1000000000000000000, -5000000000000001/2500000000000000}\nA_4 = i * (-250000000000002543781249999600501254687499930024937656249997/15625000000000000000000000000000000000000000000000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-250000000000002543781249999600501254687499930024937656249997/15625000000000000000000000000000000000000000000000000000000000000",
+              "epsilon": "1/10000000000000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "100000000000000020000000000000001/1000000000000000000000000000000000000",
+                "25000000000000010000000000000001/6250000000000000000000000000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "10000000000000001/1000000000000000000",
+                "-5000000000000001/2500000000000000"
+              ],
+              "amplitude_im_decimal": "-1.600000000000016280E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -1/10000,-4,1000000000000000002000000000000000001/10000000000000000000000000000000000000000,250000000000000001000000000000000001/62500000000000000000000000000000000 -W -1/100,2,1000000000000000001/100000000000000000000,-500000000000000001/250000000000000000",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1000000000000000001/100000000000000000000, -500000000000000001/250000000000000000}\nA_4 = i * (-25000000000000002543781249999996005012546874999993002493765624999997/1562500000000000000000000000000000000000000000000000000000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-25000000000000002543781249999996005012546874999993002493765624999997/1562500000000000000000000000000000000000000000000000000000000000000000000",
+              "epsilon": "1/1000000000000000000",
+              "K": [
+                "-1/10000",
+                "-4",
+                "1000000000000000002000000000000000001/10000000000000000000000000000000000000000",
+                "250000000000000001000000000000000001/62500000000000000000000000000000000"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1000000000000000001/100000000000000000000",
+                "-500000000000000001/250000000000000000"
+              ],
+              "amplitude_im_decimal": "-1.600000000000000163E-5"
+            }
+          ],
+          "limit_summary": {
+            "last_epsilon": "1/1000000000000000000",
+            "last_im": "-25000000000000002543781249999996005012546874999993002493765624999997/1562500000000000000000000000000000000000000000000000000000000000000000000",
+            "last_im_decimal": "-1.600000000000000163E-5",
+            "previous_im": "-250000000000002543781249999600501254687499930024937656249997/15625000000000000000000000000000000000000000000000000000000000000",
+            "previous_im_decimal": "-1.600000000000016280E-5",
+            "last_minus_previous": "251834343749960054120456203118002500763131234075000003/1562500000000000000000000000000000000000000000000000000000000000000000000",
+            "last_minus_previous_decimal": "1.611739799999744346E-19",
+            "conjectured_limit_im": "-1/62500",
+            "conjectured_limit_im_decimal": "-1.600000000000000000E-5",
+            "last_minus_conjectured_limit": "-2543781249999996005012546874999993002493765624999997/1562500000000000000000000000000000000000000000000000000000000000000000000",
+            "last_minus_conjectured_limit_decimal": "-1.628019999999997443E-21",
+            "relative_last_minus_conjectured_limit_decimal": "1.017512499999998402E-16"
+          }
+        },
+        {
+          "path_id": "negative_momenta",
+          "description": "$K_1=-b^2(1-\\epsilon)$, $K_2=-a^2(1-2\\epsilon)$; all $\\omega_i$ fixed",
+          "rows": [
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9/100000,-16/5,1/10000,4 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-514943859401/4201000000000)\nA_4 (numeric) = 0 + -0.122576 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-514943859401/4201000000000",
+              "epsilon": "1/10",
+              "K": [
+                "-9/100000",
+                "-16/5",
+                "1/10000",
+                "4"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.225764959297786241E-1"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -99/1000000,-98/25,1/10000,4 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-630463679801/6010000000000)\nA_4 (numeric) = 0 + -0.104902 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-630463679801/6010000000000",
+              "epsilon": "1/100",
+              "K": [
+                "-99/1000000",
+                "-98/25",
+                "1/10000",
+                "4"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.049024425625623960E-1"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -999/10000000,-499/125,1/10000,4 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-642302207441/24100000000000)\nA_4 (numeric) = 0 + -0.0266515 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-642302207441/24100000000000",
+              "epsilon": "1/1000",
+              "K": [
+                "-999/10000000",
+                "-499/125",
+                "1/10000",
+                "4"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-2.665154387721991701E-2"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9999/100000000,-4999/1250,1/10000,4 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-129270303241/41000000000000)\nA_4 (numeric) = 0 + -0.00315293 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-129270303241/41000000000000",
+              "epsilon": "1/10000",
+              "K": [
+                "-9999/100000000",
+                "-4999/1250",
+                "1/10000",
+                "4"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-3.152934225390243902E-3"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -99999/1000000000,-49999/12500,1/10000,4 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-3377055035407/10070000000000000)\nA_4 (numeric) = 0 + -0.000335358 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-3377055035407/10070000000000000",
+              "epsilon": "1/100000",
+              "K": [
+                "-99999/1000000000",
+                "-49999/12500",
+                "1/10000",
+                "4"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-3.353579975577954320E-4"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -999999/10000000000,-499999/125000,1/10000,4 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-12060781952113/251300000000000000)\nA_4 (numeric) = 0 + -4.79936e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-12060781952113/251300000000000000",
+              "epsilon": "1/1000000",
+              "K": [
+                "-999999/10000000000",
+                "-499999/125000",
+                "1/10000",
+                "4"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-4.799356128974532431E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -99999999/1000000000000,-49999999/12500000,1/10000,4 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-82008159566421701/5025010000000000000000)\nA_4 (numeric) = 0 + -1.632e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-82008159566421701/5025010000000000000000",
+              "epsilon": "1/100000000",
+              "K": [
+                "-99999999/1000000000000",
+                "-49999999/12500000",
+                "1/10000",
+                "4"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.631999927690128000E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9999999999/100000000000000,-4999999999/1250000000,1/10000,4 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-804160815959818169201/50250001000000000000000000)\nA_4 (numeric) = 0 + -1.60032e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-804160815959818169201/50250001000000000000000000",
+              "epsilon": "1/10000000000",
+              "K": [
+                "-9999999999/100000000000000",
+                "-4999999999/1250000000",
+                "1/10000",
+                "4"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.600319999913668000E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -999999999999/10000000000000000,-499999999999/125000000000,1/10000,4 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-8040016081595984992919201/502500000100000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-8040016081595984992919201/502500000100000000000000000000",
+              "epsilon": "1/1000000000000",
+              "K": [
+                "-999999999999/10000000000000000",
+                "-499999999999/125000000000",
+                "1/10000",
+                "4"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.600003199999200357E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -99999999999999/1000000000000000000,-49999999999999/12500000000000,1/10000,4 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-80400001608159598502467919201/5025000000010000000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-80400001608159598502467919201/5025000000010000000000000000000000",
+              "epsilon": "1/100000000000000",
+              "K": [
+                "-99999999999999/1000000000000000000",
+                "-49999999999999/12500000000000",
+                "1/10000",
+                "4"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.600000031999992010E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -9999999999999999/100000000000000000000,-4999999999999999/1250000000000000,1/10000,4 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-804000000160815959850249967919201/50250000000001000000000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-804000000160815959850249967919201/50250000000001000000000000000000000000",
+              "epsilon": "1/10000000000000000",
+              "K": [
+                "-9999999999999999/100000000000000000000",
+                "-4999999999999999/1250000000000000",
+                "1/10000",
+                "4"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.600000000319999920E-5"
+            },
+            {
+              "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --amp -K -999999999999999999/10000000000000000000000,-499999999999999999/125000000000000000,1/10000,4 -W -1/100,2,1/100,-2",
+              "returncode": 0,
+              "stdout": "n = 4\nomega = {-1/100, 2, 1/100, -2}\nA_4 = i * (-8040000000016081595985024999967919201/502500000000000100000000000000000000000000)\nA_4 (numeric) = 0 + -1.6e-05 i",
+              "stderr": "",
+              "amplitude_re": "0",
+              "amplitude_im": "-8040000000016081595985024999967919201/502500000000000100000000000000000000000000",
+              "epsilon": "1/1000000000000000000",
+              "K": [
+                "-999999999999999999/10000000000000000000000",
+                "-499999999999999999/125000000000000000",
+                "1/10000",
+                "4"
+              ],
+              "W": [
+                "-1/100",
+                "2",
+                "1/100",
+                "-2"
+              ],
+              "amplitude_im_decimal": "-1.600000000003199999E-5"
+            }
+          ],
+          "limit_summary": {
+            "last_epsilon": "1/1000000000000000000",
+            "last_im": "-8040000000016081595985024999967919201/502500000000000100000000000000000000000000",
+            "last_im_decimal": "-1.600000000003199999E-5",
+            "previous_im": "-804000000160815959850249967919201/50250000000001000000000000000000000000",
+            "previous_im_decimal": "-1.600000000319999920E-5",
+            "last_minus_previous": "79993960026503102631010562649746824000899/25250625000000507525000000000100000000000000000000000000",
+            "last_minus_previous_decimal": "3.167999208989935686E-15",
+            "conjectured_limit_im": "-1/62500",
+            "conjectured_limit_im_decimal": "-1.600000000000000000E-5",
+            "last_minus_conjectured_limit": "-16079995985024999967919201/502500000000000100000000000000000000000000",
+            "last_minus_conjectured_limit_decimal": "-3.199999200999999357E-17",
+            "relative_last_minus_conjectured_limit_decimal": "1.999999500624999598E-12"
+          }
+        }
+      ]
+    }
+  ]
+}

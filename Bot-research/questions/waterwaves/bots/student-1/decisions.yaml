@@ -1,0 +1,33 @@
+decisions:
+  - id: s1_dec_001
+    timestamp: "2026-06-23T22:27:14"
+    decision: "Work in squared magnitudes t_i = omega_i^2 and treat the amplitude as piecewise-polynomial across chambers (sign patterns of subset momenta k_S), rather than seeking a single global rational function."
+    rationale: >
+      Early fits showed a_n is NOT rational in the plus-leg symmetric polynomials
+      even within a chamber: the BG propagators carry |k_S|, so ordering/abs is
+      intrinsic. Reframing per-chamber in the squares made the structure
+      (factor 2^(n-1) w1 w2, then a degree-(n-3) polynomial) visible.
+  - id: s1_dec_002
+    timestamp: "2026-06-23T22:27:14"
+    decision: "Use local (small-step) free-frequency fits to extract the analytic form on a SINGLE chamber, then unify across chambers."
+    rationale: >
+      Global random points mix chambers and admit no single rational fit. A tight
+      local cloud stays in one chamber; the exact rational function fitted there
+      is the chamber's analytic form, which then generalized to the IE pattern.
+  - id: s1_dec_003
+    timestamp: "2026-06-23T22:27:14"
+    decision: "Adopt the TRUNCATED inclusion-exclusion (max(0,.)) as the universal form and verify with EXACT rational arithmetic at n=7 (not --double)."
+    rationale: >
+      The non-truncated IE matched ~90%; truncating subset sums at P fixed all
+      misses (the missing piece was subsets whose plus-square sum exceeds P, not
+      a separate 'larger-minus' cutoff). Exact n=7 is fast (~0.5s/point) and
+      avoids the oracle's long-double round-off (~1e-5 at small frequencies),
+      giving bit-exact verification.
+  - id: s1_dec_004
+    timestamp: "2026-06-23T22:27:14"
+    decision: "Report the deepest-chamber monomial (s1_002) as the headline simple form, with the full truncated-IE (s1_001) as the all-kinematics form."
+    rationale: >
+      The monomial 2^(n-1) w1 w2 min(w1^2,w2^2)^(n-3) is memorable, covers all PI
+      reference points + the >> regime, and is the leading term of the general
+      formula -- a good entry point for the PI's re-verification and for
+      student-2's analytic derivation to target.

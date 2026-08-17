@@ -1,0 +1,62 @@
+claims:
+  - id: s1_001
+    timestamp: "2026-06-24T22:00:30"
+    statement: >-
+      I generated a documented exact-GMP oracle data table for $A_n$ in the
+      two-minus sector for $n=5,6,7$, with generic, one large plus-sign leg, and
+      one small plus-sign leg kinematics at each $n$.
+    evidence:
+      - "Primary data: bots/student-1/data/oracle_table_round1.json"
+      - "Readable table: bots/student-1/data/oracle_table_round1.md"
+      - 'The finite exact rows all have $\operatorname{Re} A_n=0$ and negative $\operatorname{Im} A_n$.'
+    confidence: high
+  - id: s1_002
+    timestamp: "2026-06-24T22:00:30"
+    statement: >-
+      For strict on-shell $n=4$ two-minus inputs, the copied oracle does not
+      return a finite $A_4$: exact mode raises `SIGFPE` and `--double` mode
+      returns `nan + nan i` on all three tested regimes.
+    evidence:
+      - >-
+        The solved resonant $n=4$ kinematics have $\omega_1=-\omega_3$ and
+        $\omega_4=-\omega_2$, creating zero total $(\omega,k)$ in opposite-sign
+        pairs inside the BG recursion.
+      - "Recorded under `strict_on_shell_result` in bots/student-1/data/oracle_table_round1.json."
+      - >-
+        Raw `--amp` perturbation probes are included as diagnostics only; I do
+        not claim them as strict oracle values for $A_4$.
+    confidence: high
+  - id: s1_003
+    timestamp: "2026-06-24T22:13:54"
+    statement: >-
+      Strict $n=4$ two-minus kinematics are
+      $\omega=(-b,a,b,-a)$ and $K=(-b^2,-a^2,b^2,a^2)$, so both opposite-sign
+      pairs $\{1,3\}$ and $\{2,4\}$ have zero total $\omega$ and zero total
+      $K$.
+    evidence:
+      - >-
+        Direct strict exact on-shell runs in the private copied oracle return
+        `SIGFPE` for $(a,b)=(2,3)$, $(2,100)$, and $(2,1/100)$.
+      - >-
+        Raw probes that lifted only one zero pair still returned `SIGFPE`,
+        while probes lifting both zero pairs produced finite exact rational
+        values.
+      - "Analysis note: bots/student-1/derivations/n4_limit_analysis_round2.md"
+    confidence: high
+  - id: s1_004
+    timestamp: "2026-06-24T22:13:54"
+    statement: >-
+      Four distinct exact-rational raw `--amp` off-shell paths, tested through
+      $\epsilon=10^{-18}$, support the path-independent limiting prescription
+      $A_4(-b,a,b,-a)=-8i\,a b\,\min(a^2,b^2)$.
+    evidence:
+      - >-
+        Required regimes checked: generic $(a,b)=(2,3)$, $b\gg a$ with
+        $(a,b)=(2,100)$, and $b\ll a$ with $(a,b)=(2,1/100)$.
+      - >-
+        Across all required regimes and four paths, the largest relative
+        residual of the last exact row against the conjectured limit is about
+        $2.0\times10^{-12}$.
+      - "Full exact data: bots/student-1/data/n4_limit_probes_round2.json"
+      - "Readable table: bots/student-1/data/n4_limit_probes_round2.md"
+    confidence: medium

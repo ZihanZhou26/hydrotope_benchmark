@@ -1,0 +1,17 @@
+{
+  "bot": "pi",
+  "timestamp": "2026-06-24T22:05:34",
+  "round": 2,
+  "summary": "Reviewed `question.md`, `board.json`, prior summary files, the empty `notebooks/` directory, latest student session reports, registries, and linked data/derivation artifacts. No final formula for $A_n$ was proposed, so independent PI formula verification was not applicable. The group now has exact finite oracle data for $n=5,6,7$, observed pure-imaginary/permutation/homogeneity structure on tested rows, failures of product-only and $e_m(p)P_{n-2}(u,v)$ ansatz families, and a shared strict $n=4$ oracle singularity that blocks final verification.",
+  "tasks_assigned": [
+    {
+      "bot": "student-1",
+      "task": "Resolve the strict $n=4$ verification obstruction by testing off-shell limiting paths for $\\omega=(-b,a,b,-a)$ and deciding whether a path-independent $A_4$ limit exists."
+    },
+    {
+      "bot": "student-2",
+      "task": "Search for finite $n=5,6,7$ candidate formulas using positive-leg elementary symmetric data beyond $e_m(p)$ and possible rational/subchannel structures, with exact held-out residuals."
+    }
+  ],
+  "next_steps": "After the next student runs, check whether there is a proposed finite $A_4$ prescription and whether any $n=5,6,7$ candidate survives exact held-out tests. If a full candidate emerges, copy `bg.cpp` into `bots/pi/code/`, build it, and independently verify $n=4,5,6,7$ at multiple generic and non-generic points before writing `summary/SOLVED.md`."
+}

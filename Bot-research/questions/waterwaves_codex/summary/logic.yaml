@@ -1,0 +1,52 @@
+thesis: >-
+  The two-minus amplitude is solved. For $m=n-2$, $u=-\omega_1$,
+  $v=\omega_2$, $p_j=\omega_{j+2}$, and
+  $(x)_+^d=x^d$ for $x>0$ and $0$ otherwise,
+  $$\frac{A_n}{i}=-2^{n-1}uv
+  \sum_{S\subseteq\{1,\ldots,m\}}(-1)^{|S|}
+  \left(v^2-\sum_{j\in S}p_j^2\right)_+^{n-3}.$$
+argument_flow:
+  - title: "Problem setup"
+    establishes: >-
+      The target sector is $\sigma=(-1,-1,+1,\ldots,+1)$ on
+      $\sum_i\omega_i=0$ and $\sum_i\sigma_i\omega_i^2=0$, with $n\geq4$.
+    claims: []
+    confidence: "high"
+  - title: "Finite candidate"
+    establishes: >-
+      `student-2` found the truncated-power inclusion-exclusion expression,
+      supported by exact zero residuals on fit and held-out finite data at
+      $n=5,6,7$ plus two $n=8$ smoke checks.
+    claims: ["s2_005"]
+    confidence: "high"
+  - title: "$n=4$ limiting value"
+    establishes: >-
+      `student-1` showed that direct strict $n=4$ calls are singular but raw
+      off-shell paths lifting both zero subcurrents converge to
+      $$A_4(-b,a,b,-a)=-8i\,ab\,\min(a^2,b^2).$$
+    claims: ["s1_004"]
+    confidence: "medium"
+  - title: "Formula compatibility"
+    establishes: >-
+      Extending the truncated-power expression to $n=4$ gives exactly the same
+      limiting value on $\omega=(-b,a,b,-a)$.
+    claims: ["s2_006"]
+    confidence: "high"
+  - title: "PI verification"
+    establishes: >-
+      The PI built a fresh copy of `bg.cpp` in `bots/pi/code/` and independently
+      verified exact residual $0$ on 12 finite rows at $n=5,6,7$, including
+      generic, large-leg, small-leg, and signed-frequency checks. The PI also
+      confirmed direct strict $n=4$ singularity and accepted the off-shell
+      limiting prescription after 12 raw probes with maximum relative residual
+      $1.999999500625\times10^{-12}$.
+    claims: ["pi_001"]
+    confidence: "high"
+gaps: []
+sensitivity:
+  - >-
+    The $n=4$ entry is accepted as a limiting prescription because the direct
+    strict oracle evaluates zero-total subcurrents and exits singular.
+  - >-
+    Non-generic checks were performed in exact arithmetic; the previous
+    `--double` drift in large-ratio regimes is not used for acceptance.

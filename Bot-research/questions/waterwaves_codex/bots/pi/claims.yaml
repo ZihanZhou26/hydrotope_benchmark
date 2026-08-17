@@ -1,0 +1,14 @@
+claims:
+  - id: pi_001
+    timestamp: "2026-06-24T22:35:42"
+    statement: >-
+      The truncated-power formula for $A_n$ passed independent PI verification
+      on a fresh PI-owned copy of `bg.cpp`: exact residual $0$ on 12 finite
+      rows at $n=5,6,7$, and maximum relative residual
+      $1.999999500625\times 10^{-12}$ on the accepted $n=4$ off-shell limiting
+      probes.
+    evidence:
+      - "PI copy and build: bots/pi/code/bg.cpp and bots/pi/code/bg"
+      - "Verification script: bots/pi/code/verify_truncated_power.py"
+      - "Verification data: bots/pi/data/pi_truncated_power_verification.json"
+    confidence: high

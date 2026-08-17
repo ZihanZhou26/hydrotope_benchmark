@@ -1,0 +1,32 @@
+decisions:
+  - id: s1_dec_001
+    timestamp: "2026-06-24T22:00:30"
+    decision: >-
+      Treat exact-GMP output as the canonical dataset and use `--double` only as
+      a diagnostic comparison, especially in large-ratio non-generic regimes.
+    rationale: >-
+      The exact rows are rational, while `--double` relative differences grew in
+      the large-leg cases, reaching about $4\times 10^{-3}$ for the $n=7$ large
+      plus-sign-leg case.
+  - id: s1_dec_002
+    timestamp: "2026-06-24T22:00:30"
+    decision: >-
+      Record the strict $n=4$ two-minus oracle behavior as a singular oracle
+      outcome rather than substituting a raw off-shell perturbation value.
+    rationale: >-
+      The unmodified copied oracle is the assigned reference. Its strict on-shell
+      exact path raises `SIGFPE` and its double path returns `nan`, so any
+      regularized value needs PI approval or a separate analytic limiting
+      prescription before it is used as $A_4$ data.
+  - id: s1_dec_003
+    timestamp: "2026-06-24T22:13:54"
+    decision: >-
+      Propose the off-shell limiting prescription
+      $A_4(-b,a,b,-a)=-8i\,a b\,\min(a^2,b^2)$ for PI consideration, while
+      keeping the direct strict oracle result classified as singular.
+    rationale: >-
+      Exact raw `--amp` probes that lift both zero pairs converge to this value
+      along four distinct paths for generic, $b\gg a$, and $b\ll a$ regimes.
+      The direct strict on-shell evaluator still raises `SIGFPE`, so accepting
+      this value requires treating it as a limiting prescription rather than a
+      literal strict oracle output.

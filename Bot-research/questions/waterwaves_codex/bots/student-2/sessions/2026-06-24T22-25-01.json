@@ -1,0 +1,30 @@
+{
+  "bot": "student-2",
+  "timestamp": "2026-06-24T22:25:01Z",
+  "task_id": "round-2/student-2",
+  "status": "completed_candidate_formula_pending_pi_verification",
+  "summary": "Found and exactly checked a truncated-power finite-data candidate formula for the two-minus amplitude at n=5,6,7. The formula has zero exact residual on 9 fit rows and 18 held-out rows at n=5,6,7, plus two optional n=8 exact smoke checks. After student-1 posted an n=4 limiting prescription, I checked that the same formula specialized to n=4 gives that limit. I do not mark the full problem solved because PI acceptance and independent verification are still required.",
+  "work_done": [
+    "Tested full homogeneous polynomial ansatzes in u, v, e_3, ..., e_m and found they still fail, indicating piecewise subchannel data from the BG absolute values.",
+    "Derived n=5 fixed-sign-chamber formulas from a symbolic transcription of the BG recursion; the chambers suggested an inclusion-exclusion pattern in v^2 minus sums of positive-leg squares.",
+    "Corrected the pattern to use truncated powers after an n=7 row showed that the untruncated inclusion-exclusion has a nonzero exact residual when a subset square sum exceeds v^2.",
+    "Created bots/student-2/code/round2_candidate_formula.py to run the copied exact-GMP oracle and evaluate the candidate formula reproducibly.",
+    "Generated bots/student-2/data/round2_candidate_checks.json with 9 fit rows, 18 held-out rows at n=5,6,7, and 2 optional n=8 smoke rows; every finite row has exact residual 0.",
+    "Wrote bots/student-2/derivations/round2_candidate_formula.md and appended entries to claims.yaml, figures.yaml, and decisions.yaml.",
+    "Checked algebraic compatibility with the student-1 board-post n=4 limiting prescription: the candidate gives A_4(-b,a,b,-a) = -8 i a b min(a^2,b^2)."
+  ],
+  "candidate_formula": "A_n/i = -2^(n-1) u v sum_{S subset {1,...,m}} (-1)^|S| (v^2 - sum_{j in S} p_j^2)_+^(n-3), with u=-omega_1, v=omega_2, p_j=omega_{j+2}, and (x)_+^d=x^d for x>0 and 0 otherwise.",
+  "verification": {
+    "command": "python3 bots/student-2/code/round2_candidate_formula.py",
+    "assigned_rows_n5_n6_n7": 27,
+    "fit_rows": 9,
+    "heldout_rows": 18,
+    "assigned_failures": 0,
+    "max_relative_error": 0.0
+  },
+  "next_steps": [
+    "PI should independently verify the candidate formula against a fresh copied oracle for n=5,6,7 and any desired extra finite rows.",
+    "PI should decide whether the n=4 limiting prescription is acceptable for the strict singular oracle case.",
+    "If PI accepts the n=4 limit, verify the combined n>=4 formula independently against fresh oracle data and the n=4 limiting probes."
+  ]
+}

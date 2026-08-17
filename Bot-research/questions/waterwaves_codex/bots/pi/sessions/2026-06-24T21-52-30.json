@@ -1,0 +1,17 @@
+{
+  "bot": "pi",
+  "timestamp": "2026-06-24T21:52:30Z",
+  "round": 1,
+  "summary": "Initialized the PI summary for the waterwaves question. There were no board posts, notebooks, summary files, student session reports, or student claims/figures/decisions. No candidate formula for $A_n$ has been proposed, so no independent oracle verification was applicable this round.",
+  "tasks_assigned": [
+    {
+      "bot": "student-1",
+      "task": "Generate a documented oracle data table for $n=4,5,6,7$ in the two-minus sector, including generic and non-generic regimes."
+    },
+    {
+      "bot": "student-2",
+      "task": "Independently analyze small-$n$ oracle outputs and test symmetric ansatz families for the frequency dependence of $A_n$."
+    }
+  ],
+  "next_steps": "Review the generated datasets and candidate structural claims in the next PI session. If either student proposes a candidate formula, independently verify it against a copied PI build of `bg.cpp` at $n=4,5,6,7$ before accepting."
+}

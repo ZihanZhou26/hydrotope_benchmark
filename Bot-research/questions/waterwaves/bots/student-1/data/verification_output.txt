@@ -1,0 +1,20 @@
+======================================================================
+REFERENCE POINTS (PI group notes):
+  n=5 -w [1, 2, 4]: oracle a=-544/7  formula=-544/7  match=True  (PI ref -544/7)
+  n=5 -w [2, 3, 5]: oracle a=-3328  formula=-3328  match=True  (PI ref -3328)
+  n=6 -w [1, 2, 3, 4]: oracle a=-1024/5  formula=-1024/5  match=True  (PI ref -1024/5)
+  n=4 omega=(-3,1,3,-1) limit: oracle=-24  formula=-24  match=True  (PI ref -24)
+  n=4 omega=(-5,2,5,-2) limit: oracle=-320  formula=-320  match=True  (PI ref -320)
+======================================================================
+NON-GENERIC REGIMES:
+  n=5 -w [1, 2, 1000] (one plus >> rest): match=True  (a=-16048096/1003)
+  n=5 -w [1, 2, 1/1000] (one plus << rest): match=True  (a=-12005995996999/187562500000000000)
+  n=6 -w [1, 2, 3, 500] (one plus >>): match=True  (a=-4048384/253)
+  n=6 -w [1/100, 2, 3, 4] (one minus-free << ): match=True  (a=-5509/2815625000000000)
+======================================================================
+RANDOM ALL-CHAMBER SCAN (exact rational; relative error = 0 means bit-exact):
+n=5 (exact): 60/60 EXACT matches across chambers {'b1m2h0': 20, 'b0m3h0': 19, 'b2m0h1': 21}
+n=6 (exact): 60/60 EXACT matches across chambers {'b2m2h0': 19, 'b0m4h0': 16, 'b1m3h0': 8, 'b3m0h1': 10, 'b3m1h0': 7}
+n=7 (exact): 40/40 EXACT matches across chambers {'b2m3h0': 13, 'b1m4h0': 14, 'b3m2h0': 4, 'b0m5h0': 5, 'b4m1h0': 4}
+Note: oracle --double for n=7 carries FP error up to ~1e-5 at small-frequency points;
+exact-rational n=7 confirms the formula is bit-exact there too.

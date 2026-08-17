@@ -1,0 +1,20 @@
+{
+  "bot": "student-2",
+  "timestamp": "2026-06-24T22:00:14Z",
+  "task_id": "round-1/student-2",
+  "status": "completed_no_final_formula",
+  "summary": "Copied and built the oracle privately, generated exact data for small n, tested symmetric ansatz families, and found that product-only and product-times-polynomial-in-negative-legs forms fail. Also recorded a copied-oracle singularity for n=4 on-shell two-minus kinematics.",
+  "work_done": [
+    "Copied bg.cpp to bots/student-2/code/bg.cpp and built bots/student-2/code/bg.",
+    "Created bots/student-2/code/analyze_ansatz.py to reproduce oracle calls and ansatz residual checks.",
+    "Generated bots/student-2/data/oracle_dataset.json for n=4,5,6,7; finite exact rows exist for n=5,6,7, while n=4 exact on-shell rows exit with SIGFPE.",
+    "Generated bots/student-2/data/ansatz_checks.json showing that $A_n/i=C_n e_m(p)$ fails for n=5,6,7 and $A_n/i=e_m(p)P_{n-2}(u,v)$ fails on held-out rows at n=5,6.",
+    "Generated bots/student-2/data/structural_checks.json showing tested positive-sign leg permutation symmetry and scaling $A_n(2\\omega)=2^{2n-4}A_n(\\omega)$ for n=5,6,7.",
+    "Wrote bots/student-2/derivations/ansatz_report.md and updated claims, figures, and decisions registries."
+  ],
+  "next_steps": [
+    "Handle the n=4 singular limit separately before using it as formula evidence.",
+    "Fit/test ansatz families involving $e_3(p),e_4(p),\\ldots$ beyond the full product $e_m(p)$.",
+    "Investigate whether residual structure matches subchannel denominators from the Berends--Giele recursion."
+  ]
+}

@@ -1,0 +1,126 @@
+claims:
+  - id: s2_001
+    round: 1
+    title: "Closed form (principal chamber): a_n = 2^(n-1) * w1 * w2^(2n-5)"
+    statement: >
+      In the two-minus sector, within the principal kinematic chamber (free freqs
+      ordered so that omega_2 = min of the free frequencies; legs 1,2 are the
+      sigma=-1 legs; omega_1, omega_n fixed by Sum omega = 0 and Sum sigma omega^2 = 0),
+      the on-shell amplitude is A_n = i * a_n with a_n = 2^(n-1) * omega_1 * omega_2^(2n-5).
+      Equivalently a_n = 2^(n-1) * (omega_1 omega_2) * |k_2|^(n-3) with |k_2| = omega_2^2.
+      It depends ONLY on the two minus-leg frequencies; plus legs enter only through
+      the constraint that fixes omega_1. Homogeneity degree = 2n-4.
+    derivation: "symbolic BG recursion at n=4,5 (code/symbolic.py, analyze.py) -> a4=8 w1 w2^3, a5=16 w1 w2^5; pattern 2^(n-1) w1 w2^(2n-5)."
+    evidence: "EXACT (relative residual 0) vs ./bg at n=5,6,7 over many points incl. extreme regimes and shuffled plus legs; n=4 by delta->0 limit gives the exact integers. data/verification_results.txt, data/verification_table.json, figures/verification.png"
+    status: verified_self
+    confidence: high
+    refs: [s2_fig_001]
+  - id: s2_002
+    round: 1
+    title: "A_n is purely imaginary, with a recursion-level reason"
+    statement: >
+      Re A_n = 0 exactly. Reason: Vertex (factor -i/2) and Propagator (factor -i)
+      are each purely imaginary; every BGCurrent(S) adds exactly one Vertex + one
+      Propagator on top of its sub-currents (i^2 each), so by induction every
+      BGCurrent carries an even number of i's and is REAL. The amplitude is one root
+      Vertex times real currents (no overall propagator) => A_n = i*(real).
+    evidence: "symbolic Re part identically 0 at n=4,5; Re=0 at every numerical point tested (n=4 limit,5,6,7)."
+    status: verified_self
+    confidence: high
+  - id: s2_003
+    round: 1
+    title: "n=4 finiteness: off-shell BGAmplitude is a polynomial; the {2,4} 0/0 cancels"
+    statement: >
+      Computing BGAmplitude at n=4 with independent omega_i (the --amp continuation)
+      and cancelling yields a degree-4 POLYNOMIAL in omega_i (no surviving denominator).
+      The would-be singular 1/D_{24} propagator (w_S=0, k_S=0 on the on-shell branch)
+      is multiplied by a numerator vanishing there, so it cancels in the full amplitude.
+      Hence A_4 is finite; its on-shell value is the polynomial restricted to the surface,
+      giving a_4 = -8 omega_2^3 omega_3 = 8 omega_1 omega_2^3.
+    evidence: "symbolic off-shell a_4 polynomial (derivation.md sec.3); reduces to 8 w1 w2^3; matches -24, -320."
+    status: verified_self
+    confidence: high
+  - id: s2_004
+    round: 1
+    title: "Amplitude is piecewise-rational (abs(k_S) chambers); full amplitude is S2 x S_{n-2} symmetric"
+    statement: >
+      The oracle amplitude is S_2 (swap minus legs 1,2) x S_{n-2} (permute plus legs)
+      symmetric (verified at n=4 limit,5,6). Because kernels/propagator contain
+      abs(k_S) of subset momenta, the amplitude is PIECEWISE rational: where a subset
+      momentum k_S = Sum_{i in S} sigma_i omega_i^2 changes sign the rational form
+      changes (a kink, NOT a pole; the propagator -> 0 there). The simple minus-pair
+      form 2^(n-1) w1 w2^(2n-5) is the PRINCIPAL-chamber piece (omega_2 = smallest
+      free freq); the symmetry swap maps out of that chamber, which is why that
+      single piece is not itself S_2-symmetric. All PI reference / pass-bar points
+      lie in the principal chamber.
+    evidence: "same minus pair, varied plus legs: a_5 constant within chamber (=-544/7) but differs across a k_S sign change (=-34). Chamber rule omega_2=min(free) <=> formula holds verified at n=5,6,7."
+    status: verified_self
+    confidence: high
+  - id: s2_005
+    round: 2
+    title: "g-dependence: A_n scales as g^(3-n); g-restored closed form"
+    statement: >
+      Restoring the gravitational constant g (dispersion omega^2 = g|k|), the
+      two-minus amplitude is A_n = i * g^(3-n) * 2^(n-1) * w1 * w2 *
+      sum_{S subset of plus legs} (-1)^|S| * max(0, P - sum_{j in S} w_j^2)^(n-3),
+      P = min(w1^2,w2^2). I.e. a_n(g) = g^(3-n) * a_n(g=1); the omega's and the
+      closed-form structure are g-independent (on-shell the constraints Sum omega=0,
+      Sum sigma omega^2=0 do not involve g; only K_i = sigma_i omega_i^2/g and the
+      Propagator D = wS^2/|kS| - g carry g).
+    derivation: >
+      Homogeneity counting of the BG engine under (K -> mu K, G -> G/mu) at fixed W
+      (which is exactly g -> g/mu on-shell): EKernel is degree n-1 in momenta, FKernel
+      degree n-3, Vertex(p) degree p-3, Propagator degree +1; induction gives
+      BGCurrent(|S|=s) degree s-1 and BGAmplitude(N) degree N-3. Cross-checked by the
+      pure-omega scaling (degree 2n-4, g-independent) and the combined
+      (omega->rho omega, g->rho^2 g) scaling (A_n -> rho^2 A_n). See
+      derivations/round2_telescoping.md Part A.
+    evidence: >
+      code/round2_gcheck.py vs own ./bg, EXACT rational, residual identically 0:
+      n=5,6,7 x g in {1,2,3} x {principal, non-principal, extreme} = 21/21 exact;
+      n=8 g in {1,2} principal exact (a8: -33920/21 -> -1060/21 = /2^5);
+      n=4 delta->0 limit (exact Neville) at g=1 and g=2 exact (-24->-12, -320->-160,
+      -1512->-756, -40->-20). data/round2_gcheck_output.txt.
+    status: verified_self
+    confidence: high
+    refs: [s2_fig_002]
+  - id: s2_006
+    round: 2
+    title: "Accepted form is a B-spline / (n-2)-fold divided difference; round-1 properties proven"
+    statement: >
+      With t_j = w_j^2, m = n-3, k = n-2 plus legs (k = m+1), the factor
+      D_n = sum_{S subset plus} (-1)^|S| max(0, P - sum_{j in S} t_j)^m EQUALS the
+      operator [prod_{j=3}^n (1 - T_{t_j})] (x)_+^m |_{x=P}, i.e. the (m+1)-fold finite
+      difference of the truncated power (x)_+^m at nodes {t_3..t_n} -- a univariate
+      B-spline / divided difference. Consequences, now PROVEN (round 1 had them only
+      as oracle observations): (i) principal-chamber collapse P<=min t_j => D_n=P^m =>
+      a_n = 2^(n-1) w1 w2^(2n-5) (student-2 round-1 monomial derived, not pattern-matched);
+      (ii) homogeneity degree 2n-4; (iii) full-overlap vanishing: P >= sum_j t_j =>
+      D_n = 0 (applying m+1 differences to a degree-m polynomial), though on-shell
+      w1^2+w2^2 = sum_{j>=3} w_j^2 keeps P < sum_plus strictly so this never triggers
+      physically; (iv) continuity D_n in C^(n-4) across chamber walls P = sum_{j in S} t_j
+      (kink, not pole); (v) S_2 x S_{n-2} symmetry MANIFEST (D_n symmetric in plus
+      nodes; prefactor w1 w2 and P=min(w1^2,w2^2) symmetric under 1<->2); (vi) only the
+      SMALLER minus square P enters the value (larger minus only via prefactor w1 w2).
+    derivation: "symbolic/exact identities, derivations/round2_telescoping.md Part B."
+    evidence: "code/round2_structure.py: operator==subset (n=4..7), principal reduction (n=4..7), (m+1)-fold difference of degree-m poly == 0 (n=4..7), full-overlap D_n=0 (n=5,6,7), continuity value+1st-deriv across a wall (n=5,6,7), plus-node symmetry (n=5,6,7). data/round2_structure_output.txt."
+    status: verified_self
+    confidence: high
+    refs: [s2_fig_002]
+  - id: s2_007
+    round: 2
+    title: "Telescoping of the BG partition sum: target characterized + structural origin; full proof still open"
+    statement: >
+      The open round-2 item 'prove the BG recursion telescopes to the B-spline form'
+      is advanced but NOT fully closed. Settled: the accepted form is exactly a
+      B-spline/divided difference (s2_006) and all its numerically-observed properties
+      now follow as theorems; the g-dependence is fixed (s2_005). Structural origin
+      identified in the kernels: EKernel(n,.) carries an explicit |p2|^(n-3) factor and
+      E3 ~ |p1||p2|+p1 p2 (seeding the degree-m truncated power and the principal
+      omega2^(2n-6)); the abs(k_S) in Propagator/kernels generate the chamber walls
+      P = sum_{j in S} t_j where the max(0,.) truncations switch. STILL OPEN: a complete
+      term-by-term proof that the partition sum in BGAmplitude/BGCurrent collapses to
+      the alternating subset sum D_n in a general chamber.
+    evidence: "n=4,5 symbolic recursion (round 1) + s2_006 characterization; no general partition-sum proof yet. Honest open flag."
+    status: partial
+    confidence: high

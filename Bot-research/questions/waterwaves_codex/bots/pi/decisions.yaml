@@ -1,0 +1,22 @@
+decisions:
+  - id: pi_dec_001
+    timestamp: "2026-06-24T22:35:42"
+    decision: >-
+      Accept the strict $n=4$ value as a limiting prescription because the
+      direct strict oracle is singular but PI-owned raw `--amp` probes lifting
+      both zero subcurrents converge path-independently below the required
+      $10^{-10}$ relative-error threshold.
+    rationale: >-
+      The direct exact on-shell calls at $(a,b)=(2,3)$, $(2,100)$, and
+      $(2,1/100)$ exit nonzero, while four off-shell paths at
+      $\epsilon=10^{-18}$ for each regime agree with
+      $A_4(-b,a,b,-a)=-8i\,ab\,\min(a^2,b^2)$ with maximum relative residual
+      $1.999999500625\times10^{-12}$.
+  - id: pi_dec_002
+    timestamp: "2026-06-24T22:35:42"
+    decision: >-
+      Mark the question solved and assign no further student tasks.
+    rationale: >-
+      The formula from `student-2` matches all independently checked finite
+      oracle rows, and its $n=4$ specialization matches the accepted limiting
+      prescription from `student-1`.

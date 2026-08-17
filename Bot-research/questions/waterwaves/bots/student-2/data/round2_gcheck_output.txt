@@ -1,0 +1,39 @@
+========================================================================
+(A) g-restored formula vs ./bg on-shell (exact rational), residual must be 0
+========================================================================
+  [OK ] n=5 g=1  principal                oracle=                  -544/7  resid=0
+  [OK ] n=5 g=2  principal                oracle=                  -136/7  resid=0
+  [OK ] n=5 g=3  principal                oracle=                 -544/63  resid=0
+  [OK ] n=5 g=1  non-principal (b2m0h1)   oracle=                 -6400/3  resid=0
+  [OK ] n=5 g=2  non-principal (b2m0h1)   oracle=                 -1600/3  resid=0
+  [OK ] n=5 g=3  non-principal (b2m0h1)   oracle=                -6400/27  resid=0
+  [OK ] n=5 g=1  extreme (one plus >>)    oracle=          -16048096/1003  resid=0
+  [OK ] n=5 g=2  extreme (one plus >>)    oracle=           -4012024/1003  resid=0
+  [OK ] n=5 g=3  extreme (one plus >>)    oracle=          -16048096/9027  resid=0
+  [OK ] n=6 g=1  principal                oracle=                 -1024/5  resid=0
+  [OK ] n=6 g=2  principal                oracle=                  -128/5  resid=0
+  [OK ] n=6 g=3  principal                oracle=               -1024/135  resid=0
+  [OK ] n=6 g=1  non-principal (b3m0h1)   oracle=             -3241728/13  resid=0
+  [OK ] n=6 g=2  non-principal (b3m0h1)   oracle=              -405216/13  resid=0
+  [OK ] n=6 g=3  non-principal (b3m0h1)   oracle=              -120064/13  resid=0
+  [OK ] n=7 g=1  principal                oracle=                -8896/15  resid=0
+  [OK ] n=7 g=2  principal                oracle=                 -556/15  resid=0
+  [OK ] n=7 g=3  principal                oracle=              -8896/1215  resid=0
+  [OK ] n=7 g=1  extreme (one plus >>)    oracle=           -32322048/505  resid=0
+  [OK ] n=7 g=2  extreme (one plus >>)    oracle=            -2020128/505  resid=0
+  [OK ] n=7 g=3  extreme (one plus >>)    oracle=         -10774016/13635  resid=0
+  ALL EXACT-ZERO: True
+========================================================================
+(B) n=4 delta->0 limit: check g-scaling a_4(g)=a_4(1)/g
+========================================================================
+  (w2,w3)=(1,3): a4(g=1)=-24  pred=-24  rel=0.00e+00
+                 a4(g=2)=-12  pred=-12  rel=0.00e+00  (g^-1 scaling)
+  (w2,w3)=(2,5): a4(g=1)=-320  pred=-320  rel=0.00e+00
+                 a4(g=2)=-160  pred=-160  rel=0.00e+00  (g^-1 scaling)
+  (w2,w3)=(3,7): a4(g=1)=-1512  pred=-1512  rel=0.00e+00
+                 a4(g=2)=-756  pred=-756  rel=0.00e+00  (g^-1 scaling)
+  (w2,w3)=(1,5): a4(g=1)=-40  pred=-40  rel=0.00e+00
+                 a4(g=2)=-20  pred=-20  rel=0.00e+00  (g^-1 scaling)
+  n=4 limits within 1e-10: True
+
+RESULT: ALL PASS

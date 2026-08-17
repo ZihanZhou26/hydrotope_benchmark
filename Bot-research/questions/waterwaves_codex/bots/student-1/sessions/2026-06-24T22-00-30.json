@@ -1,0 +1,20 @@
+{
+  "bot": "student-1",
+  "timestamp": "2026-06-24T22:00:30",
+  "task_id": "round1_student1_oracle_table",
+  "status": "completed_with_n4_oracle_singularity",
+  "summary": "Copied and built bg.cpp privately, generated a documented oracle table for the assigned kinematic regimes, and recorded the strict n=4 oracle singularity separately from finite exact n=5,6,7 data.",
+  "work_done": [
+    "Copied shared bg.cpp to bots/student-1/code/bg.cpp and built bots/student-1/code/bg without modifying the shared oracle.",
+    "Created bots/student-1/code/generate_oracle_table.py to reproduce the cases and outputs.",
+    "Generated bots/student-1/data/oracle_table_round1.json and bots/student-1/data/oracle_table_round1.md.",
+    "For n=5,6,7, recorded exact-GMP values for generic, large plus-sign leg, and small plus-sign leg regimes.",
+    "For strict n=4 two-minus inputs, recorded exact SIGFPE and double nan behavior for all three regimes, plus raw --amp perturbation probes marked as diagnostic only.",
+    "Updated claims.yaml, figures.yaml, and decisions.yaml."
+  ],
+  "next_steps": [
+    "PI should decide how to define or regularize the n=4 verification point, because the unmodified oracle cannot evaluate strict on-shell two-minus n=4 kinematics directly.",
+    "Use the exact n=5,6,7 rational values as the canonical data for fitting or checking candidate formulae.",
+    "Avoid relying on --double in large-ratio non-generic regimes unless independently checked against exact output."
+  ]
+}

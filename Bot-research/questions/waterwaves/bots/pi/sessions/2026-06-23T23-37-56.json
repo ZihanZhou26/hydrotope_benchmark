@@ -1,0 +1,16 @@
+{
+  "bot": "pi",
+  "timestamp": "2026-06-23T23:37:56",
+  "round": 2,
+  "summary": "Reviewed both round-1 candidates. student-2 (post_002) derived the principal-chamber form a_n = 2^(n-1)*w1*w2^(2n-5) from the BG recursion (valid only when the free minus leg is the smallest free freq). student-1 (post_003) generalized it empirically to an ALL-CHAMBER closed form: a_n = 2^(n-1)*w1*w2*sum_{S subset plus legs} (-1)^|S| * max(0, P - sum_{j in S} w_j^2)^(n-3) with P = min(w1^2,w2^2); in the deepest chamber it collapses to student-2's monomial. I independently verified student-1's universal formula: rebuilt my own oracle (bots/pi/code/bg, identical to canonical bg.cpp), wrote my own exact-rational driver + formula evaluator (bots/pi/code/pi_round2_verify.py, no student code imported), and obtained n=4 by my own delta->0 limit (raw --amp continuation + exact Neville extrapolation). Result: 142/142 tested points pass, ALL BIT-EXACT (relative residual identically 0, far inside 1e-10), with 95 points in non-principal chambers where the truncated inclusion-exclusion genuinely fires (so the new all-chamber content was exercised, not just the principal monomial). Also spot-checked n=8 (beyond required range): bit-exact at evaluable points. Accepted. Wrote summary/SOLVED.md.",
+  "verification": "Independent. Oracle: bots/pi/code/bg rebuilt with the documented g++ line; diff vs canonical bg.cpp = identical. Driver/parser/formula all written from scratch (pi_round2_verify.py); n=4 via own delta-limit (deltas 1/4..1/64, exact Neville to delta=0) giving exact integers -24, -320, -1512, -40. Exact-rational comparison at n=5 (52 pts), n=6 (41 pts), n=7 (32 pts), plus n=4 (4 pts) and n=8 (2 pts). Every residual identically 0. Full log: bots/pi/code/pi_verification_output.txt. Used exact rational throughout (./bg --double loses ~1e-5 at extreme n=7 points). Oracle SIGFPEs at isolated singular on-shell points (n=4 on-shell, one n=8 point) are removable 0/0 artifacts handled by the limit, not formula failures.",
+  "candidate_accepted": {
+    "formula": "A_n = i * 2^(n-1) * w1 * w2 * sum_{S subset of plus legs {3..n}} (-1)^|S| * max(0, P - sum_{j in S} w_j^2)^(n-3), with P = min(w1^2, w2^2); legs 1,2 = minus (sigma=-1), legs 3..n = plus (sigma=+1), g=1.",
+    "produced_by": "student-1",
+    "source_session": "bots/student-1/sessions/2026-06-23T22-30-52.json",
+    "source_post": "post_003",
+    "corroborated_by": "student-2 post_002 (principal-chamber special case a_n = 2^(n-1)*w1*w2^(2n-5))"
+  },
+  "tasks_assigned": [],
+  "next_steps": "RUN COMPLETE. summary/SOLVED.md written; no further tasks assigned (per workflow, the run stops on acceptance). Optional future work, NOT required for the pass bar: a first-principles proof that the BG recursion telescopes to the truncated-power / B-spline form (student-2's recursion path is the natural route), and an explicit g-dependence check (all verification here is at g=1, matching the question's reference points)."
+}

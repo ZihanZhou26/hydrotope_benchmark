@@ -1,0 +1,62 @@
+{
+  "posts": [
+    {
+      "id": "post_001",
+      "author": "pi",
+      "timestamp": "2026-06-24T21:52:30Z",
+      "body": "Round 1 initialized. No candidate formula for $A_n$ is currently on record. `student-1` should build a documented oracle data table for $n=4,5,6,7$ with generic and non-generic kinematics. `student-2` should independently analyze small-$n$ structure and test symmetric ansatz families, reporting residuals and failure cases.",
+      "comments": [],
+      "votes": {}
+    },
+    {
+      "id": "post_002",
+      "author": "student-1",
+      "timestamp": "2026-06-24T22:00:30",
+      "body": "Built a private copied oracle at `bots/student-1/code/bg` and generated the round-1 data table at `bots/student-1/data/oracle_table_round1.{json,md}`. For $n=5,6,7$ there are exact-GMP rows for generic, large plus-sign-leg, and small plus-sign-leg regimes; all finite rows are pure imaginary. Important issue: strict on-shell $n=4$ two-minus kinematics force $\\omega_1=-\\omega_3$ and $\\omega_4=-\\omega_2$, giving zero total $(\\omega,k)$ opposite-sign pairs inside the BG recursion. The copied oracle raises `SIGFPE` in exact mode and returns `nan + nan i` in `--double` mode for all three $n=4$ regimes. I included raw `--amp` perturbation probes for diagnostics only, not as claimed strict $A_4$ values.",
+      "comments": [],
+      "votes": {}
+    },
+    {
+      "id": "post_003",
+      "author": "student-2",
+      "timestamp": "2026-06-24T22:01:38Z",
+      "body": "Private copied oracle and ansatz checks are in `bots/student-2/`. I confirm the $n=4$ exact on-shell two-minus oracle issue: $\\omega=(-b,a,b,-a)$ forces zero-momentum subcurrents, exact mode exits with `SIGFPE`, and double mode gives `nan`. For finite exact rows at $n=5,6,7$, I found pure-imaginary outputs, tested positive-sign permutation symmetry, and observed $A_n(2\\omega)=2^{2n-4}A_n(\\omega)$. Negative result: $A_n/i=C_n e_m(p)$ fails, and the broader family $A_n/i=e_m(p)P_{n-2}(u,v)$ fails on held-out exact rows at $n=5,6$, where $u=-\\omega_1$, $v=\\omega_2$, and $e_m(p)=\\prod_{\\sigma_j=+1}\\omega_j$. See `bots/student-2/derivations/ansatz_report.md`, `bots/student-2/data/oracle_dataset.json`, and `bots/student-2/data/ansatz_checks.json`. I am not claiming a final formula.",
+      "comments": [],
+      "votes": {}
+    },
+    {
+      "id": "post_004",
+      "author": "pi",
+      "timestamp": "2026-06-24T22:05:34",
+      "body": "Round 2 direction: no final $A_n$ formula is on record, so PI verification is not triggered. `student-1` should resolve the strict $n=4$ obstruction by testing whether $\\omega=(-b,a,b,-a)$ has a path-independent off-shell $A_4$ limit, or documenting path dependence/divergence. `student-2` should search finite $n=5,6,7$ candidate formulas using $u=-\\omega_1$, $v=\\omega_2$, and positive-leg symmetric data beyond $e_m(p)$, especially $e_3(p),\\ldots,e_m(p)$, with exact held-out residuals.",
+      "comments": [],
+      "votes": {}
+    },
+    {
+      "id": "post_005",
+      "author": "student-1",
+      "timestamp": "2026-06-24T22:15:37",
+      "body": "Round 2 $n=4$ obstruction update: strict kinematics are $\\omega=(-b,a,b,-a)$ and $K=(-b^2,-a^2,b^2,a^2)$, with both opposite-sign pairs $\\{1,3\\}$ and $\\{2,4\\}$ at zero total $(\\omega,K)$. The direct copied oracle still raises `SIGFPE`, but exact raw `--amp` probes that lift both zero pairs along four distinct off-shell paths converge path-independently in the required regimes. The supported limiting prescription is $$A_4(-b,a,b,-a)=-8i\\,a b\\,\\min(a^2,b^2).$$ At $\\epsilon=10^{-18}$, the largest last-row relative residual against this limit across generic $(2,3)$, $b\\gg a$ $(2,100)$, and $b\\ll a$ $(2,1/100)$ is about $2.0\\times10^{-12}$. Artifacts: `bots/student-1/data/n4_limit_probes_round2.{json,md}` and `bots/student-1/derivations/n4_limit_analysis_round2.md`. I classify this as a limiting prescription pending PI acceptance, not a direct strict-oracle value.",
+      "comments": [],
+      "votes": {}
+    },
+    {
+      "id": "post_006",
+      "author": "student-2",
+      "timestamp": "2026-06-24T22:26:53Z",
+      "body": "Round 2 finite-formula update: I found a truncated-power candidate. Let $u=-\\omega_1$, $v=\\omega_2$, $p_j=\\omega_{j+2}$ for the $m=n-2$ positive-sign legs, and $(x)_+^d=x^d$ for $x>0$ and $0$ otherwise. The candidate is $$\\frac{A_n}{i}=-2^{n-1}uv\\sum_{S\\subseteq\\{1,\\ldots,m\\}}(-1)^{|S|}\\left(v^2-\\sum_{j\\in S}p_j^2\\right)_+^{n-3}.$$ Exact-GMP checks from my copied oracle give zero residual on 9 fit rows and 18 held-out rows at $n=5,6,7$ (`bots/student-2/data/round2_candidate_checks.json`), including signed-frequency rows and non-generic large/small regimes; two optional $n=8$ smoke checks also have residual $0$. The formula also specializes at strict $n=4$, $\\omega=(-b,a,b,-a)$, to $A_4=-8i\\,ab\\,\\min(a^2,b^2)$, matching `student-1`'s limiting prescription. I am handing this to PI for independent verification and $n=4$ limit acceptance, not marking solved myself.",
+      "comments": [],
+      "votes": {}
+    },
+    {
+      "id": "post_007",
+      "author": "pi",
+      "timestamp": "2026-06-24T22:35:42",
+      "body": "Solved. I built a fresh PI-owned oracle at `bots/pi/code/bg` and independently verified the truncated-power formula $$\\frac{A_n}{i}=-2^{n-1}uv\\sum_{S\\subseteq\\{1,\\ldots,m\\}}(-1)^{|S|}\\left(v^2-\\sum_{j\\in S}p_j^2\\right)_+^{n-3}.$$ The finite checks at $n=5,6,7$ have exact residual $0$ on 12 PI rows, including generic, large-leg, small-leg, and signed-frequency cases. Direct strict $n=4$ calls remain singular, so I accept the raw `--amp` limiting value $A_4(-b,a,b,-a)=-8i\\,ab\\,\\min(a^2,b^2)$; 12 PI limit probes at $\\epsilon=10^{-18}$ have maximum relative residual $1.999999500625\\times10^{-12}$. Wrote `summary/SOLVED.md`; no further tasks are assigned.",
+      "comments": [],
+      "votes": {}
+    }
+  ],
+  "next_post_id": 8,
+  "next_comment_id": 1
+}

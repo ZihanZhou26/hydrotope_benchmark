@@ -27,6 +27,7 @@ three-minus calculation discussed in the paper.
 | `case_1/` | Six single-agent runs with the false hint |
 | `case_2/` | Six single-agent runs with the true hint |
 | `case_3/` | Six single-agent runs with no hint |
+| `Bot-research/questions/` | PI and two-student two-minus workflows using Claude and Codex |
 | `recursive_scaffold/` | PI--student rediscovery run for the two-minus formula |
 | `three_minus_recursive/` | PI--student run for the six-point three-minus amplitude |
 | `three_minus_single/` | Independent three-minus derivation and verification material |

@@ -1,0 +1,63 @@
+claims:
+  - id: s1_001
+    title: "Closed form for A_n in the two-minus sector (truncated inclusion-exclusion)"
+    timestamp: "2026-06-23T22:27:14"
+    status: verified
+    statement: >
+      A_n = i * a_n with
+      a_n = 2^(n-1) * omega_1 * omega_2 *
+            sum_{S subset of plus legs {3..n}} (-1)^|S| * max(0, P - sum_{j in S} omega_j^2)^(n-3),
+      where P = min(omega_1^2, omega_2^2) is the squared magnitude of the SMALLER
+      minus leg, and plus legs are 3..n (sigma=+1). Valid for all n>=4 and
+      arbitrary in-sector kinematics. Equivalent: a_n/(2^(n-1) w1 w2) is the
+      finite difference prod_j (1 - T_{t_j}) applied to (x)_+^(n-3) at x=P,
+      t_j=omega_j^2.
+    evidence:
+      - "Bit-exact vs oracle ./bg at the PI reference points: n=4 (-24,-320 via delta-limit), n=5 (-544/7, -3328), n=6 (-1024/5)."
+      - "Bit-exact on random EXACT-rational all-chamber scans: n=5 60/60, n=6 60/60, n=7 40/40 (chamber types b0m5h0..b4m1h0)."
+      - "Bit-exact at non-generic regimes: n=5 -w 1,2,1000 = -16048096/1003 (PI value); one plus<<; n=6 one plus>>; n=6 one free freq<<."
+      - "n=7 --double shows ~1e-5 oracle round-off at small-frequency points; exact-rational n=7 confirms bit-exact (formula is correct, the discrepancy is the oracle's long double)."
+    code: "bots/student-1/code/verify_universal.py ; dataset bots/student-1/data/dataset.csv (115 pts, all rel-residual 0)"
+    residuals: "relative residual = 0 (exact rational) at every tested point; pass bar 1e-10 met with margin."
+  - id: s1_002
+    title: "Deepest-chamber monomial form"
+    timestamp: "2026-06-23T22:27:14"
+    status: verified
+    statement: >
+      When the smaller minus leg is the globally smallest magnitude (all plus
+      t_j >= P), the closed form collapses to the single monomial
+      a_n = 2^(n-1) * omega_1 * omega_2 * [min(omega_1^2, omega_2^2)]^(n-3).
+      This already reproduces every PI reference point and the 'one frequency >>'
+      regime. It is the |S|=empty term of claim s1_001.
+    evidence:
+      - "All PI reference points lie in this chamber and match exactly."
+      - "n=5 -w 1,2,1000 -> 16*omega_1 = -16048096/1003 (matches PI)."
+    code: "bots/student-1/code/verify_conj.py"
+  - id: s1_003
+    title: "Symmetry group of a_n is S_2(minus legs) x S_{n-2}(plus legs)"
+    timestamp: "2026-06-23T22:27:14"
+    status: verified
+    statement: >
+      a_n is invariant under swapping the two minus legs {1,2} and under any
+      permutation of the plus legs {3..n}, and is NOT invariant under any
+      minus<->plus swap. Confirmed by evaluating the oracle on permuted omega.
+    evidence:
+      - "symmetry.py: swap-minus invariant; all plus-leg permutations invariant; minus<->plus swap changes the value (n=5,6)."
+    code: "bots/student-1/code/symmetry.py"
+  - id: s1_004
+    title: "a_n is piecewise-polynomial in the squared magnitudes, NOT rational in symmetric polynomials"
+    timestamp: "2026-06-23T22:27:14"
+    status: verified
+    statement: >
+      a_n is purely imaginary and homogeneous of degree 2n-4 (PI facts,
+      re-confirmed). It is piecewise-rational/polynomial: a degree-(n-3)
+      polynomial in the squared magnitudes on each chamber, glued continuously
+      across chamber walls |k_S|=0. It is NOT a global rational function and NOT
+      a rational function of the plus-leg elementary symmetric polynomials
+      e1,e2,... (even within one chamber) -- the ordering / abs(k_S) is intrinsic
+      (already true at n=4). The single surviving cutoff parameter is P; plus leg
+      j only contributes once omega_j^2 < P.
+    evidence:
+      - "fit_esym.py / localfit.py: rational fit in (e1,e2,e3) is inconsistent at every denominator degree tested."
+      - "n=4 delta-limit is direction-dependent off the deepest chamber (genuinely singular on-shell point); chambers map exactly to magnitude orderings."
+    code: "bots/student-1/code/fit_esym.py, localfit.py, n4_limit.py"

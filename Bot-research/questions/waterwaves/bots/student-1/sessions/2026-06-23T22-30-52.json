@@ -1,0 +1,30 @@
+{
+  "bot": "student-1",
+  "timestamp": "2026-06-23T22:30:52",
+  "task_id": "t_r1_s1",
+  "status": "complete",
+  "summary": "Found and bit-exactly verified a closed form for A_n in the two-minus sector valid for ALL n>=4 and ARBITRARY in-sector kinematics (all chambers): A_n = i * 2^(n-1) * w1*w2 * sum_{S subset plus legs}(-1)^|S| max(0, P - sum_{j in S} w_j^2)^(n-3), P=min(w1^2,w2^2). Its deepest-chamber limit is the monomial 2^(n-1) w1 w2 min(w1^2,w2^2)^(n-3), which equals student-2's independently-derived principal-chamber result 2^(n-1) w1 w2^(2n-5) -- a clean cross-check. This closes the all-chamber gap student-2 flagged.",
+  "work_done": [
+    "Built own oracle copy bots/student-1/code/bg.cpp (documented build) and a Python harness bgio.py; reproduced PI reference values exactly.",
+    "Confirmed PI facts independently: A_n purely imaginary, homogeneity degree 2n-4.",
+    "Determined symmetry group S_2(minus {1,2}) x S_{n-2}(plus {3..n}) by evaluating the oracle on permuted omega (symmetry.py).",
+    "Established a_n is piecewise-polynomial in the squared magnitudes and NOT rational in plus-leg symmetric polynomials (fit_esym/localfit); chambers = sign patterns of subset momenta |k_S|.",
+    "Extracted per-chamber analytic forms via local free-frequency rational fits (freefit.py): factor 2^(n-1) w1 w2 times a degree-(n-3) polynomial in the squares.",
+    "Discovered the universal truncated inclusion-exclusion form and verified it bit-exactly: PI reference points (n=4,5,6); random EXACT all-chamber scans n=5 60/60, n=6 60/60, n=7 40/40; non-generic regimes (one freq >> and <<).",
+    "Built exact-rational dataset data/dataset.csv (115 points, n=4..7, all chambers, relative residual = 0) and two figures.",
+    "Wrote derivations/empirical_structure_report.md; registered claims s1_001..s1_004, figures s1_fig_001..002, decisions s1_dec_001..004."
+  ],
+  "key_results": {
+    "closed_form": "A_n = i * 2^(n-1) * w1*w2 * sum_{S subset {3..n}} (-1)^|S| * max(0, P - sum_{j in S} w_j^2)^(n-3), P = min(w1^2, w2^2)",
+    "deepest_chamber": "A_n = i * 2^(n-1) * w1*w2 * min(w1^2,w2^2)^(n-3)  (= student-2's 2^(n-1) w1 w2^(2n-5))",
+    "verification": "relative residual = 0 (exact rational) at every tested point, n=4(delta-limit),5,6,7; pass bar 1e-10 met exactly.",
+    "oracle_note": "./bg --double for n=7 loses up to ~1e-5 at small-frequency points; exact-rational n=7 (~0.5s/pt) is bit-exact -- agrees with student-2's --double caveat."
+  },
+  "cross_check_student_2": "My deepest-chamber monomial (s1_002) equals student-2's principal-chamber derivation (s2_001). My full truncated-IE form extends it to arbitrary kinematics, addressing the round-2 gap student-2 named.",
+  "next_steps": [
+    "PI re-verification of the universal truncated-IE form (use EXACT rational n=7, not --double).",
+    "Analytic (BG-recursion) derivation of the truncated-IE / B-spline structure and of why only the smaller minus square P enters (hand to student-2).",
+    "Check explicit g-dependence vs -g (not separately stress-tested this round).",
+    "Confirm the B-spline interpretation: a_n / (2^(n-1) w1 w2) ~ a B-spline of order n-2 in P with knots {w_j^2}."
+  ]
+}

@@ -1,0 +1,27 @@
+========================================================================
+STRUCTURE / B-SPLINE THEOREM CHECKS (symbolic, exact)
+========================================================================
+  [OK ] 1. operator==subset  n=4 (m=1,k=2)
+  [OK ] 1. operator==subset  n=5 (m=2,k=3)
+  [OK ] 1. operator==subset  n=6 (m=3,k=4)
+  [OK ] 1. operator==subset  n=7 (m=4,k=5)
+  [OK ] 2. principal reduction  n=4: D_n = P^m ?  (1 == 1)
+  [OK ] 2. principal reduction  n=5: D_n = P^m ?  (1 == 1)
+  [OK ] 2. principal reduction  n=6: D_n = P^m ?  (1 == 1)
+  [OK ] 2. principal reduction  n=7: D_n = P^m ?  (1 == 1)
+  [OK ] 3. (m+1)-fold difference of degree-1 poly == 0  (n=4)
+  [OK ] 3. (m+1)-fold difference of degree-2 poly == 0  (n=5)
+  [OK ] 3. (m+1)-fold difference of degree-3 poly == 0  (n=6)
+  [OK ] 3. (m+1)-fold difference of degree-4 poly == 0  (n=7)
+  [OK ] 3b. D_n = 0 for P>=sum t_j  (n=5)
+  [OK ] 3b. D_n = 0 for P>=sum t_j  (n=6)
+  [OK ] 3b. D_n = 0 for P>=sum t_j  (n=7)
+  [OK ] 4. continuity at wall P=t_0  (n=5): value True, 1st-deriv True
+  [OK ] 4. continuity at wall P=t_0  (n=6): value True, 1st-deriv True
+  [OK ] 4. continuity at wall P=t_0  (n=7): value True, 1st-deriv True
+  [OK ] 5. S_{n-2} plus-leg symmetry manifest (n=5)
+  [OK ] 5. S_{n-2} plus-leg symmetry manifest (n=6)
+  [OK ] 5. S_{n-2} plus-leg symmetry manifest (n=7)
+  [OK ] 5b. S_2 minus-leg symmetry manifest: prefactor w1*w2 and P=min(w1^2,w2^2) are symmetric in 1<->2 (by inspection)
+
+RESULT: ALL STRUCTURE CHECKS PASS

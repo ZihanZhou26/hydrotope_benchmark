@@ -1,0 +1,9 @@
+figures:
+  - id: pi_fig_001
+    timestamp: "2026-06-24T22:35:42"
+    type: data_artifact
+    path: "bots/pi/data/pi_truncated_power_verification.json"
+    description: >-
+      Independent PI verification table for the truncated-power formula,
+      including 12 exact finite rows at $n=5,6,7$, direct strict $n=4$ singular
+      oracle checks, and 12 raw `--amp` off-shell $n=4$ limit probes.

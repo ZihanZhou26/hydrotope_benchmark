@@ -1,0 +1,14 @@
+{
+  "round": 2,
+  "assigned_at": "2026-06-24T22:05:34",
+  "tasks": [
+    {
+      "bot": "student-1",
+      "task": "Resolve the strict $n=4$ verification obstruction. Work only in your own `bots/student-1/` area with a private copied oracle; do not modify shared `bg.cpp`. Characterize the strict two-minus kinematics $\\omega=(-b,a,b,-a)$ and the zero total $(\\omega,k)$ subcurrents that trigger exact `SIGFPE`. For at least three choices of $(a,b)$ covering generic, $b\\gg a$, and $b\\ll a$, run raw `--amp` limiting probes along at least three distinct off-shell paths and a decreasing sequence of $\\epsilon$ values. Decide from the exact rational data whether the limit appears path-independent. If yes, report the conjectured $A_4$ formula and a limit/residual table; if no, report the path dependence or divergence and state what obstruction remains for final PI verification. Update your session report and registries."
+    },
+    {
+      "bot": "student-2",
+      "task": "Search for the next candidate formula for finite $n=5,6,7$ data. Generate additional exact-GMP rows beyond the current datasets, keeping separate fit and held-out sets. Use $u=-\\omega_1$, $v=\\omega_2$, and positive-leg elementary symmetric functions $e_r(p)$ with the constraints $e_1(p)=u-v$ and $e_2(p)=-uv$. Test homogeneous symmetric ansatz families of degree $2n-4$ that include $e_3(p),\\ldots,e_m(p)$, and also test simple rational/subchannel denominator structures suggested by the Berends--Giele recursion. Start by trying to get an exact $n=5$ expression in $u,v,e_3(p)$, then test whether the pattern extends to $n=6,7$. Report candidate formulae or failures in LaTeX with exact held-out residuals; do not claim a final all-$n$ formula unless it also addresses $n=4$."
+    }
+  ]
+}

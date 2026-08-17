@@ -1,0 +1,42 @@
+==============================================================================
+n=4  (on-shell singular -> delta->0 limit; formula a4 = 8 w1 w2^3)
+==============================================================================
+ omega=(-3,1,3,-1)  pred=-24  limit~=-24.000000  (eps=1e-5 -> -24.000720)  rel(1e-5)=3.00e-05
+ omega=(-5,2,5,-2)  pred=-320  limit~=-320.000000  (eps=1e-5 -> -320.003980)  rel(1e-5)=1.24e-05
+ omega=(-10,1,10,-1)  pred=-80  limit~=-80.000000  (eps=1e-5 -> -80.019060)  rel(1e-5)=2.38e-04
+ omega=(-7,3,7,-3)  pred=-1512  limit~=-1512.000000  (eps=1e-5 -> -1512.011840)  rel(1e-5)=7.83e-06
+
+==============================================================================
+n=5,6,7  EXACT principal-chamber points (incl. extreme + shuffled plus legs)
+==============================================================================
+
+--- n=5 ---
+ free=[1, 2, 4]              w2min=1 Re=0 relerr=0.0e+00 OK  a=-544/7
+ free=[2, 3, 5]              w2min=1 Re=0 relerr=0.0e+00 OK  a=-3328
+ free=[1, 2, 1000]           w2min=1 Re=0 relerr=0.0e+00 OK  a=-16048096/1003
+ free=[2, 5, 100000]         w2min=1 Re=0 relerr=0.0e+00 OK  a=-5120358417920/100007
+ free=[Fraction(1, 3), 5, 7] w2min=1 Re=0 relerr=0.0e+00 OK  a=-1808/2997
+ free=[1, 1000, 1001]        w2min=1 Re=0 relerr=0.0e+00 OK  a=-24016
+
+--- n=6 ---
+ free=[1, 2, 3, 4]           w2min=1 Re=0 relerr=0.0e+00 OK  a=-1024/5
+ free=[1, 2, 3, 1000000]     w2min=1 Re=0 relerr=0.0e+00 OK  a=-16000096000384/500003
+ free=[1, 5, 2, 8]           w2min=1 Re=0 relerr=0.0e+00 OK  a=-348
+ free=[1, 100, 2, 3]         w2min=1 Re=0 relerr=0.0e+00 OK  a=-169984/53
+ free=[Fraction(1, 2), 3, 9, 4] w2min=1 Re=0 relerr=0.0e+00 OK  a=-63/22
+
+--- n=7 ---
+ free=[1, 2, 3, 4, 5]        w2min=1 Re=0 relerr=0.0e+00 OK  a=-8896/15
+ free=[1, 3, 4, 5, 6]        w2min=1 Re=0 relerr=0.0e+00 OK  a=-14272/19
+ free=[1, 2, 3, 4, 1000]     w2min=1 Re=0 relerr=0.0e+00 OK  a=-32322048/505
+ free=[1, 9, 2, 8, 3]        w2min=1 Re=0 relerr=0.0e+00 OK  a=-21952/23
+
+==============================================================================
+CHAMBER RULE: w2=min(free) => formula holds; else different piece
+==============================================================================
+ n=6 free=[1, 5, 2, 8]     w2=min? 1  match=True
+ n=7 free=[1, 9, 2, 8, 3]  w2=min? 1  match=True
+ n=6 free=[5, 1, 2, 8]     w2=min? 0  match=False
+ n=6 free=[2, 1, 9, 3]     w2=min? 0  match=False
+
+ALL PRINCIPAL-CHAMBER EXACT CHECKS: PASS

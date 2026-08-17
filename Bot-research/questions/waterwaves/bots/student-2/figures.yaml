@@ -1,0 +1,26 @@
+figures:
+  - id: s2_fig_001
+    round: 1
+    file: figures/verification.png
+    title: "Verification of a_n = 2^(n-1) w1 w2^(2n-5)"
+    caption: >
+      Left: n=4 (on-shell singular) delta->0 limit of the oracle converges to the
+      formula values 8 w1 w2^3 (= -24, -320, -1512) as the off-shell relaxation
+      delta -> 0. Right: n=5,6,7 exact-rational relative residual between the formula
+      and the oracle is identically 0 (floored at 1e-17 for the log axis) across all
+      tested principal-chamber points, incl. extreme regimes; well under the 1e-10 bar.
+    produced_by: code/make_figs.py
+    data: [data/verification_results.txt, data/verification_table.json]
+  - id: s2_fig_002
+    round: 2
+    file: figures/round2_structure.png
+    title: "g-dependence law and B-spline structure of A_n"
+    caption: >
+      Left: exact-rational oracle values |a_n(g)| at n=5,6,7 and g=1,2,3 land
+      exactly on the derived law |a_n(1)| g^(3-n) (log-log) -- a_n scales as g^(3-n).
+      Right: the divided-difference factor D_n(P) (n=5,6) vs P=min(w1^2,w2^2) at fixed
+      plus-leg nodes: a compactly-supported B-spline with kinks (not poles) at the
+      partial sums sum_{j in S} t_j, vanishing for P >= sum_j t_j, and reducing to
+      P^(n-3) in the shaded principal regime P <= min t_j.
+    produced_by: code/round2_make_fig.py
+    data: [data/round2_gcheck_output.txt, data/round2_structure_output.txt]

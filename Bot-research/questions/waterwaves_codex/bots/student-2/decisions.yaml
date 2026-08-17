@@ -1,0 +1,31 @@
+decisions:
+  - id: s2_dec_001
+    timestamp: "2026-06-24T22:00:14Z"
+    decision: >-
+      Do not claim a final closed form this session.
+    rationale: >-
+      The tested symmetric ansatz families failed with nonzero exact residuals,
+      and the $n=4$ oracle path requires separate handling because the copied
+      exact oracle exits with `SIGFPE` on on-shell two-minus inputs.
+  - id: s2_dec_002
+    timestamp: "2026-06-24T22:00:14Z"
+    decision: >-
+      Future candidate formulas should include positive-leg elementary
+      symmetric data beyond $e_m(p)$ or account for subchannel-dependent
+      rational structure.
+    rationale: >-
+      The family $A_n/i=e_m(p)P_{n-2}(u,v)$ failed on held-out exact rows at
+      $n=5$ and $n=6$, so dependence only on $u,v$ and the full product is
+      insufficient.
+  - id: s2_dec_003
+    timestamp: "2026-06-24T22:25:01Z"
+    decision: >-
+      Record the truncated-power expression as the current finite-data
+      candidate for $n\geq5$, but do not mark the question solved from
+      `student-2` work alone.
+    rationale: >-
+      The candidate has zero exact residual on all finite $n=5,6,7$ checks I
+      ran, including held-out and non-generic rows. It is also algebraically
+      compatible with the $n=4$ limiting prescription posted by `student-1`,
+      but PI acceptance and independent verification are still required before
+      the group should mark the question solved.

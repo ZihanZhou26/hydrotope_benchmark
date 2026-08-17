@@ -1,0 +1,826 @@
+{
+  "bot": "student-1",
+  "task": "round 1 oracle data table for two-minus sector",
+  "oracle_source": "bots/student-1/code/bg.cpp copied from shared bg.cpp",
+  "records": [
+    {
+      "case_id": "s1_n4_generic",
+      "n": 4,
+      "regime": "generic",
+      "free_w": [
+        "2",
+        "3"
+      ],
+      "large_or_small_leg": null,
+      "signs": [
+        "-1",
+        "-1",
+        "1",
+        "1"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 4 -w 2,3 -s -1,-1,1,1",
+      "precision_mode": "exact GMP rational",
+      "omega": [
+        "-3",
+        "2",
+        "3",
+        "-2"
+      ],
+      "strict_on_shell_result": {
+        "exact": {
+          "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 4 -w 2,3 -s -1,-1,1,1",
+          "returncode": -8,
+          "stdout": "",
+          "stderr": ""
+        },
+        "double": {
+          "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --double -n 4 -w 2,3 -s -1,-1,1,1",
+          "returncode": 0,
+          "stdout": "n = 4\nomega = {-3, 2, 3, -2}\nA_4 (double) = nan + nan i",
+          "stderr": ""
+        },
+        "interpretation": "The strict resonant two-minus $n=4$ input forces zero total $(\\omega,k)$ in opposite-sign pairs; the copied oracle raises SIGFPE in exact mode and returns nan in double mode."
+      },
+      "regularized_raw_probes": [
+        {
+          "epsilon": "1/1000000",
+          "path": "$K_3\\to K_3(1+\\epsilon)$, $K_4\\to K_4(1+2\\epsilon)$ with $\\omega$ fixed",
+          "K": [
+            "-9",
+            "-4",
+            "9000009/1000000",
+            "500001/125000"
+          ],
+          "W": [
+            "-3",
+            "2",
+            "3",
+            "-2"
+          ],
+          "amplitude_re": "0",
+          "amplitude_im": "-5759995187983979001989/30000028999980875000",
+          "numeric_im": -191.99965399992283
+        },
+        {
+          "epsilon": "1/100000000",
+          "path": "$K_3\\to K_3(1+\\epsilon)$, $K_4\\to K_4(1+2\\epsilon)$ with $\\omega$ fixed",
+          "K": [
+            "-9",
+            "-4",
+            "900000009/100000000",
+            "50000001/12500000"
+          ],
+          "W": [
+            "-3",
+            "2",
+            "3",
+            "-2"
+          ],
+          "amplitude_re": "0",
+          "amplitude_im": "-5759999951879998397900001989/30000000289999998087500000",
+          "numeric_im": -191.99999653999998
+        },
+        {
+          "epsilon": "1/10000000000",
+          "path": "$K_3\\to K_3(1+\\epsilon)$, $K_4\\to K_4(1+2\\epsilon)$ with $\\omega$ fixed",
+          "K": [
+            "-9",
+            "-4",
+            "90000000009/10000000000",
+            "5000000001/1250000000"
+          ],
+          "W": [
+            "-3",
+            "2",
+            "3",
+            "-2"
+          ],
+          "amplitude_re": "0",
+          "amplitude_im": "-5759999999518799999839790000001989/30000000002899999999808750000000",
+          "numeric_im": -191.9999999654
+        },
+        {
+          "epsilon": "1/1000000000000",
+          "path": "$K_3\\to K_3(1+\\epsilon)$, $K_4\\to K_4(1+2\\epsilon)$ with $\\omega$ fixed",
+          "K": [
+            "-9",
+            "-4",
+            "9000000000009/1000000000000",
+            "500000000001/125000000000"
+          ],
+          "W": [
+            "-3",
+            "2",
+            "3",
+            "-2"
+          ],
+          "amplitude_re": "0",
+          "amplitude_im": "-5759999999995187999999983979000000001989/30000000000028999999999980875000000000",
+          "numeric_im": -191.999999999654
+        }
+      ]
+    },
+    {
+      "case_id": "s1_n4_large_plus",
+      "n": 4,
+      "regime": "one plus-sign free leg much larger",
+      "free_w": [
+        "2",
+        "100"
+      ],
+      "large_or_small_leg": "leg 3",
+      "signs": [
+        "-1",
+        "-1",
+        "1",
+        "1"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 4 -w 2,100 -s -1,-1,1,1",
+      "precision_mode": "exact GMP rational",
+      "omega": [
+        "-100",
+        "2",
+        "100",
+        "-2"
+      ],
+      "strict_on_shell_result": {
+        "exact": {
+          "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 4 -w 2,100 -s -1,-1,1,1",
+          "returncode": -8,
+          "stdout": "",
+          "stderr": ""
+        },
+        "double": {
+          "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --double -n 4 -w 2,100 -s -1,-1,1,1",
+          "returncode": 0,
+          "stdout": "n = 4\nomega = {-100, 2, 100, -2}\nA_4 (double) = nan + nan i",
+          "stderr": ""
+        },
+        "interpretation": "The strict resonant two-minus $n=4$ input forces zero total $(\\omega,k)$ in opposite-sign pairs; the copied oracle raises SIGFPE in exact mode and returns nan in double mode."
+      },
+      "regularized_raw_probes": [
+        {
+          "epsilon": "1/1000000",
+          "path": "$K_3\\to K_3(1+\\epsilon)$, $K_4\\to K_4(1+2\\epsilon)$ with $\\omega$ fixed",
+          "K": [
+            "-10000",
+            "-4",
+            "1000001/100",
+            "500001/125000"
+          ],
+          "W": [
+            "-100",
+            "2",
+            "100",
+            "-2"
+          ],
+          "amplitude_re": "0",
+          "amplitude_im": "-394987741937303771701/63750032485906250",
+          "numeric_im": -6195.882990720467
+        },
+        {
+          "epsilon": "1/100000000",
+          "path": "$K_3\\to K_3(1+\\epsilon)$, $K_4\\to K_4(1+2\\epsilon)$ with $\\omega$ fixed",
+          "K": [
+            "-10000",
+            "-4",
+            "100000001/10000",
+            "50000001/12500000"
+          ],
+          "W": [
+            "-100",
+            "2",
+            "100",
+            "-2"
+          ],
+          "amplitude_re": "0",
+          "amplitude_im": "-58267125368455102150104643/9107142903606584375000",
+          "numeric_im": -6397.958831345484
+        },
+        {
+          "epsilon": "1/10000000000",
+          "path": "$K_3\\to K_3(1+\\epsilon)$, $K_4\\to K_4(1+2\\epsilon)$ with $\\omega$ fixed",
+          "K": [
+            "-10000",
+            "-4",
+            "10000000001/1000000",
+            "5000000001/1250000000"
+          ],
+          "W": [
+            "-100",
+            "2",
+            "100",
+            "-2"
+          ],
+          "amplitude_re": "0",
+          "amplitude_im": "-407998698775807838571489746812501/63750000003252499609062500000",
+          "numeric_im": -6399.9795883135985
+        },
+        {
+          "epsilon": "1/1000000000000",
+          "path": "$K_3\\to K_3(1+\\epsilon)$, $K_4\\to K_4(1+2\\epsilon)$ with $\\omega$ fixed",
+          "K": [
+            "-10000",
+            "-4",
+            "1000000000001/100000000",
+            "500000000001/125000000000"
+          ],
+          "W": [
+            "-100",
+            "2",
+            "100",
+            "-2"
+          ],
+          "amplitude_re": "0",
+          "amplitude_im": "-407999986987758079983857148959354812501/63750000000032524999960906250000000",
+          "numeric_im": -6399.999795883136
+        }
+      ]
+    },
+    {
+      "case_id": "s1_n4_small_plus",
+      "n": 4,
+      "regime": "one plus-sign free leg much smaller",
+      "free_w": [
+        "2",
+        "1/100"
+      ],
+      "large_or_small_leg": "leg 3",
+      "signs": [
+        "-1",
+        "-1",
+        "1",
+        "1"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 4 -w 2,1/100 -s -1,-1,1,1",
+      "precision_mode": "exact GMP rational",
+      "omega": [
+        "-1/100",
+        "2",
+        "1/100",
+        "-2"
+      ],
+      "strict_on_shell_result": {
+        "exact": {
+          "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 4 -w 2,1/100 -s -1,-1,1,1",
+          "returncode": -8,
+          "stdout": "",
+          "stderr": ""
+        },
+        "double": {
+          "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --double -n 4 -w 2,1/100 -s -1,-1,1,1",
+          "returncode": 0,
+          "stdout": "n = 4\nomega = {-0.00999999999999979, 2, 0.01, -2}\nA_4 (double) = nan + nan i",
+          "stderr": ""
+        },
+        "interpretation": "The strict resonant two-minus $n=4$ input forces zero total $(\\omega,k)$ in opposite-sign pairs; the copied oracle raises SIGFPE in exact mode and returns nan in double mode."
+      },
+      "regularized_raw_probes": [
+        {
+          "epsilon": "1/1000000",
+          "path": "$K_3\\to K_3(1+\\epsilon)$, $K_4\\to K_4(1+2\\epsilon)$ with $\\omega$ fixed",
+          "K": [
+            "-1/10000",
+            "-4",
+            "1000001/10000000000",
+            "500001/125000"
+          ],
+          "W": [
+            "-1/100",
+            "2",
+            "1/100",
+            "-2"
+          ],
+          "amplitude_re": "0",
+          "amplitude_im": "257229440778241992032000001/16083216080208000100000000000000",
+          "numeric_im": 1.5993656958622127e-05
+        },
+        {
+          "epsilon": "1/100000000",
+          "path": "$K_3\\to K_3(1+\\epsilon)$, $K_4\\to K_4(1+2\\epsilon)$ with $\\omega$ fixed",
+          "K": [
+            "-1/10000",
+            "-4",
+            "100000001/1000000000000",
+            "50000001/12500000"
+          ],
+          "W": [
+            "-1/100",
+            "2",
+            "1/100",
+            "-2"
+          ],
+          "amplitude_re": "0",
+          "amplitude_im": "-36019273679281419436229481142857/2297147451543142971430000000000000000",
+          "numeric_im": -1.5680000713530572e-05
+        },
+        {
+          "epsilon": "1/10000000000",
+          "path": "$K_3\\to K_3(1+\\epsilon)$, $K_4\\to K_4(1+2\\epsilon)$ with $\\omega$ fixed",
+          "K": [
+            "-1/10000",
+            "-4",
+            "10000000001/100000000000000",
+            "5000000001/1250000000"
+          ],
+          "W": [
+            "-1/100",
+            "2",
+            "1/100",
+            "-2"
+          ],
+          "amplitude_re": "0",
+          "amplitude_im": "-257228549158565974593605613446367999999/16080000321608020000080001000000000000000000",
+          "numeric_im": -1.5996800000862363e-05
+        },
+        {
+          "epsilon": "1/1000000000000",
+          "path": "$K_3\\to K_3(1+\\epsilon)$, $K_4\\to K_4(1+2\\epsilon)$ with $\\omega$ fixed",
+          "K": [
+            "-1/10000",
+            "-4",
+            "1000000000001/10000000000000000",
+            "500000000001/125000000000"
+          ],
+          "W": [
+            "-1/100",
+            "2",
+            "1/100",
+            "-2"
+          ],
+          "amplitude_re": "0",
+          "amplitude_im": "-257279485491585761373459360561597446367999999/16080000003216080200000008000100000000000000000000",
+          "numeric_im": -1.5999968000007998e-05
+        }
+      ]
+    },
+    {
+      "case_id": "s1_n5_generic",
+      "n": 5,
+      "regime": "generic",
+      "free_w": [
+        "2",
+        "5/2",
+        "3"
+      ],
+      "large_or_small_leg": null,
+      "signs": [
+        "-1",
+        "-1",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 5 -w 2,5/2,3 -s -1,-1,1,1,1",
+      "precision_mode": "exact GMP rational",
+      "omega": [
+        "-9/2",
+        "2",
+        "5/2",
+        "3",
+        "-3"
+      ],
+      "omega_formula_check": [
+        "-9/2",
+        "2",
+        "5/2",
+        "3",
+        "-3"
+      ],
+      "amplitude": {
+        "re": "0",
+        "im": "-2304",
+        "numeric_re": 0.0,
+        "numeric_im": -2304.0
+      },
+      "double_sanity_check": {
+        "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --double -n 5 -w 2,5/2,3 -s -1,-1,1,1,1",
+        "numeric_re": 0.0,
+        "numeric_im": -2304.0,
+        "relative_error_re": 0.0,
+        "relative_error_im": 0.0
+      },
+      "raw_exact_output": "n = 5\nomega = {-9/2, 2, 5/2, 3, -3}\nA_5 = i * (-2304)\nA_5 (numeric) = 0 + -2304 i"
+    },
+    {
+      "case_id": "s1_n5_large_plus",
+      "n": 5,
+      "regime": "one plus-sign free leg much larger",
+      "free_w": [
+        "2",
+        "100",
+        "3"
+      ],
+      "large_or_small_leg": "leg 3",
+      "signs": [
+        "-1",
+        "-1",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 5 -w 2,100,3 -s -1,-1,1,1,1",
+      "precision_mode": "exact GMP rational",
+      "omega": [
+        "-701/7",
+        "2",
+        "100",
+        "3",
+        "-34/7"
+      ],
+      "omega_formula_check": [
+        "-701/7",
+        "2",
+        "100",
+        "3",
+        "-34/7"
+      ],
+      "amplitude": {
+        "re": "0",
+        "im": "-358912/7",
+        "numeric_re": 0.0,
+        "numeric_im": -51273.142857142855
+      },
+      "double_sanity_check": {
+        "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --double -n 5 -w 2,100,3 -s -1,-1,1,1,1",
+        "numeric_re": 0.0,
+        "numeric_im": -51273.1427346441,
+        "relative_error_re": 0.0,
+        "relative_error_im": 2.389140794536762e-09
+      },
+      "raw_exact_output": "n = 5\nomega = {-701/7, 2, 100, 3, -34/7}\nA_5 = i * (-358912/7)\nA_5 (numeric) = 0 + -51273.1 i"
+    },
+    {
+      "case_id": "s1_n5_small_plus",
+      "n": 5,
+      "regime": "one plus-sign free leg much smaller",
+      "free_w": [
+        "2",
+        "1/100",
+        "3"
+      ],
+      "large_or_small_leg": "leg 3",
+      "signs": [
+        "-1",
+        "-1",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 5 -w 2,1/100,3 -s -1,-1,1,1,1",
+      "precision_mode": "exact GMP rational",
+      "omega": [
+        "-50167/16700",
+        "2",
+        "1/100",
+        "3",
+        "-335/167"
+      ],
+      "omega_formula_check": [
+        "-50167/16700",
+        "2",
+        "1/100",
+        "3",
+        "-335/167"
+      ],
+      "amplitude": {
+        "re": "0",
+        "im": "-4013309833/52187500000",
+        "numeric_re": 0.0,
+        "numeric_im": -0.07690174530299401
+      },
+      "double_sanity_check": {
+        "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --double -n 5 -w 2,1/100,3 -s -1,-1,1,1,1",
+        "numeric_re": 0.0,
+        "numeric_im": -0.0769017453427201,
+        "relative_error_re": 0.0,
+        "relative_error_im": 3.97260835338642e-11
+      },
+      "raw_exact_output": "n = 5\nomega = {-50167/16700, 2, 1/100, 3, -335/167}\nA_5 = i * (-4013309833/52187500000)\nA_5 (numeric) = 0 + -0.0769017 i"
+    },
+    {
+      "case_id": "s1_n6_generic",
+      "n": 6,
+      "regime": "generic",
+      "free_w": [
+        "2",
+        "5/2",
+        "3",
+        "7/2"
+      ],
+      "large_or_small_leg": null,
+      "signs": [
+        "-1",
+        "-1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 6 -w 2,5/2,3,7/2 -s -1,-1,1,1,1,1",
+      "precision_mode": "exact GMP rational",
+      "omega": [
+        "-289/44",
+        "2",
+        "5/2",
+        "3",
+        "7/2",
+        "-195/44"
+      ],
+      "omega_formula_check": [
+        "-289/44",
+        "2",
+        "5/2",
+        "3",
+        "7/2",
+        "-195/44"
+      ],
+      "amplitude": {
+        "re": "0",
+        "im": "-295936/11",
+        "numeric_re": 0.0,
+        "numeric_im": -26903.272727272728
+      },
+      "double_sanity_check": {
+        "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --double -n 6 -w 2,5/2,3,7/2 -s -1,-1,1,1,1,1",
+        "numeric_re": 0.0,
+        "numeric_im": -26903.2727272734,
+        "relative_error_re": 0.0,
+        "relative_error_im": 2.5016513274598682e-14
+      },
+      "raw_exact_output": "n = 6\nomega = {-289/44, 2, 5/2, 3, 7/2, -195/44}\nA_6 = i * (-295936/11)\nA_6 (numeric) = 0 + -26903.3 i"
+    },
+    {
+      "case_id": "s1_n6_large_plus",
+      "n": 6,
+      "regime": "one plus-sign free leg much larger",
+      "free_w": [
+        "2",
+        "100",
+        "3",
+        "7/2"
+      ],
+      "large_or_small_leg": "leg 3",
+      "signs": [
+        "-1",
+        "-1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 6 -w 2,100,3,7/2 -s -1,-1,1,1,1,1",
+      "precision_mode": "exact GMP rational",
+      "omega": [
+        "-43579/434",
+        "2",
+        "100",
+        "3",
+        "7/2",
+        "-1755/217"
+      ],
+      "omega_formula_check": [
+        "-43579/434",
+        "2",
+        "100",
+        "3",
+        "7/2",
+        "-1755/217"
+      ],
+      "amplitude": {
+        "re": "0",
+        "im": "-89249792/217",
+        "numeric_re": 0.0,
+        "numeric_im": -411289.36405529955
+      },
+      "double_sanity_check": {
+        "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --double -n 6 -w 2,100,3,7/2 -s -1,-1,1,1,1,1",
+        "numeric_re": 0.0,
+        "numeric_im": -411290.044605851,
+        "relative_error_re": 0.0,
+        "relative_error_im": 1.6546757852894817e-06
+      },
+      "raw_exact_output": "n = 6\nomega = {-43579/434, 2, 100, 3, 7/2, -1755/217}\nA_6 = i * (-89249792/217)\nA_6 (numeric) = 0 + -411289 i"
+    },
+    {
+      "case_id": "s1_n6_small_plus",
+      "n": 6,
+      "regime": "one plus-sign free leg much smaller",
+      "free_w": [
+        "2",
+        "1/100",
+        "3",
+        "7/2"
+      ],
+      "large_or_small_leg": "leg 3",
+      "signs": [
+        "-1",
+        "-1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 6 -w 2,1/100,3,7/2 -s -1,-1,1,1,1,1",
+      "precision_mode": "exact GMP rational",
+      "omega": [
+        "-448351/85100",
+        "2",
+        "1/100",
+        "3",
+        "7/2",
+        "-5517/1702"
+      ],
+      "omega_formula_check": [
+        "-448351/85100",
+        "2",
+        "1/100",
+        "3",
+        "7/2",
+        "-5517/1702"
+      ],
+      "amplitude": {
+        "re": "0",
+        "im": "-2152030998328351/1329687500000000",
+        "numeric_re": 0.0,
+        "numeric_im": -1.6184486943949996
+      },
+      "double_sanity_check": {
+        "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --double -n 6 -w 2,1/100,3,7/2 -s -1,-1,1,1,1,1",
+        "numeric_re": 0.0,
+        "numeric_im": -1.61844869543611,
+        "relative_error_re": 0.0,
+        "relative_error_im": 6.432766838270358e-10
+      },
+      "raw_exact_output": "n = 6\nomega = {-448351/85100, 2, 1/100, 3, 7/2, -5517/1702}\nA_6 = i * (-2152030998328351/1329687500000000)\nA_6 (numeric) = 0 + -1.61845 i"
+    },
+    {
+      "case_id": "s1_n7_generic",
+      "n": 7,
+      "regime": "generic",
+      "free_w": [
+        "2",
+        "5/2",
+        "3",
+        "7/2",
+        "4"
+      ],
+      "large_or_small_leg": null,
+      "signs": [
+        "-1",
+        "-1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 7 -w 2,5/2,3,7/2,4 -s -1,-1,1,1,1,1,1",
+      "precision_mode": "exact GMP rational",
+      "omega": [
+        "-529/60",
+        "2",
+        "5/2",
+        "3",
+        "7/2",
+        "4",
+        "-371/60"
+      ],
+      "omega_formula_check": [
+        "-529/60",
+        "2",
+        "5/2",
+        "3",
+        "7/2",
+        "4",
+        "-371/60"
+      ],
+      "amplitude": {
+        "re": "0",
+        "im": "-4333568/15",
+        "numeric_re": 0.0,
+        "numeric_im": -288904.5333333333
+      },
+      "double_sanity_check": {
+        "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --double -n 7 -w 2,5/2,3,7/2,4 -s -1,-1,1,1,1,1,1",
+        "numeric_re": 0.0,
+        "numeric_im": -288904.533335008,
+        "relative_error_re": 0.0,
+        "relative_error_im": 5.796698974637195e-12
+      },
+      "raw_exact_output": "n = 7\nomega = {-529/60, 2, 5/2, 3, 7/2, 4, -371/60}\nA_7 = i * (-4333568/15)\nA_7 (numeric) = 0 + -288905 i"
+    },
+    {
+      "case_id": "s1_n7_large_plus",
+      "n": 7,
+      "regime": "one plus-sign free leg much larger",
+      "free_w": [
+        "2",
+        "100",
+        "3",
+        "7/2",
+        "4"
+      ],
+      "large_or_small_leg": "leg 3",
+      "signs": [
+        "-1",
+        "-1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 7 -w 2,100,3,7/2,4 -s -1,-1,1,1,1,1,1",
+      "precision_mode": "exact GMP rational",
+      "omega": [
+        "-45379/450",
+        "2",
+        "100",
+        "3",
+        "7/2",
+        "4",
+        "-2623/225"
+      ],
+      "omega_formula_check": [
+        "-45379/450",
+        "2",
+        "100",
+        "3",
+        "7/2",
+        "4",
+        "-2623/225"
+      ],
+      "amplitude": {
+        "re": "0",
+        "im": "-743489536/225",
+        "numeric_re": 0.0,
+        "numeric_im": -3304397.9377777777
+      },
+      "double_sanity_check": {
+        "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --double -n 7 -w 2,100,3,7/2,4 -s -1,-1,1,1,1,1,1",
+        "numeric_re": 0.0,
+        "numeric_im": -3317641.98184204,
+        "relative_error_re": 0.0,
+        "relative_error_im": 0.004008005183894133
+      },
+      "raw_exact_output": "n = 7\nomega = {-45379/450, 2, 100, 3, 7/2, 4, -2623/225}\nA_7 = i * (-743489536/225)\nA_7 (numeric) = 0 + -3.3044e+06 i"
+    },
+    {
+      "case_id": "s1_n7_small_plus",
+      "n": 7,
+      "regime": "one plus-sign free leg much smaller",
+      "free_w": [
+        "2",
+        "1/100",
+        "3",
+        "7/2",
+        "4"
+      ],
+      "large_or_small_leg": "leg 3",
+      "signs": [
+        "-1",
+        "-1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg -n 7 -w 2,1/100,3,7/2,4 -s -1,-1,1,1,1,1,1",
+      "precision_mode": "exact GMP rational",
+      "omega": [
+        "-948751/125100",
+        "2",
+        "1/100",
+        "3",
+        "7/2",
+        "4",
+        "-12325/2502"
+      ],
+      "omega_formula_check": [
+        "-948751/125100",
+        "2",
+        "1/100",
+        "3",
+        "7/2",
+        "4",
+        "-12325/2502"
+      ],
+      "amplitude": {
+        "re": "0",
+        "im": "-242871148142199211249/9773437500000000000",
+        "numeric_re": 0.0,
+        "numeric_im": -24.85012546938569
+      },
+      "double_sanity_check": {
+        "command": "/Users/matiasz/Library/CloudStorage/Dropbox/PROJECTS-2026/Bot-research/questions/waterwaves_codex/bots/student-1/code/bg --double -n 7 -w 2,1/100,3,7/2,4 -s -1,-1,1,1,1,1,1",
+        "numeric_re": 0.0,
+        "numeric_im": -24.8501256862583,
+        "relative_error_re": 0.0,
+        "relative_error_im": 8.72722382231734e-09
+      },
+      "raw_exact_output": "n = 7\nomega = {-948751/125100, 2, 1/100, 3, 7/2, 4, -12325/2502}\nA_7 = i * (-242871148142199211249/9773437500000000000)\nA_7 (numeric) = 0 + -24.8501 i"
+    }
+  ]
+}

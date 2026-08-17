@@ -1,0 +1,61 @@
+thesis: 'In the two-minus sector the closed-form tree amplitude is $A_n = i\,2^{n-1}\,\omega_1\omega_2 \sum_{S\subseteq\{3,\dots,n\}} (-1)^{|S|}\,[\max(0,\,P-\sum_{j\in S}\omega_j^2)]^{\,n-3}$ with $P=\min(\omega_1^2,\omega_2^2)$ — a verified conjecture matching the Berends–Giele oracle to machine precision for $n=4$–$7$.'
+last_updated: '2026-06-24T12:00:00Z'
+confidence: established
+
+argument_flow:
+  - step: 1
+    title: 'Amplitude is purely imaginary'
+    establishes: 'On-shell, $\mathrm{Re}\,A_n = 0$ exactly, so write $A_n = i\,a_n$ with $a_n$ real. (Parity: every BG current carries an even number of $i$''s; the lone root vertex supplies the single factor of $i$.)'
+    claims: [s2_002, s1_004]
+    requires: []
+    confidence: established
+  - step: 2
+    title: 'Homogeneity and gravity scaling'
+    establishes: '$a_n$ is homogeneous of degree $2n-4$ in the frequencies; gravity enters only through $a_n(g) = g^{\,3-n}\,a_n(1)$, so the closed-form structure is $g$-independent.'
+    claims: [s1_004, s2_005]
+    requires: [1]
+    confidence: established
+  - step: 3
+    title: 'n = 4 is finite (removable oracle singularity)'
+    establishes: 'At $n=4$ the on-shell constraints force an internal current to $0/0$, so the oracle cannot evaluate the exact point; the finite value is recovered by a $\delta\to0$ limit (e.g. $a_4 = -24$).'
+    claims: [s2_003]
+    requires: []
+    confidence: established
+  - step: 4
+    title: 'Principal-chamber monomial (from the BG recursion)'
+    establishes: 'When the smaller minus leg is the globally smallest magnitude, the recursion gives $a_n = 2^{n-1}\,\omega_1\,\omega_2^{\,2n-5}$ (derived symbolically at $n=4,5$).'
+    claims: [s2_001, s1_002]
+    requires: [1, 2]
+    confidence: established
+  - step: 5
+    title: 'All-chamber closed form'
+    establishes: 'Generalizing off the principal chamber: $a_n = 2^{n-1}\,\omega_1\omega_2 \sum_{S\subseteq\{3,\dots,n\}} (-1)^{|S|}\,[\max(0,\,P-\sum_{j\in S}\omega_j^2)]^{\,n-3}$, $P=\min(\omega_1^2,\omega_2^2)$. It collapses to the step-4 monomial in the deepest chamber.'
+    claims: [s1_001, s1_002]
+    requires: [4]
+    confidence: established
+  - step: 6
+    title: 'Structural identity: a univariate B-spline'
+    establishes: 'The subset sum equals the $(n-2)$-fold finite difference of the truncated power $(x)_+^{\,n-3}$ — a univariate B-spline / divided difference. This explains the degree-$2n-4$ homogeneity, $C^{\,n-4}$ continuity across the chamber walls $P=\sum_{j\in S}\omega_j^2$, and the $S_2\times S_{n-2}$ symmetry.'
+    claims: [s2_006, s1_003, s2_004]
+    requires: [5]
+    confidence: likely
+  - step: 7
+    title: 'Independent verification against the oracle'
+    establishes: 'The formula matches $\mathrm{BGAmplitude}$ bit-exactly ($\le 10^{-10}$) at $n=4$–$7$, across principal and non-principal chambers and extreme kinematics (one frequency $\gg$ or $\ll$ the rest).'
+    claims: [s1_001, s2_006]
+    requires: [5, 6]
+    confidence: established
+
+gaps:
+  - description: 'No first-principles proof that the Berends–Giele partition sum telescopes to the B-spline form for general $n$. The result is a verified conjecture (data fit + structural argument + exhaustive numerics), proven only as oracle observations for $n=4$–$7$.'
+    priority: medium
+    suggested_action: 'Prove the term-by-term collapse of the BGAmplitude/BGCurrent partition sum to the alternating subset sum $D_n$ in a general chamber.'
+  - description: 'The $n=4$ value is established only via a $\delta\to0$ limit, because the oracle SIGFPEs at the exact on-shell point.'
+    priority: low
+    suggested_action: 'Optional: an analytic check of the n=4 limit independent of the oracle continuation.'
+
+sensitivity: []
+
+figures_summary:
+  - id: s1_fig_001
+    role: 'Headline check: formula vs oracle residuals across n and chambers.'

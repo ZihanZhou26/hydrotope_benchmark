@@ -1,0 +1,21 @@
+figures:
+  - id: s1_fig_001
+    timestamp: "2026-06-24T22:00:30"
+    type: table
+    title: "Round 1 oracle table for $A_n$"
+    path: "bots/student-1/data/oracle_table_round1.md"
+    data: "bots/student-1/data/oracle_table_round1.json"
+    description: >-
+      Exact-GMP oracle records for $n=5,6,7$ and documented strict $n=4$
+      failure/regularized raw probes, covering generic, large plus-sign leg, and
+      small plus-sign leg regimes.
+  - id: s1_fig_002
+    timestamp: "2026-06-24T22:13:54"
+    type: table
+    title: "Round 2 $n=4$ off-shell limit probes"
+    path: "bots/student-1/data/n4_limit_probes_round2.md"
+    data: "bots/student-1/data/n4_limit_probes_round2.json"
+    description: >-
+      Exact-rational raw `--amp` probes for strict $n=4$ two-minus kinematics
+      along four off-shell paths and three $(a,b)$ regimes, with residuals
+      against $A_4(-b,a,b,-a)=-8i\,a b\,\min(a^2,b^2)$.
