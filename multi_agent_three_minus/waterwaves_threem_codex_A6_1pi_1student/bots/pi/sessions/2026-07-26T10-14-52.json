@@ -1,0 +1,21 @@
+{
+  "id": "pi_sess_r3",
+  "bot": "pi",
+  "timestamp": "2026-07-26T10:14:52",
+  "round": 3,
+  "summary": "Round-3 PI session. (1) Re-confirmed the crux independently: A_6 is genuinely RATIONAL, not piecewise-polynomial (local 10^-6-ball test FAIL 285/286 for A_6, PASS 49/49 for the A_5 control) [pi_v_009]; this supersedes verify_round2.py check_C's optimistic 'chamber-poly' label. (2) Verified the student's round-2 common-cubic reduction s1_006-009 exactly on 60 points: shared e1=s,e2=p across the two triples; product identity prod(omega_i+omega_j)=-(r-t)^3 [pi_v_010]. (3) New negative result: A_6/i is NOT rational in the symmetric invariants (s,p,r,t) at any denominator weighted-degree <=6 (per-chamber, full-rank no-relation), because individual roots are only algebraic there -- so (s,p,r,t) fitting is a dead coordinate ring; use individual signed omega_i [pi_v_011]. (4) KEY new structural result: A_6 = i*(prod_k omega_k)*H = -i*r*t*H, with H a degree-2, even, S3xS3+swap-symmetric RATIONAL function. Verified A_6 vanishes linearly as any single leg->0 (minus and plus), and H=A_6/(i*prod omega) is exactly degree-2 homogeneous [pi_v_012]. The compact problem reduces from a degree-8 rational to the degree-2 rational H, whose sign-definite denominator is NOT a single-leg square. Updated both live summaries; H1 declared dead. Note: round-2 verification was banked but summaries/task were not updated then, so the student had been continuing on the dead H1 -- realigned this round.",
+  "verification": [
+    {"id": "pi_v_009", "claim": "A_6 genuinely rational (re-confirm local-ball crux)", "result": "PASS", "evidence": "bots/pi/code/local_poly.py"},
+    {"id": "pi_v_010", "claim": "common-cubic reduction + product identity (confirms s1_006-009)", "result": "PASS", "evidence": "bots/pi/code/round3_spt.py"},
+    {"id": "pi_v_011", "claim": "A_6/i not rational in (s,p,r,t) to denom degree 6 (dead coordinate ring)", "result": "PASS", "evidence": "bots/pi/code/round3_spt.py"},
+    {"id": "pi_v_012", "claim": "A_6 = i*(prod omega)*H, H degree-2 rational (prefactor factorization)", "result": "PASS", "evidence": "bots/pi/code/pole_at_zero.py"}
+  ],
+  "tasks_assigned": [
+    "student-1 (round 3): Determine H = A_6/(i*prod omega): per-chamber general rational test in the individual signed omega_i to fix H's sign-definite denominator; build H's numerator from individual-square/positive-part blocks (two-minus F2 template); building-block evaluator (no 8-piece table) + BG residual report; term/orbit counts. See tasks/student-1.md."
+  ],
+  "next_steps": [
+    "PI verify the student's H denominator/numerator to the definition-of-done bar (>=20 chamber samples, permutations, hierarchies, two-sided wall/limit approaches, 5-pt calibration).",
+    "If H is pinned, assemble A_6 = i*prod(omega)*P/Q and check displayability in summary/SOLVED.md against the compactness bar.",
+    "Confirm which wall families are genuine boundaries of H vs smooth-through, and the chamber selection rule tied to the 8 squared-merge words."
+  ]
+}

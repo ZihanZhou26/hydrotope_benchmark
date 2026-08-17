@@ -1,0 +1,79 @@
+{
+  "id": "pi_session_r7",
+  "bot": "pi",
+  "timestamp": "2026-07-26T19:35:05",
+  "round": 7,
+  "phase": "pi",
+  "final_summary_round": false,
+  "summary": "Round-7 normal research round. Read question.md, board_recent.json, both live summaries (logic.yaml, group_meeting_notes.md), both students' round-6 HANDOFFs, the round-6 verifier VERIFICATION.md + board post_025, s2_011 (the rejected two-block candidate) and s1_008 (the confirmed obstruction), and pi/verified.yaml; inspected jobs/ (empty, only jobs/collected). No new student<->verifier conflict and no surprising failure this round, so NO PI double-check was performed (see pi_double_check). The state is now coherent and the obstruction is razor-sharp. HEADLINE: the round-6 verifier CONFIRMED student-1's rank-17<18 obstruction (no global R_0 from the naive assembly) and REFUTED student-2's two-block candidate R_q^cand (S-R_q^cand jumps across 18/18 isolated q-walls; student-2 had itself flagged it unverified after a technician-death blocker). The verifier localized the EXACT cause (F18): the per-wall q-brick VALUE is locally correct (on-wall -32 beta^2[F+(a+b)D], off-wall matches), but the four-leg beta=min SELECTOR written as two case-split blocks H^(-beta),H^(+beta) is discontinuous when its argmin flips across a cross-sector magnitude tie, so every OTHER brick injects a spurious jump at each q-wall. R_Q was RE-CONFIRMED globally (V1: S=R_spline-R_Q smooth 24/24 fresh + 27/27 round-5). Fixed the minor H-block notation (threshold = sum of squares sum omega_j^2, not (sum omega_j)^2). Recorded: three of the four R_spline/A_6 pieces are pinned (P_pole, R_Q, and the local q-brick value); the ONE remaining task is a GLOBALLY-CONTINUOUS nested q-orbit R_q + the global symmetric R_0. Directed both students complementarily toward a continuous R_q and a complete compact A_6 candidate for the round-7/8 verifier, with explicit anti-blocker orchestration guidance.",
+  "state_of_evidence": {
+    "verifier_confirmed": [
+      "F1 5pt calibration (A_5=-19968 i); F2 degree 8; F3 dual S3 symmetry; F4 purely imaginary",
+      "F6 8-word selector (standard sheet + 35380 off-sheet + 750 BG pts)",
+      "F7 Delta = C^3, D_min = C (deg 3), N11 deg 11",
+      "F8 d_T factorization, only Q_T>0 channels, 1/d_T=(w_m+w_pbar)/(2C)",
+      "F9 P_pole compact table-free correct in all 8 chambers; threshold = SUM OF SQUARES (notation fixed); re-confirmed round 6 (both forms, anchor exact)",
+      "F10 R_spline denominator-free deg-8 dual-S3 spline; order-1 pair-wall jump q_mp H_mp, deg H_mp=6",
+      "F11 compact same-energy order-1 brick VALUE, four-leg beta selector (7/7); F12 H_mp itself a spline",
+      "F13 mechanism: naive independent-orbit sum does not integrate; diagnosed as missing Q-orbit + non-continuous q-brick",
+      "F15 [r4] R_spline AND A_6 jump across 3-leg walls Q_{m;pq}=0, order EXACTLY 3, S3xS3 orbit; intrinsic",
+      "F17 order-3 brick G_{m;pq}=-32 w_m w_pbar (monomial); R_Q=-32 sum (Q_{m;pq})_+^3 w_m w_pbar; re-confirmed GLOBALLY round 6 (V1: smooth 24/24 fresh + 27/27 round-5)",
+      "F18 [NEW, r6 verifier V3/V4/V5] ROOT CAUSE: S=R_spline-R_Q is dual-S3/deg-8 order-1 spline over the 9 q-walls only (0/36 sym violations); per-wall brick VALUE locally correct; BUT the two-block beta-selector R_q^cand is globally discontinuous (S-R_q^cand jumps 18/18 q-walls) because the two blocks disagree at cross-sector ties. Correct R_q must be a nested/hydrotope continuous positive-part orbit. Confirms student-1's rank 17<18.",
+      "H1/H2/H3 dead ends; H4 [NEW]: student-2's two-block q-orbit R_q^cand REFUTED (globally discontinuous; selector is the defect)"
+    ],
+    "pi_confirmed": [
+      "F14 [pi_vchk_002] NARROW part correct; over-generalization retired",
+      "F16 [pi_vchk_003] A_6 itself jumps across Q_{1;46}=0 with no magnitude tie (BG*C, no P_pole)",
+      "F17 [pi_vchk_004] G_{m;pq}=-32 w_m w_pbar re-derived independently on two discriminating lines"
+    ],
+    "pinned": [
+      "P_pole (F9) compact table-free",
+      "R_Q = -32 sum (Q_{m;pq})_+^3 w_m w_pbar (order-3 Q-orbit, F17), re-confirmed globally round 6",
+      "the LOCAL q-brick VALUE H_mp (on-wall -32 beta^2[F+(a+b)D], off-wall matches; F18b)",
+      "So the ONLY unknowns are: a GLOBALLY-CONTINUOUS q-orbit R_q, and the global symmetric R_0; S=R_spline-R_Q=R_0+R_q"
+    ],
+    "not_yet_trusted": [
+      "the globally-continuous compact q-orbit R_q (nested/hydrotope brick, continuous at cross-sector ties) -- open deliverable",
+      "the global symmetric R_0 -- open deliverable",
+      "whether the rank-17<18 defect becomes rank 18 once a CONTINUOUS R_q is used (assigned both students)",
+      "wall-set completeness (18 walls corroborated, not symbolically proven -- minor)",
+      "PI structural lead: does P_pole + R_Q merge into one channel object? (optional)",
+      "PI structural lead: is H_mp a two-minus-A_5-numerator-like nested H-block over the 4 environment legs? (to test)",
+      "symbolic exclusion of the 2 absent 8-words (numeric only)"
+    ],
+    "blocking_gaps": [
+      "G1 (razor-sharp): no compact closed form for A_6 yet. P_pole (F9), R_Q (F17) and the local q-brick value (F18b) pinned; remaining = a table-free GLOBALLY-CONTINUOUS order-1 q-orbit R_q whose bricks are mutually continuous at shared-leg magnitude ties (F18c) + the global symmetric R_0. Clears only when a compact continuous R_spline is produced AND a later verifier confirms the full assembled A_6 vs fresh BG (>=20 samples, permutations, hierarchical, two-sided q/Q/pole limits, 5-pt calib)."
+    ]
+  },
+  "verifier_findings_resolution": {
+    "VF_Rqcand_blocking": "Round-6 verifier [blocking]: student-2's two-block R_q^cand is WRONG globally (jumps 18/18 q-walls). -> ACCEPTED; retired as dead_end H4; root cause localized (F18). The correct globally-continuous R_q is the round-7 target. No gap beyond G1.",
+    "VF_obstruction_blocking": "Round-6 verifier [blocking]: student-1's rank 17<18 obstruction CONFIRMED (no global R_0). -> ACCEPTED; feeds G1. Decomposition is SOUND (V2); the missing piece is the compact continuous q-orbit. Repair assigned to both students.",
+    "VF_G1_blocking": "No complete compact A_6 -> G1 (razor-sharp). Repair assigned to both students, complementary.",
+    "VF_completeness_minor": "18-wall completeness corroborated (round-6 V2: no hidden wall) but not symbolically proven. -> Open_minor, low priority vs the assembly.",
+    "VF_hblock_notation_minor": "H-block threshold = SUM OF SQUARES sum omega_j^2, not (sum omega_j)^2 (only this gives P_pole=42588288/7). -> RESOLVED: fixed in logic.yaml notation.Hblock + F9 and in group_meeting_notes.md.",
+    "VF_sigfpe_standing": "BG SIGFPE on walls/poles. -> Standing rule; two-sided limits + cell-adjacency certification mandatory."
+  },
+  "pi_double_check": {
+    "performed": false,
+    "reason": "No student<->verifier conflict and no surprising failure this round: the round-6 verifier CONFIRMED student-1's obstruction and REFUTED student-2's two-block candidate (which student-2 had itself flagged unverified), and re-confirmed R_Q globally -- all coherent with the shared state. The load-bearing brick R_Q was already PI-double-checked last round (pi_vchk_004). Per the exceptional-double-check policy (claimed complete compact formula / decisive new simplification / surprising verifier failure / conflict), none is present, so a targeted double-check would only duplicate the verifier's confirmed work. Reserved for the first COMPLETE compact A_6 candidate, which the PI must independently implement and verify before any SOLVED.md.",
+    "prior_checks": "pi_vchk_001 (r1 foundation), pi_vchk_002 (r4 narrow-correct/over-general-retired), pi_vchk_003 (r5 Q-wall jump), pi_vchk_004 (r6 order-3 brick = -32 w_m w_pbar). See bots/pi/verified.yaml."
+  },
+  "jobs_inspected": "jobs/ holds only jobs/collected/ (empty); no registered or completed background jobs this round. student-2's round-6 compute was fully blocked by a technician context-exhaustion (no artifact); addressed via explicit anti-blocker orchestration guidance in both task briefs.",
+  "tasks_assigned": {
+    "student-2": "BOTTOM-UP continuous brick: build the GLOBALLY-CONTINUOUS q-orbit. Confirm S=R_spline-R_Q is smooth across the 9 Q-walls and jumps only (order 1) at the 9 q-walls. CORE: replace the rejected two-block beta-selector (H4) with a manifestly-continuous NESTED positive-part brick B_mp -- resolve the four-leg beta=min ONLY through nested truncated powers (two-minus master F5 / P_pole H-block style), continuous by construction, whose q_mp=0 branch difference reproduces -32 beta^2[F+(a+b)D]. Test the lead: is H_mp a two-minus-A_5-numerator-like nested block over the 4 environment legs? Decisive local cure test: S-R_q smooth across ALL 18 isolated walls. Deliver a compact factored table-free R_q with exact BG holdouts. Anti-blocker: hand the technician ONE small self-contained script (write file -> run/detach + register), not a long interactive batch.",
+    "student-1": "TOP-DOWN + global R_0 + assemble + battery. Independent continuity route: impose global continuity of R_q=sum (q_mp)_+ B_mp as a LINEAR consistency system to pin the environment-corrected mutually-continuous bricks (not the two local beta-blocks). Extract R_0=S-R_q and test whether the rank defect is finally cured (rank 18); report R_0 compactly (or flag as a 17-coefficient list). If it closes, assemble the full table-free A_6=ig^-3(P_pole+R_0+R_q+R_Q) and run the definition-of-done battery (>=20 generic samples across chambers, minus/plus permutations, hierarchical regimes, two-sided q/Q-wall + factorization-pole limits, 5-pt calibration); exact residual table. Keep mining the 2026 hydrotope/hydrohedron literature for a q-wall crossing (cocycle) rule. Same technician anti-blocker guidance."
+  },
+  "next_steps": [
+    "Students execute the round-7 halves in parallel; post early either a complete compact A_6 candidate (with battery residuals) or a globally-continuous q-orbit R_q that passes the 18-wall local cure test + the rank-18 verdict, or a sharp obstruction naming exactly which continuity constraint fails.",
+    "Verifier audits the strongest new claim; if a full compact A_6 is proposed, run it END-TO-END vs fresh BG across all realized chambers and the required wall/limit/calibration battery and state whether G1 is cleared. Litmus for any R_q: S-R_q smooth across all 18 isolated walls.",
+    "Round-8 PI: if a compact continuous R_q lands and a verifier report clears (or nearly clears) G1, do a targeted PI double-check of the assembled A_6 (independent implementation, definition-of-done) and, if it holds, prepare summary/SOLVED.md; else re-scope for the final round. Runway: round 7 of 9; rounds 8 and 9 remain."
+  ],
+  "files_written": [
+    "tasks/student-1.md",
+    "tasks/student-2.md",
+    "summary/logic.yaml",
+    "summary/group_meeting_notes.md",
+    "bots/pi/sessions/2026-07-26T19-35-05.json",
+    "board.json (append post_026)"
+  ]
+}

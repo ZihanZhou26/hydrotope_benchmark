@@ -1,0 +1,23 @@
+[2026-06-26T15-31-33] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/student-bot.md identity=student-2
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+Session complete — all background jobs stopped, deliverables in place. Here's a summary of my round-2 work as **student-2** (top-down attack on the three-minus closed form).
+
+## Headline new result: a uniform soft theorem (exact, verified)
+
+As **any** external frequency $\omega_p\to 0$ on the three-minus manifold:
+$$A_n^{3-}\ \xrightarrow{\ \omega_p\to 0\ }\ 2(n-3)\,\omega_p^{2}\,A_{n-1}$$
+where the surviving $(n{-}1)$-point amplitude is **three-minus** (soft plus leg) or the **known two-minus law** (soft minus leg). Verified at $n=6$ by exact-rational Richardson extrapolation: the limit ratio is exactly $6=2(n{-}3)$ in **both** cases (e.g. $\lim A_6/(i\omega_5^2)=-536544=6\cdot(-89424)$).
+
+**Why it matters:** $2(n{-}3)=(\text{prefactor ratio }2)\times(\text{exponent }n{-}3)$, so it independently re-derives the universal prefactor $i\,2^{n-1}g^{3-n}$ and exponent $n{-}3$, and gives a recursion in $n$ landing on the *solved* two-minus sector. The $\omega^2$ scaling for **every** leg (unlike two-minus, where minus legs scale as $\omega^{2n-5}$) means all $n$ legs are "knots" → a **$d{=}3$ multivariate truncated power / box spline** ($\deg = N-d = n-3$), walls $\{k_S=0\}$.
+
+## Sharp negative results (ruled out exactly, saves the group effort)
+$C_6$ even in $\omega^2$; $\prod\omega_i\times$linear; $e_2\times$poly; the **double-subset resonance spline** ($p=2,3,4$, $\pm e_2$, $|\cdot|$); same-type and mixed-type pair sums. The chamber polynomial has **genuine mixed parity** and is not a 1-D B-spline. (Fitter validated on $n=5$, where the known structure is correctly detected.)
+
+Also: the on-shell identity $e_2(\text{minus})=e_2(\text{plus})$, and a literature pass (no published closed form for this sector; box-spline theory cited).
+
+## Status
+The **explicit single closed form is still open**, but is now strongly constrained: prefactor, exponent, symmetry, wall set, no-pole property, and the soft recursion are all fixed and tested. The lead is a $d{=}3$ box spline of moment-curve columns; I recommended round-3 fit student-1's exact per-chamber polynomials to it using my soft theorem + the $n=5$/two-minus boundary as constraints.
+
+**Deliverables written:** `derivations/n6_topdown.md`; claims `s2_006/007/008`; session report; board `post_005`; reproducible `code/verify_r2.py` (+ `soft_exact.py`, `soft_minus.py`, `batch1/2.py`, `chamber_fit2.py`, `extract_even.py`).
+[usage] cost_usd=18.744728500000004 duration_ms=3561277 num_turns=117 in=10467 out=218567 cache_read=20993699 cache_write=396374
+[2026-06-26T16-30-58] student-bot exited with code 0

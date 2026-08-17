@@ -1,0 +1,11 @@
+=== Soft recursion at n=7 (EXACT, F-const slice). expect lim = 8*A_6 ===
+
+PLUS leg ->0 (npts 45, Nfull poly True):
+  lim A_7/(i eps^2) = -239585664/17
+  8 * A_6^3minus    = -239585664/17
+  EXACT match: True
+
+MINUS leg ->0 (npts 45, Nfull poly True):
+  lim A_7/(i eps^2) = -13369344/25
+  8 * A_6^2minus    = -13369344/25
+  EXACT match: True

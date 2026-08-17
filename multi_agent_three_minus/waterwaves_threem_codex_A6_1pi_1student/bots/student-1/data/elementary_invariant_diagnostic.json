@@ -1,0 +1,114 @@
+{
+  "equalities": {
+    "bad_samples": [],
+    "p_eq_count": 600,
+    "s_and_p_ok": true,
+    "s_eq_count": 600,
+    "samples_checked": 600,
+    "status": "ok"
+  },
+  "global_full_17": {
+    "holdout_rows": 4,
+    "kept_feature_count": 17,
+    "matrix_rank": 17,
+    "matrix_rank_aug": 18,
+    "requested_feature_count": 17,
+    "status": "inconsistent",
+    "train_rows": 596
+  },
+  "global_sym_12": {
+    "holdout_rows": 4,
+    "kept_feature_count": 12,
+    "matrix_rank": 12,
+    "matrix_rank_aug": 13,
+    "requested_feature_count": 12,
+    "status": "inconsistent",
+    "train_rows": 596
+  },
+  "pairwise_identity": {
+    "bad_samples": [],
+    "exact_count": 600,
+    "fail_count": 0,
+    "samples_checked": 600,
+    "status": "ok"
+  },
+  "per_word_full_17": {
+    "MMPPPM": {
+      "matrix_rank": 17,
+      "matrix_rank_aug": 18,
+      "rows": 236,
+      "status": "inconsistent"
+    },
+    "MPMPPM": {
+      "matrix_rank": 12,
+      "matrix_rank_aug": 12,
+      "rows": 48,
+      "status": "ok"
+    },
+    "MPPMMP": {
+      "matrix_rank": 17,
+      "matrix_rank_aug": 17,
+      "rows": 62,
+      "status": "ok"
+    },
+    "PMMPPM": {
+      "matrix_rank": 17,
+      "matrix_rank_aug": 18,
+      "rows": 138,
+      "status": "inconsistent"
+    },
+    "PMPMMP": {
+      "matrix_rank": 6,
+      "matrix_rank_aug": 6,
+      "rows": 27,
+      "status": "ok"
+    },
+    "PPMMMP": {
+      "matrix_rank": 17,
+      "matrix_rank_aug": 18,
+      "rows": 81,
+      "status": "inconsistent"
+    }
+  },
+  "ratio_numerator": {
+    "d_1": {
+      "eligible_rows": 600,
+      "holds_out_exact": false,
+      "matrix_rank": 12,
+      "matrix_rank_aug": 13,
+      "parity": "odd",
+      "raw_feature_count": 33,
+      "reason": null,
+      "requested_feature_count": 12,
+      "status": "inconsistent",
+      "weighted_degree": 11,
+      "zero_denominator_rows": 0
+    },
+    "d_2": {
+      "eligible_rows": 600,
+      "holds_out_exact": false,
+      "matrix_rank": 36,
+      "matrix_rank_aug": 37,
+      "parity": "even",
+      "raw_feature_count": 57,
+      "reason": null,
+      "requested_feature_count": 36,
+      "status": "inconsistent",
+      "weighted_degree": 14,
+      "zero_denominator_rows": 0
+    },
+    "d_3": {
+      "eligible_rows": 600,
+      "holds_out_exact": false,
+      "matrix_rank": 36,
+      "matrix_rank_aug": 37,
+      "parity": "odd",
+      "raw_feature_count": 90,
+      "reason": null,
+      "requested_feature_count": 36,
+      "status": "inconsistent",
+      "weighted_degree": 17,
+      "zero_denominator_rows": 0
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "bot": "student-1",
+  "timestamp": "2026-06-27T08:12:05Z",
+  "task_id": "r8-student-1",
+  "status": "partial",
+  "summary": "Round-8 bottom-up on the explicit n=7 numerator N_7 (deg 22 over D_7=prod(w_i+w_j)). HEADLINE: CORRECTED my round-7 conjecture s1_022 -- the n=7 single-wall jump exponents (1=1)->1, (1=2)->2, (1=3)->4 are the PURE truncated-power exponents (NOT cross-term artifacts of a pure-4), each with a CLEAN chamber-independent coefficient (jump/(wall_fn)^e is an exact polynomial). The mechanism: the forcing (1=1)^2 cross-term on a (1=2) wall has its two factor-arguments summing to the wall coordinate (X+Y=v from the manifold sum rule), so at a generic wall point one factor is sign-pinned negative => the product is locally 0 and contributes NOTHING. Pinned the cross-term CLOSING ORDER structurally: pure (1=1) box spline closes at PAIRS (triples force an excluded plus leg to vanish = degenerate), and (1=1)x(1=2) mixed products are a genuinely-new n>=7 possibility (codim-2 non-degenerate, vs degenerate at n=6). Built+validated a fast finite-field oracle bgmod.cpp (== ./bg mod p at n=5,6,7, 54/54) to enable the heavy deg-22 fits. The explicit (1=3) coefficient S is proven clean+exists (value at one wall pt) with the extraction pipeline ready (bgmod); full multivariate reconstruction handed off.",
+  "work_done": [
+    "CORRECTED s1_022 (claim s1_023): the pure single-wall exponents at n=7 are (1=1)->1, (1=2)->2, (1=3)->4 -- exact, with clean J/(wall)^e quotients. Mechanism proven: forcing (1=1)^2 cross-term is locally 0 at generic (1=2) crossings (X+Y=v; one factor sign-pinned). r8_xterm_diag.py (4 chambers, ct=0; J/v^2 divides), r8_e13.py (J/v^4 divides at (1=3); (1=1)/(1=2) controls; n=6 controls pass).",
+    "Cross-term closing order (claim s1_024): (a) pure (1=1) closes at PAIRS -- triples {a1=b4,a2=b5,a3=b6} force b7=0 (degenerate), so no triple cross-term; (b) (1=1)x(1=2) mixed products are NEW at n>=7 (codim-2 non-degenerate; degenerate at n=6) -- the one remaining structural unknown. Pure manifold-sum-rule degeneracy arguments, zero oracle cost.",
+    "(1=3) coefficient S (claim s1_025, partial): clean & chamber-independent (exp 4=n-3), the n=7 analog of n=6's Q; value -1538066383986132/125 at one wall point; extraction pipeline r8_coeff13.py (uses bgmod) ready; full deg-14 multivariate fit deferred.",
+    "INFRASTRUCTURE (claim s1_026): bgmod.cpp, fast F_p BG oracle, validated 54/54 == ./bg mod p at n=5,6,7. Solved exact-momentum-sign tracking (coefficient vectors over K_i; long-double signs unsafe) and memo-key collisions (exact residue tuples, not 64-bit hash). modbg.py Python cross-check. Note: Python ports are NOT faster than ./bg (n=7 recursion combinatorics dominate); only the compiled F_p engine helps.",
+    "All-n exponent conjecture for student-2: e(n,q)=q for q<=floor((n-3)/2) else n-3; fits n=5,6,7; predicts n=8 (1,2,5,5)."
+  ],
+  "next_steps": [
+    "Fully reconstruct the explicit (1=3) coefficient S (deg-14, S_2xS_3-symmetric, even) via r8_coeff13.py with more single-(1=3) slices (distinct plus legs) -- now fast with bgmod.",
+    "Extract the (1=2) coefficient ~Q (exp 2) and the (1=1) single P + pair R, then run the full deg-22 modular assembly fit (base + single + pair + (1=2)^2 + (1=3)^4 [+ (1=1)x(1=2)?]) with bgmod to (i) settle whether (1=1)x(1=2) is needed and (ii) reconstruct all coefficients; verify exactly vs ./bg across chambers + wall limits.",
+    "Hand the corrected exponent table + closing-order structure + bgmod tool to student-2 for the all-n lift; test the e(n,q) conjecture at n=8."
+  ]
+}

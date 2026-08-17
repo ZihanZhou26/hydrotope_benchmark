@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-07-26T13:04:34",
+  "status": "terminated",
+  "original_job": {
+    "id": "h_probe_20260726T104324Z",
+    "observed_wrapper_pid": 2265100,
+    "observed_child_pid": 2265263,
+    "observed_elapsed": "01:39:10",
+    "observed_child_rss_kb": 4468100,
+    "result": "both processes absent after technician stage-0 turn; jobs/h_probe_20260726T104324Z.fail exists",
+    "note": "the exact termination command used in that technician turn was not returned"
+  },
+  "later_debug_process": {
+    "pid": 2432335,
+    "command": "python3 bots/student-1/code/h_denominator_family_scan.py --line-count 1 --line-points-needed 5 --line-points-max 20 --min-points-per-line 5 --exact-lines-per-mask 0 --line-t-min -2 --line-t-max 2 --line-max-den 1 --out-json bots/student-1/data/h_denominator_family_scan.json --out-md bots/student-1/data/h_denominator_family_scan.md",
+    "action": "student sent SIGTERM after interrupting the over-time technician turn",
+    "verification": "ps -p 2432335 returned no process"
+  }
+}

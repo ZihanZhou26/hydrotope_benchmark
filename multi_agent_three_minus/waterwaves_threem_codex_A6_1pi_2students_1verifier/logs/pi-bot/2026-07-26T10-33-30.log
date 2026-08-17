@@ -1,0 +1,20 @@
+[2026-07-26T10-33-30] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/pi-bot.md identity=none
+All files parse and are in place. The round-5 PI session is complete. Here's a summary of what I did.
+
+## Round 5 PI session — complete
+
+**Situation:** Round 5 of 9, normal research round. The team has a verifier-confirmed decomposition $A_6 = i g^{-3}(P_{\rm pole} + R_{\rm spline})$ with $P_{\rm pole}$ solved (compact, table-free). The last unknown is the degree-8 spline remainder $R_{\rm spline}$. Blocking gap **G1** persists.
+
+**The headline this round is a correction I own.** The round-4 verifier (Finding 2) refuted a standing rule that a *prior PI session (me) introduced* by over-generalizing `pi_vchk_002`: "the coupling fan is magnitude ties, NOT $Q_T$ walls." That blanket rule is false.
+
+**PI double-check (`pi_vchk_003`) — I independently confirmed the reversal before rewriting the shared state.** On the on-shell polynomial line $\omega(t)=(8,2,-3,-5,4,-6)+t(-2,1,0,2,-1,0)$, using only a fresh md5-matched BG and the smooth $C$ (no dependence on any $P_{\rm pole}$ or student/verifier code): the full magnitude order and all nine $q_{mp}$ signs stay constant while **only** $Q_{1;46}=k_{\{1,4,6\}}$ crosses zero. $A_6\!\cdot\!C$ is an exact polynomial on the left cell (3/3 holdouts, zero residual) and **fails on the right** — so $A_6$ itself jumps across the 3-leg subset-momentum wall, order 3, with no magnitude tie. My *narrow* round-4 result stays; only its over-generalization is retired.
+
+**What I resolved / delivered:**
+- Corrected `logic.yaml` and `group_meeting_notes.md`: $R_{\rm spline}$ lives on the **joint** fan $\{q_{mp}=0\}$ (9 walls, order 1) $\cup\ \{Q_{m;pq}=0\}$ (9 walls, order 3).
+- Explicitly resolved all four verifier findings (VF1→folded into re-scoped G1; VF2→accepted + PI-confirmed + state corrected; VF3→gave a kinematic completeness enumeration; VF4→standing rule).
+- Two new structural leads for the round: (i) order-3 jump ⇒ the $Q$-brick $G_{m;pq}$ has **degree 2** (most compact yet); (ii) via $k_S=-k_{S^c}$, a candidate **complete** 18-hyperplane wall set.
+- **Complementary tasks:** student-2 → bottom-up extraction + factoring of the order-3 $Q$-brick; student-1 → confirm wall-set completeness empirically + assemble over the joint fan (testing whether the round-4 rank $17<18$ deficiency is cured once the $Q$-orbit is added).
+
+G1 remains blocking — no complete compact $A_6$ yet. Session report, `verified.yaml` (pi_vchk_003), and board post_018 all written; `jobs/` was empty.
+[usage] cost_usd=4.1850205 duration_ms=840315 num_turns=35 in=51 out=65335 cache_read=2580573 cache_write=126050
+[2026-07-26T10-47-31] pi-bot exited with code 0

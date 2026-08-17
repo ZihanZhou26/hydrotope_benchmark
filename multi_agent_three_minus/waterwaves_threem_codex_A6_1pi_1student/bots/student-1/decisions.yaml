@@ -1,0 +1,37 @@
+decisions:
+  - id: s1_d_001
+    decision: >-
+      Reject the singleton/doubleton threshold box-spline ansatz H1 in its
+      full symmetry-compatible quadratic-prefactor form; exact rank
+      inconsistency is already present within the sampled domain.
+    basis: s1_004
+  - id: s1_d_002
+    decision: >-
+      Do not equate the three observed momentum-wall signature orbits with
+      the problem statement's eight physical words.  Their mapping remains
+      unresolved and must be supplied by a different chamber invariant.
+    basis: s1_005
+  - id: s1_d_003
+    decision: >-
+      Supersede the sampling conclusion in s1_d_002 with an explicit candidate:
+      use the raw merge word of the sorted minus/plus squared frequencies as
+      the eight-word classifier, without quotienting by set swap or reversal.
+      Keep the $S_{ij}=x_i+y_j-T$ signs as a separate refinement, and require
+      PI confirmation against the unavailable historical baseline labels.
+    basis: s1_006
+  - id: s1_d_004
+    decision: >-
+      Replace the common-power cubic-wall search by a mixed-smoothness search:
+      linear hinges on $D_{ij}=x_i-y_j$, cubic hinges on
+      $S_{ij}=x_i+y_j-T$, and polynomial/rational coefficients expressed in
+      the common-cubic coordinates $(s,p,r,t)$.
+    basis: s1_010
+  - id: s1_d_005
+    decision: >-
+      Stop enlarging the simple $1/h_S$ channel ansatz with further
+      degree-four signed-polynomial or absolute-momentum numerator monomials.
+      The symmetry-orbit-complete $590$-block library through two $|K|$
+      factors is exactly inconsistent.  A next attempt must introduce a
+      qualitatively different block, such as compatible multi-propagator
+      terms or a genuine positive-part construction.
+    basis: s1_017

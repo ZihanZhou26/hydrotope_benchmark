@@ -1,0 +1,30 @@
+[2026-06-26T17-31-54] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/student-bot.md identity=student-1
+Session complete. Here's what I accomplished this round.
+
+## Summary
+
+I'm **student-1** in the `waterwaves_threem` group. The PI's round-3 run failed (no new tasks), and the central unresolved issue was my round-2 claim that **A₆ is rational, not polynomial** — which contradicted the PI and student-2's "spline" framing. I worked autonomously to settle it and made it explicit.
+
+### Main result (verified, posted as post_007)
+The n=6 three-minus denominator is now **explicit**:
+
+$$A_6 = i\,2^{5}g^{-3}\,\frac{N(\omega)}{\prod_{i\in\{1,2,3\}}\prod_{j\in\{4,5,6\}}(\omega_i+\omega_j)},\qquad N=\text{piecewise polynomial (spline), deg }17.$$
+
+The denominator `D₉` is the product of the **9 mixed-pair linear forms** (minus + plus), degree 9, and is itself `S₃≀Z₂`-invariant. This **reconciles the round-2 split**: A₆ *is* rational (my claim), and the box-spline the team is hunting lives in the **numerator** `N = A₆·D₉`, not in A₆.
+
+### How I got there
+- **Reproduced** the rational claim, then made it authoritative via exact Padé-over-ℚ reconstruction: `A₆·sumFree⁸ = N(t)/[(5t+8)(10t+53)]`, deg D=2≠0 — with the n=5 polynomial control passing.
+- Traced denominators to `bg.cpp`'s FKernel `|k_B|` magnitudes; identified the surviving factors as **mixed-pair sums = perfect matchings** of the two triples.
+- **Verified globally**: `A₆·D₉` reconstructs to a pure sumFree residual (no other factor) across **6 chamber types × 2 directions** ⟹ genuine polynomial.
+- **Reconciled "rational" with "no poles"**: each chamber's poles sit on matching walls *outside* it (shielded) — the gate's error was inferring *polynomial* from *finite*.
+- **All-n conjecture confirmed at n=7**: `A₇·D₁₂` → pure sumFree⁵ residual.
+
+### Deliverables
+- `verify_denominator.py` (one-command check), plus `rat_denom.py`, `multislice.py`, `test_D9_global.py`, `probe_pole.py`, `test_n7.py`
+- `derivations/n6_rational_denominator.md`
+- Claims `s1_008/009/010`, decisions `s1_dec_005/006`, session report
+- Board post_007 redirecting the team to fit the **numerator** N
+
+Shared `bg.cpp` untouched; all work confined to `bots/student-1/`. No processes left running.
+[usage] cost_usd=11.42458775 duration_ms=3512889 num_turns=64 in=5441 out=134714 cache_read=7835226 cache_write=655553
+[2026-06-26T18-30-28] student-bot exited with code 0

@@ -1,0 +1,18 @@
+[2026-06-27T00-38-06] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/student-bot.md identity=student-1
+All deliverables are complete and the session is wrapped up. Let me give a final summary.
+
+## Round-7 session complete (student-1, bottom-up n=7)
+
+I worked the bottom-up half of the round-7 task (explicit n=7 numerator $N_7$). The full deg-22 assembly was not reached — it's genuinely large (base ~300+ symmetric templates, single-(1=1) coefficient degree 20, ~1s per exact n=7 evaluation) and is the joint frontier with student-2's top-down ansatz, exactly as the PI's task split anticipates. What I **did** establish rigorously (all EXACT vs my own `bg.cpp`, cross-checked with `pybg.py`):
+
+**1. Parity correction (verified).** $N_7$ is **EVEN** under ω→−ω, not odd. "Odd" was an n=6 artifact (its minimal denominator $e_3^-+e_3^+$ is degree-3 odd); at n=7 the minimal denominator is the full 12-factor $D_7=\prod(\omega_i+\omega_j)$, which is even. This corrects the PI's round-7 note, student-2's s2_023, and the task brief — and it means the parity argument that killed a polynomial-in-squares object at n=6 (s2_015) doesn't apply at n=7.
+
+**2. Wall map (verified).** 42 mixed walls in three $S_3\times S_4$ orbits: (1=1) [12], (1=2) [18], (1=3) [12]; the (2=q) forms are the same loci by complement.
+
+**3. Single-wall jump exponents (verified, with n=6 control).** (1=1)→1, (1=2)→**2**, (1=3)→4. This **corrects** the "subset-sum walls carry exponent n−3" framing (s1_019/s2_015/s2_023): (1=3)→4=n−3 but (1=2)→2.
+
+**4. Cross-term structure (tentative, well-supported).** The (1=2)→2 is the **(1=1)×(1=1) matching cross-term** (1+1), whose forced locus is the (1=2) wall (since two disjoint (1=1) edges force a subset-sum relation at n≥7, per s1_019). Pure-exponent conjecture: (1=1)→1, all subset-sum→n−3, with matching cross-terms lowering observed orders. This directly answers the clean single-wall measurement student-2 deferred to me (post_019), and dovetails with their "clean Cauchy-permanent ruled out / recursive-matching residue" finding.
+
+Registered claims **s1_020/021/022**, wrote the derivation (`n7_walls_exponents_crossterms.md`) with a hand-off table for student-2, posted **post_020**, filed the session report, and updated the cross-session memory note (flagging the parity n-dependence as a gotcha). The one open check is the forcing-edge isolation of the cross-term (constrained because a₁+a₃=b₆+b₇ is forced on the (1=2) wall, making thick "both-inactive" chambers rare via the rational solve).
+[usage] cost_usd=23.22655949999999 duration_ms=3840172 num_turns=133 in=13668 out=181980 cache_read=29379757 cache_write=624751
+[2026-06-27T01-42-12] student-bot exited with code 0

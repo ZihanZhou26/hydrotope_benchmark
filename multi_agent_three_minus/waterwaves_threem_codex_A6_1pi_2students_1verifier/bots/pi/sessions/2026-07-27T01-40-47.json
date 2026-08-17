@@ -1,0 +1,32 @@
+{
+  "id": "pi_r10_final_summary_session",
+  "bot": "pi",
+  "timestamp": "2026-07-27T01:40:47",
+  "round": 10,
+  "phase": "pi_final_summary",
+  "status": "SOLVED",
+  "summary": "Final PI summary round. No new work assigned. Read both round-8 student handoffs (student-1 s1_010 = the complete candidate; student-2 s2_014/s2_015 = off-wall ground truth, partial) and the round-8 verifier report (VERDICT: VERIFIED, blocking gap G1 CLOSED, >6000 exact BG comparisons). Confirmed the round-9 SOLVED state (summary/SOLVED.md, logic.yaml, pi_vchk_006) is internally consistent and that all five bg.cpp copies are byte-identical to the immutable shared reference (md5 41715c4af3ee5a61b1c4bfce40426ac8). Under the exceptional policy (a claimed complete compact formula), ran ONE bounded independent double-check (pi_vchk_007) rather than trust the prior session: a freshly rebuilt md5-matched oracle bg_final + pi_final_spotcheck.py reproduced the compact formula exactly on 82/82 points across 40 distinct (q,Q)-chambers, zero residual. Distinguished verifier-confirmed results from unverified claims, wrote summary/FINAL_SUMMARY.md, updated summary/logic.yaml (round 10, provenance) and summary/group_meeting_notes.md, added a final-round ratification note to summary/SOLVED.md, recorded pi_vchk_007 in bots/pi/verified.yaml.",
+  "verifier_status": "Round-8 Claude verifier VERDICT: VERIFIED. G1 (missing compact R_q/R_0) CLOSED. Two verifier findings, both minor/non-correctness: (1) 'human-readable' compactness = PI call -> PI RULING: MET; (2) chamber coverage empirical not symbolic -> standing non-blocking caveat. No blocking verifier gap remains.",
+  "pi_double_check": {
+    "id": "pi_vchk_007",
+    "kind": "final_summary_ratification",
+    "outcome": "PASS (82/82 exact rational BG comparisons over 40 chambers, zero residual)",
+    "note": "Bounded independent spot-check on a NEWLY built md5-matched oracle bg_final, using the PI's own table-free evaluator pi_r9_eval.py (imports only fractions). NOT a rerun of the full battery (that is pi_vchk_006). Ratifies the load-bearing SOLVED claim on a fresh binary; clears no verifier gap (none remains)."
+  },
+  "verified_confirmed": "Complete decomposition A_6 = i g^{-3}(P_pole + R_Q + R_0 + R_q) and every piece incl. the compact R_0+R_q; exact BG agreement across chambers/permutations/hierarchy/two-sided q,Q walls/removable d=0 and D_S=0 crossings/g-scaling/5-pt calibration; table-free (0 chamber-specific coefficients); G1 CLOSED. (Verifier round 8 >6000 exact; PI pi_vchk_006 5733 exact; PI pi_vchk_007 82 exact.)",
+  "unverified_or_pi_call": "Compactness 'human-readable' judgment is a PI acceptance call -> RULED MET (82 monomials in 3 seeds + H-block + positive parts). Chamber-coverage completeness is empirical, not a symbolic proof (non-blocking minor).",
+  "definition_of_done": "ALL criteria met: exact agreement; >=20 generic samples across chambers; minus/plus permutations; hierarchical regimes; two-sided wall + pole-orbit approaches; 5-pt calibration; PI independent re-implementation (pi_vchk_006 + pi_vchk_007); displayable in a few building blocks; not a coefficient list; table-free evaluator.",
+  "tasks_assigned": "NONE (final summary round).",
+  "artifacts": [
+    "summary/FINAL_SUMMARY.md (new)",
+    "summary/SOLVED.md (final-round ratification note added)",
+    "summary/logic.yaml (round 10, provenance updated)",
+    "summary/group_meeting_notes.md (round-10 final entry)",
+    "bots/pi/verified.yaml (pi_vchk_007)",
+    "bots/pi/code/bg_final + bg_final.cpp (fresh md5-matched oracle)",
+    "bots/pi/code/pi_final_spotcheck.py (82/82 exact over 40 chambers)"
+  ],
+  "caveat": "One non-blocking minor: chamber-coverage completeness is empirical, not a symbolic proof (a symbolic argument that the wall set is exactly the 18 hyperplanes q_mp=0, Q_{m;pq}=0 is still owed). Low residual risk; not a correctness gap; recorded in SOLVED.md and FINAL_SUMMARY.md.",
+  "credit": "Formula: student-1 (s1_010, round 8), realizing student-2's predicted off-wall single/double-hinge cocycle. Verification: Claude verifier (round 8, VERIFIED) + PI (round 9 pi_vchk_006, round 10 pi_vchk_007).",
+  "next_steps": "None required for correctness; the problem is SOLVED and signed off. Optional future work: a symbolic proof of wall-set completeness (the sole non-blocking minor)."
+}

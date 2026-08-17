@@ -1,0 +1,46 @@
+PI round-10 FINAL verification, fresh bg_r10
+
+bg_r10.cpp md5: 41715c4af3ee5a61b1c4bfce40426ac8
+canonical A_6: -29948208/17 
+
+== PART 0: five-point calibration (exact) ==
+  [OK] n=5 two-minus {1,2}: bg=-3328  formula=-3328
+  [OK] n=5 two-minus b {1,2}: bg=-6401024/11  formula=-6401024/11
+  [OK] n=5 THREE-minus vs two{4,5}: bg=-25344  formula=-25344
+  [OK] n=5 THREE-minus b: bg=-58880/13  formula=-58880/13
+  [OK] n=5 THREE-minus c: bg=-1713600  formula=-1713600
+  [OK] n=5 THREE-minus d: bg=-5881856/23  formula=-5881856/23
+  => calibration: PASS
+
+== PART 1: SYMBOLIC four-block == PI's 31-term core (BG-independent) ==
+SYMBOLIC  cancel(fourblock_H_A - core_H_A) = 0
+SYMBOLIC  cancel(fourblock_H_B - core_H_B) = 0
+  => symbolic identity: PASS
+
+== PART 2: NUMERIC four-block vs FRESH bg_r10 (exact Fraction, in-piece) ==
+[A / fourblock_H_A] exact-match 40/40 in-piece  (skipped 0 off-piece/fail)
+[B / fourblock_H_B] exact-match 40/40 in-piece  (skipped 0 off-piece/fail)
+  => numeric A=40/40  B=40/40: PASS
+
+== PART 3: BOUNDARY -- two-chamber formula FAILS at 12ea165a03 ==
+  base om=['-20/7', '9', '8', '2', '-5', '-78/7']  A6_im=1347295721472/184877
+  H_A pred=1191603200/77  match=False
+  H_B pred=27082874880/7  match=False
+  in-piece perturbations: 0/30 matched either formula
+  => boundary (neither formula holds in 12ea165a03): PASS
+
+== PART 4: equal-bound cone rank scan on 12ea165a03 (FRESH bg_r10 pts) ==
+  base_f=['9', '8', '2', '-5']  collecting 1250 FRESH in-piece pts ...
+  collected 1250 points myself with bg_r10 (tries=2198)
+  persisted -> /home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/pi/code/round10_pts_12ea165a03.json
+  d=12: |M|=455 cols=910 pts=1250 nullity(p1,p2)=(0, 0) => no rep (full rank)
+  d=13: |M|=560 cols=1120 pts=1250 nullity(p1,p2)=(0, 0) => no rep (full rank)
+  => d=12 full rank (reconfirms deg Q_hom>10): PASS
+  => d=13 full rank (deg Q_hom>=12):          PASS
+
+=== SUMMARY ===
+  P0 five-point calibration       : PASS
+  P1 symbolic four-block identity : PASS
+  P2 numeric four-block vs bg_r10 : PASS
+  P3 boundary (12ea fails)        : PASS
+  P4 higher-degree obstruction    : PASS  {12: [0, 0], 13: [0, 0]}

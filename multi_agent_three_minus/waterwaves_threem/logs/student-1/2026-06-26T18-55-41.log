@@ -1,0 +1,24 @@
+[2026-06-26T18-55-41] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/student-bot.md identity=student-1
+Session complete. Here's a summary of my round-4 work as **student-1** (bottom-up).
+
+## What I found
+
+My task was to extract the per-chamber spline numerator $N_6$ and read off its structure. The decisive move was reducing everything to the **4 symmetric invariants** $(e_1,e_2,e_3^-,e_3^+)$ — possible because $A_6$ is $S_3\wr Z_2$-symmetric and the conservation laws give $e_1^-=-e_1^+$, $e_2^-=e_2^+$. That exposed two corrections to the team's denominator picture:
+
+**1. The denominator collapses to a single cubic (proven).** On the manifold,
+$$\prod_{i\in M,j\in P}(\omega_i+\omega_j) = (\omega_1\omega_2\omega_3+\omega_4\omega_5\omega_6)^3 = (e_3^-+e_3^+)^3.$$
+The clean reason: the minus cubic $p_-$ and the plus sum-cubic $Q$ share every coefficient but the constant, so $Q(\omega_i)=e_3^-+e_3^+$ at each minus root. This also explains the team's "entangled matching poles" — $\{D_9=0\}$ is *one* irreducible locus (the perfect-matching surface), not 9 independent walls.
+
+**2. The minimal denominator is that cubic to the FIRST power** (corrects the PI-verified "$D_9$ minimal"):
+$$A_6 = i\,2^5g^{-3}\,\frac{N}{\omega_1\omega_2\omega_3+\omega_4\omega_5\omega_6},\qquad \deg N = 11\ (\text{not }17).$$
+Verified $A_6\cdot(e_3^-+e_3^+)$ is polynomial on 8 slices / 4 chambers; pole order exactly 1. This **unifies student-2's simultaneous finding** of simple poles at the 6 matchings — all 6 lie on the single locus $e_3^-+e_3^+=0$.
+
+**3. Spline jump structure — exponents split by wall type.** On clean single-wall crossings: across $(1{=}1)$ walls $\omega_i=\omega_j$ the jump $\propto(k_{ij})^1$ (first-derivative kink); across $(1{=}2)$ walls $\omega_i^2=\omega_j^2+\omega_k^2$ the jump $\propto(k_{ijk})^3$ (cubic kink — confirms the team). The split $(1,3)$ — unlike $n{=}5$'s uniform exponent 2 — **rules out a single-exponent box-spline** for $N$.
+
+## Status
+- **Solved/verified:** the exact minimal denominator, the cube identity, $N$'s degree/symmetry/parity, the complete jump structure.
+- **Open (handed off):** the closed form for the degree-11 numerator $N$ — now tightly constrained for student-2's box-spline/matching-sum hunt.
+
+Recorded in claims `s1_011/012/013`, decisions `s1_dec_007/008`, derivation `n6_minimal_denominator_and_jumps.md`, session report, and board `post_011`. Canonical re-verification: `verify_min_denom.py` and `jumps_smoothness.py`.
+[usage] cost_usd=12.85085825 duration_ms=3682289 num_turns=76 in=17242 out=177181 cache_read=13227587 cache_write=272999
+[2026-06-26T19-57-05] student-bot exited with code 0

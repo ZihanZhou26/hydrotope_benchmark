@@ -1,0 +1,224 @@
+{
+ "n": 18,
+ "S_jumps": 18,
+ "T_smooth": 0,
+ "T_jumps": 18,
+ "results": [
+  {
+   "wall": [
+    2,
+    3
+   ],
+   "t0": "-1/2",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "87430956667418821857968033/2050312500000000000",
+   "T_contin": "176784651/8"
+  },
+  {
+   "wall": [
+    1,
+    4
+   ],
+   "t0": "-1/2",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "25384821854423192167375193/683437500000000000",
+   "T_contin": "187234191/8"
+  },
+  {
+   "wall": [
+    1,
+    4
+   ],
+   "t0": "-1/2",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "1661044942185663193446161/45562500000000000",
+   "T_contin": "219582981/8"
+  },
+  {
+   "wall": [
+    2,
+    3
+   ],
+   "t0": "1/2",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "127267635612712888106720683/410062500000000000",
+   "T_contin": "1859464765/8"
+  },
+  {
+   "wall": [
+    2,
+    3
+   ],
+   "t0": "-1/2",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "3430741674898420921/39550781250",
+   "T_contin": "78295040"
+  },
+  {
+   "wall": [
+    2,
+    5
+   ],
+   "t0": "-3/4",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "611167313736156751433611921/11664000000000000000",
+   "T_contin": "104631193125/2048"
+  },
+  {
+   "wall": [
+    1,
+    4
+   ],
+   "t0": "-1/2",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "13426304054996963296/177978515625",
+   "T_contin": "80596640"
+  },
+  {
+   "wall": [
+    1,
+    4
+   ],
+   "t0": "-1/3",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "8781343809583874142958379/129746337890625000",
+   "T_contin": "4630528000/81"
+  },
+  {
+   "wall": [
+    2,
+    3
+   ],
+   "t0": "1/2",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "13961991038036889684992/200225830078125",
+   "T_contin": "110241792"
+  },
+  {
+   "wall": [
+    2,
+    5
+   ],
+   "t0": "-3/4",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "2288954775442078210792981/80000000000000000",
+   "T_contin": "23562398205/2048"
+  },
+  {
+   "wall": [
+    1,
+    4
+   ],
+   "t0": "1/3",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "1148220998834183823623806832/6568408355712890625",
+   "T_contin": "765326966240/6561"
+  },
+  {
+   "wall": [
+    1,
+    4
+   ],
+   "t0": "2/3",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "887030111568669918847074848/6568408355712890625",
+   "T_contin": "653863700000/6561"
+  },
+  {
+   "wall": [
+    2,
+    3
+   ],
+   "t0": "-1/2",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "165122411624551981890079057/2050312500000000000",
+   "T_contin": "469820371/8"
+  },
+  {
+   "wall": [
+    1,
+    4
+   ],
+   "t0": "1/2",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "198535617462307347997918433/2050312500000000000",
+   "T_contin": "722003911/8"
+  },
+  {
+   "wall": [
+    2,
+    3
+   ],
+   "t0": "1/2",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "16496950268884036787/1139062500000",
+   "T_contin": "6608920"
+  },
+  {
+   "wall": [
+    2,
+    3
+   ],
+   "t0": "1/5",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "4440812210158698072433/312500000000000",
+   "T_contin": "1700100550656/390625"
+  },
+  {
+   "wall": [
+    1,
+    4
+   ],
+   "t0": "3/4",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "49167857803303145102231/27337500000000000",
+   "T_contin": "16016551/16"
+  },
+  {
+   "wall": [
+    2,
+    3
+   ],
+   "t0": "1/2",
+   "block": "minus",
+   "S_jumps": true,
+   "T_smooth": false,
+   "T_cross_resid": "1941862947787425690361469/683437500000000000",
+   "T_contin": "13815603/8"
+  }
+ ]
+}

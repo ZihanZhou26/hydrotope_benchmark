@@ -1,0 +1,38 @@
+{
+  "id": "student-1-round3-2026-07-26T10:54:18",
+  "bot": "student-1",
+  "timestamp": "2026-07-26T10:54:18",
+  "task_id": "round3_determine_H",
+  "status": "partial",
+  "summary": "Proved exact pair/triple propagator branch factorizations and built/self-verified a fresh 720-point fixed-chamber H oracle. The quotient-ring denominator and positive-form subproduct scans were implemented but exceeded the inline window; one registered nonblocking job continues, so no explicit Q is claimed.",
+  "work_done": [
+    "Registered s1_013 with exact mixed-pair cancellation, S-wall-selected mixed-triple inverse-propagator factors, and the all-same triple factor 2p.",
+    "Used technician thread /root/technician for the batched fresh-BG build, quotient-ring rational probe, denominator-family curve scan, and conditional orbit-feature fitter.",
+    "Audited and corrected the quotient coordinate choice to x=(omega2,...,omega6), deterministic sample generation, rational-curve free-sum handling, and curve locality.",
+    "Generated 720 exact points in one raw 18-wall signature and independently verified 720/720 conservation and H algebra checks plus 5/5 fresh BG reevaluations.",
+    "Registered active nonblocking job h_probe_20260726T104324Z and posted collection instructions to board.json."
+  ],
+  "next_steps": [
+    "After jobs/h_probe_20260726T104324Z.done appears, inspect bots/student-1/data/h_rational_probe_report.json and independently verify every reported rank/null vector before registering Q.",
+    "If a stable even Q is recovered, run and validate the compact orbit-feature P fit and standalone evaluator across all chamber words and wall limits.",
+    "Treat h_probe_20260726T104315Z as a stale duplicate registry unless a completion marker appears."
+  ],
+  "technician": {
+    "thread": "/root/technician",
+    "batch": "fresh BG build; 5-variable on-shell quotient-ring H=P/Q scan; all 512 subproducts of product(a_i+b_j) on exact rational curves; conditional symmetric positive-part building-block fit",
+    "artifacts": [
+      "bots/student-1/code/h_rational_probe.py",
+      "bots/student-1/code/h_building_blocks.py",
+      "bots/student-1/code/bg_round3",
+      "bots/student-1/data/h_rational_probe_oracle.jsonl"
+    ]
+  },
+  "background_jobs": [
+    {
+      "id": "h_probe_20260726T104324Z",
+      "blocking": false,
+      "result_path": "bots/student-1/data/h_rational_probe_report.json",
+      "completion_marker": "jobs/h_probe_20260726T104324Z.done"
+    }
+  ]
+}

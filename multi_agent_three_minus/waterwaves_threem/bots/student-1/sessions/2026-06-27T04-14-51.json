@@ -1,0 +1,23 @@
+{
+  "bot": "student-1",
+  "timestamp": "2026-06-27T04:14:51Z",
+  "task_id": "r6-student-1",
+  "status": "completed",
+  "summary": "SOLVED the (1=1) box-spline cross-term of N_6 and assembled the FULL closed form for A_6 in the three-minus sector, verified exactly. The (1=1) cross-term is a matching-PAIR product (k_ij)_+(k_kl)_+ with exponent 1 on each factor (NOT a triple): I measured it directly (the single-wall jump coefficient P_ij kinks across a matching-partner wall, jump = k_kl * R with k_kl to first power) and confirmed globally by an exact modular fit (M = base + single(1=1) + pair(1=1) = rank 100, CONSISTENT; triple adds +0). Assembled N_6 = B + sum (b_j-a_i)_+ P_ij + sum (b_j-a_i)_+(b_l-a_k)_+ R + sum (a_i-b_j-b_k)_+^3 Q with all coefficients exact, and verified A_6 = i 2^5 g^-3 N_6/(e3m+e3p) against my own ./bg AND the independent pybg at 16/16 generic points across 8 chamber types plus two-sided limits onto a (1=1), a (1=2), and a matching-corner wall (all exact). n=7 probe (exact): (1=1) exponent still 1, subset-sum wall exponent n-3=4, and disjoint (1=1) edges force a (1=2) (so the n=6 bijective-matching structure is special to equal triples).",
+  "work_done": [
+    "Reconfirmed M = N_6 - corr12(Q) is (1=2)-smooth (r5_corr.py).",
+    "Direct cross-term measurement (r6_xt2/xt3/xt4.py): extracted the (1=1) single-wall jump coefficient P_24 as a function along the wall and reconstructed it exactly on each side of the matching sub-wall {a3=b5}; P_R - P_L = 270 S(S-5)(S+5)(11S+73)(S^2+11S+48)/(S+11)^2 with the sub-wall factor (S-5)(S+5)=k_35 to EXPONENT 1 => the cross-term is a 2-wall product (k_ij)_+(k_kl)_+ R, exp (1,1).",
+    "Global exact modular fit (r6_fit.py, p=2^61-1, EXACT relu, full-group orbit-sums, 340 pts): M is CONSISTENT as base(12)+single(1=1)(+55)+pair(1=1)(+33)=rank 100, margin 240; triple(1=1) adds +0 (no triple needed).",
+    "Extracted all 100 coefficients exactly (r6_extract.py: modular solve + rational reconstruction); explicit reference polynomials B (=(e3m+e3p)*Btilde/5), P0 (deg 9, 34 terms), R0 (=w6^2*(...)/10, deg 7) in r6_polys.txt (r6_coeffpoly.py).",
+    "Self-contained evaluator r6_closedform.py (8/8 exact).",
+    "Comprehensive exact verification (r6_verify.py): 16/16 generic points over 8 distinct chamber types, formula == ./bg == pybg (residual 0); two-sided limits onto a (1=1), a (1=2), and a matching corner all match ./bg exactly at eps=1e-1,1e-2,1e-3.",
+    "n=7 structural probe (r6_n7probe.py exact, r6_n7float.py float): (1=1) jump exponent=1; subset-sum wall b4=a2+a3 exponent=4=n-3; algebraic proof that two disjoint (1=1) edges force a (1=2) relation at n=7.",
+    "Registered claims s1_017 (cross-term=matching pairs, no triple), s1_018 (full verified closed form), s1_019 (all-n/n=7 partial); decisions s1_dec_011/012; derivation n6_round6_crossterms_and_closedform.md."
+  ],
+  "next_steps": [
+    "PI: independently re-verify s1_017/s1_018 with own evaluator (one command: bots/student-1/code/r6_verify.py; self-contained form r6_closedform.py; coefficients r6_coeffs.pkl).",
+    "All-n (student-2 + me): the n=6 bijective-matching PAIR cross-term (exp 1,1, no triple) is special to equal triples; at n>=7 matchings are injections and (1=1) pairs couple to subset-sum walls. Determine the n=7 cross-term structure (single + pair? + (1=1)x(1=2) mixed cross-terms?) and the (1=m) exponents (subset-sum walls -> n-3 confirmed at n=7; (1=1) -> 1).",
+    "Try to simplify the explicit P0/R0 (gauge-fix the base/truncated-power split) toward a cleaner all-n pattern; dovetail with student-2's soft recursion (s2_012) on N_n and matching/Cauchy form (s2_013).",
+    "n=6 is now a COMPLETE validated closed form (numerator + minimal denominator) -- candidate for SOLVED.md (n=6); all-n remains the open frontier."
+  ]
+}

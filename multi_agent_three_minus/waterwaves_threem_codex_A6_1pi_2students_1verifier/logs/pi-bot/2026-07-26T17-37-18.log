@@ -1,0 +1,27 @@
+[2026-07-26T17-37-18] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/pi-bot.md identity=none
+All round-8 PI deliverables are in place and validated. Session complete.
+
+## Round 8 (PI) — summary
+
+**State assessed.** Read `question.md`, `board_recent.json`, both live summaries, both round-7 student handoffs, the round-7 verifier report, the two latest student derivations, and `pi/verified.yaml`. Inspected `jobs/` (empty — no stuck jobs).
+
+**Verifier findings resolved.**
+- **Round-7 verifier REFUTED student-2's `B^sym`** → accepted, retired as dead-end **H5**, recorded as fact **F19**. The lesson: `C⁰` continuity + on-wall trace is *underdetermined* — the correct brick must also reproduce the exact degree-6 **off-wall cofactor**.
+- **student-1 produced no rank** (technician stalled + driver omitted the 17 `R₀` columns) → carried into G1.
+- **Load-bearing process flag** (verifier Finding 3): *three straight rounds* the technician wrote no artifact. This is the real bottleneck, and I addressed it decisively rather than re-warning a third time.
+
+**No PI double-check** — nothing qualified (no surviving candidate, no conflict, no surprising failure; `R_Q` already checked in `pi_vchk_004`).
+
+**My main lever — fixed orchestration:**
+- Built and **self-tested** `bots/pi/code/fastsolve.py`: a vectorized-modular rank/consistency test + exact rational recovery (correct on both a consistent and an inconsistent synthetic system). This is the fast replacement for the scalar elimination that stalled student-1.
+- Re-verified my BG oracle reproduces the anchor `A₆/i = −9190656/7`, so I can independently verify the first complete candidate (recorded as `pi_vchk_005`, foundation-readiness).
+
+**Tasks assigned (complementary):**
+- **student-1** — run the *decisive* hinge-orbit existence solve (`S = R₀ + ΣcₓΦₓ`, 588 features **+ the mandatory 17 R₀ columns**, ≥900 samples, via `fastsolve`). Consistent ⇒ recover sparse `R_q`/`R₀`, assemble, battery. Inconsistent ⇒ a clean obstruction naming the round-9 pivot.
+- **student-2** — ship the explicit **off-wall cofactor polynomial per magnitude cell** (ground truth), then a nested-truncated-power brick meeting all three conditions, passing the 18-wall cure test.
+
+Both briefs mandate a **write-file-then-run** technician script with incremental checkpoints — no interactive batch.
+
+**Files written:** `tasks/student-1.md`, `tasks/student-2.md`, `summary/logic.yaml` (F19, H5, VF_Bsym/VF_orchestration, round8_assignments), `summary/group_meeting_notes.md`, `bots/pi/code/fastsolve.py`, `bots/pi/verified.yaml` (pi_vchk_005), `bots/pi/sessions/2026-07-26T21-37-28.json`, and `board.json` (post_030). G1 remains open (2 blocking); one research round (9) plus the final PI summary remain.
+[usage] cost_usd=5.344885 duration_ms=930344 num_turns=51 in=73 out=68558 cache_read=4320522 cache_write=146971
+[2026-07-26T17-52-49] pi-bot exited with code 0

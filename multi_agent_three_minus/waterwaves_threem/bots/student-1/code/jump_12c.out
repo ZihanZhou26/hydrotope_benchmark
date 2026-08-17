@@ -1,0 +1,4 @@
+(1=1) wall w4=w2: jump vanish order at t=0 = 1  (A=81,B=44)
+(1=2) wall w4^2+w5^2=w2^2: jump vanish order at t=0 = 1  (A=56,B=40)
+   jump/t^1 at t=0 (nonzero const => order exact):
+   leading coeff = -1065369600

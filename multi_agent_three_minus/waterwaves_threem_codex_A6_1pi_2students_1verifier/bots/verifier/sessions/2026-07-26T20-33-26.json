@@ -1,0 +1,42 @@
+{
+  "id": "verifier_session_20260726T203326",
+  "bot": "verifier",
+  "timestamp": "2026-07-26T20:33:26",
+  "round": 7,
+  "task_id": "round7_verifier_audit",
+  "status": "complete",
+  "summary": "Audited the strongest round-7 items: student-2's NEW manifestly-continuous symmetric q-brick B^sym / orbit R_q^sym (s2_013/post_027, the only new closed-form object; student-2 itself flagged it refuted via a reuse of my round-6 harness), and student-1's top-down hinge-orbit ansatz (s1_009/post_028, which produced NO rank and NO candidate: technician stalled and returned a driver missing the 17 R_0 columns, so student-1 claims nothing). Built a fresh from-scratch bg_r7 (md5 of source byte-identical to shared bg.cpp) and reimplemented P_pole (both forms), R_Q, R_spline, S from the written formulas; hand-transcribed B^sym from the boxed s2_013 formula. No student evaluator imported. Reproduced all anchors incl. the shared checkpoint (A6/i=-9190656/7, P_pole=42588288/7, R_spline=-7396992, R_Q=-136630560, S=129233568). Re-confirmed R_Q globally on the fresh oracle: S=R_spline-R_Q smooth across 24/24 isolated Q-walls while R_spline jumps. RAN MY OWN cure test on B^sym: T=S-R_q^sym is C^0 value-continuous 18/18 and correct on-wall 21/21, but FULLY SMOOTH 0/18 -> REFUTED; my from-scratch first-wall residual 136585204640161305617743/14238281250000000 matches student-2's reported value exactly. Hand-verified the cross-sector witness H^(+)-H^(-)=-21144 (J=-881/16). Diagnosis (confirms s2_013 + F18): global C^0 continuity + on-wall trace does NOT fix the off-wall degree-6 cofactor; the correct nested brick must retain the exact q and q^2 off-wall pieces (coupled q_+^2/q_+^3). No new candidate survives; no complete compact A_6 (G1 persists). Process finding: for the 3rd straight round the sole technician thread wrote no artifact (round 7: BOTH students), so almost no new student exact compute happened -- the real bottleneck is orchestration, not math.",
+  "oracle": {
+    "path": "bots/verifier/code/bg_r7",
+    "build": "g++ -O2 -std=c++17 -o bg_r7 bg.cpp -lgmpxx -lgmp",
+    "source_md5_matches_shared_bg_cpp": true,
+    "source_md5": "41715c4af3ee5a61b1c4bfce40426ac8",
+    "note": "bg_r6 and bg_r7 differ only in build metadata; exact-rational output identical, cross-checked on the anchor."
+  },
+  "checks_rerun_result": {
+    "V0_foundation": "PASS exact on fresh bg_r7 (A6/i=-9190656/7; P_pole form1==form2=42588288/7; R_spline=-7396992; R_Q=-136630560; S=129233568 == student-1 s1_009 checkpoint == student-2 settled inputs)",
+    "V1_RQ_global": "PASS (S=R_spline-R_Q smooth+continuous across 24/24 isolated Q-walls while R_spline jumps; 5 channels, 4 q-chambers, 4 energy-sign chambers) -> R_Q=-32 sum (Q_{m;pq})_+^3 w_m w_tbar re-confirmed on fresh oracle",
+    "V2_Bsym_onwall": "PASS (B^sym == -32 beta^2 E at q=0, 21/21 random on-wall points; corrections vanish at q=0 by construction)",
+    "V3_Bsym_cure_test": "REFUTED (independent, from-scratch transcription of the boxed s2_013 B^sym): T=S-R_q^sym is C^0 value-continuous 18/18 but fully SMOOTH 0/18 across isolated q-walls; first-wall residual 136585204640161305617743/14238281250000000 identical to student-2's reported number -> no smooth global R_0 for this candidate",
+    "V4_witness": "PASS hand-derived (E=-5035/8; H^(-)=-107405; H^(+)=-128549; H^(+)-H^(-)=-21144=32*12*(-881/16), J=-881/16) at (a,b,x,y,z)=(2,4,13/2,-7/2,-7/2)",
+    "V5_student1_hinge": "NO CLAIM (s1_009 obtained no rank, proposes no candidate; 588-feature depth split 188/244/134/22 internally consistent; durable checkpoint reproduced in V0; student-1 warns its own late rank is invalid, missing 17 R_0 columns)"
+  },
+  "gaps_found": [
+    {"severity": "blocking", "text": "student-2's new symmetric q-orbit R_q^sym = sum (q_mp)_+ B^sym (s2_013/post_027) is WRONG as a global formula: T=S-R_q^sym is fully smooth 0/18 across isolated q-walls (C^0 value-continuous 18/18, on-wall correct 21/21). Independently reproduced from a hand transcription of the boxed formula; first-wall residual matches student-2's reported value exactly. Do NOT promote. Diagnosis (confirms s2_013 + F18): global C^0 continuity + on-wall trace does NOT determine the degree-6 off-wall cofactor; the correct nested brick must retain the exact q/q^2 off-wall pieces via coupled q_+^2/q_+^3 terms."},
+    {"severity": "blocking", "text": "No complete compact A_6 (G1 persists). Neither student produced a globally-continuous q-orbit R_q or a global R_0 this round (student-1 compute-blocked, no rank; student-2 candidate refuted). The decomposition A_6=i g^-3(P_pole+R_0+R_q+R_Q) is sound and its three pinned pieces (P_pole, R_Q, local q-brick value) re-verify, but the compact nested q-orbit and R_0 remain unbuilt and no table-free evaluator for the full A_6 exists. Clears only when a future round produces a compact continuous R_spline AND a later verifier confirms the assembled A_6 vs fresh BG."},
+    {"severity": "minor", "text": "ORCHESTRATION is the round's actual bottleneck, not the math. For the 3rd straight round the sole /root/technician thread exhausted context and wrote no artifact (round 6 student-2; round 7 BOTH students). student-2's only exact numbers came from reusing my round-6 harness; student-1 got no rank. Unless the technician is handed a single small write-file-then-run script (per the PI's own round-7 warning), rounds 8-9 will not close G1."},
+    {"severity": "minor", "text": "Wall-set completeness (18 hyperplanes) corroborated but not symbolically proven; BG is exactly singular (SIGFPE) on walls/poles -> all near-wall work uses two-sided limits (carried). H-block threshold is the SUM OF SQUARES sum_{j in S} omega_j^2 (only that reproduces P_pole=42588288/7) -- now fixed in logic.yaml/F9."}
+  ],
+  "checks_rerun_result_headline": "student-2's new B^sym REFUTED independently (T smooth 0/18; first-wall residual matches theirs bit-for-bit); student-1 produced no verifiable candidate/rank; R_Q re-confirmed globally (24/24); trusted state unchanged. G1 persists.",
+  "verdict": "GAPS REMAIN (2 blocking)",
+  "artifacts": [
+    "bots/verifier/VERIFICATION.md",
+    "bots/verifier/code/bg_r7",
+    "bots/verifier/code/r7_check.py",
+    "bots/verifier/code/_r7_RQ.py",
+    "bots/verifier/code/r6_core.py",
+    "bots/verifier/code/r6_walls.py",
+    "bots/verifier/code/r6_checkA.py",
+    "bots/verifier/data/r7_check.json"
+  ]
+}

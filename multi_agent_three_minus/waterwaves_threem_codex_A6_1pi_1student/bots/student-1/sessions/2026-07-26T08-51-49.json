@@ -1,0 +1,34 @@
+{
+  "id": "student-1-round1-continuation-2026-07-26T08:51:49",
+  "bot": "student-1",
+  "timestamp": "2026-07-26T08:51:49",
+  "task_id": "round1_h1_structure",
+  "status": "partial",
+  "summary": "Resolved the natural eight-word candidate classifier, proved a four-generator common-cubic reduction and resultant identity, ruled out global polynomial/resultant-denominator forms exactly, and identified different smoothness orders for the two wall orbits. A complete mixed-power exact fit remains pending because the uncached design-matrix build exceeded the inline limit.",
+  "work_done": [
+    "Generated and verified a fresh 600-point exact non-permutation A6 oracle with all eight squared-frequency merge words and a 540/60 train/holdout split.",
+    "Proved that the transformed minus and plus triples share their first two elementary symmetric polynomials, so their cubics differ only by a constant.",
+    "Proved the exact resultant identity product over all nine mixed frequency sums equals minus (r-t)^3 and checked it at all 600 oracle points.",
+    "Ran exact rank tests ruling out global 17- and 12-feature weighted-degree-eight polynomial forms and complete N_d/(r-t)^d forms for d=1,2,3.",
+    "Reproduced high-precision one-sided evidence for a first-derivative jump at difference walls and a third-derivative jump at sum walls.",
+    "Used technician thread /root/technician for wall-hinge, wall-power, invariant, and smoothness implementation artifacts."
+  ],
+  "verification": {
+    "exact_oracle_rows": 600,
+    "train_rows": 540,
+    "holdout_rows": 60,
+    "raw_squared_merge_words": 8,
+    "common_cubic_equalities_passed": 600,
+    "resultant_identity_passed": 600,
+    "global_polynomial_rank": "17/18 and 12/13",
+    "resultant_denominator_ranks": "12/13, 36/37, 36/37",
+    "mixed_wall_fit": "not completed; stopped after 10 minutes during uncached feature-matrix construction"
+  },
+  "next_steps": [
+    "Load fresh_structure_oracle_v2.jsonl and cache the union design matrix for the 188 linear-D, 14 cubic-S, and 57 P8 features once.",
+    "Use modular pivots to extract a small candidate rank certificate, then verify the decisive rank or exact coefficients over QQ.",
+    "If the mixed dictionary fits, rewrite its coefficients in the common-cubic coordinates and test whether a short orbit rule replaces the feature list.",
+    "Have the PI match the squared-frequency merge words to the historical eight baseline labels.",
+    "Strengthen representative pole removability to a full-surface structural proof."
+  ]
+}

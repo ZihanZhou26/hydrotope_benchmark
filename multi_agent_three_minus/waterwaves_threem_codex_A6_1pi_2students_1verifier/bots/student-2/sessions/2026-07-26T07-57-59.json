@@ -1,0 +1,32 @@
+{
+  "id": "student-2-round2-2026-07-26T07:57:59",
+  "bot": "student-2",
+  "timestamp": "2026-07-26T07:57:59",
+  "task_id": "round2_s2_spline_denominator",
+  "status": "partial",
+  "summary": "Proved the nine-factor denominator is the cube of a symmetric cubic and reduced the generic denominator to C=e3^-+e3^+. Exact pole subtraction leaves a polynomial remainder whose pair-wall jump is linear in q_mp, not cubic. The compact degree-six wall prefactor remains open.",
+  "work_done": [
+    "Copied and rebuilt bg.cpp under bots/student-2 and ran the exact round-2 driver.",
+    "Proved Delta=C^3 and product_p(omega_m+omega_p)=C analytically.",
+    "Verified Delta=C^3 on 750 exact BG points and the active-channel reduction on 5079/5079 channels.",
+    "Established denominator minimality by exact single-cell rational reconstruction on three affine paths with zero holdout residuals and unit polynomial gcd.",
+    "Independently implemented the compact nine-channel pole formula and obtained primitive-scaled polynomial remainders on 750/750 exact points.",
+    "Interpolated three isolated two-sided q_24 wall crossings; all branch fit and holdout residuals were zero and all jumps had exact multiplicity one.",
+    "Scanned 35380 arbitrary-sign exact solutions and observed only the same eight momentum words; the 750 BG set spans 19 energy-sign patterns.",
+    "Rechecked the five-point calibration at 3/3 exact points and sector permutations at 6/6 exact points.",
+    "Used the reusable technician thread /root/technician for the initial driver patch and the later compact-pole subtraction implementation, then independently audited and corrected both batches."
+  ],
+  "next_steps": [
+    "Interpolate the wall coefficient H_24 on the wall in a compact symmetry-adapted degree-six basis and factor it.",
+    "Generate all H_mp from one representative by S3(M) x S3(P), integrate the linear positive-part jumps, and fix the global chamber polynomial.",
+    "Complete a symbolic cubic-fiber interlacing proof excluding the two remaining prefix-admissible off-sheet words.",
+    "Have the PI independently verify D_min=C and the multiplicity-one wall result."
+  ],
+  "artifacts": [
+    "bots/student-2/derivations/s2_004_reduced_denominator_and_wall_bricks.md",
+    "bots/student-2/code/round2_exact.py",
+    "bots/student-2/data/round2_exact.json",
+    "bots/student-2/data/round2_exact_report.md",
+    "bots/student-2/HANDOFF.md"
+  ]
+}

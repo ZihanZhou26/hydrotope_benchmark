@@ -1,0 +1,21 @@
+{
+  "id": "pi_sess_r4",
+  "bot": "pi",
+  "timestamp": "2026-07-26T12:18:19",
+  "round": 4,
+  "summary": "Round-4 PI session, all exact/symbolic with fresh bg_r4. (1) VERIFIED student s1_013 symbolically: the exact BG inverse-propagator factorizations are pure polynomial identities in the SIGNED frequencies -- same-sign pair h=2xy; mixed pair (x+y CANCELS); mixed triple branch-selected by q=S_lj=a_l+b_j-T: h=2(x+z)(y+z) if q<0 else the IRREDUCIBLE quadratic 2(x^2+y^2+xy+z(x+y)); same-sign triple h=2p [pi_v_013]. This is the denominator toolkit. (2) KEY CORRECTION: H=A_6/(i*prod omega) is NOT even. Decisive partner-point test (same squares per set, flipped signs of a zero-sum leg subset {2,3,4}) gives H != H' on 30/30 generic pairs, so H depends on sign data (s,r,t), not squares -- refutes the 'H is even/a function of the squares' sub-claim of pi_v_012; consistent with pi_v_011. Implication: numerator must be SIGNED, but an EVEN sign-definite denominator with a SIGNED numerator is allowed [pi_v_014]. (3) NEGATIVE result: H is NOT a rational function of the 4 free signed frequencies to total degree 7 (700 exact points, full column rank), so its free-coord denominator degree >= 8 -- no single global low-degree rational fit works; the compact form is a per-chamber construction [pi_v_015]. (4) Independently re-confirmed s1_014: H*prod(omega)=A_im exactly on 700 fresh PI points [pi_v_016]. (5) Synthesis: pi_v_006 (sign-definite denominator) + pi_v_013 => the only manifestly sign-definite factor is a_i+b_j=omega_i^2+omega_{3+j}^2>0, so H = P(signed)/prod'(a_i+b_j) with p and mixed-h factors cancelling; student's running scan over 2^9 subproducts of prod(a_i+b_j) with a signed numerator is aimed correctly. Updated both live summaries and corrected pi_v_012 in the ledger.",
+  "verification": [
+    {"id": "pi_v_013", "claim": "s1_013 propagator factorizations are exact polynomial identities (mixed pair cancels; triple branch by S_lj; q>0 quadratic irreducible)", "result": "PASS", "evidence": "bots/pi/code/verify_s1_013.py"},
+    {"id": "pi_v_014", "claim": "H is NOT even / not a function of the squares (30/30 partner pairs H!=H'); corrects pi_v_012", "result": "PASS", "evidence": "bots/pi/code/round4_even.py"},
+    {"id": "pi_v_015", "claim": "H not rational in the 4 free signed frequencies to total degree 7 (denominator degree >= 8); no global low-degree rational fit", "result": "PASS", "evidence": "bots/pi/code/round4_Hfit.py"},
+    {"id": "pi_v_016", "claim": "H*prod(omega)=A_im exactly on 700 fresh PI chamber points (re-confirms s1_014)", "result": "PASS", "evidence": "bots/pi/code/round4_Hfit.py"}
+  ],
+  "tasks_assigned": [
+    "student-1 (round 4): collect the finished denominator scan h_probe_20260726T104324Z; report the minimal even sign-definite denominator Q (subproduct of a_i+b_j) making H*Q polynomial in the SIGNED omega, then build the SIGNED numerator P from compact orbit/positive-part blocks (NOT an even ansatz), and deliver a building-block evaluator + fresh-BG residuals. See tasks/student-1.md."
+  ],
+  "next_steps": [
+    "PI (next round): independently reproduce Q (even a_i+b_j subproduct) and the signed numerator P; verify H=P/Q to the definition-of-done bar (>=20 chamber samples, within-set permutations, hierarchies, two-sided wall approaches, 5-pt calibration).",
+    "If H is pinned, assemble A_6 = i*prod(omega)*P/Q and check displayability against the compactness bar for summary/SOLVED.md.",
+    "If the student's global 2^9 scan is negative, guide toward chamber-common vs chamber-dependent Q, or a low power of an a_i+b_j / restricted S_ij factor."
+  ]
+}

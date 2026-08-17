@@ -1,0 +1,10 @@
+Fixed (w3,w4,w6)=(3,5,11). Surviving config {1,3,4,6,7} should be w2-independent.
+
+  w2=2: bad slice (npts=-1)
+  w2=3: bad slice (npts=-1)
+  w2=4: bad slice (npts=0)
+  w2=5: bad slice (npts=0)
+  w2=6: bad slice (npts=25)
+  w2=7: bad slice (npts=-1)
+  w2=5/2: bad slice (npts=-1)
+  w2=7/2: bad slice (npts=5)

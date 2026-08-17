@@ -1,0 +1,4 @@
+(1, 1) status=degenerate reason=mixed pair: q_T=0 or external zero on mixed branches found=False
+(2, 0) status=degenerate reason=same-side pair: h = 2*w_a*w_b found=False
+(2, 1) family=0 sign=-1 samples=12 class=bounded_or_removable h_ratio_ok=True q_bounded_ok=True other_min_h_ok=True
+(3, 0) family=2 sign=-1 samples=12 class=bounded_or_removable h_ratio_ok=True q_bounded_ok=True other_min_h_ok=True

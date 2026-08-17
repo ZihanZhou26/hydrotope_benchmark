@@ -1,0 +1,384 @@
+claims:
+  - id: s2_001
+    timestamp: "2026-07-26T05:54:13"
+    status: verified_on_standard_sheet
+    statement: >
+      On the standard physical sheet with $\omega_2,\ldots,\omega_5>0$ and
+      solved $\omega_1,\omega_6<0$, sort the six $|\omega_i|$ and record their
+      momentum signs. The base chamber word is exactly one of
+      $\{+-+--+,+--++-,+--+-+,+---++,-+++--,-++-+-,-++--+,-+-++-\}$.
+      The word is invariant under the two $S_3$ label symmetries; its
+      codimension-one changes are adjacent mixed-sign swaps
+      $q_{mp}=\omega_p^2-\omega_m^2=0$.
+    evidence:
+      - bots/student-2/derivations/s2_001_chamber_geometry.md
+    verification: >
+      Analytic parametrization, strict dominance inequalities, prefix-sum
+      exclusion, eight exact rational witnesses, exact conservation, and one
+      exact GMP amplitude evaluation in every word. The same eight words were
+      observed on other energy-sign sheets, but a sheet-independent proof is
+      still needed.
+  - id: s2_002
+    timestamp: "2026-07-26T05:54:13"
+    status: partially_verified
+    statement: >
+      Up to complements, all candidate subset walls are the two
+      $S_3\times S_3$ orbits $q_{mp}=0$ and
+      $q_{m;pq}=0$. Triple channels can carry a nonzero factorization residue
+      only for $q_{m;pq}>0$. A fixed denominator supported by exact data is
+      $\Delta=\prod_{m=1}^{3}\prod_{p=4}^{6}(\omega_m+\omega_p)$, making the
+      cleared numerator homogeneous of degree $17$.
+    evidence:
+      - bots/student-2/derivations/s2_002_walls_poles_delta.md
+    verification: >
+      Exact propagator factorization and one-minus residue argument; exact
+      denominator clearing at sixteen on-shell points including all eight
+      words. Minimality of $\Delta$ is not proved.
+  - id: s2_003
+    timestamp: "2026-07-26T05:54:13"
+    status: conjecture_with_exact_locus
+    statement: >
+      Every candidate zero $\omega_m+\omega_p=0$ of $\Delta$ forces the full
+      six-point on-shell kinematics onto a three-pair cancellation locus.
+      Multi-direction exact approaches show no divergence, suggesting that
+      all apparent factorization poles are removable on shell.
+    evidence:
+      - bots/student-2/derivations/s2_002_walls_poles_delta.md
+    verification: >
+      The forced three-pair locus is proved algebraically. Four approach
+      directions and a two-sided refinement to $|t|=1/320$ remain finite;
+      exact divisibility of the final numerator is still required.
+  - id: s2_004
+    timestamp: "2026-07-26T07:52:30"
+    status: verified
+    statement: >
+      On the six-point on-shell variety,
+      $\Delta=\prod_{m\in M,p\in P}(\omega_m+\omega_p)=C^3$, where
+      $C=e_3^-+e_3^+=\omega_1\omega_2\omega_3+
+      \omega_4\omega_5\omega_6$. Moreover
+      $\prod_{p\in P}(\omega_m+\omega_p)=C$ for every minus leg $m$, so
+      every surviving channel obeys
+      $1/d_T=(\omega_m+\omega_r)/(2C)$ with $r$ the omitted plus leg.
+      The true generic reduced denominator is therefore
+      $D_{\min}=C$ of degree $3$, and the reduced cleared numerator has
+      homogeneous degree $11$.
+    evidence:
+      - bots/student-2/derivations/s2_004_reduced_denominator_and_wall_bricks.md
+      - bots/student-2/data/round2_exact.json
+    verification: >
+      The cube and channel identities are analytic consequences of
+      $e_1^+=-e_1^-$ and $e_2^+=e_2^-$. They passed exactly at $750$
+      fresh BG points and $5079/5079$ active channels. On three
+      single-cell affine paths, $C A_6/i$ was polynomial with nine exact
+      holdouts total, while $\gcd(C A_6/i,C)=1$ over $\mathbb Q[t]$ on
+      two paths (and a constant unit on the third), establishing
+      minimality.
+  - id: s2_005
+    timestamp: "2026-07-26T07:52:30"
+    status: exact_computational_evidence
+    statement: >
+      Off the standard energy sheet, the sheet-independent momentum-word
+      selector continues to give exactly the same eight words. An
+      exhaustive exact scan of $35380$ generic signed rational
+      parametrization points found no extra word, including no
+      $++---+$ or $--+++-$; $750$ fresh BG points spanned $19$ distinct
+      energy-sign patterns and also obeyed the selector.
+    evidence:
+      - bots/student-2/derivations/s2_004_reduced_denominator_and_wall_bricks.md
+      - bots/student-2/data/round2_exact.json
+    verification: >
+      Exact Fraction conservation and wall checks on the exhaustive box
+      $(b,c,d,e)\in(\{-8,\ldots,-1,1,\ldots,8\})^4$. The parametrization
+      covers arbitrary real energy-sign sheets away from $S=0$. A fully
+      symbolic cubic-fiber interlacing proof remains open.
+  - id: s2_006
+    timestamp: "2026-07-26T07:52:30"
+    status: verified_with_open_prefactor
+    statement: >
+      For the compact nine-channel pole convention of claim $s1_003$,
+      the polynomial remainder $R=A_6/i-P_{\rm pole}$ has a simple,
+      nonzero pair-wall branch difference
+      $R_L-R_R=q_{mp}H_{mp}$, where $H_{mp}$ is homogeneous of degree
+      $6$; a cubic truncated-power brick is ruled out. The labeled
+      $H_{mp}$ are generated from one representative by
+      $S_3(M)\times S_3(P)$, but their compact multivariate formula is
+      not yet identified.
+    evidence:
+      - bots/student-2/derivations/s2_004_reduced_denominator_and_wall_bricks.md
+      - bots/student-2/data/round2_exact.json
+    verification: >
+      Independent implementation of the compact pole formula made the
+      primitive-scaled remainder integral at $750/750$ exact points.
+      Three isolated $q_{24}$ paths gave exact polynomial branches, zero
+      fit and holdout residuals on both sides, and wall multiplicity
+      exactly one with nonzero coefficients
+      $12622720/27$, $8178488960/6859$, and
+      $30826928896/12167$. Before subtraction the jump was rational,
+      showing that the pole extension itself changes branch at pair
+      walls.
+  - id: s2_007
+    timestamp: "2026-07-26T09:59:49"
+    status: verified_exact_ground_truth
+    statement: >
+      The pole-subtracted pair-wall coefficient is itself a spline:
+      there is no single residual-$S_2\times S_2$ degree-six polynomial
+      $H_{14}$ valid in every physical wall environment. In one exact
+      environment the intrinsic branch difference is
+      $R(q_{24}>0)-R(q_{24}<0)=q_{24}H_{24}$ with a primitive
+      $29$-monomial degree-six polynomial. Its trace on $q_{14}=0$
+      reduces to a five-block quartic times
+      $\beta^2=\min_{j\notin\{m,p\}}\omega_j^2$, and the full
+      29-term analytic piece itself reduces to three short defined
+      blocks plus $q_{14}$ and $q_{14}^2$ corrections. A physical environment
+      related by the non-primary minus swap $1\leftrightarrow3$ has the
+      exact coefficient $H_{24}(w_3,w_2,w_1,w_4,w_5)\ne H_{24}(w)$;
+      the coefficient of $w_1^5w_2$ in their difference is $-32$.
+      Therefore the proposed single polynomial orbit
+      $\sum_{m,p}(q_{mp})_+H_{mp}$ is incomplete.
+    evidence:
+      - bots/student-2/derivations/s2_007_exact_cell_brick_and_nested_verdict.md
+      - bots/student-2/data/round3_context_a.json
+      - bots/student-2/data/round3_context_b.json
+      - bots/student-2/data/round3_context_c.json
+      - bots/student-2/data/round3_context_comparison.json
+    verification: >
+      Six exact homogeneous quotient-ring interpolations used full-rank
+      $285\times285$ systems, and all $120/120$ fresh exact BG holdouts
+      had zero residual. Every pair-wall jump divided exactly by
+      $q_{24}$, and the first recovered $H_{24}$ reproduced the prior
+      exact wall value $12622720/27$. Isolated adjacent environments
+      differing only at $q_{25}$ or $Q_{1;45}$ gave exactly the same
+      normalized $H_{24}$, whereas the symmetry-related physical
+      environment gave the unequal permuted polynomial. Both compact
+      cell identities have zero symbolic residual. The same-energy
+      $\beta$-trace formula passed $17/17$ distinct isolated wall
+      environments and $102/102$ exact branch holdouts, with every
+      possible non-primary minimizing leg represented. It also reduces
+      symbolically to student-1's independent affine pieces
+      $P(u)$ and $P(6-u)$ on the two sides of their exchange.
+  - id: s2_008
+    timestamp: "2026-07-26T10:31:23"
+    status: verified_rejection_with_compact_local_blocks
+    statement: >
+      The two compact intrinsic brick types are exact: a three-block
+      formula applies when the four-leg minimum $\beta$ is another
+      minus leg, and a seven-block formula applies when it is another
+      plus leg; together they reproduce four independently
+      reconstructed $H_{14}$ contexts with zero multivariate residual.
+      Nevertheless the naive integration
+      $R_0+\sum_{m,p}(q_{mp})_+H_{mp}^{(\beta)}$ fails: the inferred
+      $R_0$ agrees in only $1/8$ fully reconstructed analytic cells.
+      Coupled beta exchanges in other pair bricks occur on the primary
+      wall, so a Möbius/inclusion-exclusion assembly is still required.
+    evidence:
+      - bots/student-2/derivations/s2_007_exact_cell_brick_and_nested_verdict.md
+      - bots/student-2/data/round3_assemble_candidate.json
+    verification: >
+      Symbolic on-shell reduction gives exact equality for all $4/4$
+      compact intrinsic-piece checks. Exact quotient-ring subtraction
+      from eight rank-285 branch polynomials gives seven nonzero
+      candidate-$R_0$ differences, each with stored exact coefficient
+      witnesses; no numerical fitting criterion is used.
+  - id: s2_009
+    timestamp: "2026-07-26T13:01:23"
+    status: verified_exact_obstruction
+    statement: >
+      The magnitude-tie / four-leg-$\beta$ fan is not the complete
+      polynomial fan of $R_{\rm spline}$. A single unsigned full-sort
+      degree-eight polynomial fails exact holdouts in every one of the
+      eight symmetry-reduced magnitude words (only $17/240$ residuals
+      vanish). More decisively, with the six energy signs, all nine
+      pair signs, and even the complete labeled magnitude order fixed,
+      changing exactly one triple sign $Q_{m;pq}$ changes the exact
+      polynomial continuation. Thus a complete coupled assembly must
+      include the regular nine-element $Q_{m;pq}=0$ wall orbit in
+      addition to the nine $q_{mp}=0$ pair walls.
+    evidence:
+      - bots/student-2/derivations/s2_009_full_sort_refutation_and_qwall.md
+      - bots/student-2/data/round4_full_sort.json
+      - bots/student-2/data/round4_refinement_diagnostic.json
+    verification: >
+      Eight mixed unsigned-sort systems each had exact rank $285$ and
+      zero training residual, followed by $30$ fresh exact GMP
+      holdouts per word. The controlled continuation battery gave
+      $96/96$ stored same-$Q_T$-signature controls with zero residual
+      and $0/160$ one-$Q_T$-flip probes with zero residual. Restricting
+      further to identical energy signs gave $21/21$ exact controls and
+      $0/15$ one-$Q_T$-flip matches. At
+      $\omega=(21/2,-8,1,-7,-6,19/2)$, which keeps the exact labeled
+      magnitude order $(1,6,2,4,5,3)$ and changes only
+      $Q_{1;45}$ relative to a validated source branch, the exact
+      continuation residual is $411090099/8\ne0$.
+  - id: s2_010
+    timestamp: "2026-07-26T15:09:43"
+    status: verified_exact
+    statement: >
+      With the orientation
+      $\Delta_{m;pq}R=R_{\rm spline}|_{Q_{m;pq}>0}
+      -R_{\rm spline}|_{Q_{m;pq}<0}$, the order-three triple-wall
+      brick is the compact nested spline
+      $G_{m;pq}=-16\max(\omega_m^2,\omega_t^2)
+      =-16[\omega_m^2+(\omega_t^2-\omega_m^2)_+]$, where
+      $\{t\}=\{4,5,6\}\setminus\{p,q\}$. Hence the complete labeled
+      orbit integrates as
+      $R_Q=-16\sum_{m,p<q}(Q_{m;pq})_+^3
+      [\omega_m^2+(q_{mt})_+]$. The brick is a degree-two spline
+      only at the omitted-leg pair wall $q_{mt}=0$; it has no energy
+      sign or further $Q$ selector.
+    evidence:
+      - bots/student-2/derivations/s2_010_order3_q_brick.md
+      - bots/student-2/data/round5_qbrick.json
+      - bots/student-2/data/round5_qbrick_report.md
+      - bots/student-2/code/round5_qbrick.py
+    verification: >
+      A fresh copied source with matching SHA-256
+      $bd1afe67c45e1e9403c03a0b78373ebb492235be56fc1e5ee9281cbbec9040c1$
+      reconstructed 27 certified isolated walls, three in each of the
+      nine labeled channels. Both degree-at-most-eight branch fits passed
+      all $81/81$ exact holdouts per side; every one of the $27/27$
+      differences divided by $Q^3$ with zero remainder and quotient
+      degree at most two. One record from each selector branch determined
+      the max formula, after which the other 25 wall records gave
+      $600/600$ exact held-out quotient matches across all nine channels
+      and the complete battery spanned seven stored sign environments.
+      The complete battery is
+      $648/648$: 19 records select $\omega_m^2$ and 8 select
+      $\omega_t^2$.
+  - id: s2_011
+    timestamp: "2026-07-26T17:40:04"
+    status: verified_algebraic_repackaging_of_prior_traces
+    statement: >
+      On the pair wall $q_{mp}=0$, the previously reconstructed same-
+      and opposite-energy intrinsic traces have the unified compact
+      form
+      $H_{mp}=-32\beta^2[F+(a+\omega_p)D]$, where
+      $a=\omega_m$, $s$ and $v$ are the sum and product of the two
+      remaining minus frequencies,
+      $F=as^3+v(s^2-2v)$,
+      $D=2a^3+3a^2s+a(s^2+v)-sv$, and
+      $\beta=\min_{j\notin\{m,p\}}|\omega_j|$.
+    evidence:
+      - bots/student-2/derivations/s2_011_round6_qorbit_candidate_and_blocker.md
+      - bots/student-2/derivations/s2_007_exact_cell_brick_and_nested_verdict.md
+    verification: >
+      Exact symbolic expansion gives zero residual after setting
+      $\omega_p=a$ and reproduces the five-block same-energy trace;
+      setting $\omega_p=-a$ gives the two-block opposite-energy trace.
+      This repackages prior exact cell-polynomial evidence; no fresh BG
+      extraction from the clean residual $S$ was completed this round.
+  - id: s2_012
+    timestamp: "2026-07-26T17:40:04"
+    status: active_unverified_candidate
+    statement: >
+      After adopting the corrected
+      $R_Q=-32\sum(Q_{m;pq})_+^3\omega_m\omega_t$, the compact pair-orbit
+      candidate is
+      $R_q^{\rm cand}=\sum_{m,p}(q_{mp})_+H_{mp}^{(\beta)}$, with one
+      short block when the four-leg minimum $\beta$ is a minus leg and
+      one short block when it is a plus leg, as displayed in the
+      evidence file. It has nine symmetry-orbit terms, two analytic
+      block types, and no chamber coefficient table.
+    evidence:
+      - bots/student-2/derivations/s2_011_round6_qorbit_candidate_and_blocker.md
+    verification: >
+      The two local blocks retain their prior $4/4$ exact symbolic
+      checks and both restrict to claim $s2_011$ at $q_{mp}=0$.
+      The decisive corrected-$R_Q$ eight-cell $R_0$ equality test and
+      fresh exact BG battery were not run because the sole required
+      technician thread exhausted its context twice without artifacts.
+      This is not a verified formula.
+  - id: s2_013
+    timestamp: "2026-07-26T19:57:43"
+    status: verified_exact_rejection
+    statement: >
+      The manifestly continuous symmetric extension
+      $B^{\rm sym}_{mp}=-32\beta^2E
+      -16q\{[3a^2+2a(s+b)-v](s^2-2v)+bs(s^2-v)\}
+      +16bsq^2$ is table-free, has the confirmed wall trace, and makes
+      $R_q^{\rm sym}=\sum(q_{mp})_+B^{\rm sym}_{mp}$ continuous in
+      value. It is nevertheless not the correct pair orbit: it matches
+      the exact off-wall cofactor in $0/24$ extractions and
+      $S-R_q^{\rm sym}$ retains a polynomial-continuation jump across
+      $18/18$ isolated pair walls. Thus a continuous extension of the
+      common wall value alone is insufficient; the full $q$ and $q^2$
+      cofactor data require coupled nested pair terms.
+    evidence:
+      - bots/student-2/derivations/s2_013_round7_continuous_symmetrization_refuted.md
+      - bots/student-2/data/round7_symmetric_candidate_summary.json
+      - bots/student-2/data/r6_checkC.json
+    verification: >
+      The independent exact verifier harness gives $24/24$
+      divisibility by $q_{mp}$ and $24/24$ equality at $q_{mp}=0$,
+      but $0/24$ equality off wall. On the 18-wall cure battery every
+      branch-limit difference is exactly zero, while every
+      left-polynomial/right-point continuation residual is nonzero;
+      the first is
+      $136585204640161305617743/14238281250000000$. This diagnostic
+      reused the verifier's exact GMP build rather than a fresh
+      student-2 build, so it is a rejection test, not final-formula
+      verification.
+  - id: s2_014
+    timestamp: "2026-07-26T22:03:57"
+    status: verified_symbolic
+    statement: >
+      On any physical pair wall $q_{mp}=0$, the two remaining minus
+      squares and the two remaining plus squares have equal sums.
+      Therefore their strict magnitude ordering has only two possible
+      sector words, $\mathrm{MPPM}$ and $\mathrm{PMMP}$; the other four
+      formal interleavings are impossible.  Moreover the old raw
+      plus-minimum and minus-minimum cofactor templates obey
+      $\left.(H^{(+)}-H^{(-)})\right|_{z=y}=32qJ(a,b,x,y)$, where the
+      explicit 27-term quartic $J$ is displayed in the evidence file
+      and is nonzero.  At
+      $(a,b,x,y,z)=(2,4,13/2,-7/2,-7/2)$ it gives
+      $J=-881/16$ and a mismatch $-21144$.  Thus those two raw
+      templates cannot be joined unchanged by a continuous
+      single-minimum truncated-power selector; a valid construction
+      must redistribute their off-wall data through coupled wall
+      terms.
+    evidence:
+      - bots/student-2/derivations/s2_014_round8_offwall_ground_truth_and_obstruction.md
+    verification: >
+      Cancelling the tied pair in exact momentum conservation proves
+      equality of the two environment square sums, from which the two
+      strict words follow by inequalities.  Direct symbolic expansion
+      verifies the displayed cocycle identity exactly and evaluates
+      its rational witness to $J=-881/16$ and
+      $32(b^2-a^2)J=-21144$.  Fresh BG quotient extraction is pending
+      separately and is not included in this claim.
+  - id: s2_015
+    timestamp: "2026-07-26T22:09:47"
+    status: verified_exact
+    statement: >
+      The complete physically realized off-wall cofactor ground truth
+      on representative on-shell slices consists of two degree-six
+      polynomials.  In the $\mathrm{MPPM}$ cell on
+      $\omega(t)=(8,2,-3,-5,4,-6)+t(4,3,1,-3,-1,-4)$,
+      $H(t)=-29024t^6+20768t^5+310784t^4+256704t^3
+      -440800t^2-872928t-190656$.  In the $\mathrm{PMMP}$ cell on
+      $\omega(t)=(10,-7,-6,-5,-4,12)+t(1,1,1,-1,-1,-1)$,
+      $H(t)=-320t^6-2912t^5+4480t^4+474752t^3
+      -684416t^2+5101888t+8743168$.  Both use the intrinsic
+      orientation $S|_{q>0}-S|_{q<0}=qH$ and both agree identically
+      on their slices with the applicable compact raw local block.
+      The boundary between the two physical cells necessarily ties
+      both environment cross-sector pairs simultaneously, so their
+      nonzero $32qJ$ mismatch is a codimension-two cocycle requiring
+      a mixed-wall orbit, not a one-selector nested brick.
+    evidence:
+      - bots/student-2/derivations/s2_014_round8_offwall_ground_truth_and_obstruction.md
+      - bots/student-2/code/round8_offwall_ground_truth.py
+      - bots/student-2/data/round8_offwall_ground_truth.json
+      - bots/student-2/data/round8_offwall_ground_truth_report.md
+    verification: >
+      A fresh private source copy has the same SHA-256 as shared
+      `bg.cpp` and is rebuilt on every evaluator run.  The exact anchor
+      reproduces $A_6/i=-9190656/7$,
+      $P_{\rm pole}=42588288/7$, $R_Q=-136630560$, and
+      $S=129233568$.  Full non-active signatures are fixed on both
+      crossings; degree-eight side fits pass $4/4$ exact holdouts;
+      jump division has zero remainder in $2/2$ cells; quotient degree
+      is six in $2/2$; the common on-wall trace passes $2/2$; and the
+      compact raw formulas pass $14/14$ exact off-wall points.  The
+      student independently reran the standalone driver after audit,
+      obtaining the same outputs.

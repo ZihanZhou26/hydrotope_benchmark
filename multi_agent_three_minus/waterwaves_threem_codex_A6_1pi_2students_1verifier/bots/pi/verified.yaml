@@ -1,0 +1,395 @@
+verified:
+  - id: pi_vchk_001
+    round: 1
+    timestamp: "2026-07-26T05:35:43"
+    reason: >
+      Round-1 foundation. No student/verifier candidate yet, so this is a
+      harness sanity check the PI owns (toolchain + calibration + basic
+      structural anchors), not a duplication of verifier work. Establishes
+      trustworthy baseline facts for directing the students.
+    method: >
+      Copied bg.cpp to bots/pi/code and built it exactly per question.md
+      (g++ -O2 -std=c++17 -o bg bg.cpp -lgmpxx -lgmp; build OK, GCC 8.5.0).
+      Ran exact-rational BG for 5pt and 6pt three-minus samples.
+    checks:
+      - name: toolchain_build
+        outcome: PASS
+        detail: bg.cpp builds clean under g++ 8.5.0 with GMP.
+      - name: 5pt_calibration_vs_two_minus_signflip
+        outcome: PASS
+        detail: >
+          BG 5pt 3-minus (-w 2,3,4 -s -1,-1,-1,1,1) gives omega =
+          {-14/3,2,3,4,-13/3}, A_5 = i*(-19968). Sign-flip maps 3-minus to
+          two-minus with minus legs (4,5): A_5 = i*2^4*g^-2*omega_4*omega_5*
+          sum_{S subset {1,2,3}} (-1)^|S| (beta^2 - sum_{j in S} omega_j^2)_+^2,
+          beta = min(|omega_4|,|omega_5|) = 4. Nonzero terms:
+          S=empty:+256, S={2}:-144, S={3}:-49, S={2,3}:+9 => sum 72.
+          i*16*(-52/3)*72 = i*(-19968). EXACT match to BG.
+      - name: degree8_homogeneity
+        outcome: PASS
+        detail: >
+          6pt sample free (2,3,4,5) gives A_6 = i*(-9190656/7). Scaling all free
+          freqs by 2 -> free (4,6,8,10) gives A_6 = i*(-2352807936/7) =
+          256 * (-9190656/7) = 2^8 factor. A_6 is homogeneous of degree 8 in the
+          frequencies at fixed g. (Two-minus template degree is 2n-4 = 8, so the
+          three-minus A_6 shares the degree.)
+      - name: plus_leg_permutation_symmetry
+        outcome: PASS
+        detail: >
+          Swapping omega_4 <-> omega_5 (free (2,3,4,5) vs (2,3,5,4)) leaves
+          A_6 = i*(-9190656/7) unchanged. A_6 is symmetric under permutations of
+          the plus legs (expected to also hold for minus legs).
+      - name: purely_imaginary
+        outcome: PASS
+        detail: A_6 real part is exactly 0 in all sampled three-minus points (A_6 = i * rational).
+    anchors:
+      - "omega={-8,2,3,4,5,-6}: A_6 = i*(-9190656/7)"
+      - "omega={-154/17,3,5,2,7,-135/17}: A_6 = i*(-641893056/85)"
+      - "5pt calib: omega={-14/3,2,3,4,-13/3}: A_5 = i*(-19968)"
+    implication: >
+      Truncated-cubic brick (.)_+^{n-3}=(.)_+^3 has degree 6, so with a
+      two-minus-style outer prefactor the prefactor must be DEGREE 2 -- it cannot
+      be the naive product omega_1*omega_2*omega_3 (degree 3). This rules out the
+      most naive generalization and motivates the "sum over minus-leg pairs"
+      ansatz assigned to student-1.
+
+  - id: pi_vchk_002
+    round: 4
+    timestamp: "2026-07-26T12:12:08"
+    reason: >
+      Targeted resolution of a student<->verifier CONFLICT on a LOAD-BEARING
+      directional claim that shapes the entire round-4 plan. student-1 (s1_004)
+      attributed the H_24 branch switch on its affine slice to the TRIPLE wall
+      Q_{3;45}=61-12u (u=61/12). The round-3 verifier (Finding 2, v_r3_002)
+      instead located it at the PAIR/magnitude wall q35=0 (u=3). Whether the
+      spline coupling is a Q_T effect or a magnitude-sort effect determines the
+      whole round-4 ansatz, so I checked it independently rather than trust
+      either bot. Not a duplication of the verifier's H_24 reconstruction
+      (which I did NOT redo).
+    method: >
+      (1) Fresh CLEAN rebuild of the immutable shared bg.cpp in bots/pi/code
+      (md5=41715c4af3ee5a61b1c4bfce40426ac8, byte-identical to shared reference
+      and to the verifier's oracle; g++ 8.5.0, -O2 -std=c++17 -lgmpxx -lgmp).
+      Reproduced the standing anchor exactly. (2) Independent KINEMATIC analysis
+      of the four-leg beta=min(|w_1|,|w_3|,|w_5|,|w_6|) minimizer on student-1's
+      slice w2=w4=5, w3=u, w5=6-u, w1=(3u-73)/8, w6=-(3u+55)/8 (conservation
+      re-derived and confirmed). Did NOT reconstruct H_24 branches (deferred to
+      the verifier's already-confirmed values).
+    checks:
+      - name: toolchain_rebuild_anchor
+        outcome: PASS
+        detail: >
+          Fresh md5-matched bg build. omega={-8,2,3,4,5,-6} (-w 2,3,4,5) gives
+          A_6 = i*(-9190656/7), exact match to the standing anchor. Toolchain
+          re-confirmed for round 4.
+      - name: switch_is_magnitude_tie_not_QT
+        outcome: PASS
+        detail: >
+          Four-leg beta minimizer over {w1,w3,w5,w6}: u=2.9 -> w3 (|w3|=2.9 <
+          |w5|=3.1); u=3.1 -> w5; u=4 -> w5 (|w5|=2). The minimizer FLIPS
+          w3<->w5 exactly at u=3, where |w3|=|w5|=3 (pair wall q35=0). At the
+          triple wall Q_{3;45}=0 (u=61/12) the minimizer is w5 (|w5|=0.917) --
+          SAME branch as u=4, no flip. Thus the P(u)<->P(6-u) exchange is the
+          magnitude-tie beta switch at q35=0 (u=3), NOT the Q_T wall at u=61/12.
+          Verifier CONFIRMED; student-1's Q_T attribution REJECTED.
+      - name: slice_is_on_a_wall_sigfpe
+        outcome: PASS
+        detail: >
+          BG SIGFPEs on the whole slice (w2=w4=5 is the primary wall q24=0) and
+          on the exchange point u=3 -> omega=(-8,5,3,5,3,-8) (also q35=0). This
+          reconfirms the standing rule: never evaluate BG on a wall; final
+          off-wall evaluation and two-sided limits are mandatory.
+    anchors:
+      - "omega={-8,2,3,4,5,-6}: A_6 = i*(-9190656/7)  [fresh md5-matched build]"
+      - "switch on s1 slice at u=3 (|w3|=|w5|), NOT u=61/12 (Q_{3;45}=0)"
+    implication: >
+      The round-4 coupling that makes H_mp a spline is governed by the arrangement
+      of MAGNITUDE-TIE walls |omega_i|=|omega_j| (the four-leg beta=min fan), not
+      by the factorization walls Q_T=0. Both round-4 tasks are therefore built on
+      the sorted-magnitude/nested-truncated-power picture. This does not clear the
+      blocking gap G1 (no compact R_spline yet); it only certifies the direction.
+    correction_round5: >
+      PARTIALLY SUPERSEDED by pi_vchk_003 and verifier round-4 Finding 2. The
+      NARROW claim of pi_vchk_002 (the H_24 branch switch on the specific B=10
+      slice is the magnitude tie q35=0 at u=3, NOT Q_{3;45} at u=61/12) remains
+      CORRECT. But the IMPLICATION above over-generalized it into a blanket
+      standing rule "the coupling fan is magnitude ties, NOT Q_T walls." That
+      blanket rule is FALSE: R_spline (and A_6 itself) also jump across the 3-leg
+      factorization walls Q_{m;pq}=0, at order 3 (verifier V2-V4; independently
+      re-confirmed here by pi_vchk_003). The correct picture is the JOINT
+      arrangement {q_mp=0} U {Q_{m;pq}=0}. Do not use the blanket rule.
+
+  - id: pi_vchk_004
+    round: 6
+    timestamp: "2026-07-26T17:24:52"
+    reason: >
+      Targeted resolution of a LOAD-BEARING student<->verifier CONFLICT that the
+      entire round-6 assembly depends on. student-2 (s2_010, post_020) claimed the
+      order-3 triple-wall brick is G_{m;pq}=-16 max(w_m^2,w_t^2). The round-5
+      verifier (V3, post_021) REFUTED it (fails 24/27 walls) and supplied the
+      corrected brick G_{m;pq}=-32 w_m w_t, but flagged it as ITS OWN finding
+      requiring student re-derivation before being treated as settled. Because
+      round 6 subtracts R_Q^corr = -32 sum (Q_{m;pq})_+^3 w_m w_t as the FIRST step
+      of the final assembly, a wrong brick would poison the whole result. I ran one
+      targeted independent check of which brick BG actually realizes. Both
+      candidate formulas COINCIDE where |w_m|=2|w_t| (the canonical-line accident),
+      so I deliberately used DISCRIMINATING crossings (w_m != 2 w_t).
+    method: >
+      Fresh md5-matched bg (bots/pi/code, md5=41715c4af3ee5a61b1c4bfce40426ac8).
+      Implemented P_pole MYSELF from the written formula F9 (no student/verifier
+      evaluator imported); confirmed it on the anchor {-8,2,3,4,5,-6}:
+      P_pole=42588288/7, R_spline=A_6/i-P_pole=-7396992 (exact). On on-shell
+      polynomial lines w(t)=P+t d crossing exactly ONE Q_{m;pq}=0 wall inside a
+      single 18-wall chamber (all nine q_mp signs and the other eight Q signs
+      certified CONSTANT; only the target Q flips), interpolated the two degree-8
+      branch polynomials of R_spline (9 fit + 2 holdout each; holdouts confirm
+      deg<=8), formed the ORIENTED jump dR=R|_{Q>0}-R|_{Q<0}, and compared
+      dR/Q^3 exactly to the three candidates -32 w_m w_t, -16 max(w_m^2,w_t^2),
+      -16 w_m^2. Script: bots/pi/code/pi_vchk_004_Qbrick.py (self-contained,
+      fractions). Two lines: (A) the verifier's own V3 line P=(8,2,-3,-5,4,-6),
+      d=(-3,-2,1,3,-1,2), channel (1;46); (B) an INDEPENDENT line found by my own
+      on-shell tangent-space search at a DIFFERENT base P=(-8,2,3,4,5,-6),
+      d=(-5,-5,-5,5,5,5), DIFFERENT channel (2;45).
+    checks:
+      - name: p_pole_foundation
+        outcome: PASS
+        detail: "My from-scratch P_pole gives 42588288/7 and R_spline=-7396992 at the anchor (exact match to verified F9/V0)."
+      - name: brick_lineA_verifier_channel146
+        outcome: PASS
+        detail: >
+          Clean single-Q crossing (q flips L->R: none; Q flips: only (1;46)),
+          discriminating (at wall w_m=2.313, w_t=2.104, 2 w_t=4.209). Extracted
+          G=dR/Q^3 EQUALS -32 w_m w_t exactly at all 5 off-wall check points (e.g.
+          t=1.70: G=-5336/25); DISAGREES with -16 max (-3364/25) and -16 w_m^2.
+      - name: brick_lineB_independent_channel245
+        outcome: PASS
+        detail: >
+          My own on-shell line at a different base and channel (2;45), clean
+          single-Q crossing, discriminating (w_m=3.835, w_t=-7.835). Extracted
+          G EQUALS -32 w_m w_t exactly at all 5 points (e.g. t=-0.4726:
+          G=16873329/14450); DISAGREES with -16 max and -16 w_m^2.
+    anchors:
+      - "anchor {-8,2,3,4,5,-6}: P_pole=42588288/7, R_spline=-7396992 (my own P_pole)"
+      - "G_{m;pq} = -32 w_m w_t (t=omitted plus leg) CONFIRMED on 2 independent discriminating lines/channels; student-2's -16 max REJECTED"
+    implication: >
+      The corrected order-3 triple-wall brick G_{m;pq} = -32 w_m w_t and the orbit
+      R_Q^corr = -32 sum_{m,p<q} (Q_{m;pq})_+^3 w_m w_t are CONFIRMED (verifier V3
+      independently reproduced by the PI). student-2's round-5 "order-3 Q brick
+      closed" (s2_010, post_020) and its "-16 (Q)_+^3 correction to H_mt" are
+      REJECTED. Round 6 assembles on R_Q^corr. This does NOT clear the blocking
+      gap G1 (no complete compact A_6 yet); it only certifies the brick the
+      assembly starts from, and (via my independent P_pole) reconfirms the
+      decomposition. NOTE this is a PI double-check: it clears the confusion in the
+      shared state but the FULL assembled A_6 still needs a later verifier report.
+    caveat: >
+      Confirms the brick AT/ACROSS the wall on 2 lines (verifier tested 27 walls x
+      9 channels x 4 chambers). I did not re-run all 27; the orbit-completeness of
+      R_Q^corr (all 9 channels, all chambers) rests on the verifier's V3 global
+      smoothness sweep, which I did not duplicate.
+
+  - id: pi_vchk_003
+    round: 5
+    timestamp: "2026-07-26T14:39:59"
+    reason: >
+      The round-4 verifier (Finding 2, HEADLINE) refuted a PI-authored standing
+      rule that I (the PI) introduced by over-generalizing pi_vchk_002:
+      "the coupling fan is magnitude ties |omega_i|=|omega_j|, NOT Q_T walls."
+      Because this reversal reshapes the entire remaining deliverable and the
+      round-5 plan, and because it overturns my own prior conclusion, I ran ONE
+      targeted, fully independent double-check that A_6 ITSELF jumps across the
+      3-leg subset-momentum wall Q_{1;46}=k_{{1,4,6}}=0 (verifier V3, the
+      load-bearing physical sub-claim) before rewriting the shared state. This is
+      NOT a rerun of the verifier's method: I test A_6 directly via BG*C with no
+      dependence on any P_pole implementation or on the students' evaluators.
+    method: >
+      Fresh md5-matched bg (bots/pi/code, md5=41715c4af3ee5a61b1c4bfce40426ac8).
+      On-shell polynomial line w(t)=P+t d, P=(8,2,-3,-5,4,-6), d=(-2,1,0,2,-1,0);
+      re-derived on-shell (sum d=0, sum sigma P d=0, sum sigma d^2=0 all zero, so
+      w(t) is exactly on-shell for all t). sigma=(-,-,-,+,+,+), k_i=sigma_i w_i^2,
+      g=1. Certified via exact rational cell signature that the FULL magnitude sort
+      order (1,2,4,3,5,0) and ALL nine q_mp signs are CONSTANT across 15 left + 3
+      right nodes, and that the ONLY invariant crossing zero on the window is
+      Q_{1;46} (=k_{{1,4,6}}), which vanishes at t0=1/4. Formed N(t)=(A_6/i)*C(t),
+      C=w1 w2 w3+w4 w5 w6 (smooth deg-3, C!=0 on window); on one analytic cell
+      N(t) is a polynomial (deg<=11). Exact rational Lagrange interpolation on 12
+      left nodes; tested 3 left holdouts (control) and 3 right nodes (jump test).
+      Script: bots/pi/code/pi_vchk_003_Qwall_jump.py (self-contained, fractions).
+    checks:
+      - name: line_on_shell
+        outcome: PASS
+        detail: "sum P=0, energy sum sigma P^2=0, sum d=0, sum sigma P d=0, sum sigma d^2=0 -> exactly on-shell for all t. Q_{1;46}(t) = -3 + 12 t -> t0 = 1/4."
+      - name: single_magnitude_cell_only_QT_flips
+        outcome: PASS
+        detail: >
+          Magnitude sort order (1,2,4,3,5,0) constant on all 15 left + 3 right
+          nodes; ZERO q_mp sign flips L->R (no magnitude-tie wall crosses); the
+          SOLE sign flip is Q_{1;46}. So the jump is a genuine 3-leg Q_T-wall
+          effect, cleanly separated from any magnitude tie.
+      - name: A6_is_polynomial_on_left_cell
+        outcome: PASS
+        detail: "12-node exact interpolant of N(t)=(A_6/i)*C reproduces all 3 left holdouts (t=0.235,0.225,0.215) with ZERO residual."
+      - name: A6_jumps_across_QT_wall
+        outcome: PASS
+        detail: >
+          Same left polynomial FAILS at all 3 right nodes (t=0.26,0.27,0.28) with
+          large nonzero residuals (e.g. -483064004016/6103515625 at t=0.26).
+          Since the magnitude cell is unchanged and only Q_{1;46} flipped, A_6
+          itself is non-smooth across Q_{1;46}=k_{{1,4,6}}=0. Verifier V3 CONFIRMED
+          by a fully independent construction (BG*C, no P_pole).
+    anchors:
+      - "omega={-8,2,3,4,5,-6}: A_6/i=-9190656/7 (fresh md5-matched build; --amp mode matches -n 6 mode)"
+      - "line P=(8,2,-3,-5,4,-6), d=(-2,1,0,2,-1,0); Q_{1;46}=0 at t0=1/4; A_6 jumps there inside one magnitude cell"
+    implication: >
+      CONFIRMS the verifier and CORRECTS the PI: the chamber-wall arrangement of
+      A_6 (hence R_spline) is the JOINT set {q_mp=0} (2-leg, order-1) U
+      {Q_{m;pq}=0} (3-leg, order-3), both k_S=0 subset-momentum walls. The blanket
+      "no Q_T walls" rule (from pi_vchk_002's implication, logic.yaml
+      spline_structure, and the group-notes standing rules) is retired. Kinematic
+      enumeration (k_S = -k_{S^c}; same-sector subset sums never vanish) gives a
+      candidate COMPLETE wall set of exactly 18 hyperplanes = 9 q_mp (order-1)
+      + 9 Q_{m;pq} (order-3), each a single S_3xS_3 orbit; student-1 to confirm
+      empirically (single polynomial per chamber of the 18-hyperplane arrangement)
+      and the verifier to certify. Does NOT clear G1; it re-scopes it to the joint
+      fan and hands the students the correct arrangement.
+
+  - id: pi_vchk_005
+    round: 8
+    timestamp: "2026-07-26T21:37:28"
+    kind: foundation_readiness  # NOT a claim double-check: no candidate/conflict to check this round
+    reason: >
+      Round 8 has no student/verifier candidate, conflict, or surprising failure that
+      qualifies for a targeted double-check (student-2's B^sym was REFUTED and self-flagged;
+      student-1 produced no rank; R_Q was already checked in pi_vchk_004). Instead I refreshed
+      PI verification READINESS for the final rounds (definition-of-done requires the PI to
+      independently implement/verify the first complete A_6 candidate) and removed the round's
+      real bottleneck (3 straight rounds of technician context-death with no artifact).
+    method: >
+      (1) Re-verified the immutable BG oracle bots/pi/code/bg (md5 bg.cpp =
+      41715c4af3ee5a61b1c4bfce40426ac8, byte-identical to the shared reference) reproduces the
+      standing anchor. (2) Built and self-tested a turnkey exact linear-consistency solver
+      bots/pi/code/fastsolve.py (vectorized modular rank at 3 primes < 2^31 + exact rational
+      recovery) -- the fast replacement for the scalar Gaussian elimination that stalled
+      student-1 in round 7. Handed to both students via the task briefs.
+    checks:
+      - name: bg_oracle_anchor
+        outcome: PASS
+        detail: "./bg -n 6 -w 2,3,4,5 -s -1,-1,-1,1,1,1 -g 1 gives omega={-8,2,3,4,5,-6}, A_6 = i*(-9190656/7). Exact match to the standing anchor; oracle ready for round-9 end-to-end verification."
+      - name: fastsolve_selftest
+        outcome: PASS
+        detail: >
+          Consistent 120x40 integer system: rank(A)=rank([A|y])=40 at all 3 primes ->
+          CONSISTENT; exact_solve recovers the solution and verifies on ALL rows (ok=True).
+          Perturbed target (y[0]+=1): rank([A|y])=41>40=rank(A) at all 3 primes -> INCONSISTENT
+          detected. The tool correctly distinguishes existence vs obstruction.
+    anchors:
+      - "bg oracle: omega={-8,2,3,4,5,-6} -> A_6/i=-9190656/7 (md5-matched build)"
+      - "fastsolve.py self-test: CONSISTENT + exact-recovery-verified; INCONSISTENT correctly flagged"
+    implication: >
+      Does NOT clear G1 (no new candidate). Readies the PI to independently verify the first
+      complete A_6 candidate and unblocks student-1's decisive existence solve. Later PI
+      sessions: the oracle + fastsolve are already built/verified -- do not rebuild.
+
+  - id: pi_vchk_006
+    round: 9
+    timestamp: "2026-07-27T01:32:23"
+    kind: definition_of_done_independent_reimplementation  # the exceptional-policy check for a claimed complete compact formula
+    reason: >
+      The round-8 verifier returned VERDICT: VERIFIED on student-1's FIRST complete table-free
+      A_6 candidate (s1_010), closing G1 with no blocking correctness gap. Under the definition
+      of done the PI MUST independently implement and verify the proposed formula (not trust a
+      student or the verifier evaluator) before writing SOLVED.md, and this is the explicit
+      exceptional-policy trigger ("a claimed complete compact formula"). I therefore re-built the
+      formula from the WRITTEN derivation and ran my own definition-of-done battery.
+    method: >
+      (1) Clean-room rebuild bots/pi/code/bg_r9 from the immutable shared bg.cpp
+      (md5 41715c..., sha256 bd1afe67...9040c1), exact rational mode only; anchor reproduced in
+      both -n and --amp modes. (2) Hand-transcribed the complete formula (P_pole, R_Q, R_0=H_0,
+      R_q via seeds H_1/H_2, the H-block) into bots/pi/code/pi_r9_eval.py using fractions only --
+      NO import of student-1's round8_compact_candidate.py or the verifier's vr8_core.py.
+      (3) Ran bots/pi/code/pi_r9_battery.py + pi_r9_poles.py + pi_r9_dpole.py against bg_r9.
+    checks:
+      - name: anchors_and_component_split
+        outcome: PASS
+        detail: >
+          {-8,2,3,4,5,-6}: A_6/i=-9190656/7 with my split P_pole=42588288/7, R_Q=-136630560,
+          R_0=-245363904, R_q=374597472, S=R_0+R_q=129233568 (all exact, match verified F9/F17).
+          {-154/17,3,5,2,7,-135/17}: A_6/i=-641893056/85 exact.
+      - name: generic_multichamber_sweep
+        outcome: PASS
+        detail: "260/260 exact across 81 distinct (q,Q)-chambers (54 q-patterns, 32 Q-patterns); >> the 20-sample bar."
+      - name: minus_plus_permutations
+        outcome: PASS
+        detail: "216/216 exact (6 base points x all 6x6 same-sign permutations via --amp); BG invariant, formula invariant."
+      - name: hierarchical_regimes
+        outcome: PASS
+        detail: "28/28 exact with one frequency scaled by 1/200,1/50,1/7,7,50,200,1000."
+      - name: two_sided_wall_crossings
+        outcome: PASS
+        detail: "439 family points; 19 q-wall + 35 Q-wall two-sided straddles + 106 internal-line D_S=0 crossings; exact both sides, A_6 finite."
+      - name: removable_pole_orbit_d0
+        outcome: PASS
+        detail: >
+          4733 near-pole two-sided exact checks + a dedicated clean straddle of d_{2;45}=0 on the
+          omega_4=-omega_2 sheet: d flips -199/100 -> +/-2e-5 -> +201/100 in an ACTIVE (Q_{2;45}>0)
+          channel, BG stays finite, formula==BG on all 6 points incl. the two nearest d=0. Apparent
+          1/d pole is removable. No genuine factorization pole in the probed interior.
+      - name: g_scaling
+        outcome: PASS
+        detail: "A_6 = g^-3 * stripped(omega) exact at g in {1,2,3/2,5,1/3} (omega g-independent)."
+      - name: five_point_calibration
+        outcome: PASS
+        detail: "bg_r9 A_5=-19968 i at {-14/3,2,3,4,-13/3} reproduced by the two-minus master (sign-flipped, minus legs 4,5); +28/28 random 5-pt points."
+      - name: compactness_table_free
+        outcome: PASS
+        detail: "Evaluator loads no data file/table; 82 monomials in 3 seeds (46/23/13) + H-block + positive parts generate every chamber; 0 chamber-specific coefficients. PI judgment: compactness bar MET (human-readable)."
+    anchors:
+      - "{-8,2,3,4,5,-6}: A_6/i=-9190656/7 (my own bg_r9 + my own evaluator)"
+      - "TOTAL 5733 exact rational comparisons, zero residual (battery 994 + pole 4733 + d0 straddle 6)"
+      - "d_{2;45}=0 straddle: active channel, BG finite, formula==BG both sides (removable pole)"
+    implication: >
+      The complete formula A_6=i g^-3 (P_pole+R_Q+R_0+R_q) is INDEPENDENTLY CONFIRMED by the PI
+      across the full definition-of-done battery with zero residual, on a clean-room oracle and a
+      hand-transcribed evaluator that imports no student/verifier code. Combined with the round-8
+      verifier VERDICT: VERIFIED (>6000 exact comparisons, G1 CLOSED), all acceptance criteria are
+      met and no blocking verifier gap remains. summary/SOLVED.md written this round. The only
+      remaining item is the non-blocking minor (symbolic wall-set completeness), recorded as a
+      caveat, not a correctness gap.
+
+  - id: pi_vchk_007
+    round: 10
+    timestamp: "2026-07-27T01:40:47"
+    kind: final_summary_ratification  # bounded independent spot-check of the load-bearing SOLVED claim
+    reason: >
+      Final PI summary round. Under the exceptional policy the SOLVED verdict rests on one
+      load-bearing claim -- that the compact formula reproduces exact BG. Rather than trust the
+      prior round-9 PI session, I ran ONE bounded independent spot-check on a NEWLY built oracle.
+      This is deliberately NOT a rerun of the full acceptance battery (pi_vchk_006 already did
+      that); it is a targeted confirmation that the formula still equals a fresh from-scratch BG
+      across the anchor and many generic chambers.
+    method: >
+      (1) Copied the immutable top-level bg.cpp into bots/pi/code/bg_final.cpp (md5
+      41715c4af3ee5a61b1c4bfce40426ac8, byte-identical to the shared reference and to all four bot
+      copies) and rebuilt fresh: g++ -O2 -std=c++17 -o bg_final bg_final.cpp -lgmpxx -lgmp.
+      (2) Ran bots/pi/code/pi_final_spotcheck.py: anchor + fresh random on-shell rational points
+      (-n 6 mode, sigma=-,-,-,+,+,+), each compared exactly (fractions) to the PI's own table-free
+      hand-transcribed evaluator pi_r9_eval.py (imports only fractions; loads no table).
+    checks:
+      - name: fresh_oracle_anchor
+        outcome: PASS
+        detail: "bg_final (md5-matched) gives A_6/i=-9190656/7 at omega={-8,2,3,4,5,-6}; formula==BG exact."
+      - name: fresh_generic_multichamber
+        outcome: PASS
+        detail: >
+          81 fresh generic on-shell points, formula==BG exactly on all 81, spanning 40 distinct
+          (q,Q)-chamber sign patterns. Zero mismatch. TOTAL 82/82 exact (anchor + 81).
+      - name: evaluator_table_free
+        outcome: PASS
+        detail: "pi_r9_eval.py imports only fractions; no data file/JSON/coefficient table read (re-confirmed by inspection)."
+    anchors:
+      - "bg_final md5=41715c4af3ee5a61b1c4bfce40426ac8 (immutable reference); anchor A_6/i=-9190656/7"
+      - "82/82 exact rational comparisons over 40 distinct chambers, zero residual"
+    implication: >
+      Independently ratifies the SOLVED verdict on a fresh binary in the final round. Does not
+      (and cannot) clear any verifier gap -- none remains; the round-8 verifier VERDICT: VERIFIED
+      already closed G1. Confirms the state is stable for summary/FINAL_SUMMARY.md and the standing
+      summary/SOLVED.md. The lone non-blocking minor (symbolic wall-set completeness) is unchanged.

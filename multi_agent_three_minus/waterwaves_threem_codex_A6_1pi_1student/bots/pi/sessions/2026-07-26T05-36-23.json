@@ -1,0 +1,25 @@
+{
+  "id": "pi_s_round1",
+  "bot": "pi",
+  "timestamp": "2026-07-26T05:36:23",
+  "round": 1,
+  "phase": "pi-kickoff",
+  "summary": "Round 1 PI kickoff on compact closed-form A_6 (three-minus sector). Fresh tree: no prior student work, empty registries. Built an independent BG harness (fresh bg.cpp copy under bots/pi/code) and verified it: two-minus formula reproduced exactly at n=5 (2 pts); the REQUIRED 5-point three-minus vs sign-flipped two-minus calibration passes exactly at 4 generic pts; n=6 three-minus evaluates and A_6 is purely imaginary. Established structural reading: two-minus formula is a truncated-power/box-spline object; sign-flip symmetry makes A_6 symmetric under swapping minus set {1,2,3} <-> plus set {4,5,6}. Wrote live summaries and the round-1 task brief.",
+  "verified_this_round": ["pi_v_001", "pi_v_002", "pi_v_003"],
+  "tasks_assigned": [
+    "student-1: map chamber walls / candidate factorization poles and the 8 chambers; build an exact A_6 oracle spanning chambers; produce and BG-verify a first truncated-power/box-spline building-block ansatz (H1); deliver a building-block evaluator (no 8-piece table) with residual report vs fresh bg.cpp."
+  ],
+  "artifacts": [
+    "bots/pi/code/bg (built)",
+    "bots/pi/code/calib.py",
+    "bots/pi/verified.yaml",
+    "summary/logic.yaml",
+    "summary/group_meeting_notes.md",
+    "tasks/student-1.md"
+  ],
+  "next_steps": [
+    "Round 2: read student-1 HANDOFF; independently re-derive/verify any proposed building blocks and the chamber map to the definition-of-done bar (exact rational, >=20 generic pts, S3xS3 permutations, hierarchical regimes, two-sided wall/pole approaches).",
+    "Reproduce load-bearing claims with my own code, not the student's evaluator.",
+    "If a compact form is proposed, confirm the evaluator reconstructs A_6 without the 8-piece sparse table."
+  ]
+}

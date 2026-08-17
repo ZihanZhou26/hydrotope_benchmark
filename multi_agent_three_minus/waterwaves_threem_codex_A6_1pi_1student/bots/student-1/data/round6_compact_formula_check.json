@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-07-26T17:39:38",
+  "bg_source": "bots/student-1/code/bg_s1_r6.cpp",
+  "bg_binary": "bots/student-1/code/bg_s1_r6",
+  "arithmetic": "exact GMP BG and Python Fraction/SymPy Rational",
+  "bases": [
+    {
+      "piece": "A",
+      "omega": ["-7", "9", "-8", "-3", "-4", "13"],
+      "comparison_matrix_23_45": [[1, 1], [1, 1]],
+      "tested": 12,
+      "passed": 12
+    },
+    {
+      "piece": "B",
+      "omega": ["-13", "4", "3", "8", "7", "-9"],
+      "comparison_matrix_23_45": [[-1, -1], [-1, -1]],
+      "tested": 12,
+      "passed": 12
+    }
+  ],
+  "perturbation": "(w2,w3,w4,w5)+(t,2t,-t,3t)/1000 for t=1,...,12",
+  "frequency_conservation_failures": 0,
+  "momentum_conservation_failures": 0,
+  "formula_failures": 0,
+  "formula_passed": 24,
+  "formula_tested": 24,
+  "max_exact_residual": "0",
+  "pair_symmetry": {
+    "piece_A_minus_pair": true,
+    "piece_A_plus_pair": true,
+    "piece_B_minus_pair": true,
+    "piece_B_plus_pair": true,
+    "piece_B_equals_side_swap_piece_A": true
+  },
+  "invariant_rewrite": {
+    "core_degree": 9,
+    "raw_terms_per_core": 110,
+    "weighted_basis_size": 70,
+    "nonzero_terms_per_core": 31,
+    "exact_expansion_checks": true
+  },
+  "unit_tests": "ROUND6_PIPELINE_TESTS PASS"
+}

@@ -1,0 +1,13 @@
+# Exact round-3 cell reconstruction: `round3_context_d`
+
+- seed `(B,c,e)`: `(4, -8, 1)`
+- quotient-basis dimensions: degree 8 = 285, degree 6 = 140
+- left solve: rank 285, 20/20 exact holdouts, 216 nonzero coefficients
+- right solve: rank 285, 20/20 exact holdouts, 223 nonzero coefficients
+- exact divisibility: `R_L-R_R = q_24 H_24`: `True`
+- terms: jump 177, H24 109, H14 109
+- residual symmetry: H14 swap(2,3) `True`; swap(5,6) `False`
+- factorization: `-32*(w1**6 + 2*w1**5*w2 + 2*w1**5*w3 + 2*w1**5*w4 + 2*w1**5*w5 + w1**4*w2*w3 + w1**4*w2*w4 + 2*w1**4*w2*w5 + w1**4*w3*w4 + 2*w1**4*w3*w5 - w1**4*w4**2 + 2*w1**4*w4*w5 - w1**3*w2**3 - 4*w1**3*w2**2*w3 - 3*w1**3*w2**2*w4 - w1**3*w2**2*w5 - 4*w1**3*w2*w3**2 - 7*w1**3*w2*w3*w4 - 2*w1**3*w2*w3*w5 - 7*w1**3*w2*w4**2 - w1**3*w2*w4*w5 - w1**3*w3**3 - 3*w1**3*w3**2*w4 - w1**3*w3**2*w5 - 7*w1**3*w3*w4**2 - w1**3*w3*w4*w5 - 5*w1**3*w4**3 - 4*w1**3*w4**2*w5 - w1**2*w2**4 - 4*w1**2*w2**3*w3 - 3*w1**2*w2**3*w4 - 2*w1**2*w2**3*w5 - 7*w1**2*w2**2*w3**2 - 12*w1**2*w2**2*w3*w4 - 6*w1**2*w2**2*w3*w5 - 7*w1**2*w2**2*w4**2 - 4*w1**2*w2**2*w4*w5 - 4*w1**2*w2*w3**3 - 12*w1**2*w2*w3**2*w4 - 6*w1**2*w2*w3**2*w5 - 19*w1**2*w2*w3*w4**2 - 10*w1**2*w2*w3*w4*w5 - 10*w1**2*w2*w4**3 - 9*w1**2*w2*w4**2*w5 - w1**2*w3**4 - 3*w1**2*w3**3*w4 - 2*w1**2*w3**3*w5 - 7*w1**2*w3**2*w4**2 - 4*w1**2*w3**2*w4*w5 - 10*w1**2*w3*w4**3 - 9*w1**2*w3*w4**2*w5 - 4*w1**2*w4**4 - 6*w1**2*w4**3*w5 - 2*w1*w2**4*w3 - w1*w2**4*w4 - w1*w2**4*w5 - 3*w1*w2**3*w3**2 - 4*w1*w2**3*w3*w4 - 4*w1*w2**3*w3*w5 - 2*w1*w2**3*w4**2 - 2*w1*w2**3*w4*w5 - 3*w1*w2**2*w3**3 - 5*w1*w2**2*w3**2*w4 - 4*w1*w2**2*w3**2*w5 - 8*w1*w2**2*w3*w4**2 - 5*w1*w2**2*w3*w4*w5 - 5*w1*w2**2*w4**3 - 4*w1*w2**2*w4**2*w5 - 2*w1*w2*w3**4 - 4*w1*w2*w3**3*w4 - 4*w1*w2*w3**3*w5 - 8*w1*w2*w3**2*w4**2 - 5*w1*w2*w3**2*w4*w5 - 13*w1*w2*w3*w4**3 - 10*w1*w2*w3*w4**2*w5 - 5*w1*w2*w4**4 - 7*w1*w2*w4**3*w5 - w1*w3**4*w4 - w1*w3**4*w5 - 2*w1*w3**3*w4**2 - 2*w1*w3**3*w4*w5 - 5*w1*w3**2*w4**3 - 4*w1*w3**2*w4**2*w5 - 5*w1*w3*w4**4 - 7*w1*w3*w4**3*w5 - w1*w4**5 - 2*w1*w4**4*w5 - w2**4*w3**2 - w2**4*w3*w4 - w2**4*w3*w5 - w2**3*w3**2*w5 - w2**2*w3**4 - w2**2*w3**3*w5 + 2*w2**2*w3**2*w4**2 + 2*w2**2*w3**2*w4*w5 + w2**2*w3*w4**2*w5 - w2**2*w4**4 - w2**2*w4**3*w5 - w2*w3**4*w4 - w2*w3**4*w5 + w2*w3**2*w4**2*w5 - 2*w2*w3*w4**4 - 2*w2*w3*w4**3*w5 - w2*w4**5 - w2*w4**4*w5 - w3**2*w4**4 - w3**2*w4**3*w5 - w3*w4**5 - w3*w4**4*w5)`
+- runtime seconds: `55.777`
+
+Full coefficients and holdouts: `/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_2students_1verifier/bots/student-2/data/round3_context_d.json`.

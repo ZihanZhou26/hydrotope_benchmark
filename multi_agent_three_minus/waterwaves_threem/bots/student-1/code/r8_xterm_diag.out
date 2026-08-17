@@ -1,0 +1,35 @@
+========================================================================
+(A) forcing (1=1)^2 cross-term activity at GENERIC (1=2) crossings (expect ct=0)
+========================================================================
+
+--- chamber #1: forcing (1=1)^2 cross-term activity near the (1=2) wall ---
+  t=   -1/30  v=+0.1989  matchA(X1,Y1)=(-99.842,+100.041) ct=0   matchB(X2,Y2)=(-43.108,+43.307) ct=0
+  t=   -1/90  v=+0.0665  matchA(X1,Y1)=(-100.067,+100.134) ct=0   matchB(X2,Y2)=(-42.906,+42.972) ct=0
+  t=    1/90  v=-0.0668  matchA(X1,Y1)=(-100.293,+100.226) ct=0   matchB(X2,Y2)=(-42.706,+42.639) ct=0
+  t=    1/30  v=-0.2011  matchA(X1,Y1)=(-100.518,+100.317) ct=0   matchB(X2,Y2)=(-42.508,+42.307) ct=0
+
+--- chamber #2: forcing (1=1)^2 cross-term activity near the (1=2) wall ---
+  t=   -1/30  v=+0.3322  matchA(X1,Y1)=(-405.130,+405.462) ct=0   matchB(X2,Y2)=(-69.019,+69.351) ct=0
+  t=   -1/90  v=+0.1110  matchA(X1,Y1)=(-405.438,+405.549) ct=0   matchB(X2,Y2)=(-68.839,+68.950) ct=0
+  t=    1/90  v=-0.1112  matchA(X1,Y1)=(-405.746,+405.634) ct=0   matchB(X2,Y2)=(-68.661,+68.550) ct=0
+  t=    1/30  v=-0.3344  matchA(X1,Y1)=(-406.053,+405.719) ct=0   matchB(X2,Y2)=(-68.486,+68.151) ct=0
+
+--- chamber #3: forcing (1=1)^2 cross-term activity near the (1=2) wall ---
+  t=   -1/30  v=+0.3989  matchA(X1,Y1)=(-263.388,+263.787) ct=0   matchB(X2,Y2)=(-9.969,+10.368) ct=0
+  t=   -1/90  v=+0.1332  matchA(X1,Y1)=(-263.644,+263.777) ct=0   matchB(X2,Y2)=(-9.989,+10.122) ct=0
+  t=    1/90  v=-0.1335  matchA(X1,Y1)=(-263.899,+263.766) ct=0   matchB(X2,Y2)=(-10.011,+9.878) ct=0
+  t=    1/30  v=-0.4011  matchA(X1,Y1)=(-264.155,+263.754) ct=0   matchB(X2,Y2)=(-10.036,+9.634) ct=0
+
+--- chamber #4: forcing (1=1)^2 cross-term activity near the (1=2) wall ---
+  t=   -1/30  v=+7.5156  matchA(X1,Y1)=(-230.890,+238.406) ct=0   matchB(X2,Y2)=(-82.276,+89.791) ct=0
+  t=   -1/90  v=+7.3388  matchA(X1,Y1)=(-231.203,+238.541) ct=0   matchB(X2,Y2)=(-81.985,+89.323) ct=0
+  t=    1/90  v=+7.1610  matchA(X1,Y1)=(-231.515,+238.676) ct=0   matchB(X2,Y2)=(-81.696,+88.857) ct=0
+  t=    1/30  v=+6.9822  matchA(X1,Y1)=(-231.827,+238.810) ct=0   matchB(X2,Y2)=(-81.409,+88.391) ct=0
+
+========================================================================
+(B) jump order + J/v^2 polynomial (=> genuine PURE exp-2 (1=2) term)
+========================================================================
+[chamber #1] sd=1 nL=80 nR=59 JUMP ORDER=2; J/v^2 exact-divides=True
+[chamber #2] sd=1 nL=80 nR=80 JUMP ORDER=2; J/v^2 exact-divides=True
+[chamber #3] fit fail nL=22 nR=80 L=False R=True
+[chamber #4] sd=0 JUMP=0 (not a wall of N_7)

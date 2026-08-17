@@ -1,0 +1,37 @@
+
+########## r7_soft.py ##########
+=== Soft recursion at n=7 (EXACT, F-const slice). expect lim = 8*A_6 ===
+
+PLUS leg ->0 (npts 45, Nfull poly True):
+  lim A_7/(i eps^2) = -239585664/17
+  8 * A_6^3minus    = -239585664/17
+  EXACT match: True
+
+MINUS leg ->0 (npts 45, Nfull poly True):
+  lim A_7/(i eps^2) = -13369344/25
+  8 * A_6^2minus    = -13369344/25
+  EXACT match: True
+
+
+########## r7_resid_mod.py ##########
+910 oracle queries (parallel)...
+survivors (Fraction(-249, 19), Fraction(3, 1), Fraction(5, 1), Fraction(11, 1), Fraction(-112, 19)); 10 points
+
+P(w2) [= Res * 5 sub-collision factors]: minimal polynomial degree (mod p) = 7
+=> P(w2) is a POLYNOMIAL of degree 7 -> Res(w2)'s ONLY merged-scale poles are
+   the 5 sub-collision loci (a 2nd mixed pair vanishes). Recursive matching CONFIRMED.
+   w2=7/4: Res(mod p)=1081583129007841025
+   w2=15/8: Res(mod p)=2123702567119055331
+   w2=2: Res(mod p)=1118175525190899041
+   w2=17/8: Res(mod p)=240314961443169350
+   w2=9/4: Res(mod p)=1678005069290710545
+   w2=19/8: Res(mod p)=165813247749481586
+   w2=5/2: Res(mod p)=1873979037565751282
+   w2=21/8: Res(mod p)=1966937685169825414
+   w2=11/4: Res(mod p)=1348737011475653399
+   w2=23/8: Res(mod p)=955832708531209633
+
+
+==================== SUMMARY ====================
+(A) soft recursion exact at n=7 (both legs): PASS
+(B) residue poles = sub-collisions only (deg-7 numerator): PASS

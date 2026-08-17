@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-07-26T10:53:28",
+  "oracle": "bots/student-1/data/h_rational_probe_oracle.jsonl",
+  "fresh_bg": "bots/student-1/code/bg_round3",
+  "rows": 720,
+  "splits": {
+    "train": 560,
+    "holdout": 160
+  },
+  "distinct_raw_18_wall_signatures": 1,
+  "exact_conservation_pass": 720,
+  "zero_real_part_and_H_times_product_equals_A_im_pass": 720,
+  "fresh_bg_recheck_pass": 5,
+  "fresh_bg_recheck_total": 5,
+  "result": "PASS"
+}

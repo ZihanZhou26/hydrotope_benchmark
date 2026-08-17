@@ -1,0 +1,40 @@
+{
+  "id": "s2_session_20260726T060224",
+  "bot": "student-2",
+  "timestamp": "2026-07-26T06:02:24",
+  "task_id": "round1_s2_wall_geometry",
+  "status": "partial",
+  "summary": "Proved the standard-sheet eight-word chamber selector and adjacency graph; reduced subset walls to pair/triple symmetry orbits; identified and exactly tested the candidate common denominator Delta; proved candidate pole zeros are fully pair-cancelled and found finite two-sided numerical limits. The requested minimal cleared-numerator brick formula and independent evaluator remain missing.",
+  "work_done": [
+    "Derived the exact rational standard-sheet parametrization and four strict dominance inequalities.",
+    "Combined the dominance poset with the momentum prefix-sum identity to obtain exactly eight words.",
+    "Exhibited one exact rational on-shell point and exact GMP amplitude value in every word.",
+    "Classified all subset-momentum zeros into nine pair walls and nine oriented triple walls modulo complements.",
+    "Factored the triple inverse propagator on both q_T signs and used one-minus vanishing to isolate q_T>0 as the only possible residue sign.",
+    "Tested Delta=product_{m,p}(omega_m+omega_p) by exact denominator clearing at sixteen points.",
+    "Proved any Delta zero forces three pair cancellations and probed four rational approach directions with no divergence.",
+    "Confirmed the five-point harness value A_5=-19968 i exactly using the PI-built GMP oracle."
+  ],
+  "verification": {
+    "claims_yaml": "parsed successfully",
+    "decisions_yaml": "parsed successfully",
+    "handoff_lines": 19,
+    "five_point": "exact pass",
+    "six_point_word_samples": 8,
+    "integer_denominator_clearing_samples": 8,
+    "pole_approach_min_abs_t": "1/320"
+  },
+  "technician": {
+    "thread": "/root/technician",
+    "task_batch": "own oracle build, exact chamber scan, cleared-numerator wall interpolation, pole probe, and verifier",
+    "result": "thread exhausted context twice before creating artifacts",
+    "artifact_paths": []
+  },
+  "next_steps": [
+    "Obtain an exact wall-interpolation implementation and factor the degree-17 cleared-numerator differences across one pair edge and q_T=0.",
+    "Subtract the q_T>0 residue orbit before fitting contact/spline bricks, since student-1 ruled out the naive minus-pair ansatz.",
+    "Prove the eight-word selector on all energy-sign sheets.",
+    "Prove exact divisibility/removability on the fully pair-cancelled Delta=0 locus.",
+    "Build an independent student-2 evaluator once technician orchestration is available."
+  ]
+}

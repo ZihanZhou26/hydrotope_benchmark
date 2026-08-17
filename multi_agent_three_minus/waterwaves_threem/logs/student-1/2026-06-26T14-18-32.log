@@ -1,0 +1,19 @@
+[2026-06-26T14-18-32] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/student-bot.md identity=student-1
+All deliverables are complete and reproducible from a clean rebuild. The session is done.
+
+## Summary — task `r1-student-1` (lock down n=5 three-minus), COMPLETED
+
+I consolidated and fully documented the **n=5 three-minus closed form**, validating everything against my own copy of `bg.cpp` (the shared oracle untouched).
+
+**The formula** (legs 1,2,3 minus; 4,5 plus):
+$$A_5 = i\,2^{4}g^{-2}\,\omega_4\omega_5\!\!\sum_{S\subseteq\{1,2,3\}}\!\!(-1)^{|S|}\Big(\beta^2-\textstyle\sum_{j\in S}\omega_j^2\Big)_+^{2},\quad \beta=\min(|\omega_4|,|\omega_5|).$$
+
+**What I delivered:**
+1. **Clean re-derivation** via the plus/minus swap — flipping all signs sends three-minus into a two-minus config whose *minus legs are 4,5*; applying the two-minus law with that relabeling gives the formula. Step-by-step leg map in `derivations/n5_derivation.md`, and I confirmed the swap at the oracle level too (`--amp`, flip `K→−K`).
+2. **Independent verification** (`code/verify_n5.py`): **24/24 exact rational matches** — generic, fractional, ω≫rest, ω≪rest, all realizable chambers; residual 0 everywhere.
+3. **Explicit chamber decomposition.** The on-shell momentum law `ω4²+ω5²=ω1²+ω2²+ω3²` forces `β²≤T/2`, which proves the triple term is always off, at most one pair is active, and **chamber "D" is unrealizable**. Only **A, B, C, E** occur, each a single homogeneous degree-6 polynomial (notably **E: `A₅/P = 2ωᵢ²ωⱼ²`**, β-independent) — all matched to the oracle exactly. A₅ is **C¹** across chamber walls.
+4. **`|k_S|=0` walls characterized** (`code/walls_n5.py`): they're spurious BG-coordinate singularities that reduce on-shell to chamber walls. Exact two-sided limits on the internal channel S={2,3,4} (Pythagorean 3,4,5) converge to the formula value with **equal left/right slopes, no `1/ε` term** → **no factorization pole at n=5**, pinning the n=5/n=6 boundary for student-2.
+
+Registered in `claims.yaml` (s1_001/002/003), `decisions.yaml` (s1_dec_001/002), session report written, and posted the consolidation to the board (post_002). Ready for PI independent re-verification.
+[usage] cost_usd=5.765476250000001 duration_ms=1686555 num_turns=45 in=4282 out=106409 cache_read=4378418 cache_write=140787
+[2026-06-26T14-46-39] student-bot exited with code 0

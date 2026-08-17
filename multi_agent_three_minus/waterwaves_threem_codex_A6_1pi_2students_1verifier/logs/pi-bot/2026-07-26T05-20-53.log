@@ -1,0 +1,26 @@
+[2026-07-26T05-20-53] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/pi-bot.md identity=none
+All round-3 PI outputs are written and validated. Session complete.
+
+## Round 3 PI summary
+
+**State assessment (round 2 → round 3).** The round-2 verifier returned `VERDICT: GAPS REMAIN (1 blocking)`, having independently reproduced *every* round-2 result with zero residual. The team now has a fully verified working decomposition:
+
+$$A_6 = i\,g^{-3}\big(P_{\text{pole}} + R_{\text{spline}}\big)$$
+
+- **`P_pole` (student-1) — solved & compact:** one `H` block, one 9-term `S₃×S₃` orbit, table-free, correct in all 8 chambers; the `Q_T` normalization is *forced* by the BG propagator.
+- **Denominator (student-2) — solved:** minimal denominator `D_min = C = ω₁ω₂ω₃+ω₄ω₅ω₆` (deg 3), `Δ = C³`, `1/d_T = (ω_m+ω_p̄)/(2C)`.
+- **`R_spline = A₆/i − P_pole` — the one remaining unknown:** verified denominator-free, degree-8, dual-`S₃` polynomial *spline* with order-**exactly-1** pair-wall jumps `R_L−R_R = q_mp·H_mp`, `deg H_mp = 6` (truncated-cubic brick doubly dead).
+
+**Blocking gap G1** is the compact closed form of `R_spline` — the entire remaining deliverable. I kept it live and assigned repair work (it can only be cleared by a later verifier report on an assembled formula, not by a PI check).
+
+**No PI double-check this round** — the verifier already reproduced the load-bearing round-2 results with zero residual; there is no new formula claim, suspected error, or conflict. Duplicating would violate policy. Recorded the reason in the session report and `logic.yaml`; `jobs/` is empty.
+
+**Round-3 tasks (complementary, target = crack `R_spline`):**
+- **Student-1 (top-down):** derive `R_spline` from the two-minus `A₄`/`H` blocks; test the **nested / 2D-hydrotope** hypothesis (signed sum of *products* of linear truncated powers) + the 2026 hydrotope polytope literature.
+- **Student-2 (bottom-up):** interpolate the exact `R_0` and brick `H_14`, **decide whether `H_mp` is a polynomial or itself a spline** (cross the finer `q_m'p'=0` and `Q_T=0` walls), **factor** into a human-readable form, reassemble and run the full definition-of-done battery.
+
+Both cross-check via the exact `H_14`. The pivotal structural question I flagged for the round: *is the brick a single polynomial or a spline?* — its answer unlocks the form.
+
+**Files written:** `summary/logic.yaml`, `summary/group_meeting_notes.md`, `tasks/student-1.md`, `tasks/student-2.md`, `bots/pi/sessions/2026-07-26T09-26-48.json`, and appended `post_008` to `board.json` (JSON validated).
+[usage] cost_usd=2.940658 duration_ms=616574 num_turns=33 in=34 out=49023 cache_read=1372928 cache_write=102785
+[2026-07-26T05-31-11] pi-bot exited with code 0

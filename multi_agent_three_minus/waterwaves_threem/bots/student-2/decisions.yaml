@@ -1,0 +1,110 @@
+decisions:
+  - id: s2_dec_001
+    by: student-2
+    round: 1
+    decision: >
+      For round 2, extract the n=6 three-minus closed form by PER-CHAMBER SYMBOLIC
+      EXTRACTION, not data fitting. Use the validated symbolic BG engine
+      (bots/student-2/code/symbolic_bg.py) with the |k_S| signs frozen from an
+      interior reference point of a chamber; because the sector is pole-free
+      (s2_002) the propagator denominators D_S cancel and the engine returns the
+      exact cubic polynomial for that chamber. Then match the per-chamber cubics to
+      a box-spline / B-spline of the omega_i^2 with breakpoints at the k_S=0 walls
+      (s2_004) and symmetrize under S_3 wr Z_2 (s2_003).
+    rationale: >
+      Direct fitting is ill-posed: A_6 restricted to the manifold is only
+      polynomial modulo the conservation ideal (non-unique representative) and
+      individual chambers are not symmetric, so a symmetric-invariant fit is
+      invalid and a general degree-8 fit is large (~285 dof) and unilluminating.
+      The fully-symbolic on-shell solve also blows up in sympy (timed out at n=5).
+      Freezing chamber signs sidesteps all of this and yields exact per-chamber
+      polynomials directly.
+
+  - id: s2_dec_002
+    by: student-2
+    round: 3
+    decision: >
+      To extract the EXACT denominator of A_6 (which symbolic BG reduction in
+      sympy cannot do -- cancel/together/gcd all time out at n=6), use the
+      "F-constant slice" + modular rational reconstruction pipeline: vary two
+      legs with opposite increments so sumFree (and hence the on-shell-solved
+      legs 1,n) are POLYNOMIAL in the slice parameter; sample A_n exactly at many
+      in-chamber rational points (mixed-k_S signs frozen = the analytic-piece
+      label); reconstruct N(t)/D(t) over GF(P) (fast) then confirm/identify
+      exactly. Determine the symmetric multivariate denominator by re-symmetrising
+      the per-slice factors and verifying A_n*prod(omega_i+omega_j) is polynomial
+      on several independent slices and at n=6,7.
+    rationale: >
+      Exact big-integer linear algebra and full symbolic cancellation are both
+      intractable here; modular reconstruction + the F-const trick make it fast
+      and exact-confirmable. CRITICAL LESSON: floating-point reconstruction gives
+      FALSE "polynomial" verdicts at clustered nodes (a clean degree-25 exact test
+      and a floating fit disagreed) -- always confirm poly-vs-rational with EXACT
+      arithmetic. Single 1-D slices have accidental coincidences of the
+      omega_i+omega_j=0 loci, so minimality must come from the symmetry argument,
+      not per-slice factor counts.
+
+  - id: s2_dec_003
+    by: student-2
+    round: 5
+    decision: >
+      RETIRE the box-spline-of-{omega_i^2} lead (my own s2_008) in its literal form
+      and build the closed form as a TRUNCATED-POWER SPLINE IN LEG VARIABLES instead:
+      N_n = B + sum_{(1=1) walls}(k_ij)_+^1 P_ij + sum_{(1=2) walls}(k_ijk)_+^3 Q_ijk.
+      Do NOT spend further effort fitting A_n or N_n as a box spline / multivariate
+      truncated power of the squared frequencies, nor as a per-region polynomial in the
+      symmetric invariants.
+    rationale: >
+      Two independent exact obstructions (s2_015): (i) A_n has a genuine simple pole
+      (PI-verified), so it is NOT piecewise-polynomial = NOT a box spline; (ii) the
+      polynomial numerator N_n is ODD under omega->-omega, while a box spline of the
+      EVEN knots omega_i^2 is EVEN -- and the only odd factor that could fix the parity
+      is (e3m+e3p), which would make A_n polynomial (contradiction). Moreover the pole
+      residue is chamber/branch-dependent (s2_016), so there is no global-residue or
+      global box-spline decomposition -- matching the PI's "N_6 is algebraic in the
+      invariants" result. The walls are linear in omega^2 with split exponents (1 from
+      the |k_ij| difference branch, 3 from the two-minus subset-sum branch), which a
+      single box spline does not naturally produce; a truncated-power spline in legs does.
+
+  - id: s2_dec_004
+    by: student-2
+    round: 6
+    decision: >
+      To decide poly-vs-rational and the MINIMAL denominator without paying for full
+      rational reconstruction (which hit a degree cap at n=7, s2_017), use the GCD
+      OVER-CLEARING method: on a single-chamber F-const slice, interpolate the polynomial
+      N_full(t) = A_n/i * D_free(t) and the polynomial D_free(t), then over-clearing =
+      deg gcd(N_full, D_free). over-clearing 0 <=> D_free is already minimal; over-clearing
+      > 0 <=> D_free over-clears (the reduced denominator = D_free / gcd). ALWAYS run the
+      n=6 case as a CONTROL (its collapse is known: over-clearing must be the (e3m+e3p)^2
+      degree) to validate the pipeline before trusting the target n.
+    rationale: >
+      Full Pade/rational reconstruction needs ~deg N + deg D + 1 exact points and an
+      adequate degree cap; at n=7 (deg N ~16, deg D ~14 on a slice) it is borderline and
+      slow. The gcd method only needs to interpolate two polynomials (deg N_full + 1 points)
+      -- cheap, exact, and it reads off both the clearing (A*D_free polynomial) and the
+      minimality (gcd degree) in one shot. The n=6 control (over-clearing 8, detecting the
+      cube-collapse) proves the method detects collapse, so the n=7 over-clearing 0 is a
+      genuine "no collapse" verdict, not a blind spot.
+
+  - id: s2_dec_005
+    by: student-2
+    round: 8
+    decision: >
+      Analyze the n>=7 cross-term/wall geometry via SIGN-INDEPENDENT square relations,
+      never by fixing matching signs. The (1=1) walls a_i=b_j are conditions on the
+      SQUARES omega_i^2=omega_j^2 (sign-free); imposing the matching sign omega_i=-omega_j
+      (the perfect-matching/pole branch) is an EXTRA constraint that spuriously makes
+      disjoint (1=1) pairs look degenerate at n=7. The correct statement: impose only the
+      square relations + the two manifold identities (resonance, momentum), then read off
+      the forced complementary wall (a disjoint (1=1) pair forces a (1=(n-5)) wall on the
+      third minus leg; three disjoint (1=1) edges force the remaining plus squares to
+      vanish). Confirm realizability by an explicit non-degenerate on-shell point.
+    rationale: >
+      I first imposed omega_1=-omega_4, omega_2=-omega_5 and wrongly concluded disjoint
+      (1=1) pairs are degenerate at n=7 (verify_r8.py initial run gave a3 != b6+b7). The
+      sign freedom is real: with omega_1=+omega_4 a non-degenerate solution exists. The
+      square-only analysis gives the clean general-n forcing law (F1)-(F3) (s2_025) and
+      matches the PI-measured (1=2)->2 exponent. Lesson for the team: do the wall geometry
+      in the squares a_i,b_j, and check realizability numerically before claiming
+      degeneracy.

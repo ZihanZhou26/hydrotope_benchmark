@@ -1,0 +1,115 @@
+{
+  "utc": "2026-07-26T20:51:19",
+  "target_signature": "12ea165a03",
+  "source_points": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/data/round8_pts_12ea165a03_1250.json",
+  "equal_reconstruction": {
+    "status": "not_found",
+    "mode": "equal_deg",
+    "scan": {
+      "d13": {
+        "d": 13,
+        "monP": 560,
+        "monQ": 560,
+        "monQ_degree": 13,
+        "ncols": 1120,
+        "fit_rows": 1180,
+        "holdout_rows": 70,
+        "prime_results": {
+          "2147483647": {
+            "rank": 1120,
+            "nullity": 0,
+            "rows": 1180,
+            "cols": 1120,
+            "basis_dim": 0,
+            "success": false
+          },
+          "2147483629": {
+            "rank": 1120,
+            "nullity": 0,
+            "rows": 1180,
+            "cols": 1120,
+            "basis_dim": 0,
+            "success": false
+          }
+        },
+        "unique_basis": false,
+        "basis_by_prime": {
+          "2147483647": [],
+          "2147483629": []
+        }
+      },
+      "d14_eq_topup": {
+        "d": 14,
+        "monP": 680,
+        "monQ": 680,
+        "monQ_degree": 14,
+        "ncols": 1360,
+        "fit_rows": 1420,
+        "holdout_rows": 30,
+        "prime_results": {
+          "2147483647": {
+            "rank": 1360,
+            "nullity": 0,
+            "rows": 1420,
+            "cols": 1360,
+            "basis_dim": 0,
+            "success": false
+          },
+          "2147483629": {
+            "rank": 1360,
+            "nullity": 0,
+            "rows": 1420,
+            "cols": 1360,
+            "basis_dim": 0,
+            "success": false
+          },
+          "2147483587": {
+            "rank": 1360,
+            "nullity": 0,
+            "rows": 1420,
+            "cols": 1360,
+            "basis_dim": 0,
+            "success": false
+          }
+        },
+        "unique_basis": false,
+        "basis_by_prime": {
+          "2147483647": [],
+          "2147483629": [],
+          "2147483587": []
+        }
+      }
+    },
+    "scan_order": [
+      "d13_eq",
+      "d14_eq_topup"
+    ],
+    "points_source": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/data/round8_pts_12ea165a03_1250.json",
+    "points_count": 1250,
+    "points_audit_1250": {
+      "path": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/data/round8_pts_12ea165a03_1250.json",
+      "count_points": 1250,
+      "count_distinct_xyz": 1248,
+      "reaudit_total": 1250,
+      "reaudit_matched": 1250,
+      "reaudit_mismatch": 0,
+      "sha256": "67d424b0d44c75bbfbe18595a06f68c9b35e6d1a56fa35da12df56300aefdd21"
+    },
+    "points_count_1450": 1450,
+    "points_audit_1450": {
+      "path": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/data/round8_pts_12ea165a03_1450.json",
+      "count_points": 1450,
+      "count_distinct_xyz": 1448,
+      "reaudit_total": 1450,
+      "reaudit_matched": 1450,
+      "reaudit_mismatch": 0,
+      "sha256": "85163b920ac6871edbe953b4eb6861566d48c5827a3782fe5d6d6a465123a698"
+    },
+    "degree_lower_bound": {
+      "min_max_degree": 15,
+      "mode": "equal_bound",
+      "reason": "no representation with degP<=14 and degQ<=14"
+    }
+  },
+  "timing_sec": 189.448
+}

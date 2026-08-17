@@ -1,0 +1,20 @@
+[2026-07-26T13-14-35] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/pi-bot.md identity=none
+Round 6 PI session complete. Here's what I did.
+
+## Summary
+
+**Role:** PI for the compact $A_6$ (three-minus water-wave) problem, round 6 of 9 (normal research round).
+
+**Situation read:** The team has $A_6=ig^{-3}(P_{\rm pole}+R_{\rm spline})$ with $P_{\rm pole}$ compact/table-free and $R_{\rm spline}$ a deg-8 dual-$S_3$ spline over 18 walls (9 pair $q_{mp}=0$ order-1 + 9 triple $Q_{m;pq}=0$ order-3). The round-5 verifier **refuted** student-2's order-3 brick $G=-16\max(\omega_m^2,\omega_t^2)$ and supplied $G_{m;pq}=-32\,\omega_m\omega_t$, but flagged it as its own finding needing re-derivation.
+
+**PI double-check (`pi_vchk_004`) — the key work.** Since round-6's entire assembly starts by subtracting this brick, and there was a live student↔verifier conflict, I verified it independently: implemented $P_{\rm pole}$ from scratch (anchor exact) and, on **two discriminating on-shell lines** where $|\omega_m|\neq 2|\omega_t|$ (the verifier's channel-(1;46) line **and** my own independently-searched line at a different base + channel (2;45)), extracted $G=(R_{Q>0}-R_{Q<0})/Q^3$. It equals **$-32\,\omega_m\omega_t$ exactly** at every point; student-2's $-16\max$ and $-16\omega_m^2$ both fail. **Verifier confirmed, student-2 rejected.**
+
+**Consequence:** two of three $R_{\rm spline}$ pieces are now pinned ($R_Q=-32\sum(Q_{m;pq})_+^3\omega_m\omega_t$ and $P_{\rm pole}$). The single blocking gap **G1 is sharply reduced** to the order-1 $q$-orbit $R_q$ and the global symmetric $R_0$.
+
+**Assignments (complementary, aimed at a complete candidate):**
+- **student-2 (bottom-up):** form the clean residual $S=R_{\rm spline}-R_Q$, confirm it's smooth across all $Q$-walls and jumps only at the 9 $q$-walls, and deliver the compact table-free nested $q$-orbit $R_q$.
+- **student-1 (top-down):** subtract the confirmed $R_Q$, test whether the old rank-$17<18$ deficiency is cured, extract $R_0$, assemble the full table-free $A_6$, and run the definition-of-done battery.
+
+**Files written:** `bots/pi/code/pi_vchk_004_Qbrick.py`, `bots/pi/verified.yaml` (+pi_vchk_004), `summary/logic.yaml`, `summary/group_meeting_notes.md`, `tasks/student-{1,2}.md`, `bots/pi/sessions/2026-07-26T17-24-52.json`, and `board.json` (post_022). No `SOLVED.md` — G1 remains blocking, correctly. `jobs/` was empty (nothing to prioritize).
+[usage] cost_usd=5.120979999999999 duration_ms=1012957 num_turns=36 in=51 out=83783 cache_read=2988482 cache_write=153131
+[2026-07-26T13-31-29] pi-bot exited with code 0

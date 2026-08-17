@@ -1,0 +1,148 @@
+decisions:
+  - id: s1_dec_001
+    timestamp: "2026-07-26T05:55:42"
+    decision: >
+      Do not enlarge the pure truncated-cubic polynomial basis further until
+      the possible non-polynomial contact/factorization contribution has been
+      isolated.  The exact rank obstruction shows that the amplitude is
+      outside the tested homogeneous hydrotope-orbit span.
+    basis:
+      - s1_001
+      - s1_002
+    next_test: >
+      Identify every distinct internal denominator/pole orbit from the exact
+      BG recursion, subtract analytically fixed residues if present, and test
+      whether the regular remainder lies in a compact multivariate spline
+      basis tied to the chamber walls.
+
+  - id: s1_dec_002
+    timestamp: "2026-07-26T07:42:15"
+    decision: >
+      Hand the polynomial-spline fit the exact residual
+      $R_{\mathrm{spline}}=A_6/i-P_{\mathrm{pole}}$ with
+      $P_{\mathrm{pole}}=\sum_{Q_T>0}Q_T h_{4,L}h_{4,R}/d_T$ and unit
+      normalization.  The factor $Q_T$ is mandatory because the BG
+      propagator is $-iQ_T/(g d_T)$; omitting it also has the wrong
+      homogeneity degree and fails exact denominator tests.
+    basis:
+      - s1_003
+    next_test: >
+      Student-2 should construct the compact degree-eight chamber spline from
+      this residual and the PI should independently compare the combined
+      formula against fresh BG data.
+
+  - id: s1_dec_003
+    timestamp: "2026-07-26T10:05:10"
+    decision: >
+      Reject a single-polynomial $H_{mp}$ and reject the simplest orbit of
+      factorization-derived $A_4\times A_4$ blocks as the complete regular
+      remainder.  Any compact $R_{\mathrm{spline}}$ must encode coupled
+      finer-wall branch exchange inside the pair-wall coefficient itself.
+    basis:
+      - s1_004
+      - s2_007
+    next_test: >
+      Use student-2's exact local brick together with the affine-slice
+      identity $P(u)\leftrightarrow P(6-u)$ across
+      $Q_{3;\{4,5\}}=0$ to identify the multivariate nested-min or product
+      of linear truncated-power block; only then solve for the global
+      polynomial $R_0$ and test the full orbit.
+
+  - id: s1_dec_004
+    timestamp: "2026-07-26T12:42:58"
+    decision: >
+      Reject both (i) the direct orbit
+      $\sum_{m,p}(q_{mp})_+\beta_{mp}^2G_m$ plus a symmetric $R_0$ and
+      (ii) canonical sorted-word transport using only the two
+      other-minus/other-plus $\beta$ formulas for $H_{mp}$.  Although the
+      latter is path-independent on the eight-word graph, it is not the BG
+      spline.  The local brick must depend on additional edge-environment
+      or relative-order data beyond the primary pair and minimizer type.
+    basis:
+      - s1_005
+      - s2_007
+      - s2_008
+    next_test: >
+      Pull the actual bottom-up wall increment on each edge environment and
+      compare two environments of the same $\beta$ type.  Factor their
+      difference by magnitude-difference forms to identify the missing
+      second/third-order-statistic correction before attempting another
+      global Möbius assembly.
+
+  - id: s1_dec_005
+    timestamp: "2026-07-26T14:52:36"
+    decision: >
+      Adopt the verifier/PI correction that the polynomial fan is the joint
+      arrangement $\{q_{mp}=0\}\cup\{Q_{m;pq}=0\}$.  Retain the narrow
+      correction that the previously studied $H_{24}$ exchange was at
+      $q_{35}=0$, but retire every blanket statement excluding $Q$-walls.
+      Do not claim a global assembly until an exact $Q^3G_{m;pq}$ orbit has
+      been tested across different pair-wall environments and the transformed
+      remainder passes the 17-dimensional symmetric-$R_0$ consistency test.
+    basis:
+      - s1_005
+      - s1_006
+      - pi_vchk_003
+    next_test: >
+      Reconstruct degree-eight branches on several full 18-sign components,
+      extract the degree-two $Q$ brick from an isolated crossing, and rerun
+      the exact transport/rank battery with both wall orbits.
+
+  - id: s1_dec_006
+    timestamp: "2026-07-26T17:44:23"
+    decision: >
+      Reject the round-6 hypothesis that subtracting the confirmed cubic
+      $Q$-orbit cures the order-one assembly.  Do not fit or report a global
+      $R_0$ from either the two-$\beta$-type path transport or the direct
+      $(q_{mp})_+\beta_{mp}^2G_m$ orbit: both remain exactly inconsistent
+      with the complete 17-dimensional symmetric basis.
+    basis:
+      - s1_008
+      - F17
+    next_test: >
+      Re-extract $H_{mp}$ directly from the clean residual
+      $S=R_{\rm spline}-R_Q$ in multiple full $q/Q$ environments sharing the
+      same four-leg minimizer.  Factor the difference between those
+      environment-specific bricks before attempting another global
+      positive-part assembly.
+
+  - id: s1_dec_007
+    timestamp: "2026-07-26T20:23:18"
+    decision: >
+      Do not interpret the incomplete round-7 hinge-orbit checkpoint as a
+      rank obstruction.  The implemented matrix omitted all 17 global
+      $R_0$ columns and never reached modular elimination.  Preserve the
+      588-feature enumeration, stop the scalar Python elimination, and move
+      the corrected system to a compiled exact finite-field backend.
+    basis:
+      - s1_009
+      - F18
+    next_test: >
+      Append `basis_A`, compute cumulative-depth ranks at two primes with
+      Wolfram/Julia-FLINT, and only then attempt sparse rational recovery and
+      the all-wall cure test.  A failure of this simple hinge algebra should
+      trigger a search for non-free spline-module generators rather than
+      another independent-$\beta$ brick.
+
+  - id: s1_dec_008
+    timestamp: "2026-07-26T23:31:11"
+    decision: >
+      Promote the explicit $H_0,H_1,H_2$ hinge formula in `s1_010` as the
+      first complete exact $A_6$ candidate.  Retire the proposed round-9
+      pivot to deeper hinge depth or generic spline-module generators:
+      exact recovery uses only depths one and two.  Do not label the
+      problem solved until the PI/verifier independently transcribes the
+      formula, decides whether 82 explicit monomials meet the compactness
+      bar, and completes the required wall/pole/hierarchy/permutation and
+      five-point battery.
+    basis:
+      - s1_003
+      - F17
+      - s1_010
+    next_test: >
+      Independently implement the 9 single-edge plus 18 matching-term
+      evaluator from the displayed $H_0,H_1,H_2$, then target the definition-
+      of-done battery, especially two-sided isolated $q$ walls and all
+      factorization-pole orbits.  If compactness is rejected, seek a further
+      invariant re-basing of the same three polynomials rather than another
+      chamber fit.

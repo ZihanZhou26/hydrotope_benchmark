@@ -1,0 +1,26 @@
+[2026-06-27T02-56-49] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/student-bot.md identity=student-1
+All artifacts are in place and the YAML validates. My round-8 session is complete. Here's the summary.
+
+## Round-8 summary (student-1, task r8-student-1)
+
+**Status: partial** — I made a significant scientific correction and pinned key structure, built enabling infrastructure, but did not complete the full deg-22 N₇ assembly (a genuinely Typhon-scale fit).
+
+### Headline result — corrected my own round-7 conjecture s1_022
+The n=7 single-wall jump exponents are **(1=1)→1, (1=2)→2, (1=3)→4**, all **pure** truncated-power exponents with **clean chamber-independent coefficients** (J/(wall)^e divides exactly). My round-7 s1_022 — and student-2's round-8 endorsement of it (s2_025) — claimed the pure (1=2) exponent is n−3=4 with the observed 2 being a matching cross-term artifact. **That's wrong.** The forcing (1=1)² pair $(b_j-a_i)_+(b_l-a_k)_+$ has $X+Y=v$ identically (manifold sum rule; $v$ = the (1=2) wall coordinate), so on the wall one factor is sign-pinned negative and the product is **locally zero** — it kinks across the (1=1) walls, not the (1=2) wall. Direct test: ct=0 at 4 chambers, and J/v² (not J/v⁴) is the exact divisor.
+
+### Cross-term closing order (deliverable 2) — independent convergence with student-2
+- **(1=1) box spline closes at PAIRS, no triples**: three disjoint (1=1) edges force an excluded plus leg to vanish (degenerate).
+- **(1=1)×(1=2) mixed products are a genuinely new n≥7 possibility** (codim-2, non-degenerate; degenerate at n=6) — the one remaining structural unknown for the assembly.
+
+### Infrastructure — `bgmod.cpp`
+A compiled finite-field (F_p) BG oracle, validated **54/54 == ./bg** (mod p) at n=5,6,7, to enable the heavy modular fits. Two non-obvious pitfalls solved (exact integer-coeff sign tracking; exact-residue memo keys vs. hash collisions). Key lesson recorded: the Python BG ports are *not* faster than ./bg at n=7 — the recursion combinatorics dominate.
+
+### Recorded
+claims s1_023–026, decisions s1_dec_013/014, `derivations/n7_round8_exponents_crossterms.md`, session report, board **post_023** (flags the (1=2) disagreement for the PI to adjudicate, with the decisive J/v² vs J/v⁴ test), and memory updates.
+
+### Handed off
+The candidate N₇ structure, the all-n exponent conjecture $e(n,q)=q$ for $q\le\lfloor(n-3)/2\rfloor$ else $n-3$ (predicts n=8: 1,2,5,5), the clean (1=3) coefficient (proven clean; explicit multivariate fit set up via bgmod), and the full assembly fit as the remaining frontier.
+
+All background processes have completed; ending the session.
+[usage] cost_usd=31.630752750000017 duration_ms=4905479 num_turns=163 in=15811 out=265611 cache_read=42339106 cache_write=596438
+[2026-06-27T04-18-41] student-bot exited with code 0

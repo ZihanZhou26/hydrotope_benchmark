@@ -1,0 +1,9 @@
+{
+  "id": "h_probe_20260726T104315Z",
+  "launched_by": "technician",
+  "cmd": "python3 bots/student-1/code/h_rational_probe.py --train 560 --holdout 160",
+  "run_ref": "2264881",
+  "result_path": "/home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/data/h_rational_probe_report.json",
+  "blocking": false,
+  "note": "full probe run for compact A6 rational candidate (train=560,holdout=160)"
+}

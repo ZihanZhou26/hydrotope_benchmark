@@ -1,0 +1,76 @@
+{
+  "id": "pi_session_r6",
+  "bot": "pi",
+  "timestamp": "2026-07-26T17:24:52",
+  "round": 6,
+  "phase": "pi",
+  "final_summary_round": false,
+  "summary": "Round-6 normal research round. Read question, board_recent, both live summaries, both student round-5 HANDOFFs, the round-5 verifier VERIFICATION.md + board post_021, and pi/verified.yaml; inspected jobs/ (empty, only jobs/collected). HEADLINE: resolved the round-5 student<->verifier CONFLICT on the load-bearing ORDER-3 triple-wall brick. student-2 (s2_010, post_020) claimed G_{m;pq}=-16 max(w_m^2,w_t^2); the round-5 verifier (V3, post_021) refuted it (fails 24/27 walls) and supplied G_{m;pq}=-32 w_m w_t but flagged it as its OWN finding needing student re-derivation. Because round 6 subtracts R_Q^corr = -32 sum (Q_{m;pq})_+^3 w_m w_t as the first assembly step, a wrong brick would poison the whole result, so I ran a targeted independent PI double-check (pi_vchk_004). I implemented P_pole from scratch (anchor exact: P_pole=42588288/7, R_spline=-7396992) and, on TWO discriminating on-shell lines where |w_m|!=2|w_t| (the verifier's channel-(1;46) line AND a fresh PI line at a different base P=(-8,2,3,4,5,-6), d=(-5,-5,-5,5,5,5), channel (2;45)), extracted G=(R_{Q>0}-R_{Q<0})/Q^3 and found it EQUALS -32 w_m w_t exactly at every check point, disagreeing with both -16 max and -16 w_m^2. CONFIRMS the verifier's brick (F17), REJECTS student-2's. Corrected the shared state: two of the three R_spline pieces (order-3 Q-orbit R_Q and pole part P_pole) are now pinned. G1 sharply reduced to the order-1 q-orbit R_q + global R_0. Directed both students complementarily toward a complete compact A_6 candidate for the round-7 verifier.",
+  "state_of_evidence": {
+    "verifier_confirmed": [
+      "F1 5pt calibration (A_5=-19968 i); F2 degree 8; F3 dual S3 symmetry; F4 purely imaginary",
+      "F6 8-word selector (standard sheet + 35380 off-sheet + 750 BG pts)",
+      "F7 Delta = C^3, D_min = C (deg 3), N11 deg 11",
+      "F8 d_T factorization, only Q_T>0 channels, 1/d_T=(w_m+w_pbar)/(2C)",
+      "F9 P_pole compact table-free correct in all 8 chambers; RE-CONFIRMED this round by PI's own from-scratch P_pole (anchor exact)",
+      "F10 R_spline denominator-free deg-8 dual-S3 spline; order-1 pair-wall jump q_mp H_mp, deg H_mp=6",
+      "F11 compact same-energy order-1 brick, FOUR-LEG beta=min selector (7/7); F12 H_mp is itself a spline (tie q35=0)",
+      "F13 mechanism: naive independent-orbit sum does not integrate; diagnosed as the missing Q-orbit",
+      "F15 [HEADLINE r4] R_spline AND A_6 jump across 3-leg walls Q_{m;pq}=0, order EXACTLY 3, S3xS3 orbit; intrinsic; cannot be removed by redefining P_pole",
+      "F17 [r5 verifier V3, CONFIRMED] order-3 brick G_{m;pq}=-32 w_m w_pbar (monomial); R_Q=-32 sum (Q_{m;pq})_+^3 w_m w_pbar; R_spline-R_Q smooth at 27/27 walls (9 channels, 4 chambers)",
+      "H1/H2 dead ends; H3 [NEW]: student-2's -16 max brick + its q_mt correction REFUTED"
+    ],
+    "pi_confirmed": [
+      "F14 [pi_vchk_002] NARROW part correct; over-generalization retired",
+      "F16 [pi_vchk_003] A_6 itself jumps across Q_{1;46}=0 with no magnitude tie (BG*C, no P_pole)",
+      "F17 [pi_vchk_004] INDEPENDENTLY re-derived G_{m;pq}=-32 w_m w_pbar via PI's own P_pole on two discriminating lines (channels (1;46) and (2;45)); rejects student-2's -16 max and -16 w_m^2"
+    ],
+    "pinned_this_round": [
+      "R_Q = -32 sum_{m,p<q} (Q_{m;pq})_+^3 w_m w_pbar  (order-3 Q-orbit, verifier V3 + PI pi_vchk_004)",
+      "So R_spline = R_0 + R_q + R_Q with R_Q and P_pole both known; only R_q (order-1 q-orbit) and R_0 (global symmetric) remain"
+    ],
+    "not_yet_trusted": [
+      "the compact order-1 q-orbit R_q (nested/hydrotope brick H_mp assembly) -- open deliverable",
+      "the global symmetric R_0 -- open deliverable",
+      "whether s1_005 rank 17<18 is cured once the CORRECT R_Q is subtracted (assigned student-1)",
+      "wall-set completeness (18 walls corroborated, not symbolically proven -- minor)",
+      "PI structural lead: does P_pole + R_Q merge into one channel object? (optional)",
+      "symbolic exclusion of the 2 absent 8-words (numeric only)"
+    ],
+    "blocking_gaps": [
+      "G1 (sharply reduced): no compact closed form for A_6 yet. P_pole (F9) and R_Q (F17) pinned; remaining = compact order-1 q-orbit R_q (q-fan assembly of S=R_spline-R_Q over the 9 q_mp=0 walls, brick H_mp / four-leg beta) + global symmetric R_0. Clears only when a compact R_spline is produced AND a later verifier confirms the full assembled A_6 vs fresh BG."
+    ]
+  },
+  "verifier_findings_resolution": {
+    "VF_qbrick_blocking": "Round-5 verifier [blocking]: student-2's order-3 brick is FALSE; correct G=-32 w_m w_t. -> ACCEPTED and independently PI-confirmed (F17/pi_vchk_004) on two discriminating lines. Shared state corrected; student-2's brick + its H_mt correction retired (H3). No gap beyond G1.",
+    "VF_G1_blocking": "No complete compact A_6; global R_0 + order-1 q-fan assembly unbuilt. -> G1, sharply reduced now that R_Q is pinned. Repair assigned to both students.",
+    "VF_completeness_minor": "Wall-set completeness corroborated (18 walls; no hidden wall in tested interiors) but not symbolically proven; verifier did not rebuild rank-285 fit. -> Open_minor, low priority vs the assembly.",
+    "VF_sigfpe_standing": "BG SIGFPE on walls/poles. -> Standing rule; two-sided limits + cell-adjacency certification mandatory."
+  },
+  "pi_double_check": {
+    "performed": true,
+    "id": "pi_vchk_004",
+    "reason": "Load-bearing student<->verifier conflict on the order-3 brick that the entire round-6 assembly starts from; verifier flagged its corrected brick as needing student re-derivation. The two candidate formulas coincide only at |w_m|=2|w_t| (the canonical-line accident), so I used discriminating crossings.",
+    "method": "Fresh md5-matched bg (md5=41715c4af3ee5a61b1c4bfce40426ac8). Implemented P_pole MYSELF from written formula F9 (no student/verifier evaluator); anchor {-8,2,3,4,5,-6} gives P_pole=42588288/7, R_spline=-7396992 exact. On on-shell polynomial lines w(t)=P+t d crossing exactly ONE Q_{m;pq}=0 wall inside a single 18-wall chamber (all nine q_mp signs + other eight Q signs certified constant; only target Q flips), interpolated the two degree-8 R_spline branches (9 fit + 2 holdout each), formed the ORIENTED jump dR=R|_{Q>0}-R|_{Q<0}, and compared dR/Q^3 exactly to -32 w_m w_t, -16 max(w_m^2,w_t^2), -16 w_m^2. Line A: verifier's V3 line P=(8,2,-3,-5,4,-6), d=(-3,-2,1,3,-1,2), channel (1;46). Line B: independent PI on-shell tangent-space search, base P=(-8,2,3,4,5,-6), d=(-5,-5,-5,5,5,5), channel (2;45). Script bots/pi/code/pi_vchk_004_Qbrick.py (self-contained, fractions).",
+    "outcome": "PASS/CONFIRMED. Both lines discriminating (|w_m|!=2|w_t|), clean single-Q crossings. Extracted G equals -32 w_m w_pbar EXACTLY at all 5 check points per line; disagrees with -16 max and -16 w_m^2. Verifier's brick F17 confirmed; student-2's -16 max rejected (H3). Recorded as pi_vchk_004 in bots/pi/verified.yaml. Did NOT rerun the verifier's 27-wall global smoothness sweep or its rank-285 fit; orbit-completeness of R_Q rests on verifier V3. Does NOT clear G1."
+  },
+  "tasks_assigned": {
+    "student-2": "BOTTOM-UP: the compact order-1 q-orbit from the CLEAN residual. Adopt G=-32 w_m w_pbar (drop your -16 max + q_mt correction). Form S=R_spline-R_Q; verify on fresh BG that S is smooth across all 9 Q-walls and jumps only at the 9 q_mp=0 walls (order 1, four-leg-beta brick H_mp). Re-derive H_mp and its four-leg-beta nesting from S. Deliver a compact, table-free NESTED/hydrotope q-orbit R_q (short building blocks, not a coefficient list), validated on exact BG holdouts across chambers, two-sided limits, continuity certified. State whether S-R_q is a single global symmetric polynomial (R_0).",
+    "student-1": "TOP-DOWN + ASSEMBLE + BATTERY: Subtract the CONFIRMED R_Q and redo the joint-fan transport on S=R_spline-R_Q; test whether s1_005 rank 17<18 is CURED. Extract the global symmetric R_0 (compact form, or flag as not-yet-compact). If it closes, assemble the full table-free A_6=ig^-3(P_pole+R_0+R_q+R_Q) and run the definition-of-done battery (>=20 generic samples across chambers, minus/plus permutations, hierarchical regimes, two-sided q- and Q-wall + factorization-pole limits, 5-pt calibration); report exact residuals. Optional: test the PI lead that P_pole+R_Q merges into one channel object; keep mining hydrotope/hydrohedron literature. Table-free only."
+  },
+  "next_steps": [
+    "Students execute round-6 halves in parallel; post early either a complete compact A_6 candidate (with battery residuals) or the compact order-1 q-orbit R_q + the rank-cured verdict, or a sharp obstruction naming exactly what remains.",
+    "Verifier audits the strongest new claim; if a full compact A_6 is proposed, run it END-TO-END vs fresh BG across all realized chambers and the required wall/limit/calibration battery and state whether G1 is cleared.",
+    "Round-7 PI: if a compact R_spline/A_6 lands and a verifier report clears G1, do a targeted PI double-check of the assembled A_6 and write summary/SOLVED.md; else re-scope. Runway: round 6 of 9; final PI summary expected after round 9."
+  ],
+  "files_written": [
+    "tasks/student-1.md",
+    "tasks/student-2.md",
+    "summary/logic.yaml",
+    "summary/group_meeting_notes.md",
+    "bots/pi/verified.yaml (append pi_vchk_004)",
+    "bots/pi/code/pi_vchk_004_Qbrick.py",
+    "bots/pi/sessions/2026-07-26T17-24-52.json",
+    "board.json (append post_022)"
+  ]
+}

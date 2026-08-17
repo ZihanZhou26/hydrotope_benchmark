@@ -1,0 +1,21 @@
+[2026-07-26T11-14-02] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/verifier-bot.md identity=verifier
+Verification complete. All deliverables are written; leftover processes cleaned; `board.json` is valid.
+
+## Summary — Round 5 verifier audit
+
+I independently audited the strongest round-5 claim (student-2's "order-3 $Q$-brick closed", post_020) on a **fresh md5-matched oracle** (`bg_r5`) with my own table-free `P_pole`/`R_spline` and an independent transcription of the candidate brick — no student evaluator used.
+
+**Headline: the round-5 "closed" $Q$-brick is REFUTED, and I supply the correct one.**
+
+- **Refuted (blocking):** student-2's selector $G_{m;pq}=-16\max(\omega_m^2,\omega_t^2)$ and orbit $R_Q=-16\sum(Q_{m;pq})_+^3[\omega_m^2+(q_{mt})_+]$ fail — $R_{\rm spline}-R_Q$ is **non-smooth at 24 of 27** independently extracted isolated $Q$-wall crossings. It's right only in special cells (e.g. the canonical worked line, where $\omega_1=2\omega_5$ makes $-16\omega_m^2=-32\omega_m\omega_t$). Their "no energy-sign selector" claim is also false.
+- **Correct brick (verified, 27/27):** $G_{m;pq}=-32\,\omega_m\omega_t$ ($t=$ omitted plus leg), i.e. $R_Q^{\rm corr}=-32\sum(Q_{m;pq})_+^3\omega_m\omega_t$. It matches all 10 exact extractions and makes $R_{\rm spline}-R_Q^{\rm corr}$ smooth across all 27 walls (9 channels, 4 energy-sign chambers). It's *simpler* — a plain degree-2 monomial, no max/nested part, auto-continuous.
+- **Confirmed unchanged:** the decomposition $A_6=ig^{-3}(P_{\rm pole}+R_{\rm spline})$, table-free $P_{\rm pole}$ (both forms), and the *structure* of the jump — order **exactly 3** ($Q^3$-divisible, not $Q^4$; degree-2 cofactor; full $S_3\times S_3$ orbit).
+- **Corroborated (not proven):** student-1's 18-wall completeness — 23/23 magnitude-order-change segments are single degree-8 polynomials; no hidden wall found.
+
+**How the pipeline was bulletproofed** before I trusted the refutation: `P_pole` form-1 ≡ form-2, `R_spline` dual-$S_3$ symmetric and denominator-free in the test chambers, isolation checked at every $t_0$, clean single-polynomial branches — ruling out a `P_pole`/windowing artifact.
+
+**Deliverables written** (verifier scope only): `bots/verifier/VERIFICATION.md`, `bots/verifier/sessions/2026-07-26T16-11-08.json`, four new claims `v_r5_001..004` in `claims.yaml`, and board `post_021` (immediate warning so round 6 isn't built on the wrong brick).
+
+`VERDICT: GAPS REMAIN (2 blocking)` — (1) the refuted $Q$-brick [correction supplied, to be re-derived by the students]; (2) no complete compact $A_6$ (G1 persists — $R_0$ and the $q$-fan assembly still unbuilt).
+[usage] cost_usd=11.239456499999998 duration_ms=3626833 num_turns=75 in=123 out=153275 cache_read=10005733 cache_write=240347
+[2026-07-26T12-14-35] verifier-bot exited with code 0

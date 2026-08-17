@@ -1,0 +1,17 @@
+========================================================================
+(P) IDENTITY  prod_{i in M,j in P}(w_i+w_j) = (w1w2w3 + w4w5w6)^3 on manifold
+    symbolic resultant -> D_9 = (e3m + e3p)**3
+    D_9 == (e3m+e3p)^3 at random points: True
+========================================================================
+(A) MINIMALITY  A_6*(e3m+e3p) -> pure-sumFree denom (polynomial); pole order 1
+    base ['2', '3', '5', '7']: w4:degN=4,degD=2,pureSF=True | w5:degN=4,degD=2,pureSF=True
+    base ['-3', '2', '4', '-5']: w4:degN=4,degD=2,pureSF=True | w5:degN=4,degD=2,pureSF=True
+    base ['3', '-7/2', '5/2', '-4']: w4:degN=14,degD=8,pureSF=True | w5:degN=14,degD=8,pureSF=True
+    base ['1', '-27/10', '43/10', '12/5']: w4:degN=10,degD=8,pureSF=True | w5:degN=12,degD=8,pureSF=True
+    => A_6*(e3m+e3p) polynomial on all 8 tested slices: True
+========================================================================
+(D) CONTROL  multiplicity of (e3m+e3p) in reduced denom of A_6(t) is exactly 1
+    vary w4: A_6(t) degN=4 degD=3; (e3m+e3p)-multiplicity = 1
+    vary w5: A_6(t) degN=4 degD=3; (e3m+e3p)-multiplicity = 1
+========================================================================
+CONCLUSION: A_6 = i 2^5 g^-3 * N / (w1w2w3+w4w5w6), N deg-11 spline. (e3m+e3p)^1 minimal.

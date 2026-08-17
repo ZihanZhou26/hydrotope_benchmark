@@ -1,0 +1,26 @@
+[2026-06-26T23-19-23] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/student-bot.md identity=student-2
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+All registry files are valid and complete. My round-6 session as student-2 is done. Summary of what I accomplished on task `r6-student-2` (top-down):
+
+## Primary result — the n=7 (and all n≠6) minimal denominator, RESOLVED
+
+This was the standing OPEN item (deliverable #4; my own s2_017 / PI post_012 left it open). The answer:
+
+$$A_n^{3-}=i\,2^{n-1}g^{3-n}\,\frac{N_n}{\textstyle\prod_{i\in M}\prod_{j\in P}(\omega_i+\omega_j)}\quad(n\ge7),\qquad \deg N_n=5n-13.$$
+
+At n=7 the minimal denominator is the **full degree-12 product, pole order 1** — **no collapse**. So `deg N₇ = 22`, and n=6 (deg 11) is the lone exception.
+
+**All-n mechanism** (clean algebra): `D_n^free = ∏ᵢ rₙ(ωᵢ)`, `rₙ = Qₙ mod p₋`, using the manifold identities `e₁⁻=−e₁⁺, e₂⁻=e₂⁺`. The perfect-power collapse happens **iff rₙ is constant ⟺ n=6** (the unique n with `deg p₋ = deg Qₙ = 3`, giving `r₆ = e₃⁻+e₃⁺`, `D₉=(e₃⁻+e₃⁺)³`). At n=7, `r₇ = c·x+d` (c=e₃⁻+e₃⁺, d=e₄⁺).
+
+**How verified** (`verify_r6.py`, exact): a gcd over-clearing test (sidestepping my round-5 reconstruction-cap failure) gives over-clearing 0 on two n=7 chambers; the n=6 **control** correctly shows over-clearing 8, proving the method detects collapse. The reduced denominator factors into all 9 nonconstant slice mixed pairs, each power 1.
+
+**Geometric reason** — dovetails with student-1's just-posted n=6 numerator solution: at n=6 one vanishing pair forces a full matching (walls coincide); at n≥7 a single pair vanishes **alone** (explicit on-manifold point), so the walls are distinct. Both sides confirm n=6 is degenerate, n≥7 is the new regime.
+
+## Supporting deliverables
+- **#2 boundary checks**: soft recursion (both legs, ratio 6) and n=5 reduction re-confirmed.
+- **#3 exact tests**: A_n·D_n polynomial / minimality at n=6,7; mechanism verified n=6,7,8.
+- **#1 all-n ansatz**: skeleton fully pinned; new **single-pair residue handle** at n=7 (computable via 1-parameter limit, impossible at n=6) — a fresh constraint on the still-open numerator core.
+
+Registered: claims s2_018/019/020, decision s2_dec_004, derivation `n7_minimal_denominator.md`, session report, board post_017, and updated project memory. Session ended.
+[usage] cost_usd=10.535143500000004 duration_ms=3713078 num_turns=70 in=37217 out=114550 cache_read=10488610 cache_write=356297
+[2026-06-27T00-21-24] student-bot exited with code 0

@@ -1,0 +1,21 @@
+[2026-06-27T01-42-12] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/pi-bot.md identity=none
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+All deliverables are in place and validated. The PI round-8 session is complete.
+
+## Round 8 (PI) — summary
+
+I reviewed all round-7 progress and **independently re-verified the three load-bearing round-7 claims** using my own freshly-rebuilt oracle (`./bg`, confirmed byte-identical to shared `bg.cpp`) plus my own batched exact evaluator (`bots/pi/code/pi_batch.cpp`) and my own slice/interpolation/exponent code — **no student code imported**. All three hold exactly:
+
+| Claim | Result |
+|---|---|
+| **s1_020 parity** | ✅ `A_n` always even (even homogeneity); `N_6` odd, **`N_7` EVEN** — `N_n` is even iff `n` is odd. The "`N_n` odd" framing was n=6-only. |
+| **s2_021 soft recursion** | ✅ EXACT at n=7, **both legs**: plus → `8·A₆³⁻ = −3517680816/161`, minus → `8·A₆²⁻ = −13249051200` (vs my own independent direct `8·A_6`). |
+| **s1_021 n=7 exponents** | ✅ `(1=1)→1`, `(1=2)→2` directly re-measured; n=6 controls `(1=1)→1, (1=2)→3` validate the method. |
+
+Two non-obvious gotchas surfaced (and were resolved): the soft limit must be taken **in the ε→0 chamber** (a wide window sits in a different chamber → garbage), and at n=7 a second wall sits only ~0.045 from the (1=2) crossing → a **pre-scan + tiny single-wall window** is essential.
+
+**Status:** n=5 and the full n=6 closed form remain SOLVED & PI-verified; the all-n denominator/degree/symmetry/parity/wall-exponent structure is pinned. The **explicit numerator `N_n` for n≥7** (hence the single all-n closed form) is still the whole open problem → **no `SOLVED.md`**.
+
+**Outputs written:** updated `summary/logic.yaml` + `summary/group_meeting_notes.md`; `tasks.json` (round 8 — student-1: assemble the explicit `N_7` over `D_7=∏(ωᵢ+ωⱼ)`, S₃×S₄ orbit-sum with **even** parity, Typhon if needed; student-2: **solve** the now-verified soft recursion + single-pair residues + matching/Cauchy into an explicit all-n `N_n`); the PI session report; and board `post_021`. The two tasks dovetail and cross-validate — the first to yield an n≥7 candidate that passes my independent re-verification triggers `SOLVED.md`. Session ended; no processes left running.
+[usage] cost_usd=17.981645249999996 duration_ms=4473136 num_turns=84 in=13484 out=124946 cache_read=15094763 cache_write=1156687
+[2026-06-27T02-56-49] pi-bot exited with code 0

@@ -1,0 +1,4 @@
+[2026-06-26T17-18-04] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/pi-bot.md identity=none
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+[usage] parse failed: Expecting value: line 1 column 1 (char 0)
+[2026-06-26T17-31-54] pi-bot exited with code 129

@@ -1,0 +1,107 @@
+{
+  "id": "s1_010",
+  "generated_at": "2026-07-26T23:33:20",
+  "status": "verified_exact_candidate",
+  "target": "S = A6/i - P_pole - R_Q",
+  "matrix": {
+    "rows": 900,
+    "columns": 605,
+    "hinge_columns": 588,
+    "global_columns": 17,
+    "hinge_depth_split": {
+      "1": 188,
+      "2": 244,
+      "3": 134,
+      "4": 22
+    },
+    "words_covered": 8,
+    "per_prime": [
+      {
+        "p": 2147483647,
+        "rank_A": 182,
+        "rank_Ay": 182
+      },
+      {
+        "p": 2147483629,
+        "rank_A": 182,
+        "rank_Ay": 182
+      },
+      {
+        "p": 2147483587,
+        "rank_A": 182,
+        "rank_Ay": 182
+      }
+    ],
+    "consistent": true
+  },
+  "exact_recovery": {
+    "backend": "Wolfram LinearSolve",
+    "rank": 182,
+    "support_count": 85,
+    "support_split": {
+      "hinge_depth_1": 47,
+      "hinge_depth_2": 25,
+      "hinge_depth_3": 0,
+      "hinge_depth_4": 0,
+      "global": 13
+    },
+    "fit_rows_verified_exact": 900,
+    "fit_residual_nonzero": 0
+  },
+  "compact_formula": {
+    "building_blocks": [
+      {
+        "name": "H1",
+        "degree": 6,
+        "monomials": 46,
+        "orbit_terms": 9
+      },
+      {
+        "name": "H2",
+        "degree": 4,
+        "monomials": 23,
+        "orbit_terms": 18
+      },
+      {
+        "name": "H0",
+        "degree": 8,
+        "monomials": 13,
+        "orbit_terms": 1
+      }
+    ],
+    "loads_coefficient_table": false,
+    "fit_rows_verified_exact": 900,
+    "fresh_holdouts_verified_exact": 80,
+    "total_rows_verified_exact": 980,
+    "residual_nonzero": 0
+  },
+  "anchor": {
+    "omega": [
+      "-8",
+      "2",
+      "3",
+      "4",
+      "5",
+      "-6"
+    ],
+    "A6_im": "-9190656/7",
+    "P_pole": "42588288/7",
+    "R_Q": "-136630560",
+    "S": "129233568"
+  },
+  "bg_source_sha256": "bd1afe67c45e1e9403c03a0b78373ebb492235be56fc1e5ee9281cbbec9040c1",
+  "authoritative_artifacts": {
+    "formula": "bots/student-1/derivations/s1_010_round8_compact_hinge_candidate.md",
+    "compact_evaluator": "bots/student-1/code/round8_compact_candidate.py",
+    "modular_rank_diagnostic": "bots/student-1/data/round8_hinge_decisive_diag.json",
+    "exact_solution": "bots/student-1/data/round8_hinge_decisive_solution.json",
+    "exact_recovery_audit": "bots/student-1/data/round8_wolfram_recovery.json",
+    "fresh_holdouts": "bots/student-1/data/round8_fresh_holdouts.json",
+    "interrupted_incremental_checkpoint": "bots/student-1/data/round8_hinge_decisive.json"
+  },
+  "acceptance_remaining": [
+    "PI/verifier independent transcription and implementation",
+    "PI/verifier compactness judgment for 82 displayed monomials",
+    "Definition-of-done wall, pole, hierarchy, permutation, and five-point battery"
+  ]
+}

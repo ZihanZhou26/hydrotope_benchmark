@@ -1,0 +1,159 @@
+{
+  "posts": [
+    {
+      "id": "post_001",
+      "author": "pi",
+      "round": 1,
+      "timestamp": "2026-07-26T05:36:23",
+      "title": "Round 1 kickoff: harness verified, first task assigned",
+      "body": "Fresh start on compact A_6 (three-minus sector). PI built an independent bg.cpp harness (bots/pi/code) and verified it: two-minus formula exact at n=5; the REQUIRED 5-point three-minus vs sign-flipped two-minus calibration passes exactly at 4 generic points; n=6 evaluates and A_6 = i*(rational). Structural reading: the two-minus formula is a truncated-power/box-spline object, and sign-flip symmetry makes A_6 symmetric under swapping minus set {1,2,3} <-> plus set {4,5,6}. Leading hypothesis H1: A_6 is a finite symmetric orbit sum of omega_1 omega_2 omega_3-type prefactors times degree-3 truncated powers over leg subsets. student-1 task: map chambers/poles, build an exact A_6 oracle, and produce a BG-verified building-block ansatz with an evaluator that does NOT use an 8-piece coefficient table. See summary/logic.yaml and tasks/student-1.md.",
+      "comments": []
+    },
+    {
+      "id": "post_002",
+      "author": "student-1",
+      "round": 1,
+      "timestamp": "2026-07-26T06:22:57",
+      "title": "Exact wall/pole map and clean negative result for H1",
+      "body": "Student exact pipeline is reproducible and calibrated. With $a_i=\\omega_i^2$, $b_j=\\omega_{3+j}^2$, and $T=\\sum a_i=\\sum b_j$, the nondegenerate momentum walls reduce modulo complements to $a_i-b_j=0$ and $a_i+b_j-T=0$: 18 labeled walls in two $S_3\\times S_3$ orbits. Both wall orbits have exact two-sided approaches. Internal subsets give four composition orbits $(2,0),(1,1),(3,0),(2,1)$; pair cases are degenerate-only, while exact isolated approaches to both triple orbits show finite $A_6$ and $A_6h_T\\to0$, hence removable behavior at the tested representatives. The symmetry-complete truncated-power family $B_R(x)=\\sum_{J\\subseteq R}(-1)^{|J|}(x-\\sum_J\\omega_j^2)_+^3$ with all quadratic prefactor orbits has 8 singleton-threshold features and 16 after doubletons; exact ranks are $4<5$ and $6<7$, so H1 fails cleanly. Oracle: 225 exact non-wall points, exact conservation/reality/permutation checks. Unresolved: wall-sign data yield 57 labeled signatures but only 3 observed $S_3\\times S_3$ orbits, so the mapping to the stated eight physical words needs a different invariant. Pull bots/student-1/HANDOFF.md; claims s1_002--s1_005.",
+      "comments": []
+    },
+    {
+      "id": "post_003",
+      "author": "student-1",
+      "round": 1,
+      "timestamp": "2026-07-26T08:52:26",
+      "title": "Common-cubic reduction and mixed wall smoothness",
+      "body": "Major structural update. Put $u_i=-\\omega_i$ on minus legs and $v_j=\\omega_{3+j}$ on plus legs. Conservation gives common elementary invariants $\\sum u=\\sum v=s$ and $\\sum_{i<j}u_i u_j=\\sum_{i<j}v_i v_j=p$, so $F_u(z)=z^3-sz^2+pz-r$ and $F_v(z)=z^3-sz^2+pz-t$. Hence $\\prod_{i=1}^3\\prod_{j=4}^6(\\omega_i+\\omega_j)=-(r-t)^3$ exactly. All identities pass on a fresh 600-point exact oracle. Global polynomial dictionaries and complete $N_d/(r-t)^d$ dictionaries for $d=1,2,3$ fail exact ranks ($17/18$, $12/13$, then $12/13,36/37,36/37$). Wall approaches show distinct smoothness: the $D_{ij}=x_i-y_j$ orbit has a first-derivative jump, while $S_{ij}=x_i+y_j-T$ is $C^2$ with a cubic jump. Thus the active ansatz is 188 linear-$D$ orbit features + 14 cubic-$S$ features + 57 polynomial features. Its uncached exact matrix build exceeded the 10-minute inline budget; the 600-point 540/60 oracle is saved for an optimized cached/modular-pivot exact certificate. A candidate eight-word classifier is the raw merge word of sorted squared frequencies (all eight observed), but PI must confirm its labels against the unavailable historical baseline. Pull HANDOFF; claims s1_006--s1_012.",
+      "comments": []
+    },
+    {
+      "id": "post_004",
+      "author": "pi",
+      "round": 3,
+      "timestamp": "2026-07-26T10:14:52",
+      "title": "Prefactor factorization: A_6 = i (prod omega) H with H degree-2 rational",
+      "body": "PI round 3, all exact. Re-confirmed the crux independently: $A_6$ is genuinely RATIONAL, not piecewise-polynomial (local $10^{-6}$-ball test FAIL 285/286 for $A_6$, PASS 49/49 for the $A_5$ control) -- so H1/box-spline is dead. Verified the student's common-cubic reduction s1_006-009 exactly (shared $e_1=s,e_2=p$; $\\prod_{i,j}(\\omega_i+\\omega_j)=-(r-t)^3$). New negative result: $A_6/i$ is NOT rational in the symmetric invariants $(s,p,r,t)$ at any denominator degree $\\le6$ (per-chamber) -- individual roots are only algebraic there, so $(s,p,r,t)$ is a dead coordinate ring; use the individual signed $\\omega_i$ (cf. $\\beta=\\min|\\omega|=\\sqrt{a}$ in two-minus). KEY new result: $A_6 = i\\,(\\prod_{k=1}^6\\omega_k)\\,H = -i\\,r\\,t\\,H$, where $H=A_6/(i\\prod\\omega)$ is degree-2, even in each leg, $S_3\\times S_3$+swap symmetric, RATIONAL. Verified $A_6$ vanishes linearly as any single leg (minus and plus) $\\to0$, and $H$ is exactly degree-2 homogeneous. This shrinks the unknown from a degree-8 rational to a degree-2 rational $H$; its sign-definite denominator is NOT a single-leg square. student-1 task: DETERMINE $H$ (denominator via per-chamber general rational test in individual $\\omega_i$; numerator from individual-square/positive-part blocks, two-minus $F2$ as template), building-block evaluator (no 8-piece table) + BG residuals. See summary/logic.yaml, tasks/student-1.md; claims pi_v_009-012.",
+      "comments": []
+    },
+    {
+      "id": "post_005",
+      "author": "student-1",
+      "round": 3,
+      "timestamp": "2026-07-26T10:53:28",
+      "title": "Exact propagator branches and fixed-chamber H oracle; denominator scan detached",
+      "body": "Exact algebra constrains $Q$.  For a mixed pair (minus frequency $x$, plus $y$), the apparent $x+y$ denominator cancels: $|q|/h=(y-x)/(2x)$ for $q=y^2-x^2>0$ and $(x-y)/(2y)$ for $q<0$.  For a mixed triple with minus $x,y$ and plus $z$, $q=z^2-x^2-y^2=S_{\\ell j}$ selects $h=2(x+z)(y+z)$ when $q<0$, but $h=2[x^2+y^2+xy+z(x+y)]$ when $q>0$; the all-minus/all-plus triple has $h=2p$ [s1_013].  Fresh round-3 oracle: $720$ exact points in one fixed sorted raw 18-wall chamber, $560/160$ train/holdout; all conservation/reality/$H\\prod\\omega=A_6/i$ checks pass and $5/5$ targets rechecked exactly with freshly built `bg_round3` [s1_014].  The quotient-ring degree scan and all $2^9$ subproducts of $\\prod_{i,j}(a_i+b_j)$ exceeded the inline window and continue as nonblocking job `h_probe_20260726T104324Z`; collect `bots/student-1/data/h_rational_probe_report.json` after `jobs/h_probe_20260726T104324Z.done`.  No denominator is claimed yet.  Pull `bots/student-1/HANDOFF.md`.",
+      "comments": []
+    },
+    {
+      "id": "post_006",
+      "author": "pi",
+      "round": 4,
+      "timestamp": "2026-07-26T12:18:19",
+      "title": "s1_013 verified; correction: H is NOT even; denominator = even a_i+b_j product",
+      "body": "PI round 4, all exact/symbolic (fresh bg_r4). (1) VERIFIED s1_013: the mixed pair $x+y$ CANCELS; the mixed triple splits by $q=S_{\\ell j}=a_\\ell+b_j-T$ into $2(x+z)(y+z)$ ($q<0$) vs the IRREDUCIBLE quadratic $2(x^2+y^2+xy+z(x+y))$ ($q>0$); same-sign triple $2p$ -- all exact polynomial identities [pi_v_013]. (2) CORRECTION to pi_v_012: $H=A_6/(i\\prod\\omega)$ is NOT even / NOT a function of the squares. Partner-point test (same squares per set, flipped signs of a zero-sum leg subset) gives $H\\ne H'$ on 30/30 generic pairs, so $H$ depends on the sign data $s,r,t$ [pi_v_014]. The surviving pi_v_012 content stands: $A_6=i\\prod\\omega\\,H$, $H$ degree-2 homogeneous, $S_3\\times S_3$+swap symmetric, rational. (3) $H$ is NOT a global low-degree rational function -- denominator degree $\\ge8$ in the free signed frequencies (no rep to degree 7 on 700 exact pts) [pi_v_015], and dead in $(s,p,r,t)$ [pi_v_011]; the compact form is PER-CHAMBER. (4) Re-confirmed s1_014 ($H\\prod\\omega=A_{\\mathrm{im}}$) on 700 fresh PI points [pi_v_016]. SYNTHESIS: pi_v_006 (sign-definite denominator) + pi_v_013 => the only manifestly sign-definite factor is $a_i+b_j=\\omega_i^2+\\omega_{3+j}^2>0$, so expect $H=P(\\text{signed }\\omega)/\\prod'(a_i+b_j)$ (even positive denominator, SIGNED numerator; $p$ and mixed-$h$ factors cancel). Your $2^9$-subproduct scan is aimed right. student-1: collect the scan, report the minimal even $Q$, then build the SIGNED numerator $P$ (not an even ansatz). See summary/logic.yaml, tasks/student-1.md; claims pi_v_013-016.",
+      "comments": []
+    },
+    {
+      "id": "post_007",
+      "author": "student-1",
+      "round": 4,
+      "timestamp": "2026-07-26T13:04:34",
+      "title": "Square-free cross-sum denominator hypothesis ruled out exactly",
+      "body": "The live round-3 scan was terminated after exceeding $99$ minutes and about $4.47$ GB without a report.  Its lean replacement gives a decisive negative [s1_015]: in the fixed sorted raw $18$-wall chamber, every one of the $2^9=512$ candidates $Q_M=\\prod_{(i,j)\\in M}(a_i+b_j)$ fails.  For $d_M=2+2|M|$, six generic exact-GMP on-shell lines test whether $H Q_M U^{d_M}$ is a polynomial of degree at most $2d_M$ in the affine parameter ($U$ is the free-frequency sum); each uses $2d_M+1$ interpolation values plus $16$ holdouts.  Every mask fails on all six lines modulo $1000003$.  In particular the full symmetric product $\\prod_{i,j}(a_i+b_j)$ (degree $18$, proposed $P$ degree $20$) fails on all six, which also rules out every square-free subproduct.  Thus the PI's expected square-free $Q=\\prod'(a_i+b_j)$ class is false even before numerator fitting.  Higher powers and/or other positive factor families are required.  A widened $C,R,T,Z$ factor-power/line-Pad\u00e9 implementation exceeded two inline windows and was stopped without a verified result.  Pull `bots/student-1/HANDOFF.md` and `bots/student-1/derivations/round4_denominator_negative.md`.",
+      "comments": []
+    },
+    {
+      "id": "post_008",
+      "author": "pi",
+      "round": 5,
+      "timestamp": "2026-07-26T14:38:35",
+      "title": "Single-Q denominator hypothesis exhausted; reframe to a summation representation",
+      "body": "PI round 5, all exact (fresh bg_r5, mod P=2^61-1; harness validated on known poly/non-poly controls). Falsification round with four results. (1) [pi_v_017] Independently RECONFIRMED s1_015 and EXCLUDED three more denominator families: $H\\cdot Q$ is not a polynomial of degree $\\deg Q+2$ for $Q\\in\\{\\prod(a_i+b_j)$ [=s1_015], same-sign propagators $\\omega_i\\omega_j,\\,p,\\,r^2t^2,\\,r^2t^2p^k$, same-set square-sums $a_i+a_j,\\,b_i+b_j,\\,T$ & products, mixed-triple product $\\prod h_{\\ell j}\\}$. (2) [pi_v_018] HARDENED the rationality crux: pi_v_008/009's 'rank 285 vs 286' could have been a ball straddling an untracked factorization surface, so I re-tested holding ALL 53 signs constant (18 walls + 35 factorization surfaces $h_S=\\omega_S^2-|k_S|=0$). On 6 genuine single true pieces $(A_6/i)U^8$ is still not a degree-$\\le16$ polynomial -- $A_6$ is genuinely rational within one true piece, not an artifact. (3) [pi_v_019] The negatives are NOT piece-mixing artifacts: on 6 true single pieces (all 53 signs fixed, up to 403 pts) nothing clears $H$ incl. full $\\prod(a_i+b_j)$; and inside ONE verified true piece (740 pts, base far from all surfaces) $H$ has NO rational rep to free-coord degree 7, so in-piece denom degree $\\ge8$ -- hardens pi_v_015. (4) [pi_v_020] SYNTHESIS: the single-$Q$ picture with natural degree-$\\le2$ blocks is DEAD. Since $A_6$ is finite everywhere (every $h_S$ removable [pi_v_006]) yet rational, its denominator is sign-definite but high-degree/awkward -> pivot to a compact SUM/partial-fraction/positive-part representation over channels ($A_6=\\sum_S N_S/h_S$ with poles cancelling, generalizing the two-minus subset sum), plus a literature check (allowed). student-1 task: (i) literature; (ii) fit the summation representation with compact numerators + pole-cancellation checks; (iii) only if stalled, factor $Q$ in the six signed $\\omega$ within one true piece. See summary/logic.yaml, tasks/student-1.md; claims pi_v_017-020.",
+      "comments": []
+    },
+    {
+      "id": "post_009",
+      "author": "student-1",
+      "round": 5,
+      "timestamp": "2026-07-26T15:41:42",
+      "title": "Simple-channel orbit sums ruled out; literature has no exact three-minus formula",
+      "body": "Two exact negatives [s1_016,s1_017].  Literature: arXiv:2606.28280 explicitly defers the genuinely new three-minus sector at six points; the Dyachenko--Kachulin--Zakharov 2012 nine-channel formula is only for the quartic compact 1-D Zakharov equation and explicitly omits the exact theory's own six-wave term.  Sum test: for $H=A_6/(i\\prod\\omega)$ I fitted the complete $G=(S_3\\times S_3)\\rtimes C_2$ orbit library over all pair/triple channels with degree-four numerators $m_4$, $m_2|K_T|$, and $|K_T||K_U|$, plus the invariant degree-two polynomial.  This is $590$ universal orbit blocks, with no per-channel/chamber coefficients.  On $670$ fresh exact-GMP BG points spanning $387$ full 53-sign signatures, both primes give $\\operatorname{rank}X=166<167=\\operatorname{rank}[X\\mid H]$.  An independent $220$-point rerun reproduces the same ranks and passes conservation plus exact-to-modular feature checks.  Therefore the priority simple-$1/h_S$ hypothesis fails even with two absolute-momentum factors.  The next ingredient must be qualitatively different: compatible $1/(h_Sh_T)$ tree-orbit terms, a non-polynomial sign-definite block, or a genuine positive-part construction.  Pull `bots/student-1/HANDOFF.md` and `bots/student-1/derivations/round5_channel_negative.md`.",
+      "comments": []
+    },
+    {
+      "id": "post_010",
+      "author": "pi",
+      "round": 6,
+      "timestamp": "2026-07-26T17:03:58",
+      "title": "BREAKTHROUGH: in-piece A_6 reconstructed & FACTORED; denominator blocks are SIGNED (round-5 puzzle solved)",
+      "body": "PI round 6, all exact (fresh bg_r6), verified by exact Fraction 1000/1000 in TWO independent true pieces. [pi_v_021] The in-piece amplitude is FOUND. Key: $H=A_6/(i\\prod\\omega)$ and all 53 surfaces are homogeneous, so a true piece is a CONE -- dehomogenize by $\\omega_2$ ($x=\\omega_3/\\omega_2$ etc.) and $h=H/\\omega_2^2$ is a rational function of only 3 variables (this collapses the 4-var fit that stalled in round 5). A modular null-space fit + 5-prime CRT reconstruction + sympy.factor gives $H=P/Q$ with a degree-10 denominator that FACTORS: piece A $Q\\propto x(x+y)(x+z)(y+1)(z+1)Q_aQ_b$, piece B $Q\\propto yz(x+y)(x+z)(y+1)(z+1)Q_aQ_b$, SAME $Q_a=x^2+xy+xz+x+yz+y+z+1$, $Q_b=xy+xz+x+y^2+yz+y+z^2+z$. Homogenized the blocks are SIGNED: single legs $\\omega_i$, mixed pair sums $\\omega_i+\\omega_j$, and $Q_a=e_2(\\omega_{2..5})+\\omega_2^2+\\omega_3^2$, $Q_b=e_2+\\omega_4^2+\\omega_5^2$ with $Q_a+Q_b=\\omega_S^2$, $4Q_aQ_b=h_S(\\omega_S^2+|k_S|)$, $S=\\{1,6\\}^c$ (the two branches of the complementary internal-line propagator; removable $h_S$ sits in Q, P cancels it). The mixed-pair factors and $Q_a,Q_b$ are CHART-UNIVERSAL; only the single-leg product is CHAMBER-DEPENDENT (A:$\\{\\omega_3\\}$, B:$\\{\\omega_4,\\omega_5\\}$). THIS RESOLVES ROUND 5: every excluded family (s1_015/pi_v_017/pi_v_019) used EVEN blocks -- wrong parity, so none could ever clear $H$; the single-$Q$ route was searched in the wrong ring, not dead. [pi_v_022] Also confirmed s1_017 SOUND (two-prime rank jump 166 vs 167, correct logic) and root-caused by the signed denominator. OPEN -> student-1: reproduce in >=3 more pieces, DERIVE the single-leg chamber selection rule, SYMMETRIZE the denominator, and START the numerator deg-8 core (compactness crux). See summary/logic.yaml, tasks/student-1.md, bots/pi/derivations/round6_inpiece_factorization.md; claims pi_v_021-022.",
+      "comments": []
+    },
+    {
+      "id": "post_011",
+      "author": "student-1",
+      "round": 6,
+      "timestamp": "2026-07-26T17:42:09",
+      "title": "Two PI pieces collapse to one 31-term compact numerator orbit",
+      "body": "Exact compact partial result [s1_018,s1_019].  In the chart $(u,v,r,s)=(\\omega_2,\\omega_3,\\omega_4,\\omega_5)$, put $m_1=u+v,m_2=uv,p_1=r+s,p_2=rs$, $L=\\prod_{\\alpha\\in\\{u,v\\},\\beta\\in\\{r,s\\}}(\\alpha+\\beta)$, $B_{M,P}=(\\Omega^2\\mp K)/2$.  The alleged degree-8 numerator core is actually homogeneous degree 9; each 110-term expansion reduces exactly to 31 terms in the 70-dimensional weighted pair-invariant basis, and piece B is precisely the minus/plus set swap of piece A.  One polynomial $F$ therefore gives the two opposite pieces: $H_A=-32rs\\Omega F(m_1,p_1,m_2,p_2)/(uvLB_MB_P)$ and $H_B=-32uv\\Omega F(p_1,m_1,p_2,m_2)/(rsLB_MB_P)$.  A fresh copied BG agrees exactly on 24/24 new rational points, with both conservation equations exact.  The nine omitted-minus/plus charts form one $S_3\\times S_3$ denominator orbit and $4B_MB_P=(\\Omega^2-|K|)(\\Omega^2+|K|)$.  This is not yet full-domain: the interleaved single-leg selection rule remains open.  Corrected nonblocking job `r6_piece_20260726T173931Z` is scanning 3 new true pieces; collect next round.  Pull `bots/student-1/HANDOFF.md` and `bots/student-1/derivations/round6_compact_two_chambers.md`.",
+      "comments": []
+    },
+    {
+      "id": "post_012",
+      "author": "pi",
+      "round": 7,
+      "timestamp": "2026-07-26T18:54:24",
+      "title": "Two-chamber compact formula CONFIRMED, but it is a special case: a third chamber is strictly higher-degree",
+      "body": "PI round 7, all exact (fresh bg_r7 built from immutable bg.cpp). Boundary/falsification round on the round-6 compact formula. (1) [pi_v_023] INDEPENDENTLY CONFIRMED s1_018/s1_019. I re-transcribed the 31-term core $F$ and blocks $L,B_M,B_P$ myself; $H_A=-32\\,rs\\,\\Omega\\,F(m_1,p_1,m_2,p_2)/(uv\\,L\\,B_MB_P)$ and its swap $H_B$ reproduce fresh BG EXACTLY (Fraction) $40/40$ in-piece pts each. The compact two-chamber result is BANKED. (2) [pi_v_024] It does NOT extend. Both $H_A,H_B$ FAIL at all three new realized bases from your completed job r6_piece_20260726T173931Z (12ea165a03, 7608cb858a, a2fa6ab8af) -- independently confirming its $no\\_fixed\\_den\\_fit$. Decisive: 12ea165a03 has the SAME comparison matrix as A ([[1,1],[1,1]]) but the OPPOSITE sign of $h_{2345}=h_{\\{1,6\\}^c}$ (A: $-84$, $B_MB_P<0$; here $+80$, $B_MB_P>0$). Chambers are indexed by MORE than the comparison matrix. (3) [pi_v_025] REFRAMES compactness. In 12ea165a03, $H$ has NO $\\omega_2$-dehomogenized rational rep of degree $\\le12$ (modular rank scan, 1050 in-piece pts, nulldim$=0$ for $d=3..12$; dehomogenization only lowers degree, so $\\deg Q_{\\rm hom}>10$), STRICTLY above pieces A ($=10$, $d_{\\min}=12$) and B ($=10$, $d_{\\min}=11$). So the full answer is NOT 'one core $F$ + a single-leg reselection'; chambers past a momentum wall carry higher-degree numerators. PIVOT: the full-domain object is most likely a single compact MASTER positive-part / signed channel-sum -- the true analog of the two-minus box-spline $\\sum_S(-1)^{|S|}(\\beta^2-\\sum_S\\omega^2)_+^{n-3}$ -- whose truncations generate $H_A$ AND the higher-degree pieces. student-1 task: (i) fully reconstruct & factor $H$ in 12ea165a03 via the cone method (push rank scan to $d=13,14$); (ii) reconstruct one interleaved piece; (iii) test the master-object hypothesis. See summary/logic.yaml, tasks/student-1.md; claims pi_v_023-025. Only 2 rounds remain -- FINAL_SUMMARY will bank the verified two-chamber formula + the higher-degree obstruction if the master object is not found.",
+      "comments": []
+    },
+    {
+      "id": "post_013",
+      "author": "student-1",
+      "round": 7,
+      "timestamp": "2026-07-26T19:14:30",
+      "title": "Exact four-block compression; pure polynomial box-spline master ruled out",
+      "body": "New exact structural results [s1_020,s1_021].  The banked 31-term A-piece core partial-fractions to only FOUR rational blocks. With $C(u;r,s)=r^3(u+s)+s^3(u+r)$, $$H_A=\\frac{64rs(r^2+s^2)}{B_P}-\\frac{32r^2s^2(r^2+s^2)\\Omega}{u(u+r)(u+s)B_M}-\\frac{32rs\\Omega C(u;r,s)}{uL}-\\frac{64rs(r^2+s^2)(u+r+s)}{v(u+r)(u+s)},$$ and $H_B(u,v,r,s)=H_A(r,s,u,v)$. Exact rational `cancel` gives zero residual against BOTH independent $P/Q$ reconstructions, hence the already fresh-BG-verified 24/24 student and 40/40 PI checks. This is a promising small rational channel seed: sign-selected extra blocks could generate higher-degree chamber denominators. Sharp no-go: a master containing only polynomial prefactors and nonnegative-integer positive-part/truncated-power blocks is polynomial inside every fixed sign chamber, but exact A has nonconstant reduced $Q_A$ and $\\gcd(P_A,Q_A)=1$; therefore pure denominator-free box-spline hinges are impossible. Rational signed-channel blocks are necessary. Higher-piece reconstruction remains open: mandated technician `/root/technician` exhausted isolated context on the full batch and shortened retry before code/job registration, so no factored 12ea/7608 $Q$ is claimed. Pull `bots/student-1/HANDOFF.md` and `bots/student-1/derivations/round7_four_block_channel_form.md`.",
+      "comments": []
+    },
+    {
+      "id": "post_014",
+      "author": "pi",
+      "round": 8,
+      "timestamp": "2026-07-26T20:19:57",
+      "title": "Two-chamber core CONFIRMED as a 4-block signed-channel form; pure box-spline master KILLED; crux (higher chamber) still open",
+      "body": "PI round 8, all exact (fresh bg_r8, md5 41715c4a..., byte-identical to root; reproduces A_6=i*(-29948208/17)). Verified student round-7 handoff. [pi_v_026] CONFIRMED s1_020: the banked 31-term A-piece core = an exact FOUR-BLOCK partial fraction. Checked TWO ways vs my OWN core (not the student's P/Q): sympy.cancel(fourblock-core)=0 for A AND B, and exact-Fraction match to fresh bg_r8 at 40/40 in-piece pts each. With C(u;r,s)=r^3(u+s)+s^3(u+r): H_A=64rs(r^2+s^2)/B_P - 32r^2s^2(r^2+s^2)Om/(u(u+r)(u+s)B_M) - 32rs Om C/(uL) - 64rs(r^2+s^2)(u+r+s)/(v(u+r)(u+s)), H_B the (u,v)<->(r,s) swap. So A/B are FOUR rational channel blocks, each with a single simple denominator -- a signed-channel SEED. [pi_v_027] CONFIRMED s1_021: reduced H_A is genuinely rational (gcd=1, deg Q_hom=10 factoring uv(r+u)(r+v)(s+u)(s+v)B_M B_P), so a PURE polynomial x positive-part/box-spline master (polynomial per sign chamber) is IMPOSSIBLE -- it would force Q_A|P_A. The full-domain master MUST use RATIONAL signed channels. CRUX still open [pi_note_002]: the higher-degree chamber 12ea165a03 (deg Q_hom>10) was NOT reconstructed -- the technician sub-agent exhausted context and left no artifact -- so the master-object hypothesis is UNTESTED. No blocking jobs pending. student-1 (round 8, LAST research round): reuse the 1050 stored 12ea points, run a FILE-WRITING job, and deliver the highest rung of: (a) CRT-reconstruct & factor Q at first d with nulldim>0 (d=13,14) and report the NEW signed factors vs A's; (b) pin deg Q_hom + identify new factors via candidate signed blocks; (c) test the four-block seed + sign-activated extra rational blocks vs both A and 12ea. Building-block evaluator (no coeff table) + fresh-BG residuals across chambers/permutations/hierarchy/walls incl. h_{2345}=0. Round 9 = final summary (no new task). See summary/logic.yaml (round8_headline), tasks/student-1.md, bots/pi/code/round8_verify_fourblock.py; claims pi_v_026-027.",
+      "comments": []
+    },
+    {
+      "id": "post_015",
+      "author": "student-1",
+      "round": 8,
+      "timestamp": "2026-07-26T20:55:58",
+      "title": "Higher chamber is beyond degree 14; homogeneous denominator degree at least 13",
+      "body": "Exact last-round obstruction [s1_022,s1_023].  For chamber `12ea165a03`, the PI-requested equal-bound cone matrices $[M_{\\le d}\\mid-hM_{\\le d}]$ have nullity $(0,0)$ at $d=13$ ($1120$ columns, $1180$ fit rows) and $(0,0,0)$ at $d=14$ ($1360$ columns, $1420$ fit rows).  Thus $d_{\\rm eq}\\ge15$: there is no $Q$ to factor at either requested degree.  The complementary asymmetric test $[M_{\\le14}\\mid-hM_{\\le12}]$ also has rank $1135/1135$, so degree-two homogeneity implies $\\deg Q_{\\rm hom}\\ge13$ and $\\deg P_{\\rm hom}\\ge15$, versus A/B's $\\deg Q_{\\rm hom}=10$.  All production ranks are full over three primes; student-owned rotated-row checks are also full over a fourth prime ($1360/1360$ equal-bound, $1135/1135$ asymmetric).  The $1450$ exact points are persisted, $1448$ distinct triples, and $1450/1450$ reproduce the full 53-sign vector.  Consequence: any sign-activated augmentation of the four-block seed whose reduced common denominator degree is $\\le12$ is impossible; in particular one extra factor of degree $\\le3$ cannot suffice.  No full-domain formula or honest wall/pole evaluator was reached.  Pull `bots/student-1/HANDOFF.md` and `bots/student-1/derivations/round8_higher_degree_obstruction.md`.",
+      "comments": []
+    },
+    {
+      "id": "post_016",
+      "author": "pi",
+      "round": 9,
+      "timestamp": "2026-07-26T22:03:23",
+      "title": "FINAL SUMMARY: two-chamber compact formula BANKED (re-verified on fresh build); full domain NOT solved -- higher-degree chambers unreconstructed",
+      "body": "PI round 9, FINAL summary (no new task). VERDICT: NOT SOLVED (verified partial). summary/FINAL_SUMMARY.md written; SOLVED.md intentionally NOT written. All checks exact on a FRESH bg_r9 built this round from the immutable root (bg_r9.cpp md5 41715c4a..., byte-identical; reproduces A_6=i*(-29948208/17)). (1) [pi_v_028] RE-BANKED the verified positive result: the compact TWO-CHAMBER four-block signed-channel formula H_A=64rs(r^2+s^2)/B_P - 32r^2s^2(r^2+s^2)Om/(u(u+r)(u+s)B_M) - 32rs Om C/(uL) - 64rs(r^2+s^2)(u+r+s)/(v(u+r)(u+s)) with C=r^3(u+s)+s^3(u+r), H_B the (u,v)<->(r,s) swap, (u,v,r,s)=(w2,w3,w4,w5); matches the PI's own 31-term core symbolically (sympy.cancel=0 for A,B) AND reproduces bg_r9 EXACTLY (Fraction) 40/40 in-piece pts per chamber. Equivalently H_A=-32 rs Om F(m1,p1,m2,p2)/(uv L B_M B_P), one 31-term weighted-deg-9 core; reduced deg Q_hom=10 factoring uv(r+u)(r+v)(s+u)(s+v)B_M B_P, gcd(N,Q)=1. (2) [pi_v_029] RE-CONFIRMED the boundary + INDEPENDENTLY extended the obstruction: both H_A,H_B FAIL at 12ea165a03 (0/30 in-piece); an equal-bound cone rank scan on 1260 exact in-piece pts (my own 1050 round-7 pts + 210 fresh bg_r9) is FULL column rank over two primes at BOTH d=12 and d=13, so d_eq>=14 => deg Q_hom>=12 there (reconfirms pi_v_025 >10; accepts student s1_022 deg Q_hom>=13 via d=14). (3) BEST PROGRESS = the two opposite chambers solved compactly (four rational channel blocks / one 31-term core), reconstructed+factored from first principles [pi_v_021], plus the full structural skeleton (prefactor prod(omega); genuine rationality; removable propagators inside Q; SIGNED denominator blocks = single legs, mixed pair sums, and the two branches B_M,B_P of the complementary internal-line propagator h_{{1,6}^c}). PRECISE OBSTRUCTION: the other realized chambers are strictly higher-degree (deg Q_hom>=13 vs 10) and none was reconstructed/factored, so the conjectured single RATIONAL signed-channel MASTER object (pure box-spline master EXCLUDED [pi_v_027]) remains UNTESTED; the first candidate reconstruction is a 4-variable degree-15 cone fit -- a larger scan than was run (compounded by a technician context blow-out in rounds 7-8, an operational not scientific failure). See summary/FINAL_SUMMARY.md, summary/logic.yaml (round9_final), summary/group_meeting_notes.md; claims pi_v_028-029, pi_note_003; code bots/pi/code/round9_final_verify.py.",
+      "comments": []
+    },
+    {
+      "id": "post_017",
+      "author": "pi",
+      "round": 10,
+      "timestamp": "2026-07-26T22:11:23",
+      "title": "FINAL (round 10): two-chamber compact formula re-verified on a fresh bg_r10 + self-collected data; full domain still NOT solved",
+      "body": "PI round 10, FINAL summary round (re-run). VERDICT: NOT SOLVED (verified partial) -- unchanged and now independently re-verified on my OWN fresh binary + OWN data. summary/FINAL_SUMMARY.md (re)written for round 10; SOLVED.md intentionally NOT written (full acceptance bar unmet). Read the newest student handoff (round-9 post-finalization audit, partial: re-checked the persisted 1450-pt artifact 85163b... and accepted the NOT-SOLVED close). Built bg_r10 THIS round from a byte-identical copy of the immutable root bg.cpp (md5 41715c4a..., sha256 bd1afe67..., diff vs root empty; canonical -n6 -w 2,3,5,7 => A_6=i*(-29948208/17)). [pi_v_030] ALL PASS: (0) five-point calibration 6/6 exact (three-minus A_5 = sign-flipped two-minus + two-minus n=5 self-check) directly against bg_r10; (1) SYMBOLIC (BG-independent): sympy.cancel(fourblock_H_A - PI's own 31-term core)=0 for A,B, PLUS the propagator identities B_M+B_P=omega_S^2 and 4 B_M B_P=omega_S^4-k_S^2 (S={1,6}^c), PLUS reduced H_A gcd(N,Q)=1, deg N=12, deg Q=10 factoring EXACTLY as u*v*(r+u)(r+v)(s+u)(s+v)*B_M*B_P (sympy.factor); (2) NUMERIC: four-block H_A,H_B reproduce bg_r10 EXACTLY (Fraction) at 40/40 in-piece pts per chamber; (3) BOUNDARY: both fail at 12ea165a03 (A6_im=1347295721472/184877; H_A pred=1191603200/77, H_B pred=27082874880/7), 0/30 in-piece; (4) OBSTRUCTION: equal-bound cone rank scan on 1250 in-piece pts I COLLECTED MYSELF with bg_r10 (persisted round10_pts_12ea165a03.json) is FULL column rank (nullity (0,0) over primes 2147483647,2147483629) at BOTH d=12 and d=13 => deg Q_hom>=12 in 12ea165a03, a fully independent reconfirmation of pi_v_025/029 with fresh data (student s1_022 deg Q_hom>=13 via d=14 accepted as reported). BEST RESULT = the two opposite chambers solved compactly (four rational channel blocks / one 31-term core F), reconstructed+factored+re-verified; full skeleton banked (prefactor prod(omega); genuine rationality; removable propagators inside Q; SIGNED denominator blocks). PRECISE OBSTRUCTION (unchanged): the other realized chambers are strictly higher-degree (deg Q_hom>=13 vs 10) and none was reconstructed/factored, so the single RATIONAL signed-channel MASTER (pure box-spline master EXCLUDED [pi_v_027]) is UNTESTED; first candidate = a 4-var degree-15 cone fit. No new task; no pending blocking jobs. See summary/FINAL_SUMMARY.md, summary/logic.yaml (round10_final), summary/group_meeting_notes.md; claims pi_v_030, pi_note_004; code bots/pi/code/round10_final_verify.py.",
+      "comments": []
+    }
+  ],
+  "next_post_id": 18,
+  "next_comment_id": 1
+}

@@ -1,0 +1,74 @@
+{
+  "id": "pi_session_r5",
+  "bot": "pi",
+  "timestamp": "2026-07-26T14:39:59",
+  "round": 5,
+  "phase": "pi",
+  "final_summary_round": false,
+  "summary": "Round-5 normal research round. Read question, board_recent, both live summaries, both student round-4 HANDOFFs, the round-4 verifier VERIFICATION.md + board post_017, and pi/verified.yaml; inspected jobs/ (empty, only jobs/collected). HEADLINE: the round-4 verifier (Finding 2) refuted a PI-authored standing rule that I introduced by over-generalizing pi_vchk_002 -- 'the coupling fan is magnitude ties, NOT Q_T walls.' That blanket rule is FALSE: R_spline and A_6 itself genuinely jump across the 3-leg factorization walls Q_{m;pq}=omega_p^2+omega_q^2-omega_m^2=k_{m,p,q}=0, at order EXACTLY 3, as an S3xS3 orbit. I ran a targeted, fully independent PI double-check (pi_vchk_003) confirming this on a fresh md5-matched BG via BG*C (no P_pole dependence), then corrected the shared research state. The spline now lives on the JOINT fan {q_mp=0} U {Q_{m;pq}=0}: 9 two-leg order-1 walls (brick H_mp, deg 6, done) + 9 three-leg order-3 walls (brick G_{m;pq}, deg 2 predicted, NOT yet extracted). I also supplied a kinematic wall-set completeness enumeration (k_S=-k_{S^c}; same-sector sums never vanish -> exactly 18 hyperplanes) as a candidate to confirm. Both students' round-4 obstructions (s1 rank 17<18, s2 1/8-cell) are the predicted symptom of the missing Q-orbit. G1 persists (blocking), re-scoped to the joint fan. Directed both students complementarily: student-2 bottom-up extraction+factoring of the order-3 Q-brick; student-1 wall-set completeness + joint-fan assembly.",
+  "state_of_evidence": {
+    "verifier_confirmed": [
+      "F1 5pt calibration (A_5=-19968 i)",
+      "F2 degree 8; F3 dual S3 symmetry; F4 purely imaginary",
+      "F6 8-word selector (standard sheet + 35380 off-sheet + 750 BG pts)",
+      "F7 Delta = C^3, D_min = C (deg 3), N11 deg 11",
+      "F8 d_T factorization, only Q_T>0 channels, 1/d_T=(w_m+w_pbar)/(2C)",
+      "F9 P_pole compact table-free correct in all 8 chambers (52/52 int + 293/293 rational residuals integral)",
+      "F10 R_spline denominator-free deg-8 dual-S3 spline; order-1 pair-wall jump q_mp H_mp, deg H_mp=6",
+      "F11 compact same-energy order-1 brick with FOUR-LEG beta=min selector (7/7 environments)",
+      "F12 H_mp is ITSELF a spline (P(u)<->P(6-u) exchange at magnitude tie q35=0)",
+      "F13 mechanism: naive independent-orbit sum does not integrate; now diagnosed as the missing Q-orbit",
+      "F15 [HEADLINE] R_spline AND A_6 jump across 3-leg walls Q_{m;pq}=0, order EXACTLY 3, S3xS3 orbit; intrinsic (BG*C jumps), cannot be removed by redefining P_pole (verifier V2-V4)",
+      "H1 + H2 dead ends (truncated-cubic; single-polynomial / magnitude-ties-only assembly)"
+    ],
+    "pi_confirmed": [
+      "F14 [pi_vchk_002] NARROW part still correct: the H_24 switch on the B=10 slice is the tie q35=0 (u=3), not Q_{3;45}. Its over-generalization into 'no Q_T walls' is RETIRED.",
+      "F16 [pi_vchk_003]: on the on-shell line w(t)=(8,2,-3,-5,4,-6)+t(-2,1,0,2,-1,0), magnitude order + all nine q_mp signs constant while ONLY Q_{1;46} crosses zero (t0=1/4); A_6*C is an exact polynomial on the left cell (3/3 left holdouts zero residual) and FAILS on the right. A_6 itself jumps across Q_{1;46}=k_{1,4,6}=0 with no magnitude tie. Verifier F15/V3 independently confirmed via BG*C (no P_pole)."
+    ],
+    "pi_proposed_to_confirm": [
+      "Wall-set completeness: kinematic enumeration (k_S=-k_{S^c}; same-sector subset sums never vanish) => candidate COMPLETE arrangement of exactly 18 hyperplanes = 9 q_mp (order 1) + 9 Q_{m;pq} (order 3), each a single S3xS3 orbit. Empirical test assigned to student-1 (single polynomial per 18-hyperplane chamber); verifier to certify.",
+      "Order-3 Q-brick degree: order-3 jump => branch difference divisible by Q_{m;pq}^3 (deg 6); deg R_spline = 8 => G_{m;pq} has degree 2."
+    ],
+    "not_yet_trusted": [
+      "the compact order-3 Q-brick G_{m;pq} (not yet extracted)",
+      "wall-set completeness (PI enumeration; empirical single-polynomial-per-chamber test pending)",
+      "the joint-fan assembly rule (wall-crossing/cocycle) and global R_0 (the open deliverable)",
+      "symbolic exclusion of the 2 absent 8-words (numeric only)"
+    ],
+    "blocking_gaps": [
+      "G1: no compact closed form for R_spline yet -- re-scoped to the JOINT fan: (a) extract+factor the order-3 Q-brick G_{m;pq}; (b) the wall-crossing assembly over {q_mp=0} U {Q_{m;pq}=0} that kills the F13 double-count; (c) global symmetric R_0. Clears only when a compact R_spline is produced AND a later verifier confirms the full assembled A_6 vs fresh BG."
+    ]
+  },
+  "verifier_findings_resolution": {
+    "VF1_blocking": "No complete compact A_6; structure larger than round-4 assumed. -> Folded into G1, re-scoped to the joint fan. Repair assigned to both students.",
+    "VF2_blocking_directional": "Round-4 magnitude-ties-only premise FALSE. -> ACCEPTED; independently PI-confirmed (pi_vchk_003/F16). Corrected logic.yaml spline_structure/open_minor and the group-notes standing rule this round. Resolved by state correction; no separate gap beyond enlarged G1.",
+    "VF3_minor": "Wall-set completeness unproven. -> PI supplied the k_S=-k_{S^c} enumeration (candidate 18 hyperplanes); student-1 to confirm empirically; verifier to certify. Open_minor.",
+    "VF4_minor": "BG SIGFPE on walls/poles. -> Standing rule retained; two-sided limits + cell-adjacency certification mandatory."
+  },
+  "pi_double_check": {
+    "performed": true,
+    "id": "pi_vchk_003",
+    "reason": "The round-4 verifier (Finding 2, HEADLINE) refuted a PI-authored standing rule I introduced by over-generalizing pi_vchk_002. Because the reversal reshapes the entire remaining deliverable and overturns my own prior conclusion, I independently confirmed the load-bearing physical sub-claim (A_6 itself jumps across the 3-leg subset-momentum wall Q_{1;46}=k_{1,4,6}=0) before rewriting the shared state.",
+    "method": "Fresh md5-matched bg (bots/pi/code, md5=41715c4af3ee5a61b1c4bfce40426ac8). On-shell polynomial line w(t)=(8,2,-3,-5,4,-6)+t(-2,1,0,2,-1,0), re-derived on-shell. Exact rational certification that the full magnitude sort order (1,2,4,3,5,0) and all nine q_mp signs are constant on 15 left + 3 right nodes and only Q_{1;46} crosses zero (t0=1/4). Interpolated N(t)=(A_6/i)*C exactly (Lagrange, fractions) on 12 left nodes; tested 3 left holdouts + 3 right nodes. Script bots/pi/code/pi_vchk_003_Qwall_jump.py; uses ONLY fresh BG + smooth C, no P_pole and no student/verifier evaluator.",
+    "outcome": "PASS/CONFIRMED. Left cell: 3/3 holdouts zero residual (A_6*C polynomial). Right cell (same magnitude cell): all 3 fail with large nonzero residuals. So A_6 jumps across Q_{1;46}=0 with no magnitude tie involved. Confirms verifier F15/V3; retires the PI 'no Q_T walls' rule. Recorded as pi_vchk_003 in bots/pi/verified.yaml. Does NOT clear G1."
+  },
+  "tasks_assigned": {
+    "student-1": "Wall-set completeness + joint-fan assembly. (1) Confirm the candidate 18-hyperplane wall set (9 q_mp order-1 + 9 Q_{m;pq} order-3) empirically: R_spline must be a single degree-8 polynomial on each chamber of the arrangement (fit once, hold out across the interior). (2) Redo the transport/assembly over the JOINT fan INCLUDING order-3 Q-crossings; test whether s1_005 rank 17<18 is cured; extract global R_0; give the wall-crossing (cocycle) rule that kills the F13 double-count; mine the hydrotope/hydrohedron literature; if it closes, assemble A_6 and run the definition-of-done battery. Table-free, exact vs fresh BG.",
+    "student-2": "Extract and FACTOR the order-3 Q-brick G_{m;pq}. Build on-shell polynomial lines crossing exactly one Q_{m;pq}=0 wall inside a single magnitude cell (pi_vchk_003 protocol; certify magnitude order + all q_mp signs constant, only one Q flips). Reconstruct both degree-8 branches; verify divisibility by Q_{m;pq}^3; read off and factor G_{m;pq} (deg 2 predicted); decide poly-vs-spline; confirm the S3xS3 orbit and limits. Deliver the compact factored block with exact BG holdouts. No coefficient table / pieces_sparse."
+  },
+  "next_steps": [
+    "Students execute round-5 halves in parallel; post early the factored order-3 Q-brick, the empirical wall-set completeness verdict, and/or a joint-fan R_spline candidate (or a sharp obstruction).",
+    "Verifier audits the strongest new claim; independently certify wall-set completeness (single polynomial per 18-hyperplane chamber); if a full compact A_6 is proposed, run it end-to-end vs fresh BG.",
+    "Round-6 PI: if a compact R_spline lands, targeted PI double-check of the assembled A_6 and approach SOLVED.md once a verifier report clears G1; else re-scope the assembly. Runway: round 5 of 9; final PI summary after round 9."
+  ],
+  "files_written": [
+    "tasks/student-1.md",
+    "tasks/student-2.md",
+    "summary/logic.yaml",
+    "summary/group_meeting_notes.md",
+    "bots/pi/verified.yaml (append pi_vchk_003; correction note on pi_vchk_002)",
+    "bots/pi/code/pi_vchk_003_Qwall_jump.py",
+    "bots/pi/sessions/2026-07-26T14-39-59.json",
+    "board.json (append post_018)"
+  ]
+}

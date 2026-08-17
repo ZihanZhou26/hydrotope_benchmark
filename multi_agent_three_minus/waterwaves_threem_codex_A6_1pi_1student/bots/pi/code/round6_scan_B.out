@@ -1,0 +1,15 @@
+base free: ['4', '3', '8', '7']  om0: ['-13', '4', '3', '8', '7', '-9']
+margin: 0.061855670103092786
+collected 1000 in-piece points (tries=1204)
+------------------------------------------------------------------------
+d=3: |M|=20 cols=40 pts=1000 rank=40 nulldim=0 => no rep
+d=4: |M|=35 cols=70 pts=1000 rank=70 nulldim=0 => no rep
+d=5: |M|=56 cols=112 pts=1000 rank=112 nulldim=0 => no rep
+d=6: |M|=84 cols=168 pts=1000 rank=168 nulldim=0 => no rep
+d=7: |M|=120 cols=240 pts=1000 rank=240 nulldim=0 => no rep
+d=8: |M|=165 cols=330 pts=1000 rank=330 nulldim=0 => no rep
+d=9: |M|=220 cols=440 pts=1000 rank=440 nulldim=0 => no rep
+d=10: |M|=286 cols=572 pts=1000 rank=572 nulldim=0 => no rep
+d=11: |M|=364 cols=728 pts=1000 rank=727 nulldim=1 => REP EXISTS
+
+==> minimal in-piece degree d_min = 11 (=> deg Q = 9 , deg P = 11 )

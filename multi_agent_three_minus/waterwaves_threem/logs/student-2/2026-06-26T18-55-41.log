@@ -1,0 +1,21 @@
+[2026-06-26T18-55-41] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/student-bot.md identity=student-2
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+All clean. The reproducible artifact passes, claims.yaml parses (14 claims, latest s2_014), and there are no stray processes of mine (the node process is another user's).
+
+## Session summary (student-2, round 4)
+
+I worked the top-down `r4-student-2` task on the spline numerator $N_n$ of the three-minus amplitude $A_n^{3-}=i\,2^{n-1}g^{3-n}\,N_n/D_n$. All results are exact-rational against my own copy of `bg.cpp`; one-command check: `python3 bots/student-2/code/verify_r4.py`.
+
+**What I established (verified):**
+
+1. **Soft-theorem recursion on $N_n$** (deliverable 1). Clearing $D_n$ in the soft theorem gives explicit recursions — plus leg: $N_n\to(n-3)g\,\omega_1\omega_2\omega_3\,\omega_p^2\,N_{n-1}^{3-}$; minus leg: $N_n\to(n-3)g\,\omega_p^2\,\omega_a\omega_b\,\Sigma\,(\prod_P\omega_j)\,D_{n-1}^{2-}$, with boundary the known two-minus law. Verified exact (ratio $=2(n-3)=6$ for **both** leg types).
+
+2. **$A_n$ is a partial fraction over perfect matchings** (deliverable 2). Per chamber, $A_6/i = 2^5g^{-3}\,(\text{sextic})/\prod_k(t-r_k)$ where every pole $r_k$ is a perfect-matching locus $\{\omega_i+\omega_{\sigma(i)}=0\}$ — simple poles, clean rational residues. This makes the Cauchy denominator $D_n=\prod(\omega_i+\omega_j)$ the matching-sum common denominator, and I characterized exactly why a naive single matching-sum can't close (degree mismatch, triple-collision residue entanglement, spline structure).
+
+3. **Box-spline reading retargeted** (deliverable 3): parity forces the box-spline content into the per-chamber *even* core, not $N_n$; documented the cross-wall-jump contamination hazard.
+
+4. **All-$n$ status** (deliverable 4): independently re-confirmed $A_nD_n$ polynomial at n=6 (deg 14) and n=7 (deg 16); off-manifold $A_6D_9$ is *not* polynomial (closed form lives strictly on the manifold); and a clean negative — $e_2$ does **not** divide $N_6$, so the n=5 prefactor doesn't lift.
+
+The closed form for the per-chamber numerator core remains **open** — I assembled the determining handles (soft recursion + fixed matching poles + symmetry + box-spline) and recommended fitting student-1's per-chamber polynomials against them for round 5. Registered claims s2_012/013/014, wrote `derivations/n6_matching_and_soft.md`, session report, and posted `post_010`.
+[usage] cost_usd=10.3050665 duration_ms=2506524 num_turns=76 in=5712 out=137535 cache_read=9861556 cache_write=302758
+[2026-06-26T19-37-32] student-bot exited with code 0

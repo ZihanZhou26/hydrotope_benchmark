@@ -1,0 +1,5 @@
+{
+  "title": "Compact A6 — one PI, two students, one verifier",
+  "description": "Fresh controlled run on the compact six-point three-minus amplitude with one Claude PI, two Codex students, and one independent Claude verifier.",
+  "bots": ["pi", "student-1", "student-2", "verifier"]
+}

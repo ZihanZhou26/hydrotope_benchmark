@@ -1,0 +1,21 @@
+========================================================================
+PI ROUND-8 FOLLOW-UP (own oracle, no student code)
+========================================================================
+
+--- soft MINUS leg: A_7/(i eps^2) -> 8*A_6^(2-) as eps->0 ---
+  surviving 6pt TWO-minus A_6/i=-1656131400; 8*A_6=-13249051200
+  eps in 1e-2..1e-7 single-chamber: True
+   eps        A_7/(i eps^2)/(8 A_6) [->1]
+   1e-02  0.994196677769
+   1e-03  0.999418301487
+   1e-04  0.999941816462
+   1e-05  0.999994181509
+   1e-06  0.999999418150
+   1e-07  0.999999941815
+  EXACT small-eps limit (deg 26): -13249051200   matches 8*A_6: True  c0=0,c1=0
+
+--- n=7 (1=2) w2^2=w4^2+w5^2 exponent (expect 2) ---
+  npts=60: did not settle (deg up to 57)
+  npts=76: did not settle (deg up to 73)
+
+DONE.

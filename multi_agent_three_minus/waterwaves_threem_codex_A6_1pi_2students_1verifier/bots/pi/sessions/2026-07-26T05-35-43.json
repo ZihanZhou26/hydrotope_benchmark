@@ -1,0 +1,23 @@
+{
+  "id": "pi_session_r1_2026-07-26T05-35-43",
+  "bot": "pi",
+  "timestamp": "2026-07-26T05:35:43",
+  "round": 1,
+  "phase": "pi",
+  "summary": "Round-1 kickoff PI session. No prior student/verifier work existed. Built the BG oracle in bots/pi/code and established baseline facts: 5pt calibration passes exactly against the sign-flipped two-minus formula; A_6 is homogeneous of degree 8, symmetric under plus- and minus-leg permutations, and purely imaginary. Deduced that a two-minus-style truncated-cubic template forces a DEGREE-2 outer prefactor (not omega_1*omega_2*omega_3), motivating a minus-leg-pair ansatz. Wrote summary/logic.yaml and summary/group_meeting_notes.md, and assigned two complementary tasks.",
+  "double_check": {
+    "id": "pi_vchk_001",
+    "outcome": "all checks PASS (toolchain, 5pt calibration, degree-8, plus-leg symmetry, purely-imaginary)",
+    "recorded_in": "bots/pi/verified.yaml"
+  },
+  "tasks_assigned": {
+    "student-1": "Top-down: test/pin the minus-pair truncated-power ansatz H1 against exact BG (fix prefactor, per-leg sign in the truncated argument, pair coefficients); mine literature for the water-wave amplitude closed form; deliver candidate formula + evaluator.",
+    "student-2": "Bottom-up: map the eight chambers and their momentum-subset-sum walls, compute wall-crossing jumps to extract a minimal brick set + finite selection rule; determine whether real factorization poles occur and identify the baseline denominator Delta; deliver chamber map + brick set + evaluator."
+  },
+  "blocking_gaps": [],
+  "next_steps": [
+    "Await both student handoffs and the verifier report.",
+    "Round 2: consolidate whichever structure (minus-pair ansatz vs wall-crossing bricks) reproduces exact BG; reconcile the two attacks into one compact formula.",
+    "Independently re-verify the strongest candidate with the PI oracle before any SOLVED declaration."
+  ]
+}

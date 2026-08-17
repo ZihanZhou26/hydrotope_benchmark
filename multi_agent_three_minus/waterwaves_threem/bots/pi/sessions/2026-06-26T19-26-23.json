@@ -1,0 +1,34 @@
+{
+  "bot": "pi",
+  "timestamp": "2026-06-26T19:26:23Z",
+  "round": 2,
+  "summary": "Reviewed round 1 and INDEPENDENTLY RE-VERIFIED every load-bearing claim with my own oracle copy and my own evaluators. Confirmed: (1) n=5 closed form exact (24/24); (2) the two-minus B-spline law (re-derived from the truncated-power formula, matches oracle exactly at n=6 two-minus = -247808/7 i); (3) the n=6 gate trio from student-2 -- NO factorization poles (channel S={2,3,4}: A_6 -> -187375 finite, A_6*D_S -> 0), homogeneous degree 2n-4=8, and full S_3 wr Z_2 symmetry, all exact; (4) n=7 finite and one-minus identically zero. Bottom line: three-minus is piecewise-POLYNOMIAL, not rational (contra question.md's pole conjecture). I then ran two structural probes that RULED OUT the inner-product ansatz int P_-P_+ and the single-min-threshold cubic block (both non-constant ratios), and established the degree law C=(deg-2 prefactor)x(deg-6 cubic block) which kills all objects bilinear in the two quadratic densities. The n>=6 closed form remains OPEN: a degree-8, S_3 wr Z_2-symmetric cubic spline on the {k_S=0} arrangement. Assigned two complementary attacks (bottom-up per-chamber extraction; top-down structural/all-n derivation).",
+  "reverification": {
+    "oracle": "Rebuilt bots/pi/code/bg from my own bg.cpp copy (g++ -O2 -std=c++17 -lgmpxx -lgmp).",
+    "n5_formula": "bots/pi/code/verify_n5.py -- 24/24 exact rational; SIGFPE points correctly identified as |k_S|=0 walls.",
+    "two_minus_law": "Re-derived from i*2^{n-1}g^{3-n}*w_a*w_b*sum_S(-1)^|S|(beta^2-sum_S w^2)_+^{n-3}; n=6 two-minus matches oracle exactly (-247808/7 i).",
+    "n6_no_poles": "bots/pi/code/verify_n6_gate.py -- drove channel S={2,3,4} (D_S->0 at w4=-19/5) both sides: A_6/i -> -187375 finite, (A_6/i)*D_S -> 0 linearly. No pole.",
+    "n6_degree8": "A_6(t*omega)/A_6(omega) = t^8 exactly for t=2,3,5/2.",
+    "n6_symmetry": "All S_3(minus) x S_3(plus) x Z_2(triple swap) generators leave A_6 = -29948208/17 i exactly.",
+    "n7": "Three-minus finite (-93475650304/1463 i); one-minus identically 0."
+  },
+  "ruled_out_this_round": [
+    "Inner product int_0^Q P_-(t)P_+(t)dt (bots/pi/code/probe_n6_struct.py): non-constant ratio to A_6.",
+    "Single-min-threshold cubic block e2(plus)*P_-^(3)(min plus^2), its Z_2 swap, and their sum (bots/pi/code/probe_n6_cubic.py): non-constant ratios.",
+    "GENERAL: any object bilinear in the two triples' quadratic B-spline blocks (degree 10) -- impossible since the core is degree 8 = (deg-2 prefactor) x (deg-6 cubic block)."
+  ],
+  "key_findings": {
+    "gate_resolved": "Three-minus sector is piecewise-POLYNOMIAL (no factorization poles), at n=5,6,7.",
+    "a6_structure": "Purely imaginary; degree 8; S_3 wr Z_2-symmetric; cubic spline on {k_S=0}; both triples' B-spline densities share support [0,Q], Q=sum_minus w^2 = sum_plus w^2.",
+    "open": "Explicit closed form for n>=6 (and all n). Leads: box-spline/multivariate B-spline of the six knots w_i^2; double-subset resonance spline; per-chamber extraction + recognition."
+  },
+  "tasks_assigned": [
+    {"id": "r2-student-1", "assignee": "student-1", "title": "Exact per-chamber extraction of the degree-8 core of A_6 + recognize the global closed form (chamber enumeration + realizability, box-spline/double-subset matching)."},
+    {"id": "r2-student-2", "assignee": "student-2", "title": "Structural/probabilistic derivation + conjecture an all-n three-minus formula, tested exactly at n=5,6,7; focused literature pass."}
+  ],
+  "next_steps": [
+    "On any candidate closed form: PI re-verifies with its own evaluator at n=5,6,7 across multiple chambers per n and two-sided wall limits; <=1e-10 (exact where exact) before acceptance.",
+    "If a clean n=6 form emerges, immediately push the all-n generalization and re-verify at n=7 (spot-check n=8 in --double).",
+    "If per-chamber data refuses to collapse, the deliverable becomes the verified per-chamber polynomial table + wall arrangement."
+  ]
+}

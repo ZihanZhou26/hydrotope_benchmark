@@ -1,0 +1,33 @@
+{
+  "bot": "pi",
+  "timestamp": "2026-06-26T22:50:45Z",
+  "round": 4,
+  "summary": "Round 3 ran without a PI (the PI process failed), so both students worked the open frontier autonomously and INDEPENDENTLY CONVERGED on a result that OVERTURNS my round-1/2 'gate'. This round I rebuilt the oracle from my own bg.cpp and re-verified the corrected load-bearing claim end-to-end with my own exact-rational analysis (no student code). CONFIRMED: the three-minus sector is piecewise-RATIONAL, NOT piecewise-polynomial. A_n^{3-} = i*2^{n-1}*g^{3-n} * N_n(omega) / D_n, with D_n = prod_{i in minus, j in plus}(omega_i+omega_j) the product of all 3(n-3) mixed-pair frequency SUMS (minimal by symmetry), and N_n a continuous SPLINE (deg 5n-13, S_3 wr Z_2-symmetric, odd under omega->-omega). A_n is finite everywhere (no factorization poles) yet rational; the (omega_i+omega_j)=0 loci are shielded chamber walls (kink, not pole). The open problem is now precisely the explicit closed form for the spline numerator N_n. Not SOLVED -- no SOLVED.md. Assigned two complementary attacks on N_n.",
+  "reverification": {
+    "oracle": "Rebuilt bots/pi/code/bg from my own bg.cpp copy (g++ -O2 -std=c++17 -lgmpxx -lgmp). Anchors: n=5 w=2,3,5 -> -25344 i; one-minus -> 0; n=6, n=7 finite.",
+    "rational_not_polynomial": "bots/pi/code/pi_r4_denominator.py (own slice construction, own exact Lagrange + rational reconstruction). On a clean one-chamber F-constant slice, A_6/i is NOT polynomial up to degree 25 -> rational. OVERTURNS my round-2 'piecewise-polynomial' gate.",
+    "denominator_D9_clears": "(A_6/i)*D_9 IS an exact polynomial on the slice (deg 20 there); confirmed in 3 distinct chamber/ordering pieces (pi_r4_spline.py).",
+    "sums_of_squares_fail": "(A_6/i)*prod(omega_i^2+omega_j^2) is NOT polynomial -> the denominator is frequency SUMS, not sums of squares.",
+    "reduced_denominator_divides_D9": "Exact rational reconstruction of A_6/i gives reduced P/Q with deg Q=4; Q DIVIDES D_9 (its roots are mixed-pair frequency-sum zeros).",
+    "minimality": "Combinatorial: the S_3(minus) x S_3(plus) orbit of one mixed pair is the full 9-element set, so the only symmetric divisors of D_9 are 1 and D_9; since A_n is not polynomial, reduced symmetric denominator = D_9 (minimal).",
+    "spline_numerator": "bots/pi/code/pi_r4_spline2.py: crossing the MIXED wall omega_2=omega_4 (k_{2,4}=0, D_9 != 0) on an F-const slice, N_6 is a DIFFERENT polynomial each side (deg 20 vs 18 on slice) but CONTINUOUS at the wall -> A_6 continuous = kink, not pole; so A_n is rational PER CHAMBER, not one global rational function. The plus-plus ordering omega_4=omega_5 is analytic (same polynomial both sides) -> kinks live on the MIXED {k_S=0} walls.",
+    "n5_control": "Same test on n=5 returns 'polynomial' (degree 2 on the slice) directly -> method sound; the n=6 'rational' verdict is genuine.",
+    "n7_spot_check": "A_7/i rational; (A_7/i)*D_12 (12 mixed pairs) IS polynomial on a slice -> the all-n denominator form holds."
+  },
+  "gate_correction": "Round-1/2 conclusion 'three-minus is piecewise-POLYNOMIAL (no poles)' was WRONG on the polynomial part. 'No factorization poles' is correct but does NOT imply polynomial: a ratio whose denominator never vanishes on the physical region is finite everywhere yet rational. Correct statement: piecewise-RATIONAL with explicit minimal common denominator D_n and spline numerator N_n. The degree-8 homogeneity I verified earlier is consistent with the rational form (deg N_6 - deg D_9 = 17 - 9 = 8).",
+  "reconciliation": "This reconciles the round-2 student split: the box-spline / truncated-power object the team hunted lives in the polynomial NUMERATOR N_n, not in A_n. Both pictures were right about different objects. Cross-validation now triple-independent (student-1 s1_008, student-2 s2_010, PI round 4).",
+  "key_findings": {
+    "closed_form_so_far": "A_n^{3-} = i*2^{n-1}*g^{3-n} * N_n / prod_{i in minus, j in plus}(omega_i+omega_j); D_n minimal; N_n a continuous spline of degree 5n-13, S_3 wr Z_2-symmetric, odd under omega->-omega.",
+    "no_poles": "A_n finite everywhere on the physical manifold; (omega_i+omega_j)=0 are shielded chamber walls.",
+    "open": "Explicit closed form for the spline numerator N_n (deg 17 at n=6) and its all-n generalization. Then A_n = i 2^{n-1} g^{3-n} N_n / D_n."
+  },
+  "tasks_assigned": [
+    {"id": "r4-student-1", "assignee": "student-1", "title": "Extract the exact per-chamber spline numerator N_6 and read off its closed form from the cross-wall jumps (truncated powers (k_S)^p); assemble base+jumps; attempt all-n."},
+    {"id": "r4-student-2", "assignee": "student-2", "title": "Turn the soft theorem into an explicit recursion on N_n with boundary N_5; test a matching-sum/Cauchy-type representation and a box-spline/truncated-power form for N_n; conjecture all-n and test at n=6,7."}
+  ],
+  "next_steps": [
+    "On any candidate N_n (hence A_n): PI re-verifies with its own evaluator at n=5,6,7 across multiple chambers per n and two-sided wall limits; exact agreement (<=1e-10 where the oracle is not exact) before acceptance.",
+    "If a clean N_6 emerges, immediately push the all-n generalization and re-verify at n=7 (spot-check n=8 in --double).",
+    "If N_n refuses to collapse to a single closed form, the deliverable becomes the verified per-chamber N_6 table + explicit denominator D_n + wall arrangement -- already a complete validated description of the rational structure; write SOLVED.md once that description is complete and re-verified."
+  ]
+}

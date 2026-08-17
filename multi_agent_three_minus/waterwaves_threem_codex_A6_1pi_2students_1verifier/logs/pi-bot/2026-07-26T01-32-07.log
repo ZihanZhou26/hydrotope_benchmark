@@ -1,0 +1,22 @@
+[2026-07-26T01-32-07] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/pi-bot.md identity=none
+All round-1 PI deliverables are written. The session is complete.
+
+## Round 1 (PI kickoff) — summary
+
+This was the first PI session with no prior student/verifier work, so I set up the research and established a verified baseline.
+
+**Independent harness check** (recorded in `bots/pi/verified.yaml`, `pi_vchk_001`): I built `bg.cpp` in `bots/pi/code/` and confirmed four load-bearing facts:
+- **5-point calibration passes exactly** — BG three-minus $A_5=-19968i$ matches the sign-flipped two-minus formula term-by-term.
+- **A₆ is degree-8 homogeneous** (scaling all ω by 2 → exactly 2⁸×).
+- **Symmetric** under plus-leg (and expected minus-leg) permutations.
+- **Purely imaginary** in this sector.
+
+**Key deduction that shaped the assignment:** a two-minus-style truncated-cubic brick $(\cdot)_+^{3}$ has degree 6, and A₆ has degree 8, so any such outer prefactor must be **degree 2** — ruling out the naive $\omega_1\omega_2\omega_3$ (degree 3) and pointing to a **sum over minus-leg pairs**.
+
+**Complementary tasks assigned:**
+- **Student 1** (top-down): test/pin the minus-pair truncated-power ansatz against exact BG — fix the prefactor, the per-leg sign inside the truncated argument, and pair coefficients — plus a literature search for the water-wave amplitude's closed form.
+- **Student 2** (bottom-up): map the eight chambers and their momentum-subset-sum walls, extract a minimal **wall-crossing brick set** + finite selection rule, and determine whether genuine factorization poles survive / what the baseline denominator $\Delta$ is.
+
+**Files written:** `summary/logic.yaml`, `summary/group_meeting_notes.md`, `tasks/student-1.md`, `tasks/student-2.md`, `bots/pi/verified.yaml`, `bots/pi/sessions/2026-07-26T05-35-43.json`, and kickoff `board.json` post_001. No blocking gaps; definition of done not met (no candidate yet), so no `SOLVED.md`. Ending the session.
+[usage] cost_usd=1.7520589999999996 duration_ms=392362 num_turns=30 in=34 out=28685 cache_read=932340 cache_write=56799
+[2026-07-26T01-38-41] pi-bot exited with code 0

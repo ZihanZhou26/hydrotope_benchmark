@@ -1,0 +1,36 @@
+{
+  "bot": "pi",
+  "timestamp": "2026-06-27T04:33:11Z",
+  "round": 7,
+  "summary": "Independently RE-VERIFIED the headline round-6 result: the FULL n=6 three-minus closed form (student-1 s1_018) is EXACT. I rebuilt my oracle from a fresh copy of bg.cpp (byte-identical to shared) and wrote my OWN evaluator of the candidate (bots/pi/code/pi_r7_independent.py + pi_r7_walls.py) -- my own group(72)/orbit-sum/truncated-power/assembly logic, importing NO student code, taking only the published reference polynomials (r6_polys.txt + the s1_015 Q) as the formula under test. Results, all EXACT: 140/140 generic points across 58 distinct chamber labels; 6/6 non-generic regimes (one freq >> or << the rest); 3/3 g-homogeneity (g=2,1/3,7/2); two-sided wall limits onto a (1=1), a (1=2), AND a matching corner down to eps=1e-4; N_6 odd (10/10) and A_6 homogeneous degree 8 (10/10). So n=6 is CLOSED: A_6 = i 2^5 g^-3 N_6/(e3m+e3p) with N_6 = B + sum(b_j-a_i)_+ P_ij + sum(b_j-a_i)_+(b_l-a_k)_+ R + sum(a_i-b_j-b_k)_+^3 Q, a degree-11 box spline. Also reconfirmed n=5 (24/24 exact, fresh oracle) and CORROBORATED student-2's all-n minimal denominator s2_018 (PI symbolic check: r_n = Q_n mod p_- is degree 0 only at n=6, where r_6=e3m+e3p exactly, and degree 1 at n=7 -> no collapse, full 12-pair product minimal, deg N_7=22). DECISION: did NOT write SOLVED.md -- the task asks for all n>=5 and the explicit numerator N_n for n>=7 (the single all-n closed form) is still OPEN; the n>=7 regime is genuinely new (Z_2 swap is no longer a symmetry; matchings become injections; (1=1) edges couple to subset-sum walls). Assigned both students to the n>=7 numerator.",
+  "verification": {
+    "n5": "24/24 exact (bots/pi/code/verify_n5.py, fresh oracle)",
+    "n6_closed_form_s1_018": {
+      "generic": "140/140 exact across 58 distinct chamber labels",
+      "non_generic": "6/6 exact (one frequency >> or << the rest)",
+      "g_homogeneity": "3/3 exact (g=2,1/3,7/2; g^-3 scaling)",
+      "wall_limits": "ALL exact, two-sided to eps=1e-4 on a (1=1), a (1=2), and a matching-corner wall",
+      "structural": "N_6 odd 10/10; A_6 homogeneous degree 8 10/10",
+      "verdict": "ACCEPTED -- PI-verified exact with the PI's own independent evaluator"
+    },
+    "n7_min_denominator_s2_018": "CORROBORATED -- symbolic r_n=Q_n mod p_- has deg 0 only at n=6 (r_6=e3m+e3p exact), deg 1 at n=7 (no collapse; full product minimal, pole order 1)"
+  },
+  "tasks_assigned": [
+    {
+      "id": "r7-student-1",
+      "assignee": "student-1",
+      "title": "Assemble and verify the EXPLICIT n=7 numerator N_7 (deg 22): full wall arrangement, exponents, cross-term structure, over D_7 = prod(w_i+w_j)"
+    },
+    {
+      "id": "r7-student-2",
+      "assignee": "student-2",
+      "title": "Propose and test an EXPLICIT all-n numerator N_n (recovering n=5,6 and Q) via soft recursion + single-pair residues + matching/Cauchy"
+    }
+  ],
+  "next_steps": [
+    "Independently re-verify any n>=7 N_n candidate with the PI's own oracle + own evaluator across >=4 chamber types and two-sided wall limits at n=6,7 (+ n=8 spot-check).",
+    "Carry the n>=7 caution: the Z_2 plus/minus swap is NOT a symmetry for n>=7 (only S_3 x S_{n-3}); parity (omega->-omega odd) still holds.",
+    "If the all-n numerator closes, write SOLVED.md with the per-n explicit forms + all-n structure; if it resists, record the most complete validated description (n=5,6 closed + all-n denominator/degree/symmetry/parity/wall-exponent law + the pinned part of N_{n>=7})."
+  ],
+  "decision_no_solved_md": "The n=5 and n=6 closed forms are PI-verified, but the task requires a closed form valid for all n>=5. The explicit numerator for n>=7 (hence the single all-n form) is a genuine open gap with a well-defined next target, so SOLVED.md is premature. Keep assigning work."
+}

@@ -1,0 +1,39 @@
+{
+  "round": 8,
+  "timestamp_utc": "2026-07-26T23:55:49",
+  "candidate": "s1_010 (student-1) complete A_6 = i g^-3 (P_pole + R_Q + R_0 + R_q)",
+  "artifacts_audited": [
+    "bots/student-1/derivations/s1_010_round8_compact_hinge_candidate.md",
+    "bots/student-1/code/round8_compact_candidate.py"
+  ],
+  "oracle": {
+    "path": "bots/verifier/code/bg_r8",
+    "source_md5": "41715c4af3ee5a61b1c4bfce40426ac8",
+    "source_sha256": "bd1afe67c45e1e9403c03a0b78373ebb492235be56fc1e5ee9281cbbec9040c1",
+    "matches_shared_reference": true,
+    "build": "g++ -O2 -std=c++17 -o bg_r8 bg_r8.cpp -lgmpxx -lgmp"
+  },
+  "independence": "evaluator vr8_core.py hand-transcribed from the .md LaTeX (P_pole, R_Q, H0/H1/H2, R_q assembly); student round8_compact_candidate.py NOT imported; all amplitudes from bg_r8 exact rational mode",
+  "checks": {
+    "anchors": {"n": 2, "exact_match": 2, "values": ["A6/i=-9190656/7", "A6/i=-641893056/85"], "component_split_verified": true},
+    "multichamber_random_sweep": {"points": 359, "exact_match": 359, "distinct_chamber_signatures": 93, "distinct_q_sign_patterns": 55, "distinct_Q_sign_patterns": 31},
+    "permutations_minus_and_plus": {"checks": 288, "exact_match": 288, "formula_permutation_invariant": true, "bg_permutation_invariant": true},
+    "hierarchical_regimes": {"points": 35, "exact_match": 35, "scales": "1/200 .. 1000"},
+    "two_sided_wall_crossings": {"points": 2202, "exact_match": 2202, "crossings": 204, "wall_types": ["q (pair)", "Q (triple)"]},
+    "factorization_pole_loci_d0": {"points": 40, "exact_match": 40, "bg_finite_removable": true},
+    "genuine_internal_line_crossings_DS0": {"points": 3406, "exact_match": 3406, "crossings": 1552, "probed_to_abs_DS": "~1e-10", "bg_diverges": false, "conclusion": "sector pole-free in probed domain; P_pole singularities removable"},
+    "g_scaling": {"points": 4, "exact_match": 4, "law": "A6/i = g^-3 * stripped(omega)"},
+    "five_point_calibration": {"bg_A5": "-19968 (exact)", "two_minus_master_matches_bg": "21/21", "sign_flip_minus_legs": [4, 5]}
+  },
+  "total_exact_rational_comparisons_approx": 6360,
+  "total_mismatches": 0,
+  "compactness": {
+    "table_free": true,
+    "evaluator_imports": ["fractions", "itertools", "argparse"],
+    "no_file_or_json_or_table_load": true,
+    "seed_monomials": {"H1": 46, "H2": 23, "H0": 13, "total": 82},
+    "orbit_structure": "9 single-hinge + 18 matching-hinge + 9 Q-orbit + 9 pole-channel + 1 global; same 3 seeds generate every chamber",
+    "chamber_specific_coefficients": 0
+  },
+  "verdict": "VERIFIED"
+}

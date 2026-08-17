@@ -1,0 +1,203 @@
+decisions:
+  - id: s1_dec_001
+    by: student-1
+    round: 1
+    decision: >
+      Treat the on-shell momentum constraint w4^2+w5^2 = w1^2+w2^2+w3^2 as the organizing
+      principle for the n=5 chamber decomposition, rather than fitting chambers blindly.
+    rationale: >
+      It immediately yields the selection rule m=min(w4^2,w5^2) <= T/2, which (i) kills the
+      triple-subset term, (ii) limits to one active pair, (iii) proves chamber D unrealizable,
+      and (iv) shows the |k_S|=0 SIGFPE walls coincide with chamber walls. This converts a
+      messy 8-subset/(.)_+ enumeration into exactly four realizable chamber forms (A,B,C,E),
+      each a single homogeneous polynomial verified exactly against the oracle.
+  - id: s1_dec_002
+    by: student-1
+    round: 1
+    decision: >
+      Demonstrate the |k_S|=0 walls via exact one-sided limits on the internal channel
+      S={2,3,4} (Pythagorean 3,4,5), not by generic sampling.
+    rationale: >
+      This is precisely the factorization channel omega_S^2=g|k_S| that question.md expects to
+      become a POLE at n>=6. Showing it gives only a finite C^1 kink at n=5 (slopes match, no
+      1/eps term) both characterizes the wall and pins down the n=5/n=6 boundary cleanly for
+      the group: the new pole structure is genuinely absent at n=5.
+  - id: s1_dec_003
+    by: student-1
+    round: 2
+    decision: >
+      After exhaustive failure to fit A_6 as any polynomial (in squares, in {squares,S},
+      in the 6 frequencies per chamber), TEST POLYNOMIALITY DIRECTLY instead of assuming it:
+      check whether A_6 * sumFree^p is a polynomial of degree 8+p (the necessary form if A_6
+      were a degree-8 polynomial in the frequencies, given the rational leg-1/leg-6 solve).
+    rationale: >
+      The round-1 gate asserted 'piecewise-polynomial' by analogy to two-minus, but never tested
+      it. The direct test (exact, on a single full chamber) shows A_6*sumFree^p is non-polynomial
+      for all p up to 14 -- far beyond the p<=8 bound a true polynomial must satisfy -- proving
+      A_6 is RATIONAL. This single test overturns the central structural assumption and redirects
+      the whole search from polynomial splines to rational ansaetze.
+  - id: s1_dec_004
+    by: student-1
+    round: 2
+    decision: >
+      Use modular arithmetic (Gaussian elimination mod a 61-bit prime) for all large
+      hypothesis-span tests, reserving exact rationals for small/final checks.
+    rationale: >
+      Exact-rational RREF on 200-800 feature columns blows up (huge numerators) and is too slow;
+      float least-squares is hopelessly ill-conditioned at degree 8-16. A modular consistency
+      test (target-in-span?) with held-out validation is ~1000x faster and a false positive has
+      probability ~ (#features)/2^61. Load-bearing conclusions are reconfirmed exactly.
+  - id: s1_dec_005
+    by: student-1
+    round: 3
+    decision: >
+      To find the rational denominator, use EXACT rational-function reconstruction
+      (Pade over Q) of A_6 along chamber-interior 1-D slices, factor the recovered
+      denominator, and MATCH its roots to frequency relations (which omega_i+/-omega_j
+      vanish there) -- rather than guessing an ansatz or running slow sympy
+      gcd/factor on the full symbolic amplitude.
+    rationale: >
+      Reconstruction is authoritative (no fitting bias): a [m/k] Pade matching 100+
+      exact points IS the function. It directly EXHIBITS the denominator factors,
+      which turned out to be mixed-pair sums (omega_i+omega_j) = perfect matchings,
+      not the squared walls. The earlier full-symbolic approach (symslice.py) timed
+      out on sp.factor/sp.gcd; per memory note (together+expand, not cancel) the
+      reconstruction sidesteps this entirely.
+  - id: s1_dec_006
+    by: student-1
+    round: 3
+    decision: >
+      Establish "A_6*D9 is a 6-variable polynomial" via the PURE-sumFree-residual
+      signature on chamber slices (rather than a full multivariate degree-17 fit):
+      a 6-var polynomial restricted to the manifold becomes (poly in free)/sumFree^k,
+      so a reconstructed denominator that is a pure power of sumFree (no other
+      omega_i+/-omega_j factor) certifies polynomiality. Verify across many chamber
+      types x multiple slice directions.
+    rationale: >
+      A genuine degree-17, 6-variable polynomial fit needs a huge basis and is
+      fragile; the slice signature is exact, cheap, and unambiguous (any leftover
+      kinematic factor would appear in the residual). 6 chambers x 2 directions
+      (plus n=7) all give pure sumFree -> robust.
+  - id: s1_dec_007
+    by: student-1
+    round: 4
+    decision: >
+      Reduce the whole n=6 problem to the FOUR symmetric invariants (e1,e2,e3m,e3p)
+      using the conservation laws (e1minus=-e1plus, e2minus=e2plus), and read the
+      denominator off the minus/plus cubics p_-(x)=prod(x-omega_i),
+      Q(x)=prod(x+omega_j) -- rather than working in the six free frequencies.
+    rationale: >
+      The amplitude is S3xS3xZ2-symmetric, so on the manifold it is a single-valued
+      function of just 4 invariants (matching the 4 manifold dimensions). In these
+      coordinates the denominator structure becomes transparent: p_- and Q share all
+      coefficients but the constant on the manifold, instantly giving D9=(e3m+e3p)^3
+      and the simple-pole minimal denominator (e3m+e3p). This is what exposed the
+      D9-over-clearing that a per-slice analysis (round 3) could not see. (Caveat used:
+      per-CHAMBER pieces are NOT rational in the invariants -- the legs are cubic-root
+      functions of them -- so the invariant view is for the GLOBAL symmetric object;
+      per-chamber extraction stays in the legs.)
+  - id: s1_dec_009
+    by: student-1
+    round: 5
+    decision: >
+      To decide whether the spline numerator N is a SIMPLE single-wall truncated-power sum
+      vs a genuine box spline, TEST IT DIRECTLY by an exact modular fit against the COMPLETE
+      symmetry-reduced basis (G-sym invariant base + manifold-independent H-invariant
+      single-wall templates, orbit-summed), with a CONTROL: feed a synthetic simple spline
+      through the same fitter. Do not assume the simple form (the round-5 task did).
+    rationale: >
+      The team (and the PI round-5 task) assumed N = B + sum (k_ij)_+ P_ij + sum (k_ijk)_+^3
+      Q_ijk. Clean single-wall jump EXPONENTS (s1_013) do NOT imply a simple spline: mixed
+      second-differences (cross-terms) at wall intersections can be nonzero. The direct fit
+      (full rank 137 but INCONSISTENT) plus the control (synthetic simple spline -> CONSISTENT)
+      proves N is a box spline, overturning the premise and redirecting the search to
+      cross-terms (matching-structured). A jump-exponent measurement alone would have missed this.
+  - id: s1_dec_010
+    by: student-1
+    round: 5
+    decision: >
+      Add a `--batch` mode to my OWN copy of bg.cpp (read many on-shell points from stdin,
+      exact GMP, with a per-point ZeroDiv guard catching |k_S|=0 / D=0 instead of SIGFPE-
+      aborting the whole process), and write a faithful native-Python BG port (pybg.py) as a
+      second independent evaluator. Shared bg.cpp untouched.
+    rationale: >
+      Round-5 needs thousands of exact evaluations (jump extraction, box-spline fits). One
+      subprocess per point is dominated by process startup; the ZeroDiv guard is essential
+      because random rational scans occasionally land exactly on a wall (which would SIGFPE
+      and kill an entire batch). pybg gives an independent confirmation of every load-bearing
+      amplitude value (it matches ./bg exactly at n=5,6,7), strengthening the verification.
+  - id: s1_dec_008
+    by: student-1
+    round: 4
+    decision: >
+      Measure cross-wall jump orders ONLY on crossings verified to flip a SINGLE wall
+      function (sign-diff = 1 between the two sides), scanning contiguously outward from
+      the wall on each side and stopping at the first chamber exit.
+    rationale: >
+      A multi-wall crossing (sign-diff >= 2) superposes jumps of different orders and
+      reports the LOWEST order (it falsely gave (1=2) order 1). Requiring sign-diff=1
+      isolates the single wall; contiguous outward scans avoid mixing disconnected
+      same-signature regions (different analytic pieces) into one reconstruction. With
+      this discipline the (1=1)->1 and (1=2)->3 exponents are clean and reproducible.
+  - id: s1_dec_011
+    by: student-1
+    round: 6
+    decision: >
+      To PIN the (1=1) cross-term, measure the single-wall jump COEFFICIENT P_ij as a
+      function along the wall and reconstruct it (exact rational) on each side of a matching
+      sub-wall, rather than guessing a global cross-term basis up front. The jump of P_ij
+      across the partner wall directly exhibits the cross-term form and exponent.
+    rationale: >
+      The mixed-2nd-difference test (r5_crossterm) was contaminated by the third (diagonal,
+      solved-leg) wall at the matching corner and could not cleanly separate a genuine
+      cross-term from a single-wall kink. Extracting P_ij(w5) and reconstructing each side
+      exactly showed P_R-P_L = k_35 * R with k_35 to the FIRST power -> the cross-term is a
+      2-wall product (exp 1,1), matching-indexed. This single clean measurement determined
+      the form, after which a global modular fit (base+single+pair, rank 100, CONSISTENT;
+      triple +0) confirmed it and fixed all coefficients exactly.
+  - id: s1_dec_012
+    by: student-1
+    round: 6
+    decision: >
+      Assemble and verify the closed form as a FULL-GROUP (|G|=72) orbit-sum of reference
+      truncated-power products (base + (k03)_+ P0 + (k03)_+(k14)_+ R0 + (1=2) Q), fitting the
+      ~100 coefficients by EXACT modular arithmetic with EXACT relu (sign from Fractions) and
+      rational reconstruction, then verifying the assembled A_6 exactly against the oracle.
+    rationale: >
+      Orbit-summing over the full group automatically enforces S_3xS_3xZ_2 symmetry and the
+      correct wall multiplicities, sidestepping the per-level symmetry bookkeeping that made a
+      hand-built symmetric ansatz painful. Float reconstruction spuriously reports
+      'polynomial' (team caution), so EXACT relu + modular fit + rational reconstruction is
+      mandatory; the final residuals are exact-rational vs ./bg and the independent pybg.
+  - id: s1_dec_013
+    by: student-1
+    round: 8
+    decision: >
+      To accelerate the n=7 fits, build a COMPILED finite-field oracle (bgmod.cpp, F_p) rather
+      than a Python modular port. Use bgmod (mod p) for the heavy modular fits and EXACT ./bg
+      for all final verdicts/residuals.
+    rationale: >
+      At n=7 the exact GMP oracle is ~1 s/eval (bignum blowup) and a Python modular port is
+      ~23 s/eval -- because the n=7 recursion COMBINATORICS (set partitions, 7! Vertex
+      permutations), not the arithmetic, dominate; so a Python F_p port gives NO speedup. Only a
+      compiled F_p engine avoids both the bignum blowup AND the interpreter overhead. Two
+      pitfalls that each silently corrupted ~10% of evals and had to be fixed: (i) the abs()
+      sign of internal recursion momenta cannot be read from a long-double approximation (tiny-
+      via-cancellation momenta) -- track each field element's exact integer coefficient vector
+      over the external K_i and read the sign exactly; (ii) the EKernel/FKernel memo key must be
+      the exact residue tuple, not a 64-bit hash (hash collisions). Validate the result against
+      ./bg before trusting it.
+  - id: s1_dec_014
+    by: student-1
+    round: 8
+    decision: >
+      Determine the cross-term closing order at n=7 STRUCTURALLY (manifold sum-rule degeneracy
+      arguments) before/instead of an expensive global fit: a disjoint (1=1) k-tuple of edges
+      forces sum constraints; check whether the forced corner is degenerate (some leg ->0) or a
+      thick chamber.
+    rationale: >
+      The sum rule sum_M w^2 = sum_P w^2 instantly shows (i) a (1=1) TRIPLE forces an excluded
+      plus leg to vanish (degenerate, no triple cross-term -- closes at pairs, as at n=6), and
+      (ii) a (1=1)x(1=2) corner is non-degenerate at n>=7 (b_extra free) but degenerate at n=6.
+      This pins most of the closing order with zero oracle cost and isolates the single
+      remaining question (is the non-degenerate (1=1)x(1=2) term actually present?) for the fit.

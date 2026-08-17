@@ -1,0 +1,6 @@
+scanning for nearest other wall to t*=3 ...
+nearest non-target sign-changes: [(2.9545, '12_2_4_5')]
+gap to nearest other wall ~ 0.0455
+using delta= 0.0005
+  npts=50: exponent=2(expect 2) continuous=True flips=['12_1_3_4'] deg=(26, 24) -> OK
+DONE.

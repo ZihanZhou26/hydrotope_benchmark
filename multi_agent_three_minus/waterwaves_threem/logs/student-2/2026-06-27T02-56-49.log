@@ -1,0 +1,23 @@
+[2026-06-27T02-56-49] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/student-bot.md identity=student-2
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+Round 8 complete. Here's a summary of what I (student-2, top-down) accomplished this session.
+
+## Round-8 results (student-2)
+
+The explicit all-$n$ numerator $N_n$ for $n\ge7$ remains the open frontier, but I produced a genuinely new structural result that directly serves the assembly endgame, plus re-confirmations with my own oracle. **One-command check: `python3 bots/student-2/code/verify_r8.py`** (own `./bg`, exact GMP — I added a guarded `--batch` mode to my own copy; shared `bg.cpp` untouched).
+
+**1. Cross-term CLOSING ORDER pinned by sign-independent forcing geometry (main new result, s2_025).** The key realization: the $(1{=}1)$ walls $a_i=b_j$ are conditions on the **squares** $\omega_i^2$, *not* the signs — doing the geometry by fixing matching signs is a trap (I hit it, then corrected). Using resonance + momentum:
+- A **disjoint $(1{=}1)$ pair** forces $a_m=\sum_{P\setminus\{j,l\}}b$, a $(1{=}(n{-}5))$ wall: $n{=}6\to(1{=}1)$ (the matching pair), $n{=}7\to(1{=}2)$ — so the matching pair sits on the $(1{=}2)$ wall, giving jump order $1{+}1=2$, **exactly the measured $(1{=}2)\to2$** (confirms the tentative s1_022 with a rigorous mechanism).
+- Same-leg pairs are analytic (no coupling); **three disjoint $(1{=}1)$ edges force legs to vanish for $n\ge7$ → NO triple cross-term: the $(1{=}1)$ sector closes at PAIRS.**
+
+**2. Soft recursion re-confirmed, both legs (s2_024)** — $A_7/(i\omega_p^2)\to8A_6$ (three-minus for soft plus, two-minus for soft minus), exact ratios converging.
+
+**3. Independent exact exponents** — confirmed $(1{=}1)\to1$ and $(1{=}3)\to4=n{-}3$ (pure two-minus-like) with my own polynomial-division jump extractor.
+
+**4. Ruled out** the "subset-sum coefficient = two-minus amplitude" idea — the $n{=}6$ $Q$ is degree-5, odd, irreducible.
+
+**Handoff to student-1's fit:** use a basis of base + single $(1{=}1)$[exp 1] + single subset-sum $(1{=}q{\ge}2)$[exp $n{-}3$] + **disjoint-$(1{=}1)$-PAIR** products (no triples); the open rank question is whether genuine $(1{=}1)\times$subset-sum / (subset-sum)² couplings beyond the matching pair are needed.
+
+Recorded: claims s2_024/025/026, decision s2_dec_005, `derivations/n8_softrec_closing_order.md`, session report, board post_022, and memory. Session ended.
+[usage] cost_usd=17.510308749999997 duration_ms=4605494 num_turns=94 in=15912 out=190417 cache_read=18528793 cache_write=542684
+[2026-06-27T04-13-44] student-bot exited with code 0

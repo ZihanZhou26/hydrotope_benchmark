@@ -1,0 +1,30 @@
+piece 12ea165a03: collect target=570
+piece 12ea165a03: tries=997 collected=570
+piece 12ea165a03: test V=()
+piece 12ea165a03: test V=('x',)
+piece 12ea165a03: test V=('y',)
+piece 12ea165a03: test V=('z',)
+piece 12ea165a03: test V=('x', 'y')
+piece 12ea165a03: test V=('x', 'z')
+piece 12ea165a03: test V=('y', 'z')
+piece 12ea165a03: test V=('x', 'y', 'z')
+piece 7608cb858a: collect target=570
+piece 7608cb858a: tries=3699 collected=570
+piece 7608cb858a: test V=()
+piece 7608cb858a: test V=('x',)
+piece 7608cb858a: test V=('y',)
+piece 7608cb858a: test V=('z',)
+piece 7608cb858a: test V=('x', 'y')
+piece 7608cb858a: test V=('x', 'z')
+piece 7608cb858a: test V=('y', 'z')
+piece 7608cb858a: test V=('x', 'y', 'z')
+piece a2fa6ab8af: collect target=570
+piece a2fa6ab8af: tries=1604 collected=570
+piece a2fa6ab8af: test V=()
+piece a2fa6ab8af: test V=('x',)
+piece a2fa6ab8af: test V=('y',)
+piece a2fa6ab8af: test V=('z',)
+piece a2fa6ab8af: test V=('x', 'y')
+piece a2fa6ab8af: test V=('x', 'z')
+piece a2fa6ab8af: test V=('y', 'z')
+piece a2fa6ab8af: test V=('x', 'y', 'z')

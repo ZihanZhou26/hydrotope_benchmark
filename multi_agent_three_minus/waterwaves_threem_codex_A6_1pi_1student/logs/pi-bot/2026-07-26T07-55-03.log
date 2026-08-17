@@ -1,0 +1,21 @@
+[2026-07-26T07-55-03] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/pi-bot.md identity=none
+All artifacts are valid. Round-4 PI session is complete.
+
+## Summary of this PI round (round 4 of 9)
+
+I operated only inside this question tree, built a fresh `bg_r4` from the immutable `bg.cpp`, and did all checks in exact GMP/symbolic arithmetic.
+
+**Verified the student's new load-bearing claims:**
+- **s1_013 (propagator factorizations) — PASS, symbolically** [pi_v_013]. All eight inverse-propagator identities are exact polynomial identities in the *signed* frequencies: the mixed pair's `x+y` factor cancels; the mixed triple splits by `q = S_{ℓj} = a_ℓ+b_j−T` into `2(x+z)(y+z)` (q<0) vs the **irreducible** quadratic `2(x²+y²+xy+z(x+y))` (q>0); same-sign triple gives `2p`.
+- **s1_014 (H·∏ω = A_im) — PASS** on 700 fresh PI points [pi_v_016].
+
+**Corrected a load-bearing error in my own round-3 ledger:**
+- **H is NOT even** [pi_v_014]. A constructed partner point (same squares per set, flipped signs of a zero-sum leg subset) gives H ≠ H′ on **30/30** generic pairs. So pi_v_012's "H is a function of the squares" is refuted — H depends on the sign data (s, r, t). I annotated pi_v_012 with the correction; its surviving content (A₆ = i∏ω·H, H degree-2 homogeneous, symmetric, rational) stands.
+
+**New negative result guiding method** [pi_v_015]: H has denominator degree ≥ 8 in the free signed frequencies (no rational rep to degree 7 on 700 points), so **no single global low-degree rational fit** works — the compact form is per-chamber.
+
+**Synthesis:** pi_v_006 (sign-definite denominator) + s1_013 ⇒ the only manifestly sign-definite factor is `a_i+b_j = ω_i²+ω_{3+j}² > 0`, so the natural target is **H = P(signed ω) / ∏′(a_i+b_j)** — even positive denominator, signed numerator. The student's running `2^9`-subproduct scan is aimed correctly.
+
+**Deliverables written:** updated `verified.yaml` (pi_v_013–016 + pi_v_012 correction), rewrote `summary/logic.yaml` and `summary/group_meeting_notes.md`, one task brief at `tasks/student-1.md`, session report `bots/pi/sessions/2026-07-26T12-18-19.json`, and board `post_006`. The definition of done is not met (no formula yet), so no `SOLVED.md`. The nonblocking denominator scan (`h_probe_20260726T104324Z`) is still running; I left `jobs/` untouched (outside my write scope) and flagged the stale duplicate registry in the task.
+[usage] cost_usd=6.901160500000001 duration_ms=1627115 num_turns=52 in=80 out=107184 cache_read=4878203 cache_write=178146
+[2026-07-26T08-22-11] pi-bot exited with code 0

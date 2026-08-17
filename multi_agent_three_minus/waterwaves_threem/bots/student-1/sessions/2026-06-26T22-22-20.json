@@ -1,0 +1,23 @@
+{
+  "bot": "student-1",
+  "timestamp": "2026-06-26T22:22:20Z",
+  "task_id": "r2-student-1 (continued in round 3; PI round-3 run failed -> no new tasks assigned, worked autonomously on the open frontier)",
+  "status": "completed",
+  "summary": "Found the EXPLICIT rational denominator of the n=6 three-minus amplitude and verified it. A_6 = i*2^5*g^{-3} * N(omega) / prod_{i in {1,2,3}, j in {4,5,6}}(omega_i+omega_j), where the denominator is the product of the 9 mixed-pair LINEAR forms (degree 9, fully S_3 wr Z_2 invariant) and N = A_6*D9 is a piecewise POLYNOMIAL (a spline) of degree 17. This makes my round-2 'A_6 is rational' (s1_005) fully explicit and UNIFIES it with the team's spline program: the box-spline lives in the NUMERATOR N, not in A_6. Verified A_6*D9 polynomial across 6 chamber types x 2 slice directions (residual = pure sumFree solve-artifact, no other factor). Reconciled rational-vs-no-poles via shielded poles (each chamber's poles lie on matching walls outside it). All-n form supported at n=7.",
+  "work_done": [
+    "Reproduced round-2 s1_005 exactly (A_6 rational: A_6*sumFree^p non-polynomial p=1..8; n=5 polynomial control passes at p=1).",
+    "Analyzed bg.cpp denominator sources: FKernel divides by momentum magnitudes |k_B|; Propagator's physical denom (omega_S^2-g|k_S|) cancels (no poles). Surviving |k_B| -> rational.",
+    "Exact rational-function reconstruction (Pade over Q) on a chamber slice: A_6*sumFree^8 = N(t)/[(5t+8)(10t+53)/424], deg D=2 != 0 (rat_denom.py).",
+    "Per-leg multislice reconstruction (multislice.py): denominator factors are mixed-pair SUMS (omega_i+omega_j) coinciding with perfect matchings of the minus/plus triples.",
+    "GLOBAL verification: A_6*D9 (D9 = product of 9 mixed-pair linear forms) reconstructs to a PURE power of sumFree across 6 distinct chamber types x 2 directions (test_D9_global.py, verify_denominator.py) -> A_6*D9 is a genuine 6-variable polynomial.",
+    "Shielded-pole check (probe_pole.py): the reference-chamber rational form has a denominator root at a matching wall OUTSIDE the chamber; physical A_6 is finite there (computed from the neighbouring chamber). Reconciles 'rational' with 'finite everywhere / no poles' -- the round-1 gate's error was finite => polynomial.",
+    "All-n conjecture A_n = i 2^{n-1} g^{3-n} N_n / prod_{mixed pairs}(omega_i+omega_j): CONFIRMED at n=7 (A_7*D12 -> pure sumFree^5 residual; test_n7.py).",
+    "Wrote derivations/n6_rational_denominator.md; appended claims s1_008,s1_009,s1_010 and decisions s1_dec_005,s1_dec_006; posted to board."
+  ],
+  "next_steps": [
+    "Find the closed form of the NUMERATOR N = A_6*D9 (degree 17, S_3 wr Z_2-symmetric, piecewise polynomial) -- apply student-2's d=3 truncated-power/box-spline fit and soft theorem to N, not A_6.",
+    "Pin the MINIMAL global denominator (D9 is sufficient; over-clears 3:1 at matching walls, so possibly non-minimal). Needs a multivariate (not single-slice) test.",
+    "Verify the all-n denominator at n=7 more broadly (multiple chambers) and ideally n=8 via --double + Typhon.",
+    "PI: please independently re-verify s1_008 (one command: bots/student-1/code/verify_denominator.py) -- it pins the denominator and supersedes the polynomial framing of the round-2 task."
+  ]
+}

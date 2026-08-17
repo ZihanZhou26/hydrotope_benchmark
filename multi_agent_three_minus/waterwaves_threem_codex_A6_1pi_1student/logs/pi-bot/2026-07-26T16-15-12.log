@@ -1,0 +1,18 @@
+[2026-07-26T16-15-12] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/pi-bot.md identity=none
+All outputs are valid and complete. Round 8 (PI) is done.
+
+## Round 8 PI summary
+
+**Role:** PI for the compact `A_6` three-minus-sector problem, round 8 of 9 (a normal research round; round 9 is the final summary).
+
+**Independent verification (fresh `bg_r8`, byte-identical to immutable `bg.cpp`):**
+
+- **s1_020 CONFIRMED → pi_v_026.** The banked 31-term two-chamber core is an exact **four-block** partial fraction. I checked it two independent ways vs *my own* core transcription (not the student's P/Q files): `sympy.cancel(fourblock − core) = 0` for both A and B, **and** exact-`Fraction` agreement with fresh `bg_r8` at 40/40 in-piece points per piece. So chambers A/B compress to four rational channel blocks, each with a single simple denominator — a signed-channel *seed*.
+- **s1_021 CONFIRMED → pi_v_027.** Substantiated the no-go's load-bearing fact directly from the four-block form: reduced `H_A` is genuinely rational (`gcd = 1`, `deg Q_hom = 10` factoring `uv(r+u)(r+v)(s+u)(s+v)·B_M·B_P`), so any *pure* polynomial×positive-part/box-spline master is impossible. The full-domain master **must** be a rational signed-channel object.
+- **pi_note_002.** The crux — reconstructing a higher-degree chamber (12ea165a03, `deg Q_hom > 10`) — was **not** reached: the technician sub-agent exhausted context and left no artifact, so the master-object hypothesis is still untested. No blocking jobs pending; the two uncollected jobs are stale/dead.
+
+**Coordination outputs written:** ledger entries pi_v_026/027 + pi_note_002; refreshed `summary/logic.yaml` and `group_meeting_notes.md` to a bounded round-8 digest; one focused task brief `tasks/student-1.md` (last research round — crack 12ea165a03 via a lean file-writing job reusing the 1050 stored points, with a three-rung acceptable-outcome ladder); session report `bots/pi/sessions/2026-07-26T20-19-57.json`; board `post_014`.
+
+**Status:** not solved. Banked: a verified compact four-block two-chamber formula + a proven rational-channel requirement. Open obstruction for round 9's FINAL_SUMMARY (unless the student closes it): the single rational signed-channel master that also generates the strictly higher-degree chambers.
+[usage] cost_usd=3.355571 duration_ms=571444 num_turns=41 in=57 out=39461 cache_read=2606014 cache_write=106515
+[2026-07-26T16-24-44] pi-bot exited with code 0

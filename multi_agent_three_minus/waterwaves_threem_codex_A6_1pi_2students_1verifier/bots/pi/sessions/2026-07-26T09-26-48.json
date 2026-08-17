@@ -1,0 +1,52 @@
+{
+  "id": "pi_session_r3",
+  "bot": "pi",
+  "timestamp": "2026-07-26T09:26:48",
+  "round": 3,
+  "phase": "pi",
+  "final_summary_round": false,
+  "summary": "Round-3 normal research round. Read question, board_recent, both live summaries, both student HANDOFFs, the round-2 verifier VERIFICATION.md, both student round-2 derivations, and pi/verified.yaml. State: the round-2 factorization+spline decomposition A_6 = i g^-3 (P_pole + R_spline) is ENTIRELY verifier-confirmed with zero residual: P_pole is a compact table-free pole part correct in all 8 chambers (Q_T normalization forced by the BG propagator); the reduced denominator is D_min = C (deg 3) with Delta = C^3 and 1/d_T = (omega_m+omega_pbar)/(2C); and R_spline = A_6/i - P_pole is a denominator-free, degree-8, dual-S3 polynomial spline with order-1 pair-wall jumps R_L-R_R = q_mp H_mp, deg H_mp = 6 (truncated-cubic brick ruled out; H1 doubly dead). jobs/ is empty (no completed blocking job). The single blocking gap G1 is the compact closed form of R_spline (brick H_mp + global R_0) -- the entire remaining deliverable. Directed both students at cracking R_spline from complementary ends, with the pivotal structural question flagged: is H_mp a single polynomial or itself a spline (nested/2D hydrotope, i.e. products of linear truncated powers)?",
+  "state_of_evidence": {
+    "verifier_confirmed": [
+      "F1 5pt calibration (4 exact pts)",
+      "F2 degree 8",
+      "F3 dual S3 symmetry (all 36 perms)",
+      "F4 purely imaginary",
+      "F6 8-word selector (standard sheet + 35380 off-sheet + 750 BG pts)",
+      "F7 Delta = C^3, D_min = C (deg 3) genuine per cell, N11 deg 11",
+      "F8 d_T factorization, only Q_T>0 channels, 1/d_T = (omega_m+omega_pbar)/(2C)",
+      "F9 P_pole compact table-free correct in all 8 chambers (28/28 int + 212/212 rational residuals integral)",
+      "F10 R_spline denominator-free deg-8 dual-S3 spline; order-1 pair-wall jump q_mp H_mp, deg H_mp = 6",
+      "H1 dead (truncated-cubic + 72-feature family)"
+    ],
+    "not_yet_trusted": [
+      "symbolic exclusion of the 2 absent 8-words (numeric only so far)",
+      "whether H_mp is a polynomial or a spline (pivotal, this round)",
+      "student interpolation internals not independently re-derived (load-bearing outputs confirmed by verifier)"
+    ],
+    "blocking_gaps": [
+      "G1: no compact closed form for R_spline yet (brick H_mp + global R_0) -- the core deliverable; clears only when a compact R_spline is produced AND a later verifier report confirms the full assembled A_6"
+    ]
+  },
+  "pi_double_check": {
+    "performed": false,
+    "reason": "The strongest round-2 results (P_pole, D_min = C, the order-1 spline jump) were ALL independently reproduced by the round-2 verifier with zero residual, extended past student coverage. No new compact-formula claim, no suspected error, no student/verifier conflict. Policy: do not duplicate verifier work. Will double-check the moment a decisive compact R_spline candidate or a surprising failure appears. verified.yaml left unchanged (records actual checks only)."
+  },
+  "tasks_assigned": {
+    "student-1": "Top-down structural derivation of R_spline. Build candidates from the two-minus A_4 / H blocks; test the nested/2D-hydrotope hypothesis (R_spline as a signed sum of PRODUCTS of linear truncated powers) and the three-minus polytope from the 2026 hydrotope literature. Answer decisively whether the brick H_mp is a polynomial or a spline. Verify each candidate exactly vs fresh BG across all 8 chambers, or return a sharp exactly-supported obstruction.",
+    "student-2": "Bottom-up exact ground truth. Interpolate R_spline exactly; extract the global R_0 (deg-8 sym) and the brick H_14 (deg-6). Decide the pivotal polynomial-vs-spline question for H_14 by crossing the finer walls q_m'p'=0 and Q_T=0. FACTOR H_14 and R_0 into a human-readable form (interpolated coefficients are only an intermediate). Reassemble the full A_6 and run the definition-of-done battery vs fresh BG; evaluator must not load pieces_sparse."
+  },
+  "next_steps": [
+    "Students execute round-3 halves in parallel; post early the polynomial-vs-spline verdict for H_mp and any block that zeroes the residual.",
+    "Verifier audits the strongest new claim (compact R_spline / brick H_mp, or the structural determination).",
+    "Round-4 PI: if a compact R_spline lands, do a targeted PI double-check of the fully assembled A_6, then approach SOLVED.md once a verifier report clears G1; else re-scope the brick attack."
+  ],
+  "files_written": [
+    "tasks/student-1.md",
+    "tasks/student-2.md",
+    "summary/logic.yaml",
+    "summary/group_meeting_notes.md",
+    "bots/pi/sessions/2026-07-26T09-26-48.json",
+    "board.json (append post_008)"
+  ]
+}

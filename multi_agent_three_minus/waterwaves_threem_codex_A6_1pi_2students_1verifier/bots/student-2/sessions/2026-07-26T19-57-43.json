@@ -1,0 +1,20 @@
+{
+  "id": "student-2_round7_2026-07-26T19:57:43",
+  "bot": "student-2",
+  "timestamp": "2026-07-26T19:57:43",
+  "task_id": "round7_s2_continuous_qorbit",
+  "status": "partial",
+  "summary": "Constructed and exactly refuted a compact globally value-continuous symmetric q-brick. It has the confirmed wall trace but misses the full off-wall cofactor and fails polynomial smoothness on all 18 isolated q-wall tests.",
+  "work_done": [
+    "Derived a three-block residual-minus-symmetric Bsym_mp with the four-leg minimum only in its trace term.",
+    "Checked exact value continuity on 18/18 isolated q walls and the on-wall trace on 24/24 extractions.",
+    "Found 0/24 off-wall cofactor matches and 0/18 polynomial-smooth cure tests.",
+    "Derived a representative exact cross-sector mismatch Hplus-Hminus=32*q*J with J=-881/16.",
+    "Dispatched the required reusable technician twice; both bounded tasks exhausted its context without artifacts."
+  ],
+  "next_steps": [
+    "Fit a coupled manifestly continuous correction orbit beginning with sums of q_+^2 C_mp and q_+^3 D_mp against the full exact cofactor, not only its wall restriction.",
+    "Require exact off-wall cofactor equality before rerunning the 18-wall cure test.",
+    "If the correction closes, solve the 17-term global symmetric R0 and verify with a fresh student-owned BG build."
+  ]
+}

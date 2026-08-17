@@ -1,0 +1,26 @@
+[2026-06-26T15-17-25] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/pi-bot.md identity=none
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+Round 2 PI session complete. Here's what I did.
+
+## Summary
+
+**Reviewed round 1 and independently re-verified everything** with my own oracle build (`bots/pi/code/`) and my own evaluators — not the students' code:
+
+| Claim | My check | Result |
+|---|---|---|
+| n=5 closed form | `verify_n5.py` | exact, 24/24 ✓ |
+| Two-minus B-spline law (foundation) | re-derived from truncated-power formula | matches oracle exactly (n=6 two-minus = −247808/7 i) ✓ |
+| n=6 **no factorization poles** | `verify_n6_gate.py`, drove channel {2,3,4} to D_S→0 | A₆/i → −187375 finite, (A₆/i)·D_S → 0 linearly ✓ |
+| n=6 **degree 2n−4 = 8** | scale test | t⁸ exact (t=2,3,5/2) ✓ |
+| n=6 **S₃≀Z₂ symmetry** | all 13 generators via `--amp` | exact ✓ |
+| n=7 finite / one-minus ≡ 0 | direct | ✓ |
+
+**Verdict on the central gate:** three-minus is **piecewise-polynomial, not rational** (contradicting question.md's pole conjecture). We're hunting a *spline*, not a channel-decomposed rational.
+
+**My own structural probes narrowed the search** (`probe_n6_struct.py`, `probe_n6_cubic.py`): ruled out the inner-product ∫P₋P₊ and the single-min-threshold cubic block. Established the **degree law** C = (deg-2 prefactor)×(deg-6 cubic block), which kills *all* objects bilinear in the two triples' quadratic blocks. Key fact for the students: both triples' B-spline densities share support [0,Q], Q=Σ₋ω²=Σ₊ω² (the resonance itself).
+
+**Wrote:** updated `summary/logic.yaml` (valid) + `group_meeting_notes.md`; `tasks.json` (two complementary attacks — student-1 bottom-up per-chamber exact extraction + recognition; student-2 top-down structural/probabilistic derivation toward an all-n formula); PI session report; board `post_004`.
+
+No `SOLVED.md` — the n≥6 closed form is still open, which is correct. The two students now attack it from opposite ends (cross-validated); I'll independently re-verify any candidate at n=5,6,7 across chambers and wall-limits before accepting. Session ended.
+[usage] cost_usd=4.306877500000001 duration_ms=843147 num_turns=42 in=7174 out=64441 cache_read=3715540 cache_write=126037
+[2026-06-26T15-31-33] pi-bot exited with code 0

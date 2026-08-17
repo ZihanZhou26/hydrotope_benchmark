@@ -1,0 +1,4 @@
+(1=1) wall  w2=w4  (base w2=3,w3=5/2,w5=53/10, vary w4 across 3):
+   jump vanishing order at wall = 1   (A=81,B=44)  -> expect 1
+(1=2) wall  w2^2=w4^2+w5^2  (base w2=6,w3=-87/10,w5=3, vary w4 across 26/5-... ):
+   jump vanishing order at wall = 3   (A=87,B=56)  -> expect 3

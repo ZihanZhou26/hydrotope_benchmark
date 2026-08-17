@@ -1,0 +1,18 @@
+[2026-07-26T17-57-38] model=claude-opus-4-8[1m] effort=xhigh budget_usd=none prompt=prompts/pi-bot.md identity=none
+All outputs validate. `FINAL_SUMMARY.md` is written; `SOLVED.md` is correctly absent (partial result not labeled solved). The final-summary round is complete.
+
+## Session summary
+
+This was **round 9, the final PI summary round** (`current_round: 9` of 9). Per the PI prompt I assigned no new task, independently verified the load-bearing claims on a fresh build, updated both live summaries, and wrote `summary/FINAL_SUMMARY.md`.
+
+**Verdict: NOT SOLVED (substantial, independently verified partial result).**
+
+**Independent verification this round** (fresh `bg_r9`, source byte-identical to the immutable root, canonical check reproduces `A_6 = i·(−29948208/17)`), via `bots/pi/code/round9_final_verify.py`:
+- **pi_v_028** — Re-banked the compact **two-chamber four-block formula** `H_A/H_B`: matches the PI's own 31-term core symbolically (`sympy.cancel = 0` for A and B) **and** reproduces `bg_r9` exactly (`Fraction`) 40/40 in-piece points per chamber.
+- **pi_v_029** — Boundary re-confirmed (both formulas fail at chamber `12ea165a03`, 0/30 in-piece) and the higher-degree obstruction **independently extended**: an equal-bound cone rank scan on 1260 points (my own 1050 round-7 points + 210 fresh `bg_r9` points) is full rank at **d=12 and d=13** over two primes ⇒ `deg Q_hom ≥ 12` there (reconfirms my round-7 `>10`; accepts the student's `≥13` refinement).
+
+**Banked result:** an exact, compact closed form for the two opposite chambers (four signed rational channel blocks / one 31-term core), plus the full structural skeleton. **Precise remaining obstruction:** the other realized chambers are strictly higher-degree (`deg Q_hom ≥ 13` vs `10`) and none was ever reconstructed/factored, so the only viable full-domain candidate — a single **rational signed-channel master** (a pure box-spline master is excluded) — is untested; the first candidate reconstruction is a 4-variable degree-15 fit.
+
+**Files written/updated:** `summary/FINAL_SUMMARY.md` (new), `summary/logic.yaml`, `summary/group_meeting_notes.md`, `bots/pi/verified.yaml` (pi_v_028/029, pi_note_003), `bots/pi/sessions/2026-07-26T22-03-23.json`, `board.json` (post_016), plus `bots/pi/code/round9_final_verify.py` and the fresh `bg_r9` build. Jobs inspected — no blocking/newly-completed job; the two uncollected jobs are non-blocking and stale. `SOLVED.md` intentionally not written.
+[usage] cost_usd=3.612879 duration_ms=683519 num_turns=38 in=55 out=40106 cache_read=2718750 cache_write=124998
+[2026-07-26T18-09-02] pi-bot exited with code 0

@@ -1,0 +1,11 @@
+Fixed survivors via (w3,w4,w6target)=(3,5,11)
+
+  w2=2: surv(1,3,4,6,7)=['-249/19', '3', '5', '11', '-112/19']  Res/i=-13576492892160/2622893
+Traceback (most recent call last):
+  File "r7_resid_scale3.py", line 49, in <module>
+    data.append((w2,sp.Rational(res),A2m,surv))
+  File "/home/zihanz/.local/lib/python3.6/site-packages/sympy/core/cache.py", line 72, in wrapper
+    retval = cfunc(*args, **kwargs)
+  File "/home/zihanz/.local/lib/python3.6/site-packages/sympy/core/numbers.py", line 1629, in __new__
+    raise TypeError('invalid input: %s' % p)
+TypeError: invalid input: zoo

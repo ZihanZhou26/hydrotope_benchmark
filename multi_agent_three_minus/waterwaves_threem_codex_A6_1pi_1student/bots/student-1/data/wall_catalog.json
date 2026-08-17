@@ -1,0 +1,394 @@
+{
+  "count": 18,
+  "nondegenerate_count": 18,
+  "external_boundary_count": 6,
+  "selection_rule": "Nondegenerate walls for chamber signatures are the 18 explicit formulas: 9 differences a_i-a_{3+j}=0 and 9 sums a_i + b_j - T = 0 with T=sum_M a = -(sum_P b) under the same index convention. Six boundary/external degeneracies are listed separately under external_boundaries.",
+  "walls": [
+    {
+      "kind": "diff",
+      "id": "I01_J01",
+      "I_mask": 1,
+      "J_mask": 1,
+      "plus_anchor": 0,
+      "q_expression": "a1 + -a4",
+      "subset_sizes": [
+        1,
+        1
+      ],
+      "subset_size_orbit": [
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "diff",
+      "id": "I01_J02",
+      "I_mask": 1,
+      "J_mask": 2,
+      "plus_anchor": 1,
+      "q_expression": "a1 + -a5",
+      "subset_sizes": [
+        1,
+        1
+      ],
+      "subset_size_orbit": [
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "diff",
+      "id": "I01_J04",
+      "I_mask": 1,
+      "J_mask": 4,
+      "plus_anchor": 2,
+      "q_expression": "a1 + -a6",
+      "subset_sizes": [
+        1,
+        1
+      ],
+      "subset_size_orbit": [
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "diff",
+      "id": "I02_J01",
+      "I_mask": 2,
+      "J_mask": 1,
+      "plus_anchor": 0,
+      "q_expression": "a2 + -a4",
+      "subset_sizes": [
+        1,
+        1
+      ],
+      "subset_size_orbit": [
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "diff",
+      "id": "I02_J02",
+      "I_mask": 2,
+      "J_mask": 2,
+      "plus_anchor": 1,
+      "q_expression": "a2 + -a5",
+      "subset_sizes": [
+        1,
+        1
+      ],
+      "subset_size_orbit": [
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "diff",
+      "id": "I02_J04",
+      "I_mask": 2,
+      "J_mask": 4,
+      "plus_anchor": 2,
+      "q_expression": "a2 + -a6",
+      "subset_sizes": [
+        1,
+        1
+      ],
+      "subset_size_orbit": [
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "diff",
+      "id": "I04_J01",
+      "I_mask": 4,
+      "J_mask": 1,
+      "plus_anchor": 0,
+      "q_expression": "a3 + -a4",
+      "subset_sizes": [
+        1,
+        1
+      ],
+      "subset_size_orbit": [
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "diff",
+      "id": "I04_J02",
+      "I_mask": 4,
+      "J_mask": 2,
+      "plus_anchor": 1,
+      "q_expression": "a3 + -a5",
+      "subset_sizes": [
+        1,
+        1
+      ],
+      "subset_size_orbit": [
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "diff",
+      "id": "I04_J04",
+      "I_mask": 4,
+      "J_mask": 4,
+      "plus_anchor": 2,
+      "q_expression": "a3 + -a6",
+      "subset_sizes": [
+        1,
+        1
+      ],
+      "subset_size_orbit": [
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "sum",
+      "id": "S_01_03",
+      "I_mask": 1,
+      "J_mask": 3,
+      "plus_anchor": 2,
+      "q_expression": "(a1 + a6) - T",
+      "subset_sizes": [
+        1,
+        2
+      ],
+      "subset_size_orbit": [
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "sum",
+      "id": "S_01_05",
+      "I_mask": 1,
+      "J_mask": 5,
+      "plus_anchor": 1,
+      "q_expression": "(a1 + a5) - T",
+      "subset_sizes": [
+        1,
+        2
+      ],
+      "subset_size_orbit": [
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "sum",
+      "id": "S_01_06",
+      "I_mask": 1,
+      "J_mask": 6,
+      "plus_anchor": 0,
+      "q_expression": "(a1 + a4) - T",
+      "subset_sizes": [
+        1,
+        2
+      ],
+      "subset_size_orbit": [
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "sum",
+      "id": "S_02_03",
+      "I_mask": 2,
+      "J_mask": 3,
+      "plus_anchor": 2,
+      "q_expression": "(a2 + a6) - T",
+      "subset_sizes": [
+        1,
+        2
+      ],
+      "subset_size_orbit": [
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "sum",
+      "id": "S_02_05",
+      "I_mask": 2,
+      "J_mask": 5,
+      "plus_anchor": 1,
+      "q_expression": "(a2 + a5) - T",
+      "subset_sizes": [
+        1,
+        2
+      ],
+      "subset_size_orbit": [
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "sum",
+      "id": "S_02_06",
+      "I_mask": 2,
+      "J_mask": 6,
+      "plus_anchor": 0,
+      "q_expression": "(a2 + a4) - T",
+      "subset_sizes": [
+        1,
+        2
+      ],
+      "subset_size_orbit": [
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "sum",
+      "id": "S_04_03",
+      "I_mask": 4,
+      "J_mask": 3,
+      "plus_anchor": 2,
+      "q_expression": "(a3 + a6) - T",
+      "subset_sizes": [
+        1,
+        2
+      ],
+      "subset_size_orbit": [
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "sum",
+      "id": "S_04_05",
+      "I_mask": 4,
+      "J_mask": 5,
+      "plus_anchor": 1,
+      "q_expression": "(a3 + a5) - T",
+      "subset_sizes": [
+        1,
+        2
+      ],
+      "subset_size_orbit": [
+        1,
+        2
+      ]
+    },
+    {
+      "kind": "sum",
+      "id": "S_04_06",
+      "I_mask": 4,
+      "J_mask": 6,
+      "plus_anchor": 0,
+      "q_expression": "(a3 + a4) - T",
+      "subset_sizes": [
+        1,
+        2
+      ],
+      "subset_size_orbit": [
+        1,
+        2
+      ]
+    }
+  ],
+  "external_boundaries": [
+    {
+      "kind": "boundary",
+      "id": "EB_M01_P07",
+      "I_mask": 1,
+      "J_mask": 7,
+      "plus_anchor": 0,
+      "q_expression": "a1 + -a4 + -a5 + -a6",
+      "subset_sizes": [
+        1,
+        3
+      ],
+      "subset_size_orbit": [
+        1,
+        3
+      ]
+    },
+    {
+      "kind": "boundary",
+      "id": "EB_M02_P07",
+      "I_mask": 2,
+      "J_mask": 7,
+      "plus_anchor": 0,
+      "q_expression": "a2 + -a4 + -a5 + -a6",
+      "subset_sizes": [
+        1,
+        3
+      ],
+      "subset_size_orbit": [
+        1,
+        3
+      ]
+    },
+    {
+      "kind": "boundary",
+      "id": "EB_M04_P07",
+      "I_mask": 4,
+      "J_mask": 7,
+      "plus_anchor": 0,
+      "q_expression": "a3 + -a4 + -a5 + -a6",
+      "subset_sizes": [
+        1,
+        3
+      ],
+      "subset_size_orbit": [
+        1,
+        3
+      ]
+    },
+    {
+      "kind": "boundary",
+      "id": "EB_M07_P01",
+      "I_mask": 7,
+      "J_mask": 1,
+      "plus_anchor": 0,
+      "q_expression": "a1 + a2 + a3 + -a4",
+      "subset_sizes": [
+        3,
+        1
+      ],
+      "subset_size_orbit": [
+        3,
+        1
+      ]
+    },
+    {
+      "kind": "boundary",
+      "id": "EB_M07_P02",
+      "I_mask": 7,
+      "J_mask": 2,
+      "plus_anchor": 1,
+      "q_expression": "a1 + a2 + a3 + -a5",
+      "subset_sizes": [
+        3,
+        1
+      ],
+      "subset_size_orbit": [
+        3,
+        1
+      ]
+    },
+    {
+      "kind": "boundary",
+      "id": "EB_M07_P04",
+      "I_mask": 7,
+      "J_mask": 4,
+      "plus_anchor": 2,
+      "q_expression": "a1 + a2 + a3 + -a6",
+      "subset_sizes": [
+        3,
+        1
+      ],
+      "subset_size_orbit": [
+        3,
+        1
+      ]
+    }
+  ]
+}

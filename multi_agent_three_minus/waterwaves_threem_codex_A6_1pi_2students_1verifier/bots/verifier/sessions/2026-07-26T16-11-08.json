@@ -1,0 +1,47 @@
+{
+  "id": "verifier_session_20260726T161108",
+  "bot": "verifier",
+  "timestamp": "2026-07-26T16:11:08",
+  "round": 5,
+  "task_id": "round5_verifier_audit",
+  "status": "complete",
+  "summary": "Independently audited the strongest round-5 claim (student-2 s2_010/post_020: the order-3 Q-wall brick 'closed' as G_{m;pq}=-16 max(w_m^2,w_t^2), orbit R_Q=-16 sum (Q_{m;pq})_+^3 [w_m^2+(q_mt)_+], no energy-sign selector) plus student-1's 18-wall completeness. Built a fresh md5-matched bg_r5 and reimplemented P_pole, R_spline, Q_T, and the candidate brick/orbit from the written formulas (no student evaluator). REFUTED the brick: the -16 max selector fails at 24 of 27 independently extracted isolated Q-wall crossings (right only in special cells like the canonical worked example, where w_1=2 w_5 makes -16 w_m^2 = -32 w_m w_t). Found and verified the CORRECT cofactor G_{m;pq}=-32 w_m w_t: R_spline - R_Q^corr with R_Q^corr=-32 sum (Q_{m;pq})_+^3 w_m w_t is smooth across all 27 isolated Q-walls (9 channels, 4 energy-sign chambers). The correct brick is simpler (plain degree-2 monomial, no max/nested part, auto-continuous) and IS energy-sign dependent, contradicting student-2's 'no sign selector'. Confirmed the order-3 structure (Q^3-divisible, not Q^4, degree-2 cofactor) and corroborated student-1's 18-wall set (23/23 magnitude-order-change segments are single polynomials). No complete compact A_6 (G1 persists).",
+  "oracle": {
+    "path": "bots/verifier/code/bg_r5",
+    "build": "g++ -O2 -std=c++17 -lgmpxx -lgmp",
+    "md5_matches_shared_bg_cpp": true,
+    "md5": "41715c4af3ee5a61b1c4bfce40426ac8"
+  },
+  "checks_rerun_result": {
+    "V0_foundation": "PASS exact (anchor A6/i=-9190656/7, P_pole=42588288/7, R_spline=-7396992; witness R_spline(21/2,-8,1,-7,-6,19/2)=-49008548)",
+    "V0_ppole_two_forms": "PASS (P_pole form1 == form2 at all tested points)",
+    "V0_rspline_symmetry": "PASS (dual-S3, all 36 perms; denominator-free 5^8) at line-2 points -> pipeline trustworthy across chambers",
+    "V1_order3_divisibility": "PASS (canonical line: dR divisible by Q_{1;46}^3 remainder 0, degree-2 quotient, NOT divisible by Q^4 -> order exactly 3; dR=-1555200u^3+829440u^4-110592u^5 matches s2)",
+    "V1_orbit_S3xS3": "PASS (8/9 channels directly extracted, all 9 covered in smoothness sweep)",
+    "V2_minus16max_refuted": "FAIL for student-2 (dR/Q^3 != -16 w_m^2 in 8/10 diverse isolated (1;46) crossings, even AT the wall; same channel/chamber gives different quots)",
+    "V3_corrected_brick": "PASS (dR/Q^3 = -32 w_m w_t exactly on all 10 extractions; R_spline - R_Q^corr smooth at 0/27 isolated Q-walls vs 24/27 non-smooth for s2's R_Q; 9 channels, 4 energy-sign chambers)",
+    "V4_wallset_completeness": "CORROBORATED (23/23 segments with interior magnitude-order changes but no q/Q crossing are single degree-8 polynomials; no hidden wall found). Rank-285 chamber fit NOT independently rebuilt."
+  },
+  "gaps_found": [
+    {"severity": "blocking", "text": "student-2's round-5 order-3 Q-brick is FALSE as a global formula: G=-16max(w_m^2,w_t^2) / R_Q=-16 sum (Q)_+^3[w_m^2+(q_mt)_+] fails at 24/27 isolated Q-walls, and 'no energy-sign selector' is false. Correct brick (verifier finding, 27/27): G_{m;pq}=-32 w_m w_t, R_Q^corr=-32 sum (Q_{m;pq})_+^3 w_m w_t. Must be re-derived/confirmed by the students before use, but it is strongly evidenced. Do not build round 6 on the -16max brick."},
+    {"severity": "blocking", "text": "No complete compact A_6 (G1 persists). Even with the corrected Q-brick, the global symmetric R_0 and the order-1 q-fan assembly (H_mp) are unbuilt/unverified and no table-free full evaluator exists. Next: subtract R_Q^corr, confirm the remainder is a pure 9-wall q-spline + R_0, solve R_0, assemble, and hand a full A_6 candidate to the verifier. student-2's claimed q-Q coupling correction to H_mt is moot (corrected brick has no nested q_mt part)."},
+    {"severity": "minor", "text": "Wall-set completeness (18 hyperplanes) corroborated empirically (no hidden wall found off the q/Q arrangement) but not proven; the rank-285 dual-S3 chamber fit was not independently reproduced and a symbolic completeness argument is still owed."},
+    {"severity": "minor", "text": "BG is exactly singular (SIGFPE) on walls/poles; near-wall work must use two-sided limits off the wall. Factorization poles inside a chamber are removable in R_spline (skipping those BG points does not break polynomial reconstruction)."}
+  ],
+  "checks_rerun_result_headline": "student-2's -16max Q-brick REFUTED (24/27); correct brick G=-32 w_m w_t VERIFIED (0/27 residual).",
+  "verdict": "GAPS REMAIN (2 blocking)",
+  "artifacts": [
+    "bots/verifier/VERIFICATION.md",
+    "bots/verifier/code/bg_r5.cpp",
+    "bots/verifier/code/r5_core.py",
+    "bots/verifier/code/r5_lines.py",
+    "bots/verifier/code/r5_test1_extract.py",
+    "bots/verifier/code/r5_diag_walls.py",
+    "bots/verifier/code/r5_pipeline_and_wall.py",
+    "bots/verifier/code/r5_ppole_crosscheck.py",
+    "bots/verifier/code/r5_findG.py",
+    "bots/verifier/code/r5_findG2.py",
+    "bots/verifier/code/r5_test_corrected.py",
+    "bots/verifier/code/r5_completeness.py"
+  ]
+}

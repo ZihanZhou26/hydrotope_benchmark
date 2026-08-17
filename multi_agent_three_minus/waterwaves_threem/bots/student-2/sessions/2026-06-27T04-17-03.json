@@ -1,0 +1,40 @@
+{
+  "bot": "student-2",
+  "timestamp": "2026-06-27T04:17:03Z",
+  "task_id": "r6-student-2",
+  "status": "partial-success (primary deliverable #4 RESOLVED; #1 advanced, core still open)",
+  "summary": "Top-down round 6. PINNED the n=7 (and all n != 6) MINIMAL denominator -- the previously OPEN deliverable #4. It is the FULL product prod_{i in M,j in P}(omega_i+omega_j) (degree 12, pole order 1): no n=6-style collapse. Established the all-n denominator mechanism D_n^free = prod_i r_n(omega_i), r_n = Q_n mod p_-, with collapse iff r_n is constant iff n=6 (the unique deg p_- = deg Q_n = 3 coincidence). Re-confirmed the soft recursion (both legs) and the n=5 boundary. Found a new top-down handle: single-pair residues are accessible at n=7 (impossible at n=6). The explicit numerator N_n core remains open.",
+  "work_done": [
+    "Built own oracle copy (g++ -O2 -std=c++17) and re-validated fastbg.py (exact, matches ./bg at n=5,6,7).",
+    "n7_denom_algebra.py: proved exactly (5 pts) that D_n^free = prod_{i in M,j in P}(omega_i+omega_j) = prod_{i in M}(c omega_i + d) on the manifold at n=7, c=e3^-+e3^+, d=e4^+, via Q_7(omega_i) = c omega_i + d (using e1^-=-e1^+, e2^-=e2^+).",
+    "alln_denom.py: the general mechanism D_n^free = prod_i r_n(omega_i), r_n = Q_n mod p_-; deg r_n = 0 ONLY at n=6 (collapse), >=1 for n>=7 (no collapse). Checked n=5..9.",
+    "n7_mindenom.py: gcd over-clearing method. n=6 CONTROL detects the cube-collapse (over-clearing 8); n=7 over-clearing 0 -> minimal denom = full product.",
+    "n7_factorid.py: reduced denominator = product of all 9 nonconstant slice mixed pairs, each power 1 (matched factor-by-factor); confirmed over-clearing 0 on TWO n=7 chambers.",
+    "n7_geom.py: explicit n=7 on-manifold point where ONLY pair (1,4) vanishes (11 others nonzero) -> the 12 walls are distinct (geometric reason for no collapse).",
+    "verify_r6.py: ONE-COMMAND consolidated verifier (parts A-D), all pass exactly/convincingly.",
+    "residue_n7.py: extracted single-pair residues of A_7 at linear-factor walls (a NEW n=7 handle); consistent but not a naive two-minus sub-amplitude.",
+    "Re-confirmed soft recursion A_n -> 2(n-3) omega_p^2 A_{n-1} (both legs, ratio 6) and n=5 boundary (matches the closed-form law) via verify_r4.py / verify_r6.py."
+  ],
+  "claims": ["s2_018 (verified: all n!=6 minimal denom = full product, pole order 1; all-n mechanism)",
+             "s2_019 (verified: geometric reason -- single pair vanishes alone at n>=7)",
+             "s2_020 (tentative: new n=7 single-pair residue handle)",
+             "s2_017 updated (note_round6: RESOLVED by s2_018)"],
+  "decisions": ["s2_dec_004 (gcd over-clearing method with n=6 control, instead of full rational reconstruction)"],
+  "deliverables_status": {
+    "1_all_n_ansatz": "ADVANCED, core OPEN: all-n SKELETON fully pinned (denominator, degree 5n-13 for n>=7, symmetry, parity, soft recursion, matching/Cauchy structure, single-pair residue handle). Explicit N_n numerator core NOT closed (= the team-wide open problem; student-1 attacks the (1=1) cross-terms bottom-up).",
+    "2_boundary_checks": "DONE: soft recursion both legs re-confirmed; n=5 reduction confirmed; (1=2) Q used as fixed boundary.",
+    "3_exact_tests": "DONE at n=6,7: A_n*D_n polynomial (over-clearing/minimality tested), exact residuals 0; all-n mechanism checked n=6,7,8.",
+    "4_n7_minimal_denominator": "RESOLVED: D_7^min = prod(omega_i+omega_j), deg 12, pole order 1; all n!=6 = full product; n=6 cube-collapse is the unique exception."
+  },
+  "next_steps": [
+    "Numerator core N_n: combine student-1's (1=1) matching cross-terms with the now-fixed denominator and (1=2) Q; test the assembled A_6 exactly across chambers + wall limits, then push to n=7 (deg N_7 = 22).",
+    "Exploit the n=7 single-pair residue (s2_020) as a constraint on N_n -- characterize its dependence on the surviving legs (it is chamber/branch-dependent, s2_016).",
+    "Verify the (1=2) jump exponent at n=7 is n-3=4 (extends Q's all-n exponent law) if a clean single-(1=2)-wall crossing reconstruction is affordable.",
+    "Spot-check the all-n denominator at n=8 against the oracle (exact is ~13s/pt; use a small in-chamber slice)."
+  ],
+  "citations": [
+    "Berends & Giele, Nucl. Phys. B306 (1988) 759 (recursion).",
+    "Curry & Schoenberg (1966); de Boor-Hollig-Riemenschneider, Box Splines (1993); De Concini-Procesi-Vergne (2010) -- spline framing (numerator).",
+    "No published closed form for this sigma-sector water-wave amplitude (literature pass round 5)."
+  ]
+}

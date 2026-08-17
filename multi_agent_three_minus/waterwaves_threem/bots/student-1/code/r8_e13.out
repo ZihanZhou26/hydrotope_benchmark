@@ -1,0 +1,8 @@
+=== (1=3) a2 = b4+b5+b6 : exponent 4 + clean coefficient (J/v^4 poly) ===
+[(1=3) #1] degenerate near wall
+[(1=3) #2] sd=1 nL=35 nR=107 JUMP ORDER=4; J/v^4 exact-divides=True; coeff-at-wall S(0)=-1538066383986132/125
+[(1=3) #3] sd=1 FIT FAIL nL=22 nR=120 L=False R=True
+
+=== controls: (1=1)->1 and (1=2)->2 with same J/v^e test ===
+[(1=1) a2=b4] sd=1 nL=120 nR=120 JUMP ORDER=1; J/v^1 exact-divides=True; coeff-at-wall S(0)=7480739346793127817187500/40353607
+[(1=2) a2=b4+b5] sd=1 nL=120 nR=79 JUMP ORDER=2; J/v^2 exact-divides=True; coeff-at-wall S(0)=232649114532172176300000000/51888844699

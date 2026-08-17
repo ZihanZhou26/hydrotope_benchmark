@@ -1,0 +1,166 @@
+meta:
+  round: 10
+  phase: pi_final_summary
+  timestamp: "2026-07-27T01:40:47"
+  status: SOLVED
+  one_line: >
+    SOLVED (final summary round). The complete compact three-minus
+    $A_6=ig^{-3}(P_{\text{pole}}+R_Q+R_0+R_q)$ is verifier-CONFIRMED (round 8, VERDICT: VERIFIED,
+    >6000 exact BG comparisons, blocking gap G1 CLOSED), independently re-implemented + re-verified
+    by the PI (round 9, pi_vchk_006: 5733 exact BG comparisons, zero residual, clean-room oracle +
+    hand-transcribed evaluator importing no student/verifier code), AND ratified again this final
+    round by a fresh independent spot-check (pi_vchk_007: newly built md5-matched bg_final, 82/82
+    exact over 40 distinct chambers, zero residual). All four pieces are pinned and table-free:
+    $P_{\text{pole}}$ (one $\mathcal H$-block, 9 channels, $Q>0$), the order-3 $Q$-orbit
+    $R_Q=-32\sum(Q_{m;pq})_+^3\omega_m\omega_t$, the global $R_0=H_0$, and the continuous order-1
+    $q$-orbit $R_q=4\sum h_{mp}H_1+2\sum h h H_2$. Numerator = 82 integer monomials in THREE seeds
+    ($H_1{=}46$, $H_2{=}23$, $H_0{=}13$) assembled by finite $S_3\times S_3$ orbit sums over
+    positive parts; ZERO chamber-specific coefficients. PI compactness judgment: MET.
+    summary/SOLVED.md and summary/FINAL_SUMMARY.md written. One non-blocking minor remains
+    (symbolic wall-set completeness), recorded as a caveat.
+
+goal:
+  statement: >
+    Compact analytic closed form for $A_6(\omega_1,\dots,\omega_6)$ in the sector
+    $\sigma=(-1,-1,-1,+1,+1,+1)$, valid for arbitrary nondegenerate on-shell kinematics, with
+    explicit chamber-selection and pole prescription, displayable from a few defined analytic
+    building blocks (NOT a stored chamber table), with a table-free evaluator. ACHIEVED.
+  on_shell_manifold:
+    - "$\\sum_{i=1}^{6}\\omega_i=0$"
+    - "$\\sum_i\\sigma_i\\omega_i^2=0$ (so $\\sum_{p\\in P}\\omega_p^2=\\sum_{m\\in M}\\omega_m^2$)"
+  momenta: "$k_i=\\sigma_i\\,\\omega_i^2/g$; minus legs $M=\\{1,2,3\\}$, plus legs $P=\\{4,5,6\\}$."
+
+final_formula:
+  boxed: "$A_6=i\\,g^{-3}\\big(P_{\\text{pole}}+R_Q+R_0+R_q\\big)$  (full display in summary/SOLVED.md)"
+  pieces:
+    P_pole: >
+      $-64\sum_{m,\{p,q\}:Q_{m;pq}>0}\dfrac{\omega_m\omega_tQ_{m;pq}^2}{d_{m;pq}}
+      \mathcal H(\min(\omega_m^2,Q_{m;pq});p,q)\,\mathcal H(\min(\omega_t^2,Q_{m;pq});r,s)$,
+      with $\mathcal H(B;c,d)=B-(B-\omega_c^2)_+-(B-\omega_d^2)_+ +(B-\omega_c^2-\omega_d^2)_+$
+      (threshold = SUM OF SQUARES) and $d_{m;pq}=2(\omega_m+\omega_p)(\omega_m+\omega_q)$. 9 channels.
+    R_Q: "$-32\\sum_{m,\\{p,q\\}}(Q_{m;pq})_+^3\\,\\omega_m\\omega_t$, $t=P\\setminus\\{p,q\\}$. 9 terms, order-3 $Q$-jump."
+    R_0: "$H_0(u,v,e_-,e_+)$, 13 monomials; $u=\\sum_M\\omega,\\ v=e_2^-(M),\\ e_-=e_3^-,\\ e_+=e_3^+$. 1 global term."
+    R_q: >
+      $4\sum_{m,p}h_{mp}H_1(\omega_m,\omega_p,\omega_r+\omega_s,\omega_r\omega_s)
+      +2\sum_{m,p,\phi}h_{r,\phi(r)}h_{s,\phi(s)}H_2(\omega_m,\omega_p,\omega_r+\omega_s,
+      \omega_r\omega_s,\omega_r\omega_{\phi(r)}+\omega_s\omega_{\phi(s)})$, with
+      $h_{mp}=(\omega_p^2-\omega_m^2)_+$; $\{r,s\}=M\setminus\{m\}$; $\phi$ the two bijections
+      $M\setminus\{m\}\to P\setminus\{p\}$. 9 single-hinge + 18 matching terms. Order-1 $q$-jump.
+  building_blocks: "3 seeds ($H_1{=}46$, $H_2{=}23$, $H_0{=}13$ = 82 monomials) + $\\mathcal H$-block + $(x)_+$. 0 chamber-specific coefficients."
+  evaluator: "bots/pi/code/pi_r9_eval.py (PI, table-free, imports only fractions/itertools). Student: bots/student-1/code/round8_compact_candidate.py. Verifier: bots/verifier/code/vr8_core.py."
+
+verified_facts:
+  # Retained load-bearing facts; full history in board.json. All verifier_confirmed unless noted.
+  - id: F1
+    text: "5pt calibration: three-minus $A_5$ = sign-flipped two-minus master exactly ($A_5=-19968\\,i$ at $\\{-14/3,2,3,4,-13/3\\}$). Re-confirmed round 9 (28/28 random)."
+    status: verifier_confirmed_plus_pi_confirmed
+  - id: F2
+    text: "$A_6$ homogeneous of degree 8 in the frequencies at fixed $g$; $A_6=i g^{-3}\\times(\\text{pure }\\omega)$ (g-scaling PI 5/5)."
+    status: verifier_confirmed_plus_pi_confirmed
+  - id: F3
+    text: "$A_6$ symmetric under BOTH minus-leg and plus-leg permutations (dual $S_3\\times S_3$). PI 216/216."
+    status: verifier_confirmed_plus_pi_confirmed
+  - id: F4
+    text: "$A_6$ purely imaginary: $A_6=i\\times(\\text{rational})$."
+    status: verifier_confirmed
+  - id: F5
+    text: "Two-minus master $A_n=i2^{n-1}g^{3-n}\\omega_a\\omega_b\\sum_S(-1)^{|S|}(\\beta^2-\\sum_{j\\in S}\\omega_j^2)_+^{n-3}$, $\\beta=\\min(|\\omega_a|,|\\omega_b|)$. Template for the nested $q$-brick and the $\\mathcal H$-block; calibrates the harness."
+    status: from_question
+  - id: F9
+    text: >
+      POLE PART $P_{\text{pole}}$ (F9), table-free, all chambers, threshold = sum of squares.
+      One $\mathcal H$-block + one $S_3\times S_3$ orbit (9 channels, $Q>0$). Verifier-confirmed;
+      PI-reproduced (pi_vchk_004, pi_vchk_006). Only denominators are $d_{m;pq}$; the $1/d$ poles
+      are REMOVABLE (numerator vanishes on the $\omega_p=-\omega_m$ sheet).
+    status: verifier_confirmed_plus_pi_confirmed
+  - id: F15_16
+    text: "$A_6$ (and $R_{\\text{spline}}$) jump across BOTH 2-leg $q_{mp}=0$ (order 1) and 3-leg $Q_{m;pq}=0$ (order 3) subset-momentum walls. 18 hyperplanes = 9 $q$ + 9 $Q$, each one $S_3\\times S_3$ orbit."
+    status: verifier_confirmed_plus_pi_confirmed
+  - id: F17
+    text: "ORDER-3 $Q$-orbit $R_Q=-32\\sum(Q_{m;pq})_+^3\\omega_m\\omega_t$ (degree-2 monomial cofactor $-32\\omega_m\\omega_t$). Verifier smooth 24/24 fresh + 27/27; PI pi_vchk_004 on 2 discriminating lines."
+    status: verifier_confirmed_plus_pi_confirmed
+  - id: F20
+    text: >
+      SOLVED (round 8 student-1 s1_010; round 8 verifier VERIFIED; round 9 PI pi_vchk_006).
+      The continuous order-1 $q$-orbit $R_q=4\sum h_{mp}H_1+2\sum h h H_2$ and global $R_0=H_0$
+      complete the decomposition. It is the coupled single/double-hinge cocycle predicted by
+      student-2's off-wall obstruction analysis; it is off-wall-CORRECT (passes the two-sided
+      cure test that killed the round-7 $C^0$-only symmetric brick H5). Confirmed by >6000
+      (verifier) + 5733 (PI) exact BG comparisons, zero residual, across chambers/permutations/
+      hierarchy/two-sided $q,Q,d,D_S$ walls/g-scaling/5-pt calibration.
+    status: verifier_confirmed_plus_pi_confirmed
+    by: "student-1, verifier, pi"
+
+decomposition:
+  id: D2_final
+  statement: >
+    $A_6=i\,g^{-3}(P_{\text{pole}}+R_Q+R_0+R_q)$. ALL FOUR PIECES PINNED AND TABLE-FREE.
+    $R_{\text{spline}}=A_6/i-P_{\text{pole}}=R_0+R_q+R_Q$ is the denominator-free, degree-8,
+    dual-$S_3$, continuous spline over the 18-wall fan; $R_Q$ carries the order-3 $Q$-jump, $R_q$
+    the order-1 $q$-jump, $R_0$ is the smooth remainder.
+  chamber_rule: >
+    All chamber dependence via positive parts $h_{mp}=(\omega_p^2-\omega_m^2)_+$, $(Q_{m;pq})_+$,
+    and $\min/(\cdot)_+$ inside $\mathcal H$. No flag/sort/table. Continuous across every wall.
+  pole_rule: >
+    Only denominators $d_{m;pq}=2(\omega_m+\omega_p)(\omega_m+\omega_q)$ in active ($Q>0$) channels;
+    $d=0$ lies on the $\omega_p=-\omega_m$ sheet of $q_{mp}=0$ where the numerator vanishes (removable,
+    two-sided limit). No genuine factorization pole in the probed interior ($D_S=0$ crossings finite).
+
+blocking_gaps: []   # G1 CLEARED (round 8 verifier VERIFIED; round 9 PI independently re-verified)
+
+resolved_gaps:
+  - id: G1
+    status: CLEARED
+    text: >
+      "No compact human-readable closed form for $A_6$" -- CLEARED. student-1 s1_010 produced the
+      complete table-free $A_6$; round-8 verifier confirmed it (VERDICT: VERIFIED, >6000 exact
+      comparisons); round-9 PI independently re-implemented and re-verified it (pi_vchk_006, 5733
+      exact comparisons). summary/SOLVED.md written.
+
+verifier_findings_status:
+  - id: VF_G1
+    status: resolved_cleared
+    text: "G1 cleared by the round-8 verifier VERIFIED report on s1_010 and the round-9 PI independent re-verification. No blocking gap remains."
+  - id: VF_compactness_human_readable
+    status: resolved_pi_call
+    text: >
+      Round-8 verifier Finding 1 (minor): the 'human-readable' judgment on 82 monomials is the PI's
+      SOLVED.md call. PI RULING: MET -- 82 non-chamber-specific integer coefficients in 3 displayed
+      seeds + one $\mathcal H$-block + positive parts, a finite orbit sum (a task-permitted form),
+      far below the forbidden 'hundreds of chamber-specific coefficients'.
+  - id: VF_completeness
+    status: open_minor_nonblocking
+    text: >
+      Round-8 verifier Finding 2 (minor): chamber coverage is empirical, not a symbolic completeness
+      proof. 81 (q,Q)-chambers hit + 160 wall crossings straddled (PI) on top of the verifier's 93
+      signatures / 204 crossings; residual risk low. NOT a correctness gap; recorded as the SOLVED.md
+      caveat. A symbolic proof that the wall set is exactly the 18 hyperplanes is still owed.
+  - id: VF_sigfpe
+    status: standing_rule
+    text: "BG is exactly singular (SIGFPE) on walls/poles. All near-wall/near-pole work uses two-sided limits off the wall."
+
+dead_ends:
+  # Retained as guardrails; all verifier_confirmed. Full detail in board.json history.
+  - id: H1
+    text: "Naive minus-pair truncated-CUBIC / 72-feature min-max orbit -- inconsistent (order-1 jump). CLOSED."
+  - id: H2
+    text: "Magnitude-tie-only single-orbit sum -- rank $17<18$, 1/8-cell; missing the order-3 $Q$-orbit AND the continuous $q$-brick. CLOSED."
+  - id: H3
+    text: "Order-3 brick $G=-16\\max(\\omega_m^2,\\omega_t^2)$ -- REFUTED; correct is $-32\\omega_m\\omega_t$ (F17). CLOSED."
+  - id: H4
+    text: "Two-block $\\beta$-selector $q$-orbit -- globally discontinuous at cross-sector ties. CLOSED. Correct $R_q$ is nested/coupled (F20)."
+  - id: H5
+    text: "Symmetric brick $B^{\\rm sym}$ -- $C^0$ but off-wall-WRONG (cure test smooth 0/18). CLOSED. Correct $R_q$ keeps the off-wall $q,q^2$ cofactor via coupled single/double hinges (F20)."
+
+anchors:
+  - "$\\{-8,2,3,4,5,-6\\}$: $A_6/i=-9190656/7$; $P_{\\text{pole}}=42588288/7$, $R_Q=-136630560$, $R_0=-245363904$, $R_q=374597472$, $S=129233568$."
+  - "$\\{-154/17,3,5,2,7,-135/17\\}$: $A_6/i=-641893056/85$."
+  - "5-pt calib: $\\{-14/3,2,3,4,-13/3\\}$: $A_5=-19968\\,i$ (= two-minus master, minus legs 4,5)."
+
+provenance:
+  formula_by: "student-1 (s1_010, round 8), realizing student-2's predicted off-wall single/double-hinge cocycle"
+  verifier: "round 8, VERDICT: VERIFIED (>6000 exact BG comparisons; G1 CLOSED)"
+  pi_independent: "round 9, pi_vchk_006 (5733 exact BG comparisons; own oracle bg_r9 + own evaluator pi_r9_eval.py)"
+  pi_final_ratification: "round 10, pi_vchk_007 (fresh md5-matched bg_final; 82/82 exact over 40 chambers, zero residual)"
+  solved_marker: "summary/SOLVED.md"
+  final_summary_marker: "summary/FINAL_SUMMARY.md"

@@ -1,0 +1,18 @@
+wall_hinge_fit summary
+fresh rows total: 150 (train=120, holdout=30)
+wall_orbit keys: 8
+H3 features (dedup): 26 raw=756
+P8 features (dedup): 57
+H3 diag D-only: rank=7 / raw=378
+H3 diag S-only: rank=10 / raw=378
+H3 diag both: rank=17
+Fit H3 only status: inconsistent train-rank=17
+Fit H3+P8 status: inconsistent train-rank=22
+H3+P8 nonzero coeff count: None
+H3+P8 max expanded terms: None
+sanity invariance: pass=True failures=0
+sanity homogeneity: pass=True failures=0
+fresh recheck (first 5) all_match=True
+word census classifications with count==8: ['c_raw']
+word census points: 5000
+outputs: /home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/data/wall_hinge_fit.json /home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/data/word_census.json /home/zihanz/zihanz_bot_research/questions/waterwaves_threem_codex_A6_1pi_1student/bots/student-1/data/fresh_structure_oracle.jsonl

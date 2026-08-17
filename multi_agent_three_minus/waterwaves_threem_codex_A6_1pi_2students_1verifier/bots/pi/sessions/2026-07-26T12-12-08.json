@@ -1,0 +1,60 @@
+{
+  "id": "pi_session_r4",
+  "bot": "pi",
+  "timestamp": "2026-07-26T12:12:08",
+  "round": 4,
+  "phase": "pi",
+  "final_summary_round": false,
+  "summary": "Round-4 normal research round. Read question, board_recent, both live summaries, both student round-3 HANDOFFs, the round-3 verifier VERIFICATION.md + verifier claims.yaml, and pi/verified.yaml; inspected jobs/ (empty). State: the decomposition A_6 = i g^-3 (P_pole + R_spline) and the compact table-free P_pole are entirely verifier-confirmed (all 8 chambers, zero residual). Round 3 (all verifier-confirmed) sharply localized the last unknown: (F11) a COMPACT same-energy wall brick H_mp|_{w_p=w_m} = -32 beta^2 [4a^4+6a^3 s+2a^2(s^2+v)+(as+v)(s^2-2v)] with a FOUR-LEG selector beta = min|w_j| over the four non-primary legs (7/7 environments; plus-leg cases discriminate it from the old minus-only rule); (F12) the pivotal verdict that the pair-wall brick H_mp is ITSELF a spline, so R_spline is a nested/>=2D hydrotope (signed sum of PRODUCTS of truncated powers); (F13) the negative result that the naive independent-orbit sum R_0 + sum (q_mp)_+ H_mp does NOT integrate (common R_0 in only 1/8 cells) because a primary wall flip co-exchanges beta inside another brick -> a COUPLED Moebius/inclusion-exclusion. G1 (no compact R_spline) persists, now reduced to exactly two pieces: the global symmetric R_0 and the coupled beta-fan assembly. Directed both students at the sorted-min / nested-truncated-power assembly from complementary ends (student-1 top-down synthesis, student-2 bottom-up coupled-Moebius extraction + full assembly/verification).",
+  "state_of_evidence": {
+    "verifier_confirmed": [
+      "F1 5pt calibration (4 exact pts)",
+      "F2 degree 8; F3 dual S3 symmetry; F4 purely imaginary",
+      "F6 8-word selector (standard sheet + 35380 off-sheet + 750 BG pts)",
+      "F7 Delta = C^3, D_min = C (deg 3), N11 deg 11",
+      "F8 d_T factorization, only Q_T>0 channels, 1/d_T = (w_m+w_pbar)/(2C)",
+      "F9 P_pole compact table-free correct in all 8 chambers (52/52 int + 293/293 rational residuals integral round 3)",
+      "F10 R_spline denominator-free deg-8 dual-S3 spline; order-1 pair-wall jump q_mp H_mp, deg H_mp = 6",
+      "F11 compact same-energy brick with FOUR-LEG beta=min selector (7/7 environments)",
+      "F12 H_mp is ITSELF a spline (P(u)<->P(6-u) exchange); R_spline is a nested/>=2D hydrotope",
+      "F13 mechanism: naive independent-orbit sum does not integrate (coupled beta-fan); exact 1/8 count not independently rebuilt",
+      "H1 + H2 dead ends (truncated-cubic; single-polynomial / independent-orbit ansatz)"
+    ],
+    "pi_confirmed": [
+      "F14 [pi_vchk_002]: fresh md5-matched BG rebuild reproduces anchor exactly; the H_24 branch switch is the four-leg beta minimizer flip at the magnitude tie q35=0 (u=3), NOT the triple wall Q_{3;45}=0 (u=61/12). Confirms verifier Finding 2, corrects student-1 s1_004. Directional only."
+    ],
+    "not_yet_trusted": [
+      "symbolic exclusion of the 2 absent 8-words (numeric only so far)",
+      "the coupled inclusion-exclusion assembly rule and global R_0 (the open deliverable)",
+      "student-2's exact 1/8-cell naive-assembly-failure count (mechanism verified; exact count not independently rebuilt -- needs their R_0)"
+    ],
+    "blocking_gaps": [
+      "G1: no compact closed form for R_spline yet -- now reduced to (a) global symmetric R_0 and (b) the coupled Moebius/inclusion-exclusion assembly of the four-leg beta-min fan. Clears only when a compact R_spline is produced AND a later verifier report confirms the full assembled A_6."
+    ]
+  },
+  "pi_double_check": {
+    "performed": true,
+    "id": "pi_vchk_002",
+    "reason": "A student<->verifier CONFLICT on a load-bearing DIRECTIONAL claim that shapes the whole round-4 ansatz: student-1 (s1_004) attributed the H_24 branch switch to the triple wall Q_{3;45}=0 (u=61/12); the verifier (Finding 2) located it at the magnitude tie q35=0 (u=3). Whether the coupling is a Q_T effect or a magnitude-sort effect determines the entire assembly strategy, so I checked it independently.",
+    "method": "Fresh CLEAN rebuild of the immutable shared bg.cpp in bots/pi/code (md5=41715c4af3ee5a61b1c4bfce40426ac8, byte-identical to shared ref and to the verifier oracle; g++ 8.5.0). Reproduced the standing anchor A_6=-9190656/7 i exactly. Independent kinematic analysis of the four-leg beta=min minimizer on student-1's slice; did NOT reconstruct the H_24 branches (already verifier-confirmed).",
+    "outcome": "CONFIRMS the verifier, CORRECTS student-1. The four-leg beta minimizer flips w3<->w5 exactly at u=3 (|w3|=|w5|=3, pair wall q35=0); at Q_{3;45}=0 (u=61/12) the minimizer is w5 and does not flip (same branch as u=4). BG SIGFPEs on the whole q24=0 slice, reconfirming 'never evaluate on a wall'. Recorded in bots/pi/verified.yaml as pi_vchk_002. Does NOT clear G1 (directional only)."
+  },
+  "tasks_assigned": {
+    "student-1": "TOP-DOWN nested-hydrotope synthesis of R_spline: build a closed form as a signed sum of PRODUCTS of truncated-power blocks H/(.)_+ organized by the four-leg beta=min sort, plus a global symmetric R_0; enforce the three verified boundary conditions (same-energy four-leg brick; order-1 pair-wall jump with anchor 12622720/27; the q35=0 magnitude exchange P(u)<->P(6-u) at u=3). Mine the 2026 water-wave/hydrotope literature for the three-minus polytope. Test each candidate EXACTLY vs fresh BG (table-free evaluator, no pieces_sparse); return the first zero-residual candidate or a sharp obstruction.",
+    "student-2": "BOTTOM-UP coupled-Moebius extraction + assembly: reconstruct R_spline per cell of the FULL magnitude-tie arrangement |w_i|=|w_j|; extract R_0 and the exact signed wall increments; derive the coupled inclusion-exclusion rule that resolves the 1/8-cell double-counting (a primary flip co-flips beta in other bricks); factor to human-readable form; assemble A_6 and run the full definition-of-done battery vs fresh BG. Also fix/deprecate the stale H_wall_compact_formula column."
+  },
+  "next_steps": [
+    "Students execute round-4 halves in parallel; post early any zero-residual R_spline candidate, the coupled-assembly rule, or a sharp obstruction.",
+    "Verifier audits the strongest new claim; if a full compact A_6 is proposed, run it end-to-end vs fresh BG.",
+    "Round-5 PI: if a compact R_spline lands, do a targeted PI double-check of the assembled A_6 and approach SOLVED.md once a verifier report clears G1; else re-scope the coupling attack. Runway: round 4 of 9, final PI summary after round 9."
+  ],
+  "files_written": [
+    "tasks/student-1.md",
+    "tasks/student-2.md",
+    "summary/logic.yaml",
+    "summary/group_meeting_notes.md",
+    "bots/pi/verified.yaml (append pi_vchk_002)",
+    "bots/pi/sessions/2026-07-26T12-12-08.json",
+    "board.json (append post_014)"
+  ]
+}

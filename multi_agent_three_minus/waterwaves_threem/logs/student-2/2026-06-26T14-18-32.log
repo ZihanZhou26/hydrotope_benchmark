@@ -1,0 +1,19 @@
+[2026-06-26T14-18-32] model=claude-opus-4-8[1m] effort=xhigh prompt=prompts/student-bot.md identity=student-2
+Warning: no stdin data received in 3s, proceeding without it. If piping from a slow command, redirect stdin explicitly: < /dev/null to skip, or wait longer.
+Task `r1-student-2` is complete. All deliverables are in place, all background jobs cleaned up, and the consolidated verification passes exactly.
+
+## Summary
+
+I attacked the n=6 three-minus structure and resolved the central round-1 question.
+
+**Key result — NO factorization poles → piecewise-polynomial, not rational.** This was the PI's "gate" question. Using a targeted pole search (steering one channel `D_S = ω_S²/|k_S| − g → 0` at a time on the resonant manifold), I found that at **every** channel type — 2m+1p `{2,3,4},{2,3,5}`, 1m+2p `{2,4,5},{3,4,5}`, and the full-minus 3m+0p `{1,2,3}={4,5,6}` — A₆ stays **finite** (`A₆·D_S → 0`). The oracle SIGFPEs *exactly* on `D_S=0` (it divides by it) but the limit exists, so those propagator poles are **spurious/removable**. Verified pole-free at **n=5, 6, 7**. Physical reason: every factorization residue forces a vanishing one-minus sub-amplitude or an empty sector.
+
+**Structure of A₆** (all exact): purely imaginary, homogeneous **degree 8**, and invariant under **S₃ ≀ Z₂** (permute minus legs, permute plus legs, swap the two triples — the plus/minus swap as a genuine self-symmetry at n=6).
+
+**Chamber walls:** the mixed-subset momentum walls `k_S = Σσᵢωᵢ² = 0`, where `|k_S|` flips and A₆ is finite/continuous with a derivative kink (distinct from the smooth `D_S=0` channels). Caught a subtle pitfall: walls landing on grid points SIGFPE and can fake/hide kinks — exact arithmetic killed two false kinks from a double-precision scan.
+
+**First ansatz (open):** naive two-minus pair-sum candidates fail with non-constant ratios (structure genuinely new, not just normalization). Identified the **B-spline picture** (two-minus = `(n−3)!·ωₐω_b·M(β²; {ωⱼ²})`) and a validated symbolic BG engine as the recommended round-2 attack: extract exact per-chamber cubics by freezing chamber signs, then match to a box-spline and symmetrize.
+
+Recorded in `claims.yaml` (s2_001–005), `decisions.yaml`, `derivations/n6_structure.md`, session report, and board post_003. Reproduce with `python3 bots/student-2/code/verify_threem.py`.
+[usage] cost_usd=14.955105000000003 duration_ms=3524737 num_turns=100 in=7258 out=177018 cache_read=13657099 cache_write=566324
+[2026-06-26T15-17-25] student-bot exited with code 0

@@ -1,0 +1,80 @@
+{
+  "id": "pi_session_r8",
+  "bot": "pi",
+  "timestamp": "2026-07-26T21:37:28",
+  "round": 8,
+  "phase": "pi",
+  "final_summary_round": false,
+  "summary": "Round-8 normal research round (penultimate; round 9 remains). Read question.md, board_recent.json, both live summaries (logic.yaml, group_meeting_notes.md), both students' round-7 HANDOFFs, the round-7 verifier VERIFICATION.md + board post_029, the two latest student derivations (s2_013 continuous-symmetrization refutation, s1_009 hinge-orbit blocker), and pi/verified.yaml; inspected jobs/ (empty, only jobs/collected). ROUND-7 OUTCOME: NO new candidate survived. student-2's manifestly-continuous symmetric brick B^sym was verifier-REFUTED (cure test S-R_q^sym SMOOTH 0/18) -- it is C^0-continuous 18/18 and on-wall 21/21 but does NOT reproduce the off-wall cofactor (dead_end H5, fact F19; verifier reproduced the first-wall residual bit-for-bit). student-1 produced no rank/candidate (technician stalled on scalar elimination; the driver OMITTED the mandatory 17 R_0 columns, so any late rank is invalid). No student<->verifier conflict and no surprising failure, so NO PI double-check under policy (the load-bearing R_Q was already checked, pi_vchk_004). DECISION: the actual bottleneck is ORCHESTRATION -- for THREE straight rounds the sole /root/technician wrote no artifact (verifier Finding 3, load-bearing) -- so my primary round-8 lever is to fix it decisively rather than merely re-warn. I (a) rebuilt/verified my BG oracle (md5 41715c...=shared ref) reproduces the anchor A_6/i=-9190656/7, and (b) built + SELF-TESTED a turnkey exact linear-consistency solver bots/pi/code/fastsolve.py (vectorized modular rank at 3 primes + exact rational recovery; correct on a consistent and an inconsistent synthetic system) -- the fast replacement for the scalar Gaussian elimination that stalled student-1. Recorded as pi_vchk_005 (foundation_readiness, NOT a claim double-check). Re-aimed both students complementarily with airtight write-file-then-run orchestration: student-1 runs the DECISIVE hinge-orbit existence solve (consistent => recover sparse R_q/R_0 + assemble + battery; inconsistent => clean obstruction naming the round-9 pivot to module generators/Koszul), student-2 ships the off-wall cofactor GROUND TRUTH per magnitude cell + a nested brick reproducing all THREE conditions and passing the 18-wall cure test.",
+  "state_of_evidence": {
+    "verifier_confirmed": [
+      "F1 5pt calibration (A_5=-19968 i); F2 degree 8; F3 dual S3 symmetry; F4 purely imaginary",
+      "F6 8-word selector (standard sheet + wide numeric); F7 Delta=C^3, D_min=C, N11 deg 11",
+      "F8 d_T factorization, only Q_T>0 channels carry residue",
+      "F9 P_pole compact table-free correct in all 8 chambers; threshold = SUM OF SQUARES; re-confirmed round 6/7 (both forms, anchor exact)",
+      "F10 R_spline denominator-free deg-8 dual-S3 spline; order-1 pair-wall jump q_mp H_mp, deg H_mp=6",
+      "F11 same-energy order-1 brick VALUE (7/7); F12 H_mp itself a spline; F13 mechanism",
+      "F15 [r4] R_spline AND A_6 jump across 3-leg walls Q_{m;pq}=0, order EXACTLY 3, S3xS3 orbit",
+      "F17 order-3 brick G_{m;pq}=-32 w_m w_pbar; R_Q=-32 sum (Q_{m;pq})_+^3 w_m w_pbar; re-confirmed GLOBALLY round 6 (24/24) + round 5 (27/27); re-verified on fresh round-7 oracle",
+      "F18 [r6] ROOT CAUSE: S=R_spline-R_Q is dual-S3/deg-8 order-1 spline over the 9 q-walls only; per-wall brick VALUE locally correct; the two-block beta-selector is globally discontinuous (jumps 18/18). Confirms student-1 rank 17<18.",
+      "F19 [NEW, r7 verifier V2/V3] C^0 + on-wall trace is UNDERDETERMINED: student-2's symmetric B^sym is C^0 18/18 and on-wall 21/21 but off-wall-wrong (cure test smooth 0/18). The correct nested brick must ALSO reproduce the exact degree-6 off-wall cofactor via coupled q_+^2/q_+^3 terms.",
+      "H1/H2/H3/H4 dead ends; H5 [NEW]: student-2's symmetric B^sym REFUTED (off-wall cofactor 0/24)"
+    ],
+    "pi_confirmed": [
+      "F14 [pi_vchk_002] narrow-correct/over-general-retired",
+      "F16 [pi_vchk_003] A_6 itself jumps across Q_{1;46}=0 with no magnitude tie (BG*C, no P_pole)",
+      "F17 [pi_vchk_004] G_{m;pq}=-32 w_m w_pbar re-derived on two discriminating lines",
+      "pi_vchk_005 [r8, foundation_readiness] BG oracle reproduces the anchor; fastsolve.py self-tested (CONSISTENT + exact recovery; INCONSISTENT flagged)"
+    ],
+    "pinned": [
+      "P_pole (F9) compact table-free",
+      "R_Q = -32 sum (Q_{m;pq})_+^3 w_m w_pbar (order-3 Q-orbit, F17), re-confirmed globally + on the fresh round-7 oracle",
+      "the LOCAL q-brick VALUE H_mp (on-wall -32 beta^2[F+(a+b)D]; F18b)",
+      "S = R_spline - R_Q = R_0 + R_q is a dual-S3/deg-8 order-1 spline over the 9 q_mp=0 walls only"
+    ],
+    "not_yet_trusted": [
+      "the globally-continuous compact q-orbit R_q -- must satisfy THREE conditions (on-wall value, C^0 at cross-sector ties, exact off-wall cofactor); C^0+trace alone is insufficient (F19)",
+      "the global symmetric R_0 = S - R_q",
+      "whether S lies in the span {17-dim R_0 basis} + {hinge orbits, depth<=4} -- the DECISIVE existence solve (student-1, round 8)",
+      "wall-set completeness (18 walls corroborated, not symbolically proven -- minor)",
+      "symbolic exclusion of the 2 absent 8-words (numeric only -- minor)"
+    ],
+    "blocking_gaps": [
+      "G1: no compact closed form for A_6 yet. P_pole (F9), R_Q (F17), local q-brick value (F18b) pinned; remaining = a table-free GLOBALLY-CONTINUOUS order-1 q-orbit R_q meeting all three conditions (F18c+F19) + the global symmetric R_0. Clears only when a compact continuous R_spline is produced AND a later verifier confirms the full assembled A_6 vs fresh BG (>=20 samples, permutations, hierarchical, two-sided q/Q/pole limits, 5-pt calib)."
+    ]
+  },
+  "verifier_findings_resolution": {
+    "VF_Bsym_blocking_r7": "Round-7 verifier [blocking]: student-2's symmetric B^sym / R_q^sym is WRONG globally (cure test smooth 0/18; off-wall cofactor 0/24). -> ACCEPTED; retired as dead_end H5; records F19. student-2 self-flagged it. No gap beyond G1; sharpens the target to the three-condition brick.",
+    "VF_obstruction_confirmed": "Round-6 verifier [blocking]: student-1's rank 17<18 (no global R_0) CONFIRMED; decomposition SOUND. -> Carried into G1; the missing piece is the compact continuous q-orbit.",
+    "VF_G1_blocking": "No complete compact A_6 -> G1. Round 7 produced no surviving candidate; repair re-assigned to both students round 8 with orchestration fixed.",
+    "VF_orchestration_process": "Round-7 verifier [minor but LOAD-BEARING, Finding 3]: 3rd straight round the sole /root/technician wrote no artifact; the round's real bottleneck is orchestration, not math. -> PI ADDRESSING: shipped self-tested fastsolve.py + mandated write-file-then-run technician protocol with incremental checkpoints in both briefs. Must be resolved this round.",
+    "VF_completeness_minor": "18-wall completeness corroborated but not symbolically proven. -> Open_minor, low priority.",
+    "VF_sigfpe_standing": "BG SIGFPE on walls/poles. -> Standing rule; two-sided limits + cell-adjacency mandatory."
+  },
+  "pi_double_check": {
+    "performed": false,
+    "reason": "No qualifying trigger this round: no complete compact formula, no decisive new simplification, no surprising verifier failure, and no student<->verifier conflict (student-2's B^sym was REFUTED and self-flagged; student-1 produced no rank; R_Q was already checked in pi_vchk_004). A targeted double-check would only duplicate confirmed verifier work. Reserved for the FIRST complete A_6 candidate, which the PI must independently implement/verify before any SOLVED.md.",
+    "foundation_readiness_note": "Separately from the double-check policy, I refreshed PI verification readiness (pi_vchk_005): the BG oracle reproduces the anchor and fastsolve.py is self-tested, so I can independently verify a complete candidate the moment one arrives and student-1's decisive solve cannot fail on the slow-elimination blocker again.",
+    "prior_checks": "pi_vchk_001 (r1), pi_vchk_002 (r4), pi_vchk_003 (r5), pi_vchk_004 (r6), pi_vchk_005 (r8 foundation_readiness). See bots/pi/verified.yaml."
+  },
+  "jobs_inspected": "jobs/ holds only jobs/collected/ (empty); no registered or completed background jobs. The recurring issue is NOT stuck jobs but technician context-death with no artifact for 3 straight rounds -- addressed by the fastsolve tool + write-file-then-run protocol so heavy solves are detached+checkpointed rather than run interactively.",
+  "tasks_assigned": {
+    "student-1": "TOP-DOWN -- run the DECISIVE hinge-orbit existence solve. Reuse the round-7 588-feature enumeration, build the FULL matrix A=[Phi_features | basis_A] with the MANDATORY 17 R_0 columns (assert 588+17), sample >=900 exact on-shell points across all 8 words, compute S=(A_6/i-P_pole)-R_Q, and run the PI-VERIFIED bots/pi/code/fastsolve.py (consistency + exact_solve). CONSISTENT => report support, split R_q/R_0, re-verify on >=30 fresh BG holdouts, assemble the full table-free A_6 + run the definition-of-done battery. INCONSISTENT => report ranks/deficiency as a clean obstruction (=> round-9 pivot to module generators/Koszul, arXiv:2606.18298). Orchestration: ONE write-file-then-run technician script, incremental A,y checkpoints; NO interactive batch.",
+    "student-2": "BOTTOM-UP -- ship the OFF-WALL cofactor ground truth, then the nested brick. (1) Deliver first: the exact off-wall brick cofactor H_mp(off-wall) as an explicit degree-6 polynomial in EACH four-leg magnitude-order cell on a representative slice (reproduce r6_checkC2 standalone). (2) Build B_mp as nested truncated powers over the four env legs reproducing all THREE conditions (on-wall -32 beta^2[F+(a+b)D]; C^0 at cross-sector ties; exact off-wall per-cell polynomial -- keep the q,q^2 pieces, do NOT symmetrize (H5)). (3) Pass the decisive local cure test: S-R_q SMOOTH across all 18 isolated walls, two-sided exact. Orchestration: ONE write-file-then-run technician script; get Step 1 on disk first."
+  },
+  "next_steps": [
+    "Students execute the round-8 halves in parallel with the fixed orchestration; post early either (a) student-1's decisive CONSISTENT solve with a recovered sparse R_q/R_0 (=> a complete compact A_6 candidate with battery residuals), (b) a clean INCONSISTENT obstruction with ranks that names the round-9 pivot, and/or (c) student-2's off-wall cofactor ground truth + a nested brick passing the 18-wall cure test.",
+    "Verifier audits the strongest new claim; if a full compact A_6 is proposed, run it END-TO-END vs fresh BG across all realized chambers + the wall/limit/calibration battery and state whether G1 is cleared; independently confirm the fastsolve rank/consistency result. If both routes fail, distinguish an off-wall-cofactor obstruction from an orchestration failure.",
+    "Round-9 PI (final research round): if a compact continuous R_q lands and a verifier report clears (or nearly clears) G1, do a targeted PI double-check of the assembled A_6 (independent implementation via the ready oracle + evaluator, definition-of-done) and, if it holds, prepare summary/SOLVED.md; else the final-summary round states the best verified progress and the precise remaining obstruction. Runway: round 8 of 9; round 9 + a final PI-only summary remain."
+  ],
+  "files_written": [
+    "tasks/student-1.md",
+    "tasks/student-2.md",
+    "summary/logic.yaml",
+    "summary/group_meeting_notes.md",
+    "bots/pi/code/fastsolve.py (self-tested turnkey exact linear-consistency solver)",
+    "bots/pi/verified.yaml (append pi_vchk_005 foundation_readiness)",
+    "bots/pi/sessions/2026-07-26T21-37-28.json",
+    "board.json (append post_030)"
+  ]
+}

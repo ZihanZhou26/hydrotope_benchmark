@@ -1,0 +1,130 @@
+{
+  "utc": "2026-07-26T21:28:35Z",
+  "elapsed_sec": 14363.850781679153,
+  "targets": {
+    "bases": 3,
+    "points": 520,
+    "dmax": 12,
+    "seed": 2026,
+    "holdout": 50,
+    "fast_fixed_den": true,
+    "run_mode": "block",
+    "detach_threshold": 600.0
+  },
+  "mode": "block",
+  "piece_reports": [
+    {
+      "signature_hash": "5c33d58d50",
+      "status": "insufficient_points",
+      "collected_points": 0,
+      "collect_tries": 4000000,
+      "base_omega": [
+        "-78/7",
+        "9",
+        "8",
+        "2",
+        "-5",
+        "-20/7"
+      ],
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "h16_branch": {
+        "subset": "{1,6}",
+        "h_value": "80",
+        "h_sign": 1,
+        "k_sign": -1
+      },
+      "elapsed_sec": 0,
+      "progress": {
+        "points": 0,
+        "target": 570,
+        "holds": 50
+      }
+    },
+    {
+      "signature_hash": "84d9359711",
+      "status": "insufficient_points",
+      "collected_points": 0,
+      "collect_tries": 4000000,
+      "base_omega": [
+        "-7/2",
+        "-4",
+        "9",
+        "6",
+        "-7",
+        "-1/2"
+      ],
+      "matrix": [
+        [
+          -1,
+          -1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "h16_branch": {
+        "subset": "{1,6}",
+        "h_value": "4",
+        "h_sign": 1,
+        "k_sign": -1
+      },
+      "elapsed_sec": 0,
+      "progress": {
+        "points": 0,
+        "target": 570,
+        "holds": 50
+      }
+    },
+    {
+      "signature_hash": "95b32bdf05",
+      "status": "insufficient_points",
+      "collected_points": 0,
+      "collect_tries": 4000000,
+      "base_omega": [
+        "-10",
+        "7",
+        "2",
+        "-3",
+        "-5",
+        "9"
+      ],
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ],
+      "h16_branch": {
+        "subset": "{1,6}",
+        "h_value": "-18",
+        "h_sign": -1,
+        "k_sign": -1
+      },
+      "elapsed_sec": 0,
+      "progress": {
+        "points": 0,
+        "target": 570,
+        "holds": 50
+      }
+    }
+  ],
+  "invariant_sources": [
+    "piece_A",
+    "piece_B"
+  ],
+  "estimate_sec": 4533
+}

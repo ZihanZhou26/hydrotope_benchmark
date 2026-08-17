@@ -40,6 +40,3 @@ reasoning was not reconstructed.
 | no hint | Codex 5.5 xhigh | [Markdown](case_3/codex_55_xhigh/post_run/original_visible_thinking_log.md) | [PDF](case_3/codex_55_xhigh/post_run/thinking_log.pdf) |
 | no hint | DeepSeek v4 pro | [Markdown](case_3/deepseek_v4_pro/post_run/original_visible_thinking_log.md) | [PDF](case_3/deepseek_v4_pro/post_run/thinking_log.pdf) |
 | no hint | Fugu ultra | [Markdown](case_3/fugu_ultra/post_run/original_visible_thinking_log.md) | [PDF](case_3/fugu_ultra/post_run/thinking_log.pdf) |
-
-For the outcome labels, test counts, and post-run corrections, see
-[`paper/baseline_run_manifest.md`](paper/baseline_run_manifest.md).

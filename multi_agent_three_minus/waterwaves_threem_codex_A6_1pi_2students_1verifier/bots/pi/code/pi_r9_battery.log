@@ -1,0 +1,41 @@
+======================================================================
+A. ANCHORS + component split
+======================================================================
+  omega=[Fraction(-8, 1), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(5, 1), Fraction(-6, 1)]  A_6/i(BG)=-9190656/7  formula=-9190656/7  OK
+  omega=[Fraction(-154, 17), Fraction(3, 1), Fraction(5, 1), Fraction(2, 1), Fraction(7, 1), Fraction(-135, 17)]  A_6/i(BG)=-641893056/85  formula=-641893056/85  OK
+  split: {'P_pole': '42588288/7', 'R_Q': '-136630560', 'R_0': '-245363904', 'R_q': '374597472'}
+  split matches verified P_pole/R_Q/S -> OK
+======================================================================
+B. GENERIC MULTI-CHAMBER SWEEP
+======================================================================
+  points=260  distinct (q,Q)-chambers=81  distinct q-patterns=54  distinct Q-patterns=32
+======================================================================
+C. PERMUTATIONS within minus {1,2,3} and plus {4,5,6}
+======================================================================
+  permutation evaluations=216  BG invariant under same-sign perms: True
+======================================================================
+D. HIERARCHICAL REGIMES (one frequency scaled)
+======================================================================
+  hierarchical points tested=28
+======================================================================
+E. TWO-SIDED q- and Q-WALL CROSSINGS (on-shell families)
+======================================================================
+  family points=439  straddled q-crossings=19  Q-crossings=35  d(=pole)-crossings=0  internal-line D_S-crossings=106
+  (A_6 stays finite across every straddled crossing; formula==BG on both sides)
+======================================================================
+F. DEDICATED d_{m;pq}=0 POLE LOCI two-sided (removable check)
+======================================================================
+  near-pole (|d|<1/4) two-sided exact checks=15
+======================================================================
+G. g-SCALING  A_6 = g^{-3} * stripped
+======================================================================
+  g values tested=5 (omega fixed, only prefactor scales)
+======================================================================
+H. 5-POINT CALIBRATION of BG harness vs two-minus master (sign-flip)
+======================================================================
+  omega5=[Fraction(-14, 3), Fraction(2, 1), Fraction(3, 1), Fraction(4, 1), Fraction(-13, 3)]  A_5/i(BG)=-19968  two-minus master=-19968  OK
+  random 5-pt calibration points matched=28
+======================================================================
+TOTAL  PASS=994  FAIL=0
+ALL CHECKS PASSED — zero residual against fresh bg_r9.
+======================================================================

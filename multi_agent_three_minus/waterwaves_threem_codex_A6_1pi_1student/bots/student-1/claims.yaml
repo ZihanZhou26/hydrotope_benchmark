@@ -1,0 +1,379 @@
+claims:
+  - id: s1_001
+    status: verified
+    statement: >-
+      The student-side exact GMP harness reproduces the known $A_5$ two-minus
+      formula at two generic points and its sign-flipped three-minus form at
+      four generic points, with exact rational equality.
+    evidence:
+      - bots/student-1/data/calibration.txt
+      - bots/student-1/code/calibration.py
+  - id: s1_002
+    status: verified
+    statement: >-
+      Put $a_i=\omega_i^2$ for $i\in M=\{1,2,3\}$,
+      $b_j=\omega_{3+j}^2$ for $j=1,2,3$, and
+      $T=\sum_i a_i=\sum_j b_j$.  Modulo complementary subsets, the
+      nondegenerate momentum-subset walls are the $18$ hyperplanes
+      $a_i-b_j=0$ and $a_i+b_j-T=0$ ($1\leq i,j\leq3$).  They form the two
+      $S_3\times S_3$ wall orbits $(1,1)$ and $(1,2)$.  Six further catalogued
+      subset equalities are external-degeneracy boundaries.
+    evidence:
+      - bots/student-1/data/wall_catalog.json
+      - bots/student-1/data/wall_approaches.json
+      - bots/student-1/data/wall_report.txt
+  - id: s1_003
+    status: verified_at_representatives
+    statement: >-
+      Internal propagator candidates have four composition orbits:
+      $(2,0)$, $(1,1)$, $(3,0)$, and $(2,1)$.  The two pair orbits are
+      degenerate-only.  At isolated representatives of both triple orbits,
+      exact two-sided approaches give finite limits: for $(2,1)$,
+      $A_6/i\to 2.74494\ldots$, and for $(3,0)$,
+      $A_6/i\to72.0772\ldots$, while $A_6h_T\to0$.  Thus those tested
+      factorization surfaces are removable, not genuine simple poles.
+    evidence:
+      - bots/student-1/data/pole_approaches.json
+      - bots/student-1/data/pole_report.txt
+      - bots/student-1/code/pole_scan.py
+  - id: s1_004
+    status: verified_negative
+    statement: >-
+      Hypothesis H1 fails for the tested compact box-spline family.  With
+      $B_R(x)=\sum_{J\subseteq R}(-1)^{|J|}
+      (x-\sum_{j\in J}\omega_j^2)_+^3$, the complete symmetry-invariant
+      quadratic-prefactor orbit basis has $8$ features for singleton
+      thresholds and $16$ features after adding doubleton thresholds.
+      Exact fits are inconsistent: the feature/augmented ranks are $4/5$
+      and $6/7$, respectively.
+    evidence:
+      - bots/student-1/data/h1_fit_report.json
+      - bots/student-1/code/ansatz_fit.py
+  - id: s1_005
+    status: verified
+    statement: >-
+      The stored $A_6$ oracle contains $225$ exact non-wall points.  Every
+      record obeys both conservation laws exactly, has zero real part, and
+      agrees under stored $S_3\times S_3$ permutations.  The sample contains
+      $57$ labeled wall-sign signatures but only $3$ observed signatures
+      after quotienting by $S_3\times S_3$ (also $3$ after the set swap).
+      This does not yet identify the eight baseline physical words.
+    evidence:
+      - bots/student-1/data/oracle_samples.jsonl
+      - bots/student-1/data/domain_signatures.json
+      - bots/student-1/data/chamber_words.json
+  - id: s1_006
+    status: verified_census_candidate
+    statement: >-
+      Let $x_1\leq x_2\leq x_3$ and $y_1\leq y_2\leq y_3$ be the
+      sorted squared frequencies of the minus and plus sets.  An explicit
+      eight-word candidate classifier is obtained by merging these lists and
+      recording their set labels:
+      $\mathrm{MMPPPM}$, $\mathrm{MPMPPM}$, $\mathrm{MPPMMP}$,
+      $\mathrm{MPPMPM}$, $\mathrm{PMMPMP}$, $\mathrm{PMMPPM}$,
+      $\mathrm{PMPMMP}$, and $\mathrm{PPMMMP}$.  A $5000$-point exact
+      nondegenerate on-shell census observes precisely these eight.  Quotienting
+      by set swap and reversal reduces them to three orbits.  The words fix the signs of
+      $D_{ij}=x_i-y_j$; the additional walls $S_{ij}=x_i+y_j-T$ subdivide
+      them into $20$ observed full sign patterns and require a separate
+      positive-part prescription.  Matching this classifier to the unavailable
+      baseline piece labels remains a PI-side confirmation, so it is not yet
+      asserted as the unique historical word convention.
+    evidence:
+      - bots/student-1/data/word_census.json
+      - bots/student-1/data/fresh_structure_oracle.jsonl
+      - bots/student-1/derivations/round1_hinge_and_words.md
+  - id: s1_007
+    status: verified_negative
+    statement: >-
+      The complete symmetry-orbit dictionary of single-wall cubic hinges
+      $Q_2(\omega)(q(\omega))_+^3$, for both wall orbits, both orientations,
+      and every quadratic covariant, has $26$ features.  It is exactly
+      inconsistent with $A_6/i$: the feature/augmented ranks are $17/18$ on
+      $120$ fresh training points.  Adding the complete $57$-feature space of
+      degree-eight $G$-invariant polynomials still fails with ranks $22/23$.
+      Exact invariance, degree-eight homogeneity, and five regenerated BG
+      targets all pass.
+    evidence:
+      - bots/student-1/data/wall_hinge_fit.json
+      - bots/student-1/data/wall_hinge_fit.txt
+      - bots/student-1/code/wall_hinge_fit.py
+      - bots/student-1/derivations/round1_hinge_and_words.md
+  - id: s1_008
+    status: proved
+    statement: >-
+      Put $u_i=-\omega_i$ for the three minus legs and
+      $v_j=\omega_{3+j}$ for the three plus legs.  On shell the two triples
+      share their first two elementary symmetric polynomials:
+      $\sum u_i=\sum v_j=s$ and
+      $\sum_{i<j}u_i u_j=\sum_{i<j}v_i v_j=p$.  Hence their monic cubics are
+      $F_u(z)=z^3-sz^2+pz-r$ and
+      $F_v(z)=z^3-sz^2+pz-t$, differing only by the constant $t-r$.
+      Every separately symmetric on-shell polynomial is therefore a polynomial
+      in $(s,p,r,t)$.  There are $17$ weighted-degree-eight monomials and only
+      $12$ after imposing the combined frequency-reversal/set-swap symmetry
+      $r\leftrightarrow t$.
+    evidence:
+      - bots/student-1/derivations/elementary_coordinates.md
+  - id: s1_009
+    status: proved
+    statement: >-
+      In the common-cubic coordinates,
+      $\operatorname{Res}(F_u,F_v)=\prod_{i,j}(u_i-v_j)=(r-t)^3$.
+      Therefore
+      $\prod_{i=1}^{3}\prod_{j=4}^{6}(\omega_i+\omega_j)=-(r-t)^3$.
+      Any common product of all nine mixed-pair frequency denominators thus
+      collapses to one cubic power.  The locus $r=t$ makes the two cubics
+      identical and is a multiply degenerate paired-root/wall locus, not a
+      generic isolated factorization surface.
+    evidence:
+      - bots/student-1/derivations/elementary_coordinates.md
+  - id: s1_010
+    status: high_precision_numerical
+    statement: >-
+      One-sided interpolation of the exact wall-approach data indicates
+      different smoothness orders for the two wall orbits.  At the $(1,1)$
+      difference wall, $A_6/i$ is continuous but the linear coefficients in
+      the wall coordinate converge to $4.729813755787408\ldots$ and
+      $7.080522009722821\ldots$.  At the $(1,2)$ sum wall, coefficients
+      through quadratic order converge between sides while the cubic
+      coefficients converge to $1.39296775388720\ldots$ and
+      $98.6103835084500\ldots$.  Thus the next ansatz should use linear
+      $D_{ij}$ hinges and cubic $S_{ij}$ hinges.  This is numerical
+      extrapolation evidence, not an exact derivative theorem.
+    evidence:
+      - bots/student-1/data/wall_smoothness.json
+      - bots/student-1/data/wall_smoothness.txt
+      - bots/student-1/code/wall_smoothness.py
+      - bots/student-1/derivations/round1_hinge_and_words.md
+  - id: s1_011
+    status: verified_negative
+    statement: >-
+      On $600$ fresh exact kinematics, the common-cubic equalities and
+      $\prod_{i,j}(\omega_i+\omega_{3+j})=-(r-t)^3$ hold exactly at every
+      point.  Nevertheless the global $17$- and $12$-monomial
+      weighted-degree-eight polynomial dictionaries fail with exact ranks
+      $17/18$ and $12/13$.  Complete rational dictionaries
+      $N_d/(r-t)^d$ for $d=1,2,3$ also fail exactly with ranks
+      $12/13$, $36/37$, and $36/37$.
+    evidence:
+      - bots/student-1/data/elementary_invariant_diagnostic.json
+      - bots/student-1/data/fresh_structure_oracle_v2.jsonl
+      - bots/student-1/derivations/elementary_coordinates.md
+  - id: s1_012
+    status: verified_oracle
+    statement: >-
+      A second fresh exact oracle contains $600$ distinct, non-permutation,
+      generic six-point kinematics, split into $540$ training and $60$
+      holdout rows.  It spans all eight squared-frequency merge words with
+      counts $236,48,62,4,4,138,27,81$ in lexicographic word order.
+      The complete mixed-smoothness dictionary contains $188$ linear
+      difference-wall features, $14$ cubic sum-wall features, and $57$
+      invariant polynomial features.  Its current uncached exact
+      design-matrix implementation exceeded the ten-minute inline budget
+      before producing a rank, so the mixed fit remains unverified.
+    evidence:
+      - bots/student-1/data/fresh_structure_oracle_v2.jsonl
+      - bots/student-1/code/wall_power_fit.py
+  - id: s1_013
+    status: proved
+    statement: >-
+      Exact on-shell factorization of the BG inverse propagators gives no
+      mixed-pair frequency-sum denominator: for a minus frequency $x$ and
+      plus frequency $y$, $|q|/h=(y-x)/(2x)$ when
+      $q=y^2-x^2>0$, and $(x-y)/(2y)$ when $q<0$.  For a mixed triple
+      with minus frequencies $x,y$ and plus frequency $z$, the wall
+      variable is $q=z^2-x^2-y^2=S_{\ell j}$ and
+      $h=2(x+z)(y+z)$ for $q<0$, whereas
+      $h=2[x^2+y^2+xy+z(x+y)]$ for $q>0$.  Thus the $S_{\ell j}$ sign
+      selects two genuinely different denominator factorizations.  The
+      all-minus/all-plus triple inverse propagator is $2p$.
+    evidence:
+      - bots/student-1/derivations/round3_propagator_factors.md
+  - id: s1_014
+    status: verified_oracle
+    statement: >-
+      The fresh round-3 $H$ oracle contains $720$ exact points in one fixed
+      sorted raw $18$-wall chamber, split into $560$ train and $160$ holdout
+      rows.  All $720$ obey both conservation equations, have zero real
+      amplitude, and satisfy
+      $H\prod_{i=1}^6\omega_i=A_6/i$ exactly.  Five stored targets were
+      independently re-evaluated with the freshly compiled
+      `bg_round3` binary and agreed exactly.
+    evidence:
+      - bots/student-1/data/h_rational_probe_oracle.jsonl
+      - bots/student-1/data/h_oracle_verification.json
+      - bots/student-1/code/h_rational_probe.py
+  - id: s1_015
+    status: verified_negative
+    statement: >-
+      In the fixed sorted raw $18$-wall chamber of s1_014, no square-free
+      subproduct
+      $Q_M=\prod_{(i,j)\in M}(\omega_i^2+\omega_{3+j}^2)$ clears the
+      denominator of $H$.  All $2^9=512$ masks fail an exact finite-field
+      polynomial-identity test on every one of six generic affine on-shell
+      lines; each line uses freshly evaluated exact-GMP BG values and at
+      least $2d_M+1+16$ points, where $d_M=2+2|M|$.  In particular the full
+      nine-factor product (degree $18$, proposed numerator degree $20$)
+      fails on all six lines modulo $1000003$.  Therefore the round-4
+      square-free $\prod'(a_i+b_j)$ denominator hypothesis is false in this
+      chamber; higher powers or additional sign-definite factor families
+      are required.
+    evidence:
+      - bots/student-1/derivations/round4_denominator_negative.md
+      - bots/student-1/data/h_mask_scan_lean.json
+      - bots/student-1/data/h_mask_scan_lean.md
+      - bots/student-1/code/h_mask_scan_lean.py
+  - id: s1_016
+    status: verified_literature_negative
+    statement: >-
+      A targeted primary-literature search found no published compact formula
+      for the exact tree-level $A_6^{(---+++)}$ evaluated by `bg.cpp`.
+      arXiv:2606.28280v1 explicitly defers the three-minus sector, which first
+      becomes independent at six points, to future work.  The 2012
+      Dyachenko--Kachulin--Zakharov nine-channel six-wave expression applies
+      only to the quartic compact one-dimensional Zakharov equation; that
+      paper explicitly warns that the exact water-wave theory has an
+      additional six-wave term.  It therefore motivates, but does not provide,
+      the required exact channel sum.
+    evidence:
+      - bots/student-1/derivations/round5_literature.md
+  - id: s1_017
+    status: verified_negative
+    statement: >-
+      The compact simple-channel ansatz for
+      $H=A_6/(i\prod_j\omega_j)$ is exactly inconsistent even after a bounded
+      absolute-wall extension.  The ansatz consists of a degree-two
+      $S_3\times S_3$-plus-swap invariant polynomial and full symmetry-orbit
+      sums over all pair/triple channels of
+      $m_4/h_S$, $m_2|K_T|/h_S$, and
+      $|K_T||K_U|/h_S$, with universal cell-symmetric numerator blocks and no
+      per-channel or chamber coefficients.  The complete Stage-B library has
+      $590$ columns.  On $670$ exact-GMP BG training points spanning $387$
+      full $53$-sign signatures, both $p=2^{61}-1$ and $p=1000000007$ give
+      $\operatorname{rank}X=166$ but
+      $\operatorname{rank}[X\mid H]=167$.  An independent fresh $220$-point
+      rerun reproduces the same two-prime rank jump, with conservation and
+      exact-to-modular feature checks passing.
+    evidence:
+      - bots/student-1/derivations/round5_channel_negative.md
+      - bots/student-1/data/round5_channel_fit.json
+      - bots/student-1/data/round5_channel_fit.md
+      - bots/student-1/code/round5_channel_fit.py
+  - id: s1_018
+    status: exact_two_chamber_formula
+    statement: >-
+      In the two opposite true pieces containing
+      $(-7,9,-8,-3,-4,13)$ and $(-13,4,3,8,7,-9)$, respectively, the exact
+      compact result for $H=A_6/(i\prod_\ell\omega_\ell)$ is generated by one
+      $31$-term weighted-degree-nine pair-invariant polynomial
+      $F(m_1,p_1,m_2,p_2)$ and its minus/plus-swapped image.  With
+      $(u,v,r,s)=(\omega_2,\omega_3,\omega_4,\omega_5)$,
+      $\Omega=u+v+r+s$, $L=\prod_{\alpha\in\{u,v\},\beta\in\{r,s\}}
+      (\alpha+\beta)$, $B_M=(\Omega^2-K)/2$, $B_P=(\Omega^2+K)/2$, and
+      $K=r^2+s^2-u^2-v^2$, the formulas are
+      $H_A=-32rs\Omega F(m_1,p_1,m_2,p_2)/(uvLB_MB_P)$ and
+      $H_B=-32uv\Omega F(p_1,m_1,p_2,m_2)/(rsLB_MB_P)$.
+      A fresh student BG build agrees exactly on $24/24$ new rational samples,
+      with both conservation equations exact and zero residual.
+    evidence:
+      - bots/student-1/derivations/round6_compact_two_chambers.md
+      - bots/student-1/data/round6_compact_formula_check.json
+      - bots/student-1/code/round6_piece_pipeline.py
+      - bots/student-1/code/bg_s1_r6.cpp
+  - id: s1_019
+    status: proved_structural_partial
+    statement: >-
+      The irreducible core in the PI's exact piece-A and piece-B numerators is
+      homogeneous of degree $9$, not degree $8$.  Each $110$-monomial
+      expansion is exactly a $31$-term polynomial in
+      $m_1=u+v$, $m_2=uv$, $p_1=r+s$, and $p_2=rs$; simultaneous
+      substitutions prove separate pair symmetry, and the piece-B core is
+      exactly the side swap of piece A.  The universal denominator branches
+      obey $B_M+B_P=\Omega^2$ and
+      $4B_MB_P=(\Omega^2-|K|)(\Omega^2+|K|)$, and the nine choices of omitted
+      minus/plus pair form one $S_3\times S_3$ chart orbit.  The interleaved
+      chamber rule for the additional single-leg product remains open.
+    evidence:
+      - bots/student-1/derivations/round6_compact_two_chambers.md
+      - bots/student-1/data/round6_compact_formula_check.json
+      - bots/pi/code/round6_QP.txt
+      - bots/pi/code/round6_QP_B.txt
+  - id: s1_020
+    status: exact_two_chamber_compression
+    statement: >-
+      The banked 31-term A-piece core has an exact four-rational-block
+      partial-fraction form.  With
+      $C(u;r,s)=r^3(u+s)+s^3(u+r)$ and the previously defined
+      $B_M,B_P,L,\Omega$,
+      $H_A=64rs(r^2+s^2)/B_P
+      -32r^2s^2(r^2+s^2)\Omega/[u(u+r)(u+s)B_M]
+      -32rs\Omega C(u;r,s)/(uL)
+      -64rs(r^2+s^2)(u+r+s)/[v(u+r)(u+s)]$.
+      The opposite piece is exactly
+      $H_B(u,v,r,s)=H_A(r,s,u,v)$.  Exact rational simplification gives
+      zero symbolic residual against both independently reconstructed
+      $P_A/Q_A$ and $P_B/Q_B$; those reconstructions already have zero
+      exact-GMP BG residual on $24/24$ new points.
+    evidence:
+      - bots/student-1/derivations/round7_four_block_channel_form.md
+      - bots/student-1/data/round6_compact_formula_check.json
+      - bots/pi/code/round6_QP.txt
+      - bots/pi/code/round6_QP_B.txt
+  - id: s1_021
+    status: proved_negative
+    statement: >-
+      No finite master made only of polynomial prefactors and
+      nonnegative-integer positive-part/truncated-power blocks can reproduce
+      $A_6$ globally.  Such an ansatz is polynomial in every fixed full sign
+      chamber, whereas the exact A-piece rational function is reduced with
+      $\deg P_A=12$, $\deg Q_A=9$, nonconstant $Q_A$, and
+      $\gcd(P_A,Q_A)=1$.  Equality on the open A chamber would force the
+      impossible polynomial divisibility $Q_A\mid P_A$.  Thus a viable
+      master must contain rational signed-channel blocks; pure box-spline
+      hinges are ruled out independently of any fitted feature cutoff.
+    evidence:
+      - bots/student-1/derivations/round7_four_block_channel_form.md
+      - bots/pi/code/round6_QP.txt
+  - id: s1_022
+    status: exact_higher_chamber_degree_bound
+    statement: >-
+      In the realized full-sign chamber `12ea165a03`, the exact constrained
+      cone matrices
+      $[M_{\le d}(x,y,z)\mid-hM_{\le d-2}(x,y,z)]$ have zero nullity for
+      $d=12,13,14$.  At $d=14$, $1195$ exact same-signature fit points give
+      full rank $1135$ over each of the three primes
+      $2147483647,2147483629,2147483587$, with $55$ further exact points kept
+      outside the rank matrix.  Full rank modulo a prime proves full rank
+      over $\mathbb Q$.  Hence this chamber has no rational representation
+      with $\deg P\le14,\deg Q\le12$ and, using the known degree-two
+      homogeneity, its homogeneous representation must satisfy
+      $\deg P_{\rm hom}\ge15,\deg Q_{\rm hom}\ge13$.  The separate
+      equal-bound scan also has zero nullity at $d=13$ and $14$
+      ($1360/1360$ rank over three primes at $d=14$), so its minimal
+      dehomogenized equal-bound degree obeys $d_{\rm eq}\ge15$.
+    evidence:
+      - bots/student-1/derivations/round8_higher_degree_obstruction.md
+      - bots/student-1/data/round8_higher_reconstruct.json
+      - bots/student-1/data/round8_higher_equal_reconstruct.json
+      - bots/student-1/data/round8_higher_reconstruct.log
+      - bots/student-1/data/round8_pts_12ea165a03_1250.json
+      - bots/student-1/data/round8_pts_12ea165a03_1450.json
+      - bots/student-1/data/round8_student_verification.json
+      - bots/student-1/code/round8_higher_reconstruct.py
+  - id: s1_023
+    status: proved_ansatz_obstruction
+    statement: >-
+      The exact `12ea165a03` rank result rules out every rational
+      sign-activated augmentation of the four-block A seed whose combined
+      reduced dehomogenized denominator has degree at most $12$: homogeneity
+      would provide a numerator of degree at most $14$, which s1_022 proves
+      impossible.  Since the A seed has reduced common denominator degree
+      $9$, adjoining only one independent denominator factor of degree at
+      most $3$ cannot generate this higher chamber.  A surviving
+      signed-channel master must add at least four net denominator degrees
+      there or reorganize into blocks with least common denominator degree at
+      least $13$.
+    evidence:
+      - bots/student-1/derivations/round8_higher_degree_obstruction.md
+      - bots/student-1/data/round8_higher_reconstruct.json

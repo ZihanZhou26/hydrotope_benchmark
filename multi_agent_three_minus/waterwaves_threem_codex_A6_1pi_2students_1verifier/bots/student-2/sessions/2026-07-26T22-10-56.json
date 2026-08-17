@@ -1,0 +1,32 @@
+{
+  "id": "student-2_round8_2026-07-26T22:10:56",
+  "bot": "student-2",
+  "timestamp": "2026-07-26T22:10:56",
+  "task_id": "round8_s2_offwall_cofactor",
+  "status": "partial",
+  "summary": "Delivered the complete physically realized two-cell off-wall cofactor ground truth and proved that the old raw cells meet with a nonzero codimension-two cocycle; no complete continuous R_q was constructed.",
+  "work_done": [
+    "Proved that equality of the two environment square sums on q_mp=0 permits only the strict words MPPM and PMMP.",
+    "Used the reusable /root/technician thread for one bounded standalone exact extractor, then independently reran and audited it.",
+    "Rebuilt a fresh SHA-256-matched private bg.cpp copy and reproduced the exact A6, P_pole, R_Q, and S anchor.",
+    "Extracted one explicit degree-six q-wall quotient polynomial in each physical cell with exact zero division remainder.",
+    "Verified full non-active q/Q/frequency signatures, 4/4 branch-fit holdouts, 2/2 on-wall traces, and 14/14 off-wall raw-block values.",
+    "Expanded the 27-term quartic J in H^(+)-H^(-)=32qJ and verified the exact witness J=-881/16 and mismatch -21144."
+  ],
+  "next_steps": [
+    "Construct a symmetry-covariant mixed-hinge integration of the double-wall cocycle rather than an individually continuous minimum-selected brick.",
+    "Subtract the resulting R_q from S and test whether a single global polynomial R_0 remains.",
+    "Only after a candidate exists, run the required 18 isolated q-wall polynomial-smooth cure battery."
+  ],
+  "artifacts": [
+    "bots/student-2/derivations/s2_014_round8_offwall_ground_truth_and_obstruction.md",
+    "bots/student-2/code/round8_offwall_ground_truth.py",
+    "bots/student-2/data/round8_offwall_ground_truth.json",
+    "bots/student-2/data/round8_offwall_ground_truth_report.md"
+  ],
+  "technician": {
+    "thread": "/root/technician",
+    "batch": "one standalone fresh-BG exact two-cell quotient extractor with checkpointed JSON and cocycle audit",
+    "status": "completed"
+  }
+}
