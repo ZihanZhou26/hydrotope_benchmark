@@ -32,6 +32,8 @@ boundaries).
 
 ## Running a new blind trial
 
-Copy one `case_N` folder into a separate working directory before launching the
-agent. Expose only that copied folder. Do not expose this key, another case, or
-another run record until the trial is complete.
+Create a separate working directory and copy only `prompt.md` and
+`OnShellBG.m` from one `case_N` folder before launching the agent. Do not copy
+the recorded model-run directories. Expose only the two input files, and keep
+this key, the other cases, and all previous run records hidden until the trial
+is complete.

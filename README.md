@@ -33,11 +33,11 @@ three-minus calculation discussed in the paper.
 | `prompts/` | Shared task material and C++ oracle prompt package |
 | `tools/` | Source for the fast exact and floating-point amplitude evaluator |
 
-Each single-agent result folder preserves the submitted answer, the code and
-checks created during the run, an author-prepared chronological record, and an
-`original_visible_thinking_log.md` file reconstructed from the visible saved
-messages and tool events. These files record visible interactions; they are not
-a claim about unrecorded private model reasoning.
+Each single-agent result folder keeps the original agent workspace at its root.
+Files added later for the paper and audit are separated under `post_run/`.
+These include the canonical formatted thinking log and the standardized visible
+message and tool-event records. The visible records do not claim to reconstruct
+unrecorded private model reasoning.
 
 ## Build the paper
 
@@ -55,10 +55,11 @@ available Python and TikZ sources are kept beside them and listed in
 
 ## Repeat a blind single-agent run
 
-Copy exactly one `case_N` directory into an isolated working directory. Give
-the agent access only to that directory, and instruct it to read `prompt.md`
-and `OnShellBG.m`. Do not expose `KEY.md`, another case, or another run. The
-original tests prohibited internet and literature lookup.
+Create an isolated working directory and copy only `prompt.md` and
+`OnShellBG.m` from one `case_N` directory into it. Do not copy the recorded
+model-run directories, `KEY.md`, another case, or another run. Instruct the
+agent to read the two copied files. The original tests prohibited internet and
+literature lookup.
 
 After the run, compare the proposed formula with the exact evaluator across
 several values of `n` and frequency chambers. The scoring definitions and the
